@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "foodoverflow",
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
