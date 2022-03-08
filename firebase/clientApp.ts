@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -16,7 +17,8 @@ initializeApp({
 
 const auth = getAuth();
 const firestore = getFirestore();
+const storage = getStorage();
 
-export { auth, firestore };
+export { auth, firestore, storage };
 
 export const useAuthFb = () => useAuthState(auth);

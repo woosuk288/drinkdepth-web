@@ -108,7 +108,8 @@ const Header = () => {
               {pages.map((page) => (
                 <Button
                   key={page.name}
-                  onClick={handleCloseNavMenu}
+                  // onClick={handleCloseNavMenu}
+                  onClick={() => router.push(`/${page.link}`)}
                   color="inherit"
                   sx={{
                     my: 2,
