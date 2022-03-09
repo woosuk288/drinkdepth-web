@@ -12,7 +12,8 @@ const defaultStyle = css`
   }
 
   html,
-  body {
+  body,
+  #__next {
     height: 100%;
 
     /* 모바일 수평 스크롤 금지 */

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { ConfirmationResult, getAuth, RecaptchaVerifier } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
@@ -22,3 +22,11 @@ const storage = getStorage();
 export { auth, firestore, storage };
 
 export const useAuthFb = () => useAuthState(auth);
+
+declare global {
+  interface Window {
+    recaptchaVerifier: RecaptchaVerifier;
+    confirmationResult: ConfirmationResult;
+    grecaptcha: any;
+  }
+}

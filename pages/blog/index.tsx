@@ -1,12 +1,12 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
-import Link from '../src/Link';
-import Layout from '../src/Layout';
+import Link from '../../src/Link';
+import Layout from '../../src/Layout';
 import { limit } from 'firebase/firestore';
-import PostList from '../src/blog/PostList';
-import { BlogEntry } from '../types';
-import Meta from '../src/Meta';
-import { getPosts } from '../firebase/query';
+import PostList from '../../src/blog/PostList';
+import { BlogEntry } from '../../types';
+import Meta from '../../src/Meta';
+import { getPosts } from '../../firebase/query';
 
 export type BlogProps = {
   posts: BlogEntry[];
@@ -27,9 +27,6 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
     <Layout>
       <Meta data={metaData} />
 
-      <Link href="/about" color="secondary">
-        Go to the about page
-      </Link>
       <PostList /* selectedCategory={selectedCategory} */ posts={posts} />
     </Layout>
   );

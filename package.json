@@ -24,7 +24,9 @@
     "react": "latest",
     "react-dom": "latest",
     "react-firebase-hooks": "^5.0.3",
-    "react-markdown": "^8.0.0"
+    "react-hook-form": "^7.27.1",
+    "react-markdown": "^8.0.0",
+    "react-number-format": "^4.9.1"
   },
   "devDependencies": {
     "@types/node": "latest",

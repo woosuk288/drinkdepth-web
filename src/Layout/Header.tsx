@@ -68,8 +68,6 @@ const Header = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-
-    router.push({ href: '/login', query: { previousLink: router.pathname } });
   };
   const handleLogout = async () => {
     if (confirm('로그아웃 하시겠어요?')) {
@@ -94,14 +92,20 @@ const Header = () => {
                 display: { xs: 'none', md: 'flex' },
               }}
             >
-              <Image src={Logo} alt="drinkdepth-logo" width={200} height={43} />
+              <Box sx={{ cursor: 'pointer' }} onClick={() => router.push('/')}>
+                <Image
+                  src={Logo}
+                  alt="drinkdepth-logo"
+                  width={200}
+                  height={43}
+                />
+              </Box>
             </Box>
 
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
                 <Button
                   key={page.name}
-                  // onClick={handleCloseNavMenu}
                   onClick={() => router.push(`${page.link}`)}
                   color="inherit"
                   sx={{
@@ -147,8 +151,8 @@ const Header = () => {
                   variant="contained"
                   onClick={() =>
                     router.push({
-                      href: '/login',
-                      query: { previousLink: router.pathname },
+                      pathname: '/login',
+                      query: { prev: router.pathname },
                     })
                   }
                   sx={{
@@ -193,15 +197,62 @@ const Header = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <MenuItem
+                    key={page.name}
+                    onClick={() => router.push(`${page.link}`)}
+                  >
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
                 ))}
+
+                {loading ? (
+                  <Button
+                    disabled
+                    sx={{
+                      ml: 2,
+                      my: 2,
+                      fontSize: 16,
+                    }}
+                  >
+                    loading
+                  </Button>
+                ) : user && userRole ? (
+                  <Button
+                    onClick={handleLogout}
+                    sx={{
+                      ml: 2,
+                      my: 2,
+                      fontSize: 16,
+                    }}
+                  >
+                    로그아웃
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    onClick={() =>
+                      router.push({
+                        pathname: '/login',
+                        query: { prev: router.pathname },
+                      })
+                    }
+                    sx={{
+                      ml: 2,
+                      my: 2,
+                      fontSize: 16,
+                    }}
+                  >
+                    로그인
+                  </Button>
+                )}
               </Menu>
             </Box>
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-              <Image src={Logo} alt="drinkdepth-logo" width={160} />
+            <Box
+              sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+              onClick={() => router.push('/')}
+            >
+              <Image src={Logo} alt="drinkdepth-logo" width={160} height={40} />
             </Box>
 
             <Box
