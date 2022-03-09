@@ -4,8 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { BlogEntry } from '../../pages/blog';
 import { useRouter } from 'next/router';
+import { BlogEntry } from '../../types';
 
 type PostItemProps = BlogEntry & { link: string };
 
@@ -21,13 +21,13 @@ function PostItem({
 
   return (
     <Card sx={{ maxWidth: 360, width: '100%' }}>
-      <CardActionArea onClick={() => router.push(`/${link}`)}>
+      <CardActionArea onClick={() => router.push(`/blog/${link}`)}>
         <CardMedia
           sx={{ borderRadius: '10px 10px 0 0', height: 180 }}
           image={header_image}
         />
         <CardContent>
-          <Typography variant="h5" component="div">
+          <Typography variant="h6" height={60} lineHeight="1.3">
             {name}
           </Typography>
           <Typography

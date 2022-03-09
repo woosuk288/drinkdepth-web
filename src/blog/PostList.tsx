@@ -39,7 +39,7 @@ function PostList({ /* selectedCategory, */ posts }: BlogProps) {
   return (
     <PostListWrapper /* ref={containerRef} */>
       {posts.map((post, key) => (
-        <PostItem {...post} link={post.name} key={key} />
+        <PostItem {...post} link={post.id} key={post.id} />
       ))}
     </PostListWrapper>
   );

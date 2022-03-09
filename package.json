@@ -23,7 +23,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-firebase-hooks": "^5.0.3"
+    "react-firebase-hooks": "^5.0.3",
+    "react-markdown": "^8.0.0"
   },
   "devDependencies": {
     "@types/node": "latest",

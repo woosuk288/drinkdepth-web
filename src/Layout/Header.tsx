@@ -27,18 +27,17 @@ const pages = [
   },
   {
     name: '블로그',
-    link: '/blog/',
+    link: '/blog',
   },
   {
     name: '음료',
-    link: '/drink/',
+    link: '/drink',
   },
 ];
 
 const Header = () => {
   const router = useRouter();
   const [user, loading, error] = useAuthFb();
-  const [firstPath, setFirstPath] = React.useState('');
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -78,12 +77,6 @@ const Header = () => {
     }
   };
 
-  React.useEffect(() => {
-    const idx = router.pathname.lastIndexOf('/');
-    const path = router.pathname.slice(0, idx + 1);
-    setFirstPath(path);
-  }, [router.pathname]);
-
   return (
     <>
       <AppBar position="static" color="transparent">
@@ -109,12 +102,18 @@ const Header = () => {
                 <Button
                   key={page.name}
                   // onClick={handleCloseNavMenu}
-                  onClick={() => router.push(`/${page.link}`)}
+                  onClick={() => router.push(`${page.link}`)}
                   color="inherit"
                   sx={{
                     my: 2,
                     fontSize: 16,
-                    fontWeight: firstPath === page.link ? 700 : 'inherit',
+                    fontWeight:
+                      router.pathname === page.link
+                        ? 700
+                        : page.link !== '/' &&
+                          router.pathname.includes(page.link)
+                        ? 700
+                        : 'inherit',
                   }}
                 >
                   {page.name}
