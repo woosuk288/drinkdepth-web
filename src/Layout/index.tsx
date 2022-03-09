@@ -12,7 +12,7 @@ type LayoutProps = {
 
 const Layout = ({ children, sxMain }: LayoutProps) => {
   return (
-    <Box display="flex" flexDirection="column" height="100vh">
+    <Box display="flex" flexDirection="column" height="100%">
       <Header />
       <Box
         component="main"

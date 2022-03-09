@@ -100,6 +100,10 @@ const MarkdownRenderer = styled.div`
     tab-size: 2;
   }
 
+  img {
+    max-width: 100%;
+  }
+
   @media (max-width: 600px) {
     width: 100%;
     padding: 40px 16px;
