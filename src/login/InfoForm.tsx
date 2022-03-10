@@ -98,7 +98,7 @@ function InfoForm() {
         }
         formBody.append('folderPath', 'companies/licenses');
 
-        const uploadPath = process.env.GATSBY_UPLOAD_PATH!;
+        const uploadPath = process.env.NEXT_PUBLIC_UPLOAD_PATH!;
         const { urls } = await (
           await fetch(uploadPath, {
             method: 'POST',
