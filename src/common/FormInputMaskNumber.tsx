@@ -1,18 +1,18 @@
-import { TextField, TextFieldProps } from '@mui/material'
-import { Control, Controller, RegisterOptions } from 'react-hook-form'
-import React from 'react'
-import NumberFormat from 'react-number-format'
+import { TextField, TextFieldProps } from '@mui/material';
+import { Control, Controller, RegisterOptions } from 'react-hook-form';
+import React from 'react';
+import NumberFormat from 'react-number-format';
 
 type FormInputTextProps = TextFieldProps & {
-  control: Control<any, any>
-  name: string
-  defaultValue?: string
+  control: Control<any, any>;
+  name: string;
+  defaultValue?: string;
   rules?: Exclude<
     RegisterOptions,
     'valueAsNumber' | 'valueAsDate' | 'setValueAs'
-  >
-  [x: string]: any
-}
+  >;
+  [x: string]: any;
+};
 
 export const FormInputMaskNumber = ({
   control,
@@ -34,13 +34,12 @@ export const FormInputMaskNumber = ({
         //   {...props}
         // />
         <NumberFormat
-          {...props}
           value={field.value}
           onChange={field.onChange}
-          customInput={TextField}
+          customInput={(p) => <TextField {...props} {...p} />}
           format="### - ## - #####"
         />
       )}
     />
-  )
-}
+  );
+};
