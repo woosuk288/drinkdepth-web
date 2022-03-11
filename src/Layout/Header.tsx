@@ -11,8 +11,6 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { LinearProgress } from '@mui/material';
 
-import Image from 'next/image';
-import Logo from '../../public/images/logo_name.png';
 import { isLoggedInVar, Role, roleVar } from '../../apollo/client';
 import { useReactiveVar } from '@apollo/client';
 import { signOut } from 'firebase/auth';
@@ -93,11 +91,10 @@ const Header = () => {
               }}
             >
               <Box sx={{ cursor: 'pointer' }} onClick={() => router.push('/')}>
-                <Image
-                  src={Logo}
+                <img
+                  src="/images/logo_name.png"
                   alt="drinkdepth-logo"
                   width={200}
-                  height={43}
                 />
               </Box>
             </Box>
@@ -252,7 +249,12 @@ const Header = () => {
               sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
               onClick={() => router.push('/')}
             >
-              <Image src={Logo} alt="drinkdepth-logo" width={160} height={40} />
+              <img
+                src="/images/logo_name.png"
+                alt="drinkdepth-logo"
+                width={160}
+                height={40}
+              />
             </Box>
 
             <Box

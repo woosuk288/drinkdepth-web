@@ -32,7 +32,8 @@ export const getPosts = async (...queryConstraints: QueryConstraint[]) => {
       id: doc.id,
       ...doc.data(),
       header_image: images[i],
-      publish_date: doc.data().publish_date.toDate().toLocaleDateString(),
+      publish_date:
+        doc.data().publish_date?.toDate().toLocaleDateString() ?? null,
       created_at: doc.data().created_at.toDate().toLocaleDateString(),
     };
   });
@@ -54,7 +55,8 @@ export const getPost = async (id: string) => {
     header_image: await getDownloadURL(
       ref(storage, result.data().header_image)
     ),
-    publish_date: result.data().publish_date.toDate().toLocaleDateString(),
+    publish_date:
+      result.data().publish_date?.toDate().toLocaleDateString() ?? null,
     created_at: result.data().created_at.toDate().toLocaleDateString(),
   };
 

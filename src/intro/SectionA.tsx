@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { styled as muiStyled } from '@mui/system';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import Image from 'next/image';
 
 import GoalChoice from '../../public/images/goals/goal_choice.png';
 import GoalPlace from '../../public/images/goals/goal_place.png';
@@ -69,6 +68,10 @@ const GoalIcon = styled.div`
   right: 30px;
   width: 70px;
   height: 70px;
+  & > img {
+    width: 100%;
+    height: 100%;
+  }
 
   @media (max-width: 900px) {
     position: unset;
@@ -117,8 +120,8 @@ function SectionA() {
           }}
         >
           <GoalIcon>
-            <Image
-              src={GoalChoice}
+            <img
+              src={'/images/goals/goal_choice.png'}
               alt="choice"
               // width={500} automatically provided
               // height={500} automatically provided
@@ -130,17 +133,23 @@ function SectionA() {
           <p>줄이다</p>
         </GoalCard>
         <GoalCard style={{ backgroundColor: '#37BBAB' }}>
-          <GoalIcon>{<Image src={GoalPlace} alt="place" />}</GoalIcon>
+          <GoalIcon>
+            {<img src={'/images/goals/goal_place.png'} alt="place" />}
+          </GoalIcon>
           장소의 제약을
           <p>없애다</p>
         </GoalCard>
         <GoalCard style={{ backgroundColor: '#A993F8' }}>
-          <GoalIcon>{<Image src={GoalTime} alt="time" />}</GoalIcon>
+          <GoalIcon>
+            {<img src={'/images/goals/goal_time.png'} alt="time" />}
+          </GoalIcon>
           시간의 제약을
           <p>줄이다</p>
         </GoalCard>
         <GoalCard style={{ backgroundColor: '#6E8CF8' }}>
-          <GoalIcon>{<Image src={GoalCreate} alt="create" />}</GoalIcon>
+          <GoalIcon>
+            {<img src={'/images/goals/goal_create.png'} alt="create" />}
+          </GoalIcon>
           창작 환경을
           <p>촉진하다</p>
         </GoalCard>
