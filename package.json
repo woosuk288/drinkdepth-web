@@ -1,14 +1,12 @@
 {
-  "name": "nextjs-with-typescript",
+  "name": "drinkdepth",
   "version": "5.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
-    "channel": "npm run build && firebase hosting:channel:deploy test",
-    "lint": "next lint",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+    "lint": "next lint"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
@@ -31,6 +29,7 @@
   "devDependencies": {
     "@types/node": "latest",
     "@types/react": "latest",
+    "cross-env": "^7.0.3",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "typescript": "latest"

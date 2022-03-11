@@ -9,7 +9,7 @@ import Meta from '../../src/Meta';
 import { BlogEntry } from '../../types';
 
 type PostProps = {
-  post: BlogEntry;
+  post: BlogEntry | null;
 };
 
 const Post: NextPage<PostProps> = ({ post }) => {
@@ -37,10 +37,16 @@ const Post: NextPage<PostProps> = ({ post }) => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   // ...
   if (!params || typeof params.id !== 'string') {
-    return { props: { error: '조회 오류!' } };
+    return { notFound: true };
   }
 
-  const post = await getPost(params.id);
+  const post = (await getPost(params.id)) as BlogEntry;
+
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
 
   console.log('post from server: ', post);
 

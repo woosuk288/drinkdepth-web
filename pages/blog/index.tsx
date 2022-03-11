@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Layout from '../../src/Layout';
 import { limit } from 'firebase/firestore';
 import PostList from '../../src/blog/PostList';
@@ -31,16 +31,15 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
   );
 };
 
-export async function getServerSideProps() {
-  const posts = await getPosts(limit(15));
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = (await getPosts(limit(15))) as BlogEntry[];
 
   return {
     props: {
       posts,
     },
-
-    revalidate: 60,
+    // revalidate: 60
   };
-}
+};
 
 export default Blog;
