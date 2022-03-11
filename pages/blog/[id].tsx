@@ -6,7 +6,7 @@ import PostContent from '../../src/blog/PostContent';
 import PostHead from '../../src/blog/PostHead';
 import Layout from '../../src/Layout';
 import Meta from '../../src/Meta';
-import { BlogEntry } from '../../types';
+import { BlogEntry } from '../../src/types';
 
 type PostProps = {
   post: BlogEntry | null;

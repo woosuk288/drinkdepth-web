@@ -28,8 +28,8 @@ const pages = [
     link: '/blog',
   },
   {
-    name: '음료',
-    link: '/drink',
+    name: '커피',
+    link: '/coffee',
   },
 ];
 

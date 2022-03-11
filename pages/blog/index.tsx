@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Layout from '../../src/Layout';
 import { limit } from 'firebase/firestore';
 import PostList from '../../src/blog/PostList';
-import { BlogEntry } from '../../types';
+import { BlogEntry } from '../../src/types';
 import Meta from '../../src/Meta';
 import { getPosts } from '../../firebase/query';
 

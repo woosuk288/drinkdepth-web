@@ -11,6 +11,9 @@ import {
 } from 'firebase/firestore';
 import { getDownloadURL, ref } from 'firebase/storage';
 
+/**
+ * blog
+ */
 const blogCollection = collection(firestore, 'blog');
 
 export const getPosts = async (...queryConstraints: QueryConstraint[]) => {
@@ -61,4 +64,54 @@ export const getPost = async (id: string) => {
   };
 
   return post;
+};
+
+/**
+ * coffee
+ */
+const COFFEES = 'coffees';
+const coffeesCollection = collection(firestore, COFFEES);
+
+export const getCoffees = async (...queryConstraints: QueryConstraint[]) => {
+  const q = query(coffeesCollection, ...queryConstraints);
+  const querySnapshot = await getDocs(q);
+
+  const images = await Promise.all(
+    querySnapshot.docs.map((doc) =>
+      getDownloadURL(ref(storage, doc.data().main_image))
+    )
+  );
+
+  const coffees = querySnapshot.docs.map((doc, i) => {
+    return {
+      id: doc.id,
+      ...doc.data(),
+      main_image: images[i],
+      roasting_date:
+        doc.data().roasting_date?.toDate().toLocaleDateString() ?? null,
+      created_at: doc.data().created_at.toDate().toLocaleDateString(),
+    };
+  });
+
+  return coffees;
+};
+
+export const getCoffee = async (id: string) => {
+  const docRef = doc(firestore, COFFEES, id);
+  const result = await getDoc(docRef);
+
+  if (!result.exists()) {
+    return null;
+  }
+
+  const coffee = {
+    id: docRef.id,
+    ...result.data(),
+    main_image: await getDownloadURL(ref(storage, result.data().main_image)),
+    roasting_date:
+      result.data().roasting_date?.toDate().toLocaleDateString() ?? null,
+    created_at: result.data().created_at.toDate().toLocaleDateString(),
+  };
+
+  return coffee;
 };

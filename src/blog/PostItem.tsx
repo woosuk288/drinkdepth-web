@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { useRouter } from 'next/router';
-import { BlogEntry } from '../../types';
+import { BlogEntry } from '../types';
 
 type PostItemProps = BlogEntry & { link: string };
 
