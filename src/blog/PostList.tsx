@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 
 import React from 'react';
 import { BlogProps } from '../../pages/blog';
+import useInfiniteScroll, {
+  useInfiniteScrollType,
+} from '../hooks/useInfiniteScroll';
+import { BlogEntry } from '../types';
 // import useInfiniteScroll, {
 //   useInfiniteScrollType,
 // } from '../../hooks/useInfiniteScroll'
@@ -30,15 +34,20 @@ export const PostListWrapper = styled.div`
   }
 `;
 
-function PostList({ /* selectedCategory, */ posts }: BlogProps) {
-  // const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(
-  //   selectedCategory,
-  //   posts
-  // )
+type PostListProps = {
+  selectedTag: string;
+  posts: BlogEntry[];
+};
+
+function PostList({ selectedTag, posts }: PostListProps) {
+  const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(
+    selectedTag,
+    posts
+  );
 
   return (
-    <PostListWrapper /* ref={containerRef} */>
-      {posts.map((post, key) => (
+    <PostListWrapper ref={containerRef}>
+      {postList.map((post, key) => (
         <PostItem {...post} link={post.id} key={post.id} />
       ))}
     </PostListWrapper>
