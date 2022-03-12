@@ -53,6 +53,7 @@ function CoffeeContent({ coffee }: CoffeeContentProps) {
         >
           <Image
             src={coffee.main_image}
+            alt={`${coffee.name}의 이미지`}
             layout="responsive"
             width={500}
             height={500}

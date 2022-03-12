@@ -7,6 +7,7 @@ import { Coffee } from '../../src/types';
 import Meta from '../../src/Meta';
 import { getCoffees } from '../../firebase/query';
 import CoffeeList from '../../src/coffee/CoffeeList';
+import CoffeeFilter from '../../src/coffee/CoffeeFilter';
 
 export type CoffeeProps = {
   coffees: Coffee[];
@@ -27,6 +28,7 @@ const Coffee: NextPage<CoffeeProps> = ({ coffees }) => {
     <Layout>
       <Meta data={metaData} />
 
+      <CoffeeFilter items={coffees} />
       <CoffeeList coffees={coffees} />
     </Layout>
   );

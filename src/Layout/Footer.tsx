@@ -5,7 +5,7 @@ import MuiLink from '@mui/material/Link';
 
 const FooterWrapper = styled.footer`
   display: grid;
-  min-height: 300px;
+  min-height: 100px;
   place-items: center;
   margin-top: auto;
   padding: 30px 0;

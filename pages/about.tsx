@@ -27,6 +27,9 @@ const About: NextPage = () => {
           <Button variant="contained" component={Link} noLinkStyle href="/">
             Go to the home page
           </Button>
+          <Link href="/home" color="secondary">
+            Go to the home page
+          </Link>
         </Box>
         <ProTip />
         <Copyright />

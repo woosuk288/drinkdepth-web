@@ -53,7 +53,12 @@ function CoffeeItem({
         onClick={handleCardClick}
       >
         <Box position="relative" height={280} borderRadius="10px 10px 0 0">
-          <Image src={main_image} layout="fill" objectFit="cover" />
+          <Image
+            src={main_image}
+            layout="fill"
+            objectFit="cover"
+            alt={`${name}의 이미지`}
+          />
         </Box>
 
         <IconButton

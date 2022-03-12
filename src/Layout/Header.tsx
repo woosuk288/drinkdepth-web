@@ -87,19 +87,20 @@ const Header = () => {
               sx={{
                 ml: '-1.25rem',
                 mr: 2,
-                flexGrow: 1,
                 display: { xs: 'none', md: 'flex' },
+                cursor: 'pointer',
               }}
+              onClick={() => router.push('/')}
             >
-              <Box sx={{ cursor: 'pointer' }} onClick={() => router.push('/')}>
-                <Image
-                  src="/images/logo_name.png"
-                  alt="drinkdepth-logo"
-                  width={200}
-                  height={40}
-                />
-              </Box>
+              <Image
+                src="/images/logo_name.png"
+                alt="drinkdepth-logo"
+                width={200}
+                height={43}
+              />
             </Box>
+
+            <Box flexGrow={{ md: 1 }} />
 
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
@@ -241,7 +242,7 @@ const Header = () => {
                 src="/images/logo_name.png"
                 alt="drinkdepth-logo"
                 width={160}
-                height={40}
+                height={34}
               />
             </Box>
 

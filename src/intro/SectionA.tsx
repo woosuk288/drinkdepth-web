@@ -120,14 +120,7 @@ function SectionA() {
           }}
         >
           <GoalIcon>
-            <img
-              src={'/images/goals/goal_choice.png'}
-              alt="choice"
-              // width={500} automatically provided
-              // height={500} automatically provided
-              // blurDataURL="data:..." automatically provided
-              // placeholder="blur" // Optional blur-up while loading
-            />
+            <img src={'/images/goals/goal_choice.png'} alt="choice" />
           </GoalIcon>
           선택의 시행착오를
           <p>줄이다</p>

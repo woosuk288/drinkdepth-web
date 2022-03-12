@@ -23,7 +23,12 @@ function PostItem({
     <Card sx={{ maxWidth: 360, width: '100%' }}>
       <CardActionArea onClick={() => router.push(`/blog/${link}`)}>
         <Box position="relative" height={180} borderRadius="10px 10px 0 0">
-          <Image src={header_image} layout="fill" objectFit="cover" />
+          <Image
+            src={header_image}
+            layout="fill"
+            objectFit="cover"
+            alt={`이미지_${name}`}
+          />
         </Box>
 
         <CardContent>
