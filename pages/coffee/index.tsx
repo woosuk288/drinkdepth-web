@@ -6,6 +6,7 @@ import { limit } from 'firebase/firestore';
 import { Coffee } from '../../src/types';
 import Meta from '../../src/Meta';
 import { getCoffees } from '../../firebase/query';
+import CoffeeList from '../../src/coffee/CoffeeList';
 
 export type CoffeeProps = {
   coffees: Coffee[];
@@ -26,7 +27,7 @@ const Coffee: NextPage<CoffeeProps> = ({ coffees }) => {
     <Layout>
       <Meta data={metaData} />
 
-      <div>커피 목록</div>
+      <CoffeeList coffees={coffees} />
     </Layout>
   );
 };

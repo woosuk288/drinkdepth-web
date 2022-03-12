@@ -8,11 +8,11 @@ import Layout from '../../src/Layout';
 import Meta from '../../src/Meta';
 import { BlogEntry } from '../../src/types';
 
-type PostProps = {
+type PostPageProps = {
   post: BlogEntry | null;
 };
 
-const Post: NextPage<PostProps> = ({ post }) => {
+const PostPage: NextPage<PostPageProps> = ({ post }) => {
   console.log('post : ', post);
 
   if (!post) return <div>데이터 없음</div>;
@@ -36,11 +36,11 @@ const Post: NextPage<PostProps> = ({ post }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   // ...
-  if (!params || typeof params.id !== 'string') {
+  if (!params || typeof params.post_id !== 'string') {
     return { notFound: true };
   }
 
-  const post = (await getPost(params.id)) as BlogEntry;
+  const post = (await getPost(params.post_id)) as BlogEntry;
 
   if (!post) {
     return {
@@ -54,4 +54,4 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return { props: { post } };
 };
 
-export default Post;
+export default PostPage;

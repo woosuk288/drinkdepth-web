@@ -20,6 +20,8 @@ export type BlogEntryFire = Omit<BlogEntry, 'created_at' | 'publish_date'> & {
 };
 
 export type Coffee = {
+  id: string;
+
   name: string;
   main_image: string;
   description: string;
