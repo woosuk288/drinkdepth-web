@@ -17,6 +17,7 @@ import { signOut } from 'firebase/auth';
 import { auth, useAuthFb } from '../../firebase/clientApp';
 import { USER_ROLES } from '../constants';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const pages = [
   {
@@ -91,10 +92,11 @@ const Header = () => {
               }}
             >
               <Box sx={{ cursor: 'pointer' }} onClick={() => router.push('/')}>
-                <img
+                <Image
                   src="/images/logo_name.png"
                   alt="drinkdepth-logo"
                   width={200}
+                  height={40}
                 />
               </Box>
             </Box>
@@ -107,6 +109,7 @@ const Header = () => {
                   color="inherit"
                   sx={{
                     my: 2,
+                    px: '1rem',
                     fontSize: 16,
                     fontWeight:
                       router.pathname === page.link
@@ -121,46 +124,31 @@ const Header = () => {
                 </Button>
               ))}
 
-              {loading ? (
-                <Button
-                  disabled
-                  sx={{
-                    ml: 2,
-                    my: 2,
-                    fontSize: 16,
-                  }}
-                >
-                  loading
-                </Button>
-              ) : user && userRole ? (
-                <Button
-                  onClick={handleLogout}
-                  sx={{
-                    ml: 2,
-                    my: 2,
-                    fontSize: 16,
-                  }}
-                >
-                  로그아웃
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  onClick={() =>
-                    router.push({
-                      pathname: '/login',
-                      query: { prev: router.pathname },
-                    })
-                  }
-                  sx={{
-                    ml: 2,
-                    my: 2,
-                    fontSize: 16,
-                  }}
-                >
-                  로그인
-                </Button>
-              )}
+              <Box
+                sx={{
+                  ml: '1.5rem',
+                  my: 2,
+                  fontSize: 16,
+                }}
+              >
+                {loading ? (
+                  <Button disabled>loading</Button>
+                ) : user && userRole ? (
+                  <Button onClick={handleLogout}>로그아웃</Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    onClick={() =>
+                      router.push({
+                        pathname: '/login',
+                        query: { prev: router.pathname },
+                      })
+                    }
+                  >
+                    로그인
+                  </Button>
+                )}
+              </Box>
             </Box>
 
             {/* mobile */}
@@ -249,7 +237,7 @@ const Header = () => {
               sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
               onClick={() => router.push('/')}
             >
-              <img
+              <Image
                 src="/images/logo_name.png"
                 alt="drinkdepth-logo"
                 width={160}

@@ -1,11 +1,11 @@
 import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { Box, CardActionArea } from '@mui/material';
 import { useRouter } from 'next/router';
 import { BlogEntry } from '../types';
+import Image from 'next/image';
 
 type PostItemProps = BlogEntry & { link: string };
 
@@ -22,10 +22,10 @@ function PostItem({
   return (
     <Card sx={{ maxWidth: 360, width: '100%' }}>
       <CardActionArea onClick={() => router.push(`/blog/${link}`)}>
-        <CardMedia
-          sx={{ borderRadius: '10px 10px 0 0', height: 180 }}
-          image={header_image}
-        />
+        <Box position="relative" height={180} borderRadius="10px 10px 0 0">
+          <Image src={header_image} layout="fill" objectFit="cover" />
+        </Box>
+
         <CardContent>
           <Typography variant="h6" height={60} lineHeight="1.3">
             {name}
@@ -36,7 +36,7 @@ function PostItem({
             sx={{ display: 'flex', justifyContent: 'space-between' }}
           >
             <Typography variant="subtitle2" component="span">
-              {tags.join(' / ')}
+              {tags.map((t) => `#${t}`).join(' ')}
             </Typography>
             <Typography variant="subtitle2" component="span">
               {publish_date}
