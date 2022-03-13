@@ -20,10 +20,9 @@ function TagList({ selectedTag, tagList }: TagListProps) {
       paddingTop={3}
     >
       {Object.entries(tagList).map(([name, count]) => (
-        <Link href={`/blog/?tag=${name}`} shallow={true}>
+        <Link href={`/blog/?tag=${name}`} shallow={true} key={name}>
           <Chip
             component="a"
-            key={name}
             label={`#${name} ${count}`}
             variant="outlined"
             clickable

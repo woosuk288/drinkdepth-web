@@ -5,9 +5,10 @@ import { limit } from 'firebase/firestore';
 import PostList from '../../src/blog/PostList';
 import { BlogEntry } from '../../src/types';
 import Meta from '../../src/Meta';
-import { getPosts } from '../../firebase/query';
+import { apiPost, getPosts } from '../../firebase/query';
 import TagList, { TagListProps } from '../../src/blog/TagList';
 import { useRouter } from 'next/router';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 const metaData = {
   title: '깊이를 마시다. 블로그',
@@ -57,9 +58,13 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = (await getPosts(limit(15))) as BlogEntry[];
+  console.log('Blog getStaticProps ', process.env.NEXT_PHASE);
 
-  console.log('posts : ', posts);
+  const posts = await apiPost.list();
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    await apiPost.cache.set(posts);
+  }
 
   return {
     props: {
