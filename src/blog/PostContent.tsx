@@ -118,7 +118,7 @@ const MarkdownRenderer = styled.div`
 `;
 
 function PostContent({ content }: PostContentProps) {
-  console.log('content: ', content);
+  // console.log('content: ', content);
 
   return (
     <MarkdownRenderer>

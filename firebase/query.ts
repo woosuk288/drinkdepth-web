@@ -11,6 +11,11 @@ import {
 } from 'firebase/firestore';
 import { getDownloadURL, ref } from 'firebase/storage';
 
+import { BlogEntry } from '../src/types';
+
+import { promises as fs } from 'fs';
+import path from 'path';
+
 /**
  * blog
  */
@@ -41,7 +46,7 @@ export const getPosts = async (...queryConstraints: QueryConstraint[]) => {
     };
   });
 
-  return posts;
+  return posts as BlogEntry[];
 };
 
 export const getPost = async (id: string) => {
@@ -63,7 +68,39 @@ export const getPost = async (id: string) => {
     created_at: result.data().created_at.toDate().toLocaleDateString(),
   };
 
-  return post;
+  return post as BlogEntry;
+};
+
+export const apiPost = {
+  list: async () => {
+    // return PRODUCTS
+    console.log('apiPost list');
+    return getPosts();
+  },
+  fetch: async (id: BlogEntry['id']) => {
+    // return PRODUCTS.find((product) => product.id === id)
+    console.log('apiPost fetch');
+    return getPost(id);
+  },
+  cache: {
+    get: async (id: string): Promise<BlogEntry | null | undefined> => {
+      try {
+        const data = await fs.readFile(path.join(process.cwd(), 'posts.db'));
+        const posts: BlogEntry[] = JSON.parse(data as unknown as string);
+
+        return posts.find((product) => product.id === id);
+      } catch (error) {
+        console.log('No cache file');
+        return null;
+      }
+    },
+    set: async (posts: BlogEntry[]) => {
+      return fs.writeFile(
+        path.join(process.cwd(), 'posts.db'),
+        JSON.stringify(posts)
+      );
+    },
+  },
 };
 
 /**
