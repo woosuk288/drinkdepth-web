@@ -2,17 +2,17 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { LinearProgress } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { isLoggedInVar, Role, roleVar } from '../../apollo/client';
-import { useReactiveVar } from '@apollo/client';
 import { signOut } from 'firebase/auth';
 import { auth, useAuthFb } from '../../firebase/clientApp';
 import { USER_ROLES } from '../constants';
@@ -42,7 +42,6 @@ const Header = () => {
   );
 
   // const isLoggedIn = useReactiveVar(isLoggedInVar);
-  const userRole = useReactiveVar(roleVar);
 
   React.useEffect(() => {
     if (user) {
@@ -109,7 +108,6 @@ const Header = () => {
                   onClick={() => router.push(`${page.link}`)}
                   color="inherit"
                   sx={{
-                    my: 2,
                     px: '1rem',
                     fontSize: 16,
                     fontWeight:
@@ -128,14 +126,18 @@ const Header = () => {
               <Box
                 sx={{
                   ml: '1.5rem',
-                  my: 2,
-                  fontSize: 16,
                 }}
               >
                 {loading ? (
                   <Button disabled>loading</Button>
-                ) : user && userRole ? (
-                  <Button onClick={handleLogout}>로그아웃</Button>
+                ) : user ? (
+                  //  && userRole
+                  <IconButton
+                    color="primary"
+                    onClick={() => router.push('/user')}
+                  >
+                    <AccountCircleIcon fontSize="large" />
+                  </IconButton>
                 ) : (
                   <Button
                     variant="contained"
@@ -191,46 +193,36 @@ const Header = () => {
                   </MenuItem>
                 ))}
 
-                {loading ? (
-                  <Button
-                    disabled
-                    sx={{
-                      ml: 2,
-                      my: 2,
-                      fontSize: 16,
-                    }}
-                  >
-                    loading
-                  </Button>
-                ) : user && userRole ? (
-                  <Button
-                    onClick={handleLogout}
-                    sx={{
-                      ml: 2,
-                      my: 2,
-                      fontSize: 16,
-                    }}
-                  >
-                    로그아웃
-                  </Button>
-                ) : (
-                  <Button
-                    variant="contained"
-                    onClick={() =>
-                      router.push({
-                        pathname: '/login',
-                        query: { prev: router.pathname },
-                      })
-                    }
-                    sx={{
-                      ml: 2,
-                      my: 2,
-                      fontSize: 16,
-                    }}
-                  >
-                    로그인
-                  </Button>
-                )}
+                <Box>
+                  {loading ? (
+                    <Button disabled>loading</Button>
+                  ) : user ? (
+                    // <Button
+                    //   onClick={handleLogout}
+
+                    // >
+                    //   로그아웃
+                    // </Button>
+                    <IconButton
+                      color="primary"
+                      onClick={() => router.push('/user')}
+                    >
+                      <AccountCircleIcon fontSize="large" />
+                    </IconButton>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      onClick={() =>
+                        router.push({
+                          pathname: '/login',
+                          query: { prev: router.pathname },
+                        })
+                      }
+                    >
+                      로그인
+                    </Button>
+                  )}
+                </Box>
               </Menu>
             </Box>
 

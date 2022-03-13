@@ -8,7 +8,7 @@ import {
   query,
   QueryConstraint,
   where,
-} from 'firebase/firestore';
+} from 'firebase/firestore/lite';
 import { getDownloadURL, ref } from 'firebase/storage';
 
 import { BlogEntry } from '../src/types';

@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { ConfirmationResult, getAuth, RecaptchaVerifier } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore/lite';
 import { getStorage } from 'firebase/storage';
 
 import { useAuthState } from 'react-firebase-hooks/auth';

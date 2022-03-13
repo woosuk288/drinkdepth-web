@@ -1,11 +1,10 @@
 import * as React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Layout from '../../src/Layout';
-import { limit } from 'firebase/firestore';
 import PostList from '../../src/blog/PostList';
 import { BlogEntry } from '../../src/types';
 import Meta from '../../src/Meta';
-import { apiPost, getPosts } from '../../firebase/query';
+import { apiPost } from '../../firebase/query';
 import TagList, { TagListProps } from '../../src/blog/TagList';
 import { useRouter } from 'next/router';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';

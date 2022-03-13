@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Layout from '../../src/Layout';
-import { limit } from 'firebase/firestore';
+import { limit } from 'firebase/firestore/lite';
 // import PostList from '../../src/blog/PostList';
 import { Coffee } from '../../src/types';
 import Meta from '../../src/Meta';

@@ -20,8 +20,8 @@ const Layout = ({ children, sxMain }: LayoutProps) => {
           maxWidth: (theme) => theme.breakpoints.values.lg,
           margin: '0 auto',
           width: '100%',
-          paddingLeft: { sm: 0, lg: 5 },
-          paddingRight: { sm: 0, lg: 5 },
+          paddingLeft: { sm: 0, lg: '2.5rem' },
+          paddingRight: { sm: 0, lg: '2.5rem' },
           ...sxMain,
         }}
       >

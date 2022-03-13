@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
-import ProTip from '../src/ProTip';
 import Layout from '../src/Layout';
 import SectionA from '../src/intro/SectionA';
 import Meta from '../src/Meta';
