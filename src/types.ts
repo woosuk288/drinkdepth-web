@@ -47,3 +47,16 @@ export type Coffee = {
   // created_at: Date;
   created_at: string;
 };
+
+export type Company = {
+  id: string;
+  business_number: string;
+  company_name: string;
+  president_name: string;
+  opening_date: string;
+  business_licence: string;
+  is_valid: boolean;
+  uid: string;
+  updatedd_at?: string;
+  created_at: string;
+};

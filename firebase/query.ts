@@ -7,6 +7,7 @@ import {
   limit,
   query,
   QueryConstraint,
+  Timestamp,
   where,
 } from 'firebase/firestore/lite';
 import { getDownloadURL, ref } from 'firebase/storage';
@@ -165,3 +166,18 @@ export const getCoffee = async (id: string) => {
 
   return coffee;
 };
+
+/**
+ * user
+ */
+const COMPANIES = 'companies';
+const companiesCollection = collection(firestore, COMPANIES);
+
+// export const getUserCompany = async (id: string) => {
+//   const docRef = doc(firestore, COMPANIES, id);
+//   const result = await getDoc(docRef);
+
+//   console.log('result.data() : ', result.data());
+
+//   console.log('converter : ', coverter(result.data()));
+// };
