@@ -1,9 +1,7 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
 import Layout from '../src/Layout';
-import { useReactiveVar } from '@apollo/client';
-import { roleVar } from '../apollo/client';
-import { useRouter } from 'next/router';
+
 import {
   Box,
   Button,
@@ -13,7 +11,6 @@ import {
   Typography,
 } from '@mui/material';
 
-import { collection, doc, getDoc, limit, where } from 'firebase/firestore/lite';
 import { firestore, useAuthFb } from '../firebase/clientApp';
 import UserInfo from '../src/user/UserInfo';
 import RedirectPage from '../src/common/RedirectPage';
@@ -48,10 +45,7 @@ function a11yProps(index: number) {
 }
 
 const User: NextPage = () => {
-  const router = useRouter();
-
   const [user, loading, error] = useAuthFb();
-  const userRole = useReactiveVar(roleVar);
 
   const [tabValue, setValue] = React.useState(0);
 
@@ -60,13 +54,7 @@ const User: NextPage = () => {
   };
 
   if (loading) return <LinearProgress />;
-
-  // if (!userRole || !user) return <RedirectPage path="/login" />;
-
-  /**
-   * TODO: 사업자 인증 안됬을 시 인증하러가기 버튼 login화면 InfoForm 이동
-   * 인증 됬을시 정보 보여주기
-   */
+  if (!user) return <RedirectPage path="/login" />;
 
   return (
     <Layout>

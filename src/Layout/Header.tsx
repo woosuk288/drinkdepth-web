@@ -13,7 +13,6 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { isLoggedInVar, Role, roleVar } from '../../apollo/client';
-import { signOut } from 'firebase/auth';
 import { auth, useAuthFb } from '../../firebase/clientApp';
 import { USER_ROLES } from '../constants';
 import { useRouter } from 'next/router';
@@ -66,11 +65,6 @@ const Header = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-  const handleLogout = async () => {
-    if (confirm('로그아웃 하시겠어요?')) {
-      await signOut(auth);
-    }
   };
 
   return (

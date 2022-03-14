@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { firestore } from '../../firebase/clientApp';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import { auth, firestore } from '../../firebase/clientApp';
 import {
   collection,
   getDocs,
@@ -8,9 +7,16 @@ import {
   query,
   where,
 } from 'firebase/firestore/lite';
+import { signOut } from 'firebase/auth';
+
 import { Box, Button, LinearProgress } from '@mui/material';
+import BusinessIcon from '@mui/icons-material/Business';
+
 import { Company } from '../types';
 import { converter } from '../../firebase/converter';
+import { useReactiveVar } from '@apollo/client';
+import { roleVar } from '../../apollo/client';
+import Link from '../../src/Link';
 
 type UserInfoProps = {
   uid: string;
@@ -20,6 +26,8 @@ const COMPANIES = 'companies';
 const companyCollection = collection(firestore, COMPANIES);
 
 function UserInfo({ uid }: UserInfoProps) {
+  const userRole = useReactiveVar(roleVar);
+
   const [companies, setCompanies] = useState<Company[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -45,7 +53,15 @@ function UserInfo({ uid }: UserInfoProps) {
     getComapanies().then(() => setLoading(false));
   }, []);
 
+  const handleLogout = async () => {
+    if (confirm('로그아웃 하시겠어요?')) {
+      await signOut(auth);
+    }
+  };
+
   if (loading) return <LinearProgress />;
+
+  // if (!userRole ) return <RedirectPage path="/login" />;
 
   return (
     <Box
@@ -57,21 +73,55 @@ function UserInfo({ uid }: UserInfoProps) {
         '& > div': { marginBottom: '1rem' },
       }}
     >
-      <div>전화번호</div>
-      <div>사업자 등록번호</div>
-      <div>대표자성명</div>
-      <div>상호</div>
-      <div>사업자등록증</div>
+      {userRole ? (
+        <div>
+          <div>전화번호</div>
+          <div>사업자 등록번호</div>
+          <div>대표자성명</div>
+          <div>상호</div>
+          <div>사업자등록증</div>
+        </div>
+      ) : (
+        <Button
+          color="primary"
+          variant="contained"
+          size="large"
+          fullWidth
+          sx={(theme) => ({
+            my: '5rem',
+            fontSize: 32,
+            [theme.breakpoints.down('sm')]: {
+              fontSize: 24,
+            },
+          })}
+          startIcon={
+            <BusinessIcon
+              sx={(theme) => ({
+                marginRight: '0.5rem',
+                fontSize: 32,
+                [theme.breakpoints.down('sm')]: {
+                  fontSize: 24,
+                },
+              })}
+            />
+          }
+          component={Link}
+          href="/login"
+        >
+          사업자 인증하기
+        </Button>
+      )}
 
-      <Button
-        fullWidth
-        variant="outlined"
-        color="inherit"
-        aria-label="ask for sign-out"
-        sx={{ marginTop: '3rem' }}
-      >
-        로그아웃
-      </Button>
+      <Box sx={{ margin: 'auto', marginTop: '5rem', textAlign: 'center' }}>
+        <Button
+          variant="outlined"
+          color="inherit"
+          aria-label="ask for sign-out"
+          onClick={handleLogout}
+        >
+          로그아웃
+        </Button>
+      </Box>
     </Box>
   );
 }
