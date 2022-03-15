@@ -3,6 +3,8 @@ import type { NextPage } from 'next';
 import Layout from '../src/Layout';
 import SectionA from '../src/intro/SectionA';
 import Meta from '../src/Meta';
+import SectionB from '../src/intro/SectionB';
+import SectionC from '../src/intro/SectionC';
 
 const Home: NextPage = () => {
   const metaData = {
@@ -16,6 +18,10 @@ const Home: NextPage = () => {
       <Meta data={metaData} />
 
       <SectionA />
+      <SectionB />
+      <SectionC />
+
+      <div style={{ marginBottom: '100px' }}></div>
     </Layout>
   );
 };

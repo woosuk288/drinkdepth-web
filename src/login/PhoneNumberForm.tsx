@@ -3,7 +3,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
 import React, { useState } from 'react';
-import { Box, Button, CircularProgress, TextField } from '@mui/material';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  TextField,
+  Typography,
+} from '@mui/material';
 
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 
@@ -82,59 +88,75 @@ function PhoneNumberForm({ setIsSent }: IPhoneNumberFormProps) {
   };
 
   return (
-    <Box
-      component="form"
-      sx={{ width: { xs: '280px', sm: '400px' } }}
-      onSubmit={handleSubmit(onSendSMS)}
-    >
-      <Controller
-        name="phoneNumber"
-        control={control}
-        rules={{ required: true }}
-        defaultValue=""
-        render={({ field /* , fieldState, formState */ }) => (
-          <TextField
-            autoComplete="off"
-            onChange={field.onChange}
-            value={field.value}
-            variant="standard"
-            autoFocus
-            fullWidth
-            // label=""
-            placeholder="01012345678"
-            type="tel"
-            required={true}
-            error={!!errorMsg}
-            helperText={errorMsg}
-            disabled={processing}
-            sx={{
-              '& .MuiInputBase-input': {
-                textAlign: 'center',
-              },
-            }}
-          />
-        )}
-      />
-
-      <Button
-        variant="contained"
-        color="primary"
-        fullWidth
-        disabled={processing || phoneNumber.length < 11}
-        type="submit"
-        sx={{
-          marginTop: '0.5rem',
-          fontWeight: 600,
-          '&:disabled': {
-            backgroundColor: '#4f9cff4d',
-            color: '#fff',
-          },
-        }}
+    <>
+      <Typography variant="h5" fontWeight={700} sx={{ margin: '60px 0' }}>
+        전화번호 간편 가입
+      </Typography>
+      <Box
+        component="form"
+        sx={{ width: { xs: '280px', sm: '400px' } }}
+        onSubmit={handleSubmit(onSendSMS)}
       >
-        다음
-        {processing && <CircularProgress size={24} />}
-      </Button>
-    </Box>
+        <Controller
+          name="phoneNumber"
+          control={control}
+          rules={{ required: true }}
+          defaultValue=""
+          render={({ field /* , fieldState, formState */ }) => (
+            <TextField
+              autoComplete="off"
+              onChange={field.onChange}
+              value={field.value}
+              variant="standard"
+              autoFocus
+              fullWidth
+              // label=""
+              placeholder="01012345678"
+              type="tel"
+              required={true}
+              error={!!errorMsg}
+              helperText={errorMsg}
+              disabled={processing}
+              sx={{
+                '& .MuiInputBase-input': {
+                  textAlign: 'center',
+                },
+              }}
+            />
+          )}
+        />
+
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          disabled={processing || phoneNumber.length < 11}
+          type="submit"
+          sx={{
+            marginTop: '0.5rem',
+            fontWeight: 600,
+            '&:disabled': {
+              backgroundColor: '#4f9cff4d',
+              color: '#fff',
+            },
+          }}
+        >
+          다음
+          {processing && (
+            <CircularProgress
+              size={24}
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                marginTop: '-12px',
+                marginLeft: '-12px',
+              }}
+            />
+          )}
+        </Button>
+      </Box>
+    </>
   );
 }
 

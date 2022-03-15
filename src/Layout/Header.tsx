@@ -40,8 +40,6 @@ const Header = () => {
     null
   );
 
-  // const isLoggedIn = useReactiveVar(isLoggedInVar);
-
   React.useEffect(() => {
     if (user) {
       isLoggedInVar(!!user);
@@ -56,6 +54,8 @@ const Header = () => {
         .catch((error) => {
           console.log(error);
         });
+    } else {
+      roleVar(undefined);
     }
   }, [user]);
 

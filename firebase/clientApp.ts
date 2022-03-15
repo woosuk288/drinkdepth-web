@@ -21,6 +21,7 @@ const storage = getStorage();
 
 export { auth, firestore, storage };
 
+auth.useDeviceLanguage();
 export const useAuthFb = () => useAuthState(auth);
 
 declare global {
