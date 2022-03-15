@@ -74,7 +74,7 @@ export const getPost = async (id: string) => {
 };
 
 export const apiPost = {
-  list: async () => {
+  list: async (...queryConstraints: QueryConstraint[]) => {
     // return PRODUCTS
     console.log('apiPost.list call');
 
@@ -85,11 +85,11 @@ export const apiPost = {
         return posts;
       } catch (error) {
         console.log('apiPost.list No cache file');
-        return getPosts();
+        return getPosts(...queryConstraints);
       }
     }
 
-    return getPosts();
+    return getPosts(...queryConstraints);
   },
   fetch: async (id: BlogEntry['id']) => {
     // return PRODUCTS.find((product) => product.id === id)

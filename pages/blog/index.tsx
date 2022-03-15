@@ -8,6 +8,7 @@ import { apiPost } from '../../firebase/query';
 import TagList, { TagListProps } from '../../src/blog/TagList';
 import { useRouter } from 'next/router';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import { limit, orderBy } from 'firebase/firestore/lite';
 
 const metaData = {
   title: '깊이를 마시다. 블로그',
@@ -59,7 +60,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
 export const getStaticProps: GetStaticProps = async () => {
   console.log('Blog getStaticProps ', process.env.NEXT_PHASE);
 
-  const posts = await apiPost.list();
+  const posts = await apiPost.list(limit(12), orderBy('created_at', 'desc'));
 
   if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
     await apiPost.cache.set(posts);
