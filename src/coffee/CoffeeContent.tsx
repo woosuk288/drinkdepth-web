@@ -261,11 +261,9 @@ function CoffeeContent({ coffee }: CoffeeContentProps) {
           margin="1.5rem auto"
           maxWidth={(theme) => theme.breakpoints.values.md}
         >
-          {/* ㅅㅂ 그리드 말고 flex로 가자 */}
-
           <MfrImagesWrapper>
-            {mfrImages.map((img) => (
-              <CardMedia image={img} />
+            {mfrImages.map((img, key) => (
+              <CardMedia image={img} key={key} />
             ))}
           </MfrImagesWrapper>
         </Box>

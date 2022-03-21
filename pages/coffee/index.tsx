@@ -1,13 +1,14 @@
 import * as React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Layout from '../../src/Layout';
-import { limit } from 'firebase/firestore/lite';
+import { limit, orderBy } from 'firebase/firestore/lite';
 // import PostList from '../../src/blog/PostList';
 import { Coffee } from '../../src/types';
 import Meta from '../../src/Meta';
-import { getCoffees } from '../../firebase/query';
+import { apiCoffee } from '../../firebase/query';
 import CoffeeList from '../../src/coffee/CoffeeList';
 import CoffeeFilter from '../../src/coffee/CoffeeFilter';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 export type CoffeeProps = {
   coffees: Coffee[];
@@ -35,13 +36,22 @@ const Coffee: NextPage<CoffeeProps> = ({ coffees }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const coffees = await getCoffees(limit(15));
+  console.log('Coffee getStaticProps ', process.env.NEXT_PHASE);
+
+  const coffees = await apiCoffee.list(
+    limit(12),
+    orderBy('created_at', 'desc')
+  );
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    await apiCoffee.cache.set(coffees);
+  }
 
   return {
     props: {
       coffees,
     },
-    // revalidate: 60
+    revalidate: 1800,
   };
 };
 

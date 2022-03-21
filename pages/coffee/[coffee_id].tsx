@@ -1,11 +1,12 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 import type { NextPage } from 'next';
-import { getCoffee } from '../../firebase/query';
+import { apiCoffee, getCoffee } from '../../firebase/query';
 import CoffeeContent from '../../src/coffee/CoffeeContent';
 import Layout from '../../src/Layout';
 import Meta from '../../src/Meta';
 import { Coffee } from '../../src/types';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 type CoffeePageProps = {
   coffee: Coffee | null;
@@ -32,14 +33,35 @@ const CoffeePage: NextPage<CoffeePageProps> = ({ coffee }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  // ...
-  if (!params || typeof params.coffee_id !== 'string') {
-    return { notFound: true };
+export const getStaticPaths: GetStaticPaths = async () => {
+  console.log('coffee_id getStaticPaths : ', process.env.NEXT_PHASE);
+  const coffees = await apiCoffee.list();
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    await apiCoffee.cache.set(coffees);
   }
 
-  const coffee = (await getCoffee(params.coffee_id)) as Coffee;
-  console.log('coffee from server: ', coffee);
+  return {
+    paths: coffees.map((coffee) => ({
+      params: {
+        coffee_id: coffee.id,
+        name: coffee.name,
+      },
+    })),
+    fallback: 'blocking',
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  console.log('params : ', params);
+
+  let coffee = await apiCoffee.cache.getOne(params?.coffee_id as string);
+
+  coffee ? console.log('cache coffee') : console.log('fetch coffee');
+
+  if (!coffee) {
+    coffee = await apiCoffee.fetch(params?.coffee_id as string);
+  }
 
   if (!coffee) {
     return {
@@ -47,8 +69,13 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     };
   }
 
-  // 해당 페이지에 props로 보냄
-  return { props: { coffee } };
+  return {
+    props: {
+      coffee,
+    },
+
+    revalidate: 900,
+  };
 };
 
 export default CoffeePage;

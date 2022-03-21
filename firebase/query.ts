@@ -4,15 +4,12 @@ import {
   doc,
   getDoc,
   getDocs,
-  limit,
   query,
   QueryConstraint,
-  Timestamp,
-  where,
 } from 'firebase/firestore/lite';
 import { getDownloadURL, ref } from 'firebase/storage';
 
-import { BlogEntry } from '../src/types';
+import { BlogEntry, Coffee } from '../src/types';
 
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -144,7 +141,7 @@ export const getCoffees = async (...queryConstraints: QueryConstraint[]) => {
     };
   });
 
-  return coffees;
+  return coffees as Coffee[];
 };
 
 export const getCoffee = async (id: string) => {
@@ -164,20 +161,47 @@ export const getCoffee = async (id: string) => {
     created_at: result.data().created_at.toDate().toLocaleDateString(),
   };
 
-  return coffee;
+  return coffee as Coffee;
 };
 
-/**
- * user
- */
-const COMPANIES = 'companies';
-const companiesCollection = collection(firestore, COMPANIES);
+export const apiCoffee = {
+  list: async (...queryConstraints: QueryConstraint[]) => {
+    console.log('apiCoffee.list call');
 
-// export const getUserCompany = async (id: string) => {
-//   const docRef = doc(firestore, COMPANIES, id);
-//   const result = await getDoc(docRef);
+    if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+      try {
+        const data = await fs.readFile(path.join(process.cwd(), 'coffees.db'));
+        const coffees: Coffee[] = JSON.parse(data as unknown as string);
+        return coffees;
+      } catch (error) {
+        console.log('apiCoffee.list No cache file');
+        return getCoffees(...queryConstraints);
+      }
+    }
 
-//   console.log('result.data() : ', result.data());
+    return getCoffees(...queryConstraints);
+  },
+  fetch: async (id: Coffee['id']) => {
+    console.log('apiCoffee fetch');
+    return getCoffee(id);
+  },
+  cache: {
+    getOne: async (id: string): Promise<Coffee | null | undefined> => {
+      try {
+        const data = await fs.readFile(path.join(process.cwd(), 'coffees.db'));
+        const coffees: Coffee[] = JSON.parse(data as unknown as string);
 
-//   console.log('converter : ', coverter(result.data()));
-// };
+        return coffees.find((coffee) => coffee.id === id);
+      } catch (error) {
+        console.log('No cache file');
+        return null;
+      }
+    },
+    set: async (coffees: Coffee[]) => {
+      return fs.writeFile(
+        path.join(process.cwd(), 'coffees.db'),
+        JSON.stringify(coffees)
+      );
+    },
+  },
+};
