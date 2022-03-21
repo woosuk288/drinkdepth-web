@@ -50,7 +50,7 @@ function UserInfo({ uid }: UserInfoProps) {
   };
 
   React.useEffect(() => {
-    getComapanies().then(() => setLoading(false));
+    uid && getComapanies().then(() => setLoading(false));
   }, []);
 
   const handleLogout = async () => {
@@ -70,6 +70,7 @@ function UserInfo({ uid }: UserInfoProps) {
           xs: '280px',
           sm: '400px',
         },
+        textAlign: 'center',
         '& > div': { marginBottom: '1rem' },
       }}
     >
@@ -89,7 +90,8 @@ function UserInfo({ uid }: UserInfoProps) {
           fullWidth
           sx={(theme) => ({
             my: '5rem',
-            fontSize: 32,
+            fontSize: 28,
+            maxWidth: '300px',
             [theme.breakpoints.down('sm')]: {
               fontSize: 24,
             },

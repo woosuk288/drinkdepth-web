@@ -1,7 +1,7 @@
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 import type { NextPage } from 'next';
-import { apiPost, getPost, getPosts } from '../../firebase/query';
+import { apiPost } from '../../firebase/query';
 import PostContent from '../../src/blog/PostContent';
 import PostHead from '../../src/blog/PostHead';
 import Layout from '../../src/Layout';
@@ -76,27 +76,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       post,
     },
+
+    revalidate: 3600,
   };
 };
-
-// export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-//   // ...
-//   if (!params || typeof params.post_id !== 'string') {
-//     return { notFound: true };
-//   }
-
-//   const post = (await getPost(params.post_id)) as BlogEntry;
-
-//   if (!post) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   console.log('post from server: ', post);
-
-//   // 해당 페이지에 props로 보냄
-//   return { props: { post } };
-// };
 
 export default PostPage;
