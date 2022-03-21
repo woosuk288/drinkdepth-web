@@ -9,8 +9,16 @@ import {
 } from 'firebase/firestore/lite';
 import { signOut } from 'firebase/auth';
 
-import { Box, Button, LinearProgress } from '@mui/material';
+import {
+  Box,
+  Button,
+  InputAdornment,
+  LinearProgress,
+  TextField,
+} from '@mui/material';
 import BusinessIcon from '@mui/icons-material/Business';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { Company } from '../types';
 import { converter } from '../../firebase/converter';
@@ -30,6 +38,15 @@ function UserInfo({ uid }: UserInfoProps) {
 
   const [companies, setCompanies] = useState<Company[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const [show, setShow] = useState({
+    phone: false,
+    // opening_date: false,
+  });
+
+  const handleClickShow = (key: string) => {
+    setShow((prev: any) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   const getComapanies = async () => {
     const companyQuery = query(
@@ -62,7 +79,7 @@ function UserInfo({ uid }: UserInfoProps) {
 
   if (loading) return <LinearProgress />;
 
-  // if (!userRole ) return <RedirectPage path="/login" />;
+  const company = companies.length > 0 ? companies[0] : null;
 
   return (
     <Box
@@ -75,14 +92,43 @@ function UserInfo({ uid }: UserInfoProps) {
         '& > div': { marginBottom: '1rem' },
       }}
     >
-      {userRole ? (
-        <div>
-          <div>전화번호</div>
-          <div>사업자 등록번호</div>
-          <div>대표자성명</div>
-          <div>상호</div>
+      {userRole && company ? (
+        <>
+          <TextField
+            label="전화번호"
+            fullWidth
+            value={'01028643931'}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  onClick={() => handleClickShow('phone')}
+                >
+                  {show.phone ? <VisibilityOff /> : <Visibility />}
+                </InputAdornment>
+              ),
+            }}
+            type={show.phone ? 'text' : 'password'}
+          />
+          <TextField
+            label="사업자 등록번호"
+            fullWidth
+            value={company.business_number}
+          />
+          <TextField
+            label="대표자성명"
+            fullWidth
+            value={company.president_name}
+          />
+          <TextField label="상호" fullWidth value={company.company_name} />
+          <TextField
+            label="개업년월일"
+            fullWidth
+            value={company.opening_date}
+          />
+
           <div>사업자등록증</div>
-        </div>
+        </>
       ) : (
         <Button
           color="primary"

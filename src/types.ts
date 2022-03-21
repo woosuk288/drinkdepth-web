@@ -57,6 +57,6 @@ export type Company = {
   business_licence: string;
   is_valid: boolean;
   uid: string;
-  updatedd_at?: string;
+  updated_at?: string;
   created_at: string;
 };

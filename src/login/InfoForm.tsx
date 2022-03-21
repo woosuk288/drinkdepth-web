@@ -12,13 +12,16 @@ import { ApolloError, gql, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { isLoggedInVar, roleVar } from '../../apollo/client';
 import { getAuth } from 'firebase/auth';
+import { Company } from '../types';
 
-type InfoFormType = {
-  businessNumber: string;
-  companyName: string;
-  presidentName: string;
-  openingDate: string;
-  businessLicence: string;
+type InfoFormType = Pick<
+  Company,
+  | 'business_number'
+  | 'company_name'
+  | 'president_name'
+  | 'opening_date'
+  | 'business_licence'
+> & {
   files?: FileList;
 };
 
@@ -81,9 +84,9 @@ function InfoForm() {
 
   const onSubmit = async ({ files, ...data }: InfoFormType) => {
     const regex = /[^0-9]/g;
-    const businessNumber = data.businessNumber.replace(regex, '');
-    const openingDate = data.openingDate.replace(regex, '');
-    const reqData = { ...data, businessNumber, openingDate };
+    const business_number = data.business_number.replace(regex, '');
+    const opening_date = data.opening_date.replace(regex, '');
+    const reqData = { ...data, business_number, opening_date };
 
     if (!files) return;
 
@@ -113,7 +116,7 @@ function InfoForm() {
           return;
         }
 
-        reqData.businessLicence = urls[0];
+        reqData.business_licence = urls[0];
 
         setFileUploading(false);
       } // loading
@@ -155,47 +158,47 @@ function InfoForm() {
       >
         {/* <LinearProgress /> */}
         <FormInputMaskNumber
-          name="businessNumber"
+          name="business_number"
           control={control}
           rules={{
             required: '필수로 입력해주세요.',
             pattern: /^(\d{3,3})+ [-] +(\d{2,2})+ [-] +(\d{5,5})/i,
           }}
-          error={!!errors.businessNumber}
-          helperText={errors.businessNumber?.message}
+          error={!!errors.business_number}
+          helperText={errors.business_number?.message}
           fullWidth
           label="사업자 등록번호"
           placeholder="숫자만 입력"
         />
 
         <FormInputText
-          name="presidentName"
+          name="president_name"
           control={control}
           rules={{ required: '필수로 입력해주세요.' }}
-          error={!!errors.presidentName}
-          helperText={errors.presidentName?.message}
+          error={!!errors.president_name}
+          helperText={errors.president_name?.message}
           fullWidth
           label="대표자성명"
         />
         <FormInputText
-          name="companyName"
+          name="company_name"
           control={control}
           rules={{ required: '필수로 입력해주세요.' }}
-          error={!!errors.companyName}
-          helperText={errors.companyName?.message}
+          error={!!errors.company_name}
+          helperText={errors.company_name?.message}
           fullWidth
           label="상호"
         />
         <FormInputDate
-          name="openingDate"
+          name="opening_date"
           control={control}
           rules={{
             required: '필수로 입력해주세요.',
             pattern:
               /^((19|20)\d{2})(-)(0[1-9]|1[012])(-)(0[1-9]|[12][0-9]|3[0-1])/,
           }}
-          error={!!errors.openingDate}
-          helperText={errors.openingDate?.message}
+          error={!!errors.opening_date}
+          helperText={errors.opening_date?.message}
           fullWidth
           label="개업년월일"
         />
