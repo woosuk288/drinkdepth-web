@@ -56,6 +56,7 @@ function UserInfo({ uid }: UserInfoProps) {
   const handleLogout = async () => {
     if (confirm('로그아웃 하시겠어요?')) {
       await signOut(auth);
+      roleVar(null);
     }
   };
 

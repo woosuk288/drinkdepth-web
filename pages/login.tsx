@@ -9,6 +9,7 @@ import { useAuthFb } from '../firebase/clientApp';
 import { useReactiveVar } from '@apollo/client';
 import { roleVar } from '../apollo/client';
 import { useRouter } from 'next/router';
+import RedirectPage from '../src/common/RedirectPage';
 
 const LoginPage = () => {
   const router = useRouter();
@@ -34,10 +35,9 @@ const LoginPage = () => {
     );
   }
 
-  // if (user?.displayName) return <div>already logged in. redrecting...</div>
-
   return (
     <Layout>
+      <span id="load-invisible-recaptcha"></span>
       <Box
         sx={{
           height: '100%',
@@ -48,15 +48,15 @@ const LoginPage = () => {
           minHeight: 600,
         }}
       >
-        {user && userRole === undefined ? (
-          <InfoForm />
-        ) : isSent === false ? (
+        {!user && isSent === false ? (
           <PhoneNumberForm setIsSent={setIsSent} />
-        ) : (
+        ) : !user && isSent === true ? (
           <VerificationCodeForm />
+        ) : user && userRole === undefined ? (
+          <InfoForm />
+        ) : (
+          <RedirectPage path="/" />
         )}
-
-        <span id="load-invisible-recaptcha" style={{ opacity: 1 }}></span>
       </Box>
     </Layout>
   );

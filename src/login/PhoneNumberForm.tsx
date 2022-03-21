@@ -38,25 +38,28 @@ function PhoneNumberForm({ setIsSent }: IPhoneNumberFormProps) {
   const onSendSMS = async (data: IPhoneNumberForm) => {
     setErrorMsg('');
     setProcessing(true);
-    if (!window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        'load-invisible-recaptcha',
-        {
-          size: 'invisible',
-          callback: (/* response: any */) => {
-            // reCAPTCHA solved, allow signInWithPhoneNumber.
-            // console.log("window.grecaptcha : ", window.grecaptcha);
-          },
-          'expired-callback': () => {
-            // Response expired. Ask user to solve reCAPTCHA again.
-            // ...
-            console.log('expired-callback : ');
-            setErrorMsg('인증 시간이 만료됐습니다. 다시 시도해주세요.');
-          },
+
+    console.log('window.recaptchaVerifier : ', window.recaptchaVerifier);
+
+    // if (!window.recaptchaVerifier) {
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      'load-invisible-recaptcha',
+      {
+        size: 'invisible',
+        callback: (/* response: any */) => {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+          // console.log("window.grecaptcha : ", window.grecaptcha);
         },
-        auth
-      );
-    }
+        'expired-callback': () => {
+          // Response expired. Ask user to solve reCAPTCHA again.
+          // ...
+          console.log('expired-callback : ');
+          setErrorMsg('인증 시간이 만료됐습니다. 다시 시도해주세요.');
+        },
+      },
+      auth
+    );
+    // }
 
     try {
       // SMS sent. Prompt user to type the code from the message, then sign the user in with confirmationResult.confirm(code).
