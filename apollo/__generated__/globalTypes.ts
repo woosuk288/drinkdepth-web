@@ -8,8 +8,8 @@
 //==============================================================
 
 export enum UserRole {
-  Admin = 'Admin',
-  Company = 'Company',
+  Admin = "Admin",
+  Company = "Company",
 }
 
 export interface CreateBookmarkInput {

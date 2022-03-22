@@ -15,8 +15,6 @@ function CoffeeList({ coffees }: CoffeeListProps) {
   // if(loading) return <LinearProgress />
   // const bookmarks = data.bookmarks.bookmarks;
 
-  console.log('data : ', data);
-
   return (
     <PostListWrapper>
       {coffees.map((coffee) => (
@@ -26,7 +24,7 @@ function CoffeeList({ coffees }: CoffeeListProps) {
           isSaved={
             loading
               ? null
-              : !!data?.bookmarks?.bookmarks?.some(
+              : !!data?.bookmarks.bookmarks?.some(
                   (b) => b.product_id === coffee.id
                 )
           }

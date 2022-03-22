@@ -13,7 +13,7 @@ type CoffeePageProps = {
 };
 
 const CoffeePage: NextPage<CoffeePageProps> = ({ coffee }) => {
-  console.log('CoffeePage : ', coffee);
+  // console.log('CoffeePage : ', coffee);
 
   if (!coffee) return <div>데이터 없음</div>;
 

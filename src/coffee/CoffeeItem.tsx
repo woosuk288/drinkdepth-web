@@ -30,6 +30,12 @@ import {
   removeBookmark,
   removeBookmarkVariables,
 } from '../../apollo/__generated__/removeBookmark';
+import client from '../../apollo/client';
+import {
+  bookmarks,
+  bookmarks_bookmarks_bookmarks,
+} from '../../apollo/__generated__/bookmarks';
+import { BOOKMARKS_QUERY } from '../../apollo/queries';
 
 type CoffeeItemProps = Coffee & {
   sxProps?: SxProps<Theme> | undefined;
@@ -43,11 +49,18 @@ function CoffeeItem({
   main_image,
   tags,
   sxProps,
-  isSaved,
+  isSaved = false,
 }: CoffeeItemProps) {
   const router = useRouter();
   console.log('isSaved : ', isSaved);
+
   const [isMarked, setIsMarked] = useState(isSaved);
+
+  React.useEffect(() => {
+    if (isSaved !== null) {
+      setIsMarked(isSaved);
+    }
+  }, [isSaved]);
 
   const [createBookmark, { loading: loadingCreate }] = useMutation<
     createBookmark,
@@ -56,6 +69,27 @@ function CoffeeItem({
     onCompleted: (result) => {
       if (result.createBookmark.ok) {
         console.log('ok');
+        const newBookmark = result.createBookmark.bookmark;
+        /**
+         * bookmarks
+         */
+        const prevBookmarks = client.readQuery<bookmarks>({
+          query: BOOKMARKS_QUERY,
+        });
+
+        if (prevBookmarks?.bookmarks.bookmarks) {
+          // cache 데이터 변경
+          client.writeQuery({
+            query: BOOKMARKS_QUERY,
+            data: {
+              bookmarks: {
+                ...prevBookmarks.bookmarks,
+                bookmarks: [...prevBookmarks.bookmarks.bookmarks, newBookmark],
+              },
+            },
+          });
+        }
+
         setIsMarked(true);
       } else {
         alert(result.createBookmark.error);
@@ -74,6 +108,31 @@ function CoffeeItem({
     onCompleted: (result) => {
       if (result.removeBookmark.ok) {
         console.log('ok');
+
+        /**
+         * bookmarks
+         */
+        const prevBookmarks = client.readQuery<bookmarks>({
+          query: BOOKMARKS_QUERY,
+        });
+
+        if (prevBookmarks?.bookmarks.bookmarks) {
+          const newBookmarks = prevBookmarks?.bookmarks.bookmarks.filter(
+            (b) => b.product_id !== id
+          );
+
+          // cache 데이터 변경
+          client.writeQuery({
+            query: BOOKMARKS_QUERY,
+            data: {
+              bookmarks: {
+                ...prevBookmarks.bookmarks,
+                bookmarks: newBookmarks,
+              },
+            },
+          });
+        }
+
         setIsMarked(false);
       } else {
         alert(result.removeBookmark.error);
@@ -120,6 +179,9 @@ function CoffeeItem({
   const handleTagClick = () => {
     console.log('handleTagClick');
   };
+
+  console.log('isMarked: ', isMarked);
+
   return (
     <Card
       sx={{ maxWidth: 360, width: '100%', position: 'relative', ...sxProps }}

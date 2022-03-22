@@ -16,7 +16,7 @@ export type CoffeeProps = {
 };
 
 const Coffee: NextPage<CoffeeProps> = ({ coffees }) => {
-  console.log('coffees : ', coffees);
+  // console.log('coffees : ', coffees);
 
   const metaData = {
     title: '깊이를 마시다. 어떤 음료를 찾으시나요?',

@@ -18,6 +18,16 @@ export const CREATE_BOOKMARK_MUTATION = gql`
     createBookmark(input: $input) {
       ok
       error
+      bookmark {
+        id
+        product_id
+        type
+        name
+        description
+        main_image
+        tags
+        created_at
+      }
     }
   }
 `;

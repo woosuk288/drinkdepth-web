@@ -15,7 +15,7 @@ type PostPageProps = {
 };
 
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
-  console.log('post : ', post);
+  // console.log('post : ', post);
 
   if (!post) return <div>데이터 없음</div>;
 

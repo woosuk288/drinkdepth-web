@@ -53,6 +53,7 @@ function CoffeeFeatureItem({
         <Grid item md={9} container>
           {getCombo(type).map((t) => (
             <Typography
+              key={t.value}
               variant="body1"
               color={value === t.value ? 'primary' : 'GrayText'}
               fontWeight={500}
