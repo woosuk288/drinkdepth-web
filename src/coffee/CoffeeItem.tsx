@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -10,15 +10,22 @@ import {
   SxProps,
   Theme,
 } from '@mui/material';
-// import { Link } from 'gatsby'
 
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
+
 import { Coffee } from '../types';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { ApolloError, useMutation } from '@apollo/client';
+import {
+  CREATE_BOOKMARK_MUTATION,
+  REMOVE_BOOKMARK_MUTATION,
+} from '../../apollo/mutations';
 
 type CoffeeItemProps = Coffee & {
   sxProps?: SxProps<Theme> | undefined;
+  isSaved: boolean;
 };
 
 function CoffeeItem({
@@ -28,12 +35,73 @@ function CoffeeItem({
   main_image,
   tags,
   sxProps,
+  isSaved = false,
 }: CoffeeItemProps) {
   const router = useRouter();
+  const [isMarked, setIsMarked] = useState(isSaved);
+
+  const [createBookmark, { loading: loadingCreate }] = useMutation(
+    CREATE_BOOKMARK_MUTATION,
+    {
+      onCompleted: (result) => {
+        if (result.createBookmark.ok) {
+          console.log('ok');
+          setIsMarked(true);
+        } else {
+          alert(result.createBookmark.error);
+        }
+        // 캐시 확인 후 있으면 기존 목록에 추가
+      },
+      onError: (error: ApolloError) => {
+        console.error(error.message);
+      },
+    }
+  );
+
+  const [removeBookmark, { loading: loadingRemove }] = useMutation(
+    REMOVE_BOOKMARK_MUTATION,
+    {
+      onCompleted: (result) => {
+        if (result.removeBookmark.ok) {
+          console.log('ok');
+          setIsMarked(true);
+        } else {
+          alert(result.removeBookmark.error);
+        }
+        // 캐시 확인 후 있으면 기존 목록에 추가
+      },
+      onError: (error: ApolloError) => {
+        console.error(error.message);
+      },
+    }
+  );
 
   const handleIconClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     console.log('handleIconClick');
+
+    if (isMarked) {
+      // 찜하기에 추가
+      removeBookmark({
+        variables: {
+          id,
+        },
+      });
+    } else {
+      // 찜하기에 추가
+      createBookmark({
+        variables: {
+          input: {
+            product_id: id,
+            type: 'coffee',
+            name,
+            description,
+            main_image,
+            tags,
+          },
+        },
+      });
+    }
   };
 
   const handleCardClick = () => {
@@ -61,16 +129,32 @@ function CoffeeItem({
           />
         </Box>
 
-        <IconButton
-          sx={{
-            position: 'absolute',
-            right: 0,
-            top: 0,
-          }}
-          onClick={handleIconClick}
-        >
-          <StarBorderIcon fontSize="large" />
-        </IconButton>
+        {isMarked ? (
+          <IconButton
+            color="secondary"
+            sx={{
+              position: 'absolute',
+              right: 0,
+              top: 0,
+            }}
+            onClick={handleIconClick}
+            disabled={loadingCreate || loadingRemove}
+          >
+            <StarIcon fontSize="large" />
+          </IconButton>
+        ) : (
+          <IconButton
+            sx={{
+              position: 'absolute',
+              right: 0,
+              top: 0,
+            }}
+            onClick={handleIconClick}
+            disabled={loadingCreate || loadingRemove}
+          >
+            <StarBorderIcon fontSize="large" />
+          </IconButton>
+        )}
 
         <CardContent>
           <Typography variant="h6" component="div" align="center" gutterBottom>

@@ -10,7 +10,7 @@ function CoffeeList({ coffees }: CoffeeListProps) {
   return (
     <PostListWrapper>
       {coffees.map((coffee) => (
-        <CoffeeItem {...coffee} key={coffee.id} />
+        <CoffeeItem {...coffee} key={coffee.id} isSaved={false} />
       ))}
     </PostListWrapper>
   );

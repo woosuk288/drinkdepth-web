@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import { isLoggedInVar, roleVar } from '../../apollo/client';
 import { getAuth } from 'firebase/auth';
 import { Company } from '../types';
+import { CREATE_COMPANY_MUTATION } from '../../apollo/mutations';
 
 type InfoFormType = Pick<
   Company,
@@ -24,18 +25,6 @@ type InfoFormType = Pick<
 > & {
   files?: FileList;
 };
-
-const CREATE_COMPANY_MUTATION = gql`
-  mutation createCompany($input: CreateCompanyInput!) {
-    createCompany(input: $input) {
-      ok
-      error
-      company {
-        id
-      }
-    }
-  }
-`;
 
 function InfoForm() {
   /* <
