@@ -286,13 +286,14 @@ function CoffeeContent({ coffee }: CoffeeContentProps) {
             gridAutoColumns: 'minmax(240px, 1fr)',
           }}
         >
-          {mfrCoffeeImages.map((image) => (
-            <ImageListItem>
+          {mfrCoffeeImages.map((image, i) => (
+            <ImageListItem key={i}>
               <CoffeeItem
                 {...coffee}
                 sxProps={{
                   '& .MuiCardActions-root': { justifyContent: 'flex-start' },
                 }}
+                isSaved={null}
               />
               {/* <ImageListItemBar title={image.thumbnail.name} /> */}
             </ImageListItem>

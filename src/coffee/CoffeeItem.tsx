@@ -25,7 +25,7 @@ import {
 
 type CoffeeItemProps = Coffee & {
   sxProps?: SxProps<Theme> | undefined;
-  isSaved: boolean;
+  isSaved: boolean | null;
 };
 
 function CoffeeItem({
@@ -35,9 +35,10 @@ function CoffeeItem({
   main_image,
   tags,
   sxProps,
-  isSaved = false,
+  isSaved,
 }: CoffeeItemProps) {
   const router = useRouter();
+  console.log('isSaved : ', isSaved);
   const [isMarked, setIsMarked] = useState(isSaved);
 
   const [createBookmark, { loading: loadingCreate }] = useMutation(
@@ -64,7 +65,7 @@ function CoffeeItem({
       onCompleted: (result) => {
         if (result.removeBookmark.ok) {
           console.log('ok');
-          setIsMarked(true);
+          setIsMarked(false);
         } else {
           alert(result.removeBookmark.error);
         }
@@ -129,7 +130,7 @@ function CoffeeItem({
           />
         </Box>
 
-        {isMarked ? (
+        {isMarked === null ? null : isMarked ? (
           <IconButton
             color="secondary"
             sx={{

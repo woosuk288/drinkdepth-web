@@ -9,6 +9,7 @@ import { apiCoffee } from '../../firebase/query';
 import CoffeeList from '../../src/coffee/CoffeeList';
 import CoffeeFilter from '../../src/coffee/CoffeeFilter';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import ClientOnly from '../../src/common/ClientOnly';
 
 export type CoffeeProps = {
   coffees: Coffee[];
@@ -29,8 +30,10 @@ const Coffee: NextPage<CoffeeProps> = ({ coffees }) => {
     <Layout>
       <Meta data={metaData} />
 
-      <CoffeeFilter items={coffees} />
-      <CoffeeList coffees={coffees} />
+      <ClientOnly>
+        <CoffeeFilter items={coffees} />
+        <CoffeeList coffees={coffees} />
+      </ClientOnly>
     </Layout>
   );
 };
