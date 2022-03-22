@@ -22,6 +22,14 @@ import {
   CREATE_BOOKMARK_MUTATION,
   REMOVE_BOOKMARK_MUTATION,
 } from '../../apollo/mutations';
+import {
+  createBookmark,
+  createBookmarkVariables,
+} from '../../apollo/__generated__/createBookmark';
+import {
+  removeBookmark,
+  removeBookmarkVariables,
+} from '../../apollo/__generated__/removeBookmark';
 
 type CoffeeItemProps = Coffee & {
   sxProps?: SxProps<Theme> | undefined;
@@ -41,41 +49,41 @@ function CoffeeItem({
   console.log('isSaved : ', isSaved);
   const [isMarked, setIsMarked] = useState(isSaved);
 
-  const [createBookmark, { loading: loadingCreate }] = useMutation(
-    CREATE_BOOKMARK_MUTATION,
-    {
-      onCompleted: (result) => {
-        if (result.createBookmark.ok) {
-          console.log('ok');
-          setIsMarked(true);
-        } else {
-          alert(result.createBookmark.error);
-        }
-        // 캐시 확인 후 있으면 기존 목록에 추가
-      },
-      onError: (error: ApolloError) => {
-        console.error(error.message);
-      },
-    }
-  );
+  const [createBookmark, { loading: loadingCreate }] = useMutation<
+    createBookmark,
+    createBookmarkVariables
+  >(CREATE_BOOKMARK_MUTATION, {
+    onCompleted: (result) => {
+      if (result.createBookmark.ok) {
+        console.log('ok');
+        setIsMarked(true);
+      } else {
+        alert(result.createBookmark.error);
+      }
+      // 캐시 확인 후 있으면 기존 목록에 추가
+    },
+    onError: (error: ApolloError) => {
+      console.error(error.message);
+    },
+  });
 
-  const [removeBookmark, { loading: loadingRemove }] = useMutation(
-    REMOVE_BOOKMARK_MUTATION,
-    {
-      onCompleted: (result) => {
-        if (result.removeBookmark.ok) {
-          console.log('ok');
-          setIsMarked(false);
-        } else {
-          alert(result.removeBookmark.error);
-        }
-        // 캐시 확인 후 있으면 기존 목록에 추가
-      },
-      onError: (error: ApolloError) => {
-        console.error(error.message);
-      },
-    }
-  );
+  const [removeBookmark, { loading: loadingRemove }] = useMutation<
+    removeBookmark,
+    removeBookmarkVariables
+  >(REMOVE_BOOKMARK_MUTATION, {
+    onCompleted: (result) => {
+      if (result.removeBookmark.ok) {
+        console.log('ok');
+        setIsMarked(false);
+      } else {
+        alert(result.removeBookmark.error);
+      }
+      // 캐시 확인 후 있으면 기존 목록에 추가
+    },
+    onError: (error: ApolloError) => {
+      console.error(error.message);
+    },
+  });
 
   const handleIconClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();

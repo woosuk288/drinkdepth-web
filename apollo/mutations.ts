@@ -8,6 +8,7 @@ export const CREATE_COMPANY_MUTATION = gql`
       company {
         id
       }
+      role
     }
   }
 `;

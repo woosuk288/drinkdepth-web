@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "acc": "rm -rf apollo/__generated__ && apollo client:codegen apollo/__generated__ --target=typescript --outputFlat"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",

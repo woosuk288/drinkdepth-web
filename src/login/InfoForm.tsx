@@ -14,6 +14,10 @@ import { isLoggedInVar, roleVar } from '../../apollo/client';
 import { getAuth } from 'firebase/auth';
 import { Company } from '../types';
 import { CREATE_COMPANY_MUTATION } from '../../apollo/mutations';
+import {
+  createCompany,
+  createCompanyVariables,
+} from '../../apollo/__generated__/createCompany';
 
 type InfoFormType = Pick<
   Company,
@@ -27,14 +31,12 @@ type InfoFormType = Pick<
 };
 
 function InfoForm() {
-  /* <
-    createCompany,
-    createCompanyVariables
-  > */
-
   const router = useRouter();
 
-  const [createCompany, { loading }] = useMutation(CREATE_COMPANY_MUTATION, {
+  const [createCompany, { loading }] = useMutation<
+    createCompany,
+    createCompanyVariables
+  >(CREATE_COMPANY_MUTATION, {
     onCompleted: (newCompany) => {
       if (newCompany.createCompany.ok) {
         isLoggedInVar(true);
