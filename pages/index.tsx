@@ -5,6 +5,7 @@ import SectionA from '../src/intro/SectionA';
 import Meta from '../src/Meta';
 import SectionB from '../src/intro/SectionB';
 import SectionC from '../src/intro/SectionC';
+import { Box } from '@mui/material';
 
 const Home: NextPage = () => {
   const metaData = {
@@ -17,9 +18,11 @@ const Home: NextPage = () => {
     <Layout>
       <Meta data={metaData} />
 
-      <SectionA />
-      <SectionB />
-      <SectionC />
+      <Box px={{ xs: '20px', lg: 0 }}>
+        <SectionA />
+        <SectionB />
+        <SectionC />
+      </Box>
 
       <div style={{ marginBottom: '100px' }}></div>
     </Layout>

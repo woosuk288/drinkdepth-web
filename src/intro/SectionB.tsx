@@ -1,5 +1,5 @@
-import { Box, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Typography } from '@mui/material';
+import React from 'react';
 
 function SectionB() {
   return (
@@ -49,7 +49,7 @@ function SectionB() {
         </p>
       </Typography>
     </Box>
-  )
+  );
 }
 
-export default SectionB
+export default SectionB;

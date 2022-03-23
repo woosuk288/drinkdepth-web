@@ -13,7 +13,6 @@ const VisionWrapper = muiStyled(Box)(({ theme }) => ({
   marginTop: '120px',
   [theme.breakpoints.down('sm')]: {
     marginTop: '100px',
-    padding: '0 20px',
   },
 }));
 
@@ -27,7 +26,6 @@ const GoalWrapper = styled.div`
   grid-gap: 20px;
 
   @media (max-width: 900px) {
-    padding: 0 16px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: unset;
