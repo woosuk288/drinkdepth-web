@@ -40,10 +40,7 @@ export type Coffee = {
   brand: string;
   // related_coffee: EntityReference[];
 
-  created_by: {
-    name: string;
-    id: string;
-  };
+  uid: string;
   // created_at: Date;
   created_at: string;
 };
