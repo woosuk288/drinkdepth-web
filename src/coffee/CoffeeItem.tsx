@@ -31,13 +31,13 @@ import {
   removeBookmarkVariables,
 } from '../../apollo/__generated__/removeBookmark';
 import client from '../../apollo/client';
-import {
-  bookmarks,
-  bookmarks_bookmarks_bookmarks,
-} from '../../apollo/__generated__/bookmarks';
+import { bookmarks } from '../../apollo/__generated__/bookmarks';
 import { BOOKMARKS_QUERY } from '../../apollo/queries';
 
-type CoffeeItemProps = Coffee & {
+type CoffeeItemProps = Pick<
+  Coffee,
+  'id' | 'name' | 'description' | 'main_image' | 'tags'
+> & {
   sxProps?: SxProps<Theme> | undefined;
   isSaved: boolean | null;
 };
@@ -52,8 +52,6 @@ function CoffeeItem({
   isSaved = false,
 }: CoffeeItemProps) {
   const router = useRouter();
-  console.log('isSaved : ', isSaved);
-
   const [isMarked, setIsMarked] = useState(isSaved);
 
   React.useEffect(() => {
@@ -68,7 +66,6 @@ function CoffeeItem({
   >(CREATE_BOOKMARK_MUTATION, {
     onCompleted: (result) => {
       if (result.createBookmark.ok) {
-        console.log('ok');
         const newBookmark = result.createBookmark.bookmark;
         /**
          * bookmarks
@@ -107,8 +104,6 @@ function CoffeeItem({
   >(REMOVE_BOOKMARK_MUTATION, {
     onCompleted: (result) => {
       if (result.removeBookmark.ok) {
-        console.log('ok');
-
         /**
          * bookmarks
          */
@@ -146,7 +141,6 @@ function CoffeeItem({
 
   const handleIconClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    console.log('handleIconClick');
 
     if (isMarked) {
       // 찜하기에 추가
@@ -179,8 +173,6 @@ function CoffeeItem({
   const handleTagClick = () => {
     console.log('handleTagClick');
   };
-
-  console.log('isMarked: ', isMarked);
 
   return (
     <Card

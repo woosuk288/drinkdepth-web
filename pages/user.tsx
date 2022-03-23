@@ -14,6 +14,7 @@ import {
 import { firestore, useAuthFb } from '../firebase/clientApp';
 import UserInfo from '../src/user/UserInfo';
 import RedirectPage from '../src/common/RedirectPage';
+import BookmarkList from '../src/user/BookmarkList';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -89,7 +90,7 @@ const User: NextPage = () => {
           <UserInfo uid={user.uid} />
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
-          Item Two
+          <BookmarkList />
         </TabPanel>
       </Box>
     </Layout>
