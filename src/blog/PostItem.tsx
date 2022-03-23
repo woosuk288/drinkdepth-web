@@ -27,6 +27,7 @@ function PostItem({
             src={header_image}
             layout="fill"
             objectFit="cover"
+            sizes="30vw"
             alt={`이미지_${name}`}
           />
         </Box>

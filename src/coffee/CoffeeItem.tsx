@@ -196,6 +196,7 @@ function CoffeeItem({
             src={main_image}
             layout="fill"
             objectFit="cover"
+            sizes="30vw"
             alt={`${name}의 이미지`}
           />
         </Box>
