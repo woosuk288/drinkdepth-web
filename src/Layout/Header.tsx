@@ -12,7 +12,7 @@ import IconButton from '@mui/material/IconButton';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-import { isLoggedInVar, Role, roleVar } from '../../apollo/client';
+import { userVar, Role, roleVar } from '../../apollo/client';
 import { auth, useAuthFb } from '../../firebase/clientApp';
 import { USER_ROLES } from '../constants';
 import { useRouter } from 'next/router';
@@ -42,7 +42,7 @@ const Header = () => {
 
   React.useEffect(() => {
     if (user) {
-      isLoggedInVar(!!user);
+      userVar(user);
       user
         .getIdTokenResult()
         .then((idTokenResult) => {

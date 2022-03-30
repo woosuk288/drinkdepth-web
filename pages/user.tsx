@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Layout from '../src/Layout';
 
 import {
+  Badge,
   Box,
   Button,
   LinearProgress,
@@ -15,11 +16,15 @@ import { firestore, useAuthFb } from '../firebase/clientApp';
 import UserInfo from '../src/user/UserInfo';
 import RedirectPage from '../src/common/RedirectPage';
 import BookmarkList from '../src/user/BookmarkList';
+import NotificationList from '../src/user/NotificationList';
+import { notiBadgeVar } from '../apollo/client';
+import { useReactiveVar } from '@apollo/client';
 
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
+  [x: string]: any;
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -33,7 +38,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 }
@@ -47,6 +52,7 @@ function a11yProps(index: number) {
 
 const User: NextPage = () => {
   const [user, loading, error] = useAuthFb();
+  const notiBadge = useReactiveVar(notiBadgeVar);
 
   const [tabValue, setValue] = React.useState(0);
 
@@ -81,16 +87,35 @@ const User: NextPage = () => {
         >
           <Tab label="내 정보" {...a11yProps(0)} />
           <Tab label="찜한 상품" {...a11yProps(1)} />
+
+          <Tab
+            label={
+              <Badge
+                color="secondary"
+                variant="dot"
+                invisible={notiBadge === false}
+              >
+                알림
+              </Badge>
+            }
+            {...a11yProps(2)}
+          />
         </Tabs>
         {/* <Typography variant="h5" fontWeight={700} sx={{ margin: '60px 0' }}>
           내 정보
         </Typography> */}
-
         <TabPanel value={tabValue} index={0}>
           <UserInfo uid={user.uid} />
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
           <BookmarkList />
+        </TabPanel>
+        <TabPanel
+          value={tabValue}
+          index={2}
+          style={{ width: '100%', maxWidth: 600 }}
+        >
+          <NotificationList />
         </TabPanel>
       </Box>
     </Layout>

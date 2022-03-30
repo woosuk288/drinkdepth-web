@@ -5,7 +5,7 @@ import {
   makeVar,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { getAuth } from 'firebase/auth';
+import { getAuth, User } from 'firebase/auth';
 
 export enum UserRole {
   Manufacturer = 'Manufacturer',
@@ -17,9 +17,10 @@ export enum UserRole {
 
 export type Role = keyof typeof UserRole | undefined | null;
 
-export const isLoggedInVar = makeVar<boolean>(false);
+// export const isLoggedInVar = makeVar<boolean>(false);
 export const roleVar = makeVar<Role>(null);
-// export const userVar = makeVar<FirebaseApp.User | null | undefined>(undefined);
+export const userVar = makeVar<User | null | undefined>(undefined);
+export const notiBadgeVar = makeVar<boolean>(false);
 
 const httpLink = createHttpLink({
   uri: process.env.NEXT_PUBLIC_HTTP_LINK,

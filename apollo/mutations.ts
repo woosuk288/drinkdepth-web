@@ -40,3 +40,12 @@ export const REMOVE_BOOKMARK_MUTATION = gql`
     }
   }
 `;
+
+export const CREATE_NOTIFICATIONS_MUTATION = gql`
+  mutation createNotification($input: CreateNotificationInput!) {
+    createNotification(input: $input) {
+      ok
+      error
+    }
+  }
+`;

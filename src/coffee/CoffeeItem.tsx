@@ -167,7 +167,7 @@ function CoffeeItem({
   };
 
   const handleCardClick = () => {
-    router.push(`${router.pathname}/${id}`);
+    router.push(`coffee/${id}`);
   };
 
   const handleTagClick = () => {

@@ -25,12 +25,58 @@ import GridTextMfrInfo from './GridTextMfrInfo';
 import CoffeeItem from './CoffeeItem';
 import DescriptionItem from './DescriptionItem';
 import { Coffee } from '../types';
+import { useMutation } from '@apollo/client';
+import {
+  createNotification,
+  createNotificationVariables,
+} from '../../apollo/__generated__/createNotification';
+import { CREATE_NOTIFICATIONS_MUTATION } from '../../apollo/mutations';
+import { notiBadgeVar, userVar } from '../../apollo/client';
 
 type CoffeeContentProps = {
   coffee: Coffee;
 };
 
 function CoffeeContent({ coffee }: CoffeeContentProps) {
+  const [createNotification, { loading: processing }] = useMutation<
+    createNotification,
+    createNotificationVariables
+  >(CREATE_NOTIFICATIONS_MUTATION, {
+    onCompleted: (result) => {
+      console.log('result : ', result);
+      if (result.createNotification.ok) {
+        notiBadgeVar(true);
+        alert('샘플 신청 메시지 전송 완료');
+      } else {
+        alert(result.createNotification.error);
+      }
+    },
+    onError: (error) => {
+      console.log('onError : ', error);
+    },
+  });
+
+  const handleOrderSample = () => {
+    if (coffee.uid === userVar()?.uid) {
+      alert('본인은 할 수 없습니다.');
+      return;
+    }
+
+    createNotification({
+      variables: {
+        input: {
+          product_id: coffee.id,
+          message: `"${coffee.name}" 샘플 주문 신청`,
+          etc: [coffee.brand, userVar()!.displayName ?? ''],
+          recipient_id: coffee.uid,
+          sender_id: userVar()!.uid,
+          read: false,
+          type: 'coffee',
+        },
+      },
+    });
+  };
+
   return (
     <Container maxWidth="lg" sx={{ mt: 2 }}>
       {/* CoffeeSectionA.tsx */}
@@ -94,6 +140,7 @@ function CoffeeContent({ coffee }: CoffeeContentProps) {
               variant="outlined"
               color="secondary"
               sx={{ mt: '1.5rem', textAlign: 'right' }}
+              onClick={handleOrderSample}
             >
               샘플 주문하기
             </Button>

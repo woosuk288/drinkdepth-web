@@ -29,6 +29,16 @@ export interface CreateCompanyInput {
   business_licence: string;
 }
 
+export interface CreateNotificationInput {
+  product_id: string;
+  message: string;
+  etc?: string[] | null;
+  recipient_id: string;
+  sender_id: string;
+  read: boolean;
+  type: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

@@ -8,9 +8,9 @@ import { useForm } from 'react-hook-form';
 import { FormInputText } from '../common/FormInputText';
 import { FormInputMaskNumber } from '../common/FormInputMaskNumber';
 import { FormInputDate } from '../common/FormInputDate';
-import { ApolloError, gql, useMutation } from '@apollo/client';
+import { ApolloError, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
-import { isLoggedInVar, roleVar } from '../../apollo/client';
+import { roleVar } from '../../apollo/client';
 import { getAuth } from 'firebase/auth';
 import { Company } from '../types';
 import { CREATE_COMPANY_MUTATION } from '../../apollo/mutations';
@@ -39,7 +39,6 @@ function InfoForm() {
   >(CREATE_COMPANY_MUTATION, {
     onCompleted: (newCompany) => {
       if (newCompany.createCompany.ok) {
-        isLoggedInVar(true);
         roleVar(newCompany.createCompany.role);
         // refresh claims
         getAuth()
