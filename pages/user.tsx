@@ -113,7 +113,7 @@ const User: NextPage = () => {
         <TabPanel
           value={tabValue}
           index={2}
-          style={{ width: '100%', maxWidth: 600 }}
+          style={{ width: '100%', maxWidth: 400 }}
         >
           <NotificationList />
         </TabPanel>

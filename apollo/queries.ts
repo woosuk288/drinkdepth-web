@@ -18,3 +18,49 @@ export const BOOKMARKS_QUERY = gql`
     }
   }
 `;
+
+export const NOTIFICATIONS_QUERY = gql`
+  query notifications {
+    notifications {
+      ok
+      error
+      notifications {
+        id
+        product_id
+        message
+        etc
+        recipient_id
+        sender_id
+        read
+        type
+        created_at
+      }
+    }
+  }
+`;
+
+export const NOTIFICATION_QUERY = gql`
+  query notification($input: NotificationInput!) {
+    notification(input: $input) {
+      ok
+      error
+      product {
+        id
+        image
+        title
+      }
+      senderCompany {
+        id
+        company_name
+        president_name
+        telephone
+      }
+      recipientCompany {
+        id
+        company_name
+        president_name
+        telephone
+      }
+    }
+  }
+`;

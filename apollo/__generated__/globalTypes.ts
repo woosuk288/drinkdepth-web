@@ -32,11 +32,19 @@ export interface CreateCompanyInput {
 export interface CreateNotificationInput {
   product_id: string;
   message: string;
-  etc?: string[] | null;
+  etc: string[];
   recipient_id: string;
   sender_id: string;
   read: boolean;
   type: string;
+}
+
+export interface NotificationInput {
+  id: string;
+}
+
+export interface UpdateNotificationInput {
+  ids: string[];
 }
 
 //==============================================================

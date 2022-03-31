@@ -49,3 +49,12 @@ export const CREATE_NOTIFICATIONS_MUTATION = gql`
     }
   }
 `;
+
+export const UPDATE_NOTIFICATIONS_MUTATION = gql`
+  mutation updateNotification($input: UpdateNotificationInput!) {
+    updateNotification(input: $input) {
+      ok
+      error
+    }
+  }
+`;
