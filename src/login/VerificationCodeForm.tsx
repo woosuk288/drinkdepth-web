@@ -12,7 +12,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { Role, roleVar } from '../../apollo/client';
+import { Role, roleVar, userVar } from '../../apollo/client';
 import { USER_ROLES } from '../constants';
 
 interface IVerificationCodeForm {
@@ -39,6 +39,8 @@ export const VerificationCodeForm = () => {
       );
       // User signed in successfully.
       const user = result.user;
+      userVar(user);
+
       // triiger AuthGuard automatically by an created user.
 
       // role이 있으면 '/' 이동. 아니면 '/login'의 InfoForm 보여줌

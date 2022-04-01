@@ -1,4 +1,4 @@
-import { Timestamp } from 'firebase/firestore/lite';
+import { DocumentReference, Timestamp } from 'firebase/firestore/lite';
 
 export type BlogEntry = {
   id: string;
@@ -38,6 +38,7 @@ export type Coffee = {
 
   public: boolean;
   brand: string;
+  company: DocumentReference;
   // related_coffee: EntityReference[];
 
   uid: string;
@@ -52,6 +53,7 @@ export type Company = {
   president_name: string;
   opening_date: string;
   business_licence: string;
+  telephone: string;
   is_valid: boolean;
   uid: string;
   updated_at?: string;

@@ -8,9 +8,9 @@ import { useForm } from 'react-hook-form';
 import { FormInputText } from '../common/FormInputText';
 import { FormInputMaskNumber } from '../common/FormInputMaskNumber';
 import { FormInputDate } from '../common/FormInputDate';
-import { ApolloError, useMutation } from '@apollo/client';
+import { ApolloError, useMutation, useReactiveVar } from '@apollo/client';
 import { useRouter } from 'next/router';
-import { roleVar } from '../../apollo/client';
+import { roleVar, userVar } from '../../apollo/client';
 import { getAuth } from 'firebase/auth';
 import { Company } from '../types';
 import { CREATE_COMPANY_MUTATION } from '../../apollo/mutations';
@@ -26,12 +26,14 @@ type InfoFormType = Pick<
   | 'president_name'
   | 'opening_date'
   | 'business_licence'
+  | 'telephone'
 > & {
   files?: FileList;
 };
 
 function InfoForm() {
   const router = useRouter();
+  const user = useReactiveVar(userVar);
 
   const [createCompany, { loading }] = useMutation<
     createCompany,
@@ -66,7 +68,9 @@ function InfoForm() {
     setValue,
     watch,
     formState: { errors },
-  } = useForm<InfoFormType>();
+  } = useForm<InfoFormType>({
+    defaultValues: { telephone: user?.phoneNumber?.replace('+82', '0') },
+  });
 
   const file = watch('files');
 
@@ -128,6 +132,8 @@ function InfoForm() {
     // console.log("files : ", files)
   };
 
+  console.log('user : ', user);
+
   return (
     <>
       <Typography variant="h5" fontWeight={700} sx={{ margin: '60px 0' }}>
@@ -146,7 +152,16 @@ function InfoForm() {
         }}
         onSubmit={handleSubmit(onSubmit)}
       >
-        {/* <LinearProgress /> */}
+        <FormInputText
+          name="telephone"
+          control={control}
+          rules={{ required: '필수로 입력해주세요.' }}
+          error={!!errors.telephone}
+          helperText={errors.telephone?.message}
+          fullWidth
+          label="전화번호(회사)"
+        />
+
         <FormInputMaskNumber
           name="business_number"
           control={control}

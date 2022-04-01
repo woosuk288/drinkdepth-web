@@ -9,6 +9,11 @@ const defaultStyle = css`
     margin: 0;
     box-sizing: border-box;
     // font-family: "Nanum Myeongjo", serif;
+    -ms-overflow-style: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 
   html,

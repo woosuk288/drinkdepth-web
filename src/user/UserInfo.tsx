@@ -97,7 +97,7 @@ function UserInfo({ uid }: UserInfoProps) {
           <TextField
             label="전화번호"
             fullWidth
-            value={'01028643931'}
+            value={company.telephone}
             InputProps={{
               endAdornment: (
                 <InputAdornment

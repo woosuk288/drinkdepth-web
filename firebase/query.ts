@@ -131,14 +131,17 @@ export const getCoffees = async (...queryConstraints: QueryConstraint[]) => {
   );
 
   const coffees = querySnapshot.docs.map((doc, i) => {
-    return {
+    const coffeeData = {
       id: doc.id,
       ...doc.data(),
       main_image: images[i],
       roasting_date:
         doc.data().roasting_date?.toDate().toLocaleDateString() ?? null,
       created_at: doc.data().created_at.toDate().toLocaleDateString(),
-    };
+    } as Coffee;
+
+    const { company, ...coffee } = coffeeData;
+    return coffee;
   });
 
   return coffees as Coffee[];

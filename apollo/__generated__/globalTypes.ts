@@ -27,6 +27,7 @@ export interface CreateCompanyInput {
   president_name: string;
   opening_date: string;
   business_licence: string;
+  telephone: string;
 }
 
 export interface CreateNotificationInput {
