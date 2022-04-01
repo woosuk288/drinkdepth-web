@@ -96,10 +96,15 @@ function InfoForm() {
         formBody.append('folderPath', 'companies/licenses');
 
         const uploadPath = process.env.NEXT_PUBLIC_UPLOAD_PATH!;
+        const token = await getAuth().currentUser?.getIdToken();
+
         const { urls } = await (
           await fetch(uploadPath, {
             method: 'POST',
             body: formBody,
+            headers: {
+              authorization: token ?? '',
+            },
           })
         ).json();
 
@@ -131,8 +136,6 @@ function InfoForm() {
     // const { files } = getValues()
     // console.log("files : ", files)
   };
-
-  console.log('user : ', user);
 
   return (
     <>
