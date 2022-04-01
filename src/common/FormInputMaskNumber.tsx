@@ -34,9 +34,10 @@ export const FormInputMaskNumber = ({
         //   {...props}
         // />
         <NumberFormat
-          value={field.value}
+          {...props}
+          value={field.value ?? ''}
           onChange={field.onChange}
-          customInput={(p) => <TextField {...props} {...p} />}
+          customInput={TextField}
           format="### - ## - #####"
         />
       )}
