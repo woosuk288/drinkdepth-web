@@ -18,7 +18,6 @@ export interface notifications_notifications_notifications {
    * 메시지
    */
   message: string;
-  etc: string[];
   /**
    * 받는이
    */
@@ -32,7 +31,7 @@ export interface notifications_notifications_notifications {
    */
   read: boolean;
   /**
-   * DB
+   * 상품 유형
    */
   type: string;
   created_at: any | null;

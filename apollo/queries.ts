@@ -28,7 +28,6 @@ export const NOTIFICATIONS_QUERY = gql`
         id
         product_id
         message
-        etc
         recipient_id
         sender_id
         read

@@ -50,9 +50,13 @@ export const getStaticProps: GetStaticProps = async () => {
     await apiCoffee.cache.set(coffees);
   }
 
+  const values = coffees.map(({ company, ...coffee }) => {
+    return coffee;
+  });
+
   return {
     props: {
-      coffees,
+      coffees: values,
     },
     revalidate: 1800,
   };

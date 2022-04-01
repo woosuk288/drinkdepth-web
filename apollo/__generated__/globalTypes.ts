@@ -33,10 +33,6 @@ export interface CreateCompanyInput {
 export interface CreateNotificationInput {
   product_id: string;
   message: string;
-  etc: string[];
-  recipient_id: string;
-  sender_id: string;
-  read: boolean;
   type: string;
 }
 

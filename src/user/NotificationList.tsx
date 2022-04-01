@@ -84,11 +84,7 @@ function NotificationList() {
             )}
           </ListItemIcon>
           <ListItemText
-            primary={
-              n.sender_id === user?.uid
-                ? `"${n.etc[0]}"의 ${n.message}`
-                : n.message
-            }
+            primary={n.message}
             secondary={new Date(n.created_at).toLocaleString()}
           />
         </ListItem>

@@ -67,10 +67,6 @@ function CoffeeContent({ coffee }: CoffeeContentProps) {
         input: {
           product_id: coffee.id,
           message: `"${coffee.name}" 샘플 주문 신청`,
-          etc: [coffee.brand, userVar()!.displayName ?? ''],
-          recipient_id: coffee.uid,
-          sender_id: userVar()!.uid,
-          read: false,
           type: 'coffee',
         },
       },
