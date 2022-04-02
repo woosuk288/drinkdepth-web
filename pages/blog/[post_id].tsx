@@ -6,12 +6,12 @@ import PostContent from '../../src/blog/PostContent';
 import PostHead from '../../src/blog/PostHead';
 import Layout from '../../src/Layout';
 import Meta from '../../src/Meta';
-import { BlogEntry } from '../../src/types';
 
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import { Post_post_post } from '../../apollo/__generated__/Post';
 
 type PostPageProps = {
-  post: BlogEntry;
+  post: Post_post_post;
 };
 
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
@@ -22,7 +22,7 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
   const metaData = {
     title: post.name,
     description: post.tags.map((t) => `#${t}`).join(' '),
-    image: post.header_image,
+    image: post.image_url,
     canonical: post.id,
     type: 'article',
   };
@@ -30,7 +30,7 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
   return (
     <Layout>
       <Meta data={metaData} />
-      <PostHead {...post} title={post.name} headerUrl={post.header_image} />
+      <PostHead {...post} title={post.name} headerUrl={post.image_url} />
       <PostContent content={post.content} />
     </Layout>
   );

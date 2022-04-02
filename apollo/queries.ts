@@ -1,5 +1,47 @@
 import { gql } from '@apollo/client';
 
+export const POSTS_QUERY = gql`
+  query Posts {
+    posts {
+      error
+      ok
+      posts {
+        id
+        name
+        image_url
+        content {
+          type
+          value
+        }
+        publish_date
+        status
+        tags
+      }
+    }
+  }
+`;
+
+export const POST_QUERY = gql`
+  query Post($input: PostInput!) {
+    post(input: $input) {
+      error
+      ok
+      post {
+        id
+        name
+        image_url
+        content {
+          type
+          value
+        }
+        publish_date
+        status
+        tags
+      }
+    }
+  }
+`;
+
 export const COFFEES_QUERY = gql`
   query Coffees {
     coffees {

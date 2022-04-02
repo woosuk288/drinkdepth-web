@@ -34,12 +34,18 @@ import { bookmarks } from '../../apollo/__generated__/bookmarks';
 import { BOOKMARKS_QUERY } from '../../apollo/queries';
 import { Coffees_coffees_coffees } from '../../apollo/__generated__/Coffees';
 
+// export type BlogEntryFire = Omit<BlogEntry, 'created_at' | 'publish_date'> & {
+//   created_at: Timestamp;
+//   publish_date: Timestamp;
+// };
+
 type CoffeeItemProps = Pick<
   Coffees_coffees_coffees,
   'id' | 'name' | 'description' | 'image_url' | 'tags'
 > & {
   sxProps?: SxProps<Theme> | undefined;
   isSaved: boolean | null;
+  priority: boolean;
 };
 
 function CoffeeItem({
@@ -50,6 +56,7 @@ function CoffeeItem({
   tags,
   sxProps,
   isSaved = false,
+  priority,
 }: CoffeeItemProps) {
   const router = useRouter();
   const [isMarked, setIsMarked] = useState(isSaved);
@@ -185,6 +192,7 @@ function CoffeeItem({
       >
         <Box position="relative" height={280} borderRadius="10px 10px 0 0">
           <Image
+            priority={priority}
             src={image_url}
             layout="fill"
             objectFit="cover"

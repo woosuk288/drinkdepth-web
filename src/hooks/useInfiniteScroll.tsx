@@ -1,16 +1,16 @@
 import { MutableRefObject, useState, useRef, useMemo, useEffect } from 'react';
-import { BlogEntry } from '../types';
+import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
 
 export type useInfiniteScrollType = {
   containerRef: MutableRefObject<HTMLDivElement | null>;
-  postList: BlogEntry[];
+  postList: Posts_posts_posts[];
 };
 
 const NUMBER_OF_ITEMS_PER_PAGE = 9;
 
 const useInfiniteScroll = function (
   selectedTag: string,
-  posts: BlogEntry[]
+  posts: Posts_posts_posts[]
 ): useInfiniteScrollType {
   const containerRef: MutableRefObject<HTMLDivElement | null> =
     useRef<HTMLDivElement>(null);
@@ -18,9 +18,9 @@ const useInfiniteScroll = function (
     useRef<IntersectionObserver>(null);
   const [count, setCount] = useState<number>(1);
 
-  const postListByCategory = useMemo<BlogEntry[]>(
+  const postListByCategory = useMemo<Posts_posts_posts[]>(
     () =>
-      posts.filter(({ tags }: BlogEntry) =>
+      posts.filter(({ tags }: Posts_posts_posts) =>
         selectedTag !== 'All' ? tags.includes(selectedTag) : true
       ),
     [selectedTag]

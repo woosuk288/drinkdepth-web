@@ -4,18 +4,19 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Box, CardActionArea } from '@mui/material';
 import { useRouter } from 'next/router';
-import { BlogEntry } from '../types';
 import Image from 'next/image';
+import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
 
-type PostItemProps = BlogEntry & { link: string };
+type PostItemProps = Posts_posts_posts & { link: string; priority: boolean };
 
 function PostItem({
   name,
   publish_date,
   tags,
-  header_image,
+  image_url,
   link,
   content,
+  priority,
 }: PostItemProps) {
   const router = useRouter();
 
@@ -24,7 +25,8 @@ function PostItem({
       <CardActionArea onClick={() => router.push(`/blog/${link}`)}>
         <Box position="relative" height={180} borderRadius="10px 10px 0 0">
           <Image
-            src={header_image}
+            priority={priority}
+            src={image_url}
             layout="fill"
             objectFit="cover"
             sizes="30vw"
@@ -45,7 +47,7 @@ function PostItem({
               {tags.map((t) => `#${t}`).join(' ')}
             </Typography>
             <Typography variant="subtitle2" component="span">
-              {publish_date}
+              {new Date(publish_date).toLocaleDateString()}
             </Typography>
           </Typography>
           {/* <Typography

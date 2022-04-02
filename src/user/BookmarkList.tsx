@@ -16,12 +16,13 @@ function BookmarkList() {
 
   return (
     <PostListWrapper>
-      {data?.bookmarks.bookmarks?.map((bookmark) => (
+      {data?.bookmarks.bookmarks?.map((bookmark, i) => (
         <CoffeeItem
           {...bookmark}
           id={bookmark.product_id}
           key={bookmark.id}
           isSaved={true}
+          priority={i < 3}
         />
       ))}
     </PostListWrapper>

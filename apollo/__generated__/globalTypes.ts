@@ -44,6 +44,10 @@ export interface NotificationInput {
   id: string;
 }
 
+export interface PostInput {
+  id: string;
+}
+
 export interface UpdateNotificationInput {
   ids: string[];
 }

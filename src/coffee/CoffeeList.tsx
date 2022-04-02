@@ -17,7 +17,7 @@ function CoffeeList({ coffees }: CoffeeListProps) {
 
   return (
     <PostListWrapper>
-      {coffees.map((coffee) => (
+      {coffees.map((coffee, i) => (
         <CoffeeItem
           {...coffee}
           key={coffee.id}
@@ -28,6 +28,7 @@ function CoffeeList({ coffees }: CoffeeListProps) {
                   (b) => b.product_id === coffee.id
                 )
           }
+          priority={i < 3}
         />
       ))}
     </PostListWrapper>

@@ -2,13 +2,12 @@ import * as React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Layout from '../../src/Layout';
 import PostList from '../../src/blog/PostList';
-import { BlogEntry } from '../../src/types';
 import Meta from '../../src/Meta';
 import { apiPost } from '../../firebase/query';
 import TagList, { TagListProps } from '../../src/blog/TagList';
 import { useRouter } from 'next/router';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
-import { limit, orderBy } from 'firebase/firestore/lite';
+import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
 
 const metaData = {
   title: '깊이를 마시다. 블로그',
@@ -19,7 +18,7 @@ const metaData = {
 };
 
 export type BlogProps = {
-  posts: BlogEntry[];
+  posts: Posts_posts_posts[];
 };
 
 const Blog: NextPage<BlogProps> = ({ posts }) => {
@@ -60,7 +59,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
 export const getStaticProps: GetStaticProps = async () => {
   console.log('Blog getStaticProps ', process.env.NEXT_PHASE);
 
-  const posts = await apiPost.list(limit(12), orderBy('created_at', 'desc'));
+  const posts = await apiPost.list();
 
   if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
     await apiPost.cache.set(posts);

@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
 
 import React from 'react';
-import { BlogProps } from '../../pages/blog';
+import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
 import useInfiniteScroll, {
   useInfiniteScrollType,
 } from '../hooks/useInfiniteScroll';
-import { BlogEntry } from '../types';
 // import useInfiniteScroll, {
 //   useInfiniteScrollType,
 // } from '../../hooks/useInfiniteScroll'
@@ -36,7 +35,7 @@ export const PostListWrapper = styled.div`
 
 type PostListProps = {
   selectedTag: string;
-  posts: BlogEntry[];
+  posts: Posts_posts_posts[];
 };
 
 function PostList({ selectedTag, posts }: PostListProps) {
@@ -47,8 +46,8 @@ function PostList({ selectedTag, posts }: PostListProps) {
 
   return (
     <PostListWrapper ref={containerRef}>
-      {postList.map((post, key) => (
-        <PostItem {...post} link={post.id} key={post.id} />
+      {postList.map((post, i) => (
+        <PostItem {...post} link={post.id} key={post.id} priority={i < 3} />
       ))}
     </PostListWrapper>
   );

@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 export type PostHeadInfoProps = {
   title: string;
-  publish_date: string | null;
+  publish_date: string;
   tags: string[];
 };
 
@@ -62,7 +62,7 @@ function PostHeadInfo({ title, publish_date, tags }: PostHeadInfoProps) {
       <Title>{title}</Title>
       <PostData>
         <div>{tags.join(' / ')}</div>
-        <div>{publish_date}</div>
+        <div>{new Date(publish_date).toLocaleDateString()}</div>
       </PostData>
     </PostHeadInfoWrapper>
   );

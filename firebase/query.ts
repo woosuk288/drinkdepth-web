@@ -1,21 +1,13 @@
-import { firestore, storage } from '../firebase/clientApp';
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  QueryConstraint,
-} from 'firebase/firestore/lite';
-import { getDownloadURL, ref } from 'firebase/storage';
-
-import { BlogEntry } from '../src/types';
-
 import { promises as fs } from 'fs';
 import path from 'path';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import client from '../apollo/client';
-import { COFFEES_QUERY, COFFEE_QUERY } from '../apollo/queries';
+import {
+  COFFEES_QUERY,
+  COFFEE_QUERY,
+  POSTS_QUERY,
+  POST_QUERY,
+} from '../apollo/queries';
 import {
   Coffees,
   Coffees_coffees_coffees,
@@ -25,90 +17,68 @@ import {
   CoffeeVariables,
   Coffee_coffee_coffee,
 } from '../apollo/__generated__/Coffee';
+import { Posts, Posts_posts_posts } from '../apollo/__generated__/Posts';
+import {
+  Post,
+  PostVariables,
+  Post_post_post,
+} from '../apollo/__generated__/Post';
 
 /**
  * blog
  */
-const blogCollection = collection(firestore, 'blog');
 
-export const getPosts = async (...queryConstraints: QueryConstraint[]) => {
-  const blogQuery = query(
-    blogCollection,
-    // where('done', '==', false),
-    ...queryConstraints
-  );
-  const querySnapshot = await getDocs(blogQuery);
-
-  const images = await Promise.all(
-    querySnapshot.docs.map((doc) =>
-      getDownloadURL(ref(storage, doc.data().header_image))
-    )
-  );
-
-  const posts = querySnapshot.docs.map((doc, i) => {
-    return {
-      id: doc.id,
-      ...doc.data(),
-      header_image: images[i],
-      publish_date:
-        doc.data().publish_date?.toDate().toLocaleDateString() ?? null,
-      created_at: doc.data().created_at.toDate().toLocaleDateString(),
-    };
+export const getPosts = async () => {
+  const { data } = await client.query<Posts>({
+    query: POSTS_QUERY,
   });
 
-  return posts as BlogEntry[];
+  const posts = data.posts.posts ?? [];
+
+  return posts as Posts_posts_posts[];
 };
 
 export const getPost = async (id: string) => {
-  const docRef = doc(firestore, 'blog', id);
-  const result = await getDoc(docRef);
+  const { data } = await client.query<Post, PostVariables>({
+    query: POST_QUERY,
+    variables: { input: { id } },
+  });
 
-  if (!result.exists()) {
-    return null;
-  }
+  const post = data.post.post ?? [];
 
-  const post = {
-    id: docRef.id,
-    ...result.data(),
-    header_image: await getDownloadURL(
-      ref(storage, result.data().header_image)
-    ),
-    publish_date:
-      result.data().publish_date?.toDate().toLocaleDateString() ?? null,
-    created_at: result.data().created_at.toDate().toLocaleDateString(),
-  };
-
-  return post as BlogEntry;
+  return post as Post_post_post;
 };
 
 export const apiPost = {
-  list: async (...queryConstraints: QueryConstraint[]) => {
+  list: async () => {
     // return PRODUCTS
     console.log('apiPost.list call');
 
     if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
       try {
         const data = await fs.readFile(path.join(process.cwd(), 'posts.db'));
-        const posts: BlogEntry[] = JSON.parse(data as unknown as string);
+        const posts: Posts_posts_posts[] = JSON.parse(
+          data as unknown as string
+        );
         return posts;
       } catch (error) {
         console.log('apiPost.list No cache file');
-        return getPosts(...queryConstraints);
+        return getPosts();
       }
     }
 
-    return getPosts(...queryConstraints);
+    return getPosts();
   },
-  fetch: async (id: BlogEntry['id']) => {
+  fetch: async (id: Post_post_post['id']) => {
     // return PRODUCTS.find((product) => product.id === id)
     console.log('apiPost fetch');
     return getPost(id);
   },
   cache: {
-    getOne: async (id: string): Promise<BlogEntry | null | undefined> => {
+    getOne: async (id: string): Promise<Post_post_post | null | undefined> => {
       try {
         const data = await fs.readFile(path.join(process.cwd(), 'posts.db'));
-        const posts: BlogEntry[] = JSON.parse(data as unknown as string);
+        const posts: Post_post_post[] = JSON.parse(data as unknown as string);
 
         return posts.find((post) => post.id === id);
       } catch (error) {
@@ -116,7 +86,7 @@ export const apiPost = {
         return null;
       }
     },
-    set: async (posts: BlogEntry[]) => {
+    set: async (posts: Posts_posts_posts[]) => {
       return fs.writeFile(
         path.join(process.cwd(), 'posts.db'),
         JSON.stringify(posts)
@@ -133,7 +103,6 @@ export const getCoffees = async () => {
   const { data } = await client.query<Coffees>({
     query: COFFEES_QUERY,
   });
-  console.log('data : ', data.coffees.coffees);
 
   const coffees = data.coffees.coffees ?? [];
 
@@ -145,7 +114,6 @@ export const getCoffee = async (id: string) => {
     query: COFFEE_QUERY,
     variables: { input: { id } },
   });
-  console.log('data : ', data.coffee.coffee);
 
   const coffee = data.coffee.coffee ?? [];
 
