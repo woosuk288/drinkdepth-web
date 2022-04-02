@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Layout from '../../src/Layout';
 import PostList from '../../src/blog/PostList';
 import Meta from '../../src/Meta';
-import { apiPost } from '../../firebase/query';
+import { apiPost } from '../../apollo/SSG';
 import TagList, { TagListProps } from '../../src/blog/TagList';
 import { useRouter } from 'next/router';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';

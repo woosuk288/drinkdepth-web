@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 import type { NextPage } from 'next';
-import { apiPost } from '../../firebase/query';
+import { apiPost } from '../../apollo/SSG';
 import PostContent from '../../src/blog/PostContent';
 import PostHead from '../../src/blog/PostHead';
 import Layout from '../../src/Layout';

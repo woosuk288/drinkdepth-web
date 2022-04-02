@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import type { NextPage } from 'next';
-import { apiCoffee } from '../../firebase/query';
+import { apiCoffee } from '../../apollo/SSG';
 import CoffeeContent from '../../src/coffee/CoffeeContent';
 import Layout from '../../src/Layout';
 import Meta from '../../src/Meta';

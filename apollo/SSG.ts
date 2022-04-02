@@ -1,28 +1,21 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
-import client from '../apollo/client';
+import client from './client';
 import {
   COFFEES_QUERY,
   COFFEE_QUERY,
   POSTS_QUERY,
   POST_QUERY,
-} from '../apollo/queries';
-import {
-  Coffees,
-  Coffees_coffees_coffees,
-} from '../apollo/__generated__/Coffees';
+} from './queries';
+import { Coffees, Coffees_coffees_coffees } from './__generated__/Coffees';
 import {
   Coffee,
   CoffeeVariables,
   Coffee_coffee_coffee,
-} from '../apollo/__generated__/Coffee';
-import { Posts, Posts_posts_posts } from '../apollo/__generated__/Posts';
-import {
-  Post,
-  PostVariables,
-  Post_post_post,
-} from '../apollo/__generated__/Post';
+} from './__generated__/Coffee';
+import { Posts, Posts_posts_posts } from './__generated__/Posts';
+import { Post, PostVariables, Post_post_post } from './__generated__/Post';
 
 /**
  * blog

@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Layout from '../../src/Layout';
 // import PostList from '../../src/blog/PostList';
 import Meta from '../../src/Meta';
-import { apiCoffee } from '../../firebase/query';
+import { apiCoffee } from '../../apollo/SSG';
 import CoffeeList from '../../src/coffee/CoffeeList';
 import CoffeeFilter from '../../src/coffee/CoffeeFilter';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';

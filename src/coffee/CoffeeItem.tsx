@@ -45,7 +45,7 @@ type CoffeeItemProps = Pick<
 > & {
   sxProps?: SxProps<Theme> | undefined;
   isSaved: boolean | null;
-  priority: boolean;
+  priority?: boolean;
 };
 
 function CoffeeItem({
@@ -56,7 +56,7 @@ function CoffeeItem({
   tags,
   sxProps,
   isSaved = false,
-  priority,
+  priority = false,
 }: CoffeeItemProps) {
   const router = useRouter();
   const [isMarked, setIsMarked] = useState(isSaved);
