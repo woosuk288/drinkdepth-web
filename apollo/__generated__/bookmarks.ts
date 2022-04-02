@@ -29,7 +29,7 @@ export interface bookmarks_bookmarks_bookmarks {
   /**
    * 이미지
    */
-  main_image: string;
+  image_url: string;
   /**
    * 태그
    */

@@ -1,5 +1,56 @@
 import { gql } from '@apollo/client';
 
+export const COFFEES_QUERY = gql`
+  query Coffees {
+    coffees {
+      ok
+      coffees {
+        id
+        name
+        image_url
+        description
+        tags
+        taste_body
+        taste_sweet
+        taste_bitter
+        taste_sour
+        type
+        roasting
+        roasting_date
+        process
+        company_id
+        uid
+      }
+    }
+  }
+`;
+
+export const COFFEE_QUERY = gql`
+  query Coffee($input: CoffeeInput!) {
+    coffee(input: $input) {
+      ok
+      error
+      coffee {
+        id
+        name
+        image_url
+        description
+        tags
+        taste_body
+        taste_sweet
+        taste_bitter
+        taste_sour
+        type
+        roasting
+        roasting_date
+        process
+        company_id
+        uid
+      }
+    }
+  }
+`;
+
 export const BOOKMARKS_QUERY = gql`
   query bookmarks {
     bookmarks {
@@ -11,7 +62,7 @@ export const BOOKMARKS_QUERY = gql`
         type
         name
         description
-        main_image
+        image_url
         tags
         created_at
       }

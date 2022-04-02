@@ -2,12 +2,12 @@ import { useQuery } from '@apollo/client';
 import React from 'react';
 import { BOOKMARKS_QUERY } from '../../apollo/queries';
 import { bookmarks } from '../../apollo/__generated__/bookmarks';
+import { Coffees_coffees_coffees } from '../../apollo/__generated__/Coffees';
 import { PostListWrapper } from '../blog/PostList';
-import { Coffee } from '../types';
 import CoffeeItem from './CoffeeItem';
 
 type CoffeeListProps = {
-  coffees: Coffee[];
+  coffees: Coffees_coffees_coffees[];
 };
 function CoffeeList({ coffees }: CoffeeListProps) {
   const { data, loading, error } = useQuery<bookmarks>(BOOKMARKS_QUERY);

@@ -24,7 +24,6 @@ import GridTextMfrInfo from './GridTextMfrInfo';
 
 import CoffeeItem from './CoffeeItem';
 import DescriptionItem from './DescriptionItem';
-import { Coffee } from '../types';
 import { useMutation } from '@apollo/client';
 import {
   createNotification,
@@ -32,9 +31,10 @@ import {
 } from '../../apollo/__generated__/createNotification';
 import { CREATE_NOTIFICATIONS_MUTATION } from '../../apollo/mutations';
 import { notiBadgeVar, userVar } from '../../apollo/client';
+import { Coffee_coffee_coffee } from '../../apollo/__generated__/Coffee';
 
 type CoffeeContentProps = {
-  coffee: Coffee;
+  coffee: Coffee_coffee_coffee;
 };
 
 function CoffeeContent({ coffee }: CoffeeContentProps) {
@@ -94,7 +94,8 @@ function CoffeeContent({ coffee }: CoffeeContentProps) {
           }}
         >
           <Image
-            src={coffee.main_image}
+            priority={true}
+            src={coffee.image_url}
             alt={`${coffee.name}의 이미지`}
             layout="responsive"
             width={500}
@@ -275,7 +276,7 @@ function CoffeeContent({ coffee }: CoffeeContentProps) {
         </Box>
         <Box display="flex" justifyContent="center" mt="0.75rem">
           <Typography fontSize={20} fontWeight={600} sx={{ px: '0.5rem' }}>
-            {coffee.brand}
+            {'드링크뎁스'}
           </Typography>
         </Box>
         <Box

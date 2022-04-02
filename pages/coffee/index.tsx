@@ -1,21 +1,19 @@
-import * as React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Layout from '../../src/Layout';
-import { limit, orderBy } from 'firebase/firestore/lite';
 // import PostList from '../../src/blog/PostList';
-import { Coffee } from '../../src/types';
 import Meta from '../../src/Meta';
 import { apiCoffee } from '../../firebase/query';
 import CoffeeList from '../../src/coffee/CoffeeList';
 import CoffeeFilter from '../../src/coffee/CoffeeFilter';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import ClientOnly from '../../src/common/ClientOnly';
+import { Coffees_coffees_coffees } from '../../apollo/__generated__/Coffees';
 
 export type CoffeeProps = {
-  coffees: Coffee[];
+  coffees: Coffees_coffees_coffees[];
 };
 
-const Coffee: NextPage<CoffeeProps> = ({ coffees }) => {
+const CoffeesPage: NextPage<CoffeeProps> = ({ coffees }) => {
   // console.log('coffees : ', coffees);
 
   const metaData = {
@@ -41,25 +39,28 @@ const Coffee: NextPage<CoffeeProps> = ({ coffees }) => {
 export const getStaticProps: GetStaticProps = async () => {
   console.log('Coffee getStaticProps ', process.env.NEXT_PHASE);
 
-  const coffees = await apiCoffee.list(
-    limit(12),
-    orderBy('created_at', 'desc')
-  );
+  const coffees = await apiCoffee.list();
 
   if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
     await apiCoffee.cache.set(coffees);
   }
 
-  const values = coffees.map(({ company, ...coffee }) => {
-    return coffee;
-  });
+  const coffeeArr = coffees.map(
+    ({ id, name, description, image_url, tags }) => ({
+      id,
+      name,
+      description,
+      image_url,
+      tags,
+    })
+  );
 
   return {
     props: {
-      coffees: values,
+      coffees: coffeeArr,
     },
     revalidate: 1800,
   };
 };
 
-export default Coffee;
+export default CoffeesPage;

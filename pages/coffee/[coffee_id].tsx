@@ -1,15 +1,14 @@
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
-import React from 'react';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import type { NextPage } from 'next';
-import { apiCoffee, getCoffee } from '../../firebase/query';
+import { apiCoffee } from '../../firebase/query';
 import CoffeeContent from '../../src/coffee/CoffeeContent';
 import Layout from '../../src/Layout';
 import Meta from '../../src/Meta';
-import { Coffee } from '../../src/types';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import { Coffee_coffee_coffee } from '../../apollo/__generated__/Coffee';
 
 type CoffeePageProps = {
-  coffee: Coffee | null;
+  coffee: Coffee_coffee_coffee | null;
 };
 
 const CoffeePage: NextPage<CoffeePageProps> = ({ coffee }) => {
@@ -20,7 +19,7 @@ const CoffeePage: NextPage<CoffeePageProps> = ({ coffee }) => {
   const metaData = {
     title: coffee.name,
     description: coffee.tags.map((t) => `#${t}`).join(' '),
-    image: coffee.main_image,
+    image: coffee.image_url,
     canonical: coffee.id,
     type: 'article',
   };
@@ -69,11 +68,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
 
-  const { company, ...rest } = coffee;
-
   return {
     props: {
-      coffee: rest,
+      coffee,
     },
 
     revalidate: 900,

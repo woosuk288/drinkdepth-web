@@ -31,7 +31,7 @@ export interface createBookmark_createBookmark_bookmark {
   /**
    * 이미지
    */
-  main_image: string;
+  image_url: string;
   /**
    * 태그
    */

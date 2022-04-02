@@ -14,7 +14,6 @@ import {
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 
-import { Coffee } from '../types';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ApolloError, useMutation } from '@apollo/client';
@@ -33,10 +32,11 @@ import {
 import client from '../../apollo/client';
 import { bookmarks } from '../../apollo/__generated__/bookmarks';
 import { BOOKMARKS_QUERY } from '../../apollo/queries';
+import { Coffees_coffees_coffees } from '../../apollo/__generated__/Coffees';
 
 type CoffeeItemProps = Pick<
-  Coffee,
-  'id' | 'name' | 'description' | 'main_image' | 'tags'
+  Coffees_coffees_coffees,
+  'id' | 'name' | 'description' | 'image_url' | 'tags'
 > & {
   sxProps?: SxProps<Theme> | undefined;
   isSaved: boolean | null;
@@ -46,7 +46,7 @@ function CoffeeItem({
   id,
   name,
   description,
-  main_image,
+  image_url,
   tags,
   sxProps,
   isSaved = false,
@@ -158,7 +158,7 @@ function CoffeeItem({
             type: 'coffee',
             name,
             description,
-            main_image,
+            image_url,
             tags,
           },
         },
@@ -185,7 +185,7 @@ function CoffeeItem({
       >
         <Box position="relative" height={280} borderRadius="10px 10px 0 0">
           <Image
-            src={main_image}
+            src={image_url}
             layout="fill"
             objectFit="cover"
             sizes="30vw"

@@ -24,7 +24,7 @@ export const CREATE_BOOKMARK_MUTATION = gql`
         type
         name
         description
-        main_image
+        image_url
         tags
         created_at
       }

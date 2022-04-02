@@ -2,8 +2,6 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Typography from '@mui/material/Typography';
 
 import EggIcon from '@mui/icons-material/Egg';
@@ -20,10 +18,10 @@ const StyledRating = styled(Rating)({
 
 type FlavorRatingProps = {
   label: string;
-  value: string;
+  value: string | null;
 };
 
-export default function FlavorRating({ label, value }: FlavorRatingProps) {
+export default function FlavorRating({ label, value = '' }: FlavorRatingProps) {
   return (
     <Box
       display="flex"
@@ -36,7 +34,7 @@ export default function FlavorRating({ label, value }: FlavorRatingProps) {
       </Typography>
       <StyledRating
         name="customized-color"
-        defaultValue={tasteConverter(value)}
+        defaultValue={tasteConverter(value ?? '')}
         readOnly
         icon={<EggIcon fontSize="inherit" color="primary" />}
         emptyIcon={

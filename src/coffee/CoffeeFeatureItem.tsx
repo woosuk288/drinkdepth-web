@@ -3,14 +3,14 @@ import React from 'react';
 
 type CoffeeFeatureItemProps = {
   label: string;
-  value: string;
+  value: string | null;
   type?: string;
 };
 
 function CoffeeFeatureItem({
   label,
   value,
-  type = value,
+  type = (value = ''),
 }: CoffeeFeatureItemProps) {
   return (
     <>

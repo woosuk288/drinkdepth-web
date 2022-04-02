@@ -12,12 +12,16 @@ export enum UserRole {
   Company = "Company",
 }
 
+export interface CoffeeInput {
+  id: string;
+}
+
 export interface CreateBookmarkInput {
   product_id: string;
   type: string;
   name: string;
   description: string;
-  main_image: string;
+  image_url: string;
   tags: string[];
 }
 

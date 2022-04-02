@@ -19,33 +19,6 @@ export type BlogEntryFire = Omit<BlogEntry, 'created_at' | 'publish_date'> & {
   publish_date: Timestamp;
 };
 
-export type Coffee = {
-  id: string;
-
-  name: string;
-  main_image: string;
-  description: string;
-  tags: string[];
-  taste_body: string;
-  taste_sweet: string;
-  taste_bitter: string;
-  taste_sour: string;
-  type: string;
-  roasting: string;
-  // roasting_date: Date;
-  roasting_date: string;
-  process: string;
-
-  public: boolean;
-  brand: string;
-  company: DocumentReference;
-  // related_coffee: EntityReference[];
-
-  uid: string;
-  // created_at: Date;
-  created_at: string;
-};
-
 export type Company = {
   id: string;
   business_number: string;

@@ -9,11 +9,22 @@ import {
 } from 'firebase/firestore/lite';
 import { getDownloadURL, ref } from 'firebase/storage';
 
-import { BlogEntry, Coffee } from '../src/types';
+import { BlogEntry } from '../src/types';
 
 import { promises as fs } from 'fs';
 import path from 'path';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import client from '../apollo/client';
+import { COFFEES_QUERY, COFFEE_QUERY } from '../apollo/queries';
+import {
+  Coffees,
+  Coffees_coffees_coffees,
+} from '../apollo/__generated__/Coffees';
+import {
+  Coffee,
+  CoffeeVariables,
+  Coffee_coffee_coffee,
+} from '../apollo/__generated__/Coffee';
 
 /**
  * blog
@@ -117,79 +128,62 @@ export const apiPost = {
 /**
  * coffee
  */
-const COFFEES = 'coffees';
-const coffeesCollection = collection(firestore, COFFEES);
 
-export const getCoffees = async (...queryConstraints: QueryConstraint[]) => {
-  const q = query(coffeesCollection, ...queryConstraints);
-  const querySnapshot = await getDocs(q);
-
-  const images = await Promise.all(
-    querySnapshot.docs.map((doc) =>
-      getDownloadURL(ref(storage, doc.data().main_image))
-    )
-  );
-
-  const coffees = querySnapshot.docs.map((doc, i) => {
-    return {
-      id: doc.id,
-      ...doc.data(),
-      main_image: images[i],
-      roasting_date:
-        doc.data().roasting_date?.toDate().toLocaleDateString() ?? null,
-      created_at: doc.data().created_at.toDate().toLocaleDateString(),
-    };
+export const getCoffees = async () => {
+  const { data } = await client.query<Coffees>({
+    query: COFFEES_QUERY,
   });
+  console.log('data : ', data.coffees.coffees);
 
-  return coffees as Coffee[];
+  const coffees = data.coffees.coffees ?? [];
+
+  return coffees as Coffees_coffees_coffees[];
 };
 
 export const getCoffee = async (id: string) => {
-  const docRef = doc(firestore, COFFEES, id);
-  const result = await getDoc(docRef);
+  const { data } = await client.query<Coffee, CoffeeVariables>({
+    query: COFFEE_QUERY,
+    variables: { input: { id } },
+  });
+  console.log('data : ', data.coffee.coffee);
 
-  if (!result.exists()) {
-    return null;
-  }
+  const coffee = data.coffee.coffee ?? [];
 
-  const coffee = {
-    id: docRef.id,
-    ...result.data(),
-    main_image: await getDownloadURL(ref(storage, result.data().main_image)),
-    roasting_date:
-      result.data().roasting_date?.toDate().toLocaleDateString() ?? null,
-    created_at: result.data().created_at.toDate().toLocaleDateString(),
-  };
-
-  return coffee as Coffee;
+  return coffee as Coffee_coffee_coffee;
 };
 
 export const apiCoffee = {
-  list: async (...queryConstraints: QueryConstraint[]) => {
+  list: async () => {
     console.log('apiCoffee.list call');
 
     if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
       try {
         const data = await fs.readFile(path.join(process.cwd(), 'coffees.db'));
-        const coffees: Coffee[] = JSON.parse(data as unknown as string);
+        const coffees: Coffees_coffees_coffees[] = JSON.parse(
+          data as unknown as string
+        );
         return coffees;
       } catch (error) {
         console.log('apiCoffee.list No cache file');
-        return getCoffees(...queryConstraints);
+        return getCoffees();
       }
     }
 
-    return getCoffees(...queryConstraints);
+    return getCoffees();
   },
-  fetch: async (id: Coffee['id']) => {
+  fetch: async (id: Coffee_coffee_coffee['id']) => {
     console.log('apiCoffee fetch');
     return getCoffee(id);
   },
   cache: {
-    getOne: async (id: string): Promise<Coffee | null | undefined> => {
+    getOne: async (
+      id: string
+    ): Promise<Coffee_coffee_coffee | null | undefined> => {
       try {
         const data = await fs.readFile(path.join(process.cwd(), 'coffees.db'));
-        const coffees: Coffee[] = JSON.parse(data as unknown as string);
+        const coffees: Coffee_coffee_coffee[] = JSON.parse(
+          data as unknown as string
+        );
 
         return coffees.find((coffee) => coffee.id === id);
       } catch (error) {
@@ -197,7 +191,7 @@ export const apiCoffee = {
         return null;
       }
     },
-    set: async (coffees: Coffee[]) => {
+    set: async (coffees: Coffees_coffees_coffees[]) => {
       return fs.writeFile(
         path.join(process.cwd(), 'coffees.db'),
         JSON.stringify(coffees)
