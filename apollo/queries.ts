@@ -156,3 +156,21 @@ export const NOTIFICATION_QUERY = gql`
     }
   }
 `;
+
+export const COMPANY_QUERY = gql`
+  query Company {
+    company {
+      ok
+      error
+      company {
+        id
+        business_number
+        company_name
+        president_name
+        opening_date
+        telephone
+        uid
+      }
+    }
+  }
+`;

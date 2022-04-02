@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-import { auth, firestore } from '../../firebase/clientApp';
-import {
-  collection,
-  getDocs,
-  limit,
-  query,
-  where,
-} from 'firebase/firestore/lite';
+import { auth } from '../../firebase/clientApp';
+
 import { signOut } from 'firebase/auth';
 
 import {
@@ -20,24 +14,21 @@ import BusinessIcon from '@mui/icons-material/Business';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { Company } from '../types';
 import { converter } from '../../firebase/converter';
-import { useReactiveVar } from '@apollo/client';
+import { useQuery, useReactiveVar } from '@apollo/client';
 import { roleVar } from '../../apollo/client';
 import Link from '../../src/Link';
+import { COMPANY_QUERY } from '../../apollo/queries';
+import { Company } from '../../apollo/__generated__/Company';
 
 type UserInfoProps = {
   uid: string;
 };
 
-const COMPANIES = 'companies';
-const companyCollection = collection(firestore, COMPANIES);
-
 function UserInfo({ uid }: UserInfoProps) {
   const userRole = useReactiveVar(roleVar);
 
-  const [companies, setCompanies] = useState<Company[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const { data, loading, error } = useQuery<Company>(COMPANY_QUERY);
 
   const [show, setShow] = useState({
     phone: false,
@@ -48,28 +39,6 @@ function UserInfo({ uid }: UserInfoProps) {
     setShow((prev: any) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const getComapanies = async () => {
-    const companyQuery = query(
-      companyCollection,
-      where('uid', '==', uid),
-      limit(1)
-    );
-
-    const querySnapshot = await getDocs(companyQuery);
-
-    const companies = querySnapshot.docs.map((d) => ({
-      id: d.id,
-      ...converter(d.data()),
-    }));
-
-    console.log('companies : ', companies);
-    setCompanies(companies as Company[]);
-  };
-
-  React.useEffect(() => {
-    uid && getComapanies().then(() => setLoading(false));
-  }, []);
-
   const handleLogout = async () => {
     if (confirm('로그아웃 하시겠어요?')) {
       await signOut(auth);
@@ -78,8 +47,9 @@ function UserInfo({ uid }: UserInfoProps) {
   };
 
   if (loading) return <LinearProgress />;
+  if (error) return <div>{error.message}</div>;
 
-  const company = companies.length > 0 ? companies[0] : null;
+  const company = data?.company.company;
 
   return (
     <Box
