@@ -15,11 +15,15 @@ export enum UserRole {
   Admin = 'Admin',
 }
 
+export type CompanyUser = {
+  company_id?: string;
+} & User;
+
 export type Role = keyof typeof UserRole | undefined | null;
 
 // export const isLoggedInVar = makeVar<boolean>(false);
 export const roleVar = makeVar<Role>(null);
-export const userVar = makeVar<User | null | undefined>(undefined);
+export const userVar = makeVar<CompanyUser | null | undefined>(undefined);
 export const notiBadgeVar = makeVar<boolean>(false);
 
 const httpLink = createHttpLink({

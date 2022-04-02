@@ -77,7 +77,7 @@ function NotificationList() {
       {data?.notifications.notifications?.map((n) => (
         <ListItem button onClick={() => handleClickOpen(n.id)} key={n.id}>
           <ListItemIcon>
-            {n.sender_id === user?.uid ? (
+            {n.sender_id === user?.company_id ? (
               <EggIcon color="primary" fontSize="large" />
             ) : (
               <EggOutlinedIcon color="primary" fontSize="large" />

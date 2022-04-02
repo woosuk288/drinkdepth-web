@@ -50,6 +50,12 @@ const Header = () => {
             USER_ROLES.includes(c)
           );
           roleVar(role as Role);
+          if (idTokenResult.claims.Company) {
+            userVar({
+              ...user,
+              company_id: idTokenResult.claims.Company as string,
+            });
+          }
         })
         .catch((error) => {
           console.log(error);
