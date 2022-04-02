@@ -2,17 +2,9 @@ import * as React from 'react';
 import type { NextPage } from 'next';
 import Layout from '../src/Layout';
 
-import {
-  Badge,
-  Box,
-  Button,
-  LinearProgress,
-  Tab,
-  Tabs,
-  Typography,
-} from '@mui/material';
+import { Badge, Box, LinearProgress, Tab, Tabs } from '@mui/material';
 
-import { firestore, useAuthFb } from '../firebase/clientApp';
+import { useAuthFb } from '../firebase/clientApp';
 import UserInfo from '../src/user/UserInfo';
 import RedirectPage from '../src/common/RedirectPage';
 import BookmarkList from '../src/user/BookmarkList';
@@ -107,7 +99,7 @@ const User: NextPage = () => {
         <TabPanel value={tabValue} index={0}>
           <UserInfo uid={user.uid} />
         </TabPanel>
-        <TabPanel value={tabValue} index={1}>
+        <TabPanel value={tabValue} index={1} style={{ width: '100%' }}>
           <BookmarkList />
         </TabPanel>
         <TabPanel
