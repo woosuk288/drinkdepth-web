@@ -68,52 +68,64 @@ export default function NotificationDialog({
       >
         <DialogTitle>{data?.notification.product?.title}</DialogTitle>
         <SkeletonImage
+          style={{ maxHeight: 300 }}
           url={data?.notification.product?.image ?? ''}
           alt={data?.notification.product?.title ?? ''}
         />
 
-        <DialogContent>
-          <DialogContentText variant="h6">요청자</DialogContentText>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              // m: 'auto',
-              width: 'fit-content',
-            }}
-          >
-            <Typography>
-              상호명 : {data?.notification.senderCompany?.company_name}
-            </Typography>
-            <Typography>
-              대표자성명 : {data?.notification.senderCompany?.president_name}
-            </Typography>
-            <Typography>
-              연락처 : {data?.notification.senderCompany?.telephone}
-            </Typography>
-          </Box>
-        </DialogContent>
-        <DialogContent>
-          <DialogContentText variant="h6">제조사</DialogContentText>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              // m: 'auto',
-              width: 'fit-content',
-            }}
-          >
-            <Typography>
-              상호명 : {data?.notification.recipientCompany?.company_name}
-            </Typography>
-            <Typography>
-              대표자성명 : {data?.notification.recipientCompany?.president_name}
-            </Typography>
-            <Typography>
-              연락처 : {data?.notification.recipientCompany?.telephone}
-            </Typography>
-          </Box>
-        </DialogContent>
+        <Box
+          display="flex"
+          flexDirection={{ xs: 'column' }}
+          alignItems="center"
+        >
+          <DialogContent>
+            <DialogContentText variant="subtitle1" color="black">
+              요청자
+            </DialogContentText>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                // m: 'auto',
+                width: 'fit-content',
+              }}
+            >
+              <Typography variant="body2">
+                상호명 : {data?.notification.senderCompany?.company_name}
+              </Typography>
+              <Typography variant="body2">
+                대표자성명 : {data?.notification.senderCompany?.president_name}
+              </Typography>
+              <Typography variant="body2">
+                연락처 : {data?.notification.senderCompany?.telephone}
+              </Typography>
+            </Box>
+          </DialogContent>
+          <DialogContent>
+            <DialogContentText variant="subtitle1" color="black">
+              제조사
+            </DialogContentText>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                // m: 'auto',
+                width: 'fit-content',
+              }}
+            >
+              <Typography variant="body2">
+                상호명 : {data?.notification.recipientCompany?.company_name}
+              </Typography>
+              <Typography variant="body2">
+                대표자성명 :{' '}
+                {data?.notification.recipientCompany?.president_name}
+              </Typography>
+              <Typography variant="body2">
+                연락처 : {data?.notification.recipientCompany?.telephone}
+              </Typography>
+            </Box>
+          </DialogContent>
+        </Box>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
         </DialogActions>
