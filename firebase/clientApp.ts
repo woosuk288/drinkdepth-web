@@ -1,7 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { ConfirmationResult, getAuth, RecaptchaVerifier } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore/lite';
-import { getStorage } from 'firebase/storage';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -16,10 +14,7 @@ initializeApp({
 });
 
 const auth = getAuth();
-const firestore = getFirestore();
-const storage = getStorage();
-
-export { auth, firestore, storage };
+export { auth };
 
 auth.useDeviceLanguage();
 export const useAuthFb = () => useAuthState(auth);

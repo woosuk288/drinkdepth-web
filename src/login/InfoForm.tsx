@@ -12,22 +12,14 @@ import { ApolloError, useMutation, useReactiveVar } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { roleVar, userVar } from '../../apollo/client';
 import { getAuth } from 'firebase/auth';
-import { Company } from '../types';
 import { CREATE_COMPANY_MUTATION } from '../../apollo/mutations';
 import {
   createCompany,
   createCompanyVariables,
 } from '../../apollo/__generated__/createCompany';
+import { CreateCompanyInput } from '../../apollo/__generated__/globalTypes';
 
-type InfoFormType = Pick<
-  Company,
-  | 'business_number'
-  | 'company_name'
-  | 'president_name'
-  | 'opening_date'
-  | 'business_licence'
-  | 'telephone'
-> & {
+type InfoFormType = CreateCompanyInput & {
   files?: FileList;
 };
 

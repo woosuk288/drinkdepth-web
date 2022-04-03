@@ -33,6 +33,7 @@ export const FormInputMaskNumber = ({
         //   value={field.value ?? ""}
         //   {...props}
         // />
+        // @ts-ignore
         <NumberFormat
           {...props}
           value={field.value ?? ''}

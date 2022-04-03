@@ -3,10 +3,10 @@ import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import CoffeeSearch, { CoffeeSearchXS } from './CoffeeSearch';
-import { Coffee } from '../types';
+import { Coffee_coffee_coffee } from '../../apollo/__generated__/Coffee';
 
 type CoffeeFilterProps = {
-  items: Coffee[];
+  items: Coffee_coffee_coffee[];
 };
 function CoffeeFilter({ items }: CoffeeFilterProps) {
   const handleFilterClick = () => {
