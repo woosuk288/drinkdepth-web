@@ -20,22 +20,32 @@ const MarkdownRenderer = styled.div`
   font-weight: 400;
 
   // Apply Padding Attribute to All Elements
-  p {
-    padding: 3px 0;
+  p,
+  blockquote,
+  ul ol,
+  dl,
+  table,
+  pre,
+  details {
+    margin-top: 0;
+    margin-bottom: 16px;
   }
 
   // Adjust Heading Element Style
   h1,
   h2,
   h3 {
-    font-weight: 800;
-    margin-bottom: 30px;
+    line-height: 1.5;
   }
 
-  * + h1,
-  * + h2,
-  * + h3 {
+  * + h1 {
     margin-top: 80px;
+  }
+  * + h2 {
+    margin-top: 64px;
+  }
+  * + h3 {
+    margin-top: 48px;
   }
 
   hr + h1,
@@ -45,15 +55,21 @@ const MarkdownRenderer = styled.div`
   }
 
   h1 {
+    font-weight: 800;
+    margin-bottom: 30px;
     font-size: 30px;
   }
 
   h2 {
     font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 25px;
   }
 
   h3 {
     font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
   }
 
   // Adjust Quotation Element Style
@@ -125,6 +141,16 @@ function PostContent({ content }: PostContentProps) {
       {content.map((entry, index) => {
         if (entry.type === 'text') {
           return <ReactMarkdown key={index}>{entry.value}</ReactMarkdown>;
+        } else if (entry.type === 'image') {
+          return (
+            <a href={entry.value} target="_blank" rel="noreferrer">
+              <img
+                src={entry.value}
+                alt="attached image"
+                key={'image : ' + index}
+              />
+            </a>
+          );
         }
       })}
     </MarkdownRenderer>

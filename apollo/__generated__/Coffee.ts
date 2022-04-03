@@ -24,7 +24,7 @@ export interface Coffee_coffee_coffee {
   roasting: string | null;
   roasting_date: any | null;
   process: string | null;
-  company_id: string | null;
+  company_id: string;
   uid: string | null;
 }
 
