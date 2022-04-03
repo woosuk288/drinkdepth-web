@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Dialog, { DialogProps } from '@mui/material/Dialog';
+import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -13,7 +13,7 @@ import {
   notification,
   notificationVariables,
 } from '../../apollo/__generated__/notification';
-import { StorageImage } from '../common/StorageImage';
+import { SkeletonImage } from '../common/SkeletonImage';
 
 type NotificationDialogProps = {
   id: string;
@@ -67,8 +67,8 @@ export default function NotificationDialog({
         }}
       >
         <DialogTitle>{data?.notification.product?.title}</DialogTitle>
-        <StorageImage
-          storagePath={data?.notification.product?.image ?? ''}
+        <SkeletonImage
+          url={data?.notification.product?.image ?? ''}
           alt={data?.notification.product?.title ?? ''}
         />
 

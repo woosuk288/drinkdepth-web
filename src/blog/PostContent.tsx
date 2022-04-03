@@ -143,12 +143,13 @@ function PostContent({ content }: PostContentProps) {
           return <ReactMarkdown key={index}>{entry.value}</ReactMarkdown>;
         } else if (entry.type === 'image') {
           return (
-            <a href={entry.value} target="_blank" rel="noreferrer">
-              <img
-                src={entry.value}
-                alt="attached image"
-                key={'image : ' + index}
-              />
+            <a
+              href={entry.value}
+              target="_blank"
+              rel="noreferrer"
+              key={'image  : ' + index}
+            >
+              <img src={entry.value} alt="attached image" />
             </a>
           );
         }
