@@ -17,6 +17,7 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "@tosspayments/payment-sdk": "^1.0.2",
     "firebase": "^9.6.8",
     "graphql": "^16.3.0",
     "next": "latest",

@@ -58,3 +58,56 @@ export const UPDATE_NOTIFICATIONS_MUTATION = gql`
     }
   }
 `;
+
+export const CREATE_PAYMENT_MUTATION = gql`
+  mutation CreatePayment($input: CreatePaymentInput!) {
+    createPayment(input: $input) {
+      error
+      ok
+      payment {
+        mId
+        version
+        paymentKey
+        orderId
+        orderName
+        currency
+        method
+        status
+        requestedAt
+        approvedAt
+        useEscrow
+        cultureExpense
+        card {
+          company
+          number
+          installmentPlanMonths
+          isInterestFree
+          approveNo
+          useCardPoint
+          cardType
+          ownerType
+          acquireStatus
+          receiptUrl
+        }
+        virtualAccount
+        transfer
+        mobilePhone
+        giftCertificate
+        foreignEasyPay
+        cashReceipt
+        discount
+        cancels
+        secret
+        type
+        easyPay
+        country
+        failure
+        totalAmount
+        balanceAmount
+        suppliedAmount
+        vat
+        taxFreeAmount
+      }
+    }
+  }
+`;

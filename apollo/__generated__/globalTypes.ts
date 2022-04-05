@@ -40,6 +40,12 @@ export interface CreateNotificationInput {
   type: string;
 }
 
+export interface CreatePaymentInput {
+  orderId: string;
+  amount: string;
+  paymentKey: string;
+}
+
 export interface NotificationInput {
   id: string;
 }
