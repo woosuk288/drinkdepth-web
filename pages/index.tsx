@@ -17,6 +17,18 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <Meta data={metaData} />
+      <a
+        href="https://pf.kakao.com/_ktxnJb/chat"
+        target="_blank"
+        style={{ position: 'fixed', right: 20, bottom: 10, zIndex: 100 }}
+      >
+        <img
+          src="/images/btn_kakao.png"
+          alt="카카오톡투명로고"
+          width={64}
+          height={64}
+        />
+      </a>
 
       <Box px={{ xs: '20px', lg: 0 }}>
         <SectionA />
