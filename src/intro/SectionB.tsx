@@ -24,11 +24,13 @@ function SectionB() {
           '> div': {
             flex: 1,
             borderRadius: '40px',
-            padding: '3rem',
+            padding: { xs: '1rem', sm: '3rem' },
+            paddingTop: { xs: '2rem' },
             bgcolor: 'rgba(2, 32, 71, 0.05)',
           },
           h4: {
             fontWeight: 600,
+            fontSize: '30px',
             marginBottom: '1.25rem',
           },
           h6: {
