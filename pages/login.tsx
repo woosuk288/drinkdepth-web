@@ -8,11 +8,9 @@ import InfoForm from '../src/login/InfoForm';
 import { useAuthFb } from '../firebase/clientApp';
 import { useReactiveVar } from '@apollo/client';
 import { roleVar } from '../apollo/client';
-import { useRouter } from 'next/router';
 import RedirectPage from '../src/common/RedirectPage';
 
 const LoginPage = () => {
-  const router = useRouter();
   const [user, loading, error] = useAuthFb();
   const [isSent, setIsSent] = useState(false);
   const userRole = useReactiveVar(roleVar);
@@ -28,9 +26,10 @@ const LoginPage = () => {
   }
 
   if (error) {
+    console.error(error.name, error.message);
     return (
       <div>
-        <p>Error: {error}</p>
+        <p>로그인 오류!</p>
       </div>
     );
   }
