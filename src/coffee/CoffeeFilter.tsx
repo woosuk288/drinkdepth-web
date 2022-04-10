@@ -4,13 +4,27 @@ import { Box, Button, Typography } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import CoffeeSearch, { CoffeeSearchXS } from './CoffeeSearch';
 import { Coffee_coffee_coffee } from '../../apollo/__generated__/Coffee';
+import CoffeeFilterDrawer from './CoffeeFilterDrawer';
 
 type CoffeeFilterProps = {
   items: Coffee_coffee_coffee[];
 };
 function CoffeeFilter({ items }: CoffeeFilterProps) {
-  const handleFilterClick = () => {
-    console.log('handleFilterClick : ');
+  const [open, setOpen] = React.useState(false);
+
+  const [checked, setChecked] = React.useState<string[]>([]);
+
+  const handleCheckbox = (value: string) => () => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
   };
 
   return (
@@ -30,7 +44,7 @@ function CoffeeFilter({ items }: CoffeeFilterProps) {
       <CoffeeSearch />
       <CoffeeSearchXS />
       <Button
-        onClick={handleFilterClick}
+        onClick={() => setOpen(true)}
         color="inherit"
         sx={{
           fontSize: '1.125rem',
@@ -40,6 +54,12 @@ function CoffeeFilter({ items }: CoffeeFilterProps) {
       >
         필터
       </Button>
+      <CoffeeFilterDrawer
+        open={open}
+        setOpen={setOpen}
+        checked={checked}
+        handleCheckbox={handleCheckbox}
+      />
     </Box>
   );
 }

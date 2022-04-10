@@ -19,6 +19,7 @@ function SectionC() {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         {projects.map((p) => (
           <Box
+            key={p.dt2}
             sx={{
               display: 'flex',
               alignItems: 'center',
