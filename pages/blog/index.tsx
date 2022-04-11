@@ -50,7 +50,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
     <Layout>
       <Meta data={metaData} />
 
-      <TagList selectedTag={selectedTag} tagList={tagList} />
+      <TagList selectedTag={selectedTag} tagList={tagList} path="blog" />
       <PostList selectedTag={selectedTag} posts={posts} />
     </Layout>
   );
