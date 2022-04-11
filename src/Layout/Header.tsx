@@ -24,8 +24,12 @@ const pages = [
     link: '/',
   },
   {
-    name: '블로그',
+    name: '뉴스/정보',
     link: '/blog',
+  },
+  {
+    name: '커뮤니티',
+    link: '/community',
   },
   {
     name: '커피',

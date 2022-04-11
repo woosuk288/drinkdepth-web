@@ -10,7 +10,7 @@ import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
 
 const metaData = {
-  title: '깊이를 마시다. 블로그',
+  title: '깊이를 마시다. 뉴스 및 정보',
   description: '음료에 관한 소식을 전해드려요.',
   image: '/images/logo_icon.png',
   canonical: 'blog',
