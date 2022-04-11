@@ -3,16 +3,11 @@ import { styled as muiStyled } from '@mui/system';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-import GoalChoice from '../../public/images/goals/goal_choice.png';
-import GoalPlace from '../../public/images/goals/goal_place.png';
-import GoalTime from '../../public/images/goals/goal_time.png';
-import GoalCreate from '../../public/images/goals/goal_create.png';
-
 // emotion styled과 mui styled 사용법 비교하기 위해 써봄
 const VisionWrapper = muiStyled(Box)(({ theme }) => ({
-  marginTop: '120px',
+  marginTop: '100px',
   [theme.breakpoints.down('sm')]: {
-    marginTop: '100px',
+    marginTop: '80px',
   },
 }));
 
@@ -100,14 +95,11 @@ function SectionA() {
           variant="h6"
           color="InfoText"
           fontWeight={400}
-          sx={{ lineHeight: { xs: 1.3, md: 1.6 } }}
+          sx={{ lineHeight: { xs: 1.3, md: 1.6 }, maxWidth: '880px' }}
         >
-          마시는 경험이 바뀌면 인생의 깊이가 달라집니다.
-          <p>
-            모두가 마시는 즐거움을 느낄 수 있도록 끊임없이 소통하고, 보다 깊은
-            삶의 경험을 만드는 기술 혁신과 도전을 이어갑니다.
-            {/* 보다 나은 삶의 방식을  */}
-          </p>
+          마시는 경험이 바뀌면 인생의 깊이가 달라집니다. 모두가 마시는 즐거움을
+          느낄 수 있도록 끊임없이 소통하고, 보다 깊은 삶의 경험을 만드는 기술
+          혁신과 도전을 이어갑니다.
         </Typography>
       </VisionWrapper>
 
