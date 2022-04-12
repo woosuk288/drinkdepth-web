@@ -32,12 +32,15 @@ import {
 import { CREATE_NOTIFICATIONS_MUTATION } from '../../apollo/mutations';
 import { notiBadgeVar, userVar } from '../../apollo/client';
 import { Coffee_coffee_coffee } from '../../apollo/__generated__/Coffee';
+import CoffeeDialog from './CoffeeDialog';
 
 type CoffeeContentProps = {
   coffee: Coffee_coffee_coffee;
 };
 
 function CoffeeContent({ coffee }: CoffeeContentProps) {
+  const [open, setOpen] = React.useState(false);
+
   const [createNotification, { loading: processing }] = useMutation<
     createNotification,
     createNotificationVariables
@@ -147,18 +150,19 @@ function CoffeeContent({ coffee }: CoffeeContentProps) {
             <Typography
               fontSize={20}
               component="span"
-              sx={{ alignSelf: 'flex-end' }}
+              sx={{ alignSelf: 'flex-end', marginRight: '1rem' }}
             >
               1Kg
             </Typography>
-            <Button
+            {/* <Button
               variant="contained"
               color="inherit"
               size="large"
               sx={{ fontWeight: 700, ml: 1 }}
             >
               ₩ 납품 최저가 확인하기
-            </Button>
+            </Button> */}
+            <Typography variant="h4">33,000원</Typography>
           </Box>
           <Box
             sx={{
@@ -194,9 +198,21 @@ function CoffeeContent({ coffee }: CoffeeContentProps) {
                 maxWidth: 400,
                 ml: 2,
               }}
+              onClick={() => setOpen(true)}
             >
               구매하기
             </Button>
+            <CoffeeDialog
+              open={open}
+              setOpen={setOpen}
+              order={{
+                name: coffee.name,
+                image_url: coffee.image_url,
+                unit: '1kg',
+                quantity: 1,
+                price: 33000,
+              }}
+            />
           </Box>
         </Box>
       </Box>
