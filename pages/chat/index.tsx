@@ -16,27 +16,26 @@ const Chat: NextPage = () => {
   };
 
   return (
-    <Layout>
+    <Layout showFooter={false} sxMain={{ overflow: 'hidden' }}>
       <Meta data={metaData} />
 
-      <Box display="flex" margin="1rem" height="100vh">
+      <Box
+        display="flex"
+        alignItems="stretch"
+        padding="1rem"
+        minHeight="600px"
+        height="calc(100% - 64px)"
+        maxHeight="100vh"
+        overflow="hidden"
+      >
         <Box maxWidth="400px" border={'1px solid #eee'}>
           <ChatSearch />
           <ChatTabs />
           <ChatList />
         </Box>
 
-        <Box
-          maxWidth="800px"
-          width="100%"
-          height="100%"
-          border={'1px solid #eee'}
-        >
-          <ChatContent />
-        </Box>
+        <ChatContent />
       </Box>
-
-      <div style={{ marginBottom: '100px' }}></div>
     </Layout>
   );
 };

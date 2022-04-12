@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 export default function ChatCard() {
   return (
-    <Card sx={{ maxWidth: 360, marginLeft: 'auto' }}>
+    <Card sx={{ maxWidth: { xs: 300, sm: 360 }, marginLeft: 'auto' }}>
       <CardMedia
         component="img"
         alt="green iguana"
@@ -17,16 +17,17 @@ export default function ChatCard() {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          날아올라
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          수량 : 1kg x 1개 <br />
+          가격 : 33,000원
+          <br />
+          주문번호 : 11029384756
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">주문내역 확인</Button>
       </CardActions>
     </Card>
   );

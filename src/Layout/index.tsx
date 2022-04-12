@@ -8,9 +8,10 @@ import { SxProps } from '@mui/material';
 type LayoutProps = {
   children: React.ReactNode;
   sxMain?: SxProps<Theme> | undefined;
+  showFooter?: boolean;
 };
 
-const Layout = ({ children, sxMain }: LayoutProps) => {
+const Layout = ({ children, sxMain, showFooter = true }: LayoutProps) => {
   return (
     <Box display="flex" flexDirection="column" height="100%">
       <Header />
@@ -20,6 +21,7 @@ const Layout = ({ children, sxMain }: LayoutProps) => {
           maxWidth: (theme) => theme.breakpoints.values.lg,
           margin: '0 auto',
           width: '100%',
+          flex: 1,
           paddingLeft: { sm: 0, lg: '2.5rem' },
           paddingRight: { sm: 0, lg: '2.5rem' },
           ...sxMain,
@@ -27,7 +29,7 @@ const Layout = ({ children, sxMain }: LayoutProps) => {
       >
         {children}
       </Box>
-      <Footer />
+      {showFooter && <Footer />}
     </Box>
   );
 };
