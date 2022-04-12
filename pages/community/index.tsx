@@ -8,8 +8,11 @@ import TagList, { TagListProps } from '../../src/blog/TagList';
 import { useRouter } from 'next/router';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
-import { Box } from '@mui/material';
+import { Box, Fab, IconButton } from '@mui/material';
 import PopularPost from '../../src/community/PopularPostList';
+
+import AddIcon from '@mui/icons-material/Add';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const metaData = {
   title: '깊이를 마시다. 커뮤니티',
@@ -70,6 +73,13 @@ const Community: NextPage<CommunityProps> = ({ posts }) => {
       </Box>
       <PostList />
       {/* <PostList selectedTag={selectedTag} posts={posts} /> */}
+      <Fab
+        color="primary"
+        aria-label="add"
+        sx={{ position: 'fixed', right: 20, bottom: 20 }}
+      >
+        <AddIcon />
+      </Fab>
     </Layout>
   );
 };
