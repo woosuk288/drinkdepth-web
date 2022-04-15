@@ -33,6 +33,7 @@ function Message({ direction = 'left', text, button }: MessageProps) {
           </ListItemAvatar>
         )}
         <ListItemText
+          secondaryTypographyProps={{ component: 'div' }}
           primary={
             direction === 'left' && (
               <Typography variant="subtitle2" color="text.secondary">

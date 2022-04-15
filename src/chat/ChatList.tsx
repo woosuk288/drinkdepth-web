@@ -6,80 +6,66 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { Divider, Typography } from '@mui/material';
 
-function ChatList() {
+type ChatListProps = {
+  handleShowContent: (id: string) => void;
+};
+
+function ChatList({ handleShowContent }: ChatListProps) {
   return (
     <List sx={{ width: '100%', bgcolor: 'background.paper', paddingTop: 0 }}>
-      <Divider />
-      <ListItem button>
-        <ListItemAvatar>
-          <Avatar>김</Avatar>
-        </ListItemAvatar>
-        <ListItemText
-          primary={
-            <>
-              <Typography component="span" marginRight={'0.5rem'}>
-                김사장
-              </Typography>
-              <Typography component="span" variant="body2">
-                여셧시오븐
-              </Typography>
-            </>
-          }
-          secondary={
-            <Typography component="div" variant="body2" noWrap>
-              Jan 9, 2014 — I'll be in your neighborhood doing errands this
-            </Typography>
-          }
-        />
-      </ListItem>
-      <Divider />
-      <ListItem button>
-        <ListItemAvatar>
-          <Avatar>이</Avatar>
-        </ListItemAvatar>
-        <ListItemText
-          primary={
-            <>
-              <Typography component="span" marginRight={'0.5rem'}>
-                이사장
-              </Typography>
-              <Typography component="span" variant="body2">
-                달콤
-              </Typography>
-            </>
-          }
-          secondary={
-            <Typography component="div" variant="body2" noWrap>
-              Jan 7, 2014 — Wish I could come, but I'm out of town this
-            </Typography>
-          }
-        />
-      </ListItem>
-      <Divider />
-      <ListItem button>
-        <ListItemAvatar>
-          <Avatar>박</Avatar>
-        </ListItemAvatar>
-        <ListItemText
-          primary={
-            <>
-              <Typography component="span" marginRight={'0.5rem'}>
-                박사장
-              </Typography>
-              <Typography component="span" variant="body2">
-                돌담콩
-              </Typography>
-            </>
-          }
-          secondary={
-            <Typography component="div" variant="body2" noWrap>
-              July 20, 2014 — Do you have Paris recommendations? Have you ever
-            </Typography>
-          }
-        />
-      </ListItem>
+      {chatRooms.map((room, i) => (
+        <div key={i}>
+          <Divider />
+          <ListItem button onClick={() => handleShowContent(room.id)}>
+            <ListItemAvatar>
+              <Avatar>{room.name.charAt(0)}</Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              primary={
+                <>
+                  <Typography component="span" marginRight={'0.5rem'}>
+                    {room.name}
+                  </Typography>
+                  <Typography component="span" variant="body2">
+                    {room.company_name}
+                  </Typography>
+                </>
+              }
+              secondary={
+                <Typography component="div" variant="body2" noWrap>
+                  {room.updated_at} — {room.last_message}
+                </Typography>
+              }
+            />
+          </ListItem>
+        </div>
+      ))}
     </List>
   );
 }
 
 export default ChatList;
+
+const chatRooms = [
+  {
+    id: 'kim',
+    name: '김사장',
+    company_name: '여섯시오븐',
+    updated_at: new Date('2014-01-09').toLocaleDateString(),
+    last_message: `I'll be in your neighborhood doing errands this`,
+  },
+  {
+    id: 'lee',
+    name: '이사장',
+    company_name: '달콤',
+    updated_at: new Date('2014-01-07').toLocaleDateString(),
+    last_message: `Wish I could come, but I'm out of town this`,
+  },
+  {
+    id: 'park',
+    name: '박사장',
+    company_name: '돌담콩',
+    updated_at: new Date('2014-07-20').toLocaleDateString(),
+    last_message: `Do you have Paris recommendations? Have you ever`,
+  },
+];

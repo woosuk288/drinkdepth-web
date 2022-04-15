@@ -2,9 +2,11 @@ import {
   Avatar,
   Box,
   Button,
+  IconButton,
   List,
   ListItem,
   ListItemAvatar,
+  ListItemIcon,
   ListItemText,
   Paper,
   Typography,
@@ -14,7 +16,12 @@ import ChatCard from './ChatCard';
 import ChatInput from './ChatInput';
 import Message from './Message';
 
-function ChatContent() {
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
+type ChatContentProps = {
+  handleHideContent: () => void;
+};
+function ChatContent({ handleHideContent }: ChatContentProps) {
   return (
     <Box
       maxWidth="800px"
@@ -31,6 +38,14 @@ function ChatContent() {
             </Button>
           }
         >
+          <ListItemIcon
+            onClick={handleHideContent}
+            sx={{ display: { xs: 'inline-flex', sm: 'none' } }}
+          >
+            <IconButton>
+              <ArrowBackIcon />
+            </IconButton>
+          </ListItemIcon>
           <ListItemAvatar>
             <Avatar>김</Avatar>
           </ListItemAvatar>

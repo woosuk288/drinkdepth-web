@@ -32,7 +32,7 @@ const pages = [
     link: '/community',
   },
   {
-    name: '커피',
+    name: '커피/차',
     link: '/coffee',
   },
 ];
