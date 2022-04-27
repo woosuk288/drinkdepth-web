@@ -13,6 +13,7 @@ export interface Coffees_coffees_coffees {
   name: string;
   image_url: string;
   description: string;
+  flavors: string[];
   tags: string[];
   taste_body: string | null;
   taste_sweet: string | null;

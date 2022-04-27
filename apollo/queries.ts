@@ -51,6 +51,7 @@ export const COFFEES_QUERY = gql`
         name
         image_url
         description
+        flavors
         tags
         taste_body
         taste_sweet

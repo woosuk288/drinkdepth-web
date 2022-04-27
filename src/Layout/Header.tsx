@@ -24,15 +24,15 @@ const pages = [
     link: '/',
   },
   {
-    name: '뉴스/정보',
+    name: '오늘의 음료',
     link: '/blog',
   },
+  // {
+  //   name: '커뮤니티',
+  //   link: '/community',
+  // },
   {
-    name: '커뮤니티',
-    link: '/community',
-  },
-  {
-    name: '커피/차',
+    name: '음료 장터',
     link: '/coffee',
   },
 ];

@@ -1,29 +1,29 @@
 import { MutableRefObject, useState, useRef, useMemo, useEffect } from 'react';
-import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
+import { Coffees_coffees_coffees } from '../../apollo/__generated__/Coffees';
 
-export type useInfiniteScrollType = {
+export type useInfiniteScrollCoffeeType = {
   containerRef: MutableRefObject<HTMLDivElement | null>;
-  postList: Posts_posts_posts[];
+  coffeeList: Coffees_coffees_coffees[];
 };
 
 const NUMBER_OF_ITEMS_PER_PAGE = 9;
 
-const useInfiniteScroll = function (
-  selectedTag: string,
-  posts: Posts_posts_posts[]
-): useInfiniteScrollType {
+const useInfiniteScrollCoffee = function (
+  selectedFlavor: string,
+  posts: Coffees_coffees_coffees[]
+): useInfiniteScrollCoffeeType {
   const containerRef: MutableRefObject<HTMLDivElement | null> =
     useRef<HTMLDivElement>(null);
   const observer: MutableRefObject<IntersectionObserver | null> =
     useRef<IntersectionObserver>(null);
   const [count, setCount] = useState<number>(1);
 
-  const listByCategory = useMemo<Posts_posts_posts[]>(
+  const listByCategory = useMemo<Coffees_coffees_coffees[]>(
     () =>
-      posts.filter(({ tags }: Posts_posts_posts) =>
-        selectedTag !== 'All' ? tags.includes(selectedTag) : true
+      posts.filter(({ flavors }: Coffees_coffees_coffees) =>
+        selectedFlavor !== 'All' ? flavors.includes(selectedFlavor) : true
       ),
-    [selectedTag]
+    [selectedFlavor]
   );
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const useInfiniteScroll = function (
   }, []);
 
   // 카테고리 변경시 1로
-  useEffect(() => setCount(1), [selectedTag]);
+  useEffect(() => setCount(1), [selectedFlavor]);
 
   //이렇게 observer를 선언했으니, 이를 통해 observe 메서드를 사용하는 부분을 구현해봅시다.
   //이를 위해 useEffect 훅을 사용할 것이고, count 값이 변경될 때마다 ref로 연결된 요소의 맨 마지막 자식 노드를 관측할 것이기 때문에 다음과 같이 코드를 작성해줘야 합니다.
@@ -55,12 +55,12 @@ const useInfiniteScroll = function (
     observer.current?.observe(
       containerRef.current.children[containerRef.current.children.length - 1]
     );
-  }, [count, selectedTag]);
+  }, [count, selectedFlavor]);
 
   return {
     containerRef,
-    postList: listByCategory.slice(0, count * NUMBER_OF_ITEMS_PER_PAGE),
+    coffeeList: listByCategory.slice(0, count * NUMBER_OF_ITEMS_PER_PAGE),
   };
 };
 
-export default useInfiniteScroll;
+export default useInfiniteScrollCoffee;
