@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
 import useInfiniteScroll, {
   useInfiniteScrollType,
@@ -39,14 +39,20 @@ type PostListProps = {
 };
 
 function PostList({ selectedTag, posts }: PostListProps) {
-  const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(
-    selectedTag,
-    posts
+  const { containerRef }: useInfiniteScrollType<Posts_posts_posts> =
+    useInfiniteScroll(selectedTag, posts);
+
+  const listByCategory = useMemo<Posts_posts_posts[]>(
+    () =>
+      posts.filter(({ tags }: Posts_posts_posts) =>
+        selectedTag !== 'All' ? tags.includes(selectedTag) : true
+      ),
+    [posts, selectedTag]
   );
 
   return (
     <PostListWrapper ref={containerRef}>
-      {postList.map((post, i) => (
+      {listByCategory.map((post, i) => (
         <PostItem {...post} link={post.id} key={post.id} priority={i < 3} />
       ))}
     </PostListWrapper>

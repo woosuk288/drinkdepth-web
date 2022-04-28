@@ -47,7 +47,7 @@ function useInfiniteScrollCoffee<T>(
     observer.current?.observe(
       containerRef.current.children[containerRef.current.children.length - 1]
     );
-  }, [count, selectedFlavor]);
+  }, [count, items.length, selectedFlavor]);
 
   return {
     containerRef,

@@ -1,30 +1,22 @@
 import { MutableRefObject, useState, useRef, useMemo, useEffect } from 'react';
 import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
 
-export type useInfiniteScrollType = {
+export type useInfiniteScrollType<T> = {
   containerRef: MutableRefObject<HTMLDivElement | null>;
-  postList: Posts_posts_posts[];
+  list: T[];
 };
 
 const NUMBER_OF_ITEMS_PER_PAGE = 9;
 
-const useInfiniteScroll = function (
+function useInfiniteScroll<T>(
   selectedTag: string = 'All',
-  posts: Posts_posts_posts[]
-): useInfiniteScrollType {
+  items: T[]
+): useInfiniteScrollType<T> {
   const containerRef: MutableRefObject<HTMLDivElement | null> =
     useRef<HTMLDivElement>(null);
   const observer: MutableRefObject<IntersectionObserver | null> =
     useRef<IntersectionObserver>(null);
   const [count, setCount] = useState<number>(1);
-
-  const listByCategory = useMemo<Posts_posts_posts[]>(
-    () =>
-      posts.filter(({ tags }: Posts_posts_posts) =>
-        selectedTag !== 'All' ? tags.includes(selectedTag) : true
-      ),
-    [selectedTag]
-  );
 
   useEffect(() => {
     observer.current = new IntersectionObserver((entries, observer) => {
@@ -46,7 +38,7 @@ const useInfiniteScroll = function (
   // 그리고 ref로 요소에 제대로 연결되어있는지와 더 불러올 데이터가 있는지 확인한 후, 조건을 충족하면 선택한 요소의 맨 마지막 자식 노드를 관측해줍니다.
   useEffect(() => {
     if (
-      NUMBER_OF_ITEMS_PER_PAGE * count >= listByCategory.length ||
+      NUMBER_OF_ITEMS_PER_PAGE * count >= items.length ||
       containerRef.current === null ||
       containerRef.current.children.length === 0
     )
@@ -55,12 +47,12 @@ const useInfiniteScroll = function (
     observer.current?.observe(
       containerRef.current.children[containerRef.current.children.length - 1]
     );
-  }, [count, selectedTag]);
+  }, [count, items.length, selectedTag]);
 
   return {
     containerRef,
-    postList: listByCategory.slice(0, count * NUMBER_OF_ITEMS_PER_PAGE),
+    list: items.slice(0, count * NUMBER_OF_ITEMS_PER_PAGE),
   };
-};
+}
 
 export default useInfiniteScroll;
