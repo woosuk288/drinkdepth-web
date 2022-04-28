@@ -58,6 +58,7 @@ const CoffeesPage: NextPage<CoffeeProps> = ({ coffees }) => {
         },
         { All: 0 }
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
@@ -87,8 +88,6 @@ const CoffeesPage: NextPage<CoffeeProps> = ({ coffees }) => {
     const filtredData = getFilteredCoffees(coffees, newChecked);
     setFilteredCoffees(filtredData);
   };
-
-  console.log('filteredCoffees: ', filteredCoffees);
 
   return (
     <Layout>

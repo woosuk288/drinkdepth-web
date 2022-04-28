@@ -21,7 +21,9 @@ const Home: NextPage = () => {
         href="https://pf.kakao.com/_ktxnJb/chat"
         target="_blank"
         style={{ position: 'fixed', right: 20, bottom: 10, zIndex: 100 }}
+        rel="noreferrer"
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/btn_kakao.png"
           alt="카카오톡투명로고"

@@ -15,7 +15,6 @@ type CoffeeFilterProps = {
 
 function CoffeeFilter({ length, checked, handleCheckbox }: CoffeeFilterProps) {
   const [open, setOpen] = React.useState(false);
-  console.log('checked :', checked);
 
   return (
     <Box
