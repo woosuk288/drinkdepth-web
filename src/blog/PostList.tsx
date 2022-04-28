@@ -39,14 +39,14 @@ type PostListProps = {
 };
 
 function PostList({ selectedTag, posts }: PostListProps) {
-  const { containerRef, list }: useInfiniteScrollType = useInfiniteScroll(
+  const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(
     selectedTag,
     posts
   );
 
   return (
     <PostListWrapper ref={containerRef}>
-      {list.map((post, i) => (
+      {postList.map((post, i) => (
         <PostItem {...post} link={post.id} key={post.id} priority={i < 3} />
       ))}
     </PostListWrapper>

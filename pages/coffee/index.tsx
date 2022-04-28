@@ -25,8 +25,17 @@ export type CoffeeProps = {
   coffees: Coffees_coffees_coffees[];
 };
 
+export type CoffeeOption = {
+  flavors: string[];
+  roasting: string[];
+  type: string[];
+};
+
 const CoffeesPage: NextPage<CoffeeProps> = ({ coffees }) => {
   // console.log('coffees : ', coffees);
+
+  const [filteredCoffees, setFilteredCoffees] = React.useState(coffees);
+  // coffees.filter(coffee => coffee.flavors.some(flavor => checked.flavors.include(flavor)))
 
   const router = useRouter();
 
@@ -52,6 +61,35 @@ const CoffeesPage: NextPage<CoffeeProps> = ({ coffees }) => {
     []
   );
 
+  const [checked, setChecked] = React.useState<CoffeeOption>({
+    flavors: [],
+    roasting: [],
+    type: [],
+  });
+
+  const handleCheckbox = (key: keyof CoffeeOption, value: string) => () => {
+    const currentIndex = checked[key].indexOf(value);
+    const newCheckedKey = [...checked[key]];
+    // const currentIndex = checked.indexOf(value);
+    // const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      // newChecked.push(option);
+      newCheckedKey.push(value);
+    } else {
+      newCheckedKey.splice(currentIndex, 1);
+      // newChecked.splice(currentIndex, 1);
+    }
+
+    const newChecked = { ...checked, [key]: newCheckedKey };
+    setChecked(newChecked);
+    // setChecked(newChecked);
+    const filtredData = getFilteredCoffees(coffees, newChecked);
+    setFilteredCoffees(filtredData);
+  };
+
+  console.log('filteredCoffees: ', filteredCoffees);
+
   return (
     <Layout>
       <Meta data={metaData} />
@@ -62,8 +100,12 @@ const CoffeesPage: NextPage<CoffeeProps> = ({ coffees }) => {
           flavorList={flavorList}
           path="coffee"
         />
-        {/* <CoffeeFilter items={coffees} /> */}
-        <CoffeeList selectedFlavor={selectedFlavor} coffees={coffees} />
+        <CoffeeFilter
+          length={filteredCoffees.length}
+          checked={checked}
+          handleCheckbox={handleCheckbox}
+        />
+        <CoffeeList selectedFlavor={selectedFlavor} coffees={filteredCoffees} />
       </ClientOnly>
     </Layout>
   );
@@ -79,13 +121,15 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   const coffeeArr = coffees.map(
-    ({ id, name, description, image_url, flavors, tags }) => ({
+    ({ id, name, description, image_url, flavors, tags, roasting, type }) => ({
       id,
       name,
       description,
       image_url,
       flavors,
       tags,
+      roasting,
+      type,
     })
   );
 
@@ -98,3 +142,30 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default CoffeesPage;
+
+const getFilteredCoffees = (
+  coffees: Coffees_coffees_coffees[],
+  checked: CoffeeOption
+) => {
+  const hasFlavor = (coffee: Coffees_coffees_coffees) => {
+    return checked.flavors.length > 0
+      ? coffee.flavors.some((flavor) => checked.flavors.includes(flavor))
+      : true;
+  };
+
+  const hasRoasting = (coffee: Coffees_coffees_coffees) => {
+    return checked.roasting.length > 0
+      ? checked.roasting.includes(coffee.roasting ?? '')
+      : true;
+  };
+
+  const hasType = (coffee: Coffees_coffees_coffees) => {
+    // if (!coffee.type) return false;
+
+    return checked.type.length > 0
+      ? checked.type.includes(coffee.type ?? '')
+      : true;
+  };
+
+  return coffees.filter(hasFlavor).filter(hasRoasting).filter(hasType);
+};

@@ -6,15 +6,14 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { Button, Checkbox, Typography } from '@mui/material';
+import { CoffeeOption } from '../../pages/coffee';
 
 type CoffeeFilterDrawerProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  checked: string[];
-  handleCheckbox: (value: string) => () => void;
+  checked: CoffeeOption;
+  handleCheckbox: (key: keyof CoffeeOption, value: string) => () => void;
 };
 
 export default function CoffeeFilterDrawer({
@@ -51,29 +50,33 @@ export default function CoffeeFilterDrawer({
           paddingBottom: '0.25rem',
         }}
       >
-        <Typography variant="h5" fontWeight={700}>
+        <Typography variant="h6" fontWeight={700}>
           필터
         </Typography>
         <Button color="inherit">모두 삭제</Button>
       </Box>
       <Divider />
       <List>
-        <Typography variant="h6" fontWeight={600} padding="0.5rem 1rem 0.25rem">
+        <Typography
+          variant="subtitle1"
+          fontWeight={600}
+          padding="0.5rem 1rem 0.25rem"
+        >
           향미
         </Typography>
         {/* 종류 */}
         {/* 로스팅 */}
-        {['바디감', '단맛', '신맛', '쓴맛'].map((text, index) => (
+        {coffeeAllFilterOptions.flavors.map((text, index) => (
           <ListItem
             button
             key={text}
-            onClick={handleCheckbox(text)}
+            onClick={handleCheckbox('flavors', text)}
             sx={{ height: '2rem' }}
           >
             <ListItemIcon>
               <Checkbox
                 edge="start"
-                checked={checked.indexOf(text) !== -1}
+                checked={checked.flavors.indexOf(text) !== -1}
                 tabIndex={-1}
                 disableRipple
                 inputProps={{
@@ -87,20 +90,24 @@ export default function CoffeeFilterDrawer({
       </List>
       <Divider />
       <List>
-        <Typography variant="h6" fontWeight={600} padding="0.5rem 1rem 0.25rem">
+        <Typography
+          variant="subtitle1"
+          fontWeight={600}
+          padding="0.5rem 1rem 0.25rem"
+        >
           종류
         </Typography>
-        {['블렌드', '싱글 오리진', '카페인', '디카페인'].map((text, index) => (
+        {coffeeAllFilterOptions.type.map((text, index) => (
           <ListItem
             button
             key={text}
-            onClick={handleCheckbox(text)}
+            onClick={handleCheckbox('type', text)}
             sx={{ height: '2rem' }}
           >
             <ListItemIcon>
               <Checkbox
                 edge="start"
-                checked={checked.indexOf(text) !== -1}
+                checked={checked.type.indexOf(text) !== -1}
                 tabIndex={-1}
                 disableRipple
                 inputProps={{
@@ -108,38 +115,40 @@ export default function CoffeeFilterDrawer({
                 }}
               />
             </ListItemIcon>
-            <ListItemText secondary={text} />
+            <ListItemText secondary={getTypeName(text)} />
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        <Typography variant="h6" fontWeight={600} padding="0.5rem 1rem 0.25rem">
+        <Typography
+          variant="subtitle1"
+          fontWeight={600}
+          padding="0.5rem 1rem 0.25rem"
+        >
           로스팅
         </Typography>
-        {['라이트', '라이트 미디엄', '미디엄', '미디엄 다크', '다크'].map(
-          (text, index) => (
-            <ListItem
-              button
-              key={text}
-              onClick={handleCheckbox(text)}
-              sx={{ height: '2rem' }}
-            >
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={checked.indexOf(text) !== -1}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{
-                    'aria-labelledby': `checkbox-list-label-${index}`,
-                  }}
-                />
-              </ListItemIcon>
-              <ListItemText secondary={text} />
-            </ListItem>
-          )
-        )}
+        {coffeeAllFilterOptions.roasting.map((text, index) => (
+          <ListItem
+            button
+            key={text}
+            onClick={handleCheckbox('roasting', text)}
+            sx={{ height: '2rem' }}
+          >
+            <ListItemIcon>
+              <Checkbox
+                edge="start"
+                checked={checked.roasting.indexOf(text) !== -1}
+                tabIndex={-1}
+                disableRipple
+                inputProps={{
+                  'aria-labelledby': `checkbox-list-label-${index}`,
+                }}
+              />
+            </ListItemIcon>
+            <ListItemText secondary={getRoastingName(text)} />
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
@@ -151,4 +160,26 @@ export default function CoffeeFilterDrawer({
   );
 }
 
-const Subtitle = () => {};
+const coffeeAllFilterOptions = {
+  flavors: ['달콤', '고소', '쌉살', '부드러운', '묵직한', '밸런스'],
+  roasting: ['light', 'light_medium', 'medium', 'medium_dark', 'dark'] as const,
+  type: ['blend', 'single_origin', 'decaffeination'] as const,
+};
+
+const ROASTING = {
+  light: '라이트',
+  light_medium: '라이트미디엄',
+  medium: '미디엄',
+  medium_dark: '미디엄다크',
+  dark: '다크',
+} as const;
+
+const getRoastingName = (roasting: keyof typeof ROASTING) => ROASTING[roasting];
+
+const TYPE = {
+  blend: '블랜드',
+  single_origin: '싱글오리진',
+  decaffeination: '디카페인',
+} as const;
+
+const getTypeName = (type: keyof typeof TYPE) => TYPE[type];

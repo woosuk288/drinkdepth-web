@@ -5,27 +5,17 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import CoffeeSearch, { CoffeeSearchXS } from './CoffeeSearch';
 import { Coffee_coffee_coffee } from '../../apollo/__generated__/Coffee';
 import CoffeeFilterDrawer from './CoffeeFilterDrawer';
+import { CoffeeOption } from '../../pages/coffee';
 
 type CoffeeFilterProps = {
-  items: Coffee_coffee_coffee[];
+  length: number;
+  checked: CoffeeOption;
+  handleCheckbox: (key: keyof CoffeeOption, value: string) => () => void;
 };
-function CoffeeFilter({ items }: CoffeeFilterProps) {
+
+function CoffeeFilter({ length, checked, handleCheckbox }: CoffeeFilterProps) {
   const [open, setOpen] = React.useState(false);
-
-  const [checked, setChecked] = React.useState<string[]>([]);
-
-  const handleCheckbox = (value: string) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
+  console.log('checked :', checked);
 
   return (
     <Box
@@ -40,7 +30,7 @@ function CoffeeFilter({ items }: CoffeeFilterProps) {
         },
       })}
     >
-      <Typography>{items.length}개의 상품</Typography>
+      <Typography>{length}개의 상품</Typography>
       <CoffeeSearch />
       <CoffeeSearchXS />
       <Button

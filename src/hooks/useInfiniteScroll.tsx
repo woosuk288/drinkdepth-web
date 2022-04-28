@@ -9,7 +9,7 @@ export type useInfiniteScrollType = {
 const NUMBER_OF_ITEMS_PER_PAGE = 9;
 
 const useInfiniteScroll = function (
-  selectedTag: string,
+  selectedTag: string = 'All',
   posts: Posts_posts_posts[]
 ): useInfiniteScrollType {
   const containerRef: MutableRefObject<HTMLDivElement | null> =
