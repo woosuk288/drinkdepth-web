@@ -92,12 +92,16 @@ function ChatContent({ handleHideContent }: ChatContentProps) {
       >
         <Box maxWidth="sm" marginX="auto" marginY="0.5rem">
           <ChatCard />
-          <Message button={'입금 확인'} />
-          <Message text="국민은행 1230000456789로 33,000원 입금 완료했습니다." />
-          <Message direction="right" button={'배송지 입력'} />
+          <Message direction="right" button={'입금 확인'} />
           <Message
             direction="right"
-            text="운송장번호 1029384756로 배송이 시작되었습니다."
+            text={'입금 완료되었습니다. 며칠 내로 배송됩니다.'}
+          />
+          {/* <Message text="국민은행 1230000456789로 33,000원 입금 완료했습니다." /> */}
+          <Message direction="right" button={'운송장 입력'} />
+          <Message
+            direction="right"
+            text="운송장 번호 1029384756로 배송이 시작되었습니다."
           />
           <Message text="상품 수령 후 거래 완료 버튼을 클릭했습니다." />
         </Box>

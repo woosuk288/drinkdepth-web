@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import CoffeeIcon from '@mui/icons-material/Coffee';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
+import { Badge } from '@mui/material';
 
 function ChatTabs() {
   const [value, setValue] = React.useState(0);
@@ -19,7 +20,14 @@ function ChatTabs() {
       aria-label="icon label tabs example"
       sx={{ '.MuiTabs-flexContainer': { justifyContent: 'space-evenly' } }}
     >
-      <Tab icon={<CoffeeIcon />} label="대기" />
+      <Tab
+        icon={
+          <Badge color="secondary" badgeContent={2}>
+            <CoffeeIcon />
+          </Badge>
+        }
+        label="대기"
+      />
       <Tab icon={<PeopleAltIcon />} label="진행중" />
       <Tab icon={<DoneOutlineIcon />} label="완료" />
     </Tabs>

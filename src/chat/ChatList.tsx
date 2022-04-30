@@ -4,7 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import { Divider, Typography } from '@mui/material';
+import { Badge, Divider, Typography } from '@mui/material';
 
 type ChatListProps = {
   handleShowContent: (id: string) => void;
@@ -18,7 +18,13 @@ function ChatList({ handleShowContent }: ChatListProps) {
           <Divider />
           <ListItem button onClick={() => handleShowContent(room.id)}>
             <ListItemAvatar>
-              <Avatar>{room.name.charAt(0)}</Avatar>
+              <Badge
+                color="secondary"
+                variant={room.isBadge ? 'dot' : undefined}
+                anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+              >
+                <Avatar>{room.name.charAt(0)}</Avatar>
+              </Badge>
             </ListItemAvatar>
             <ListItemText
               primary={
@@ -53,6 +59,7 @@ const chatRooms = [
     company_name: '여섯시오븐',
     updated_at: new Date('2014-01-09').toLocaleDateString(),
     last_message: `I'll be in your neighborhood doing errands this`,
+    isBadge: true,
   },
   {
     id: 'lee',
@@ -60,6 +67,7 @@ const chatRooms = [
     company_name: '달콤',
     updated_at: new Date('2014-01-07').toLocaleDateString(),
     last_message: `Wish I could come, but I'm out of town this`,
+    isBadge: true,
   },
   {
     id: 'park',
@@ -67,5 +75,6 @@ const chatRooms = [
     company_name: '돌담콩',
     updated_at: new Date('2014-07-20').toLocaleDateString(),
     last_message: `Do you have Paris recommendations? Have you ever`,
+    isBadge: false,
   },
 ];

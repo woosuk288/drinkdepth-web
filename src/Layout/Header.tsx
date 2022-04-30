@@ -44,6 +44,8 @@ const Header = () => {
     null
   );
 
+  console.log('router.pathname : ', router.pathname);
+
   React.useEffect(() => {
     if (user) {
       userVar(user);
@@ -80,21 +82,10 @@ const Header = () => {
   return (
     <>
       <AppBar position="static" color="transparent">
-        <Container
-          maxWidth="lg"
-          sx={{ paddingLeft: { xs: 1, lg: 5 }, paddingRight: { xs: 1, lg: 5 } }}
-        >
+        <Container maxWidth="lg" sx={sx.container}>
           <Toolbar disableGutters>
             {/* desktop */}
-            <Box
-              sx={{
-                ml: '-1.25rem',
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                cursor: 'pointer',
-              }}
-              onClick={() => router.push('/')}
-            >
+            <Box sx={sx.desktop} onClick={() => router.push('/')}>
               <Image
                 src="/images/logo_name.png"
                 alt="drinkdepth-logo"
@@ -136,12 +127,25 @@ const Header = () => {
                   <Button disabled>loading</Button>
                 ) : user ? (
                   //  && userRole
-                  <IconButton
-                    color="primary"
-                    onClick={() => router.push('/user')}
-                  >
-                    <AccountCircleIcon fontSize="large" />
-                  </IconButton>
+                  <>
+                    <IconButton
+                      color="primary"
+                      onClick={() => router.push('/user')}
+                    >
+                      <AccountCircleIcon fontSize="large" />
+                    </IconButton>
+                    <Button
+                      variant="contained"
+                      onClick={() => router.push({ pathname: '/order' })}
+                      sx={{
+                        fontWeight: router.pathname.includes('/order')
+                          ? 700
+                          : 'inherit',
+                      }}
+                    >
+                      주문관리
+                    </Button>
+                  </>
                 ) : (
                   <Button
                     variant="contained"
@@ -159,7 +163,7 @@ const Header = () => {
             </Box>
 
             {/* mobile */}
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <Box sx={sx.mobile}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -201,18 +205,26 @@ const Header = () => {
                   {loading ? (
                     <Button disabled>loading</Button>
                   ) : user ? (
-                    // <Button
-                    //   onClick={handleLogout}
-
-                    // >
-                    //   로그아웃
-                    // </Button>
-                    <IconButton
-                      color="primary"
-                      onClick={() => router.push('/user')}
-                    >
-                      <AccountCircleIcon fontSize="large" />
-                    </IconButton>
+                    <>
+                      <IconButton
+                        color="primary"
+                        onClick={() => router.push('/user')}
+                      >
+                        <AccountCircleIcon fontSize="large" />
+                      </IconButton>
+                      <Button
+                        variant="contained"
+                        onClick={() => router.push({ pathname: '/order' })}
+                        sx={{
+                          mr: '1rem',
+                          fontWeight: router.pathname.includes('/order')
+                            ? 700
+                            : 'inherit',
+                        }}
+                      >
+                        주문관리
+                      </Button>
+                    </>
                   ) : (
                     <Button
                       variant="contained"
@@ -258,3 +270,14 @@ const Header = () => {
   );
 };
 export default Header;
+
+const sx = {
+  container: { paddingLeft: { xs: 1, lg: 5 }, paddingRight: { xs: 1, lg: 5 } },
+  desktop: {
+    ml: '-1.25rem',
+    mr: 2,
+    display: { xs: 'none', md: 'flex' },
+    cursor: 'pointer',
+  },
+  mobile: { flexGrow: 1, display: { xs: 'flex', md: 'none' } },
+};

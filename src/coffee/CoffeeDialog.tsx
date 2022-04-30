@@ -144,7 +144,9 @@ export default function CoffeeDialog({
               },
             }}
           >
-            <Button variant="outlined" onClick={() => router.push('/chat')}>
+            <Button
+              variant="outlined" /* onClick={() => router.push('/chat')} */
+            >
               주문내역 상세보기
             </Button>
             <Button
