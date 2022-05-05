@@ -74,8 +74,6 @@ const GoalIcon = styled.div`
   }
 `;
 
-import React from 'react';
-
 function SectionA() {
   return (
     <>

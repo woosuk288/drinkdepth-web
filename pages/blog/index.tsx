@@ -43,6 +43,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
         },
         { All: 0 }
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
