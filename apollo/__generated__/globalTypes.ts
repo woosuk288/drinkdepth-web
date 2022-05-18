@@ -56,7 +56,9 @@ export interface PostInput {
 
 export interface RegisterInput {
   ip?: string | null;
+  name?: string | null;
   contact: string;
+  memo?: string | null;
 }
 
 export interface UpdateNotificationInput {

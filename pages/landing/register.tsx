@@ -24,15 +24,22 @@ const metaData = {
   image: '/images/logo_name.png',
 };
 
+const initContactInfo = {
+  ip: '',
+  contact: '',
+  name: '',
+  memo: '',
+};
+
 const Register: NextPage = () => {
-  const [contact, setContact] = React.useState<string>('');
+  const [contactInfo, setContactInfo] = React.useState(initContactInfo);
   const [registerTest, { data, loading: processing, error }] = useMutation<
     registerTest,
     registerTestVariables
   >(REGISTER_TEST_MUTATION, {
     onCompleted: (result) => {
       if (result.registerTest.ok) {
-        setContact('');
+        setContactInfo(initContactInfo);
         alert('신청 완료.');
       }
       if (result.registerTest.error) {
@@ -46,7 +53,7 @@ const Register: NextPage = () => {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setContact(event.target.value);
+    setContactInfo({ ...contactInfo, [event.target.name]: event.target.value });
   };
 
   const onSend = (e: React.FormEvent) => {
@@ -57,7 +64,7 @@ const Register: NextPage = () => {
       .then(({ ip }) => {
         console.log(ip);
 
-        registerTest({ variables: { input: { ip, contact } } });
+        registerTest({ variables: { input: { ...contactInfo, ip } } });
       });
   };
 
@@ -87,10 +94,25 @@ const Register: NextPage = () => {
         >
           <TextField
             autoComplete="off"
+            name="name"
             onChange={handleChange}
-            value={contact}
-            variant="standard"
+            value={contactInfo.name}
+            variant="outlined"
             autoFocus
+            fullWidth
+            // label=""
+            placeholder="이름"
+            // error={!!errorMsg}
+            // helperText={errorMsg}
+            disabled={processing}
+          />
+
+          <TextField
+            autoComplete="off"
+            name="contact"
+            onChange={handleChange}
+            value={contactInfo.contact}
+            variant="outlined"
             fullWidth
             // label=""
             placeholder="전화번호 or 이메일"
@@ -98,18 +120,30 @@ const Register: NextPage = () => {
             // error={!!errorMsg}
             // helperText={errorMsg}
             disabled={processing}
-            sx={{
-              '& .MuiInputBase-input': {
-                textAlign: 'center',
-              },
-            }}
+            style={{ marginTop: 8, marginBottom: 8 }}
+          />
+
+          <TextField
+            autoComplete="off"
+            name="memo"
+            onChange={handleChange}
+            value={contactInfo.memo}
+            variant="outlined"
+            fullWidth
+            multiline
+            rows={3}
+            // label=""
+            placeholder="남기실 내용"
+            // error={!!errorMsg}
+            // helperText={errorMsg}
+            disabled={processing}
           />
 
           <Button
             variant="contained"
             color="primary"
             fullWidth
-            disabled={processing || contact.length < 11}
+            disabled={processing || contactInfo.contact.length < 11}
             type="submit"
             sx={{
               marginTop: '0.5rem',
