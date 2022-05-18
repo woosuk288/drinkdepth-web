@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Box, Theme } from '@mui/system';
 import { SxProps } from '@mui/material';
+import TestHeader from './TestHeader';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -14,7 +15,8 @@ type LayoutProps = {
 const Layout = ({ children, sxMain, showFooter = true }: LayoutProps) => {
   return (
     <Box display="flex" flexDirection="column" height="100%">
-      <Header />
+      <TestHeader />
+      {/* <Header /> */}
       <Box
         component="main"
         sx={{

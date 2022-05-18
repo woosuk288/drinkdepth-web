@@ -54,6 +54,11 @@ export interface PostInput {
   id: string;
 }
 
+export interface RegisterInput {
+  ip?: string | null;
+  contact: string;
+}
+
 export interface UpdateNotificationInput {
   ids: string[];
 }

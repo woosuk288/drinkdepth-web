@@ -111,3 +111,12 @@ export const CREATE_PAYMENT_MUTATION = gql`
     }
   }
 `;
+
+export const REGISTER_TEST_MUTATION = gql`
+  mutation registerTest($input: RegisterInput!) {
+    registerTest(input: $input) {
+      ok
+      error
+    }
+  }
+`;
