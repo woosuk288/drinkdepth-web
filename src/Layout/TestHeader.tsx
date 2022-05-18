@@ -39,6 +39,7 @@ const pages = [
 
 const TestHeader = () => {
   const router = useRouter();
+  const [user, loading, error] = useAuthFb();
 
   return (
     <>

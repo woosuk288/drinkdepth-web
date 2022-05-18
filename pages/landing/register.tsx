@@ -18,8 +18,6 @@ import {
   registerTestVariables,
 } from '../../apollo/__generated__/registerTest';
 
-import { useAuthFb } from '../../firebase/clientApp';
-
 const metaData = {
   title: '깊이를 마시다',
   description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
@@ -27,8 +25,6 @@ const metaData = {
 };
 
 const Register: NextPage = () => {
-  useAuthFb();
-
   const [contact, setContact] = React.useState<string>('');
   const [registerTest, { data, loading: processing, error }] = useMutation<
     registerTest,
