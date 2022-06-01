@@ -17,6 +17,8 @@ import {
   registerTestVariables,
 } from '../../apollo/__generated__/registerTest';
 
+import * as fbq from '../../facebook/fpixel';
+
 const initContactInfo = {
   ip: '',
   contact: '',
@@ -51,6 +53,10 @@ const Register = () => {
 
   const onSend = (e: React.FormEvent) => {
     e.preventDefault();
+
+    fbq.event('SubmitApplication', {
+      event_name: '사전 알림 신청 제출 버튼',
+    });
 
     fetch('https://jsonip.com', { mode: 'cors' })
       .then((resp) => resp.json())

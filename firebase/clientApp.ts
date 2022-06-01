@@ -24,5 +24,6 @@ declare global {
     recaptchaVerifier: RecaptchaVerifier;
     confirmationResult: ConfirmationResult;
     grecaptcha: any;
+    fbq: any;
   }
 }

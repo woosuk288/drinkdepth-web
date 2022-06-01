@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
-import NextLink from 'next/link';
+
 // import Meta from '../src/Meta';
 import { Box } from '@mui/material';
 import Layout from '../src/Layout';
@@ -8,6 +8,7 @@ import Meta from '../src/Meta';
 
 import Image from 'next/image';
 import Register from '../src/landing/register';
+import * as fbq from '../facebook/fpixel';
 
 const metaData = {
   title: '깊이를 마시다',
@@ -25,6 +26,8 @@ const Landing: NextPage = () => {
       top: 0,
       behavior: 'smooth',
     });
+
+    fbq.event('Schedule', { event_name: '사전 알림 신청 이미지 클릭' });
   };
 
   return (

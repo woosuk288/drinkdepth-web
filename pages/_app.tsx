@@ -10,23 +10,9 @@ import GlobalStyle from '../styles/GlobalStyle';
 
 import { ApolloProvider } from '@apollo/client';
 import client from '../apollo/client';
-import { Router } from 'next/router';
-
-function FacebookPixel() {
-  React.useEffect(() => {
-    import('react-facebook-pixel')
-      .then((x) => x.default)
-      .then((ReactPixel) => {
-        ReactPixel.init('435770381248304');
-        ReactPixel.pageView();
-
-        Router.events.on('routeChangeComplete', () => {
-          ReactPixel.pageView();
-        });
-      });
-  });
-  return null;
-}
+import { Router, useRouter } from 'next/router';
+import Script from 'next/script';
+import * as fbq from '../facebook/fpixel';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -37,17 +23,52 @@ interface MyAppProps extends AppProps {
 
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const router = useRouter();
+
+  React.useEffect(() => {
+    // This pageview only triggers the first time (it's important for Pixel to have real information)
+    fbq.pageview();
+
+    const handleRouteChange = () => {
+      fbq.pageview();
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <FacebookPixel />
+
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <ApolloProvider client={client}>
+          {/* Global Site Code Pixel - Facebook Pixel */}
+          <Script
+            id="fb-pixel"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '435770381248304');
+          `,
+            }}
+          />
+
           <Component {...pageProps} />
         </ApolloProvider>
       </ThemeProvider>
