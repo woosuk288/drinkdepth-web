@@ -10,6 +10,23 @@ import GlobalStyle from '../styles/GlobalStyle';
 
 import { ApolloProvider } from '@apollo/client';
 import client from '../apollo/client';
+import { Router } from 'next/router';
+
+function FacebookPixel() {
+  React.useEffect(() => {
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('435770381248304');
+        ReactPixel.pageView();
+
+        Router.events.on('routeChangeComplete', () => {
+          ReactPixel.pageView();
+        });
+      });
+  });
+  return null;
+}
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -25,6 +42,7 @@ export default function MyApp(props: MyAppProps) {
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
+      <FacebookPixel />
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
