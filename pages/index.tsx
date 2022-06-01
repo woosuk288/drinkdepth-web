@@ -18,8 +18,6 @@ const metaData = {
 const Landing: NextPage = () => {
   // handleScroll.js
   const handleScroll = (e: any) => {
-    console.log('window.scrollY : ', window.scrollY);
-
     if (!window.scrollY) return;
     // 현재 위치가 이미 최상단일 경우 return
 
