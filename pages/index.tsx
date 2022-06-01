@@ -7,12 +7,26 @@ import Layout from '../src/Layout';
 import Meta from '../src/Meta';
 
 import Image from 'next/image';
+import Register from '../src/landing/register';
+
+const metaData = {
+  title: '깊이를 마시다',
+  description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
+  image: '/images/logo_name.png',
+};
 
 const Landing: NextPage = () => {
-  const metaData = {
-    title: '깊이를 마시다',
-    description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
-    image: '/images/logo_name.png',
+  // handleScroll.js
+  const handleScroll = (e: any) => {
+    console.log('window.scrollY : ', window.scrollY);
+
+    if (!window.scrollY) return;
+    // 현재 위치가 이미 최상단일 경우 return
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -20,6 +34,8 @@ const Landing: NextPage = () => {
       <Meta data={metaData} />
 
       <Box display="flex" flexDirection={'column'}>
+        <Register />
+
         <Image
           src="/images/landing1.png"
           alt="landing-1"
@@ -42,15 +58,14 @@ const Landing: NextPage = () => {
           height={1115}
         />
 
-        <NextLink href={'/landing/register'} passHref>
-          <Image
-            src="/images/landing4.png"
-            alt="landing-4"
-            width={1080}
-            height={533}
-            style={{ cursor: 'pointer' }}
-          />
-        </NextLink>
+        <Image
+          src="/images/landing4.png"
+          alt="landing-4"
+          width={1080}
+          height={533}
+          style={{ cursor: 'pointer' }}
+          onClick={handleScroll}
+        />
       </Box>
 
       <a

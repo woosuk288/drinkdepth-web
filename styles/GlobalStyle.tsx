@@ -22,7 +22,7 @@ const defaultStyle = css`
     height: 100%;
 
     /* 모바일 수평 스크롤 금지 */
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 
     word-break: keep-all;
   }

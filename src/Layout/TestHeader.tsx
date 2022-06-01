@@ -58,21 +58,6 @@ const TestHeader = () => {
 
             <Box flexGrow={{ md: 1 }} />
 
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Box
-                sx={{
-                  ml: '1.5rem',
-                }}
-              >
-                <Button
-                  variant="contained"
-                  onClick={() => router.push('/landing/register')}
-                >
-                  사전 알림 신청하기
-                </Button>
-              </Box>
-            </Box>
-
             {/* mobile */}
 
             <Box
