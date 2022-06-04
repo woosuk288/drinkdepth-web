@@ -70,18 +70,15 @@ const Register = () => {
   return (
     <Box
       sx={{
-        height: '100%',
+        // height: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: 600,
+        marginTop: '3rem',
+        // minHeight: 600,
       }}
     >
-      <Typography variant="h5" fontWeight={700} sx={{ margin: '60px 0' }}>
-        사전 알림 신청
-      </Typography>
-
       <Box
         component="form"
         sx={{ width: { xs: '280px', sm: '400px' } }}

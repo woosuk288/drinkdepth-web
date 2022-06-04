@@ -2,7 +2,21 @@ import * as React from 'react';
 import type { NextPage } from 'next';
 
 // import Meta from '../src/Meta';
-import { Box } from '@mui/material';
+import {
+  Avatar,
+  Box,
+  Button,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from '@mui/material';
+
+import TagIcon from '@mui/icons-material/Tag';
+import MoneyOffIcon from '@mui/icons-material/MoneyOff';
+import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
+
 import Layout from '../src/Layout';
 import Meta from '../src/Meta';
 
@@ -17,13 +31,22 @@ const metaData = {
 };
 
 const Landing: NextPage = () => {
-  // handleScroll.js
   const handleScroll = (e: any) => {
-    if (!window.scrollY) return;
+    console.log('window.scrollY : ', window.scrollY);
+
+    // if (!window.scrollY) return;
     // 현재 위치가 이미 최상단일 경우 return
 
+    console.log('document.body.scrollHeight : ', document.body.scrollHeight);
+
+    const register_form_location = (
+      document.querySelector('#register_form_location') as any
+    ).offsetTop!;
+
+    console.log('register_form_location : ', register_form_location);
+
     window.scrollTo({
-      top: 0,
+      top: register_form_location,
       behavior: 'smooth',
     });
 
@@ -34,40 +57,237 @@ const Landing: NextPage = () => {
     <Layout>
       <Meta data={metaData} />
 
-      <Box display="flex" flexDirection={'column'}>
-        <Register />
+      <Box display="flex" flexDirection={'column'} paddingX="1rem">
+        {/* first */}
+        <Box
+          height="calc(100vh - 56px)"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+        >
+          <span style={{ flex: 1 }} />
+          <Typography
+            variant="h3"
+            fontWeight={'bold'}
+            align="center"
+            // color="primary"
+          >
+            우리 카페만의 특별한 원두
+          </Typography>
 
-        <Image
-          src="/images/landing1.png"
-          alt="landing-1"
-          width={1080}
-          height={1920}
-          priority
-        />
+          <Typography
+            variant="h6"
+            align="center"
+            sx={{ marginTop: '3rem', marginBottom: '0.5rem' }}
+          >
+            드링크뎁스는 수수료 제로의 음료 마켓 플레이스입니다.
+          </Typography>
+          <Typography variant="h6" align="center">
+            국내 유명 로스터리들의 개성있고 특별한 원두를 최저가로 도입해
+            보세요.
+          </Typography>
 
-        <Image
-          src="/images/landing2.png"
-          alt="landing-2"
-          width={1080}
-          height={1235}
-        />
+          <span style={{ flex: 1 }} />
+          <Box textAlign="center">
+            <Button
+              variant="contained"
+              sx={{
+                padding: ' 1rem 3rem',
+                borderRadius: '30px',
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+              }}
+              onClick={handleScroll}
+            >
+              사전 알림 신청
+            </Button>
+          </Box>
+          <span style={{ flex: 1 }} />
+        </Box>
 
-        <Image
-          src="/images/landing3.png"
-          alt="landing-3"
-          width={1080}
-          height={1115}
-        />
+        {/* second */}
+        <Box>
+          <Box
+            width="100%"
+            position={'relative'}
+            sx={{
+              '&::after': {
+                content: '""',
+                display: 'block',
+                paddingBottom: '75%',
+              },
+            }}
+          >
+            <Box
+              position="absolute"
+              left="-1rem"
+              width="calc(100% + 2rem)"
+              height="100%"
+            >
+              <Image
+                src="/images/coffee_bean.png"
+                alt="landing-2"
+                width={1080}
+                height={779}
+              />
+            </Box>
+          </Box>
 
-        <Image
-          src="/images/landing4.png"
-          alt="landing-4"
-          width={1080}
-          height={533}
-          style={{ cursor: 'pointer' }}
-          onClick={handleScroll}
-        />
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            align="center"
+            sx={{ marginTop: '5rem', marginBottom: '1.5rem' }}
+          >
+            드링크뎁스를
+            <div>왜 이용해야 할까요?</div>
+          </Typography>
+          <Typography variant="h6" fontWeight="400" align="center">
+            커피 전문점 이용시 음료 맛을 가장 중요하게 봄에 따라 원재료의
+            중요성이 높아졌습니다.
+          </Typography>
+
+          <Box display="flex" justifyContent={'center'}>
+            <Image
+              src="/images/coffee_flavor.png"
+              alt="landing-2"
+              width={222}
+              height={318}
+            />
+          </Box>
+
+          <List
+            sx={{
+              width: '100%',
+              maxWidth: 360,
+              marginTop: '2rem',
+              bgcolor: 'background.paper',
+              '.MuiListItemText-primary': {
+                fontSize: '1.5rem',
+                fontWeight: 600,
+              },
+              '.MuiListItemText-secondary': {
+                fontSize: '1rem',
+              },
+            }}
+          >
+            <ListItem alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar sx={{ backgroundColor: 'primary.main' }}>
+                  <TagIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary="데이터 해시태그 검색"
+                secondary={
+                  '원두 해시태그 기반 검색으로 전국 유명 로스터리의 커피를 우리 카페 컨셉에 맞게 도입해 보세요.'
+                }
+              />
+            </ListItem>
+            {/* <Divider variant="inset" component="li" /> */}
+            <ListItem alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar sx={{ backgroundColor: '#6AD7FF' }}>
+                  <MoneyOffIcon />
+                </Avatar>
+              </ListItemAvatar>
+              {/* <ListItemButton>
+                <ListItemIcon>
+                  <MoneyOffIcon color="primary" fontSize="large" />
+                </ListItemIcon>
+              </ListItemButton> */}
+              <ListItemText
+                primary="최저가 보장"
+                secondary={
+                  '군더더기를 뺀 수수료 0%의 공유 마켓 플레이스기 때문에 최저가로 제공이 가능합니다.'
+                }
+              />
+            </ListItem>
+            {/* <Divider variant="inset" component="li" /> */}
+            <ListItem alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar sx={{ backgroundColor: 'secondary.main' }}>
+                  <CoffeeMakerIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary="맞춤 레시피"
+                secondary={
+                  '로스터리 제작자들의 원재료 맞춤 공유 레시피로 개성을 살려보세요.'
+                }
+              />
+            </ListItem>
+          </List>
+        </Box>
+
+        {/* third */}
+
+        <Box
+          marginTop="3rem"
+          padding="100px 1rem"
+          marginLeft="-1rem"
+          width="calc(100% + 2rem)"
+          sx={{
+            background:
+              'linear-gradient(to bottom, rgba(106,215,255,1) 0%, rgba(79,156,255,0.7) 30%, rgba(0,0,0,0) 100%)',
+          }}
+        >
+          <Typography
+            variant="h5"
+            fontWeight={'bold'}
+            align="center"
+            color="white"
+          >
+            원재료의 개성으로 손님에게 특별한 가치를 공유하고 싶으시다면?
+          </Typography>
+
+          <Typography
+            variant="h6"
+            align="center"
+            color="white"
+            sx={{ marginTop: '2rem' }}
+          >
+            드링크뎁스를 이용해보세요!
+          </Typography>
+
+          <Box marginTop="3rem" textAlign="center">
+            <Button
+              variant="contained"
+              sx={{
+                padding: ' 1rem 2rem',
+                borderRadius: '30px',
+                fontSize: '1.25rem',
+              }}
+              onClick={handleScroll}
+            >
+              사전 알림 신청
+            </Button>
+          </Box>
+        </Box>
+
+        <Box id="register_form_location">
+          <Typography
+            variant="h4"
+            fontWeight={'bold'}
+            align="center"
+            marginTop="3rem"
+          >
+            드링크뎁스에 <div>문의 및 제안하기</div>
+          </Typography>
+
+          <Typography
+            variant="h6"
+            align="center"
+            sx={{ marginTop: '2rem', marginBottom: '0.5rem' }}
+          >
+            궁금하신 점이나 제안 주실 사항 있으시면 본인의 전화번호나 이메일
+            주소와 함께
+            <div>아래 양식에 남겨주세요.</div>
+          </Typography>
+        </Box>
       </Box>
+
+      <Register />
 
       <a
         href="https://pf.kakao.com/_ktxnJb/chat"

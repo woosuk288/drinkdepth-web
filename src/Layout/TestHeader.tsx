@@ -11,12 +11,22 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import TagIcon from '@mui/icons-material/Tag';
 
 import { userVar, Role, roleVar } from '../../apollo/client';
 import { auth, useAuthFb } from '../../firebase/clientApp';
 import { USER_ROLES } from '../constants';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import {
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
 
 const pages = [
   {
@@ -40,6 +50,17 @@ const pages = [
 const TestHeader = () => {
   const router = useRouter();
   const [user, loading, error] = useAuthFb();
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   return (
     <>
@@ -64,16 +85,64 @@ const TestHeader = () => {
               sx={{
                 flexGrow: 1,
                 display: { xs: 'flex', md: 'none' },
-                justifyContent: 'center',
+                justifyContent: 'space-between',
+                alignItems: 'center',
               }}
               onClick={() => router.push('/')}
             >
+              <IconButton
+                size="large"
+                aria-label="menu"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+
               <Image
                 src="/images/logo_name.png"
                 alt="drinkdepth-logo"
                 width={160}
                 height={34}
               />
+
+              <IconButton style={{ minWidth: 48 }} />
+              <Drawer
+                anchor={'left'}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+              >
+                <Toolbar />
+                <Divider />
+                <List sx={{ width: 250 }}>
+                  <ListItem key={'드링크뎁스 소개'} disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <TagIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={'드링크뎁스 소개'} />
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem key={'회원가입'} disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <TagIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={'회원가입'} />
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem key={'공식 블로그'} disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <TagIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={'공식 블로그'} />
+                    </ListItemButton>
+                  </ListItem>
+                </List>
+              </Drawer>
             </Box>
           </Toolbar>
         </Container>
