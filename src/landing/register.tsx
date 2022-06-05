@@ -91,7 +91,7 @@ const Register = () => {
           onChange={handleChange}
           value={contactInfo.name}
           variant="outlined"
-          autoFocus
+          // autoFocus
           fullWidth
           // label=""
           placeholder="이름"

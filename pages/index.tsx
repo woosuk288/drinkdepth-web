@@ -133,19 +133,68 @@ const Landing: NextPage = () => {
             </Box>
           </Box>
 
-          <Typography
-            variant="h4"
-            fontWeight="bold"
-            align="center"
-            sx={{ marginTop: '5rem', marginBottom: '1.5rem' }}
+          <List
+            sx={{
+              width: '100%',
+              maxWidth: 360,
+              marginTop: '2rem',
+              bgcolor: 'background.paper',
+              '.MuiListItemText-primary': {
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                lineHeight: 1.1,
+                marginBottom: '0.5rem',
+              },
+              '.MuiListItemText-secondary': {
+                fontSize: '1rem',
+              },
+            }}
           >
-            드링크뎁스를
-            <div>왜 이용해야 할까요?</div>
+            <ListItem alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar sx={{ backgroundColor: 'primary.main' }}>Q</Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary="유명 카페는 왜 꾸준하게 고객이 많을까요?"
+                secondary={'단골고객 유치에는 음료의 퀄리티와 맛이 기본입니다.'}
+              />
+            </ListItem>
+          </List>
+
+          {/* <Box marginTop={'3rem'} marginBottom={'2rem'}>
+            <Image
+              src={'/images/coffee_why_text.png'}
+              alt="coffee_review"
+              width={684}
+              height={144}
+            />
+          </Box> */}
+
+          <Image
+            src={'/images/coffee_review.png'}
+            alt="coffee_review"
+            width={860}
+            height={1100}
+          />
+
+          <Typography
+            variant="h6"
+            fontWeight="400"
+            align="center"
+            sx={{ marginTop: '6rem' }}
+          >
+            카페 시장이 과열됨에 따라 차별화된 커피의 맛이 단골 손님을 유치
+            하는데 기본이 되고 있습니다.
           </Typography>
-          <Typography variant="h6" fontWeight="400" align="center">
-            커피 전문점 이용시 음료 맛을 가장 중요하게 봄에 따라 원재료의
-            중요성이 높아졌습니다.
+          <Typography
+            variant="h6"
+            fontWeight="400"
+            align="center"
+            sx={{ marginTop: '1rem' }}
+          >
+            실제로 커피전문점 이용시 커피의 맛을 가장 중요하게 보고 있습니다.
           </Typography>
+          <div></div>
 
           <Box display="flex" justifyContent={'center'}>
             <Image
@@ -155,6 +204,24 @@ const Landing: NextPage = () => {
               height={318}
             />
           </Box>
+
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            align="center"
+            sx={{ marginTop: '5rem', marginBottom: '1.5rem' }}
+          >
+            드링크뎁스를
+            <div>왜 이용해야 할까요?</div>
+          </Typography>
+
+          <Typography variant="h6" fontWeight="400" align="center" gutterBottom>
+            커피 전문점 이용시 음료 맛을 가장 중요하게 봄에 따라 원재료의
+            중요성이 높아졌습니다.
+          </Typography>
+          <Typography variant="h6" fontWeight="400" align="center">
+            그에 따라 획기적인 기능과 수수료 없는 서비스를 이용해 보세요
+          </Typography>
 
           <List
             sx={{
