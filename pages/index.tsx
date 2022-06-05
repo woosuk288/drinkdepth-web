@@ -23,6 +23,7 @@ import Meta from '../src/Meta';
 import Image from 'next/image';
 import Register from '../src/landing/register';
 import * as fbq from '../facebook/fpixel';
+import { KakaoShareButton } from '../src/landing/KakaoShareButton';
 
 const metaData = {
   title: '깊이를 마시다',
@@ -372,6 +373,18 @@ const Landing: NextPage = () => {
       </a>
 
       <div style={{ marginBottom: '100px' }}></div>
+      <Box
+        display="flex"
+        justifyContent={'center'}
+        alignItems="center"
+        sx={{ cursor: 'pointer' }}
+        id="kakao-link-btn"
+      >
+        <KakaoShareButton url={'https://drinkdepth.com'} />
+        <Typography variant="h6" sx={{ marginLeft: '1rem', color: '#3A2929' }}>
+          공유하기
+        </Typography>
+      </Box>
     </Layout>
   );
 };
