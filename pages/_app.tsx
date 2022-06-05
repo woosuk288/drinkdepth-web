@@ -69,6 +69,12 @@ export default function MyApp(props: MyAppProps) {
             }}
           />
 
+          <Script
+            src="https://developers.kakao.com/sdk/js/kakao.js"
+            strategy="beforeInteractive"
+            onLoad={() => console.log('kakao script loaded')}
+          />
+
           <Component {...pageProps} />
         </ApolloProvider>
       </ThemeProvider>

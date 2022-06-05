@@ -23,6 +23,7 @@ import Meta from '../src/Meta';
 import Image from 'next/image';
 import Register from '../src/landing/register';
 import * as fbq from '../facebook/fpixel';
+import { KakaoShareButton } from '../src/landing/KakaoShareButton';
 
 const metaData = {
   title: '깊이를 마시다',
@@ -32,18 +33,18 @@ const metaData = {
 
 const Landing: NextPage = () => {
   const handleScroll = (e: any) => {
-    console.log('window.scrollY : ', window.scrollY);
+    // console.log('window.scrollY : ', window.scrollY);
 
     // if (!window.scrollY) return;
     // 현재 위치가 이미 최상단일 경우 return
 
-    console.log('document.body.scrollHeight : ', document.body.scrollHeight);
+    // console.log('document.body.scrollHeight : ', document.body.scrollHeight);
 
     const register_form_location = (
       document.querySelector('#register_form_location') as any
     ).offsetTop!;
 
-    console.log('register_form_location : ', register_form_location);
+    // console.log('register_form_location : ', register_form_location);
 
     window.scrollTo({
       top: register_form_location,
@@ -372,6 +373,18 @@ const Landing: NextPage = () => {
       </a>
 
       <div style={{ marginBottom: '100px' }}></div>
+      <Box
+        display="flex"
+        justifyContent={'center'}
+        alignItems="center"
+        sx={{ cursor: 'pointer' }}
+        id="kakao-link-btn"
+      >
+        <KakaoShareButton url={'https://drinkdepth.com'} />
+        <Typography variant="h6" sx={{ marginLeft: '1rem', color: '#3A2929' }}>
+          공유하기
+        </Typography>
+      </Box>
     </Layout>
   );
 };

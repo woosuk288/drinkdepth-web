@@ -25,5 +25,6 @@ declare global {
     confirmationResult: ConfirmationResult;
     grecaptcha: any;
     fbq: any;
+    Kakao: any;
   }
 }
