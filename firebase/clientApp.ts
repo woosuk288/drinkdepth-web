@@ -26,5 +26,6 @@ declare global {
     grecaptcha: any;
     fbq: any;
     Kakao: any;
+    kakao: any;
   }
 }
