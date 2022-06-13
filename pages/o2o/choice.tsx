@@ -44,6 +44,7 @@ const ChoicePage: NextPage = () => {
             // row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
+            defaultValue={'all'}
           >
             <FormControlLabel
               value="caffeine"
@@ -57,6 +58,12 @@ const ChoicePage: NextPage = () => {
               label="디카페인"
               // labelPlacement="bottom"
             />
+            <FormControlLabel
+              value="all"
+              control={<Radio />}
+              label="상관없음"
+              // labelPlacement="bottom"
+            />
           </RadioGroup>
         </FormControl>
 
@@ -68,6 +75,7 @@ const ChoicePage: NextPage = () => {
             // row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
+            defaultValue={'all'}
           >
             <FormControlLabel
               value="light"
@@ -101,6 +109,12 @@ const ChoicePage: NextPage = () => {
               label="다크"
               // labelPlacement="bottom"
             />
+            <FormControlLabel
+              value="all"
+              control={<Radio />}
+              label="상관없음"
+              // labelPlacement="bottom"
+            />
           </RadioGroup>
         </FormControl>
 
@@ -110,6 +124,7 @@ const ChoicePage: NextPage = () => {
             // row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
+            defaultValue={'all'}
           >
             <FormControlLabel
               value="lowest"
@@ -143,41 +158,19 @@ const ChoicePage: NextPage = () => {
               label="매우 높음"
               // labelPlacement="bottom"
             />
-          </RadioGroup>
-        </FormControl>
-
-        <FormControl>
-          <FormLabel id="demo-row-radio-buttons-group-label">4. 풍미</FormLabel>
-
-          <RadioGroup>
             <FormControlLabel
-              value="high"
-              // value="disabled"
-              // disabled
+              value="all"
               control={<Radio />}
-              label="초콜릿"
-              // labelPlacement="bottom"
-            />
-            <FormControlLabel
-              value="highest"
-              control={<Radio />}
-              label="바닐라"
-              // labelPlacement="bottom"
-            />
-            <FormControlLabel
-              value="sweet"
-              control={<Radio />}
-              label="달콤"
-              // labelPlacement="bottom"
-            />
-            <FormControlLabel
-              value="balance"
-              control={<Radio />}
-              label="밸런스"
+              label="상관없음"
               // labelPlacement="bottom"
             />
           </RadioGroup>
         </FormControl>
+
+        {/* 카페인여부, 로스팅, 산미 */}
+
+        {/* 카페이름, 주소, 전화번호, ......좌표  */}
+        {/* 음료이름, 풍미main, sub  */}
 
         <Button
           variant="contained"

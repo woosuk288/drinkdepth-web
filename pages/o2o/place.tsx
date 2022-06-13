@@ -1,117 +1,133 @@
-import {
-  Avatar,
-  Box,
-  Container,
-  Divider,
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  Typography,
-} from '@mui/material';
+import { Box, Container, SelectChangeEvent, Typography } from '@mui/material';
+import { readFileSync } from 'fs';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import React from 'react';
+import { useState } from 'react';
 import KaKaoMap from '../../src/o2o/KakaoMap';
+import PlaceList from '../../src/o2o/place/PlaceList';
+import Selectors from '../../src/o2o/place/Selectors';
+
+import coffees from '../../firebase/productsDetailsWithXY.json';
+import { getAddressXY } from '../../src/util/kakaoAPI';
+
+export type CoordiType = {
+  y: string;
+  x: string;
+};
+export type ChoiceType = {
+  hasCaffein: string;
+  roasting: string;
+  acidity: string;
+};
 
 const O2OPage: NextPage = () => {
   const router = useRouter();
 
-  const [age, setAge] = React.useState('');
+  // 서울 중심
+  const [coordi, setCoordi] = useState<CoordiType>({
+    y: '37.566826004661',
+    x: '126.978652258309',
+  });
+  const [choice, setChoice] = useState<ChoiceType>({
+    hasCaffein: '',
+    roasting: '',
+    acidity: '',
+  });
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+  const handleChange = async (event: SelectChangeEvent) => {
+    console.log(event.target.name);
+    console.log(event.target.value);
+
+    const newChoice = {
+      ...choice,
+      [event.target.name]: event.target.value,
+    };
+
+    console.log('newChoice : ', newChoice);
+
+    var map = new window.kakao.maps.Map(document.getElementById('map'), {
+      // 지도를 표시할 div
+      center: new window.kakao.maps.LatLng(coordi.y, coordi.x), // 지도의 중심좌표
+      level: 11, // 지도의 확대 레벨
+    });
+
+    // 마커 클러스터러를 생성합니다
+    var clusterer = new window.kakao.maps.MarkerClusterer({
+      map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+      averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+      minLevel: 8, // 클러스터 할 최소 지도 레벨
+    });
+
+    // const capitalCoffees = coffees.filter(
+    //   (coffee) =>
+    //     (coffee.seller.address.startsWith('경기') ||
+    //       coffee.seller.address.startsWith('서울')) &&
+    //     // 카페인여부
+    //     (newChoice.hasCaffein === '디카페인'
+    //       ? coffee.tags[1] === '디카페인'
+    //       : newChoice.hasCaffein === '카페인'
+    //       ? coffee.tags[1] !== '디카페인'
+    //       : true) &&
+    //     // 로스팅정도
+    //     (newChoice.roasting === ''
+    //       ? true
+    //       : coffee.tags[0] === newChoice.roasting)
+    // );
+
+    const capitalCoffees = coffees.filter((coffee) => {
+      const isCapital =
+        coffee.seller.address.startsWith('경기') ||
+        coffee.seller.address.startsWith('서울');
+
+      const isCaffein =
+        newChoice.hasCaffein === '디카페인'
+          ? coffee.tags[1] === '디카페인'
+          : newChoice.hasCaffein === '카페인'
+          ? coffee.tags[1] !== '디카페인'
+          : true;
+
+      const isRoasting =
+        newChoice.roasting === ''
+          ? true
+          : coffee.tags[0] === newChoice.roasting;
+
+      const isAcidity =
+        newChoice.acidity === ''
+          ? true
+          : coffee.coffeeDesc.acidity?.toString() === newChoice.acidity;
+
+      return isCapital && isCaffein && isRoasting && isAcidity;
+    });
+
+    console.log('capitalCoffees : ', capitalCoffees);
+
+    var markers = capitalCoffees.map((gCoffee) => {
+      return new window.kakao.maps.Marker({
+        position: new window.kakao.maps.LatLng(
+          gCoffee.seller.address_y,
+          gCoffee.seller.address_x
+        ),
+      });
+    });
+
+    // 클러스터러에 마커들을 추가합니다
+    clusterer.addMarkers(markers);
+
+    // const info = await getAddressXY('서울특별시');
+    // console.log('info : ', info);
+
+    setChoice(newChoice);
   };
 
   return (
     <Container maxWidth="sm" disableGutters>
       <Box>
-        <KaKaoMap latitude={33.450701} longitude={126.570667} />
+        <KaKaoMap latitude={coordi.y} longitude={coordi.x} />
       </Box>
 
-      <Box sx={{ display: 'flex', overflow: 'auto' }}>
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel id="select-caffein-label">Age</InputLabel>
-          <Select
-            labelId="select-caffein-label"
-            id="demo-simple-select-disabled"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-          {/* <FormHelperText>Disabled</FormHelperText> */}
-        </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel id="select-caffein-label">Age</InputLabel>
-          <Select
-            labelId="select-caffein-label"
-            id="demo-simple-select-disabled"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-          {/* <FormHelperText>Disabled</FormHelperText> */}
-        </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel id="select-caffein-label">Age</InputLabel>
-          <Select
-            labelId="select-caffein-label"
-            id="demo-simple-select-disabled"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-          {/* <FormHelperText>Disabled</FormHelperText> */}
-        </FormControl>
+      <Selectors choice={choice} handleChange={handleChange} />
 
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel id="select-caffein-label">Age</InputLabel>
-          <Select
-            labelId="select-caffein-label"
-            id="demo-simple-select-disabled"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-          {/* <FormHelperText>Disabled</FormHelperText> */}
-        </FormControl>
-      </Box>
-
-      <Typography
+      {/* <Typography
         variant="subtitle2"
         sx={{
           display: 'flex',
@@ -119,97 +135,11 @@ const O2OPage: NextPage = () => {
           '& > *': { marginRight: '1rem' },
         }}
       >
-        <div>장소 2</div>
-        <div>음료 4</div>
-        <div>적합도 60%</div>
-      </Typography>
+        <div>장소 2개</div>
 
-      <List
-        sx={{
-          width: '100%',
-          maxWidth: 360,
-          bgcolor: 'background.paper',
-          '& .MuiAvatar-root': { border: '0.1px solid' },
-        }}
-      >
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar
-              alt="Remy Sharp"
-              src="https://d2wosiipoa41qn.cloudfront.net/GZsNrVkBJBD7ACgU0-a1Y7q9Ils=/200x200/s3.ap-northeast-2.amazonaws.com/koke-uploads/images/20210616/1e311a03bda54536b1f68741ea9b3e17.png"
-              sx={{ width: 48, height: 48 }}
-            />
-          </ListItemAvatar>
-          <ListItemText
-            primary="원더월 커피 로스터스"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  Ali Connors
-                </Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar
-              alt="Travis Howard"
-              src="https://d2wosiipoa41qn.cloudfront.net/rIBxE3yv0pPk-yPgNRtRkYAJDzM=/200x200/s3.ap-northeast-2.amazonaws.com/koke-uploads/images/20210407/42eba708c1944b21ad579422bb4eeab0.png"
-              sx={{ width: 48, height: 48 }}
-            />
-          </ListItemAvatar>
-          <ListItemText
-            primary="언더프레셔"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  to Scott, Alex, Jennifer
-                </Typography>
-                {" — Wish I could come, but I'm out of town this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar
-              alt="Cindy Baker"
-              src="https://d2wosiipoa41qn.cloudfront.net/xMquZT5Oe8H21G95qROoIjf-tKM=/200x200/s3.ap-northeast-2.amazonaws.com/koke-uploads/images/20210528/db4d3d8aa1014e739ff651f24994d35f.png"
-              sx={{ width: 48, height: 48 }}
-            />
-          </ListItemAvatar>
-          <ListItemText
-            primary="나무사이로"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  Sandra Adams
-                </Typography>
-                {' — Do you have Paris recommendations? Have you ever…'}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-      </List>
+      </Typography> */}
+
+      <PlaceList />
     </Container>
   );
 };

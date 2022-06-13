@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { useEffect } from 'react';
 
 interface KaKaoProps {
-  latitude: number;
-  longitude: number;
+  latitude: number | string;
+  longitude: number | string;
 }
 
 function KaKaoMap({ latitude, longitude }: KaKaoProps) {
@@ -11,7 +11,7 @@ function KaKaoMap({ latitude, longitude }: KaKaoProps) {
     const mapScript = document.createElement('script');
 
     mapScript.async = true;
-    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false&libraries=services`;
+    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false&libraries=services,clusterer`;
 
     document.head.appendChild(mapScript);
 
@@ -22,14 +22,14 @@ function KaKaoMap({ latitude, longitude }: KaKaoProps) {
           center: new window.kakao.maps.LatLng(latitude, longitude),
         };
         const map = new window.kakao.maps.Map(container, options);
-        const markerPosition = new window.kakao.maps.LatLng(
-          latitude,
-          longitude
-        );
-        const marker = new window.kakao.maps.Marker({
-          position: markerPosition,
-        });
-        marker.setMap(map);
+        // const markerPosition = new window.kakao.maps.LatLng(
+        //   latitude,
+        //   longitude
+        // );
+        // const marker = new window.kakao.maps.Marker({
+        //   position: markerPosition,
+        // });
+        // marker.setMap(map);
       });
     };
     mapScript.addEventListener('load', onLoadKakaoMap);
