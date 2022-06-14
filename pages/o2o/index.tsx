@@ -1,21 +1,31 @@
 import { Box, Container, Typography } from '@mui/material';
 import { NextPage } from 'next';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 const O2OPage: NextPage = () => {
   const router = useRouter();
 
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h3" gutterBottom align="center">
+    <Container maxWidth="sm" sx={{ overflow: 'hidden' }}>
+      {/* <Typography variant="h3" gutterBottom align="center">
         제목~?
-      </Typography>
-      <Box onClick={() => router.push('/o2o/choice')}>
-        <img
-          src="https://images.unsplash.com/photo-1604357209793-fca5dca89f97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-          alt="unsplash_map"
-          width={'100%'}
-          // srcSet=""
+      </Typography> */}
+      <Box
+        onClick={() => router.push('/o2o/place')}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          height: '100vh',
+          transform: 'scale(1.5)',
+        }}
+      >
+        <Image
+          src="/images/o2o/O2O PMF 메인.gif"
+          alt="main image"
+          width={960}
+          height={1300}
         />
       </Box>
     </Container>

@@ -5,14 +5,35 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  IconButton,
   Radio,
   RadioGroup,
+  Tooltip,
 } from '@mui/material';
+
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { ChoiceType } from './place';
+import { choiceVar } from '../../apollo/client';
+import { useReactiveVar } from '@apollo/client';
 
 const ChoicePage: NextPage = () => {
   const router = useRouter();
+
+  const choice = useReactiveVar(choiceVar);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newChoice = {
+      ...choice,
+      [event.target.name]: event.target.value,
+    };
+
+    choiceVar(newChoice);
+  };
+
+  console.log('choice : ', choice);
 
   return (
     <Container maxWidth="sm">
@@ -21,6 +42,7 @@ const ChoicePage: NextPage = () => {
         noValidate
         autoComplete="off"
         sx={{
+          marginTop: '2rem',
           display: 'flex',
           flexDirection: 'column',
           '& .MuiFormControl-root': {
@@ -37,29 +59,41 @@ const ChoicePage: NextPage = () => {
       >
         <FormControl>
           <FormLabel id="demo-row-radio-buttons-group-label">
-            1. 카페인 or 디카페인
+            <Tooltip
+              arrow
+              title="'밤에 카페인음료를 마시면 잠이 오질 않아요~'"
+              enterTouchDelay={10}
+              leaveTouchDelay={3000}
+            >
+              <span>
+                1. 카페인 or 디카페인
+                <InfoOutlinedIcon sx={{ marginLeft: '0.5rem' }} />
+              </span>
+            </Tooltip>
           </FormLabel>
 
           <RadioGroup
             // row
             aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
-            defaultValue={'all'}
+            name="hasCaffein"
+            defaultValue={''}
+            onChange={handleChange}
+            value={choice.hasCaffein}
           >
             <FormControlLabel
-              value="caffeine"
+              value="카페인"
               control={<Radio />}
               label="카페인"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="decaffeination"
+              value="디카페인"
               control={<Radio />}
               label="디카페인"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="all"
+              value=""
               control={<Radio />}
               label="상관없음"
               // labelPlacement="bottom"
@@ -69,34 +103,46 @@ const ChoicePage: NextPage = () => {
 
         <FormControl>
           <FormLabel id="demo-row-radio-buttons-group-label">
-            2. 로스팅 정도
+            <Tooltip
+              arrow
+              title="카페인???카페인???카페인???카페인???카페인???카페인???카페인???카페인???카페인???카페인???"
+              enterTouchDelay={10}
+              leaveTouchDelay={3000}
+            >
+              <span>
+                2. 로스팅 정도
+                <InfoOutlinedIcon sx={{ marginLeft: '0.5rem' }} />
+              </span>
+            </Tooltip>
           </FormLabel>
           <RadioGroup
             // row
             aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
-            defaultValue={'all'}
+            name="roasting"
+            defaultValue={''}
+            value={choice.roasting}
+            onChange={handleChange}
           >
             <FormControlLabel
-              value="light"
+              value="라이트로스팅"
               control={<Radio />}
               label="라이트"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="light_medium"
+              value="라이트미디엄로스팅"
               control={<Radio />}
               label="라이트미디엄"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="medium"
+              value="미디엄로스팅"
               control={<Radio />}
               label="미디엄"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="medium_dark"
+              value="미디엄다크로스팅"
               // value="disabled"
               // disabled
               control={<Radio />}
@@ -104,13 +150,13 @@ const ChoicePage: NextPage = () => {
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="dark"
+              value="다크로스팅"
               control={<Radio />}
               label="다크"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="all"
+              value=""
               control={<Radio />}
               label="상관없음"
               // labelPlacement="bottom"
@@ -119,33 +165,47 @@ const ChoicePage: NextPage = () => {
         </FormControl>
 
         <FormControl>
-          <FormLabel id="demo-row-radio-buttons-group-label">3. 산미</FormLabel>
+          <FormLabel id="demo-row-radio-buttons-group-label">
+            <Tooltip
+              arrow
+              title="카페인???"
+              enterTouchDelay={10}
+              leaveTouchDelay={3000}
+            >
+              <span>
+                3. 산미
+                <InfoOutlinedIcon sx={{ marginLeft: '0.5rem' }} />
+              </span>
+            </Tooltip>
+          </FormLabel>
           <RadioGroup
             // row
             aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
-            defaultValue={'all'}
+            name="acidity"
+            defaultValue={''}
+            value={choice.acidity}
+            onChange={handleChange}
           >
             <FormControlLabel
-              value="lowest"
+              value="1"
               control={<Radio />}
               label="매우 낮음"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="low"
+              value="2"
               control={<Radio />}
               label="낮음"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="medium"
+              value="3"
               control={<Radio />}
               label="보통"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="high"
+              value="4"
               // value="disabled"
               // disabled
               control={<Radio />}
@@ -153,13 +213,13 @@ const ChoicePage: NextPage = () => {
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="highest"
+              value="5"
               control={<Radio />}
               label="매우 높음"
               // labelPlacement="bottom"
             />
             <FormControlLabel
-              value="all"
+              value=""
               control={<Radio />}
               label="상관없음"
               // labelPlacement="bottom"

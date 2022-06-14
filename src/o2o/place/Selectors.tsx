@@ -7,6 +7,9 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
+
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
 import React from 'react';
 import { ChoiceType } from '../../../pages/o2o/place';
 
@@ -32,7 +35,12 @@ function Selectors({ choice, handleChange }: SelectorsProps) {
       }}
     >
       <FormControl size="small">
-        <FormHelperText>카페인유무</FormHelperText>
+        <FormHelperText>
+          카페인유무
+          {/* <span>
+            <InfoOutlinedIcon sx={{ paddingLeft: '0.5rem' }} />
+          </span> */}
+        </FormHelperText>
         <Select
           name="hasCaffein"
           value={choice.hasCaffein}
