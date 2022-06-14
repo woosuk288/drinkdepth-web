@@ -6,6 +6,7 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  Tooltip,
 } from '@mui/material';
 
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -32,15 +33,22 @@ function Selectors({ choice, handleChange }: SelectorsProps) {
         margin: '0.5rem',
         marginTop: 0,
         '& > .MuiFormControl-root': { flex: 1 },
+        '& .MuiFormHelperText-root': { fontSize: 14, position: 'relative' },
+        '& .MuiSvgIcon-root': { position: 'absolute', paddingBottom: '0.5rem' },
       }}
     >
       <FormControl size="small">
-        <FormHelperText>
-          카페인유무
-          {/* <span>
-            <InfoOutlinedIcon sx={{ paddingLeft: '0.5rem' }} />
-          </span> */}
-        </FormHelperText>
+        <Tooltip
+          arrow
+          enterTouchDelay={10}
+          leaveTouchDelay={3000}
+          title="커피 전문점 이용 기준 성인 기준 1일 1잔~ 2잔 사이 추천드립니다. 카페인은 과다 섭취시 카페인 중독,불면증 등 여러 질환을 유발할 수 있습니다."
+        >
+          <FormHelperText>
+            카페인유무
+            <InfoOutlinedIcon />
+          </FormHelperText>
+        </Tooltip>
         <Select
           name="hasCaffein"
           value={choice.hasCaffein}
@@ -56,7 +64,17 @@ function Selectors({ choice, handleChange }: SelectorsProps) {
         </Select>
       </FormControl>
       <FormControl size="small">
-        <FormHelperText>로스팅</FormHelperText>
+        <Tooltip
+          arrow
+          enterTouchDelay={10}
+          leaveTouchDelay={3000}
+          title="다크로 갈수록 쓴맛 진한맛이 강해집니다. 미디움 라이트로 갈수록 신맛 감미로운 향이 강조됩니다."
+        >
+          <FormHelperText>
+            로스팅
+            <InfoOutlinedIcon />
+          </FormHelperText>
+        </Tooltip>
         <Select
           labelId="select-caffein-label"
           id="demo-simple-select-disabled"
@@ -78,7 +96,17 @@ function Selectors({ choice, handleChange }: SelectorsProps) {
         {/* <FormHelperText>Disabled</FormHelperText> */}
       </FormControl>
       <FormControl size="small">
-        <FormHelperText>산미</FormHelperText>
+        <Tooltip
+          arrow
+          enterTouchDelay={10}
+          leaveTouchDelay={3000}
+          title="커피에서 긍정적인 신맛 상큼함을 의미합니다. 산미단계가 높을수록 신맛이 강해집니다"
+        >
+          <FormHelperText>
+            산미
+            <InfoOutlinedIcon />
+          </FormHelperText>
+        </Tooltip>
         <Select
           name="acidity"
           value={choice.acidity}

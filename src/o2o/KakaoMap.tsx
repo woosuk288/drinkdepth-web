@@ -30,6 +30,8 @@ function KaKaoMap({ latitude, longitude }: KaKaoProps) {
         //   position: markerPosition,
         // });
         // marker.setMap(map);
+
+        console.log('loaded kakao map');
       });
     };
     mapScript.addEventListener('load', onLoadKakaoMap);
