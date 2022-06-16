@@ -13,7 +13,7 @@ import { Avatar, Box, Chip, IconButton, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-import ChoiceTable from './choiceTable';
+import ChoiceTable from './ChoiceTable';
 import BeanTable from './BeanTable';
 import Seller from './Seller';
 import { KakaoShareButton } from '../../../landing/KakaoShareButton';
