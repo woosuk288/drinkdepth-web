@@ -8,8 +8,9 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { CoffeeResultType } from '../../../pages/o2o/place';
+import { CoffeeResultType, SellerType } from '../../../pages/o2o/place';
 import AlertDialogSlide from './coffeeDetailDialog';
+import ImagesDialog from './ImagesDialog';
 
 type CoffeeResultListProps = {
   coffeeResults: CoffeeResultType[];
@@ -17,8 +18,18 @@ type CoffeeResultListProps = {
 
 function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
   const [coffeeDetail, setCoffeeDetail] = useState<CoffeeResultType>();
-
   const [open, setOpen] = React.useState(false);
+
+  const [seller, setSeller] = React.useState<SellerType>();
+  const [openImages, setOpenImages] = React.useState(false);
+
+  const handleOpenImages = () => {
+    setOpenImages(true);
+  };
+
+  const handleCloseImages = () => {
+    setOpenImages(false);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -28,7 +39,13 @@ function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
     setOpen(false);
   };
 
-  const handleItemClick = (coffeeResult: CoffeeResultType) => {
+  const handleImageClick = (coffeeResult: CoffeeResultType) => {
+    // open Dialog? image slide
+    setSeller(coffeeResult.seller);
+    handleOpenImages();
+  };
+
+  const handleTextClick = (coffeeResult: CoffeeResultType) => {
     setCoffeeDetail(coffeeResult);
     handleClickOpen();
   };
@@ -51,19 +68,20 @@ function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
       }}
     >
       {coffeeResults.map((coffeeResult) => (
-        <ListItem
-          key={coffeeResult.id}
-          alignItems="flex-start"
-          onClick={() => handleItemClick(coffeeResult)}
-        >
-          <ListItemAvatar>
+        <ListItem key={coffeeResult.id} alignItems="flex-start">
+          <ListItemAvatar
+            sx={{ marginRight: '1rem' }}
+            onClick={() => handleImageClick(coffeeResult)}
+          >
             <Avatar
               alt="Remy Sharp"
-              src={coffeeResult.packageImageURLs['200x200']}
-              sx={{ width: 48, height: 48 }}
+              src={coffeeResult.seller.placeImages[0]}
+              sx={{ width: 96, height: 96 }}
+              variant="rounded"
             />
           </ListItemAvatar>
           <ListItemText
+            onClick={() => handleTextClick(coffeeResult)}
             primary={coffeeResult.seller.name}
             secondary={
               <React.Fragment>
@@ -99,6 +117,14 @@ function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
           open={open}
           handleClose={handleClose}
           coffeeDetail={coffeeDetail}
+        />
+      )}
+
+      {seller && (
+        <ImagesDialog
+          open={openImages}
+          handleClose={handleCloseImages}
+          seller={seller}
         />
       )}
     </List>

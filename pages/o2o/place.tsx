@@ -27,6 +27,7 @@ export type SellerType = {
   address_y: string;
   address_x: string;
   logoURLs: any;
+  placeImages: string[];
 };
 
 export type BeanType = {
@@ -177,6 +178,11 @@ const PlacePage: NextPage = () => {
     // 클러스터러에 마커들을 추가합니다
     clusterer.addMarkers(markers);
 
+    console.log(
+      capitalCoffees[0].seller.wallImages.map(
+        (wallImage: any) => wallImage.urls.origin
+      )
+    );
     const result = capitalCoffees.map((coffee: any) => {
       return {
         id: coffee.id,
@@ -194,6 +200,9 @@ const PlacePage: NextPage = () => {
           address_y: coffee.seller.address_y,
           address_x: coffee.seller.address_x,
           logoURLs: coffee.seller.logo.urls,
+          placeImages: coffee.seller.wallImages.map(
+            (wallImage: any) => wallImage.urls.origin
+          ),
         },
         beans: coffee.beans,
       };
