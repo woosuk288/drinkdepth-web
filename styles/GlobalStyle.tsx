@@ -24,7 +24,7 @@ const defaultStyle = css`
     /* 모바일 수평 스크롤 금지 */
     /* overflow-x: hidden; */
 
-    word-break: keep-all;
+    /* word-break: keep-all; */
   }
 `;
 

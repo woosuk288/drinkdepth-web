@@ -20,13 +20,40 @@ export type ChoiceType = {
   acidity: string;
 };
 
+export type SellerType = {
+  name: string;
+  introduce: string;
+  address: string;
+  address_y: string;
+  address_x: string;
+  logoURLs: any;
+};
+
+export type BeanType = {
+  name: string | null;
+  variety: string | null;
+  country: string | null;
+  region: string | null;
+  subregion: string | null;
+  farm: string | null;
+  grade: string | null;
+  elevations: string[] | null;
+  process: string | null;
+  processLabel: string | null;
+  processDetail: string | null;
+};
+
 export type CoffeeResultType = {
   id: string;
   name: string;
   note: string;
   packageImageURLs: any;
+  tags: string[];
+  acidity: number;
   characters: string[];
   flavors: string[];
+  seller: SellerType;
+  beans: BeanType[];
 };
 
 const PlacePage: NextPage = () => {
@@ -156,8 +183,19 @@ const PlacePage: NextPage = () => {
         name: coffee.name,
         note: coffee.note,
         packageImageURLs: coffee.packageImage.urls,
+        tags: coffee.tags,
+        acidity: coffee.coffeeDesc.acidity,
         characters: coffee.coffeeDesc.characters,
         flavors: coffee.coffeeDesc.flavors,
+        seller: {
+          name: coffee.seller.name,
+          introduce: coffee.seller.introduce,
+          address: coffee.seller.address,
+          address_y: coffee.seller.address_y,
+          address_x: coffee.seller.address_x,
+          logoURLs: coffee.seller.logo.urls,
+        },
+        beans: coffee.beans,
       };
     });
     setFilteredCoffees(result);

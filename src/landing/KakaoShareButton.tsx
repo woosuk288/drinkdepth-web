@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 
 interface KakaoShareButtonProps {
   url: string;
+  iconStyle?: any;
 }
 
-export const KakaoShareButton = ({ url }: KakaoShareButtonProps) => {
+export const KakaoShareButton = ({ url, iconStyle }: KakaoShareButtonProps) => {
   useEffect(() => {
     createKakaoButton();
   });
@@ -63,7 +64,7 @@ export const KakaoShareButton = ({ url }: KakaoShareButtonProps) => {
       // id="kakao-link-btn"
       style={{ verticalAlign: 'initial', padding: 0 }}
     >
-      <KakaoIcon style={{ width: 48, height: 48 }} />
+      <KakaoIcon style={iconStyle} />
     </IconButton>
   );
 };

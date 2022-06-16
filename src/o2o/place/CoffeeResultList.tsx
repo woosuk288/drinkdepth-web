@@ -7,16 +7,30 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { CoffeeResultType } from '../../../pages/o2o/place';
+import AlertDialogSlide from './coffeeDetailDialog';
 
 type CoffeeResultListProps = {
   coffeeResults: CoffeeResultType[];
 };
 
 function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
+  const [coffeeDetail, setCoffeeDetail] = useState<CoffeeResultType>();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const handleItemClick = (coffeeResult: CoffeeResultType) => {
-    alert('로스터리명?, 주소?, 네이버, 티맵, 카카오 링크? 흠......');
+    setCoffeeDetail(coffeeResult);
+    handleClickOpen();
   };
 
   return (
@@ -26,6 +40,14 @@ function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
         maxWidth: 360,
         bgcolor: 'background.paper',
         '& .MuiAvatar-root': { border: '0.1px solid' },
+        '& .MuiTypography-root': {
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+        },
+        '& .MuiListItemText-primary': {
+          fontWeight: 'bold',
+        },
       }}
     >
       {coffeeResults.map((coffeeResult) => (
@@ -42,21 +64,26 @@ function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
             />
           </ListItemAvatar>
           <ListItemText
-            primary={coffeeResult.name}
+            primary={coffeeResult.seller.name}
             secondary={
               <React.Fragment>
+                <Typography component="span">{coffeeResult.name}</Typography>
+
                 <Typography
                   sx={{ display: 'block' }}
                   component="span"
                   variant="body2"
                   color="text.primary"
                 >
-                  {/* — {coffeeResult.characters.join(', ')} */}—{' '}
                   {coffeeResult.characters.map(
                     (character) => '#' + character + ' '
                   )}
                 </Typography>
-                <Typography variant="body2" component="span">
+                <Typography
+                  variant="body2"
+                  component="span"
+                  color="text.primary"
+                >
                   {coffeeResult.flavors.map((flavor) => '#' + flavor + ' ')}
                 </Typography>
               </React.Fragment>
@@ -66,6 +93,14 @@ function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
       ))}
 
       {/* <Divider variant="inset" component="li" /> */}
+
+      {coffeeDetail && (
+        <AlertDialogSlide
+          open={open}
+          handleClose={handleClose}
+          coffeeDetail={coffeeDetail}
+        />
+      )}
     </List>
   );
 }
