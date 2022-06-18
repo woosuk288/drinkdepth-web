@@ -35,7 +35,7 @@ function Seller({ seller }: SellerProps) {
         </Typography>
 
         <Box sx={{ display: 'flex', mb: '0.5rem' }}>
-          <Typography fontWeight="bold" marginRight={'1rem'}>
+          <Typography fontWeight="bold" marginRight={'1rem'} width="48px">
             주소
           </Typography>
           <Typography>{seller.address}</Typography>

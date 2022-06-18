@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { CoffeeResultType, SellerType } from '../../../pages/o2o/place';
+import { getAddressXY } from '../../util/kakaoAPI';
 import AlertDialogSlide from './coffeeDetailDialog';
 import ImagesDialog from './ImagesDialog';
 
@@ -45,7 +46,13 @@ function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
     handleOpenImages();
   };
 
-  const handleTextClick = (coffeeResult: CoffeeResultType) => {
+  const handleTextClick = async (coffeeResult: CoffeeResultType) => {
+    // const info = await getAddressXY(
+    //   // 한글 주소
+    //   '서울 강남구 테헤란로 142 아크플레이스 1층'
+    // );
+    // console.log(info.address_name);
+    // console.log(`     "addressY" : "${info.y}", "addressX" : "${info.x}",`);
     setCoffeeDetail(coffeeResult);
     handleClickOpen();
   };

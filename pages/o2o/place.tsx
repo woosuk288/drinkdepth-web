@@ -20,6 +20,12 @@ export type ChoiceType = {
   acidity: string;
 };
 
+export type BranchType = {
+  name: string;
+  address: string;
+  images: string[];
+};
+
 export type SellerType = {
   name: string;
   introduce: string;
@@ -53,6 +59,7 @@ export type CoffeeResultType = {
   acidity: number;
   characters: string[];
   flavors: string[];
+  branches: BranchType[];
   seller: SellerType;
   beans: BeanType[];
 };
@@ -80,7 +87,7 @@ const PlacePage: NextPage = () => {
     //   setTimeout(
     //     resolve,
     //     2000,
-    //     import('../../firebase/productsDetailsWithXY.json')
+    //     import('../../firebase/productsDetailsWithCafes.json')
     //   );
     // });
 
@@ -92,7 +99,7 @@ const PlacePage: NextPage = () => {
     //   setSetCoffees(data.default);
     //   showFilteredCoffeeList(choice, data.default);
     // });
-    import('../../firebase/productsDetailsWithXY.json').then((data) => {
+    import('../../firebase/productsDetailsWithCafes.json').then((data) => {
       setSetCoffees(data.default);
       setLoading(false);
       // showFilteredCoffeeList(choice, data.default);
@@ -178,11 +185,6 @@ const PlacePage: NextPage = () => {
     // 클러스터러에 마커들을 추가합니다
     clusterer.addMarkers(markers);
 
-    console.log(
-      capitalCoffees[0].seller.wallImages.map(
-        (wallImage: any) => wallImage.urls.origin
-      )
-    );
     const result = capitalCoffees.map((coffee: any) => {
       return {
         id: coffee.id,
@@ -193,6 +195,7 @@ const PlacePage: NextPage = () => {
         acidity: coffee.coffeeDesc.acidity,
         characters: coffee.coffeeDesc.characters,
         flavors: coffee.coffeeDesc.flavors,
+        branches: coffee.branches,
         seller: {
           name: coffee.seller.name,
           introduce: coffee.seller.introduce,
