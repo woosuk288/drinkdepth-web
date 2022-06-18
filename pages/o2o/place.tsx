@@ -9,6 +9,20 @@ import Selectors from '../../src/o2o/place/Selectors';
 
 import { useReactiveVar } from '@apollo/client';
 import { choiceVar } from '../../apollo/client';
+import AlertDialogSlide from '../../src/o2o/place/coffeeDetailDialog';
+import ImagesDialog from '../../src/o2o/place/ImagesDialog';
+
+export type CoffeeType = {
+  id: string;
+  name: string;
+  note: string;
+  tags: string[];
+  packageImage: any;
+  branches: BranchType[];
+  seller: any;
+  coffeeDesc: any;
+  beans: BeanType[];
+};
 
 export type CoordiType = {
   y: string;
@@ -18,12 +32,6 @@ export type ChoiceType = {
   hasCaffein: string;
   roasting: string;
   acidity: string;
-};
-
-export type BranchType = {
-  name: string;
-  address: string;
-  images: string[];
 };
 
 export type SellerType = {
@@ -50,6 +58,14 @@ export type BeanType = {
   processDetail: string | null;
 };
 
+export type BranchType = {
+  name: string;
+  address: string;
+  addressY: string;
+  addressX: string;
+  images: string[];
+};
+
 export type CoffeeResultType = {
   id: string;
   name: string;
@@ -59,9 +75,10 @@ export type CoffeeResultType = {
   acidity: number;
   characters: string[];
   flavors: string[];
-  branches: BranchType[];
+
   seller: SellerType;
   beans: BeanType[];
+  branch: BranchType;
 };
 
 const PlacePage: NextPage = () => {
@@ -81,6 +98,10 @@ const PlacePage: NextPage = () => {
   const [filteredCoffees, setFilteredCoffees] = useState<CoffeeResultType[]>(
     []
   );
+
+  const [coffeeDetail, setCoffeeDetail] = useState<CoffeeResultType>();
+  const [openDetail, setOpenDetail] = useState(false);
+  const [openImages, setOpenImages] = useState(false);
 
   useEffect(() => {
     // const coffeesJSON = new Promise((resolve, reject) => {
@@ -123,7 +144,7 @@ const PlacePage: NextPage = () => {
 
   const showFilteredCoffeeList = (
     newChoice: ChoiceType,
-    previousCoffees: any
+    previousCoffees: CoffeeType[]
   ) => {
     var map = new window.kakao.maps.Map(document.getElementById('map'), {
       // 지도를 표시할 div
@@ -138,10 +159,15 @@ const PlacePage: NextPage = () => {
       minLevel: 10, // 클러스터 할 최소 지도 레벨
     });
 
-    const capitalCoffees = previousCoffees.filter((coffee: any) => {
-      const isCapital =
-        coffee.seller.address.startsWith('경기') ||
-        coffee.seller.address.startsWith('서울');
+    // 추가된 모든 마커를 삭제한다.
+    clusterer.clear();
+
+    const capitalCoffees = previousCoffees.filter((coffee: CoffeeType) => {
+      // const isCapital =
+      //   coffee.seller.address.startsWith('경기') ||
+      //   coffee.seller.address.startsWith('서울');
+
+      const hasCafes = !!coffee.branches && !coffee.name.startsWith('['); // 카페가 있고, 대용량 아닌거
 
       const isCaffein =
         newChoice.hasCaffein === '디카페인'
@@ -160,57 +186,77 @@ const PlacePage: NextPage = () => {
           ? true
           : coffee.coffeeDesc.acidity?.toString() === newChoice.acidity;
 
-      return isCapital && isCaffein && isRoasting && isAcidity;
+      return hasCafes && isCaffein && isRoasting && isAcidity;
     });
 
-    // console.log('capitalCoffees : ', capitalCoffees);
+    const markers = capitalCoffees.reduce((pre, cur) => {
+      let next: any[] = pre;
 
-    var markers = capitalCoffees.map((gCoffee: any) => {
-      return new window.kakao.maps.Marker({
-        position: new window.kakao.maps.LatLng(
-          gCoffee.seller.address_y,
-          gCoffee.seller.address_x
-        ),
+      const cafesMarkers = cur.branches.map((branch) => {
+        const marker = new window.kakao.maps.Marker({
+          position: new window.kakao.maps.LatLng(
+            branch.addressY,
+            branch.addressX
+          ),
+        });
+
+        // 마커에 클릭이벤트를 등록합
+        window.kakao.maps.event.addListener(marker, 'click', function () {
+          // 클릭시...
+          const coffeeWithBranch = getCoffeeWithBranch(cur, branch);
+          handleTextClick(coffeeWithBranch);
+          // alert('무잇어 필요하까?');
+        });
+
+        return marker;
       });
-    });
 
-    // 마커에 클릭이벤트를 등록합니다
-    markers.forEach((marker: any) => {
-      window.kakao.maps.event.addListener(marker, 'click', function () {
-        // 클릭시...
-        alert('무잇어 필요하까?');
-      });
-    });
+      next = pre.concat(...cafesMarkers);
+      return next;
+    }, [] as any[]);
 
     // 클러스터러에 마커들을 추가합니다
     clusterer.addMarkers(markers);
 
-    const result = capitalCoffees.map((coffee: any) => {
-      return {
-        id: coffee.id,
-        name: coffee.name,
-        note: coffee.note,
-        packageImageURLs: coffee.packageImage.urls,
-        tags: coffee.tags,
-        acidity: coffee.coffeeDesc.acidity,
-        characters: coffee.coffeeDesc.characters,
-        flavors: coffee.coffeeDesc.flavors,
-        branches: coffee.branches,
-        seller: {
-          name: coffee.seller.name,
-          introduce: coffee.seller.introduce,
-          address: coffee.seller.address,
-          address_y: coffee.seller.address_y,
-          address_x: coffee.seller.address_x,
-          logoURLs: coffee.seller.logo.urls,
-          placeImages: coffee.seller.wallImages.map(
-            (wallImage: any) => wallImage.urls.origin
-          ),
-        },
-        beans: coffee.beans,
-      };
-    });
-    setFilteredCoffees(result);
+    const coffeesWithBranch = capitalCoffees.reduce((pre, cur) => {
+      let result: CoffeeResultType[] = pre;
+      cur.branches.map((branch) => {
+        const coffeeWithBranch = getCoffeeWithBranch(cur, branch);
+
+        result.push(coffeeWithBranch);
+      });
+
+      return result;
+    }, [] as CoffeeResultType[]);
+
+    setFilteredCoffees(coffeesWithBranch);
+  };
+
+  const handleCloseDetail = () => {
+    setCoffeeDetail(undefined);
+    setOpenDetail(false);
+  };
+
+  const handleCloseImages = () => {
+    setCoffeeDetail(undefined);
+    setOpenImages(false);
+  };
+
+  const handleImageClick = (coffeeResult: CoffeeResultType) => {
+    // open Dialog? image slide
+    setCoffeeDetail(coffeeResult);
+    setOpenImages(true);
+  };
+
+  const handleTextClick = (coffeeResult: CoffeeResultType) => {
+    // const info = await getAddressXY(
+    //   // 한글 주소
+    //   '서울 강남구 테헤란로 142 아크플레이스 1층'
+    // );
+    // console.log(info.address_name);
+    // console.log(`     "addressY" : "${info.y}", "addressX" : "${info.x}",`);
+    setCoffeeDetail(coffeeResult);
+    setOpenDetail(true);
   };
 
   return (
@@ -221,9 +267,60 @@ const PlacePage: NextPage = () => {
 
       <Selectors choice={choice} handleChange={handleChange} />
 
-      <CoffeeResultList coffeeResults={filteredCoffees} />
+      <CoffeeResultList
+        coffeeResults={filteredCoffees}
+        handleImageClick={handleImageClick}
+        handleTextClick={handleTextClick}
+      />
+
+      {coffeeDetail && (
+        <AlertDialogSlide
+          open={openDetail}
+          handleClose={handleCloseDetail}
+          coffeeDetail={coffeeDetail}
+        />
+      )}
+
+      {coffeeDetail && (
+        <ImagesDialog
+          open={openImages}
+          handleClose={handleCloseImages}
+          branch={coffeeDetail.branch}
+          sellerLogo={coffeeDetail.seller.logoURLs['origin']}
+        />
+      )}
     </Container>
   );
 };
 
 export default PlacePage;
+
+function getCoffeeWithBranch(coffee: CoffeeType, branch: BranchType) {
+  return {
+    id: coffee.id,
+    name: coffee.name,
+    note: coffee.note,
+    packageImageURLs: coffee.packageImage.urls,
+    tags: coffee.tags,
+    acidity: coffee.coffeeDesc.acidity,
+    characters: coffee.coffeeDesc.characters,
+    flavors: coffee.coffeeDesc.flavors,
+    seller: {
+      name: coffee.seller.name,
+      introduce: coffee.seller.introduce,
+      address: coffee.seller.address,
+      address_y: coffee.seller.address_y,
+      address_x: coffee.seller.address_x,
+      logoURLs: coffee.seller.logo.urls,
+      // placeImages: coffee.seller.wallImages.map(
+      //   (wallImage: any) => wallImage.urls.origin
+      // ),
+      placeImages:
+        branch.images.length > 0
+          ? branch.images
+          : [coffee.seller.logo.urls.origin],
+    },
+    beans: coffee.beans,
+    branch: branch,
+  };
+}

@@ -16,7 +16,7 @@ import { TransitionProps } from '@mui/material/transitions';
 import CloseIcon from '@mui/icons-material/Close';
 
 import React, { useState } from 'react';
-import { SellerType } from '../../../pages/o2o/place';
+import { BranchType, SellerType } from '../../../pages/o2o/place';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -31,10 +31,16 @@ type ImagesDialogProps = {
   open: boolean;
   handleClose: () => void;
 
-  seller: SellerType;
+  branch: BranchType;
+  sellerLogo: string;
 };
 
-function ImagesDialog({ open, handleClose, seller }: ImagesDialogProps) {
+function ImagesDialog({
+  open,
+  handleClose,
+  branch,
+  sellerLogo,
+}: ImagesDialogProps) {
   return (
     <div>
       <Dialog
@@ -46,9 +52,13 @@ function ImagesDialog({ open, handleClose, seller }: ImagesDialogProps) {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        {seller.placeImages.map((image, i) => (
-          <img src={image} alt={`${i + 1} 번째 사진`} key={i} width="100%" />
-        ))}
+        {branch.images.length > 0 ? (
+          branch.images.map((image, i) => (
+            <img src={image} alt={`${i + 1} 번째 사진`} key={i} width="100%" />
+          ))
+        ) : (
+          <img src={sellerLogo} alt={`logo image`} key={'logo'} width="100%" />
+        )}
         {/* <DialogTitle sx={{ display: 'flex', alignItems: 'center' }}>
           aaa
         </DialogTitle> */}
@@ -63,6 +73,8 @@ function ImagesDialog({ open, handleClose, seller }: ImagesDialogProps) {
             width: '100%',
             backgroundColor: 'white',
             // boxShadow: '0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)'
+
+            justifyContent: 'space-between',
           }}
         >
           <IconButton
@@ -83,12 +95,13 @@ function ImagesDialog({ open, handleClose, seller }: ImagesDialogProps) {
               alignItems: 'center' /* cursor: 'pointer' */,
             }}
           >
-            <Avatar src={seller.logoURLs['100x100']} />
+            <Avatar src={sellerLogo} />
             <Typography
               variant="h6"
-              sx={{ marginX: '0.5rem', color: '#3A2929' }}
+              sx={{ marginX: '0.5rem', color: '#3A2929', maxWidth: '200px' }}
+              noWrap
             >
-              {seller.name}
+              {branch.name}
             </Typography>
           </Box>
         </DialogActions>

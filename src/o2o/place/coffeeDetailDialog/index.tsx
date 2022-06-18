@@ -15,8 +15,9 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import ChoiceTable from './ChoiceTable';
 import BeanTable from './BeanTable';
-import Seller from './Seller';
+import SellerAndBranch from './SellerAndBranch';
 import { KakaoShareButton } from '../../../landing/KakaoShareButton';
+import proj4 from 'proj4';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -40,15 +41,23 @@ export default function AlertDialogSlide({
 }: AlertDialogSlideProps) {
   // const [open, setOpen] = React.useState(false);
 
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
+  const handleOpenNaverMap = () => {
+    const p = proj4('EPSG:4326', 'EPSG:3857');
+    const position = p.forward([
+      parseFloat(coffeeDetail.branch.addressX),
+      parseFloat(coffeeDetail.branch.addressY),
+    ]);
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+    const url = makeNaverMapURL(coffeeDetail.branch.name, position);
+    console.log('position : ', position);
+    console.log('url : ', url);
 
-  const handleClick = () => {};
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
+    anchor.click();
+  };
 
   return (
     <div>
@@ -67,12 +76,16 @@ export default function AlertDialogSlide({
             sx={{ marginRight: '0.5rem' }}
           />
           <Typography fontWeight={'bold'}>
-            {coffeeDetail.seller.name}
+            {coffeeDetail.branch.name}
           </Typography>
 
           <span style={{ flex: 1 }} />
 
-          <IconButton color="primary" sx={{ padding: 0 }}>
+          <IconButton
+            color="primary"
+            sx={{ padding: 0 }}
+            onClick={handleOpenNaverMap}
+          >
             <LocationOnIcon fontSize="large" />
           </IconButton>
           {/* <Button
@@ -131,31 +144,6 @@ export default function AlertDialogSlide({
               },
             ]}
           />
-
-          {/* <Chip
-            label={coffeeDetail.tags[1] === '디카페인' ? '디카페인' : '카페인'}
-            variant="outlined"
-            onClick={handleClick}
-          />
-          <Chip
-            label={coffeeDetail.tags[0]}
-            variant="outlined"
-            onClick={handleClick}
-          />
-          <Chip
-            label={'산미 ' + getAcidityLabel(coffeeDetail.acidity)}
-            variant="outlined"
-            onClick={handleClick}
-          />
-          <Chip
-            label={
-              coffeeDetail.tags[1] === '디카페인'
-                ? coffeeDetail.tags[2]
-                : coffeeDetail.tags[1]
-            }
-            variant="outlined"
-            onClick={handleClick}
-          /> */}
         </DialogContent>
 
         <DialogContent>
@@ -163,7 +151,11 @@ export default function AlertDialogSlide({
         </DialogContent>
 
         <DialogContent>
-          <Seller seller={coffeeDetail.seller} />
+          <SellerAndBranch
+            seller={coffeeDetail.seller}
+            branch={coffeeDetail.branch}
+            handleOpenNaverMap={handleOpenNaverMap}
+          />
         </DialogContent>
 
         <DialogActions
@@ -213,4 +205,9 @@ function getAcidityLabel(acidity: number) {
     : acidity === 5
     ? '매우높음'
     : '';
+}
+
+// 네이버 지도는 EPSG:3857 좌표계를 사용
+function makeNaverMapURL(cafeName: string, position: number[]) {
+  return `https://map.naver.com/v5/search/${cafeName}?c=${position[0]},${position[1]},15,0,0,0,dh`;
 }

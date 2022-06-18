@@ -8,54 +8,31 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { CoffeeResultType, SellerType } from '../../../pages/o2o/place';
+import { CoffeeResultType } from '../../../pages/o2o/place';
 import { getAddressXY } from '../../util/kakaoAPI';
 import AlertDialogSlide from './coffeeDetailDialog';
 import ImagesDialog from './ImagesDialog';
 
 type CoffeeResultListProps = {
   coffeeResults: CoffeeResultType[];
+  handleImageClick: (coffeeResult: CoffeeResultType) => void;
+  handleTextClick: (coffeeResult: CoffeeResultType) => void;
 };
 
-function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
-  const [coffeeDetail, setCoffeeDetail] = useState<CoffeeResultType>();
-  const [open, setOpen] = React.useState(false);
+function CoffeeResultList({
+  coffeeResults,
+  handleImageClick,
+  handleTextClick,
+}: CoffeeResultListProps) {
+  // const [open, setOpen] = React.useState(false);
 
-  const [seller, setSeller] = React.useState<SellerType>();
-  const [openImages, setOpenImages] = React.useState(false);
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleOpenImages = () => {
-    setOpenImages(true);
-  };
-
-  const handleCloseImages = () => {
-    setOpenImages(false);
-  };
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleImageClick = (coffeeResult: CoffeeResultType) => {
-    // open Dialog? image slide
-    setSeller(coffeeResult.seller);
-    handleOpenImages();
-  };
-
-  const handleTextClick = async (coffeeResult: CoffeeResultType) => {
-    // const info = await getAddressXY(
-    //   // 한글 주소
-    //   '서울 강남구 테헤란로 142 아크플레이스 1층'
-    // );
-    // console.log(info.address_name);
-    // console.log(`     "addressY" : "${info.y}", "addressX" : "${info.x}",`);
-    setCoffeeDetail(coffeeResult);
-    handleClickOpen();
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <List
@@ -75,21 +52,28 @@ function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
       }}
     >
       {coffeeResults.map((coffeeResult) => (
-        <ListItem key={coffeeResult.id} alignItems="flex-start">
+        <ListItem
+          key={coffeeResult.id + coffeeResult.branch.address}
+          alignItems="flex-start"
+        >
           <ListItemAvatar
             sx={{ marginRight: '1rem' }}
             onClick={() => handleImageClick(coffeeResult)}
           >
             <Avatar
               alt="Remy Sharp"
-              src={coffeeResult.seller.placeImages[0]}
+              src={
+                coffeeResult.branch.images.length > 0
+                  ? coffeeResult.branch.images[0]
+                  : coffeeResult.seller.logoURLs['origin']
+              }
               sx={{ width: 96, height: 96 }}
               variant="rounded"
             />
           </ListItemAvatar>
           <ListItemText
             onClick={() => handleTextClick(coffeeResult)}
-            primary={coffeeResult.seller.name}
+            primary={coffeeResult.branch.name}
             secondary={
               <React.Fragment>
                 <Typography component="span">{coffeeResult.name}</Typography>
@@ -118,22 +102,6 @@ function CoffeeResultList({ coffeeResults }: CoffeeResultListProps) {
       ))}
 
       {/* <Divider variant="inset" component="li" /> */}
-
-      {coffeeDetail && (
-        <AlertDialogSlide
-          open={open}
-          handleClose={handleClose}
-          coffeeDetail={coffeeDetail}
-        />
-      )}
-
-      {seller && (
-        <ImagesDialog
-          open={openImages}
-          handleClose={handleCloseImages}
-          seller={seller}
-        />
-      )}
     </List>
   );
 }

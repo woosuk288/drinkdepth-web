@@ -1,29 +1,68 @@
 import { Box, Button, CardMedia, Chip, Typography } from '@mui/material';
 import React from 'react';
-import { SellerType } from '../../../../pages/o2o/place';
+import { BranchType, SellerType } from '../../../../pages/o2o/place';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import styled from '@emotion/styled';
 
-type SellerProps = {
+type SellerAndBranchProps = {
   seller: SellerType;
+  branch: BranchType;
+  handleOpenNaverMap: () => void;
 };
 
-function Seller({ seller }: SellerProps) {
-  const handleFindPath = () => {};
+function SellerAndBranch({
+  seller,
+  branch,
+  handleOpenNaverMap,
+}: SellerAndBranchProps) {
+  React.useEffect(() => {
+    const onShowKakaoMap = () => {
+      window.kakao.maps.load(() => {
+        const container = document.getElementById('map-with-cafe')!;
+        const options = {
+          center: new window.kakao.maps.LatLng(
+            branch.addressY,
+            branch.addressX
+          ),
+        };
+        const map = new window.kakao.maps.Map(container, options);
+        const markerPosition = new window.kakao.maps.LatLng(
+          branch.addressY,
+          branch.addressX
+        );
+        const marker = new window.kakao.maps.Marker({
+          position: markerPosition,
+          clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+        });
+
+        // 마커에 클릭이벤트를 등록합
+        window.kakao.maps.event.addListener(marker, 'click', function () {
+          handleOpenNaverMap();
+        });
+
+        marker.setMap(map);
+
+        console.log('loaded kakao map');
+      });
+    };
+
+    onShowKakaoMap();
+  }, [branch.addressY, branch.addressX, handleOpenNaverMap]);
 
   return (
     <Box sx={{ my: '2rem' }}>
       <Box display="flex" justifyContent="center">
         <Chip
-          label="로스터리"
+          // label="로스터리"
+          label="카페"
           color="secondary"
           sx={{ fontWeight: 700, fontSize: 16 }}
         />
       </Box>
       <Box display="flex" justifyContent="center" mt="0.75rem">
         <Typography fontSize={20} fontWeight={600} sx={{ px: '0.5rem' }}>
-          {seller.name}
+          {branch.name}
         </Typography>
       </Box>
       <Box
@@ -38,24 +77,25 @@ function Seller({ seller }: SellerProps) {
           <Typography fontWeight="bold" marginRight={'1rem'} width="48px">
             주소
           </Typography>
-          <Typography>{seller.address}</Typography>
+          <Typography>{branch.address}</Typography>
         </Box>
-        <Button
-          onClick={handleFindPath}
+        {/* <Button
+          onClick={handleOpenNaverMap}
           fullWidth
           variant="contained"
           size="small"
           startIcon={<LocationOnIcon />}
         >
           길찾기
-        </Button>
+        </Button> */}
+        <div style={{ aspectRatio: '1 / 1' }} id="map-with-cafe" />
       </Box>
       <Box
         margin="1.5rem auto"
         maxWidth={(theme) => theme.breakpoints.values.md}
       >
         <RoasteryImagesWrapper>
-          {mfrImages.map((img, key) => (
+          {branch.images.map((img, key) => (
             <CardMedia image={img} key={key} />
           ))}
         </RoasteryImagesWrapper>
@@ -64,7 +104,7 @@ function Seller({ seller }: SellerProps) {
   );
 }
 
-export default Seller;
+export default SellerAndBranch;
 
 const RoasteryImagesWrapper = styled.div`
   position: relative;
