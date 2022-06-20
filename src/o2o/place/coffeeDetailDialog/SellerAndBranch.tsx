@@ -4,6 +4,8 @@ import { BranchType, SellerType } from '../../../../pages/o2o/place';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import styled from '@emotion/styled';
+import proj4 from 'proj4';
+import { makeNaverMapURL } from '.';
 
 type SellerAndBranchProps = {
   seller: SellerType;
@@ -20,11 +22,13 @@ function SellerAndBranch({
     const onShowKakaoMap = () => {
       window.kakao.maps.load(() => {
         const container = document.getElementById('map-with-cafe')!;
+
+        const position = new window.kakao.maps.LatLng(
+          branch.addressY,
+          branch.addressX
+        );
         const options = {
-          center: new window.kakao.maps.LatLng(
-            branch.addressY,
-            branch.addressX
-          ),
+          center: position,
         };
         const map = new window.kakao.maps.Map(container, options);
         const markerPosition = new window.kakao.maps.LatLng(
@@ -43,12 +47,31 @@ function SellerAndBranch({
 
         marker.setMap(map);
 
-        console.log('loaded kakao map');
+        const p = proj4('EPSG:4326', 'EPSG:3857');
+        const naverPosition = p.forward([
+          parseFloat(branch.addressX),
+          parseFloat(branch.addressY),
+        ]);
+
+        const url = makeNaverMapURL(branch.name, naverPosition);
+
+        const iwContent = `<a style="padding-left: 3.25rem" href='${url}' target="_blank" rel="noopener noreferrer">길찾기</a>`;
+
+        // 인포윈도우를 생성합니다
+        const infowindow = new window.kakao.maps.InfoWindow({
+          position,
+          content: iwContent,
+        });
+
+        // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+        infowindow.open(map, marker);
+
+        console.log('loaded kakao detail map');
       });
     };
 
     onShowKakaoMap();
-  }, [branch.addressY, branch.addressX, handleOpenNaverMap]);
+  }, [branch, handleOpenNaverMap]);
 
   return (
     <Box sx={{ my: '2rem' }}>

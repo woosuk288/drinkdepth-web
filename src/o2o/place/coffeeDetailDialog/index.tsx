@@ -179,7 +179,7 @@ export default function AlertDialogSlide({
           <span style={{ flex: 1 }}></span>
 
           <Box id="kakao-link-btn" sx={{ display: 'flex', cursor: 'pointer' }}>
-            <KakaoShareButton url={'https://drinkdepth.com'} />
+            <KakaoShareButton url={'https://drinkdepth.com/o2o'} />
             <Typography
               // variant="h6"
               sx={{ marginX: '0.5rem', color: '#3A2929' }}
@@ -208,6 +208,6 @@ function getAcidityLabel(acidity: number) {
 }
 
 // 네이버 지도는 EPSG:3857 좌표계를 사용
-function makeNaverMapURL(cafeName: string, position: number[]) {
+export function makeNaverMapURL(cafeName: string, position: number[]) {
   return `https://map.naver.com/v5/search/${cafeName}?c=${position[0]},${position[1]},15,0,0,0,dh`;
 }

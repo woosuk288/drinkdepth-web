@@ -1,4 +1,10 @@
-import { Box, Container, SelectChangeEvent } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  IconButton,
+  SelectChangeEvent,
+} from '@mui/material';
 
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
@@ -261,6 +267,28 @@ const PlacePage: NextPage = () => {
 
   return (
     <Container maxWidth="sm" disableGutters>
+      <a
+        href="https://pf.kakao.com/_ktxnJb/chat"
+        target="_blank"
+        style={{ position: 'fixed', right: 20, bottom: 10, zIndex: 100 }}
+        rel="noreferrer"
+      >
+        <Button
+          color="primary"
+          size="large"
+          variant="contained"
+          sx={{
+            position: 'fixed',
+            right: 20,
+            bottom: 10,
+            zIndex: 100,
+            fontWeight: 'bold',
+          }}
+        >
+          피드백
+        </Button>
+      </a>
+
       <Box>
         <KaKaoMap latitude={coordi.y} longitude={coordi.x} />
       </Box>
