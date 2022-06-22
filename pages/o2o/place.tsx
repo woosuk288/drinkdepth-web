@@ -17,6 +17,8 @@ import { useReactiveVar } from '@apollo/client';
 import { choiceVar } from '../../apollo/client';
 import AlertDialogSlide from '../../src/o2o/place/coffeeDetailDialog';
 import ImagesDialog from '../../src/o2o/place/ImagesDialog';
+import { analytics } from '../../firebase/clientApp';
+import { logEvent } from 'firebase/analytics';
 
 export type CoffeeType = {
   id: string;
@@ -207,11 +209,19 @@ const PlacePage: NextPage = () => {
         });
 
         // 마커에 클릭이벤트를 등록합
-        window.kakao.maps.event.addListener(marker, 'click', function () {
+        window.kakao.maps.event.addListener(marker, 'click', async function () {
           // 클릭시...
           const coffeeWithBranch = getCoffeeWithBranch(cur, branch);
-          handleTextClick(coffeeWithBranch);
-          // alert('무잇어 필요하까?');
+          // handleTextClick(coffeeWithBranch);
+
+          setCoffeeDetail(coffeeWithBranch);
+          setOpenDetail(true);
+
+          const ga = await analytics;
+          logEvent(ga!, 'custom_click_marker_main', {
+            name: coffeeWithBranch.name,
+            branchName: coffeeWithBranch.branch.name,
+          });
         });
 
         return marker;
@@ -248,13 +258,22 @@ const PlacePage: NextPage = () => {
     setOpenImages(false);
   };
 
-  const handleImageClick = (coffeeResult: CoffeeResultType) => {
+  const handleImageClick = async (coffeeResult: CoffeeResultType) => {
     // open Dialog? image slide
     setCoffeeDetail(coffeeResult);
     setOpenImages(true);
+
+    const ga = await analytics;
+    logEvent(ga!, 'select_content', {
+      content_type: 'image',
+      content_id: coffeeResult.name,
+      items: [
+        { branchName: coffeeResult.branch.name, drinkName: coffeeResult.name },
+      ],
+    });
   };
 
-  const handleTextClick = (coffeeResult: CoffeeResultType) => {
+  const handleTextClick = async (coffeeResult: CoffeeResultType) => {
     // const info = await getAddressXY(
     //   // 한글 주소
     //   '서울 강남구 테헤란로 142 아크플레이스 1층'
@@ -263,6 +282,13 @@ const PlacePage: NextPage = () => {
     // console.log(`     "addressY" : "${info.y}", "addressX" : "${info.x}",`);
     setCoffeeDetail(coffeeResult);
     setOpenDetail(true);
+
+    const ga = await analytics;
+
+    logEvent(ga!, 'select_content', {
+      content_type: 'content',
+      item_id: coffeeResult.name,
+    });
   };
 
   return (

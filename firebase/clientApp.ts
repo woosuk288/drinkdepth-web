@@ -21,7 +21,7 @@ const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
 const auth = getAuth(app);
 auth.useDeviceLanguage();
 
-export { auth };
+export { auth, analytics };
 export const useAuthFb = () => useAuthState(auth);
 
 declare global {
@@ -32,5 +32,6 @@ declare global {
     fbq: any;
     Kakao: any;
     kakao: any;
+    gtag: any;
   }
 }

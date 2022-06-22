@@ -13,6 +13,8 @@ import client from '../apollo/client';
 import { Router, useRouter } from 'next/router';
 import Script from 'next/script';
 import * as fbq from '../facebook/fpixel';
+import { logEvent, setCurrentScreen } from 'firebase/analytics';
+import { analytics } from '../firebase/clientApp';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -26,12 +28,20 @@ export default function MyApp(props: MyAppProps) {
   const router = useRouter();
 
   React.useEffect(() => {
-    // This pageview only triggers the first time (it's important for Pixel to have real information)
-    fbq.pageview();
-
-    const handleRouteChange = () => {
+    const handleRouteChange = async () => {
       fbq.pageview();
+
+      const ga = await analytics;
+
+      if (ga) {
+        console.log('ga : ', ga.app.name);
+        setCurrentScreen(ga, window.location.pathname);
+        logEvent(ga, 'screen_view');
+      }
     };
+
+    // This pageview only triggers the first time (it's important for Pixel to have real information)
+    handleRouteChange();
 
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {

@@ -18,6 +18,8 @@ import BeanTable from './BeanTable';
 import SellerAndBranch from './SellerAndBranch';
 import { KakaoShareButton } from '../../../landing/KakaoShareButton';
 import proj4 from 'proj4';
+import { analytics } from '../../../../firebase/clientApp';
+import { logEvent } from 'firebase/analytics';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -41,7 +43,7 @@ export default function AlertDialogSlide({
 }: AlertDialogSlideProps) {
   // const [open, setOpen] = React.useState(false);
 
-  const handleOpenNaverMap = () => {
+  const handleOpenNaverMap = async (from: 'top' | 'bottom') => {
     const p = proj4('EPSG:4326', 'EPSG:3857');
     const position = p.forward([
       parseFloat(coffeeDetail.branch.addressX),
@@ -57,6 +59,13 @@ export default function AlertDialogSlide({
     anchor.target = '_blank';
     anchor.rel = 'noopener noreferrer';
     anchor.click();
+
+    const ga = await analytics;
+    logEvent(ga!, 'custom_click_go_naver', {
+      from,
+      name: coffeeDetail.name,
+      branchName: coffeeDetail.branch.name,
+    });
   };
 
   return (
@@ -84,19 +93,10 @@ export default function AlertDialogSlide({
           <IconButton
             color="primary"
             sx={{ padding: 0 }}
-            onClick={handleOpenNaverMap}
+            onClick={() => handleOpenNaverMap('top')}
           >
             <LocationOnIcon fontSize="large" />
           </IconButton>
-          {/* <Button
-            // onClick={handleFindPath}
-            // fullWidth
-            variant="contained"
-            size="small"
-            startIcon={<LocationOnIcon />}
-          >
-            길찾기
-          </Button> */}
         </DialogTitle>
 
         <DialogTitle sx={{ fontWeight: 'bold' }}>
@@ -154,7 +154,7 @@ export default function AlertDialogSlide({
           <SellerAndBranch
             seller={coffeeDetail.seller}
             branch={coffeeDetail.branch}
-            handleOpenNaverMap={handleOpenNaverMap}
+            handleOpenNaverMap={() => handleOpenNaverMap('bottom')}
           />
         </DialogContent>
 

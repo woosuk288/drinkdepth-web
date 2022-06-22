@@ -55,7 +55,16 @@ function SellerAndBranch({
 
         const url = makeNaverMapURL(branch.name, naverPosition);
 
-        const iwContent = `<a style="padding-left: 3.25rem" href='${url}' target="_blank" rel="noopener noreferrer">길찾기</a>`;
+        const handleGA = () => {
+          window.gtag('event', 'custom_click_go_naver', {
+            from: 'text',
+            // name: coffeeDetail.name,
+            branchName: '길찾기 글자 클릭',
+          });
+        };
+
+        // TODO: 여기엔 GA 어떻게 넣냐
+        const iwContent = `<a style="padding-left: 3.25rem" href='${url}' target="_blank" rel="noopener noreferrer" onclick='(${handleGA})()'>길찾기</a>`;
 
         // 인포윈도우를 생성합니다
         const infowindow = new window.kakao.maps.InfoWindow({
@@ -151,9 +160,3 @@ const RoasteryImagesWrapper = styled.div`
     grid-gap: 8px;
   }
 `;
-const mfrImages = [
-  'https://images.unsplash.com/photo-1585435247026-1d8560423d52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cm9hc3Rlcnl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
-  'https://images.unsplash.com/photo-1556027654-a05ec60d5a4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHJvYXN0ZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
-  'https://media.istockphoto.com/photos/coffee-beans-in-a-coffee-roastery-at-work-picture-id1371315210?b=1&k=20&m=1371315210&s=170667a&w=0&h=AH9uHU1GSf8Lf8DvRoQUVZJfQ23ASegXEdn76u6mtYA=',
-  'https://media.istockphoto.com/photos/man-opening-roasters-hatch-and-coffee-beans-falling-out-of-roastery-picture-id1364184493?b=1&k=20&m=1364184493&s=170667a&w=0&h=1hdjJirxBezoeuHSCqeYUAKxjMT60_qF26Zx3jhMxeM=',
-];
