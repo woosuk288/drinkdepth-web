@@ -356,7 +356,7 @@ const PlacePage: NextPage = () => {
           // displayMarker(mapObj, locPosition, message);
 
           setMyLocation(locPosition);
-          displayCustomOverlay(mapObj, locPosition);
+          displayCustomOverlay(mapObj, locPosition, true);
           setLoadingGPS(false);
         },
         (error) => {
