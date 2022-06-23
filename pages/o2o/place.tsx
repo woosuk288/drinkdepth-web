@@ -3,13 +3,15 @@ import {
   Button,
   Container,
   IconButton,
+  LinearProgress,
   SelectChangeEvent,
 } from '@mui/material';
+
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import KaKaoMap from '../../src/o2o/KakaoMap';
 import CoffeeResultList from '../../src/o2o/place/CoffeeResultList';
 import Selectors from '../../src/o2o/place/Selectors';
 
@@ -19,6 +21,7 @@ import AlertDialogSlide from '../../src/o2o/place/coffeeDetailDialog';
 import ImagesDialog from '../../src/o2o/place/ImagesDialog';
 import { analytics } from '../../firebase/clientApp';
 import { logEvent } from 'firebase/analytics';
+import useScript from '../../src/hooks/useScript';
 
 export type CoffeeType = {
   id: string;
@@ -92,14 +95,22 @@ export type CoffeeResultType = {
 const PlacePage: NextPage = () => {
   const router = useRouter();
 
+  const mapLoadedStatus = useScript(
+    `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false&libraries=services,clusterer`
+  );
+
   const [coffees, setSetCoffees] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingData, setLoadingData] = useState(true);
+  const [loadingGPS, setLoadingGPS] = useState(false);
 
   // 서울 중심
   const [coordi, setCoordi] = useState<CoordiType>({
     y: '37.566826004661',
     x: '126.978652258309',
   });
+  const [myLocation, setMyLocation] = useState<any>();
+
+  const [mapObj, setMapObj] = useState<any>();
 
   const choice = useReactiveVar(choiceVar);
 
@@ -110,6 +121,31 @@ const PlacePage: NextPage = () => {
   const [coffeeDetail, setCoffeeDetail] = useState<CoffeeResultType>();
   const [openDetail, setOpenDetail] = useState(false);
   const [openImages, setOpenImages] = useState(false);
+
+  useEffect(() => {
+    if (mapLoadedStatus === 'ready') {
+      const onLoadKakaoMap = () => {
+        window.kakao.maps.load(() => {
+          const map = getKakaoMap('map', coordi.y, coordi.x);
+
+          // const markerPosition = new window.kakao.maps.LatLng(
+          //   latitude,
+          //   longitude
+          // );
+          // const marker = new window.kakao.maps.Marker({
+          //   position: markerPosition,
+          // });
+          // marker.setMap(map);
+
+          setMapObj(map);
+
+          console.log('loaded kakao map');
+        });
+      };
+
+      onLoadKakaoMap();
+    }
+  }, [coordi.x, coordi.y, mapLoadedStatus]);
 
   useEffect(() => {
     // const coffeesJSON = new Promise((resolve, reject) => {
@@ -130,7 +166,7 @@ const PlacePage: NextPage = () => {
     // });
     import('../../firebase/productsDetailsWithCafes.json').then((data) => {
       setSetCoffees(data.default);
-      setLoading(false);
+      setLoadingData(false);
       // showFilteredCoffeeList(choice, data.default);
     });
   }, []);
@@ -154,14 +190,10 @@ const PlacePage: NextPage = () => {
     newChoice: ChoiceType,
     previousCoffees: CoffeeType[]
   ) => {
-    var map = new window.kakao.maps.Map(document.getElementById('map'), {
-      // 지도를 표시할 div
-      center: new window.kakao.maps.LatLng(coordi.y, coordi.x), // 지도의 중심좌표
-      level: 11, // 지도의 확대 레벨
-    });
+    const map = getKakaoMap('map', coordi.y, coordi.x);
 
     // 마커 클러스터러를 생성합니다
-    var clusterer = new window.kakao.maps.MarkerClusterer({
+    const clusterer = new window.kakao.maps.MarkerClusterer({
       map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
       averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
       minLevel: 10, // 클러스터 할 최소 지도 레벨
@@ -234,6 +266,15 @@ const PlacePage: NextPage = () => {
     // 클러스터러에 마커들을 추가합니다
     clusterer.addMarkers(markers);
 
+    if (myLocation) {
+      displayCustomOverlay(map, myLocation);
+    }
+
+    // redraw??
+
+    // set
+    setMapObj(map);
+
     const coffeesWithBranch = capitalCoffees.reduce((pre, cur) => {
       let result: CoffeeResultType[] = pre;
       cur.branches.map((branch) => {
@@ -291,6 +332,57 @@ const PlacePage: NextPage = () => {
     });
   };
 
+  const handleGPSClick = () => {
+    // 이미 위치 정보 받아왔으면
+    if (myLocation) {
+      mapObj.setCenter(myLocation);
+      return;
+    }
+
+    // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
+    if (navigator.geolocation) {
+      setLoadingGPS(true);
+
+      // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+
+          var locPosition = new window.kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            message = '<div style="padding:5px;">나의 위치?!</div>'; // 인포윈도우에 표시될 내용입니다
+
+          // 마커와 인포윈도우를 표시합니다
+          // displayMarker(mapObj, locPosition, message);
+
+          setMyLocation(locPosition);
+          displayCustomOverlay(mapObj, locPosition);
+          setLoadingGPS(false);
+        },
+        (error) => {
+          console.log('error.message : ', error.message);
+          setLoadingGPS(false);
+        }
+      );
+    } else {
+      // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+      var locPosition = new window.kakao.maps.LatLng(coordi.y, coordi.x),
+        message = 'geolocation을 사용할수 없어요..';
+
+      displayMarker(mapObj, locPosition, message);
+    }
+  };
+
+  console.log('mapLoadedStatus : ', mapLoadedStatus);
+
+  if (mapLoadedStatus !== 'ready')
+    return (
+      <Container maxWidth="sm" disableGutters>
+        Loading...
+      </Container>
+    );
+
   return (
     <Container maxWidth="sm" disableGutters>
       <a
@@ -315,11 +407,32 @@ const PlacePage: NextPage = () => {
         </Button>
       </a>
 
-      <Box>
-        <KaKaoMap latitude={coordi.y} longitude={coordi.x} />
+      <Box className="map-area" sx={{ position: 'relative' }}>
+        <div style={{ aspectRatio: '1 / 1' }} id="map"></div>
+        {/* <KaKaoMap latitude={coordi.y} longitude={coordi.x} /> */}
+        <IconButton
+          size="small"
+          sx={{
+            position: 'absolute',
+            left: 12,
+            bottom: 32,
+            zIndex: 100,
+            backgroundColor: '#fff',
+            borderRadius: '8px',
+            boxShadow: 2,
+          }}
+          onClick={handleGPSClick}
+        >
+          <GpsFixedIcon />
+        </IconButton>
       </Box>
+      {loadingGPS && <LinearProgress />}
 
-      <Selectors choice={choice} handleChange={handleChange} />
+      <Selectors
+        choice={choice}
+        handleChange={handleChange}
+        disabled={loadingData}
+      />
 
       <CoffeeResultList
         coffeeResults={filteredCoffees}
@@ -377,4 +490,71 @@ function getCoffeeWithBranch(coffee: CoffeeType, branch: BranchType) {
     beans: coffee.beans,
     branch: branch,
   };
+}
+
+// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+function displayMarker(map: any, locPosition: any, message: string) {
+  // 마커를 생성합니다
+  var marker = new window.kakao.maps.Marker({
+    map: map,
+    position: locPosition,
+  });
+
+  var iwContent = message; // 인포윈도우에 표시할 내용
+  // iwRemoveable = true;
+
+  // 인포윈도우를 생성합니다
+  var infowindow = new window.kakao.maps.InfoWindow({
+    content: iwContent,
+    // removable: iwRemoveable,
+  });
+
+  // 인포윈도우를 마커위에 표시합니다
+  infowindow.open(map, marker);
+
+  // 지도 중심좌표를 접속위치로 변경합니다
+  map.setCenter(locPosition);
+}
+
+function displayCustomOverlay(
+  map: any,
+  locPosition: any,
+  goCenter: boolean = false
+) {
+  var imageSrc =
+      'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다
+    imageSize = new window.kakao.maps.Size(42, 46), // 마커이미지의 크기입니다
+    imageOption = { offset: new window.kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+  // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+  var markerImage = new window.kakao.maps.MarkerImage(
+    imageSrc,
+    imageSize,
+    imageOption
+  );
+
+  // 마커를 생성합니다
+  var marker = new window.kakao.maps.Marker({
+    position: locPosition,
+    image: markerImage, // 마커이미지 설정
+  });
+
+  // 마커가 지도 위에 표시되도록 설정합니다
+  marker.setMap(map);
+
+  // 지도 중심좌표를 접속위치로 변경합니다
+  if (goCenter) {
+    map.setCenter(locPosition);
+  }
+}
+
+function getKakaoMap(id: string, y: string, x: string, level: number = 11) {
+  const container = document.getElementById(id)!;
+  const options = {
+    center: new window.kakao.maps.LatLng(y, x),
+    level, // 지도의 확대 레벨
+  };
+  const map = new window.kakao.maps.Map(container, options);
+
+  return map;
 }

@@ -17,9 +17,10 @@ import { ChoiceType } from '../../../pages/o2o/place';
 type SelectorsProps = {
   choice: ChoiceType;
   handleChange: (event: SelectChangeEvent) => void;
+  disabled?: boolean;
 };
 
-function Selectors({ choice, handleChange }: SelectorsProps) {
+function Selectors({ choice, handleChange, disabled = false }: SelectorsProps) {
   // const [age, setAge] = React.useState('');
 
   // const handleChange = (event: SelectChangeEvent) => {
@@ -37,7 +38,7 @@ function Selectors({ choice, handleChange }: SelectorsProps) {
         '& .MuiSvgIcon-root': { position: 'absolute', paddingBottom: '0.5rem' },
       }}
     >
-      <FormControl size="small">
+      <FormControl size="small" disabled={disabled}>
         <Tooltip
           arrow
           enterTouchDelay={10}
@@ -63,7 +64,7 @@ function Selectors({ choice, handleChange }: SelectorsProps) {
           <MenuItem value={'디카페인'}>디카페인</MenuItem>
         </Select>
       </FormControl>
-      <FormControl size="small">
+      <FormControl size="small" disabled={disabled}>
         <Tooltip
           arrow
           enterTouchDelay={10}
@@ -95,7 +96,7 @@ function Selectors({ choice, handleChange }: SelectorsProps) {
         </Select>
         {/* <FormHelperText>Disabled</FormHelperText> */}
       </FormControl>
-      <FormControl size="small">
+      <FormControl size="small" disabled={disabled}>
         <Tooltip
           arrow
           enterTouchDelay={10}
