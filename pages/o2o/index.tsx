@@ -13,19 +13,22 @@ const O2OPage: NextPage = () => {
       </Typography> */}
       <Box
         onClick={() => router.push('/o2o/place')}
-        sx={{
+        sx={(theme) => ({
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           height: '100vh',
-          transform: 'scale(1.5)',
-        }}
+          [theme.breakpoints.down('md')]: {
+            transform: 'scale(1.5)',
+          },
+        })}
       >
         <Image
           src="/images/o2o/O2O PMF 메인.gif"
           alt="main image"
           width={960}
           height={1300}
+          objectFit="contain"
         />
       </Box>
     </Container>
