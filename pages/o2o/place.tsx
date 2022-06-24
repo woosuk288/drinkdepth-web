@@ -16,12 +16,13 @@ import CoffeeResultList from '../../src/o2o/place/CoffeeResultList';
 import Selectors from '../../src/o2o/place/Selectors';
 
 import { useReactiveVar } from '@apollo/client';
-import { choiceVar } from '../../apollo/client';
+import { ChoiceType, choiceVar } from '../../apollo/client';
 import AlertDialogSlide from '../../src/o2o/place/coffeeDetailDialog';
 import ImagesDialog from '../../src/o2o/place/ImagesDialog';
 import { analytics } from '../../firebase/clientApp';
 import { logEvent } from 'firebase/analytics';
 import useScript from '../../src/hooks/useScript';
+import { labelFromOneToFive } from '../../src/util/combos';
 
 export type CoffeeType = {
   id: string;
@@ -31,18 +32,13 @@ export type CoffeeType = {
   packageImage: any;
   branches: BranchType[];
   seller: any;
-  coffeeDesc: any;
+  coffeeDesc: CoffeeDesc;
   beans: BeanType[];
 };
 
 export type CoordiType = {
   y: string;
   x: string;
-};
-export type ChoiceType = {
-  hasCaffein: string;
-  roasting: string;
-  acidity: string;
 };
 
 export type SellerType = {
@@ -53,6 +49,12 @@ export type SellerType = {
   address_x: string;
   logoURLs: any;
   placeImages: string[];
+};
+
+export type CoffeeDesc = {
+  acidity: number;
+  characters: string[];
+  flavors: string[];
 };
 
 export type BeanType = {
@@ -128,15 +130,6 @@ const PlacePage: NextPage = () => {
         window.kakao.maps.load(() => {
           const map = getKakaoMap('map', coordi.y, coordi.x);
 
-          // const markerPosition = new window.kakao.maps.LatLng(
-          //   latitude,
-          //   longitude
-          // );
-          // const marker = new window.kakao.maps.Marker({
-          //   position: markerPosition,
-          // });
-          // marker.setMap(map);
-
           setMapObj(map);
 
           console.log('loaded kakao map');
@@ -171,10 +164,14 @@ const PlacePage: NextPage = () => {
     });
   }, []);
 
-  const handleChange = async (event: SelectChangeEvent) => {
+  const handleChange = async (event: SelectChangeEvent<string[]>) => {
+    const {
+      target: { value },
+    } = event;
+
     const newChoice = {
       ...choice,
-      [event.target.name]: event.target.value,
+      [event.target.name]: typeof value === 'string' ? value.split(',') : value,
     };
 
     // const info = await getAddressXY('서울특별시');
@@ -209,24 +206,29 @@ const PlacePage: NextPage = () => {
 
       const hasCafes = !!coffee.branches && !coffee.name.startsWith('['); // 카페가 있고, 대용량 아닌거
 
-      const isCaffein =
-        newChoice.hasCaffein === '디카페인'
+      const caffeinChoices =
+        newChoice.caffein.length === 1 && newChoice.caffein[0] === '디카페인'
           ? coffee.tags[1] === '디카페인'
-          : newChoice.hasCaffein === '카페인'
+          : newChoice.caffein.length === 1 && newChoice.caffein[0] === '카페인'
           ? coffee.tags[1] !== '디카페인'
           : true;
+      // include 카페인
 
-      const isRoasting =
-        newChoice.roasting === ''
-          ? true
-          : coffee.tags[0] === newChoice.roasting;
+      // include 디카페인
 
-      const isAcidity =
-        newChoice.acidity === ''
-          ? true
-          : coffee.coffeeDesc.acidity?.toString() === newChoice.acidity;
+      const roastingChoices =
+        newChoice.roasting.length > 0
+          ? newChoice.roasting.includes(coffee.tags[0])
+          : true;
 
-      return hasCafes && isCaffein && isRoasting && isAcidity;
+      const acidityChoices =
+        newChoice.acidity.length > 0
+          ? newChoice.acidity.includes(
+              labelFromOneToFive(coffee.coffeeDesc.acidity)
+            )
+          : true;
+
+      return hasCafes && caffeinChoices && roastingChoices && acidityChoices;
     });
 
     const markers = capitalCoffees.reduce((pre, cur) => {
@@ -373,8 +375,6 @@ const PlacePage: NextPage = () => {
       displayMarker(mapObj, locPosition, message);
     }
   };
-
-  console.log('mapLoadedStatus : ', mapLoadedStatus);
 
   if (mapLoadedStatus !== 'ready')
     return (

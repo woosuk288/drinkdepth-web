@@ -22,9 +22,9 @@ export type CompanyUser = {
 export type Role = keyof typeof UserRole | undefined | null;
 
 export type ChoiceType = {
-  hasCaffein: string;
-  roasting: string;
-  acidity: string;
+  caffein: string[];
+  roasting: string[];
+  acidity: string[];
 };
 
 // export const isLoggedInVar = makeVar<boolean>(false);
@@ -33,9 +33,9 @@ export const userVar = makeVar<CompanyUser | null | undefined>(undefined);
 export const notiBadgeVar = makeVar<boolean>(false);
 
 export const choiceVar = makeVar<ChoiceType>({
-  hasCaffein: '',
-  roasting: '',
-  acidity: '',
+  caffein: [],
+  roasting: [],
+  acidity: [],
 });
 
 const httpLink = createHttpLink({
