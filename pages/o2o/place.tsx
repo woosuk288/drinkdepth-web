@@ -23,13 +23,13 @@ import { analytics } from '../../firebase/clientApp';
 import { logEvent } from 'firebase/analytics';
 import useScript from '../../src/hooks/useScript';
 import { labelFromOneToFive } from '../../src/util/combos';
+import { getAddressXY } from '../../src/util/kakaoAPI';
 
 export type CoffeeType = {
   id: string;
   name: string;
   note: string;
   tags: string[];
-  packageImage: any;
   branches: BranchType[];
   seller: any;
   coffeeDesc: CoffeeDesc;
@@ -45,8 +45,6 @@ export type SellerType = {
   name: string;
   introduce: string;
   address: string;
-  address_y: string;
-  address_x: string;
   logoURLs: any;
   placeImages: string[];
 };
@@ -83,7 +81,6 @@ export type CoffeeResultType = {
   id: string;
   name: string;
   note: string;
-  packageImageURLs: any;
   tags: string[];
   acidity: number;
   characters: string[];
@@ -376,6 +373,28 @@ const PlacePage: NextPage = () => {
     }
   };
 
+  // const jsonFileTest = async () => {
+  //   import('../../firebase/nutshell.json').then(async (data) => {
+  //     // data.default.map((coffee) => {
+  //     //   console.log(coffee.seller.name, ' / ', coffee.name);
+  //     //   console.log('coffee : ', coffee);
+  //     // });
+
+  //     const coffee = data.default[35];
+
+  //     const firstCoffee = await Promise.all(
+  //       coffee.branches
+  //         .filter((branch) => !!branch.address)
+  //         .map((filteredBranch) => {
+  //           console.log('filteredBranch : ', filteredBranch);
+  //           return getAddressXY(filteredBranch.address!);
+  //         })
+  //     );
+
+  //     console.log('firstCoffee :', firstCoffee);
+  //   });
+  // };
+
   if (mapLoadedStatus !== 'ready')
     return (
       <Container maxWidth="sm" disableGutters>
@@ -385,6 +404,7 @@ const PlacePage: NextPage = () => {
 
   return (
     <Container maxWidth="sm" disableGutters>
+      {/* <Button onClick={jsonFileTest}>jsontest</Button> */}
       <a
         href="https://pf.kakao.com/_ktxnJb/chat"
         target="_blank"
@@ -434,11 +454,13 @@ const PlacePage: NextPage = () => {
         disabled={loadingData}
       />
 
-      <CoffeeResultList
-        coffeeResults={filteredCoffees}
-        handleImageClick={handleImageClick}
-        handleTextClick={handleTextClick}
-      />
+      {filteredCoffees.length > 0 && (
+        <CoffeeResultList
+          coffeeResults={filteredCoffees}
+          handleImageClick={handleImageClick}
+          handleTextClick={handleTextClick}
+        />
+      )}
 
       {coffeeDetail && (
         <AlertDialogSlide
@@ -467,7 +489,6 @@ function getCoffeeWithBranch(coffee: CoffeeType, branch: BranchType) {
     id: coffee.id,
     name: coffee.name,
     note: coffee.note,
-    packageImageURLs: coffee.packageImage.urls,
     tags: coffee.tags,
     acidity: coffee.coffeeDesc.acidity,
     characters: coffee.coffeeDesc.characters,
@@ -476,8 +497,6 @@ function getCoffeeWithBranch(coffee: CoffeeType, branch: BranchType) {
       name: coffee.seller.name,
       introduce: coffee.seller.introduce,
       address: coffee.seller.address,
-      address_y: coffee.seller.address_y,
-      address_x: coffee.seller.address_x,
       logoURLs: coffee.seller.logo.urls,
       // placeImages: coffee.seller.wallImages.map(
       //   (wallImage: any) => wallImage.urls.origin
