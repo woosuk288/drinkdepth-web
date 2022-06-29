@@ -34,7 +34,6 @@ export default function MyApp(props: MyAppProps) {
       const ga = await analytics;
 
       if (ga) {
-        console.log('ga : ', ga.app.name);
         setCurrentScreen(ga, window.location.pathname);
         logEvent(ga, 'screen_view');
       }

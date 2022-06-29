@@ -81,7 +81,7 @@ export default function AlertDialogSlide({
       >
         <DialogTitle sx={{ display: 'flex', alignItems: 'center' }}>
           <Avatar
-            src={coffeeDetail.seller.logoURLs['200x200']}
+            src={coffeeDetail.seller.logoURLs['origin']}
             sx={{ marginRight: '0.5rem' }}
           />
           <Typography fontWeight={'bold'}>

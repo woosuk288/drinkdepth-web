@@ -63835,5 +63835,1835 @@
     },
     "descriptionImages": [],
     "exposedSellerNotices": []
+  },
+
+  {
+    "seller": {
+      "name": "커피리브레",
+      "address": "서울 마포구 성미산로 200",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6.jpeg?alt=media&token=8932f2e3-6d9d-49cf-aa4e-17d7e385226e"
+        }
+      }
+    },
+    "id": "nutshell-id-2",
+    "name": "배드블러드",
+    "tags": ["라이트미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": [],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "커피리브레 연남점",
+        "address": "서울 마포구 성미산로 200",
+        "addressY": "37.5622025138874",
+        "addressX": "126.926962303693",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151155.png?alt=media&token=a284cf44-efe6-45eb-8802-01514b7312f5",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151242.png?alt=media&token=7f0e6222-b660-4e67-a590-82205c91b47e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151258.png?alt=media&token=ffae81de-ecf0-448c-9666-a01fe371877c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151330.png?alt=media&token=67e73340-3b42-494a-a394-fb88feb23309"
+        ]
+      },
+      {
+        "name": "커피리브레 명동성당점",
+        "address": "서울시 중구 명동길 74 명동성당 1898광장 1층 102호",
+        "addressY": "37.5636758699882",
+        "addressX": "126.986775823267",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151414.png?alt=media&token=13033c2f-9518-45ce-b055-7e663662c64c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151435.png?alt=media&token=c3112ece-7330-487d-9aa6-9304fa02fd9e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151523.png?alt=media&token=78ff68d7-2387-43ea-910c-ddae0eb429a3"
+        ]
+      },
+      {
+        "name": "커피리브레 영등포 타임스퀘어점",
+        "address": "서울시 영등포구 영중로 15(영등포동4가) 112호",
+        "addressY": "37.5172332566615",
+        "addressX": "126.903715993779",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151620.png?alt=media&token=7f26cee0-219a-469b-bd0a-9b58cb02452c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151653.png?alt=media&token=efd397b8-29d2-42e0-a1b8-c00630cac317",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151714.png?alt=media&token=abe3f094-826d-4332-9eb1-82b0c92672fe",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151732.png?alt=media&token=eb249148-aec3-4779-bd01-580396c25be2"
+        ]
+      },
+      {
+        "name": "커피리브레 강남 신세계점",
+        "address": "서울 서초구 신반포로 176 파미에스트리트 지하 1층",
+        "addressY": "37.5039351769908",
+        "addressX": "127.002413006799",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151815.png?alt=media&token=37a51331-4ee2-4756-bc60-53c58e7c0dd0",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151850.png?alt=media&token=282744ba-2896-477f-9b4b-d488d5373062",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151923.png?alt=media&token=dc2ae082-2777-4f7e-8b9d-a046abc9507f",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151938.png?alt=media&token=e5fb081e-cb2b-4374-8de5-dc608bbc4022"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "커피리브레",
+      "address": "서울 마포구 성미산로 200",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6.jpeg?alt=media&token=8932f2e3-6d9d-49cf-aa4e-17d7e385226e"
+        }
+      }
+    },
+    "id": "nutshell-id-3",
+    "name": "노서프라이즈",
+    "tags": ["미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": [],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "커피리브레 연남점",
+        "address": "서울 마포구 성미산로 200",
+        "addressY": "37.5622025138874",
+        "addressX": "126.926962303693",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151155.png?alt=media&token=a284cf44-efe6-45eb-8802-01514b7312f5",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151242.png?alt=media&token=7f0e6222-b660-4e67-a590-82205c91b47e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151258.png?alt=media&token=ffae81de-ecf0-448c-9666-a01fe371877c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151330.png?alt=media&token=67e73340-3b42-494a-a394-fb88feb23309"
+        ]
+      },
+      {
+        "name": "커피리브레 명동성당점",
+        "address": "서울시 중구 명동길 74 명동성당 1898광장 1층 102호",
+        "addressY": "37.5636758699882",
+        "addressX": "126.986775823267",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151414.png?alt=media&token=13033c2f-9518-45ce-b055-7e663662c64c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151435.png?alt=media&token=c3112ece-7330-487d-9aa6-9304fa02fd9e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151523.png?alt=media&token=78ff68d7-2387-43ea-910c-ddae0eb429a3"
+        ]
+      },
+      {
+        "name": "커피리브레 영등포 타임스퀘어점",
+        "address": "서울시 영등포구 영중로 15(영등포동4가) 112호",
+        "addressY": "37.5172332566615",
+        "addressX": "126.903715993779",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151620.png?alt=media&token=7f26cee0-219a-469b-bd0a-9b58cb02452c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151653.png?alt=media&token=efd397b8-29d2-42e0-a1b8-c00630cac317",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151714.png?alt=media&token=abe3f094-826d-4332-9eb1-82b0c92672fe",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151732.png?alt=media&token=eb249148-aec3-4779-bd01-580396c25be2"
+        ]
+      },
+      {
+        "name": "커피리브레 강남 신세계점",
+        "address": "서울 서초구 신반포로 176 파미에스트리트 지하 1층",
+        "addressY": "37.5039351769908",
+        "addressX": "127.002413006799",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151815.png?alt=media&token=37a51331-4ee2-4756-bc60-53c58e7c0dd0",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151850.png?alt=media&token=282744ba-2896-477f-9b4b-d488d5373062",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151923.png?alt=media&token=dc2ae082-2777-4f7e-8b9d-a046abc9507f",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151938.png?alt=media&token=e5fb081e-cb2b-4374-8de5-dc608bbc4022"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "커피리브레",
+      "address": "서울 마포구 성미산로 200",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6.jpeg?alt=media&token=8932f2e3-6d9d-49cf-aa4e-17d7e385226e"
+        }
+      }
+    },
+    "id": "nutshell-id-4",
+    "name": "다크리브레",
+    "tags": ["다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": [],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "커피리브레 연남점",
+        "address": "서울 마포구 성미산로 200",
+        "addressY": "37.5622025138874",
+        "addressX": "126.926962303693",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151155.png?alt=media&token=a284cf44-efe6-45eb-8802-01514b7312f5",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151242.png?alt=media&token=7f0e6222-b660-4e67-a590-82205c91b47e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151258.png?alt=media&token=ffae81de-ecf0-448c-9666-a01fe371877c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151330.png?alt=media&token=67e73340-3b42-494a-a394-fb88feb23309"
+        ]
+      },
+      {
+        "name": "커피리브레 명동성당점",
+        "address": "서울시 중구 명동길 74 명동성당 1898광장 1층 102호",
+        "addressY": "37.5636758699882",
+        "addressX": "126.986775823267",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151414.png?alt=media&token=13033c2f-9518-45ce-b055-7e663662c64c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151435.png?alt=media&token=c3112ece-7330-487d-9aa6-9304fa02fd9e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151523.png?alt=media&token=78ff68d7-2387-43ea-910c-ddae0eb429a3"
+        ]
+      },
+      {
+        "name": "커피리브레 영등포 타임스퀘어점",
+        "address": "서울시 영등포구 영중로 15(영등포동4가) 112호",
+        "addressY": "37.5172332566615",
+        "addressX": "126.903715993779",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151620.png?alt=media&token=7f26cee0-219a-469b-bd0a-9b58cb02452c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151653.png?alt=media&token=efd397b8-29d2-42e0-a1b8-c00630cac317",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151714.png?alt=media&token=abe3f094-826d-4332-9eb1-82b0c92672fe",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151732.png?alt=media&token=eb249148-aec3-4779-bd01-580396c25be2"
+        ]
+      },
+      {
+        "name": "커피리브레 강남 신세계점",
+        "address": "서울 서초구 신반포로 176 파미에스트리트 지하 1층",
+        "addressY": "37.5039351769908",
+        "addressX": "127.002413006799",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151815.png?alt=media&token=37a51331-4ee2-4756-bc60-53c58e7c0dd0",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151850.png?alt=media&token=282744ba-2896-477f-9b4b-d488d5373062",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151923.png?alt=media&token=dc2ae082-2777-4f7e-8b9d-a046abc9507f",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151938.png?alt=media&token=e5fb081e-cb2b-4374-8de5-dc608bbc4022"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "커피리브레",
+      "address": "서울 마포구 성미산로 200",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6.jpeg?alt=media&token=8932f2e3-6d9d-49cf-aa4e-17d7e385226e"
+        }
+      }
+    },
+    "id": "nutshell-id-5",
+    "name": "버티고",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": [],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "커피리브레 연남점",
+        "address": "서울 마포구 성미산로 200",
+        "addressY": "37.5622025138874",
+        "addressX": "126.926962303693",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151155.png?alt=media&token=a284cf44-efe6-45eb-8802-01514b7312f5",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151242.png?alt=media&token=7f0e6222-b660-4e67-a590-82205c91b47e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151258.png?alt=media&token=ffae81de-ecf0-448c-9666-a01fe371877c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151330.png?alt=media&token=67e73340-3b42-494a-a394-fb88feb23309"
+        ]
+      },
+      {
+        "name": "커피리브레 명동성당점",
+        "address": "서울시 중구 명동길 74 명동성당 1898광장 1층 102호",
+        "addressY": "37.5636758699882",
+        "addressX": "126.986775823267",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151414.png?alt=media&token=13033c2f-9518-45ce-b055-7e663662c64c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151435.png?alt=media&token=c3112ece-7330-487d-9aa6-9304fa02fd9e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151523.png?alt=media&token=78ff68d7-2387-43ea-910c-ddae0eb429a3"
+        ]
+      },
+      {
+        "name": "커피리브레 영등포 타임스퀘어점",
+        "address": "서울시 영등포구 영중로 15(영등포동4가) 112호",
+        "addressY": "37.5172332566615",
+        "addressX": "126.903715993779",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151620.png?alt=media&token=7f26cee0-219a-469b-bd0a-9b58cb02452c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151653.png?alt=media&token=efd397b8-29d2-42e0-a1b8-c00630cac317",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151714.png?alt=media&token=abe3f094-826d-4332-9eb1-82b0c92672fe",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%83%E1%85%B3%E1%86%BC%E1%84%91%E1%85%A9%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B0%E1%84%8B%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151732.png?alt=media&token=eb249148-aec3-4779-bd01-580396c25be2"
+        ]
+      },
+      {
+        "name": "커피리브레 강남 신세계점",
+        "address": "서울 서초구 신반포로 176 파미에스트리트 지하 1층",
+        "addressY": "37.5039351769908",
+        "addressX": "127.002413006799",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151815.png?alt=media&token=37a51331-4ee2-4756-bc60-53c58e7c0dd0",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151850.png?alt=media&token=282744ba-2896-477f-9b4b-d488d5373062",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151923.png?alt=media&token=dc2ae082-2777-4f7e-8b9d-a046abc9507f",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F01%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A6%E1%84%80%E1%85%A8%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_151938.png?alt=media&token=e5fb081e-cb2b-4374-8de5-dc608bbc4022"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "180커피로스터스",
+      "address": "경기 성남시 분당구 문정로144번길 4",
+      "introduce": "대한민국 최초 로스팅 국가대표 2명이 로스팅하는 명실상부 대한민국 대표 커피 로스팅 회사입니다.180커피로스터스는 180도 생각의 전환이라는 모토아래 운영되고 있는 커피로스팅회사 입니다.커피가 가지고 있는 단맛을 최대한 끌어내어 한잔에 담는다는 목표로 커피를 하고있습니다.현재 경기도 성남시 분당 율동공원에 자리잡고 있으며, 로스팅공장과 카페를 운영하고있습니다.항상 최선의 커피를 만들어내기위해 노력하고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F02%20180%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=e65d2aac-a63f-4147-8439-707c6894b935"
+        }
+      }
+    },
+    "id": "nutshell-id-6",
+    "name": "바이올렛",
+    "note": "과일의 단맛과 산미가 도드라진 블렌드. 기분이가 좋아지는 향미가 매력",
+    "tags": ["라이트미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["오렌지", "건포도", "카라멜"],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "180 커피로스터스",
+        "address": "경기 성남시 분당구 문정로144번길 4",
+        "addressY": "37.3825445478861",
+        "addressX": "127.151635445686",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152026.png?alt=media&token=679dc4c6-dd24-4973-bfd0-48dfae2735d3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152048.png?alt=media&token=5d0eb138-113b-495f-be41-85e26813b359",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152108.png?alt=media&token=0f2d2346-2b6b-4a3f-a309-cdfaae30fcde",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152126.png?alt=media&token=df9b3c2d-d569-4682-b119-e77e174b3e75"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "180커피로스터스",
+      "address": "경기 성남시 분당구 문정로144번길 4",
+      "introduce": "대한민국 최초 로스팅 국가대표 2명이 로스팅하는 명실상부 대한민국 대표 커피 로스팅 회사입니다.180커피로스터스는 180도 생각의 전환이라는 모토아래 운영되고 있는 커피로스팅회사 입니다.커피가 가지고 있는 단맛을 최대한 끌어내어 한잔에 담는다는 목표로 커피를 하고있습니다.현재 경기도 성남시 분당 율동공원에 자리잡고 있으며, 로스팅공장과 카페를 운영하고있습니다.항상 최선의 커피를 만들어내기위해 노력하고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F02%20180%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=e65d2aac-a63f-4147-8439-707c6894b935"
+        }
+      }
+    },
+    "id": "nutshell-id-7",
+    "name": "초콜렛",
+    "note": "초콜릿의 단맛 그러나 쓰지 않은 우유와 궁합이 좋은 블렌드",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["초콜릿", "카카오닙스", "카라멜"],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "180 커피로스터스",
+        "address": "경기 성남시 분당구 문정로144번길 4",
+        "addressY": "37.3825445478861",
+        "addressX": "127.151635445686",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152026.png?alt=media&token=679dc4c6-dd24-4973-bfd0-48dfae2735d3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152048.png?alt=media&token=5d0eb138-113b-495f-be41-85e26813b359",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152108.png?alt=media&token=0f2d2346-2b6b-4a3f-a309-cdfaae30fcde",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152126.png?alt=media&token=df9b3c2d-d569-4682-b119-e77e174b3e75"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "180커피로스터스",
+      "address": "경기 성남시 분당구 문정로144번길 4",
+      "introduce": "대한민국 최초 로스팅 국가대표 2명이 로스팅하는 명실상부 대한민국 대표 커피 로스팅 회사입니다.180커피로스터스는 180도 생각의 전환이라는 모토아래 운영되고 있는 커피로스팅회사 입니다.커피가 가지고 있는 단맛을 최대한 끌어내어 한잔에 담는다는 목표로 커피를 하고있습니다.현재 경기도 성남시 분당 율동공원에 자리잡고 있으며, 로스팅공장과 카페를 운영하고있습니다.항상 최선의 커피를 만들어내기위해 노력하고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F02%20180%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=e65d2aac-a63f-4147-8439-707c6894b935"
+        }
+      }
+    },
+    "id": "nutshell-id-8",
+    "name": "아이보리",
+    "note": "크리미한 견과류의 향미",
+    "tags": ["미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["아몬드", "견과", "다크 초콜릿"],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "180 커피로스터스",
+        "address": "경기 성남시 분당구 문정로144번길 4",
+        "addressY": "37.3825445478861",
+        "addressX": "127.151635445686",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152026.png?alt=media&token=679dc4c6-dd24-4973-bfd0-48dfae2735d3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152048.png?alt=media&token=5d0eb138-113b-495f-be41-85e26813b359",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152108.png?alt=media&token=0f2d2346-2b6b-4a3f-a309-cdfaae30fcde",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152126.png?alt=media&token=df9b3c2d-d569-4682-b119-e77e174b3e75"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "180커피로스터스",
+      "address": "경기 성남시 분당구 문정로144번길 4",
+      "introduce": "대한민국 최초 로스팅 국가대표 2명이 로스팅하는 명실상부 대한민국 대표 커피 로스팅 회사입니다.180커피로스터스는 180도 생각의 전환이라는 모토아래 운영되고 있는 커피로스팅회사 입니다.커피가 가지고 있는 단맛을 최대한 끌어내어 한잔에 담는다는 목표로 커피를 하고있습니다.현재 경기도 성남시 분당 율동공원에 자리잡고 있으며, 로스팅공장과 카페를 운영하고있습니다.항상 최선의 커피를 만들어내기위해 노력하고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F02%20180%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=e65d2aac-a63f-4147-8439-707c6894b935"
+        }
+      }
+    },
+    "id": "nutshell-id-9",
+    "name": "다크쵸콜렛",
+    "note": "다크초콜릿의 달콤쌉싸름함, 다크로스팅 블렌드의 진수",
+    "tags": ["다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["땅콩사탕", "흑설탕", "마카다미아"],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "180 커피로스터스",
+        "address": "경기 성남시 분당구 문정로144번길 4",
+        "addressY": "37.3825445478861",
+        "addressX": "127.151635445686",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152026.png?alt=media&token=679dc4c6-dd24-4973-bfd0-48dfae2735d3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152048.png?alt=media&token=5d0eb138-113b-495f-be41-85e26813b359",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152108.png?alt=media&token=0f2d2346-2b6b-4a3f-a309-cdfaae30fcde",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F02%20180%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152126.png?alt=media&token=df9b3c2d-d569-4682-b119-e77e174b3e75"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "180커피로스터스",
+      "address": "경기 성남시 분당구 문정로144번길 4",
+      "introduce": "대한민국 최초 로스팅 국가대표 2명이 로스팅하는 명실상부 대한민국 대표 커피 로스팅 회사입니다.180커피로스터스는 180도 생각의 전환이라는 모토아래 운영되고 있는 커피로스팅회사 입니다.커피가 가지고 있는 단맛을 최대한 끌어내어 한잔에 담는다는 목표로 커피를 하고있습니다.현재 경기도 성남시 분당 율동공원에 자리잡고 있으며, 로스팅공장과 카페를 운영하고있습니다.항상 최선의 커피를 만들어내기위해 노력하고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F02%20180%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=e65d2aac-a63f-4147-8439-707c6894b935"
+        }
+      }
+    },
+    "id": "nutshell-id-10",
+    "name": "율 디캐프",
+    "note": "단밤향이 은은한 디카페인 커피",
+    "tags": ["미디엄로스팅", "디카페인", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["흑설탕", "루이보스티", "녹차"],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "180 커피로스터스",
+        "address": "경기 성남시 분당구 문정로144번길 4",
+        "addressY": "37.3825445478861",
+        "addressX": "127.151635445686",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152239.png?alt=media&token=6c5328e5-c27b-4d63-80b2-95146e2ea7ae",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152258.png?alt=media&token=1e863497-18ff-4b51-ba25-00e747c121a3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152431.png?alt=media&token=7c172787-bbc9-4d63-8c23-d23aa9c572fd",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152443.png?alt=media&token=ad441e18-c488-4b3a-aaad-0ce8cae7ab8b"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "시그니쳐로스터스",
+      "address": "경기 안양시 동안구 평촌대로127번길 88 1층 101호",
+      "introduce": "시그니쳐로스터스는 Not First,But Best. 라는 슬로건으로 2015년에 설립되었습니다. 스페셜티 커피 로스팅 전문회사이며, 스페셜티 커피를 지향합니다",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=0560d030-fdb2-4203-a8e5-c3d6126b3375"
+        }
+      }
+    },
+    "id": "nutshell-id-11",
+    "name": "시너지",
+    "tags": ["라이트미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["파인애플", "오렌지", "라즈베리", "자몽", "긴여운"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "나리노",
+        "country": "콜롬비아",
+        "processLabel": "워시드"
+      },
+      {
+        "variety": "하로 소레사",
+        "country": "에티오피아",
+        "processLabel": "네츄럴"
+      }
+    ],
+    "branches": [
+      {
+        "name": "시그니처로스터스",
+        "address": "경기 안양시 동안구 평촌대로127번길 88 1층",
+        "addressY": "37.3808648665764",
+        "addressX": "126.959011352007",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152239.png?alt=media&token=6c5328e5-c27b-4d63-80b2-95146e2ea7ae",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152258.png?alt=media&token=1e863497-18ff-4b51-ba25-00e747c121a3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152431.png?alt=media&token=7c172787-bbc9-4d63-8c23-d23aa9c572fd",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152443.png?alt=media&token=ad441e18-c488-4b3a-aaad-0ce8cae7ab8b"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "시그니쳐로스터스",
+      "address": "경기 안양시 동안구 평촌대로127번길 88 1층 101호",
+      "introduce": "시그니쳐로스터스는 Not First,But Best. 라는 슬로건으로 2015년에 설립되었습니다. 스페셜티 커피 로스팅 전문회사이며, 스페셜티 커피를 지향합니다",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=0560d030-fdb2-4203-a8e5-c3d6126b3375"
+        }
+      }
+    },
+    "id": "nutshell-id-12",
+    "name": "텍스처",
+    "tags": ["라이트미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["블랙커런트", "꿀", "초콜릿", "비스켓", "오버롤스윗"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "세라도",
+        "country": "브라질"
+      },
+      {
+        "variety": "나리노",
+        "country": "콜롬비아"
+      },
+      {
+        "variety": "하로 소레사",
+        "country": "에티오피아"
+      },
+      {}
+    ],
+    "branches": [
+      {
+        "name": "시그니처로스터스",
+        "address": "경기 안양시 동안구 평촌대로127번길 88 1층",
+        "addressY": "37.3808648665764",
+        "addressX": "126.959011352007",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152239.png?alt=media&token=6c5328e5-c27b-4d63-80b2-95146e2ea7ae",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152258.png?alt=media&token=1e863497-18ff-4b51-ba25-00e747c121a3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152431.png?alt=media&token=7c172787-bbc9-4d63-8c23-d23aa9c572fd",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152443.png?alt=media&token=ad441e18-c488-4b3a-aaad-0ce8cae7ab8b"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "시그니쳐로스터스",
+      "address": "경기 안양시 동안구 평촌대로127번길 88 1층 101호",
+      "introduce": "시그니쳐로스터스는 Not First,But Best. 라는 슬로건으로 2015년에 설립되었습니다. 스페셜티 커피 로스팅 전문회사이며, 스페셜티 커피를 지향합니다",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=0560d030-fdb2-4203-a8e5-c3d6126b3375"
+        }
+      }
+    },
+    "id": "nutshell-id-13",
+    "name": "더블비",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["캐슈넛", "카라멜", "다크 초콜릿", "버터스윗", "바디감"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "세라도",
+        "country": "브라질"
+      },
+      {
+        "variety": "나리노",
+        "country": "콜롬비아"
+      },
+      {
+        "variety": "카피 로얄 AA",
+        "country": "인도"
+      },
+      {}
+    ],
+    "branches": [
+      {
+        "name": "시그니처로스터스",
+        "address": "경기 안양시 동안구 평촌대로127번길 88 1층",
+        "addressY": "37.3808648665764",
+        "addressX": "126.959011352007",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152239.png?alt=media&token=6c5328e5-c27b-4d63-80b2-95146e2ea7ae",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152258.png?alt=media&token=1e863497-18ff-4b51-ba25-00e747c121a3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152431.png?alt=media&token=7c172787-bbc9-4d63-8c23-d23aa9c572fd",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F03%20%E1%84%89%E1%85%B5%E1%84%80%E1%85%B3%E1%84%82%E1%85%B5%E1%84%8E%E1%85%A5%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%2F20220628_152443.png?alt=media&token=ad441e18-c488-4b3a-aaad-0ce8cae7ab8b"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "커피냅로스터스",
+      "address": "경기 평택시 진위면 봉남2길 35",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=4545f2a8-f7a4-41d2-99b8-3f516a5758d5"
+        }
+      }
+    },
+    "id": "nutshell-id-16",
+    "name": "317",
+    "note": "입안 가득한 풍미와 고소함, 초콜릿의 여운을 가지고 있어 매일 부담없이 즐길 수 있는 데일리 커피입니다",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["초콜릿", "바디감", "밸런스", "아몬드", "고구마"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "인도"
+      },
+      {
+        "country": "과테말라"
+      },
+      {
+        "country": "엘살바도르"
+      },
+      {}
+    ],
+    "branches": [
+      {
+        "name": "커피냅로스터스 연남",
+        "address": "서울 마포구 성미산로27길 70",
+        "addressY": "37.5664284125218",
+        "addressX": "126.920213302301",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_152905.png?alt=media&token=fb518e9e-bcbb-4b0d-98e7-a58e7aa066b1",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_153028.png?alt=media&token=a70dd368-adc5-48ca-b6a7-73db0c14b640",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_153051.png?alt=media&token=dbe4b342-70a7-41ee-8cfd-17b2dcb65bdb",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_153204.png?alt=media&token=36590046-463d-4dde-8f14-6b8413a12fa9"
+        ]
+      },
+      {
+        "name": "커피냅로스터스 본사",
+        "address": "경기 평택시 진위면 봉남2길 35",
+        "addressY": "37.0988337930557",
+        "addressX": "127.090132055775",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152629.png?alt=media&token=f8911134-28bf-4e2c-8079-fda564b5638c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152726.png?alt=media&token=e4dcefa7-bd25-4b95-8573-40e8747b3779",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152748.png?alt=media&token=4324d04a-7b6e-4693-8d3b-09d1fd9b4b05",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152806.png?alt=media&token=c57297d5-ae6a-44e6-b008-76e958b7b337"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "커피냅로스터스",
+      "address": "경기 평택시 진위면 봉남2길 35",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=4545f2a8-f7a4-41d2-99b8-3f516a5758d5"
+        }
+      }
+    },
+    "id": "nutshell-id-17",
+    "name": "218",
+    "note": "달콤한 꽃 향기와 베리류 과일이 느껴지며 무겁지 않아 차 처럼 즐길 수 있는 마지막 한 모금이 꿀 같은 커피입니다.",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["복숭아", "스트로베리", "꿀"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "에티오피아"
+      },
+      {
+        "country": "에티오피아"
+      }
+    ],
+    "branches": [
+      {
+        "name": "커피냅로스터스 연남",
+        "address": "서울 마포구 성미산로27길 70",
+        "addressY": "37.5664284125218",
+        "addressX": "126.920213302301",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_152905.png?alt=media&token=fb518e9e-bcbb-4b0d-98e7-a58e7aa066b1",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_153028.png?alt=media&token=a70dd368-adc5-48ca-b6a7-73db0c14b640",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_153051.png?alt=media&token=dbe4b342-70a7-41ee-8cfd-17b2dcb65bdb",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_153204.png?alt=media&token=36590046-463d-4dde-8f14-6b8413a12fa9"
+        ]
+      },
+      {
+        "name": "커피냅로스터스 본사",
+        "address": "경기 평택시 진위면 봉남2길 35",
+        "addressY": "37.0988337930557",
+        "addressX": "127.090132055775",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152629.png?alt=media&token=f8911134-28bf-4e2c-8079-fda564b5638c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152726.png?alt=media&token=e4dcefa7-bd25-4b95-8573-40e8747b3779",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152748.png?alt=media&token=4324d04a-7b6e-4693-8d3b-09d1fd9b4b05",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152806.png?alt=media&token=c57297d5-ae6a-44e6-b008-76e958b7b337"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "커피냅로스터스",
+      "address": "경기 평택시 진위면 봉남2길 35",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=4545f2a8-f7a4-41d2-99b8-3f516a5758d5"
+        }
+      }
+    },
+    "id": "nutshell-id-18",
+    "name": "420",
+    "note": "여러 산지의 복합적인 향미와 진한 단 맛을 품은 시트러스한 개성이 매력적인, 오롯이 커피에만 집중하기 좋은 커피입니다.",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["시트러스", "레몬사탕", "카라멜", "밀크초콜릿", "밸런스"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "에티오피아"
+      },
+      {
+        "country": "콜롬비아"
+      },
+      {
+        "country": "코스타리카"
+      },
+      {
+        "country": "케냐"
+      }
+    ],
+    "branches": [
+      {
+        "name": "커피냅로스터스 연남",
+        "address": "서울 마포구 성미산로27길 70",
+        "addressY": "37.5664284125218",
+        "addressX": "126.920213302301",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_152905.png?alt=media&token=fb518e9e-bcbb-4b0d-98e7-a58e7aa066b1",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_153028.png?alt=media&token=a70dd368-adc5-48ca-b6a7-73db0c14b640",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_153051.png?alt=media&token=dbe4b342-70a7-41ee-8cfd-17b2dcb65bdb",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_153204.png?alt=media&token=36590046-463d-4dde-8f14-6b8413a12fa9"
+        ]
+      },
+      {
+        "name": "커피냅로스터스 본사",
+        "address": "경기 평택시 진위면 봉남2길 35",
+        "addressY": "37.0988337930557",
+        "addressX": "127.090132055775",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152629.png?alt=media&token=f8911134-28bf-4e2c-8079-fda564b5638c",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152726.png?alt=media&token=e4dcefa7-bd25-4b95-8573-40e8747b3779",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152748.png?alt=media&token=4324d04a-7b6e-4693-8d3b-09d1fd9b4b05",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F04%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%82%E1%85%A2%E1%86%B8%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%87%E1%85%A9%E1%86%AB%E1%84%89%E1%85%A1%2F20220628_152806.png?alt=media&token=c57297d5-ae6a-44e6-b008-76e958b7b337"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "클라스카 커피랩",
+      "address": "서울 성동구 연무장15길 11 에스팩토리 B동 3층 303호",
+      "introduce": "클라스카커피랩(CLASKA COFFEE LAB)은자기 취향에 맞는 맞춤 커피를 쉽게 경험할 수 있는 커피전문 브랜드입니다.클라스카의 모든 스텝은 커피 스페셜리스트입니다.\n클라스카 구성원들은 2003년  1st 코리아 바리스타 챔피언쉽을 시작으로 각종 바리스타대회에서 우승 및 우수한 수상경력을 가지고 있으며 각종 세미나 , 커피관련 대회 심사활동을 활발히 하고 있으며 클라스카 커피의 연구개발에 더욱 매진하고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8.jpg?alt=media&token=15d55378-1e97-4dc7-9df7-8c16db070505"
+        }
+      }
+    },
+    "id": "nutshell-id-21",
+    "name": "리우 아몬드",
+    "note": "매일 마셔도 질리지 않는 고소함, 부드러운 질감과 함께 신맛, 단맛, 쓴맛의 조화를 가진 커피입니다.",
+    "tags": ["미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["아몬드", "갈색 설탕", "시럽", "마우스필"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "브라질"
+      },
+      {
+        "country": "과테말라"
+      },
+      {
+        "country": "콜롬비아"
+      },
+      {}
+    ],
+    "branches": [
+      {
+        "name": "클라스카커피랩",
+        "address": "서울 성동구 연무장15길 11 에스팩토리 B동 303호 루프탑까페",
+        "addressY": "37.5428217449251",
+        "addressX": "127.058905961003",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153230.png?alt=media&token=1dfd8089-6c86-4f13-b994-6bee8682af6f",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153339.png?alt=media&token=d651e512-b4a7-48e8-8823-34b4086b6662",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153359.png?alt=media&token=53747a04-16b8-427c-81dc-0e45b7039fc1",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153445.png?alt=media&token=8e74f53a-4cc3-4213-b9d3-7941e6fd7487"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "클라스카 커피랩",
+      "address": "서울 성동구 연무장15길 11 에스팩토리 B동 3층 303호",
+      "introduce": "클라스카커피랩(CLASKA COFFEE LAB)은자기 취향에 맞는 맞춤 커피를 쉽게 경험할 수 있는 커피전문 브랜드입니다.클라스카의 모든 스텝은 커피 스페셜리스트입니다.\n클라스카 구성원들은 2003년  1st 코리아 바리스타 챔피언쉽을 시작으로 각종 바리스타대회에서 우승 및 우수한 수상경력을 가지고 있으며 각종 세미나 , 커피관련 대회 심사활동을 활발히 하고 있으며 클라스카 커피의 연구개발에 더욱 매진하고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8.jpg?alt=media&token=15d55378-1e97-4dc7-9df7-8c16db070505"
+        }
+      }
+    },
+    "id": "nutshell-id-22",
+    "name": "헬싱키 블러썸",
+    "note": "꽃과 과일의 기분 좋은 신맛. 차를 마시는 듯 깔끔한 목넘김이 매력적인 커피입니다.",
+    "tags": ["라이트미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["커피블로썸", "핵과류", "티라이크"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "에티오피아"
+      },
+      {
+        "country": "브라질"
+      },
+      {
+        "country": "콜롬비아"
+      },
+      {}
+    ],
+    "branches": [
+      {
+        "name": "클라스카커피랩",
+        "address": "서울 성동구 연무장15길 11 에스팩토리 B동 303호 루프탑까페",
+        "addressY": "37.5428217449251",
+        "addressX": "127.058905961003",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153230.png?alt=media&token=1dfd8089-6c86-4f13-b994-6bee8682af6f",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153339.png?alt=media&token=d651e512-b4a7-48e8-8823-34b4086b6662",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153359.png?alt=media&token=53747a04-16b8-427c-81dc-0e45b7039fc1",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153445.png?alt=media&token=8e74f53a-4cc3-4213-b9d3-7941e6fd7487"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "클라스카 커피랩",
+      "address": "서울 성동구 연무장15길 11 에스팩토리 B동 3층 303호",
+      "introduce": "클라스카커피랩(CLASKA COFFEE LAB)은자기 취향에 맞는 맞춤 커피를 쉽게 경험할 수 있는 커피전문 브랜드입니다.클라스카의 모든 스텝은 커피 스페셜리스트입니다.\n클라스카 구성원들은 2003년  1st 코리아 바리스타 챔피언쉽을 시작으로 각종 바리스타대회에서 우승 및 우수한 수상경력을 가지고 있으며 각종 세미나 , 커피관련 대회 심사활동을 활발히 하고 있으며 클라스카 커피의 연구개발에 더욱 매진하고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8.jpg?alt=media&token=15d55378-1e97-4dc7-9df7-8c16db070505"
+        }
+      }
+    },
+    "id": "nutshell-id-23",
+    "name": "베를린 카카오",
+    "note": "신맛이 없는 달콤 쌉싸름함. 카카오의 단맛과 쓴맛, 짙은 바디감을 느낄 수 있는 커피입니다.",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["카카오", "다크 초콜릿", "버터스위트"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "브라질"
+      },
+      {
+        "country": "콜롬비아"
+      },
+      {
+        "country": "과테말라"
+      },
+      {}
+    ],
+    "branches": [
+      {
+        "name": "클라스카커피랩",
+        "address": "서울 성동구 연무장15길 11 에스팩토리 B동 303호 루프탑까페",
+        "addressY": "37.5428217449251",
+        "addressX": "127.058905961003",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153230.png?alt=media&token=1dfd8089-6c86-4f13-b994-6bee8682af6f",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153339.png?alt=media&token=d651e512-b4a7-48e8-8823-34b4086b6662",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153359.png?alt=media&token=53747a04-16b8-427c-81dc-0e45b7039fc1",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F05%20%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%A1%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%85%E1%85%A2%E1%86%B8%2F20220628_153445.png?alt=media&token=8e74f53a-4cc3-4213-b9d3-7941e6fd7487"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "리사르커피",
+      "address": "서울 중구 다산로8길 16-7 1층",
+      "introduce": "에스프레소가 우리에게 가장 큰 가치이고 목표였다면, 이제는 에스프레소 보다 더 나은, 무한한 가치를 좇는다. 하나님을 사랑하고 나를 사랑하듯 이웃을 사랑하는 보이지 않는 가치에 집중한다.우리가 추구하는 가치와 약속의 종합적인 상징은 늑대 입니다. 늑대는 가족과 일원을 보호하고 함께 협력하여 공동체를 부양하는 본능을 가지고 있습니다. 그래서 우리는 사회적으로 가치를 실현하기 위해 전문 사회복지사를 통해 어려운 구성원을 부양하도록 후원하며 장애인, 고아 시설에도 후원을 이어갑니다. 좋은 품질의 원두를 합리적인 가격으로 소비자에게 제공하고 자체적으로 블렌딩하는 페키지에 의미를 부여함으로써 우리들의 가치를 전달합니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F06%20%E1%84%85%E1%85%A1%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5.jpg?alt=media&token=25a25c00-ba82-42db-bb0a-faad33a18853"
+        }
+      }
+    },
+    "id": "nutshell-id-24",
+    "name": "하우스 블랜드 다크",
+    "tags": ["다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["바디감", "견과", "초콜릿", "은은한"],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "리사르커피 약수점",
+        "address": "서울 중구 다산로8길 16-7",
+        "addressY": "37.5524730604218",
+        "addressX": "127.010426586681",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8B%E1%85%A3%E1%86%A8%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_153634.png?alt=media&token=e01a7080-a42a-4ed1-aefe-efcb98cb09a2",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8B%E1%85%A3%E1%86%A8%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_153806.png?alt=media&token=3bcffe26-50b7-46bb-844a-c187e6a459ab",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8B%E1%85%A3%E1%86%A8%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_153829.png?alt=media&token=404500dd-9eb5-43a0-9b56-3e1f84118188",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8B%E1%85%A3%E1%86%A8%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154147.png?alt=media&token=d17487b9-2b91-4eab-80ef-ff7636412cb6"
+        ]
+      },
+      {
+        "name": "리사르커피 청담점",
+        "address": "서울 강남구 도산대로99길 60",
+        "addressY": "37.5270852129791",
+        "addressX": "127.048430033039",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154317.png?alt=media&token=f97962b9-bda7-4a51-8767-15b931d688e6",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154340.png?alt=media&token=7c7260d4-9f9b-40f0-a3a2-6d02ae0e7a23",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154537.png?alt=media&token=a6911c66-2d53-4043-ae89-53bfb2967f5d",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154645.png?alt=media&token=57e48fdc-7f9a-4ad3-8d3e-6f87249953d8"
+        ]
+      },
+      {
+        "name": "리사르커피 명동점",
+        "address": "서울 중구 명동8가길 58 1층",
+        "addressY": "37.56177969492",
+        "addressX": "126.988213921262",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154805.png?alt=media&token=4ac54556-a9cd-41fd-b6c5-8479cf19f2a0",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154838.png?alt=media&token=fcfdc726-4aad-4b2e-94f1-d045eda1cd81",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154859.png?alt=media&token=988ce68f-91e8-4ef9-8859-dc465eafacbd",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154920.png?alt=media&token=881f1e02-ae64-4c89-918e-7053704fdba3"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "리사르커피",
+      "address": "서울 중구 다산로8길 16-7 1층",
+      "introduce": "에스프레소가 우리에게 가장 큰 가치이고 목표였다면, 이제는 에스프레소 보다 더 나은, 무한한 가치를 좇는다. 하나님을 사랑하고 나를 사랑하듯 이웃을 사랑하는 보이지 않는 가치에 집중한다.우리가 추구하는 가치와 약속의 종합적인 상징은 늑대 입니다. 늑대는 가족과 일원을 보호하고 함께 협력하여 공동체를 부양하는 본능을 가지고 있습니다. 그래서 우리는 사회적으로 가치를 실현하기 위해 전문 사회복지사를 통해 어려운 구성원을 부양하도록 후원하며 장애인, 고아 시설에도 후원을 이어갑니다. 좋은 품질의 원두를 합리적인 가격으로 소비자에게 제공하고 자체적으로 블렌딩하는 페키지에 의미를 부여함으로써 우리들의 가치를 전달합니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F06%20%E1%84%85%E1%85%A1%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5.jpg?alt=media&token=25a25c00-ba82-42db-bb0a-faad33a18853"
+        }
+      }
+    },
+    "id": "nutshell-id-25",
+    "name": "하우스블랜드 마일드",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["상큼한산미", "단맛", "미끄러운질감"],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "리사르커피 약수점",
+        "address": "서울 중구 다산로8길 16-7",
+        "addressY": "37.5524730604218",
+        "addressX": "127.010426586681",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8B%E1%85%A3%E1%86%A8%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_153634.png?alt=media&token=e01a7080-a42a-4ed1-aefe-efcb98cb09a2",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8B%E1%85%A3%E1%86%A8%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_153806.png?alt=media&token=3bcffe26-50b7-46bb-844a-c187e6a459ab",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8B%E1%85%A3%E1%86%A8%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_153829.png?alt=media&token=404500dd-9eb5-43a0-9b56-3e1f84118188",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8B%E1%85%A3%E1%86%A8%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154147.png?alt=media&token=d17487b9-2b91-4eab-80ef-ff7636412cb6"
+        ]
+      },
+      {
+        "name": "리사르커피 청담점",
+        "address": "서울 강남구 도산대로99길 60",
+        "addressY": "37.5270852129791",
+        "addressX": "127.048430033039",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154317.png?alt=media&token=f97962b9-bda7-4a51-8767-15b931d688e6",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154340.png?alt=media&token=7c7260d4-9f9b-40f0-a3a2-6d02ae0e7a23",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154537.png?alt=media&token=a6911c66-2d53-4043-ae89-53bfb2967f5d",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%83%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154645.png?alt=media&token=57e48fdc-7f9a-4ad3-8d3e-6f87249953d8"
+        ]
+      },
+      {
+        "name": "리사르커피 명동점",
+        "address": "서울 중구 명동8가길 58 1층",
+        "addressY": "37.56177969492",
+        "addressX": "126.988213921262",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154805.png?alt=media&token=4ac54556-a9cd-41fd-b6c5-8479cf19f2a0",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154838.png?alt=media&token=fcfdc726-4aad-4b2e-94f1-d045eda1cd81",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154859.png?alt=media&token=988ce68f-91e8-4ef9-8859-dc465eafacbd",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F06%20%E1%84%85%E1%85%B5%E1%84%89%E1%85%A1%E1%84%85%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20%E1%84%86%E1%85%A7%E1%86%BC%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_154920.png?alt=media&token=881f1e02-ae64-4c89-918e-7053704fdba3"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "로트커피",
+      "address": "경기 고양시 일산동구 일산로286번길 49",
+      "introduce": "직접 볶은 원두와 구운 디저트를 파는 카페입니다.작지만 다양한 디저트가 있고 브루잉 커피와 말차, 밀크티, 무화과우유 그리고 계절별 과일을 이용한 음료를 판매합니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F07%20%E1%84%85%E1%85%A9%E1%84%90%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5.png?alt=media&token=e45760b5-bca2-4da6-9855-b592bafd041b"
+        }
+      }
+    },
+    "id": "nutshell-id-26",
+    "name": "로트 시그니처",
+    "tags": ["미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["초콜릿", "카라멜", "견과", "단맛"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "예가체프",
+        "country": "에티오피아"
+      },
+      {
+        "variety": "후일라",
+        "country": "콜롬비아"
+      },
+      {
+        "variety": "킬리만자로 키초니",
+        "country": "탄자니아"
+      },
+      {
+        "variety": "세하도",
+        "country": "브라질"
+      }
+    ],
+    "branches": [
+      {
+        "name": "로트커피(슬로우디)",
+        "address": "경기 고양시 일산동구 일산로286번길 49 상가 1층",
+        "addressY": "37.6623784401823",
+        "addressX": "126.788695489953",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F07%20%E1%84%85%E1%85%A9%E1%84%90%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20(%E1%84%89%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%8B%E1%85%AE%E1%84%83%E1%85%B5)%2F20220628_155215.png?alt=media&token=9b636499-ed48-42c6-ae96-4e13c75f7826",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F07%20%E1%84%85%E1%85%A9%E1%84%90%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20(%E1%84%89%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%8B%E1%85%AE%E1%84%83%E1%85%B5)%2F20220628_155302.png?alt=media&token=a47d7e6f-ac56-4d6b-aebf-6b05418acde7",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F07%20%E1%84%85%E1%85%A9%E1%84%90%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20(%E1%84%89%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%8B%E1%85%AE%E1%84%83%E1%85%B5)%2F20220628_155316.png?alt=media&token=def44443-07a0-4ca0-9ee1-f7f2e0700630",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F07%20%E1%84%85%E1%85%A9%E1%84%90%E1%85%B3%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%20(%E1%84%89%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%84%8B%E1%85%AE%E1%84%83%E1%85%B5)%2F20220628_155336.png?alt=media&token=64cb603c-01f7-4914-853e-ef92b690d130"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "프릳츠커피컴퍼니",
+      "address": "서울 마포구 새창로2길 17",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3.jpg?alt=media&token=1ad5ead7-e423-4f28-a595-dca05c99bbb8"
+        }
+      }
+    },
+    "id": "nutshell-id-27",
+    "name": "잘 되어 가시나",
+    "note": "단맛을 바탕으로 훌륭한 밸런스",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["달콤한", "밸런스"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "에르바수 비야 사르치",
+        "country": "코스타리카",
+        "processLabel": "허니"
+      },
+      {
+        "variety": "예가체프 이디도 툴리사",
+        "country": "에티오피아",
+        "processLabel": "네츄럴"
+      },
+      {
+        "variety": "엘 사포테 카투라 세미",
+        "country": "과테말라",
+        "processLabel": "워시드"
+      },
+      {
+        "variety": "칼레데바라푸라 스페셜 프레퍼레이션",
+        "country": "인도"
+      }
+    ],
+    "branches": [
+      {
+        "name": "프릳츠 도화점",
+        "address": "서울 마포구 새창로2길 17",
+        "addressY": "37.5410234571029",
+        "addressX": "126.949074787241",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160227.png?alt=media&token=27be40fe-1532-41b3-88ab-dfcbd421fce9",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160318.png?alt=media&token=eeddcae3-e2b9-4943-b8a3-e016d80f5805",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160359.png?alt=media&token=8fd8bce2-46e6-47c2-870d-eab1627039ea",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160416.png?alt=media&token=b08d3267-2ab9-4402-a07f-e53c0dd08f3b"
+        ]
+      },
+      {
+        "name": "프릳츠 원서점",
+        "address": "서울 종로구 율곡로 83 아라리오 뮤지엄",
+        "addressY": "37.5777621971432",
+        "addressX": "126.988357552948",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160453.png?alt=media&token=e5c78561-5e6b-4f98-8d18-72e51e90fa7e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160521.png?alt=media&token=9b53e52a-40b2-4714-aae4-828a4cf8c636",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160553.png?alt=media&token=8e53dda5-d1be-47db-930f-aa844cb568ea",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160604.png?alt=media&token=ceaf54fa-3268-46e9-839a-8187c832f519"
+        ]
+      },
+      {
+        "name": "프릳츠 양재점",
+        "address": "서울 서초구 강남대로37길 24-11",
+        "addressY": "37.4853696212775",
+        "addressX": "127.032196214742",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160857.png?alt=media&token=ec3a93d8-98d2-4f9f-b113-4490398b9b31",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160833.png?alt=media&token=59c79475-0355-4a09-8b88-5f33fa7f5406",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160746.png?alt=media&token=79d97248-0bad-4ddf-bfc0-c978424b1d9e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160651.png?alt=media&token=638543ee-e407-44b0-98ae-6fe688ba5159"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "프릳츠커피컴퍼니",
+      "address": "서울 마포구 새창로2길 17",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3.jpg?alt=media&token=1ad5ead7-e423-4f28-a595-dca05c99bbb8"
+        }
+      }
+    },
+    "id": "nutshell-id-28",
+    "name": "서울 시네마",
+    "note": "고유한 밝은 산미와 깨끗한 단맛",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "acidity": 5,
+      "flavors": ["달콤한", "산미", "과일"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "라스 라하스 카투라",
+        "country": "코스타리카",
+        "processLabel": "네그라"
+      },
+      {
+        "variety": "예가체프 이디도 툴리사",
+        "country": "에티오피아",
+        "processLabel": "네츄럴"
+      },
+      {
+        "variety": "구지 함벨라 다바예",
+        "country": "에티오피아",
+        "processLabel": "워시드"
+      },
+      {
+        "variety": "페를라 델카페 비야사르치",
+        "country": "코스타리카"
+      }
+    ],
+    "branches": [
+      {
+        "name": "프릳츠 도화점",
+        "address": "서울 마포구 새창로2길 17",
+        "addressY": "37.5410234571029",
+        "addressX": "126.949074787241",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160227.png?alt=media&token=27be40fe-1532-41b3-88ab-dfcbd421fce9",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160318.png?alt=media&token=eeddcae3-e2b9-4943-b8a3-e016d80f5805",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160359.png?alt=media&token=8fd8bce2-46e6-47c2-870d-eab1627039ea",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160416.png?alt=media&token=b08d3267-2ab9-4402-a07f-e53c0dd08f3b"
+        ]
+      },
+      {
+        "name": "프릳츠 원서점",
+        "address": "서울 종로구 율곡로 83 아라리오 뮤지엄",
+        "addressY": "37.5777621971432",
+        "addressX": "126.988357552948",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160453.png?alt=media&token=e5c78561-5e6b-4f98-8d18-72e51e90fa7e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160521.png?alt=media&token=9b53e52a-40b2-4714-aae4-828a4cf8c636",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160553.png?alt=media&token=8e53dda5-d1be-47db-930f-aa844cb568ea",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160604.png?alt=media&token=ceaf54fa-3268-46e9-839a-8187c832f519"
+        ]
+      },
+      {
+        "name": "프릳츠 양재점",
+        "address": "서울 서초구 강남대로37길 24-11",
+        "addressY": "37.4853696212775",
+        "addressX": "127.032196214742",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160857.png?alt=media&token=ec3a93d8-98d2-4f9f-b113-4490398b9b31",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160833.png?alt=media&token=59c79475-0355-4a09-8b88-5f33fa7f5406",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160746.png?alt=media&token=79d97248-0bad-4ddf-bfc0-c978424b1d9e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160651.png?alt=media&token=638543ee-e407-44b0-98ae-6fe688ba5159"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "프릳츠커피컴퍼니",
+      "address": "서울 마포구 새창로2길 17",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3.jpg?alt=media&token=1ad5ead7-e423-4f28-a595-dca05c99bbb8"
+        }
+      }
+    },
+    "id": "nutshell-id-29",
+    "name": "올드 독",
+    "note": "달콤 쌉싸름한 향미와 묵직한 바디를 즐길 수 있는",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["달콤", "쌉싸름", "묵직한 바디"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "쿠페리베르타드 카투라",
+        "country": "코스타리카"
+      },
+      {
+        "variety": "클래식 시너지 아라비카",
+        "country": "인도",
+        "processLabel": "워시드"
+      },
+      {
+        "variety": "클래식 시너지 할리 로부스타",
+        "country": "인도"
+      },
+      {
+        "variety": "라스 에르모사스 블렌드",
+        "country": "콜롬비아"
+      }
+    ],
+    "branches": [
+      {
+        "name": "프릳츠 도화점",
+        "address": "서울 마포구 새창로2길 17",
+        "addressY": "37.5410234571029",
+        "addressX": "126.949074787241",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160227.png?alt=media&token=27be40fe-1532-41b3-88ab-dfcbd421fce9",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160318.png?alt=media&token=eeddcae3-e2b9-4943-b8a3-e016d80f5805",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160359.png?alt=media&token=8fd8bce2-46e6-47c2-870d-eab1627039ea",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%83%E1%85%A9%E1%84%92%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160416.png?alt=media&token=b08d3267-2ab9-4402-a07f-e53c0dd08f3b"
+        ]
+      },
+      {
+        "name": "프릳츠 원서점",
+        "address": "서울 종로구 율곡로 83 아라리오 뮤지엄",
+        "addressY": "37.5777621971432",
+        "addressX": "126.988357552948",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160453.png?alt=media&token=e5c78561-5e6b-4f98-8d18-72e51e90fa7e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160521.png?alt=media&token=9b53e52a-40b2-4714-aae4-828a4cf8c636",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160553.png?alt=media&token=8e53dda5-d1be-47db-930f-aa844cb568ea",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160604.png?alt=media&token=ceaf54fa-3268-46e9-839a-8187c832f519"
+        ]
+      },
+      {
+        "name": "프릳츠 양재점",
+        "address": "서울 서초구 강남대로37길 24-11",
+        "addressY": "37.4853696212775",
+        "addressX": "127.032196214742",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160857.png?alt=media&token=ec3a93d8-98d2-4f9f-b113-4490398b9b31",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160833.png?alt=media&token=59c79475-0355-4a09-8b88-5f33fa7f5406",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160746.png?alt=media&token=79d97248-0bad-4ddf-bfc0-c978424b1d9e",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F08%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AE%E1%84%8E%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B7%2F20220628_160651.png?alt=media&token=638543ee-e407-44b0-98ae-6fe688ba5159"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "빈브라더스",
+      "address": "서울 마포구 토정로 35-1",
+      "introduce": "2013년부터 커피를 사랑하는 사람들에게 가이드 역할을 해오고 있는 빈브라더스는 한국을 넘어서서 활동하는 커피 전문가 집단입니다. 빈브라더스는 저가형 커피 브랜드들과 경쟁하는 것이 아니기에, 탁월한 품질의 커피를 만드는 일과 훌륭한 커피 경험의 전달에 대부분의 역량을 집중합니다. 고유의 타이포그래피로 제작된 로고는 빈브라더스가 지닌 에너지와 리더십을 연상시키는 아이덴티티를 지니고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=0c1a3917-424d-48d9-a2f5-04f5fb5fe102"
+        }
+      }
+    },
+    "id": "nutshell-id-30",
+    "name": "블랙수트",
+    "note": "다크초콜릿의 향미와 구운 아몬드의 고소함, 은은한 산미가 고급스럽게 어우러집니다. 마신 후에도 달콤쌉싸름한 초콜릿 향이 길게 이어집니다.",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["다크 초콜릿", "아몬드", "은은한산미"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "Rio Brilhante Pulped",
+        "country": "브라질",
+        "processLabel": "네츄럴"
+      },
+      {
+        "variety": "Inza Cauca",
+        "country": "콜롬비아",
+        "processLabel": "워시드"
+      },
+      {
+        "variety": "Beriti",
+        "country": "에티오피아",
+        "processLabel": "워시드"
+      },
+      {}
+    ],
+    "branches": [
+      {
+        "name": "빈브라더스 합정",
+        "address": "서울 마포구 토정로 35-1",
+        "addressY": "37.5457206541178",
+        "addressX": "126.914981649041",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_160933.png?alt=media&token=d4215551-e2f6-4442-839a-7b2a20328665",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_160958.png?alt=media&token=768febc2-a65b-4ebb-b90e-44641b89dddf",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_161016.png?alt=media&token=a9a98f11-04fd-41ab-864c-a1fb0f6d8b42",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_161047.png?alt=media&token=82617ea3-8c2d-4d24-9190-16f86d72480e"
+        ]
+      },
+      {
+        "name": "빈브라더스 신도림",
+        "address": "서울 구로구 경인로 662 현대백화점 3F",
+        "addressY": "37.5081230677129",
+        "addressX": "126.888212953215",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161141.png?alt=media&token=16a323f3-9996-4583-aaf0-f515229e4574",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161214.png?alt=media&token=925f71f9-b5b2-40b8-9539-eb07647c7498",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161231.png?alt=media&token=e7cd2827-68b7-48d4-acd6-69f18d294ec5",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161248.png?alt=media&token=df52cbf9-0831-4596-a137-c5ada1fd8139"
+        ]
+      },
+      {
+        "name": "빈브라더스 하남",
+        "address": "경기 하남시 미사대로 750 스타필드 하남",
+        "addressY": "37.5454364874338",
+        "addressX": "127.223740478204",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161328.png?alt=media&token=6daf3d3b-cef6-412a-8b11-cb7d88074eaf",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161546.png?alt=media&token=ec9bba70-fa0f-46a1-9499-91f5cb0d3107",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161609.png?alt=media&token=58b33b9b-67c1-47c2-803c-d04b235cf659",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161626.png?alt=media&token=9a39cb29-4e3c-4447-a566-a49e5aeb72fb"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "빈브라더스",
+      "address": "서울 마포구 토정로 35-1",
+      "introduce": "2013년부터 커피를 사랑하는 사람들에게 가이드 역할을 해오고 있는 빈브라더스는 한국을 넘어서서 활동하는 커피 전문가 집단입니다. 빈브라더스는 저가형 커피 브랜드들과 경쟁하는 것이 아니기에, 탁월한 품질의 커피를 만드는 일과 훌륭한 커피 경험의 전달에 대부분의 역량을 집중합니다. 고유의 타이포그래피로 제작된 로고는 빈브라더스가 지닌 에너지와 리더십을 연상시키는 아이덴티티를 지니고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=0c1a3917-424d-48d9-a2f5-04f5fb5fe102"
+        }
+      }
+    },
+    "id": "nutshell-id-31",
+    "name": "몰트",
+    "note": "구운 보리와 아몬드의 고소한 향이 첫 모금부터 입안에 퍼집니다. 곡물에서 느낄 수 있는 단맛을 갖고 있으면서도 산미가 거의 없어, 누구든지 편안하게 즐길 수 있습니다. 밀크 베이스 음료에서는 아몬드 밀크의 달콤함을 느낄 수 있습니다.",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["구운보리", "아몬드", "곡물", "단맛"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "Badra Robusta",
+        "country": "인도",
+        "processLabel": "워시드"
+      },
+      {
+        "variety": "Sitio Da Torre Pulped",
+        "country": "브라질",
+        "processLabel": "네츄럴"
+      },
+      {
+        "variety": "Popayan Supremo",
+        "country": "콜롬비아",
+        "processLabel": "워시드"
+      },
+      {}
+    ],
+    "branches": [
+      {
+        "name": "빈브라더스 합정",
+        "address": "서울 마포구 토정로 35-1",
+        "addressY": "37.5457206541178",
+        "addressX": "126.914981649041",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_160933.png?alt=media&token=d4215551-e2f6-4442-839a-7b2a20328665",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_160958.png?alt=media&token=768febc2-a65b-4ebb-b90e-44641b89dddf",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_161016.png?alt=media&token=a9a98f11-04fd-41ab-864c-a1fb0f6d8b42",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_161047.png?alt=media&token=82617ea3-8c2d-4d24-9190-16f86d72480e"
+        ]
+      },
+      {
+        "name": "빈브라더스 신도림",
+        "address": "서울 구로구 경인로 662 현대백화점 3F",
+        "addressY": "37.5081230677129",
+        "addressX": "126.888212953215",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161141.png?alt=media&token=16a323f3-9996-4583-aaf0-f515229e4574",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161214.png?alt=media&token=925f71f9-b5b2-40b8-9539-eb07647c7498",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161231.png?alt=media&token=e7cd2827-68b7-48d4-acd6-69f18d294ec5",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161248.png?alt=media&token=df52cbf9-0831-4596-a137-c5ada1fd8139"
+        ]
+      },
+      {
+        "name": "빈브라더스 하남",
+        "address": "경기 하남시 미사대로 750 스타필드 하남",
+        "addressY": "37.5454364874338",
+        "addressX": "127.223740478204",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161328.png?alt=media&token=6daf3d3b-cef6-412a-8b11-cb7d88074eaf",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161546.png?alt=media&token=ec9bba70-fa0f-46a1-9499-91f5cb0d3107",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161609.png?alt=media&token=58b33b9b-67c1-47c2-803c-d04b235cf659",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161626.png?alt=media&token=9a39cb29-4e3c-4447-a566-a49e5aeb72fb"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "빈브라더스",
+      "address": "서울 마포구 토정로 35-1",
+      "introduce": "2013년부터 커피를 사랑하는 사람들에게 가이드 역할을 해오고 있는 빈브라더스는 한국을 넘어서서 활동하는 커피 전문가 집단입니다. 빈브라더스는 저가형 커피 브랜드들과 경쟁하는 것이 아니기에, 탁월한 품질의 커피를 만드는 일과 훌륭한 커피 경험의 전달에 대부분의 역량을 집중합니다. 고유의 타이포그래피로 제작된 로고는 빈브라더스가 지닌 에너지와 리더십을 연상시키는 아이덴티티를 지니고 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=0c1a3917-424d-48d9-a2f5-04f5fb5fe102"
+        }
+      }
+    },
+    "id": "nutshell-id-32",
+    "name": "벨벳화이트",
+    "note": "오렌지, 자몽과 같은 싱그러운 감귤 과일의 향과 브라운 슈거를 뿌린 듯한 단맛의 조화가 인상적인 커피입니다. 깨끗한 촉감과 목 넘김 이후로 이어지는 애프터 테이스트가 좋아 한 잔의 티처럼 느껴집니다.",
+    "tags": ["미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["시트러스", "자스민", "과일"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "variety": "Guji Suke #5",
+        "country": "에티오피아",
+        "processLabel": "워시드"
+      },
+      {
+        "variety": "Nano Genji #9",
+        "country": "에티오피아",
+        "processLabel": "워시드"
+      }
+    ],
+    "branches": [
+      {
+        "name": "빈브라더스 합정",
+        "address": "서울 마포구 토정로 35-1",
+        "addressY": "37.5457206541178",
+        "addressX": "126.914981649041",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_160933.png?alt=media&token=d4215551-e2f6-4442-839a-7b2a20328665",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_160958.png?alt=media&token=768febc2-a65b-4ebb-b90e-44641b89dddf",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_161016.png?alt=media&token=a9a98f11-04fd-41ab-864c-a1fb0f6d8b42",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%8C%E1%85%A5%E1%86%BC%2F20220628_161047.png?alt=media&token=82617ea3-8c2d-4d24-9190-16f86d72480e"
+        ]
+      },
+      {
+        "name": "빈브라더스 신도림",
+        "address": "서울 구로구 경인로 662 현대백화점 3F",
+        "addressY": "37.5081230677129",
+        "addressX": "126.888212953215",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161141.png?alt=media&token=16a323f3-9996-4583-aaf0-f515229e4574",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161214.png?alt=media&token=925f71f9-b5b2-40b8-9539-eb07647c7498",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161231.png?alt=media&token=e7cd2827-68b7-48d4-acd6-69f18d294ec5",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7%2F20220628_161248.png?alt=media&token=df52cbf9-0831-4596-a137-c5ada1fd8139"
+        ]
+      },
+      {
+        "name": "빈브라더스 하남",
+        "address": "경기 하남시 미사대로 750 스타필드 하남",
+        "addressY": "37.5454364874338",
+        "addressX": "127.223740478204",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161328.png?alt=media&token=6daf3d3b-cef6-412a-8b11-cb7d88074eaf",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161546.png?alt=media&token=ec9bba70-fa0f-46a1-9499-91f5cb0d3107",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161609.png?alt=media&token=58b33b9b-67c1-47c2-803c-d04b235cf659",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F09%20%E1%84%87%E1%85%B5%E1%86%AB%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%83%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%92%E1%85%A1%E1%84%82%E1%85%A1%E1%86%B7%2F20220628_161626.png?alt=media&token=9a39cb29-4e3c-4447-a566-a49e5aeb72fb"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "커피핑크",
+      "address": "서울 서초구 언남길 87 1층",
+      "introduce": "에티오피아•케냐•탄자니아 아프리카 3개국을 비롯해 세계각국의 커피를 직접 수입하고 직접 로스팅하여 제공합니다",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3.jpg?alt=media&token=e05fa543-8000-48ed-b615-f0f32cc7d620"
+        }
+      }
+    },
+    "id": "nutshell-id-33",
+    "name": "아프리카",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["블랙베리", "귤", "자몽", "고소"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "에티오피아"
+      },
+      {
+        "country": "케냐"
+      }
+    ],
+    "branches": [
+      {
+        "name": "커피핑크 양재 ",
+        "address": "서울 서초구 언남길 87",
+        "addressY": "37.4757268015625",
+        "addressX": "127.046174589336",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%2F20220628_161916.png?alt=media&token=91dab75b-f041-4672-ad24-710a2c717b22",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%2F20220628_161944.png?alt=media&token=5d5461e9-0c45-49d1-a2ce-bed8155599a7",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%2F20220628_162012.png?alt=media&token=b621b395-8cc2-4e84-8522-5631d54dbb91",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%2F20220628_162037.png?alt=media&token=b1bdced1-2a15-459a-90e3-5bb3061e6e63"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "커피핑크",
+      "address": "서울 서초구 언남길 87 1층",
+      "introduce": "에티오피아•케냐•탄자니아 아프리카 3개국을 비롯해 세계각국의 커피를 직접 수입하고 직접 로스팅하여 제공합니다",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3.jpg?alt=media&token=e05fa543-8000-48ed-b615-f0f32cc7d620"
+        }
+      }
+    },
+    "id": "nutshell-id-34",
+    "name": "블랙",
+    "tags": ["미디엄로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["고소함", "단맛", "잴런스"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "에티오피아"
+      },
+      {
+        "country": "케냐"
+      },
+      {
+        "country": "코스타리카"
+      },
+      {
+        "country": "콜롬비아"
+      }
+    ],
+    "branches": [
+      {
+        "name": "커피핑크 양재 ",
+        "address": "서울 서초구 언남길 87",
+        "addressY": "37.4757268015625",
+        "addressX": "127.046174589336",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%2F20220628_161916.png?alt=media&token=91dab75b-f041-4672-ad24-710a2c717b22",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%2F20220628_161944.png?alt=media&token=5d5461e9-0c45-49d1-a2ce-bed8155599a7",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%2F20220628_162012.png?alt=media&token=b621b395-8cc2-4e84-8522-5631d54dbb91",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F10%20%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5%E1%84%91%E1%85%B5%E1%86%BC%E1%84%8F%E1%85%B3%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2%2F20220628_162037.png?alt=media&token=b1bdced1-2a15-459a-90e3-5bb3061e6e63"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "헬카페 로스터즈",
+      "address": "서울 용산구 보광로 76",
+      "introduce": "진한 맛의 드립 커피가 맛있는 카페. 매장에서 직접 콩을 볶아 사용하며, 커피 한잔 한잔에 정성을 들이는 곳이다. 매장 안에 있는 레코드판을 틀어달라고 요청할 수 있어, 좋은 음악이 은은하게 울려 퍼져 분위기가 좋다. 직접 만든 티라미수와 당근주스도 인기 메뉴.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=b61a1002-e4be-41e5-ad59-725592d8c932"
+        }
+      }
+    },
+    "id": "nutshell-id-35",
+    "name": "강배전",
+    "note": "서늘하고 깔끔한 이탈리안 블렌드를 만들었습니다. 배전도를 올리고 클린컵이 좋은 생두를 섞어서 헬카페 만의 방식으로 만들어낸 원두 입니다.",
+    "tags": ["다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["깔끔한"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "콜롬비아"
+      },
+      {
+        "country": "에티오피아"
+      },
+      {
+        "country": "인도"
+      },
+      {}
+    ],
+    "branches": [
+      {
+        "name": "헬카페 로스터즈",
+        "address": "서울 용산구 보광로 76",
+        "addressY": "37.5303283499074",
+        "addressX": "126.997022615803",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%20%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%8C%E1%85%B3%2F20220628_162105.png?alt=media&token=5f1d49f4-2f3b-4d70-a2bd-719eb9c09baf",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%20%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%8C%E1%85%B3%2F20220628_162123.png?alt=media&token=24467b47-47bd-4900-b659-86154017dfcd",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%20%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%8C%E1%85%B3%2F20220628_162203.png?alt=media&token=f2f9a10d-1e8e-450e-9f63-03e87f22d01d",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%20%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%8C%E1%85%B3%2F20220628_162232.png?alt=media&token=e88240ee-af5e-4081-b35a-234a579268f2"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "헬카페 로스터즈",
+      "address": "서울 용산구 보광로 76",
+      "introduce": "진한 맛의 드립 커피가 맛있는 카페. 매장에서 직접 콩을 볶아 사용하며, 커피 한잔 한잔에 정성을 들이는 곳이다. 매장 안에 있는 레코드판을 틀어달라고 요청할 수 있어, 좋은 음악이 은은하게 울려 퍼져 분위기가 좋다. 직접 만든 티라미수와 당근주스도 인기 메뉴.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%89%E1%85%B3.jpg?alt=media&token=b61a1002-e4be-41e5-ad59-725592d8c932"
+        }
+      }
+    },
+    "id": "nutshell-id-36",
+    "name": "밸런스",
+    "note": "어느 누가 드셔도 납득될만한 균형감 있는 커피를 만들었습니다. 단맛 신맛 쓴맛의 적절한 스펙트럼이 구현된 밸런스 커피 입니다.",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": ["밸런스"],
+      "characters": []
+    },
+    "beans": [
+      {
+        "country": "콜롬비아"
+      },
+      {
+        "country": "브라질"
+      }
+    ],
+    "branches": [
+      {
+        "name": "헬카페 로스터즈",
+        "address": "서울 용산구 보광로 76",
+        "addressY": "37.5303283499074",
+        "addressX": "126.997022615803",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%20%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%8C%E1%85%B3%2F20220628_162105.png?alt=media&token=5f1d49f4-2f3b-4d70-a2bd-719eb9c09baf",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%20%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%8C%E1%85%B3%2F20220628_162123.png?alt=media&token=24467b47-47bd-4900-b659-86154017dfcd",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%20%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%8C%E1%85%B3%2F20220628_162203.png?alt=media&token=f2f9a10d-1e8e-450e-9f63-03e87f22d01d",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F11%20%E1%84%92%E1%85%A6%E1%86%AF%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%20%E1%84%85%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%8C%E1%85%B3%2F20220628_162232.png?alt=media&token=e88240ee-af5e-4081-b35a-234a579268f2"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "코페아신드롬",
+      "address": "인천 계양구 경명대로 1086",
+      "introduce": "코페아신드롬 마포점은 로스팅레벨에 따라 순차적으로 변화하는 30종류의 원두들을 이용해서 핸드드립, 융드립, 사이폰, 점드립, 에스프레소 음료를 제공합니다.요즘 유행하는 스페셜티커피의 후루티한 산미부터 허브와 스파이스한 커피맛의 강배전까지 커피가 가지고 있는 다양성을 각각의 커피추출법을 통해 폭넓게 경험하실 수 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7.jpg?alt=media&token=a1a6bd57-adc6-4a38-8336-cc8f8a26e5a9"
+        }
+      }
+    },
+    "id": "nutshell-id-39",
+    "name": "코페아신드롬블랜드",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": [],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "코페아신드롬 마포점",
+        "address": "서울 마포구 새터산길 1 지층",
+        "addressY": "37.5649294268593",
+        "addressX": "126.9071519122",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234135.png?alt=media&token=aeab50d7-e4d5-4251-ad20-8b30f18ec0de",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234150.png?alt=media&token=a3ddb3e7-2134-401e-bb2a-1c5bcaec93b3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_233846.png?alt=media&token=404f5fe2-31f7-4dbe-a4b9-54d8330d2d49",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234057.png?alt=media&token=5d754570-fa73-436b-8b26-3777f9db3f53"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "코페아신드롬",
+      "address": "인천 계양구 경명대로 1086",
+      "introduce": "코페아신드롬 마포점은 로스팅레벨에 따라 순차적으로 변화하는 30종류의 원두들을 이용해서 핸드드립, 융드립, 사이폰, 점드립, 에스프레소 음료를 제공합니다.요즘 유행하는 스페셜티커피의 후루티한 산미부터 허브와 스파이스한 커피맛의 강배전까지 커피가 가지고 있는 다양성을 각각의 커피추출법을 통해 폭넓게 경험하실 수 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7.jpg?alt=media&token=a1a6bd57-adc6-4a38-8336-cc8f8a26e5a9"
+        }
+      }
+    },
+    "id": "nutshell-id-40",
+    "name": "가베아신도로일몽",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": [],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "코페아신드롬 마포점",
+        "address": "서울 마포구 새터산길 1 지층",
+        "addressY": "37.5649294268593",
+        "addressX": "126.9071519122",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234135.png?alt=media&token=aeab50d7-e4d5-4251-ad20-8b30f18ec0de",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234150.png?alt=media&token=a3ddb3e7-2134-401e-bb2a-1c5bcaec93b3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_233846.png?alt=media&token=404f5fe2-31f7-4dbe-a4b9-54d8330d2d49",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234057.png?alt=media&token=5d754570-fa73-436b-8b26-3777f9db3f53"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "코페아신드롬",
+      "address": "인천 계양구 경명대로 1086",
+      "introduce": "코페아신드롬 마포점은 로스팅레벨에 따라 순차적으로 변화하는 30종류의 원두들을 이용해서 핸드드립, 융드립, 사이폰, 점드립, 에스프레소 음료를 제공합니다.요즘 유행하는 스페셜티커피의 후루티한 산미부터 허브와 스파이스한 커피맛의 강배전까지 커피가 가지고 있는 다양성을 각각의 커피추출법을 통해 폭넓게 경험하실 수 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7.jpg?alt=media&token=a1a6bd57-adc6-4a38-8336-cc8f8a26e5a9"
+        }
+      }
+    },
+    "id": "nutshell-id-41",
+    "name": "김나영커피",
+    "tags": ["다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": [],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "코페아신드롬 마포점",
+        "address": "서울 마포구 새터산길 1 지층",
+        "addressY": "37.5649294268593",
+        "addressX": "126.9071519122",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234135.png?alt=media&token=aeab50d7-e4d5-4251-ad20-8b30f18ec0de",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234150.png?alt=media&token=a3ddb3e7-2134-401e-bb2a-1c5bcaec93b3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_233846.png?alt=media&token=404f5fe2-31f7-4dbe-a4b9-54d8330d2d49",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234057.png?alt=media&token=5d754570-fa73-436b-8b26-3777f9db3f53"
+        ]
+      }
+    ]
+  },
+  {
+    "seller": {
+      "name": "코페아신드롬",
+      "address": "인천 계양구 경명대로 1086",
+      "introduce": "코페아신드롬 마포점은 로스팅레벨에 따라 순차적으로 변화하는 30종류의 원두들을 이용해서 핸드드립, 융드립, 사이폰, 점드립, 에스프레소 음료를 제공합니다.요즘 유행하는 스페셜티커피의 후루티한 산미부터 허브와 스파이스한 커피맛의 강배전까지 커피가 가지고 있는 다양성을 각각의 커피추출법을 통해 폭넓게 경험하실 수 있습니다.",
+      "logo": {
+        "urls": {
+          "origin": "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2Flogos%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7.jpg?alt=media&token=a1a6bd57-adc6-4a38-8336-cc8f8a26e5a9"
+        }
+      }
+    },
+    "id": "nutshell-id-42",
+    "name": "싸이키",
+    "tags": ["미디엄다크로스팅", "블렌드"],
+    "coffeeDesc": {
+      "flavors": [],
+      "characters": []
+    },
+    "beans": [{}, {}, {}, {}],
+    "branches": [
+      {
+        "name": "코페아신드롬 마포점",
+        "address": "서울 마포구 새터산길 1 지층",
+        "addressY": "37.5649294268593",
+        "addressX": "126.9071519122",
+        "images": [
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234135.png?alt=media&token=aeab50d7-e4d5-4251-ad20-8b30f18ec0de",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234150.png?alt=media&token=a3ddb3e7-2134-401e-bb2a-1c5bcaec93b3",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_233846.png?alt=media&token=404f5fe2-31f7-4dbe-a4b9-54d8330d2d49",
+          "https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fcafes%2F_2nd%2F13%20%E1%84%8F%E1%85%A9%E1%84%91%E1%85%A6%E1%84%8B%E1%85%A1%E1%84%89%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%2F20220628_234057.png?alt=media&token=5d754570-fa73-436b-8b26-3777f9db3f53"
+        ]
+      }
+    ]
   }
 ]
