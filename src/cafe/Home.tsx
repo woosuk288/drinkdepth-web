@@ -9,11 +9,11 @@ function Cafe() {
   return (
     <>
       <Box>
-        <Typography variant="h6">성동구 핫한 카페</Typography>
+        {/* <Typography variant="h6">성동구 핫한 카페</Typography>
         <Typography variant="h6" fontWeight={'bold'}>
           슬로우디
         </Typography>
-        <Typography variant="h6">여름맞이 메뉴</Typography>
+        <Typography variant="h6">여름맞이 메뉴</Typography> */}
       </Box>
 
       <Box>
@@ -60,6 +60,8 @@ function Cafe() {
       <Box sx={{ textAlign: 'center' }}>
         <Button
           variant="contained"
+          size="large"
+          sx={{ width: '50%', margin: '1rem', fontWeight: 'bold' }}
           onClick={() => router.push(`${router.asPath}/menu`)}
         >
           메뉴판 보기
