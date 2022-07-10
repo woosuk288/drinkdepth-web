@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import CafeHeader from '../../../../src/cafe/Header';
-import { testMenuData } from '../../../../src/cafe/Menu';
+import { testMenuData } from '../../../../src/cafe/Menus';
 import MenuDetail, { MenuDetailProps } from '../../../../src/cafe/MenuDetail';
 
 const MenuDetailPage: NextPage<MenuDetailProps> = ({ item }) => {

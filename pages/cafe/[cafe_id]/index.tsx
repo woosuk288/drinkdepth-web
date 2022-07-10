@@ -1,12 +1,14 @@
 import { Container } from '@mui/material';
 import CafeHeader from '../../../src/cafe/Header';
-import Cafe from '../../../src/cafe/Home';
+import Intro from '../../../src/cafe/Intro';
+import Menus from '../../../src/cafe/Menus';
 
 function CafePage() {
   return (
     <Container maxWidth="sm" disableGutters>
-      <CafeHeader title={'슬로우디'} />
-      <Cafe />
+      <CafeHeader title={'나무사이로'} />
+      <Intro />
+      <Menus />
     </Container>
   );
 }
