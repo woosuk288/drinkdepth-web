@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { CafeMenuType } from '../util/types';
+import { CafeMenuType } from '../utils/types';
 
 function Menu(item: CafeMenuType) {
   const router = useRouter();

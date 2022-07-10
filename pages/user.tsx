@@ -4,7 +4,7 @@ import Layout from '../src/Layout';
 
 import { Badge, Box, LinearProgress, Tab, Tabs } from '@mui/material';
 
-import { useAuthFb } from '../firebase/clientApp';
+import { useAuthFb } from '../src/utils/firebase/firebaseInit';
 import UserInfo from '../src/user/UserInfo';
 import RedirectPage from '../src/common/RedirectPage';
 import BookmarkList from '../src/user/BookmarkList';

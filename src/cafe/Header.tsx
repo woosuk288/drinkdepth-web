@@ -92,10 +92,11 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
                 aria-label="menu"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleOpenNavMenu}
+                // onClick={handleOpenNavMenu}
                 color="inherit"
+                style={{ minWidth: 48 }}
               >
-                <MenuIcon />
+                {/* <MenuIcon /> */}
               </IconButton>
 
               <Typography variant="h6" fontWeight="bold">
@@ -103,7 +104,7 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
               </Typography>
 
               <IconButton style={{ minWidth: 48 }} />
-              <Drawer
+              {/* <Drawer
                 anchor={'left'}
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
@@ -126,7 +127,7 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
                     </ListItem>
                   ))}
                 </List>
-              </Drawer>
+              </Drawer> */}
             </Box>
           </Toolbar>
         </Container>

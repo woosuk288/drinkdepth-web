@@ -10,7 +10,7 @@ import {
   CardHeader,
   Typography,
 } from '@mui/material';
-import { sxCenter } from '../../styles/sx';
+import { sxCenter } from '../styles/GlobalSx';
 import { useRouter } from 'next/router';
 
 type Order = {

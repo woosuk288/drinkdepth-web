@@ -14,7 +14,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import TagIcon from '@mui/icons-material/Tag';
 
 import { userVar, Role, roleVar } from '../../apollo/client';
-import { auth, useAuthFb } from '../../firebase/clientApp';
+import { auth, useAuthFb } from '../utils/firebase/firebaseInit';
 import { USER_ROLES } from '../constants';
 import { useRouter } from 'next/router';
 import Image from 'next/image';

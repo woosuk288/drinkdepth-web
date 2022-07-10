@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { auth } from '../../firebase/clientApp';
+import { auth } from '../utils/firebase/firebaseInit';
 
 import { signOut } from 'firebase/auth';
 

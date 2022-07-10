@@ -13,7 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { userVar, Role, roleVar } from '../../apollo/client';
-import { auth, useAuthFb } from '../../firebase/clientApp';
+import { auth, useAuthFb } from '../utils/firebase/firebaseInit';
 import { USER_ROLES } from '../constants';
 import { useRouter } from 'next/router';
 import Image from 'next/image';

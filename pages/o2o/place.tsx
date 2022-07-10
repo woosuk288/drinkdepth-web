@@ -19,11 +19,11 @@ import { useReactiveVar } from '@apollo/client';
 import { ChoiceType, choiceVar } from '../../apollo/client';
 import AlertDialogSlide from '../../src/o2o/place/coffeeDetailDialog';
 import ImagesDialog from '../../src/o2o/place/ImagesDialog';
-import { analytics } from '../../firebase/clientApp';
+import { analytics } from '../../src/utils/firebase/firebaseInit';
 import { logEvent } from 'firebase/analytics';
 import useScript from '../../src/hooks/useScript';
-import { labelFromOneToFive } from '../../src/util/combos';
-import { getAddressXY } from '../../src/util/kakaoAPI';
+import { labelFromOneToFive } from '../../src/utils/combos';
+import { getAddressXY } from '../../src/utils/kakaoAPI';
 
 export type CoffeeType = {
   id: string;
@@ -154,11 +154,13 @@ const PlacePage: NextPage = () => {
     //   setSetCoffees(data.default);
     //   showFilteredCoffeeList(choice, data.default);
     // });
-    import('../../firebase/productsDetailsWithCafes.json').then((data) => {
-      setSetCoffees(data.default);
-      setLoadingData(false);
-      // showFilteredCoffeeList(choice, data.default);
-    });
+    import('../../src/utils/firebase/productsDetailsWithCafes.json').then(
+      (data) => {
+        setSetCoffees(data.default);
+        setLoadingData(false);
+        // showFilteredCoffeeList(choice, data.default);
+      }
+    );
   }, []);
 
   const handleChange = async (event: SelectChangeEvent<string[]>) => {

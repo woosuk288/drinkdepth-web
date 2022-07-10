@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import CafeHeader from '../../../src/cafe/Header';
 import Intro from '../../../src/cafe/Intro';
 import Menus from '../../../src/cafe/Menus';
-import { CafePageProps } from '../../../src/util/types';
+import { CafePageProps } from '../../../src/utils/types';
 
 const CafePage: NextPage<CafePageProps> = ({ cafeIntro, cafeMenus }) => {
   return (

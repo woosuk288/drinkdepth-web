@@ -5,7 +5,7 @@ import PhoneNumberForm from '../src/login/PhoneNumberForm';
 import VerificationCodeForm from '../src/login/VerificationCodeForm';
 import InfoForm from '../src/login/InfoForm';
 
-import { useAuthFb } from '../firebase/clientApp';
+import { useAuthFb } from '../src/utils/firebase/firebaseInit';
 import { useReactiveVar } from '@apollo/client';
 import { roleVar } from '../apollo/client';
 import RedirectPage from '../src/common/RedirectPage';

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { makeNaverMapURL } from '../o2o/place/coffeeDetailDialog';
 import proj4 from 'proj4';
-import { CafeIntroProps } from '../util/types';
+import { CafeIntroProps } from '../utils/types';
 
 function Intro({ cafeIntro }: CafeIntroProps) {
   const router = useRouter();
@@ -70,7 +70,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
         </Typography>
       </Box>
 
-      <Box>
+      <Box sx={{ margin: '1rem' }}>
         <Button
           onClick={handleOpenNaverMap}
           fullWidth

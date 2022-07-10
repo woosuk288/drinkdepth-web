@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
-import { MenuDetailProps } from '../util/types';
+import { MenuDetailProps } from '../utils/types';
 
 function MenuDetail({ item }: MenuDetailProps) {
   return (

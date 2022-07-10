@@ -14,7 +14,7 @@ import {
   CreatePayment,
   CreatePaymentVariables,
 } from '../../apollo/__generated__/CreatePayment';
-import { sxCenter } from '../../styles/sx';
+import { sxCenter } from '../../src/styles/GlobalSx';
 
 type QueryType = { orderId: string; amount: string; paymentKey: string };
 

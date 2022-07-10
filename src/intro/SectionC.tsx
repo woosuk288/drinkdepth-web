@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
-import { sxCenter } from '../../styles/sx';
+import { sxCenter } from '../styles/GlobalSx';
 
 function SectionC() {
   return (

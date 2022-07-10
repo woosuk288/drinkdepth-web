@@ -18,7 +18,7 @@ import BeanTable from './BeanTable';
 import SellerAndBranch from './SellerAndBranch';
 import { KakaoShareButton } from '../../../landing/KakaoShareButton';
 import proj4 from 'proj4';
-import { analytics } from '../../../../firebase/clientApp';
+import { analytics } from '../../../utils/firebase/firebaseInit';
 import { logEvent } from 'firebase/analytics';
 
 const Transition = React.forwardRef(function Transition(

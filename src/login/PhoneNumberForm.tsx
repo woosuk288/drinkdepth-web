@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 import React, { useState } from 'react';
 import {
   Box,
@@ -14,7 +10,7 @@ import {
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 
 import { useForm, Controller, useWatch } from 'react-hook-form';
-import { auth } from '../../firebase/clientApp';
+import { auth } from '../utils/firebase/firebaseInit';
 
 interface IPhoneNumberFormProps {
   setIsSent: React.Dispatch<React.SetStateAction<boolean>>;

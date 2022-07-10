@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { CoffeeResultType } from '../../../pages/o2o/place';
-import { getAddressXY } from '../../util/kakaoAPI';
+import { getAddressXY } from '../../utils/kakaoAPI';
 import AlertDialogSlide from './coffeeDetailDialog';
 import ImagesDialog from './ImagesDialog';
 

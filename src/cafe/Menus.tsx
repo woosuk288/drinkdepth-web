@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useMemo, useState } from 'react';
-import { CafeMenuCategoryType, CafeMenusProps } from '../util/types';
+import { CafeMenuCategoryType, CafeMenusProps } from '../utils/types';
 import CategoryTabs from './CategoryTabs';
 import Menu from './Menu';
 

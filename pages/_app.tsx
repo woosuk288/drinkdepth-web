@@ -6,7 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
-import GlobalStyle from '../styles/GlobalStyle';
+import GlobalStyle from '../src/styles/GlobalStyle';
 
 import { ApolloProvider } from '@apollo/client';
 import client from '../apollo/client';
@@ -14,7 +14,7 @@ import { Router, useRouter } from 'next/router';
 import Script from 'next/script';
 import * as fbq from '../facebook/fpixel';
 import { logEvent, setCurrentScreen } from 'firebase/analytics';
-import { analytics } from '../firebase/clientApp';
+import { analytics } from '../src/utils/firebase/firebaseInit';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();

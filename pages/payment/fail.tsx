@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
 
 import Link from '../../src/Link';
-import { sxCenter } from '../../styles/sx';
+import { sxCenter } from '../../src/styles/GlobalSx';
 
 const Fail: NextPage = () => {
   const router = useRouter();
