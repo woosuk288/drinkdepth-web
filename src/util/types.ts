@@ -34,3 +34,7 @@ export type CafeMenuCategoryType = {
   label: string;
   value: string;
 };
+
+export type MenuDetailProps = {
+  item: CafeMenuType;
+};

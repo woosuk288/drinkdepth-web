@@ -64,7 +64,7 @@ const cafeIntro = {
     'https://map.naver.com/v5/search/%EB%82%98%EB%AC%B4%EC%82%AC%EC%9D%B4%EB%A1%9C/place/33431802?c=14133881.6113300,4519520.4874508,15,0,0,0,dh&placePath=%3Fentry%253Dbmp',
 };
 
-const cafeMenus = [
+export const cafeMenus = [
   {
     cafeId: '1',
     id: '1',

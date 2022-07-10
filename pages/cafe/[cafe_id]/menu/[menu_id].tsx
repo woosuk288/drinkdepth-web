@@ -1,13 +1,14 @@
 import { Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import CafeHeader from '../../../../src/cafe/Header';
-import { testMenuData } from '../../../../src/cafe/Menus';
-import MenuDetail, { MenuDetailProps } from '../../../../src/cafe/MenuDetail';
+import MenuDetail from '../../../../src/cafe/MenuDetail';
+import { cafeMenus } from '..';
+import { MenuDetailProps } from '../../../../src/util/types';
 
 const MenuDetailPage: NextPage<MenuDetailProps> = ({ item }) => {
   return (
     <Container maxWidth="sm" disableGutters>
-      {/* <CafeHeader title={item.name} /> */}
+      <CafeHeader title={item.name} />
       <MenuDetail item={item} />
     </Container>
   );
@@ -16,7 +17,7 @@ export default MenuDetailPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: testMenuData.map((menu) => ({
+    paths: cafeMenus.map((menu) => ({
       params: {
         cafe_id: menu.cafeId,
         menu_id: menu.id,
@@ -30,7 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   console.log('params : ', params);
 
-  let item = testMenuData.find(
+  let item = cafeMenus.find(
     (menu) => menu.cafeId === params?.cafe_id && menu.id === params?.menu_id
   );
 
