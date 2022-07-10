@@ -8,11 +8,49 @@ import {
   Typography,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { Fragment } from 'react';
+import React, { useMemo, useState } from 'react';
+import {
+  CafeMenuCategoryType,
+  CafeMenusProps,
+  CafeMenuType,
+} from '../util/types';
+import CategoryTabs from './CategoryTabs';
 
-function Menus() {
+function Menus({ cafeMenus }: CafeMenusProps) {
   const router = useRouter();
   console.log('path : ', router.asPath);
+  const [filteredMenus, setFilteredMenus] = useState(cafeMenus);
+
+  const [tabIndex, setTabIndex] = React.useState(0);
+
+  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setTabIndex(newValue);
+
+    if (newValue === 0) {
+      setFilteredMenus(cafeMenus);
+    } else {
+      const categoryValue = categories[newValue].value;
+      const menusByCategory = cafeMenus.filter(
+        (cafemenu) => cafemenu.category === categoryValue
+      );
+      setFilteredMenus(menusByCategory);
+    }
+  };
+
+  const categories = useMemo(() => {
+    const initialCategories = [{ label: '전체', value: '전체' }];
+
+    return cafeMenus.reduce((pre, cur) => {
+      let nextList: CafeMenuCategoryType[] = [...pre];
+      if (pre.some((p) => p.value === cur.category) === false) {
+        nextList.push({
+          label: cur.category,
+          value: cur.category,
+        });
+      }
+      return nextList;
+    }, initialCategories as CafeMenuCategoryType[]);
+  }, [cafeMenus]);
 
   return (
     <>
@@ -25,6 +63,12 @@ function Menus() {
         메뉴
       </Typography>
 
+      <CategoryTabs
+        categories={categories}
+        tabIndex={tabIndex}
+        handleTabChange={handleTabChange}
+      />
+
       <List
         sx={{
           width: '100%',
@@ -34,7 +78,7 @@ function Menus() {
         {/* <ListSubheader>
 
       </ListSubheader> */}
-        {testMenuData.map((item) => (
+        {filteredMenus.map((item) => (
           <ListItem
             key={item.id}
             alignItems="flex-start"
@@ -46,7 +90,7 @@ function Menus() {
           >
             <ListItemAvatar sx={{ marginRight: '1rem' }}>
               <Avatar
-                alt="Remy Sharp"
+                alt={item.name}
                 src={item.imageURL}
                 sx={{ width: 96, height: 96 }}
                 variant="rounded"
@@ -60,9 +104,7 @@ function Menus() {
                 },
               }}
               // primary={item.name}
-              // secondary={
-
-              // }
+              // secondary={}
             >
               <Typography fontWeight={'bold'} gutterBottom>
                 {item.name}
@@ -106,39 +148,3 @@ function Menus() {
   );
 }
 export default Menus;
-
-export const testMenuData = [
-  {
-    cafeId: '1',
-    id: '1',
-    name: '라임블라썸',
-    description:
-      '라임쥬스와 벚꽃시럽, 탄산수, 라임슬라이스가 올라간 시원함 여름 에이드 테스트입니다 테스트입니다 테스트입니다',
-    labels: ['수제', '바닐라시럽', '우유', '에스프레소'],
-    imageURL:
-      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-    price: 6000,
-  },
-  {
-    cafeId: '1',
-    id: '2',
-    name: '라임블라썸2',
-    description:
-      '라임쥬스와 벚꽃시럽, 탄산수, 라임슬라이스가 올라간 시원함 여름 에이드 테스트입니다 테스트입니다 테스트입니다',
-    labels: ['수제', '바닐라시럽', '우유', '에스프레소'],
-    imageURL:
-      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-    price: 6000,
-  },
-  {
-    cafeId: '1',
-    id: '3',
-    name: '라임블라썸3',
-    description:
-      '라임쥬스와 벚꽃시럽, 탄산수, 라임슬라이스가 올라간 시원함 여름 에이드 테스트입니다 테스트입니다 테스트입니다',
-    labels: ['수제', '바닐라시럽', '우유', '에스프레소'],
-    imageURL:
-      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-    price: 6000,
-  },
-];

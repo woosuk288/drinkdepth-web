@@ -1,12 +1,12 @@
-import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-import CafeMenu from './Menus';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { makeNaverMapURL } from '../o2o/place/coffeeDetailDialog';
 import proj4 from 'proj4';
+import { CafeIntroProps } from '../util/types';
 
-function Intro() {
+function Intro({ cafeIntro }: CafeIntroProps) {
   const router = useRouter();
 
   console.log('router.pathname : ', router.asPath);
@@ -14,11 +14,11 @@ function Intro() {
   const handleOpenNaverMap = () => {
     const p = proj4('EPSG:4326', 'EPSG:3857');
     const position = p.forward([
-      parseFloat(cafeInfo.addressX),
-      parseFloat(cafeInfo.addressY),
+      parseFloat(cafeIntro.addressX),
+      parseFloat(cafeIntro.addressY),
     ]);
 
-    const url = makeNaverMapURL(cafeInfo.name, position);
+    const url = makeNaverMapURL(cafeIntro.name, position);
     console.log('position : ', position);
     console.log('url : ', url);
 
@@ -79,10 +79,10 @@ function Intro() {
           color="inherit"
           startIcon={<LocationOnIcon color="primary" />}
         >
-          {cafeInfo.address}
+          {cafeIntro.address}
         </Button>
         <Typography variant="caption" component="p" align="center">
-          {cafeInfo.addressWithSubway}
+          {cafeIntro.addressWithSubway}
         </Typography>
       </Box>
 
@@ -106,16 +106,6 @@ function Intro() {
   );
 }
 export default Intro;
-
-const cafeInfo = {
-  name: '나무사이로 종로',
-  address: '서울 종로구 사직로8길 21',
-  addressY: '37.5746665386618',
-  addressX: '126.970971159569',
-  addressWithSubway: '3호선    경복궁역 7번 출구에서273m',
-  addressLink:
-    'https://map.naver.com/v5/search/%EB%82%98%EB%AC%B4%EC%82%AC%EC%9D%B4%EB%A1%9C/place/33431802?c=14133881.6113300,4519520.4874508,15,0,0,0,dh&placePath=%3Fentry%253Dbmp',
-};
 
 const cafeImages = [
   {
