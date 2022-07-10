@@ -7,7 +7,7 @@ import MenuDetail, { MenuDetailProps } from '../../../../src/cafe/MenuDetail';
 const MenuDetailPage: NextPage<MenuDetailProps> = ({ item }) => {
   return (
     <Container maxWidth="sm" disableGutters>
-      <CafeHeader title={item.name} />
+      {/* <CafeHeader title={item.name} /> */}
       <MenuDetail item={item} />
     </Container>
   );

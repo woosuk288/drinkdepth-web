@@ -26,7 +26,7 @@ function Menu() {
           alignItems="flex-start"
           onClick={() =>
             router.push({
-              pathname: `${router.asPath}/${item.id}`,
+              pathname: `${router.asPath}/menu/${item.id}`,
             })
           }
         >

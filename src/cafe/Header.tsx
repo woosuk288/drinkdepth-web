@@ -76,7 +76,7 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
 
   return (
     <>
-      <AppBar position="static" color="transparent" elevation={0}>
+      <AppBar position="static" color="transparent">
         <Container maxWidth="lg" sx={sx.container}>
           <Toolbar disableGutters>
             {/* mobile */}
@@ -117,7 +117,7 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
                     <ListItem
                       key={page.name}
                       disablePadding
-                      onClick={() => handleListItemClick(page.link)}
+                      onClick={() => handleListItemClick(CAFE_PATH + page.link)}
                     >
                       <ListItemButton>
                         <ListItemIcon>
