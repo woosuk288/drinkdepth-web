@@ -5,9 +5,11 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { makeNaverMapURL } from '../o2o/place/coffeeDetailDialog';
 import proj4 from 'proj4';
 import { CafeIntroProps } from '../utils/types';
+import { useAuthFb } from '../utils/firebase/firebaseInit';
 
 function Intro({ cafeIntro }: CafeIntroProps) {
   const router = useRouter();
+  const [user, loading, error] = useAuthFb();
 
   console.log('router.pathname : ', router.asPath);
 
@@ -28,6 +30,18 @@ function Intro({ cafeIntro }: CafeIntroProps) {
     anchor.rel = 'noopener noreferrer';
     anchor.click();
   };
+
+  const handleIssueCoupon = () => {
+    if (user) {
+      // 쿠폰 발행
+      console.log('issue coupon');
+    } else {
+      // 쿠폰 정보 recoil 보관
+      router.push('/oauth/login');
+    }
+  };
+
+  console.log(user, loading, error);
 
   return (
     <>
@@ -97,7 +111,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
             fontWeight: 500,
             borderRadius: 16,
           }}
-          onClick={() => {}}
+          onClick={handleIssueCoupon}
         >
           쿠폰 발행
         </Button>
