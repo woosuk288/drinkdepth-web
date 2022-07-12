@@ -51,7 +51,8 @@ type CafeHeaderProps = {
 
 const CafeHeader = ({ title }: CafeHeaderProps) => {
   const router = useRouter();
-  const CAFE_PATH = '/cafe/1';
+  // const CAFE_PATH = '/cafe/' + router.query.cafe_id;
+  const CAFE_PATH = '/cafe/smart1';
 
   const [user, loading, error] = useAuthFb();
 

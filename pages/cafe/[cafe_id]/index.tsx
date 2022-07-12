@@ -19,7 +19,7 @@ export default CafePage;
 export const getStaticPaths: GetStaticPaths = async () => {
   const cafes = [
     {
-      cafeId: '1',
+      cafeId: 'smart1',
       name: '나무사이로',
     },
   ];
@@ -66,7 +66,7 @@ const cafeIntro = {
 
 export const cafeMenus = [
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '1',
     name: '에스프레소',
     description: '',
@@ -77,7 +77,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '2',
     name: '아메리카노',
     description: '',
@@ -88,7 +88,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '3',
     name: '카페라떼',
     description: '',
@@ -99,7 +99,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '4',
     name: '디카프리오',
     description: '',
@@ -110,7 +110,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '5',
     name: '디카프리오',
     description: '',
@@ -121,7 +121,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '6',
     name: '하이로 게샤',
     description: '',
@@ -132,7 +132,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '7',
     name: '브릴리',
     description: '',
@@ -143,7 +143,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '8',
     name: '허니 라벤더 티',
     description:
@@ -155,7 +155,7 @@ export const cafeMenus = [
     category: '차',
   },
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '9',
     name: '콤부차',
     description: '',
@@ -166,7 +166,7 @@ export const cafeMenus = [
     category: '차',
   },
   {
-    cafeId: '1',
+    cafeId: 'smart1',
     id: '10',
     name: '쿠키.다이제스티브',
     description: '',

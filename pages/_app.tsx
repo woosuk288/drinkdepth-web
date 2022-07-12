@@ -16,8 +16,12 @@ import * as fbq from '../facebook/fpixel';
 import { logEvent, setCurrentScreen } from 'firebase/analytics';
 import { analytics } from '../src/utils/firebase/firebaseInit';
 
+import { QueryClientProvider, QueryClient } from 'react-query';
+
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
+
+const queryClient = new QueryClient();
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -58,13 +62,15 @@ export default function MyApp(props: MyAppProps) {
         <GlobalStyle />
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <ApolloProvider client={client}>
-          {/* Global Site Code Pixel - Facebook Pixel */}
-          <Script
-            id="fb-pixel"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
+
+        <QueryClientProvider client={queryClient}>
+          <ApolloProvider client={client}>
+            {/* Global Site Code Pixel - Facebook Pixel */}
+            <Script
+              id="fb-pixel"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -75,17 +81,18 @@ export default function MyApp(props: MyAppProps) {
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '435770381248304');
           `,
-            }}
-          />
+              }}
+            />
 
-          <Script
-            src="https://developers.kakao.com/sdk/js/kakao.js"
-            strategy="beforeInteractive"
-            onLoad={() => console.log('kakao script loaded')}
-          />
+            <Script
+              src="https://developers.kakao.com/sdk/js/kakao.js"
+              strategy="beforeInteractive"
+              onLoad={() => console.log('kakao script loaded')}
+            />
 
-          <Component {...pageProps} />
-        </ApolloProvider>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </QueryClientProvider>
       </ThemeProvider>
     </CacheProvider>
   );

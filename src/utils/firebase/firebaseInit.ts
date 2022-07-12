@@ -3,6 +3,7 @@ import { ConfirmationResult, getAuth, RecaptchaVerifier } from 'firebase/auth';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -21,7 +22,9 @@ const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
 const auth = getAuth(app);
 auth.useDeviceLanguage();
 
-export { auth, analytics };
+const db = getFirestore(app);
+
+export { auth, analytics, db };
 export const useAuthFb = () => useAuthState(auth);
 
 declare global {
