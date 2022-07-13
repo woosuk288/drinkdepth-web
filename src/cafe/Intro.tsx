@@ -5,68 +5,96 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { makeNaverMapURL } from '../o2o/place/coffeeDetailDialog';
 import proj4 from 'proj4';
 import { CafeIntroProps } from '../utils/types';
-import { db, useAuthFb } from '../utils/firebase/firebaseInit';
+import { db } from '../utils/firebase/firebaseInit';
 import {
   collection,
   doc,
   limit,
+  onSnapshot,
   query,
+  runTransaction,
   serverTimestamp,
   where,
 } from 'firebase/firestore';
-import {
-  useFirestoreCollectionMutation,
-  useFirestoreDocumentData,
-  useFirestoreQueryData,
-  useFirestoreQuery,
-} from '@react-query-firebase/firestore';
+
+import { useMutation } from 'react-query';
+
 import { COUPONS, COUPON_TYPE } from '../utils/firebase/models';
 import CouponDialog from './CouponDialog';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAuth } from '../context/AuthUserContext';
+import { getTestType } from '../utils/combos';
 
 function Intro({ cafeIntro }: CafeIntroProps) {
   const router = useRouter();
   const cafeId = router.query.cafe_id as string;
+  const { user } = useAuth();
 
-  const [user, loading, error] = useAuthFb();
-
-  const couponQuery = useFirestoreQuery(
-    [COUPONS, { uid: user?.uid, cafeId }],
-    query(
-      collection(db, COUPONS),
-      limit(1),
-      where('cafeId', '==', cafeId),
-      where('customerId', '==', user?.uid ?? null)
-    ),
-    {
-      source: 'server',
-      // subscribe: true
-    },
-    { enabled: !!user }
+  const [coupon, setCoupon] = useState<COUPON_TYPE | null>(null);
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+          collection(db, COUPONS),
+          limit(1),
+          where('cafeId', '==', cafeId),
+          where('customerId', '==', user?.uid)
+        ),
+        (snapshot) =>
+          setCoupon(
+            snapshot.size > 0
+              ? ({
+                  ...snapshot.docs[0].data(),
+                  id: snapshot.docs[0].id,
+                } as COUPON_TYPE)
+              : null
+          )
+      ),
+    [cafeId, user?.uid]
   );
 
-  const ref = collection(db, COUPONS);
-  const mutation = useFirestoreCollectionMutation(ref);
+  const mutation = useMutation<string, string>(
+    () => {
+      const result = runTransaction(db, async (tx) => {
+        const counterRef = doc(db, COUPONS, '#counter#');
+        const couponDoc = await tx.get(counterRef);
+
+        const count: string = couponDoc.data()?.count;
+        const nextCount = (parseInt(count, 10) + 1).toString(10);
+        const nextCode = nextCount.padStart(6, '0');
+
+        const couponRef = doc(db, COUPONS, nextCode);
+        const newCoupon = await tx.get(couponRef);
+
+        const type = getTestType();
+
+        if (newCoupon.exists()) {
+          throw '쿠폰을 코드 중복 오류!';
+        } else {
+          tx.update(counterRef, { count: nextCount });
+          tx.set(couponRef, {
+            code: nextCode,
+            cafeId: cafeId,
+            customerId: user!.uid,
+            type,
+            isUsed: false,
+            createdAt: serverTimestamp(),
+          });
+
+          return '쿠폰 발급 완료!';
+        }
+      });
+
+      return result;
+    },
+    {
+      onSuccess: (data) => {
+        console.log('data : ', data);
+      },
+    }
+  );
 
   const [open, setOpen] = useState(false);
-
-  // id 뭐냐
-  // const COUPON_COUNTER_ID = '#counter#';
-  // const docRef = doc(db, COUPONS, COUPON_COUNTER_ID);
-  // const couponCounter = useFirestoreDocumentData(
-  //   [COUPONS, COUPON_COUNTER_ID],
-  //   docRef, undefined
-  //   ,
-  //   {enabled: false}
-  // );
-
-  // document #counter# 를 가져온다
-  // counter를 만들어서 +1을 해준다.
-  // create 해준다.
-  // 새로 생성된 create 아이디로 조회한다.
-  // 조회한 id를 가지고 쿠폰 발행 여부를 확인한다. (userId)
-  //
-  //
 
   const handleOpenNaverMap = () => {
     const p = proj4('EPSG:4326', 'EPSG:3857');
@@ -88,54 +116,10 @@ function Intro({ cafeIntro }: CafeIntroProps) {
 
   const handleIssueCoupon = () => {
     if (user) {
-      // 쿠폰 발행
-      console.log('issue coupon');
-
-      const type = cafeId.replace(/[1-9]/g, '');
-
-      if (type !== 'normal' && type !== 'smart') {
-        alert('잘못된 접근입니다.');
-        return;
-      }
-
-      // coupon counter
-      // normal:0, smart: 0
-      // 100001 200001
-      // left padd
-
-      // '03'.pa;
-
-      // TODO:
-      // type = cafeId에서 숫자 부분 제거하여 type으로 넣기...
-      // code = #couter#에서 가져와서 type별 number 체크하고
-
-      //
-      // type === 'noraml' cafeId에서 숫자 부분을
-
-      console.log('cafeId : ', cafeId);
-      const count = '0';
-      const nextCount = (parseInt(count, 10) + 1).toString(10);
-      const nextCode = nextCount.padStart(6, '0');
-
-      console.log('nextCode : ', nextCode);
-
-      mutation.mutate(
-        {
-          code: nextCode,
-          cafeId: cafeId,
-          customerId: user.uid,
-          type,
-          isUsed: false,
-          createdAt: serverTimestamp(),
-        },
-        {
-          onSuccess() {
-            console.log('Document added!');
-          },
-        }
-      );
+      mutation.mutate();
+      return;
     } else {
-      // 쿠폰 정보 recoil 보관
+      // TODO: 쿠폰 정보 recoil 보관
       router.push('/oauth/login');
     }
   };
@@ -151,13 +135,6 @@ function Intro({ cafeIntro }: CafeIntroProps) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  console.log(user, loading, error);
-
-  console.log(
-    'couponQuery : ',
-    couponQuery.data?.docs.map((doc) => doc.data())
-  );
 
   return (
     <>
@@ -192,12 +169,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
           padding: '1rem',
         }}
       >
-        <Typography>
-          2002년 서울에서 시작한 나무사이로는 한 잔의 커피로 우리의 일상이
-          풍요로워지기를 바랍니다. 지속적으로 산지를 방문하여 농부•생산업자와
-          소통하며 좋은 재료와 논리적인 로스팅, 철저한 품질관리를 기반으로
-          커피가 가진 다양한 매력을 소개합니다.
-        </Typography>
+        <Typography>{cafeIntro.introduce}</Typography>
       </Box>
 
       <Box sx={{ margin: '1rem' }}>
@@ -212,55 +184,37 @@ function Intro({ cafeIntro }: CafeIntroProps) {
           {cafeIntro.address}
         </Button>
         <Typography variant="caption" component="p" align="center">
-          {cafeIntro.addressWithSubway}
+          {cafeIntro.addressETC}
         </Typography>
       </Box>
 
       <Box sx={{ textAlign: 'center' }}>
-        {couponQuery.data?.size ?? 0 > 0 ? (
+        {coupon ? (
           <Button
             variant="contained"
             color="secondary"
-            sx={{
-              width: '50%',
-              height: 64,
-              margin: '1rem',
-              fontSize: 20,
-              fontWeight: 500,
-              borderRadius: 16,
-            }}
+            sx={sx.btnCoupon}
             onClick={handleUseCoupon}
+            disabled={coupon.isUsed}
           >
             쿠폰 사용
           </Button>
         ) : (
           <Button
             variant="contained"
-            sx={{
-              width: '50%',
-              height: 64,
-              margin: '1rem',
-              fontSize: 20,
-              fontWeight: 500,
-              borderRadius: 16,
-            }}
+            sx={sx.btnCoupon}
             onClick={handleIssueCoupon}
-            disabled={mutation.isLoading || (couponQuery.data?.size ?? 0) > 0}
+            disabled={mutation.isLoading}
           >
             쿠폰 발행
           </Button>
         )}
 
-        {mutation.isError && <p>{mutation.error.message}</p>}
+        {mutation.isError && <p>{mutation.error}</p>}
 
-        {open && (couponQuery.data?.size ?? 0) > 0 && (
+        {open && !coupon?.isUsed && (
           <CouponDialog
-            coupon={
-              {
-                id: couponQuery.data!.docs[0].id,
-                ...couponQuery.data!.docs[0].data(),
-              } as COUPON_TYPE
-            }
+            coupon={coupon!}
             open={open}
             handleClose={handleClose}
           />
@@ -270,3 +224,14 @@ function Intro({ cafeIntro }: CafeIntroProps) {
   );
 }
 export default Intro;
+
+const sx = {
+  btnCoupon: {
+    width: '50%',
+    height: 64,
+    margin: '1rem',
+    fontSize: 20,
+    fontWeight: 500,
+    borderRadius: 16,
+  },
+};

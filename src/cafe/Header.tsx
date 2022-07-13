@@ -4,14 +4,12 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 
 import HomeIcon from '@mui/icons-material/Home';
 import CoffeeIcon from '@mui/icons-material/Coffee';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-// import { auth, useAuthFb } from '../../firebase/clientApp';
 import { useRouter } from 'next/router';
 // import Image from 'next/image';
 import {
@@ -24,8 +22,9 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { auth, useAuthFb } from '../utils/firebase/firebaseInit';
+import { auth } from '../utils/firebase/firebaseInit';
 import { signOut } from 'firebase/auth';
+import { useAuth } from '../context/AuthUserContext';
 
 const pages = [
   // {
@@ -51,12 +50,10 @@ type CafeHeaderProps = {
 
 const CafeHeader = ({ title }: CafeHeaderProps) => {
   const router = useRouter();
-  // const CAFE_PATH = '/cafe/' + router.query.cafe_id;
-  const CAFE_PATH = '/cafe/smart1';
+  const CAFE_PATH = '/cafe/' + router.query.cafe_id;
 
-  const [user, loading, error] = useAuthFb();
+  const { user } = useAuth();
 
-  // const [user, loading, error] = useAuthFb();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );

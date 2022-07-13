@@ -1,3 +1,7 @@
+export type CafesPageProps = {
+  cafes: CafeIntroType[];
+};
+
 export type CafePageProps = {
   cafeIntro: CafeIntroType;
   cafeMenus: CafeMenuType[];
@@ -8,12 +12,13 @@ export type CafeIntroProps = {
 };
 
 export type CafeIntroType = {
+  id: string;
   name: string;
+  introduce: string;
   address: string;
   addressY: string;
   addressX: string;
-  addressWithSubway: string;
-  addressLink: string;
+  addressETC: string;
 };
 
 export type CafeMenusProps = {

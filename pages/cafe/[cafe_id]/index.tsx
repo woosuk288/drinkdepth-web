@@ -1,5 +1,6 @@
 import { Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { testCafes } from '..';
 import CafeHeader from '../../../src/cafe/Header';
 import Intro from '../../../src/cafe/Intro';
 import Menus from '../../../src/cafe/Menus';
@@ -17,17 +18,10 @@ const CafePage: NextPage<CafePageProps> = ({ cafeIntro, cafeMenus }) => {
 export default CafePage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const cafes = [
-    {
-      cafeId: 'smart1',
-      name: '나무사이로',
-    },
-  ];
-
   return {
-    paths: cafes.map((cafe) => ({
+    paths: testCafes.map((cafe) => ({
       params: {
-        cafe_id: cafe.cafeId,
+        cafe_id: cafe.id,
         name: cafe.name,
       },
     })),
@@ -36,9 +30,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // console.log('params : ', params);
+  console.log('params : ', params);
 
-  if (!cafeIntro) {
+  console.log('params : ', params?.cafe_id);
+
+  const cafe = testCafes.find((testCafe) => testCafe.id === params?.cafe_id);
+
+  if (!cafe) {
     return {
       notFound: true,
     };
@@ -46,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      cafeIntro,
+      cafeIntro: cafe,
       cafeMenus,
     },
 
@@ -54,19 +52,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-const cafeIntro = {
-  name: '나무사이로 종로',
-  address: '서울 종로구 사직로8길 21',
-  addressY: '37.5746665386618',
-  addressX: '126.970971159569',
-  addressWithSubway: '3호선    경복궁역 7번 출구에서273m',
-  addressLink:
-    'https://map.naver.com/v5/search/%EB%82%98%EB%AC%B4%EC%82%AC%EC%9D%B4%EB%A1%9C/place/33431802?c=14133881.6113300,4519520.4874508,15,0,0,0,dh&placePath=%3Fentry%253Dbmp',
-};
-
 export const cafeMenus = [
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '1',
     name: '에스프레소',
     description: '',
@@ -77,7 +65,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '2',
     name: '아메리카노',
     description: '',
@@ -88,7 +76,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '3',
     name: '카페라떼',
     description: '',
@@ -99,7 +87,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '4',
     name: '디카프리오',
     description: '',
@@ -110,7 +98,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '5',
     name: '디카프리오',
     description: '',
@@ -121,7 +109,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '6',
     name: '하이로 게샤',
     description: '',
@@ -132,7 +120,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '7',
     name: '브릴리',
     description: '',
@@ -143,7 +131,7 @@ export const cafeMenus = [
     category: '커피',
   },
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '8',
     name: '허니 라벤더 티',
     description:
@@ -155,7 +143,7 @@ export const cafeMenus = [
     category: '차',
   },
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '9',
     name: '콤부차',
     description: '',
@@ -166,7 +154,7 @@ export const cafeMenus = [
     category: '차',
   },
   {
-    cafeId: 'smart1',
+    cafeId: '1',
     id: '10',
     name: '쿠키.다이제스티브',
     description: '',

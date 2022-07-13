@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
-import CouponInput from '../../src/cafe/CouponInput';
-import CafeHeader from '../../src/cafe/Header';
+import CouponInput from '../../../src/cafe/CouponInput';
+import CafeHeader from '../../../src/cafe/Header';
 
 function CouponReaderPage() {
   return (

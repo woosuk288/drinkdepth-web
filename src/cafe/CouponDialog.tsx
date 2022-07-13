@@ -5,8 +5,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
 import { COUPON_TYPE } from '../utils/firebase/models';
 
 type CouponDialogProps = {
@@ -27,11 +25,15 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
       onClose={handleClose}
       aria-labelledby="optional-dialog-title"
     >
-      <DialogTitle id="optional-dialog-title">쿠폰 번호</DialogTitle>
+      <DialogTitle id="optional-dialog-title" sx={{ textAlign: 'center' }}>
+        쿠폰 번호
+      </DialogTitle>
       <DialogContent>
-        <DialogContentText>{coupon.code}</DialogContentText>
+        <DialogContentText align="center" fontSize="3rem">
+          {coupon.code}
+        </DialogContentText>
       </DialogContent>
-      <DialogActions>
+      <DialogActions sx={{ justifyContent: 'center' }}>
         <Button autoFocus onClick={handleClose}>
           취소
         </Button>

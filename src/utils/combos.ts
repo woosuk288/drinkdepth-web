@@ -31,3 +31,11 @@ export const valueFromLowToHigh = (label: string) => {
       return 0;
   }
 };
+
+export const getTestType = () => {
+  const SMART = 'smart';
+  const NORMAL = 'normal';
+
+  const type = window.location.hostname === 'drinkdepth.com' ? NORMAL : SMART;
+  return type;
+};
