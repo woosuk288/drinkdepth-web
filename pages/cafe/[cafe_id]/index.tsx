@@ -30,10 +30,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log('params : ', params);
-
-  console.log('params : ', params?.cafe_id);
-
   const cafe = testCafes.find((testCafe) => testCafe.id === params?.cafe_id);
 
   if (!cafe) {

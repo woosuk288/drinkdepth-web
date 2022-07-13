@@ -31,14 +31,14 @@ function Intro({ cafeIntro }: CafeIntroProps) {
   const { user } = useAuth();
 
   const [coupon, setCoupon] = useState<COUPON_TYPE | null>(null);
-  useEffect(
-    () =>
-      onSnapshot(
+  useEffect(() => {
+    if (user?.uid) {
+      const unsubscribe = onSnapshot(
         query(
           collection(db, COUPONS),
           limit(1),
           where('cafeId', '==', cafeId),
-          where('customerId', '==', user?.uid)
+          where('customerId', '==', user.uid)
         ),
         (snapshot) =>
           setCoupon(
@@ -49,9 +49,10 @@ function Intro({ cafeIntro }: CafeIntroProps) {
                 } as COUPON_TYPE)
               : null
           )
-      ),
-    [cafeId, user?.uid]
-  );
+      );
+      return unsubscribe;
+    }
+  }, [cafeId, user?.uid]);
 
   const mutation = useMutation<string, string>(
     () => {
