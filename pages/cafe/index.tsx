@@ -1,6 +1,5 @@
 import { Container } from '@mui/material';
 import { GetStaticProps, NextPage } from 'next';
-import RedirectPage from '../../src/common/RedirectPage';
 import { CafesPageProps } from '../../src/utils/types';
 
 const CafesPage: NextPage<CafesPageProps> = ({ cafes }) => {

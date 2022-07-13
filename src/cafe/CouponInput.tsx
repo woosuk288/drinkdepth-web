@@ -50,6 +50,7 @@ function CouponInput() {
       onSuccess: (data) => {
         console.log('data : ', data);
         setOpen(true);
+        setCode('');
       },
     }
   );
@@ -82,7 +83,15 @@ function CouponInput() {
         확인
       </Button>
 
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+      >
         <Alert
           onClose={handleClose}
           variant="outlined"
