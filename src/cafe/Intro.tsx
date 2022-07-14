@@ -51,6 +51,8 @@ function Intro({ cafeIntro }: CafeIntroProps) {
           )
       );
       return unsubscribe;
+    } else {
+      setCoupon(null);
     }
   }, [cafeId, user?.uid]);
 
@@ -136,6 +138,8 @@ function Intro({ cafeIntro }: CafeIntroProps) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  console.log('user : ', user);
 
   return (
     <>
