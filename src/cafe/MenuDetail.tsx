@@ -28,6 +28,9 @@ function MenuDetail({ item }: MenuDetailProps) {
       </Box>
 
       <Box sx={{ padding: '2rem' }}>
+        <Typography fontWeight={'bold'} gutterBottom>
+          {item.name}
+        </Typography>
         <Typography
           sx={{
             overflow: 'hidden',
