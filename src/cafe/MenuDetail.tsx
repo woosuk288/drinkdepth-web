@@ -1,7 +1,10 @@
 import { Box, Button, Typography } from '@mui/material';
+import { getTestType } from '../utils/combos';
 import { MenuDetailProps } from '../utils/types';
 
 function MenuDetail({ item }: MenuDetailProps) {
+  const isSmart = getTestType() === 'smart';
+
   return (
     <div>
       <Box
@@ -36,7 +39,7 @@ function MenuDetail({ item }: MenuDetailProps) {
           variant="subtitle2"
           gutterBottom
         >
-          {item.description}
+          {isSmart && item.description}
         </Typography>
 
         <Typography
@@ -48,7 +51,7 @@ function MenuDetail({ item }: MenuDetailProps) {
           fontWeight="bold"
           gutterBottom
         >
-          {item.labels.map((label) => label + ' ')}
+          {isSmart && item.labels.map((label) => label + ' ')}
         </Typography>
 
         <Typography variant="subtitle2" sx={{ color: 'red' }}>
@@ -56,7 +59,7 @@ function MenuDetail({ item }: MenuDetailProps) {
         </Typography>
       </Box>
 
-      <Box sx={{ textAlign: 'center' }}>
+      {/* <Box sx={{ textAlign: 'center' }}>
         <Button
           variant="contained"
           sx={{
@@ -71,7 +74,7 @@ function MenuDetail({ item }: MenuDetailProps) {
         >
           쿠폰 발행
         </Button>
-      </Box>
+      </Box> */}
     </div>
   );
 }

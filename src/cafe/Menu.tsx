@@ -8,10 +8,13 @@ import {
   Typography,
 } from '@mui/material';
 import { useRouter } from 'next/router';
+import { getTestType } from '../utils/combos';
 import { CafeMenuType } from '../utils/types';
 
 function Menu(item: CafeMenuType) {
   const router = useRouter();
+
+  const isSmart = getTestType() === 'smart';
 
   return (
     <ListItem
@@ -55,7 +58,7 @@ function Menu(item: CafeMenuType) {
           variant="subtitle2"
           gutterBottom
         >
-          {item.description}
+          {isSmart && item.description}
         </Typography>
 
         <Typography
@@ -67,7 +70,7 @@ function Menu(item: CafeMenuType) {
           fontWeight="bold"
           gutterBottom
         >
-          {item.labels.map((label) => label + ' ')}
+          {isSmart && item.labels.map((label) => label + ' ')}
         </Typography>
 
         <Typography variant="subtitle2" sx={{ color: 'red' }}>
