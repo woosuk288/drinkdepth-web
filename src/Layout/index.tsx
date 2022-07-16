@@ -4,18 +4,23 @@ import Header from './Header';
 import Footer from './Footer';
 import { Box, Theme } from '@mui/system';
 import { SxProps } from '@mui/material';
-import TestHeader from './TestHeader';
 
 type LayoutProps = {
+  header?: React.ReactNode;
   children: React.ReactNode;
   sxMain?: SxProps<Theme> | undefined;
   showFooter?: boolean;
 };
 
-const Layout = ({ children, sxMain, showFooter = true }: LayoutProps) => {
+const Layout = ({
+  header,
+  children,
+  sxMain,
+  showFooter = true,
+}: LayoutProps) => {
   return (
     <Box display="flex" flexDirection="column" height="100%">
-      <TestHeader />
+      {header || <Header />}
       {/* <Header /> */}
       <Box
         component="main"
