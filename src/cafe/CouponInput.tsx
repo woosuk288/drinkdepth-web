@@ -6,11 +6,16 @@ import {
   Snackbar,
   TextField,
 } from '@mui/material';
-import { doc, runTransaction } from 'firebase/firestore';
+import { doc, increment, runTransaction } from 'firebase/firestore';
 import { useState } from 'react';
 import { sxCenter } from '../styles/GlobalSx';
 import { db } from '../utils/firebase/firebaseInit';
-import { COUPONS } from '../utils/firebase/models';
+import {
+  CouponCounterType,
+  COUPONS,
+  CouponType,
+  COUPON_COUNTER,
+} from '../utils/firebase/models';
 import { useMutation } from 'react-query';
 
 function CouponInput() {
@@ -31,15 +36,19 @@ function CouponInput() {
   const mutation = useMutation(
     () => {
       const ref = doc(db, COUPONS, code);
+      const counterRef = doc(db, COUPONS, COUPON_COUNTER);
 
       const usedCoupon = runTransaction(db, async (tx) => {
         const couponDoc = await tx.get(ref);
+        const coupon = couponDoc.data() as CouponType;
+
         if (!couponDoc.exists()) {
           throw '등록되지 않은 코드 입니다.';
-        } else if (couponDoc.data().isUsed === true) {
+        } else if (coupon.isUsed === true) {
           throw '이미 사용한 코드 입니다.';
         } else {
           tx.update(ref, { isUsed: true });
+          tx.update(counterRef, { [coupon.type]: increment(1) });
           return '쿠폰 사용 완료!';
         }
       });

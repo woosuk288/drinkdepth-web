@@ -1,5 +1,5 @@
 export const COUPONS = 'coupons';
-export type COUPON_TYPE = {
+export type CouponType = {
   id: string;
   code: string;
   // itemId: string;
@@ -9,3 +9,10 @@ export type COUPON_TYPE = {
   isUsed: boolean;
   createdAt: Date;
 };
+export type CouponCounterType = {
+  count: number;
+  normal: number;
+  smart: number;
+};
+
+export const COUPON_COUNTER = '#counter#';

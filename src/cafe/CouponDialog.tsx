@@ -5,10 +5,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { COUPON_TYPE } from '../utils/firebase/models';
+import { CouponType } from '../utils/firebase/models';
 
 type CouponDialogProps = {
-  coupon: COUPON_TYPE;
+  coupon: CouponType;
   open: boolean;
   handleClose: () => void;
 };

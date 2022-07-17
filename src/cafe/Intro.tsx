@@ -19,7 +19,12 @@ import {
 
 import { useMutation } from 'react-query';
 
-import { COUPONS, COUPON_TYPE } from '../utils/firebase/models';
+import {
+  CouponCounterType,
+  COUPONS,
+  CouponType,
+  COUPON_COUNTER,
+} from '../utils/firebase/models';
 import CouponDialog from './CouponDialog';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthUserContext';
@@ -30,7 +35,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
   const cafeId = router.query.cafe_id as string;
   const { user } = useAuth();
 
-  const [coupon, setCoupon] = useState<COUPON_TYPE | null>(null);
+  const [coupon, setCoupon] = useState<CouponType | null>(null);
   useEffect(() => {
     if (user?.uid) {
       const unsubscribe = onSnapshot(
@@ -46,7 +51,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
               ? ({
                   ...snapshot.docs[0].data(),
                   id: snapshot.docs[0].id,
-                } as COUPON_TYPE)
+                } as CouponType)
               : null
           )
       );
@@ -59,12 +64,12 @@ function Intro({ cafeIntro }: CafeIntroProps) {
   const mutation = useMutation<string, string>(
     () => {
       const result = runTransaction(db, async (tx) => {
-        const counterRef = doc(db, COUPONS, '#counter#');
+        const counterRef = doc(db, COUPONS, COUPON_COUNTER);
         const couponDoc = await tx.get(counterRef);
 
-        const count: string = couponDoc.data()?.count;
-        const nextCount = (parseInt(count, 10) + 1).toString(10);
-        const nextCode = nextCount.padStart(6, '0');
+        const count = (couponDoc.data() as CouponCounterType).count;
+        const nextCount = count + 1;
+        const nextCode = nextCount.toString(10).padStart(6, '0');
 
         const couponRef = doc(db, COUPONS, nextCode);
         const newCoupon = await tx.get(couponRef);
