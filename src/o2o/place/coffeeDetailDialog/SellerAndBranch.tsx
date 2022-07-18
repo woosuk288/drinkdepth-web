@@ -1,11 +1,11 @@
-import { Box, Button, CardMedia, Chip, Typography } from '@mui/material';
+import { Box, Chip, Typography } from '@mui/material';
 import React from 'react';
 import { BranchType, SellerType } from '../../../../pages/o2o/place';
 
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import styled from '@emotion/styled';
 import proj4 from 'proj4';
 import { makeNaverMapURL } from '.';
+import LazyImage from '../../../common/LazyImage';
 
 type SellerAndBranchProps = {
   seller: SellerType;
@@ -128,7 +128,7 @@ function SellerAndBranch({
       >
         <RoasteryImagesWrapper>
           {branch.images.map((img, key) => (
-            <CardMedia image={img} key={key} />
+            <LazyImage src={img} key={key} />
           ))}
         </RoasteryImagesWrapper>
       </Box>
@@ -148,7 +148,7 @@ const RoasteryImagesWrapper = styled.div`
   grid-gap: 20px;
   justify-content: center;
 
-  .MuiCardMedia-root {
+  & > img {
     border-radius: 0.5rem;
   }
 

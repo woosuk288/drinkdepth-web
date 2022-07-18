@@ -472,7 +472,7 @@ const PlacePage: NextPage = () => {
         />
       )}
 
-      {coffeeDetail && (
+      {openDetail && coffeeDetail && (
         <AlertDialogSlide
           open={openDetail}
           handleClose={handleCloseDetail}
@@ -480,7 +480,7 @@ const PlacePage: NextPage = () => {
         />
       )}
 
-      {coffeeDetail && (
+      {openImages && coffeeDetail && (
         <ImagesDialog
           open={openImages}
           handleClose={handleCloseImages}

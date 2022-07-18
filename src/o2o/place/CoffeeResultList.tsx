@@ -1,5 +1,7 @@
 import {
   Avatar,
+  Box,
+  Button,
   Divider,
   List,
   ListItem,
@@ -7,8 +9,9 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CoffeeResultType } from '../../../pages/o2o/place';
+import LazyImage from '../../common/LazyImage';
 import { getAddressXY } from '../../utils/kakaoAPI';
 import AlertDialogSlide from './coffeeDetailDialog';
 import ImagesDialog from './ImagesDialog';
@@ -25,6 +28,19 @@ function CoffeeResultList({
   handleTextClick,
 }: CoffeeResultListProps) {
   // const [open, setOpen] = React.useState(false);
+  const [coffees, setCoffees] = useState(coffeeResults.slice(0, 5));
+
+  // useEffect(() => {
+  //   if (coffeeResults.length > 0) {
+  //     setCoffees(coffeeResults.slice(0, 5));
+  //   }
+  // }, [coffeeResults]);
+
+  const handleMore = () => {
+    const len = coffees.length;
+    const nextCoffees = coffeeResults.slice(0, len + 10);
+    setCoffees(nextCoffees);
+  };
 
   // const handleClickOpen = () => {
   //   setOpen(true);
@@ -34,11 +50,14 @@ function CoffeeResultList({
   //   setOpen(false);
   // };
 
+  console.log('coffees.length : ', coffees.length);
+  console.log('coffeeResults.length : ', coffeeResults.length);
+
   return (
     <List
       sx={{
         width: '100%',
-        maxWidth: 360,
+        // maxWidth: 360,
         bgcolor: 'background.paper',
         '& .MuiAvatar-root': { border: '0.1px solid' },
         '& .MuiTypography-root': {
@@ -51,7 +70,7 @@ function CoffeeResultList({
         },
       }}
     >
-      {coffeeResults.map((coffeeResult) => (
+      {coffees.map((coffeeResult) => (
         <ListItem
           key={coffeeResult.id + coffeeResult.branch.address}
           alignItems="flex-start"
@@ -60,16 +79,17 @@ function CoffeeResultList({
             sx={{ marginRight: '1rem' }}
             onClick={() => handleImageClick(coffeeResult)}
           >
-            <Avatar
-              alt="Remy Sharp"
-              src={
-                coffeeResult.branch.images.length > 0
-                  ? coffeeResult.branch.images[0]
-                  : coffeeResult.seller.logoURLs['origin']
-              }
-              sx={{ width: 96, height: 96 }}
-              variant="rounded"
-            />
+            <Box sx={{ width: 96, height: 96 }}>
+              <LazyImage
+                src={
+                  coffeeResult.branch.images.length > 0
+                    ? coffeeResult.branch.images[0]
+                    : coffeeResult.seller.logoURLs['origin']
+                }
+                alt={coffeeResult.branch.name}
+                style={{ borderRadius: '0.25rem' }}
+              />
+            </Box>
           </ListItemAvatar>
           <ListItemText
             onClick={() => handleTextClick(coffeeResult)}
@@ -100,6 +120,19 @@ function CoffeeResultList({
           />
         </ListItem>
       ))}
+
+      {coffees.length !== coffeeResults.length && (
+        <Box sx={{ margin: '0.5rem 1rem 3rem' }}>
+          <Button
+            variant="outlined"
+            size="large"
+            fullWidth
+            onClick={handleMore}
+          >
+            더 보기
+          </Button>
+        </Box>
+      )}
 
       {/* <Divider variant="inset" component="li" /> */}
     </List>
