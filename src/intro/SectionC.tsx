@@ -2,8 +2,20 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { sxCenter } from '../styles/GlobalSx';
+import { useRouter } from 'next/router';
+import LazyImage from '../common/LazyImage';
 
 function SectionC() {
+  const router = useRouter();
+
+  const handleImageClick = (path: string) => {
+    // console.log('router.pathname : ', window.location.origin);
+    console.log('path : ', path);
+    if (path) {
+      router.push(path);
+    }
+  };
+
   return (
     <Box mt="160px">
       <Typography
@@ -19,6 +31,7 @@ function SectionC() {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         {projects.map((p) => (
           <Box
+            id={p.id}
             key={p.dt2}
             sx={{
               display: 'flex',
@@ -35,13 +48,25 @@ function SectionC() {
                 borderRadius: '50%',
                 marginRight: { sm: '3rem' },
                 marginBottom: { xs: '1rem', sm: 0 },
-                minWidth: '300px',
-                minHeight: '300px',
+                width: '300px',
+                height: '300px',
+                cursor: 'pointer',
                 ...sxCenter,
               }}
+              onClick={() => handleImageClick(p.path)}
             >
-              {p.imageURL && typeof p.imageURL === 'object' && p.imageURL}
-              {/* <img src={p.imageURL} alt="" /> */}
+              {typeof p.imageURL === 'string' ? (
+                <LazyImage
+                  src={p.imageURL}
+                  alt={p.dt1}
+                  style={{
+                    borderRadius: '50%',
+                    border: '1px solid #bdbdbd',
+                  }}
+                />
+              ) : (
+                p.imageURL
+              )}
             </Box>
 
             <Box component="dl" sx={{ flex: 1 }}>
@@ -87,7 +112,9 @@ export default SectionC;
 
 const projects = [
   {
-    imageURL: '',
+    id: 'drinkdepth_o2o_section',
+    imageURL: '/images/o2o/o2o_coffee_map.png',
+    path: '/o2o',
     dt1: '(진행중) <취향저격 인기 카페>',
     dt2: '음료 경험의 시행착오를 줄이다',
     dd1: '음료 데이터 기반의 o2o 서비스를 지원합니다. 스xxx 사이렌오더의 독립카페 버전 업그레이드 된 데이터 태그 기반 2세대 o2o를 경험해 보세요.',
@@ -95,6 +122,7 @@ const projects = [
   },
   {
     imageURL: <QuestionMarkIcon sx={{ fontSize: 96, color: 'white' }} />,
+    path: '',
     // dt1: '(진행중) <유통 환경에 활기를>',
     dt1: '<예정>',
     dt2: '우리가 만들어 가는 카페쇼',
@@ -103,6 +131,7 @@ const projects = [
   },
   {
     imageURL: <QuestionMarkIcon sx={{ fontSize: 96, color: 'white' }} />,
+    path: '',
     dt1: '<예정>',
     dt2: '독립 카페와 티룸이 프랜차이즈에 걸맞는 경쟁력을 가질수 있게, 창작환경을 지원하다',
     dd1: '우리는 다양한 카페사장과 티룸 사장님들과 고민을 나누며 어떠한 점이 필요한지 알게 되었으며 그중 창작환경에 대한 이야기를 많이 알게 되었습니다. 시장의 트렌드와 흐름에 따라 카페 티룸만의 차별성이 필요했으며 제품개발도 하고싶은 니즈들이 많았지만 비용부담 장소의 제약등으로 도전이 어려웠습니다.',
@@ -110,6 +139,7 @@ const projects = [
   },
   {
     imageURL: <QuestionMarkIcon sx={{ fontSize: 96, color: 'white' }} />,
+    path: '',
     dt1: '<예정>',
     dt2: '장소와 시간의 제약을 없애다. 홈카페 지원',
     dd1: '이제 내가 가던 로스터리를 우리집으로 옮길수 있을것입니다. 독립카페만의 음료들을 직접 가지 않더라도 집에서 홈카페와 베이커리 등 다양한 지원 서비스를 온라인으로 경험해보세요!',

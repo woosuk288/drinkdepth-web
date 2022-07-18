@@ -75,6 +75,11 @@ const GoalIcon = styled.div`
 `;
 
 function SectionA() {
+  const handleMoveSection = () => {
+    const section = document.querySelector('#drinkdepth_o2o_section');
+    section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <>
       <VisionWrapper>
@@ -103,9 +108,8 @@ function SectionA() {
 
       <GoalWrapper>
         <GoalCard
-          style={{
-            backgroundColor: '#579dff',
-          }}
+          style={{ backgroundColor: '#579dff', cursor: 'pointer' }}
+          onClick={handleMoveSection}
         >
           <GoalIcon>
             <img src={'/images/goals/goal_choice.png'} alt="choice" />
