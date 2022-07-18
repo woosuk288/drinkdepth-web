@@ -251,10 +251,12 @@ const PlacePage: NextPage = () => {
           setOpenDetail(true);
 
           const ga = await analytics;
-          logEvent(ga!, 'custom_click_marker_main', {
-            name: coffeeWithBranch.name,
-            branchName: coffeeWithBranch.branch.name,
-          });
+          if (ga && process.env.NODE_ENV === 'production') {
+            logEvent(ga, 'custom_click_marker_main', {
+              name: coffeeWithBranch.name,
+              branchName: coffeeWithBranch.branch.name,
+            });
+          }
         });
 
         return marker;
@@ -306,13 +308,18 @@ const PlacePage: NextPage = () => {
     setOpenImages(true);
 
     const ga = await analytics;
-    logEvent(ga!, 'select_content', {
-      content_type: 'image',
-      content_id: coffeeResult.name,
-      items: [
-        { branchName: coffeeResult.branch.name, drinkName: coffeeResult.name },
-      ],
-    });
+    if (ga && process.env.NODE_ENV === 'production') {
+      logEvent(ga, 'select_content', {
+        content_type: 'image',
+        content_id: coffeeResult.name,
+        items: [
+          {
+            branchName: coffeeResult.branch.name,
+            drinkName: coffeeResult.name,
+          },
+        ],
+      });
+    }
   };
 
   const handleTextClick = async (coffeeResult: CoffeeResultType) => {
@@ -326,11 +333,12 @@ const PlacePage: NextPage = () => {
     setOpenDetail(true);
 
     const ga = await analytics;
-
-    logEvent(ga!, 'select_content', {
-      content_type: 'content',
-      item_id: coffeeResult.name,
-    });
+    if (ga && process.env.NODE_ENV === 'production') {
+      logEvent(ga!, 'select_content', {
+        content_type: 'content',
+        item_id: coffeeResult.name,
+      });
+    }
   };
 
   const handleGPSClick = () => {

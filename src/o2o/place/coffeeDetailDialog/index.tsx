@@ -61,11 +61,13 @@ export default function AlertDialogSlide({
     anchor.click();
 
     const ga = await analytics;
-    logEvent(ga!, 'custom_click_go_naver', {
-      from,
-      name: coffeeDetail.name,
-      branchName: coffeeDetail.branch.name,
-    });
+    if (ga && process.env.NODE_ENV === 'production') {
+      logEvent(ga!, 'custom_click_go_naver', {
+        from,
+        name: coffeeDetail.name,
+        branchName: coffeeDetail.branch.name,
+      });
+    }
   };
 
   return (

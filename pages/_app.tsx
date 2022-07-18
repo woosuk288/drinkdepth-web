@@ -37,8 +37,7 @@ export default function MyApp(props: MyAppProps) {
       fbq.pageview();
 
       const ga = await analytics;
-
-      if (ga) {
+      if (ga && process.env.NODE_ENV === 'production') {
         setCurrentScreen(ga, window.location.pathname);
         logEvent(ga, 'screen_view');
       }
