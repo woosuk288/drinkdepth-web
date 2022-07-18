@@ -1,14 +1,13 @@
 import {
   Avatar,
-  List,
+  Box,
   ListItem,
   ListItemAvatar,
   ListItemText,
-  ListSubheader,
   Typography,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { getTestType } from '../utils/combos';
+import { getLabelWithColor, getTestType } from '../utils/combos';
 import { CafeMenuType } from '../utils/types';
 
 function Menu(item: CafeMenuType) {
@@ -62,15 +61,34 @@ function Menu(item: CafeMenuType) {
         </Typography>
 
         <Typography
-          sx={{ display: 'block' }}
+          sx={{
+            display: 'block',
+            '> span ': {
+              marginRight: '2px',
+              color: '#fff',
+              padding: '2px',
+              borderRadius: '2px',
+            },
+          }}
           component="span"
           variant="body2"
           // color="text.primary"
-          color={'primary'}
+          // color="inherit"
           fontWeight="bold"
           gutterBottom
         >
-          {isSmart && item.labels.map((label) => label + ' ')}
+          {/* {isSmart && item.labels.map((label) => label + ' ')} */}
+          {isSmart &&
+            item.labels.map((label) => (
+              <span
+                key={label}
+                style={{
+                  backgroundColor: getLabelWithColor(label).color,
+                }}
+              >
+                {label}
+              </span>
+            ))}
         </Typography>
 
         <Typography variant="subtitle2" sx={{ color: 'red' }}>
@@ -81,3 +99,17 @@ function Menu(item: CafeMenuType) {
   );
 }
 export default Menu;
+
+const ItemLabel = () => {
+  return (
+    <Box
+      component="span"
+      sx={{
+        marginRight: '2px',
+        color: '#fff',
+        padding: '2px',
+        borderRadius: '2px',
+      }}
+    ></Box>
+  );
+};

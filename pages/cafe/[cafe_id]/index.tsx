@@ -96,9 +96,9 @@ export const cafeMenus = [
   {
     cafeId: '1',
     id: '5',
-    name: '디카프리오',
+    name: '디카프.오레',
     description: '',
-    labels: ['디카페인', '조청', '유과', '고소', '부드러운'],
+    labels: ['디카프리오', '우유'],
     imageURL:
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 6000,
