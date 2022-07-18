@@ -67,8 +67,8 @@ function Intro({ cafeIntro }: CafeIntroProps) {
         const counterRef = doc(db, COUPONS, COUPON_COUNTER);
         const couponDoc = await tx.get(counterRef);
 
-        const count = (couponDoc.data() as CouponCounterType).count;
-        const nextCount = count + 1;
+        const total = (couponDoc.data() as CouponCounterType).total;
+        const nextCount = total + 1;
         const nextCode = nextCount.toString(10).padStart(6, '0');
 
         const couponRef = doc(db, COUPONS, nextCode);
@@ -79,7 +79,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
         if (newCoupon.exists()) {
           throw '쿠폰을 코드 중복 오류!';
         } else {
-          tx.update(counterRef, { count: nextCount });
+          tx.update(counterRef, { total: nextCount });
           tx.set(couponRef, {
             code: nextCode,
             cafeId: cafeId,

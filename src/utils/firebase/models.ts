@@ -10,9 +10,9 @@ export type CouponType = {
   createdAt: Date;
 };
 export type CouponCounterType = {
-  count: number;
+  total: number;
   normal: number;
   smart: number;
 };
 
-export const COUPON_COUNTER = '#counter#';
+export const COUPON_COUNTER = '###counter###';
