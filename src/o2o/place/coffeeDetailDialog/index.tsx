@@ -15,10 +15,11 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ChoiceTable from './ChoiceTable';
 import BeanTable from './BeanTable';
 import SellerAndBranch from './SellerAndBranch';
-import { KakaoShareButton } from '../../../landing/KakaoShareButton';
+import { KakaoShareButton } from '../../../common/KakaoShareButton';
 import proj4 from 'proj4';
 import { analytics } from '../../../utils/firebase/firebaseInit';
 import { logEvent } from 'firebase/analytics';
+import LazyStorage from '../../../common/LazyStorage';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -149,6 +150,12 @@ export default function AlertDialogSlide({
 
         <DialogContent>
           <BeanTable beans={coffeeDetail.beans} />
+        </DialogContent>
+
+        <DialogContent>
+          <LazyStorage storagePath="/images/2022. 4. 2.테스트 스타벅스 커피2.jpeg" />
+          <LazyStorage storagePath="/images/테스트커피.jpeg" />
+          <LazyStorage storagePath="/images/커피 숲.png" />
         </DialogContent>
 
         <DialogContent>

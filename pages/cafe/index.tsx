@@ -1,12 +1,13 @@
 import { Container } from '@mui/material';
 import { GetStaticProps, NextPage } from 'next';
+import Cafe from '../../src/cafe/Cafe';
 import { CafesPageProps } from '../../src/utils/types';
 
 const CafesPage: NextPage<CafesPageProps> = ({ cafes }) => {
   return (
     <Container maxWidth="sm" disableGutters>
       {cafes.map((cafe) => (
-        <li key={cafe.id}>{cafe.name}</li>
+        <Cafe key={cafe.id} cafe={cafe} />
       ))}
     </Container>
   );

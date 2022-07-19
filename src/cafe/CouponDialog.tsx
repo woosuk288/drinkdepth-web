@@ -6,7 +6,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { CouponType } from '../utils/firebase/models';
 
-import { KakaoIcon } from '../landing/KakaoShareButton';
+import { KakaoIcon } from '../common/KakaoShareButton';
 
 type CouponDialogProps = {
   coupon: CouponType;

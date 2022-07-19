@@ -1,21 +1,24 @@
+import { getDownloadURL, ref } from 'firebase/storage';
 import * as React from 'react';
+import { storage } from '../utils/firebase/firebaseInit';
 // import NoImage from '/image/logo_name_vertical.png';
 
 const PLACEHOLDER = '/images/logo_name_vertical.png';
 
-interface ILazyImage {
-  src: string;
+interface ILazyStorage {
+  storagePath: string;
   alt?: string;
   style?: React.CSSProperties;
 }
 
-const LazyImage: React.FC<ILazyImage> = ({
-  src,
+const LazyStorage: React.FC<ILazyStorage> = ({
+  storagePath,
   alt,
   style = {},
 }): JSX.Element => {
   // state
   const [isLoaded, setIsLoaded] = React.useState<boolean>(false); // 실제 화면에 보여지고 있는지 여부를 확인
+  const [src, setSrc] = React.useState<string>();
 
   // ref
   const imgRef = React.useRef<HTMLImageElement>(null); // 이미지 태그 요소
@@ -26,7 +29,7 @@ const LazyImage: React.FC<ILazyImage> = ({
     if (!observer.current) {
       // 인스턴스 생성
       observer.current = new IntersectionObserver(intersectionOberserver, {
-        threshold: 0.5, // 확인을 위해 이미지 절반이 나타날 때 로딩한다.
+        // threshold: 0.5, // 확인을 위해 이미지 절반이 나타날 때 로딩한다.
       });
     }
     imgRef.current && observer.current.observe(imgRef.current); // 이미지 태그 관찰 시작
@@ -50,15 +53,23 @@ const LazyImage: React.FC<ILazyImage> = ({
     });
   };
 
+  React.useEffect(() => {
+    if (isLoaded) {
+      getDownloadURL(ref(storage, storagePath)).then((url) => {
+        setSrc(url);
+      });
+    }
+  }, [isLoaded, storagePath]);
+
   return (
     // 화면에 보여지기 전이라면 NoImage, 화면에 보여지고 있다면 src에 해당하는 이미지
     <img
       ref={imgRef}
-      src={isLoaded ? src : PLACEHOLDER}
+      src={isLoaded && src ? src : PLACEHOLDER}
       alt={alt}
       style={{ width: '100%', ...style }}
     />
   );
 };
 
-export default LazyImage;
+export default LazyStorage;

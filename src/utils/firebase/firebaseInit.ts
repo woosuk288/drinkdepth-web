@@ -4,6 +4,7 @@ import { getAnalytics, isSupported } from 'firebase/analytics';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -23,8 +24,9 @@ const auth = getAuth(app);
 auth.useDeviceLanguage();
 
 const db = getFirestore(app);
+const storage = getStorage(app);
 
-export { auth, analytics, db };
+export { auth, analytics, db, storage };
 export const useAuthFb = () => useAuthState(auth);
 
 declare global {

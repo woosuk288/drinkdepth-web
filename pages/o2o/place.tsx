@@ -15,8 +15,6 @@ import React, { useEffect, useState } from 'react';
 import CoffeeResultList from '../../src/o2o/place/CoffeeResultList';
 import Selectors from '../../src/o2o/place/Selectors';
 
-import { useReactiveVar } from '@apollo/client';
-import { ChoiceType, choiceVar } from '../../apollo/client';
 import AlertDialogSlide from '../../src/o2o/place/coffeeDetailDialog';
 import ImagesDialog from '../../src/o2o/place/ImagesDialog';
 import { analytics } from '../../src/utils/firebase/firebaseInit';
@@ -24,6 +22,13 @@ import { logEvent } from 'firebase/analytics';
 import useScript from '../../src/hooks/useScript';
 import { labelFromOneToFive } from '../../src/utils/combos';
 import { getAddressXY } from '../../src/utils/kakaoAPI';
+import { Map, MapMarker, useInjectKakaoMapApi } from 'react-kakao-maps-sdk';
+
+export type ChoiceType = {
+  caffein: string[];
+  roasting: string[];
+  acidity: string[];
+};
 
 export type CoffeeType = {
   id: string;
@@ -94,9 +99,14 @@ export type CoffeeResultType = {
 const PlacePage: NextPage = () => {
   const router = useRouter();
 
-  const mapLoadedStatus = useScript(
-    `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false&libraries=services,clusterer`
-  );
+  // const mapLoadedStatus = useScript(
+  //   `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false&libraries=services,clusterer`
+  // );
+
+  const { loading, error } = useInjectKakaoMapApi({
+    appkey: process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY!, // 발급 받은 APPKEY
+    // ...options // 추가 옵션
+  });
 
   const [coffees, setSetCoffees] = useState<any[]>([]);
   const [loadingData, setLoadingData] = useState(true);
@@ -108,10 +118,12 @@ const PlacePage: NextPage = () => {
     x: '126.978652258309',
   });
   const [myLocation, setMyLocation] = useState<any>();
-
   const [mapObj, setMapObj] = useState<any>();
-
-  const choice = useReactiveVar(choiceVar);
+  const [choice, setChoice] = useState<ChoiceType>({
+    acidity: [],
+    caffein: [],
+    roasting: [],
+  });
 
   const [filteredCoffees, setFilteredCoffees] = useState<CoffeeResultType[]>(
     []
@@ -122,20 +134,18 @@ const PlacePage: NextPage = () => {
   const [openImages, setOpenImages] = useState(false);
 
   useEffect(() => {
-    if (mapLoadedStatus === 'ready') {
-      const onLoadKakaoMap = () => {
-        window.kakao.maps.load(() => {
-          const map = getKakaoMap('map', coordi.y, coordi.x);
-
-          setMapObj(map);
-
-          console.log('loaded kakao map');
-        });
-      };
-
-      onLoadKakaoMap();
-    }
-  }, [coordi.x, coordi.y, mapLoadedStatus]);
+    // console.log('window.kakao : ', window.kakao);
+    //   // if (mapLoadedStatus === 'ready') {
+    //   const onLoadKakaoMap = () => {
+    //     window.kakao.maps.load(() => {
+    //       const map = getKakaoMap('map', coordi.y, coordi.x);
+    //       setMapObj(map);
+    //       console.log('loaded kakao map');
+    //     });
+    //   };
+    //   onLoadKakaoMap();
+    //   // }
+  }, [coordi.x, coordi.y /* , mapLoadedStatus */]);
 
   useEffect(() => {
     // const coffeesJSON = new Promise((resolve, reject) => {
@@ -176,8 +186,7 @@ const PlacePage: NextPage = () => {
     // const info = await getAddressXY('서울특별시');
     // console.log('info : ', info);
 
-    choiceVar(newChoice);
-    // setChoice(newChoice);
+    setChoice(newChoice);
 
     showFilteredCoffeeList(newChoice, coffees);
   };
@@ -405,7 +414,13 @@ const PlacePage: NextPage = () => {
   //   });
   // };
 
-  if (mapLoadedStatus !== 'ready')
+  console.log('loading, error : ', loading, error);
+  // console.log(
+  //   'window.kakao : ',
+  //   window?.kakao?.maps?.load(() => console.log('loaded'))
+  // );
+
+  if (loading)
     return (
       <Container maxWidth="sm" disableGutters>
         Loading...
@@ -415,30 +430,16 @@ const PlacePage: NextPage = () => {
   return (
     <Container maxWidth="sm" disableGutters>
       {/* <Button onClick={jsonFileTest}>jsontest</Button> */}
-      <a
-        href="https://pf.kakao.com/_ktxnJb/chat"
-        target="_blank"
-        style={{ position: 'fixed', right: 20, bottom: 10, zIndex: 100 }}
-        rel="noreferrer"
+      <Map
+        center={{ lat: coordi.y, lng: coordi.x }}
+        style={{ width: '100%', height: '360px' }}
       >
-        <Button
-          color="primary"
-          size="large"
-          variant="contained"
-          sx={{
-            position: 'fixed',
-            right: 20,
-            bottom: 10,
-            zIndex: 100,
-            fontWeight: 'bold',
-          }}
-        >
-          피드백
-        </Button>
-      </a>
-
+        {/* <MapMarker position={{ lat: coordi.y, lng: coordi.x }}>
+          <div style={{ color: '#000' }}>Hello World!</div>
+        </MapMarker> */}
+      </Map>
       <Box className="map-area" sx={{ position: 'relative' }}>
-        <div style={{ aspectRatio: '1 / 1' }} id="map"></div>
+        {/* <div style={{ aspectRatio: '1 / 1' }} id="map"></div> */}
         {/* <KaKaoMap latitude={coordi.y} longitude={coordi.x} /> */}
         <IconButton
           size="small"
@@ -488,6 +489,28 @@ const PlacePage: NextPage = () => {
           sellerLogo={coffeeDetail.seller.logoURLs['origin']}
         />
       )}
+
+      <a
+        href="https://pf.kakao.com/_ktxnJb/chat"
+        target="_blank"
+        style={{ position: 'fixed', right: 20, bottom: 10, zIndex: 100 }}
+        rel="noreferrer"
+      >
+        <Button
+          color="primary"
+          size="large"
+          variant="contained"
+          sx={{
+            position: 'fixed',
+            right: 20,
+            bottom: 10,
+            zIndex: 100,
+            fontWeight: 'bold',
+          }}
+        >
+          피드백
+        </Button>
+      </a>
     </Container>
   );
 };

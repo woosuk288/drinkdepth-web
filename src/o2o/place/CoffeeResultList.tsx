@@ -50,9 +50,6 @@ function CoffeeResultList({
   //   setOpen(false);
   // };
 
-  console.log('coffees.length : ', coffees.length);
-  console.log('coffeeResults.length : ', coffeeResults.length);
-
   return (
     <List
       sx={{

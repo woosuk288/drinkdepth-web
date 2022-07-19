@@ -1,17 +1,21 @@
 export type CafesPageProps = {
-  cafes: CafeIntroType[];
+  cafes: CafeType[];
 };
 
 export type CafePageProps = {
-  cafeIntro: CafeIntroType;
+  cafeIntro: CafeType;
   cafeMenus: CafeMenuType[];
 };
 
 export type CafeIntroProps = {
-  cafeIntro: CafeIntroType;
+  cafeIntro: CafeType;
 };
 
-export type CafeIntroType = {
+export type CafeProps = {
+  cafe: CafeType;
+};
+
+export type CafeType = {
   id: string;
   name: string;
   introduce: string;

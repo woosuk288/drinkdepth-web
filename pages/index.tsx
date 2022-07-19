@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { NextPage } from 'next';
 import Layout from '../src/Layout';
 import SectionA from '../src/intro/SectionA';
-import Meta from '../src/Meta';
+import Meta from '../src/common/Meta';
 import SectionB from '../src/intro/SectionB';
 import SectionC from '../src/intro/SectionC';
 import { Box } from '@mui/material';

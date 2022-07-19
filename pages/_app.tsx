@@ -9,10 +9,8 @@ import createEmotionCache from '../src/createEmotionCache';
 import GlobalStyle from '../src/styles/GlobalStyle';
 
 import { ApolloProvider } from '@apollo/client';
-import client from '../apollo/client';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Script from 'next/script';
-import * as fbq from '../facebook/fpixel';
 import { logEvent, setCurrentScreen } from 'firebase/analytics';
 import { analytics } from '../src/utils/firebase/firebaseInit';
 
@@ -34,8 +32,6 @@ export default function MyApp(props: MyAppProps) {
 
   React.useEffect(() => {
     const handleRouteChange = async () => {
-      fbq.pageview();
-
       const ga = await analytics;
       if (ga && process.env.NODE_ENV === 'production') {
         setCurrentScreen(ga, window.location.pathname);
@@ -58,31 +54,6 @@ export default function MyApp(props: MyAppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
 
-      {/* Global Site Code Pixel - Facebook Pixel */}
-      <Script
-        id="fb-pixel"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '435770381248304');
-          `,
-        }}
-      />
-
-      <Script
-        src="https://developers.kakao.com/sdk/js/kakao.js"
-        strategy="beforeInteractive"
-        onLoad={() => console.log('kakao script loaded')}
-      />
-
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -90,9 +61,13 @@ export default function MyApp(props: MyAppProps) {
 
         <AuthUserProvider>
           <QueryClientProvider client={queryClient}>
-            <ApolloProvider client={client}>
-              <Component {...pageProps} />
-            </ApolloProvider>
+            <Script
+              src="https://developers.kakao.com/sdk/js/kakao.js"
+              strategy="beforeInteractive"
+              onLoad={() => console.log('kakao script loaded')}
+            />
+
+            <Component {...pageProps} />
           </QueryClientProvider>
         </AuthUserProvider>
       </ThemeProvider>

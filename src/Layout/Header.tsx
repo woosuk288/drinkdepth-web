@@ -12,9 +12,9 @@ import IconButton from '@mui/material/IconButton';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-import { userVar, Role, roleVar } from '../../apollo/client';
+// import { userVar, Role, roleVar } from '../../apollo/client';
 import { auth, useAuthFb } from '../utils/firebase/firebaseInit';
-import { USER_ROLES } from '../constants';
+// import { USER_ROLES } from '../utils/constants';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
@@ -48,26 +48,26 @@ const Header = () => {
 
   React.useEffect(() => {
     if (user) {
-      userVar(user);
-      user
-        .getIdTokenResult()
-        .then((idTokenResult) => {
-          const role = Object.keys(idTokenResult.claims).find((c) =>
-            USER_ROLES.includes(c)
-          );
-          roleVar(role as Role);
-          if (idTokenResult.claims.Company) {
-            userVar({
-              ...user,
-              company_id: idTokenResult.claims.Company as string,
-            });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      roleVar(undefined);
+      //   userVar(user);
+      //   user
+      //     .getIdTokenResult()
+      //     .then((idTokenResult) => {
+      //       const role = Object.keys(idTokenResult.claims).find((c) =>
+      //         USER_ROLES.includes(c)
+      //       );
+      //       roleVar(role as Role);
+      //       if (idTokenResult.claims.Company) {
+      //         userVar({
+      //           ...user,
+      //           company_id: idTokenResult.claims.Company as string,
+      //         });
+      //       }
+      //     })
+      //     .catch((error) => {
+      //       console.log(error);
+      //     });
+      // } else {
+      //   roleVar(undefined);
     }
   }, [user]);
 
