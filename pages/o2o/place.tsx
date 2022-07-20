@@ -11,7 +11,7 @@ import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import CoffeeResultList from '../../src/o2o/place/CoffeeResultList';
 import Selectors from '../../src/o2o/place/Selectors';
 
@@ -22,7 +22,12 @@ import { logEvent } from 'firebase/analytics';
 import useScript from '../../src/hooks/useScript';
 import { labelFromOneToFive } from '../../src/utils/combos';
 import { getAddressXY } from '../../src/utils/kakaoAPI';
-import { Map, MapMarker, useInjectKakaoMapApi } from 'react-kakao-maps-sdk';
+import {
+  Map,
+  MapMarker,
+  useInjectKakaoMapApi,
+  MarkerClusterer,
+} from 'react-kakao-maps-sdk';
 
 export type ChoiceType = {
   caffein: string[];
@@ -42,8 +47,8 @@ export type CoffeeType = {
 };
 
 export type CoordiType = {
-  y: string;
-  x: string;
+  y: number;
+  x: number;
 };
 
 export type SellerType = {
@@ -75,6 +80,7 @@ export type BeanType = {
 };
 
 export type BranchType = {
+  coffeeId?: string;
   name: string;
   address: string;
   addressY: string;
@@ -98,6 +104,8 @@ export type CoffeeResultType = {
 
 const PlacePage: NextPage = () => {
   const router = useRouter();
+  const mapRef = useRef<kakao.maps.Map>(null);
+  const clustererRef = useRef<kakao.maps.MarkerClusterer>(null);
 
   // const mapLoadedStatus = useScript(
   //   `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY}&autoload=false&libraries=services,clusterer`
@@ -105,7 +113,7 @@ const PlacePage: NextPage = () => {
 
   const { loading, error } = useInjectKakaoMapApi({
     appkey: process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY!, // 발급 받은 APPKEY
-    // ...options // 추가 옵션
+    libraries: ['services', 'clusterer'],
   });
 
   const [coffees, setSetCoffees] = useState<any[]>([]);
@@ -114,11 +122,10 @@ const PlacePage: NextPage = () => {
 
   // 서울 중심
   const [coordi, setCoordi] = useState<CoordiType>({
-    y: '37.566826004661',
-    x: '126.978652258309',
+    y: 37.566826004661,
+    x: 126.978652258309,
   });
-  const [myLocation, setMyLocation] = useState<any>();
-  const [mapObj, setMapObj] = useState<any>();
+  const [myCoordi, setMyCoordi] = useState<CoordiType>();
   const [choice, setChoice] = useState<ChoiceType>({
     acidity: [],
     caffein: [],
@@ -134,41 +141,10 @@ const PlacePage: NextPage = () => {
   const [openImages, setOpenImages] = useState(false);
 
   useEffect(() => {
-    // console.log('window.kakao : ', window.kakao);
-    //   // if (mapLoadedStatus === 'ready') {
-    //   const onLoadKakaoMap = () => {
-    //     window.kakao.maps.load(() => {
-    //       const map = getKakaoMap('map', coordi.y, coordi.x);
-    //       setMapObj(map);
-    //       console.log('loaded kakao map');
-    //     });
-    //   };
-    //   onLoadKakaoMap();
-    //   // }
-  }, [coordi.x, coordi.y /* , mapLoadedStatus */]);
-
-  useEffect(() => {
-    // const coffeesJSON = new Promise((resolve, reject) => {
-    //   setTimeout(
-    //     resolve,
-    //     2000,
-    //     import('../../firebase/productsDetailsWithCafes.json')
-    //   );
-    // });
-
-    // coffeesJSON.then((data: any) => {
-    //   const lazyMap = React.lazy(() => import('../../src/o2o/KakaoMap'));
-    //   console.log('lazyMap : ', lazyMap);
-
-    //   setLoading(false);
-    //   setSetCoffees(data.default);
-    //   showFilteredCoffeeList(choice, data.default);
-    // });
     import('../../src/utils/firebase/productsDetailsWithCafes.json').then(
       (data) => {
         setSetCoffees(data.default);
         setLoadingData(false);
-        // showFilteredCoffeeList(choice, data.default);
       }
     );
   }, []);
@@ -178,127 +154,54 @@ const PlacePage: NextPage = () => {
       target: { value },
     } = event;
 
+    // const info = await getAddressXY('서울특별시');
+    // console.log('info : ', info);
+
+    clustererRef.current?.clear();
+
     const newChoice = {
       ...choice,
       [event.target.name]: typeof value === 'string' ? value.split(',') : value,
     };
 
-    // const info = await getAddressXY('서울특별시');
-    // console.log('info : ', info);
-
     setChoice(newChoice);
 
-    showFilteredCoffeeList(newChoice, coffees);
+    const newCoffees = getCoffees(newChoice, coffees);
+    setFilteredCoffees(newCoffees);
+
+    displayMarkerClusterer(newCoffees);
   };
 
-  const showFilteredCoffeeList = (
-    newChoice: ChoiceType,
-    previousCoffees: CoffeeType[]
-  ) => {
-    const map = getKakaoMap('map', coordi.y, coordi.x);
-
-    // 마커 클러스터러를 생성합니다
-    const clusterer = new window.kakao.maps.MarkerClusterer({
-      map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-      averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-      minLevel: 10, // 클러스터 할 최소 지도 레벨
-    });
-
-    // 추가된 모든 마커를 삭제한다.
-    clusterer.clear();
-
-    const capitalCoffees = previousCoffees.filter((coffee: CoffeeType) => {
-      // const isCapital =
-      //   coffee.seller.address.startsWith('경기') ||
-      //   coffee.seller.address.startsWith('서울');
-
-      const hasCafes = !!coffee.branches && !coffee.name.startsWith('['); // 카페가 있고, 대용량 아닌거
-
-      const caffeinChoices =
-        newChoice.caffein.length === 1 && newChoice.caffein[0] === '디카페인'
-          ? coffee.tags[1] === '디카페인'
-          : newChoice.caffein.length === 1 && newChoice.caffein[0] === '카페인'
-          ? coffee.tags[1] !== '디카페인'
-          : true;
-      // include 카페인
-
-      // include 디카페인
-
-      const roastingChoices =
-        newChoice.roasting.length > 0
-          ? newChoice.roasting.includes(coffee.tags[0])
-          : true;
-
-      const acidityChoices =
-        newChoice.acidity.length > 0
-          ? newChoice.acidity.includes(
-              labelFromOneToFive(coffee.coffeeDesc.acidity)
-            )
-          : true;
-
-      return hasCafes && caffeinChoices && roastingChoices && acidityChoices;
-    });
-
-    const markers = capitalCoffees.reduce((pre, cur) => {
-      let next: any[] = pre;
-
-      const cafesMarkers = cur.branches.map((branch) => {
-        const marker = new window.kakao.maps.Marker({
-          position: new window.kakao.maps.LatLng(
-            branch.addressY,
-            branch.addressX
-          ),
-        });
-
-        // 마커에 클릭이벤트를 등록합
-        window.kakao.maps.event.addListener(marker, 'click', async function () {
-          // 클릭시...
-          const coffeeWithBranch = getCoffeeWithBranch(cur, branch);
-          // handleTextClick(coffeeWithBranch);
-
-          setCoffeeDetail(coffeeWithBranch);
-          setOpenDetail(true);
-
-          const ga = await analytics;
-          if (ga && process.env.NODE_ENV === 'production') {
-            logEvent(ga, 'custom_click_marker_main', {
-              name: coffeeWithBranch.name,
-              branchName: coffeeWithBranch.branch.name,
-            });
-          }
-        });
-
-        return marker;
+  /**
+   * 클러스터 마커들을 표시한다
+   */
+  const displayMarkerClusterer = (newCoffees: CoffeeResultType[]) => {
+    const markers = newCoffees.map((coffee) => {
+      const marker = new window.kakao.maps.Marker({
+        position: new window.kakao.maps.LatLng(
+          coffee.branch.addressY,
+          coffee.branch.addressX
+        ),
       });
 
-      next = pre.concat(...cafesMarkers);
-      return next;
-    }, [] as any[]);
+      // 마커에 클릭이벤트를 등록합
+      window.kakao.maps.event.addListener(marker, 'click', async function () {
+        setCoffeeDetail(coffee);
+        setOpenDetail(true);
+
+        const ga = await analytics;
+        if (ga && process.env.NODE_ENV === 'production') {
+          logEvent(ga, 'custom_click_marker_main', {
+            name: coffee.name,
+            branchName: coffee.branch.name,
+          });
+        }
+      });
+      return marker;
+    });
 
     // 클러스터러에 마커들을 추가합니다
-    clusterer.addMarkers(markers);
-
-    if (myLocation) {
-      displayCustomOverlay(map, myLocation);
-    }
-
-    // redraw??
-
-    // set
-    setMapObj(map);
-
-    const coffeesWithBranch = capitalCoffees.reduce((pre, cur) => {
-      let result: CoffeeResultType[] = pre;
-      cur.branches.map((branch) => {
-        const coffeeWithBranch = getCoffeeWithBranch(cur, branch);
-
-        result.push(coffeeWithBranch);
-      });
-
-      return result;
-    }, [] as CoffeeResultType[]);
-
-    setFilteredCoffees(coffeesWithBranch);
+    clustererRef.current?.addMarkers(markers);
   };
 
   const handleCloseDetail = () => {
@@ -352,8 +255,8 @@ const PlacePage: NextPage = () => {
 
   const handleGPSClick = () => {
     // 이미 위치 정보 받아왔으면
-    if (myLocation) {
-      mapObj.setCenter(myLocation);
+    if (myCoordi) {
+      mapRef.current?.setCenter(new kakao.maps.LatLng(myCoordi.y, myCoordi.x));
       return;
     }
 
@@ -364,18 +267,12 @@ const PlacePage: NextPage = () => {
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition(
         function (position) {
-          var lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
+          const lat = position.coords.latitude, // 위도
+            lng = position.coords.longitude; // 경도
 
-          var locPosition = new window.kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-            message = '<div style="padding:5px;">나의 위치?!</div>'; // 인포윈도우에 표시될 내용입니다
-
-          // 마커와 인포윈도우를 표시합니다
-          // displayMarker(mapObj, locPosition, message);
-
-          setMyLocation(locPosition);
-          displayCustomOverlay(mapObj, locPosition, true);
+          setMyCoordi({ y: lat, x: lng });
           setLoadingGPS(false);
+          mapRef.current?.setCenter(new kakao.maps.LatLng(lat, lng));
         },
         (error) => {
           console.log('error.message : ', error.message);
@@ -384,41 +281,9 @@ const PlacePage: NextPage = () => {
       );
     } else {
       // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-      var locPosition = new window.kakao.maps.LatLng(coordi.y, coordi.x),
-        message = 'geolocation을 사용할수 없어요..';
-
-      displayMarker(mapObj, locPosition, message);
+      displayErrorMarker(mapRef.current!, coordi);
     }
   };
-
-  // const jsonFileTest = async () => {
-  //   import('../../firebase/nutshell.json').then(async (data) => {
-  //     // data.default.map((coffee) => {
-  //     //   console.log(coffee.seller.name, ' / ', coffee.name);
-  //     //   console.log('coffee : ', coffee);
-  //     // });
-
-  //     const coffee = data.default[35];
-
-  //     const firstCoffee = await Promise.all(
-  //       coffee.branches
-  //         .filter((branch) => !!branch.address)
-  //         .map((filteredBranch) => {
-  //           console.log('filteredBranch : ', filteredBranch);
-  //           return getAddressXY(filteredBranch.address!);
-  //         })
-  //     );
-
-  //     console.log('firstCoffee :', firstCoffee);
-  //   });
-  // };
-
-  console.log('loading, error : ', loading, error);
-  // console.log(
-  //   'window.kakao : ',
-  //   window?.kakao?.maps?.load(() => console.log('loaded'))
-  // );
 
   if (loading)
     return (
@@ -430,17 +295,41 @@ const PlacePage: NextPage = () => {
   return (
     <Container maxWidth="sm" disableGutters>
       {/* <Button onClick={jsonFileTest}>jsontest</Button> */}
-      <Map
-        center={{ lat: coordi.y, lng: coordi.x }}
-        style={{ width: '100%', height: '360px' }}
-      >
-        {/* <MapMarker position={{ lat: coordi.y, lng: coordi.x }}>
-          <div style={{ color: '#000' }}>Hello World!</div>
-        </MapMarker> */}
-      </Map>
+
       <Box className="map-area" sx={{ position: 'relative' }}>
-        {/* <div style={{ aspectRatio: '1 / 1' }} id="map"></div> */}
-        {/* <KaKaoMap latitude={coordi.y} longitude={coordi.x} /> */}
+        <Map
+          ref={mapRef}
+          center={{ lat: coordi.y, lng: coordi.x }}
+          style={{ aspectRatio: '1 / 1' }}
+          level={12}
+        >
+          <MarkerClusterer
+            averageCenter={true}
+            minLevel={10}
+            ref={clustererRef}
+          >
+            {/* 대량의 마커 표시 및 삭제 마다 렉이 크게 발생하여 함수에서 따로 처리 */}
+          </MarkerClusterer>
+          {myCoordi && (
+            <MapMarker // 마커를 생성합니다
+              position={{ lat: myCoordi.y, lng: myCoordi.x }}
+              image={{
+                src: 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다
+                size: {
+                  width: 48,
+                  height: 51.75,
+                }, // 마커이미지의 크기입니다
+                options: {
+                  offset: {
+                    x: 27,
+                    y: 69,
+                  }, // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+                },
+              }}
+            />
+          )}
+        </Map>
+
         <IconButton
           size="small"
           sx={{
@@ -517,7 +406,10 @@ const PlacePage: NextPage = () => {
 
 export default PlacePage;
 
-function getCoffeeWithBranch(coffee: CoffeeType, branch: BranchType) {
+function getCoffeeWithBranch(
+  coffee: CoffeeType,
+  branch: BranchType
+): CoffeeResultType {
   return {
     id: coffee.id,
     name: coffee.name,
@@ -545,19 +437,22 @@ function getCoffeeWithBranch(coffee: CoffeeType, branch: BranchType) {
 }
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-function displayMarker(map: any, locPosition: any, message: string) {
+function displayErrorMarker(map: kakao.maps.Map, coordi: CoordiType) {
+  const locPosition = new window.kakao.maps.LatLng(coordi.y, coordi.x);
+
   // 마커를 생성합니다
-  var marker = new window.kakao.maps.Marker({
-    map: map,
+  var marker = new kakao.maps.Marker({
+    map,
     position: locPosition,
   });
 
-  var iwContent = message; // 인포윈도우에 표시할 내용
+  var iwContent = '기기에서 GPS을 지원하지 않음.'; // 인포윈도우에 표시할 내용
   // iwRemoveable = true;
 
   // 인포윈도우를 생성합니다
-  var infowindow = new window.kakao.maps.InfoWindow({
+  var infowindow = new kakao.maps.InfoWindow({
     content: iwContent,
+    position: locPosition,
     // removable: iwRemoveable,
   });
 
@@ -566,47 +461,80 @@ function displayMarker(map: any, locPosition: any, message: string) {
 
   // 지도 중심좌표를 접속위치로 변경합니다
   map.setCenter(locPosition);
+
+  setTimeout(() => {
+    infowindow.close();
+    marker.setMap(null);
+  }, 3000);
 }
 
-function displayCustomOverlay(
-  map: any,
-  locPosition: any,
-  goCenter: boolean = false
-) {
-  var imageSrc =
-      'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다
-    imageSize = new window.kakao.maps.Size(42, 46), // 마커이미지의 크기입니다
-    imageOption = { offset: new window.kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+function getCoffees(newChoice: ChoiceType, previousCoffees: CoffeeType[]) {
+  /**
+   * 서울, 경기 데이터만 추출한다.
+   */
+  const capitalCoffees = previousCoffees.filter((coffee: CoffeeType) => {
+    // const isCapital =
+    //   coffee.seller.address.startsWith('경기') ||
+    //   coffee.seller.address.startsWith('서울');
 
-  // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-  var markerImage = new window.kakao.maps.MarkerImage(
-    imageSrc,
-    imageSize,
-    imageOption
-  );
+    const hasCafes = !!coffee.branches && !coffee.name.startsWith('['); // 카페가 있고, 대용량 아닌거
 
-  // 마커를 생성합니다
-  var marker = new window.kakao.maps.Marker({
-    position: locPosition,
-    image: markerImage, // 마커이미지 설정
+    const caffeinChoices =
+      newChoice.caffein.length === 1 && newChoice.caffein[0] === '디카페인'
+        ? coffee.tags[1] === '디카페인'
+        : newChoice.caffein.length === 1 && newChoice.caffein[0] === '카페인'
+        ? coffee.tags[1] !== '디카페인'
+        : true;
+    // include 카페인
+
+    // include 디카페인
+
+    const roastingChoices =
+      newChoice.roasting.length > 0
+        ? newChoice.roasting.includes(coffee.tags[0])
+        : true;
+
+    const acidityChoices =
+      newChoice.acidity.length > 0
+        ? newChoice.acidity.includes(
+            labelFromOneToFive(coffee.coffeeDesc.acidity)
+          )
+        : true;
+
+    return hasCafes && caffeinChoices && roastingChoices && acidityChoices;
   });
 
-  // 마커가 지도 위에 표시되도록 설정합니다
-  marker.setMap(map);
+  /**
+   * coffees & branches 조합. (N * N)
+   */
+  const coffeesWithBranchs = capitalCoffees.flatMap((coffee) =>
+    coffee.branches.map((branch) => getCoffeeWithBranch(coffee, branch))
+  );
 
-  // 지도 중심좌표를 접속위치로 변경합니다
-  if (goCenter) {
-    map.setCenter(locPosition);
-  }
+  return coffeesWithBranchs;
 }
 
-function getKakaoMap(id: string, y: string, x: string, level: number = 11) {
-  const container = document.getElementById(id)!;
-  const options = {
-    center: new window.kakao.maps.LatLng(y, x),
-    level, // 지도의 확대 레벨
-  };
-  const map = new window.kakao.maps.Map(container, options);
+/**
+ * 엑셀 데이터 추가 테스트
+ */
+// const jsonFileTest = async () => {
+//   import('../../firebase/nutshell.json').then(async (data) => {
+//     // data.default.map((coffee) => {
+//     //   console.log(coffee.seller.name, ' / ', coffee.name);
+//     //   console.log('coffee : ', coffee);
+//     // });
 
-  return map;
-}
+//     const coffee = data.default[35];
+
+//     const firstCoffee = await Promise.all(
+//       coffee.branches
+//         .filter((branch) => !!branch.address)
+//         .map((filteredBranch) => {
+//           console.log('filteredBranch : ', filteredBranch);
+//           return getAddressXY(filteredBranch.address!);
+//         })
+//     );
+
+//     console.log('firstCoffee :', firstCoffee);
+//   });
+// };
