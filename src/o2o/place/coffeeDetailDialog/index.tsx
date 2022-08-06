@@ -70,6 +70,16 @@ export default function AlertDialogSlide({
     }
   };
 
+  const handleShareClick = async () => {
+    const ga = await analytics;
+    if (ga && process.env.NODE_ENV === 'production') {
+      logEvent(ga!, 'kakao_share_click', {
+        name: coffeeDetail.name,
+        branchName: coffeeDetail.branch.name,
+      });
+    }
+  };
+
   return (
     <div>
       <Dialog
@@ -186,7 +196,11 @@ export default function AlertDialogSlide({
 
           <span style={{ flex: 1 }}></span>
 
-          <Box id="kakao-link-btn" sx={{ display: 'flex', cursor: 'pointer' }}>
+          <Box
+            id="kakao-link-btn"
+            sx={{ display: 'flex', cursor: 'pointer' }}
+            onClick={handleShareClick}
+          >
             <KakaoShareButton url={'https://drinkdepth.com/o2o'} />
             <Typography
               // variant="h6"

@@ -15,4 +15,4 @@ export type CouponCounterType = {
   smart: number;
 };
 
-export const COUPON_COUNTER = '###counter###';
+export const COUPON_COUNTER_ID = '###counter###';

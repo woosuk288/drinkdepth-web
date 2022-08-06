@@ -23,8 +23,14 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
 
   const pages = await globby([
     // include
-    '../pages/**/*.tsx',
-    '../pages/*.tsx',
+
+    '../pages/index.tsx',
+    '../pages/cafe/landing.tsx',
+    '../pages/o2o/index.tsx',
+    '../pages/o2o/place.tsx',
+    // '../pages/**/*.tsx',
+    // '../pages/*.tsx',
+
     // exclude
     '!../pages/_app.tsx',
     '!../pages/_document.tsx',

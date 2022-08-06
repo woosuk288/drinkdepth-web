@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 interface KakaoShareButtonProps {
   url: string;
-  iconStyle?: any;
+  iconStyle?: React.CSSProperties;
 }
 
 export const KakaoShareButton = ({ url, iconStyle }: KakaoShareButtonProps) => {

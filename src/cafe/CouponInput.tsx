@@ -14,7 +14,7 @@ import {
   CouponCounterType,
   COUPONS,
   CouponType,
-  COUPON_COUNTER,
+  COUPON_COUNTER_ID,
 } from '../utils/firebase/models';
 import { useMutation } from 'react-query';
 
@@ -36,7 +36,7 @@ function CouponInput() {
   const mutation = useMutation(
     () => {
       const ref = doc(db, COUPONS, code);
-      const counterRef = doc(db, COUPONS, COUPON_COUNTER);
+      const counterRef = doc(db, COUPONS, COUPON_COUNTER_ID);
 
       const usedCoupon = runTransaction(db, async (tx) => {
         const couponDoc = await tx.get(ref);

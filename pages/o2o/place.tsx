@@ -9,9 +9,9 @@ import {
 
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CoffeeResultList from '../../src/o2o/place/CoffeeResultList';
 import Selectors from '../../src/o2o/place/Selectors';
 
@@ -19,7 +19,6 @@ import AlertDialogSlide from '../../src/o2o/place/coffeeDetailDialog';
 import ImagesDialog from '../../src/o2o/place/ImagesDialog';
 import { analytics } from '../../src/utils/firebase/firebaseInit';
 import { logEvent } from 'firebase/analytics';
-import useScript from '../../src/hooks/useScript';
 import { labelFromOneToFive } from '../../src/utils/combos';
 import { getAddressXY } from '../../src/utils/kakaoAPI';
 import {
@@ -28,6 +27,8 @@ import {
   useInjectKakaoMapApi,
   MarkerClusterer,
 } from 'react-kakao-maps-sdk';
+import Meta from '../../src/common/Meta';
+import KakaoChat from '../../src/common/KakaoChat';
 
 export type ChoiceType = {
   caffein: string[];
@@ -100,6 +101,13 @@ export type CoffeeResultType = {
   seller: SellerType;
   beans: BeanType[];
   branch: BranchType;
+};
+
+const metaData = {
+  title: '깊이를 마시다 | 인생 커피 지도',
+  description: '유명 국내 로스터리들의 커피 데이터를 분석했습니다.',
+  image: '/images/o2o/o2o_coffee_map.png',
+  canonical: 'o2o/place',
 };
 
 const PlacePage: NextPage = () => {
@@ -288,6 +296,7 @@ const PlacePage: NextPage = () => {
   if (loading)
     return (
       <Container maxWidth="sm" disableGutters>
+        <Meta data={metaData} />
         Loading...
       </Container>
     );
@@ -379,32 +388,18 @@ const PlacePage: NextPage = () => {
         />
       )}
 
-      <a
-        href="https://pf.kakao.com/_ktxnJb/chat"
-        target="_blank"
-        style={{ position: 'fixed', right: 20, bottom: 10, zIndex: 100 }}
-        rel="noreferrer"
-      >
-        <Button
-          color="primary"
-          size="large"
-          variant="contained"
-          sx={{
-            position: 'fixed',
-            right: 20,
-            bottom: 10,
-            zIndex: 100,
-            fontWeight: 'bold',
-          }}
-        >
-          피드백
-        </Button>
-      </a>
+      <KakaoChat />
     </Container>
   );
 };
 
 export default PlacePage;
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  };
+};
 
 function getCoffeeWithBranch(
   coffee: CoffeeType,

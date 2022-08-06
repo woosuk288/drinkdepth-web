@@ -4,14 +4,18 @@ import { testCafes } from '..';
 import CafeHeader from '../../../src/cafe/Header';
 import Intro from '../../../src/cafe/Intro';
 import Menus from '../../../src/cafe/Menus';
+import { AuthUserProvider } from '../../../src/context/AuthUserContext';
 import { CafePageProps } from '../../../src/utils/types';
 
 const CafePage: NextPage<CafePageProps> = ({ cafeIntro, cafeMenus }) => {
   return (
     <Container maxWidth="sm" disableGutters>
-      <CafeHeader title={cafeIntro.name} />
-      <Intro cafeIntro={cafeIntro} />
-      <Menus cafeMenus={cafeMenus} />
+      {/* TODO: meta 넣기 */}
+      <AuthUserProvider>
+        <CafeHeader title={cafeIntro.name} />
+        <Intro cafeIntro={cafeIntro} />
+        <Menus cafeMenus={cafeMenus} />
+      </AuthUserProvider>
     </Container>
   );
 };
@@ -111,7 +115,7 @@ export const cafeMenus = [
     description: '',
     labels: ['얼그레이', '민트', '자스민', '오렌지 껍질 향'],
     imageURL:
-      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+      'https://images.unsplash.com/photo-1610889556528-9a770e32642f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzEyfHxjb2ZmZWV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
     price: 10000,
     category: '커피',
   },
@@ -145,7 +149,7 @@ export const cafeMenus = [
     description: '',
     labels: ['발효', '탄산', '새콤달콤'],
     imageURL:
-      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+      'https://images.unsplash.com/photo-1547149617-609fafa00a6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHRlYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 5000,
     category: '차',
   },

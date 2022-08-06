@@ -7,13 +7,19 @@ import {
   Typography,
 } from '@mui/material';
 import { useRouter } from 'next/router';
+import { useLayoutEffect, useState } from 'react';
 import { getLabelWithColor, getTestType } from '../utils/combos';
 import { CafeMenuType } from '../utils/types';
 
 function Menu(item: CafeMenuType) {
   const router = useRouter();
 
-  const isSmart = getTestType() === 'smart';
+  const [isSmartMenu, setIsSmartMenu] = useState(false);
+
+  useLayoutEffect(() => {
+    const isSmart = getTestType() === 'smart';
+    setIsSmartMenu(isSmart);
+  }, []);
 
   return (
     <ListItem
@@ -57,7 +63,7 @@ function Menu(item: CafeMenuType) {
           variant="subtitle2"
           gutterBottom
         >
-          {isSmart && item.description}
+          {isSmartMenu && item.description}
         </Typography>
 
         <Typography
@@ -77,8 +83,7 @@ function Menu(item: CafeMenuType) {
           fontWeight="bold"
           gutterBottom
         >
-          {/* {isSmart && item.labels.map((label) => label + ' ')} */}
-          {isSmart &&
+          {isSmartMenu &&
             item.labels.map((label) => (
               <span
                 key={label}

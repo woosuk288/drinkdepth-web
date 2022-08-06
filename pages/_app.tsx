@@ -8,14 +8,12 @@ import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import GlobalStyle from '../src/styles/GlobalStyle';
 
-import { ApolloProvider } from '@apollo/client';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import { logEvent, setCurrentScreen } from 'firebase/analytics';
 import { analytics } from '../src/utils/firebase/firebaseInit';
 
 import { QueryClientProvider, QueryClient } from 'react-query';
-import { AuthUserProvider } from '../src/context/AuthUserContext';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -59,17 +57,15 @@ export default function MyApp(props: MyAppProps) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
 
-        <AuthUserProvider>
-          <QueryClientProvider client={queryClient}>
-            <Script
-              src="https://developers.kakao.com/sdk/js/kakao.js"
-              strategy="beforeInteractive"
-              onLoad={() => console.log('kakao script loaded')}
-            />
+        <QueryClientProvider client={queryClient}>
+          <Script
+            src="https://developers.kakao.com/sdk/js/kakao.js"
+            strategy="beforeInteractive"
+            onLoad={() => console.log('kakao script loaded')}
+          />
 
-            <Component {...pageProps} />
-          </QueryClientProvider>
-        </AuthUserProvider>
+          <Component {...pageProps} />
+        </QueryClientProvider>
       </ThemeProvider>
     </CacheProvider>
   );

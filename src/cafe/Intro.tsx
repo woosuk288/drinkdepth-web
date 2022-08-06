@@ -23,7 +23,7 @@ import {
   CouponCounterType,
   COUPONS,
   CouponType,
-  COUPON_COUNTER,
+  COUPON_COUNTER_ID,
 } from '../utils/firebase/models';
 import CouponDialog from './CouponDialog';
 import { useEffect, useState } from 'react';
@@ -35,7 +35,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
   const cafeId = router.query.cafe_id as string;
   const { user } = useAuth();
 
-  const [coupon, setCoupon] = useState<CouponType | null>(null);
+  const [coupon, setCoupon] = useState<CouponType | null>();
   useEffect(() => {
     if (user?.uid) {
       const unsubscribe = onSnapshot(
@@ -61,45 +61,8 @@ function Intro({ cafeIntro }: CafeIntroProps) {
     }
   }, [cafeId, user?.uid]);
 
-  const mutation = useMutation<string, string>(
-    () => {
-      const result = runTransaction(db, async (tx) => {
-        const counterRef = doc(db, COUPONS, COUPON_COUNTER);
-        const couponDoc = await tx.get(counterRef);
-
-        const total = (couponDoc.data() as CouponCounterType).total;
-        const nextCount = total + 1;
-        const nextCode = nextCount.toString(10).padStart(6, '0');
-
-        const couponRef = doc(db, COUPONS, nextCode);
-        const newCoupon = await tx.get(couponRef);
-
-        const type = getTestType();
-
-        if (newCoupon.exists()) {
-          throw '쿠폰을 코드 중복 오류!';
-        } else {
-          tx.update(counterRef, { total: nextCount });
-          tx.set(couponRef, {
-            code: nextCode,
-            cafeId: cafeId,
-            customerId: user!.uid,
-            type,
-            isUsed: false,
-            createdAt: serverTimestamp(),
-          });
-
-          return '쿠폰 발급 완료!';
-        }
-      });
-
-      return result;
-    },
-    {
-      onSuccess: (data) => {
-        console.log('data : ', data);
-      },
-    }
+  const mutation = useMutation<string, string, IssueCouponType>(
+    mutationIssueCoupon
   );
 
   const [open, setOpen] = useState(false);
@@ -124,7 +87,14 @@ function Intro({ cafeIntro }: CafeIntroProps) {
 
   const handleIssueCoupon = () => {
     if (user) {
-      mutation.mutate();
+      mutation.mutate(
+        { cafeId, customerId: user.uid },
+        {
+          onSuccess: (data) => {
+            console.log('data : ', data);
+          },
+        }
+      );
       return;
     } else {
       // TODO: 쿠폰 정보 recoil 보관
@@ -143,8 +113,6 @@ function Intro({ cafeIntro }: CafeIntroProps) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  console.log('user : ', user);
 
   return (
     <>
@@ -214,7 +182,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
             variant="contained"
             sx={sx.btnCoupon}
             onClick={handleIssueCoupon}
-            disabled={mutation.isLoading}
+            disabled={mutation.isLoading || coupon === undefined}
           >
             쿠폰 발행
           </Button>
@@ -245,3 +213,45 @@ const sx = {
     borderRadius: 16,
   },
 };
+
+type IssueCouponType = {
+  cafeId: string;
+  customerId: string;
+};
+/**
+ * 쿠폰 발행
+ * mutationIssueCoupon
+ */
+function mutationIssueCoupon({ cafeId, customerId }: IssueCouponType) {
+  const result = runTransaction(db, async (tx) => {
+    const counterRef = doc(db, COUPONS, COUPON_COUNTER_ID);
+    const couponDoc = await tx.get(counterRef);
+
+    const total = (couponDoc.data() as CouponCounterType).total;
+    const nextCount = total + 1;
+    const nextCode = nextCount.toString(10).padStart(6, '0');
+
+    const couponRef = doc(db, COUPONS, nextCode);
+    const newCoupon = await tx.get(couponRef);
+
+    const type = getTestType();
+
+    if (newCoupon.exists()) {
+      throw '쿠폰을 코드 중복 오류!';
+    } else {
+      tx.update(counterRef, { total: nextCount });
+      tx.set(couponRef, {
+        code: nextCode,
+        cafeId: cafeId,
+        customerId: customerId,
+        type,
+        isUsed: false,
+        createdAt: serverTimestamp(),
+      });
+
+      return '쿠폰 발급 완료!';
+    }
+  });
+
+  return result;
+}

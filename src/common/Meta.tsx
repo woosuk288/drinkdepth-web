@@ -25,8 +25,8 @@ const Meta = ({ data }: MetaProps) => {
   const description = data.description;
   const image = data.image !== undefined && `${data.image}`;
   const canonical = data.canonical
-    ? `https://www.drinkdepth.com/${data.canonical}`
-    : 'https://www.drinkdepth.com';
+    ? `https://drinkdepth.com/${data.canonical}`
+    : 'https://drinkdepth.com';
   const type = data.type === undefined ? 'website' : data.type;
   const width = data.image && (data.width || 1200);
   const height = data.image && (data.height || 630);

@@ -7,13 +7,13 @@ import SectionB from '../src/intro/SectionB';
 import SectionC from '../src/intro/SectionC';
 import { Box } from '@mui/material';
 
-const Home: NextPage = () => {
-  const metaData = {
-    title: '깊이를 마시다',
-    description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
-    image: '/images/logo_name.png',
-  };
+const metaData = {
+  title: '깊이를 마시다',
+  description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
+  image: '/images/logo_name.png',
+};
 
+const Home: NextPage = () => {
   return (
     <Layout>
       <Meta data={metaData} />

@@ -1,15 +1,25 @@
 import { Container } from '@mui/material';
 import { GetStaticProps, NextPage } from 'next';
-import Cafe from '../../src/cafe/Cafe';
+import Meta from '../../src/common/Meta';
 import { CafesPageProps } from '../../src/utils/types';
+
+const metaData = {
+  title: '깊이를 마시다 | 인기 추천 카페',
+  description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
+  image: '/images/logo_icon.png',
+  canonical: 'cafe/landing',
+};
 
 const CafesPage: NextPage<CafesPageProps> = ({ cafes }) => {
   return (
-    <Container maxWidth="sm" disableGutters>
-      {cafes.map((cafe) => (
-        <Cafe key={cafe.id} cafe={cafe} />
-      ))}
-    </Container>
+    <>
+      <Meta data={metaData} />
+      <Container maxWidth="sm" disableGutters>
+        {cafes.map((cafe) => (
+          <li key={cafe.id}>{cafe.name}</li>
+        ))}
+      </Container>
+    </>
   );
 };
 export default CafesPage;
