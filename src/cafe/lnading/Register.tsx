@@ -1,6 +1,14 @@
 import * as React from 'react';
 
-import { Box, Button, CircularProgress, TextField } from '@mui/material';
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Button,
+  CircularProgress,
+  Snackbar,
+  TextField,
+} from '@mui/material';
 
 import * as fbq from '../../../facebook/fpixel';
 import { useMutation } from 'react-query';
@@ -23,24 +31,17 @@ const Register = () => {
     RegisterType
   >(mutationRegister);
 
-  // const [registerTest, { data, loading: processing, error }] = useMutation<
-  //   registerTest,
-  //   registerTestVariables
-  // >(REGISTER_TEST_MUTATION, {
-  //   onCompleted: (result) => {
-  //     if (result.registerTest.ok) {
-  //       setContactInfo(initContactInfo);
-  //       alert('신청 완료.');
-  //     }
-  //     if (result.registerTest.error) {
-  //       alert(result.registerTest.error);
-  //     }
-  //   },
-  //   onError: (error) => {
-  //     console.log('onError : ', error.name);
-  //     console.log('onError : ', error.message);
-  //   },
-  // });
+  const [open, setOpen] = React.useState(false);
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setContactInfo({ ...contactInfo, [event.target.name]: event.target.value });
@@ -48,8 +49,6 @@ const Register = () => {
 
   const onSend = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // loading......
 
     // fbq.event('SubmitApplication', {
     //   event_name: '사전 알림 신청 제출 버튼',
@@ -61,7 +60,8 @@ const Register = () => {
       { name, contact, memo },
       {
         onSuccess: (data) => {
-          console.log('data : ', data);
+          setOpen(true);
+          setContactInfo(initContactInfo);
         },
       }
     );
@@ -162,6 +162,27 @@ const Register = () => {
           )}
         </Button>
       </Box>
+
+      <Snackbar
+        open={open}
+        color="white"
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+      >
+        <Alert
+          onClose={handleClose}
+          variant="outlined"
+          severity="info"
+          sx={{ width: '100%', bgcolor: 'background.paper' }}
+        >
+          <AlertTitle>성공</AlertTitle>
+          신청이 완료되었습니다.
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
@@ -178,12 +199,8 @@ async function mutationRegister({ name, contact, memo }: RegisterType) {
   const ip: string = await fetch('https://jsonip.com', { mode: 'cors' })
     .then((resp) => resp.json())
     .then(({ ip }) => {
-      console.log(ip);
-
       return ip;
     });
-
-  // registerTest({ variables: { input: { ...contactInfo, ip } } });
 
   // create
   await addDoc(collection(db, 'registers'), {

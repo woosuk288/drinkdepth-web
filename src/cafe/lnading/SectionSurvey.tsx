@@ -51,10 +51,9 @@ function SectionServey() {
         />
       </Box>
 
-      <Typography align="center" fontWeight="bold">
+      <Typography align="center" fontWeight="bold" component="div">
         사전 경험적 요소가 포함된
         <div>친절한 메뉴판(B) 선택</div>
-        <div></div>
       </Typography>
 
       <List

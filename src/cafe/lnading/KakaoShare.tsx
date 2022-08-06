@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { KakaoShareButton } from '../../landing/KakaoShareButton';
+import { KakaoShareButton } from '../../common/KakaoShareButton';
 
 function KakaoShare() {
   return (
