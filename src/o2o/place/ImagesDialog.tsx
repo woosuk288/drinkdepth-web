@@ -1,12 +1,8 @@
 import {
   Avatar,
   Box,
-  Button,
   Dialog,
   DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   IconButton,
   Slide,
   Typography,
@@ -17,6 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import React, { useState } from 'react';
 import { BranchType, SellerType } from '../../../pages/o2o/place';
+import LazyStorage from '../../common/LazyStorage';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {

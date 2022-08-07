@@ -1,20 +1,15 @@
 import {
-  Avatar,
   Box,
   Button,
-  Divider,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText,
   Typography,
 } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CoffeeResultType } from '../../../pages/o2o/place';
 import LazyImage from '../../common/LazyImage';
-import { getAddressXY } from '../../utils/kakaoAPI';
-import AlertDialogSlide from './coffeeDetailDialog';
-import ImagesDialog from './ImagesDialog';
 
 type CoffeeResultListProps = {
   coffeeResults: CoffeeResultType[];
@@ -81,7 +76,7 @@ function CoffeeResultList({
                 src={
                   coffeeResult.branch.images.length > 0
                     ? coffeeResult.branch.images[0]
-                    : coffeeResult.seller.logoURLs['origin']
+                    : coffeeResult.seller.logoURLs['100x100']
                 }
                 alt={coffeeResult.branch.name}
                 style={{ borderRadius: '0.25rem' }}

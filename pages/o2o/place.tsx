@@ -56,8 +56,10 @@ export type SellerType = {
   name: string;
   introduce: string;
   address: string;
-  logoURLs: any;
-  placeImages: string[];
+  logoURLs: {
+    origin: string;
+    '100x100': string;
+  };
 };
 
 export type CoffeeDesc = {
@@ -418,13 +420,6 @@ function getCoffeeWithBranch(
       introduce: coffee.seller.introduce,
       address: coffee.seller.address,
       logoURLs: coffee.seller.logo.urls,
-      // placeImages: coffee.seller.wallImages.map(
-      //   (wallImage: any) => wallImage.urls.origin
-      // ),
-      placeImages:
-        branch.images.length > 0
-          ? branch.images
-          : [coffee.seller.logo.urls.origin],
     },
     beans: coffee.beans,
     branch: branch,
@@ -533,3 +528,15 @@ function getCoffees(newChoice: ChoiceType, previousCoffees: CoffeeType[]) {
 //     console.log('firstCoffee :', firstCoffee);
 //   });
 // };
+
+export const getFilePath = (imageUrl: string) => {
+  const pathPrefix = `https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/`;
+  const pathSuffix = `?alt=media`;
+
+  const rightIndex = imageUrl.indexOf(pathSuffix);
+  const path = imageUrl.substring(pathPrefix.length, rightIndex);
+  const decodedPath = decodeURIComponent(path);
+  // const delimiter = "%2F";
+  // return path.replace(delimiter, "/");
+  return decodedPath;
+};

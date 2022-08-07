@@ -19,7 +19,6 @@ import { KakaoShareButton } from '../../../common/KakaoShareButton';
 import proj4 from 'proj4';
 import { analytics } from '../../../utils/firebase/firebaseInit';
 import { logEvent } from 'firebase/analytics';
-import LazyStorage from '../../../common/LazyStorage';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -93,9 +92,10 @@ export default function AlertDialogSlide({
       >
         <DialogTitle sx={{ display: 'flex', alignItems: 'center' }}>
           <Avatar
-            src={coffeeDetail.seller.logoURLs['origin']}
+            src={coffeeDetail.seller.logoURLs['100x100']}
             sx={{ marginRight: '0.5rem' }}
           />
+
           <Typography fontWeight={'bold'}>
             {coffeeDetail.branch.name}
           </Typography>
@@ -160,12 +160,6 @@ export default function AlertDialogSlide({
 
         <DialogContent>
           <BeanTable beans={coffeeDetail.beans} />
-        </DialogContent>
-
-        <DialogContent>
-          <LazyStorage storagePath="/images/2022. 4. 2.테스트 스타벅스 커피2.jpeg" />
-          <LazyStorage storagePath="/images/테스트커피.jpeg" />
-          <LazyStorage storagePath="/images/커피 숲.png" />
         </DialogContent>
 
         <DialogContent>

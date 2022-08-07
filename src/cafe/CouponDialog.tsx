@@ -36,7 +36,7 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
           title: '깊이를 마시다',
           description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
           imageUrl:
-            'https://firebasestorage.googleapis.com/v0/b/foodoverflow-bca6d.appspot.com/o/images%2Fdrinkdepth600x600.png?alt=media&token=f3cb9980-ccf2-4113-b72d-3539b638b7a6',
+            'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/images%2Fdrinkdepth600x600.png?alt=media&token=f3cb9980-ccf2-4113-b72d-3539b638b7a6',
           link: {
             mobileWebUrl: url,
             webUrl: url,
