@@ -1,19 +1,14 @@
 import {
   Badge,
-  Box,
   FormControl,
   FormHelperText,
-  InputLabel,
   MenuItem,
-  OutlinedInput,
   Select,
   SelectChangeEvent,
   Tooltip,
 } from '@mui/material';
 
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-
-import { ChoiceType } from '../../../apollo/client';
 
 type SelectorProps = {
   helperText: string;

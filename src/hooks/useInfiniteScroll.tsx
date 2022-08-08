@@ -1,5 +1,4 @@
 import { MutableRefObject, useState, useRef, useMemo, useEffect } from 'react';
-import { Posts_posts_posts } from '../../apollo/__generated__/Posts';
 
 export type useInfiniteScrollType<T> = {
   containerRef: MutableRefObject<HTMLDivElement | null>;

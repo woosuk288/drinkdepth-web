@@ -1,19 +1,8 @@
-import {
-  Box,
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  SelectChangeEvent,
-  Tooltip,
-} from '@mui/material';
-
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { Box, SelectChangeEvent } from '@mui/material';
 
 import React from 'react';
-import { ChoiceType } from '../../../apollo/client';
+import { ChoiceType } from '../../../pages/o2o/place';
+
 import Selector from './Selector';
 
 type SelectorsProps = {
