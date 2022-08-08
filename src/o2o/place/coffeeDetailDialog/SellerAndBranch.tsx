@@ -6,81 +6,29 @@ import styled from '@emotion/styled';
 import proj4 from 'proj4';
 import { makeNaverMapURL } from '.';
 import LazyImage from '../../../common/LazyImage';
+import { gaClickNaverMap } from '../../../utils/firebase/analytics';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 type SellerAndBranchProps = {
+  coffeeName: string;
   seller: SellerType;
   branch: BranchType;
   handleOpenNaverMap: () => void;
 };
 
 function SellerAndBranch({
+  coffeeName,
   seller,
   branch,
   handleOpenNaverMap,
 }: SellerAndBranchProps) {
-  React.useEffect(() => {
-    const onShowKakaoMap = () => {
-      window.kakao.maps.load(() => {
-        const container = document.getElementById('map-with-cafe')!;
+  const lat = parseFloat(branch.addressY);
+  const lng = parseFloat(branch.addressX);
 
-        const position = new window.kakao.maps.LatLng(
-          branch.addressY,
-          branch.addressX
-        );
-        const options = {
-          center: position,
-        };
-        const map = new window.kakao.maps.Map(container, options);
-        const markerPosition = new window.kakao.maps.LatLng(
-          branch.addressY,
-          branch.addressX
-        );
-        const marker = new window.kakao.maps.Marker({
-          position: markerPosition,
-          clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-        });
-
-        // 마커에 클릭이벤트를 등록합
-        window.kakao.maps.event.addListener(marker, 'click', function () {
-          handleOpenNaverMap();
-        });
-
-        marker.setMap(map);
-
-        const p = proj4('EPSG:4326', 'EPSG:3857');
-        const naverPosition = p.forward([
-          parseFloat(branch.addressX),
-          parseFloat(branch.addressY),
-        ]);
-
-        const url = makeNaverMapURL(branch.name, naverPosition);
-
-        const handleGA = () => {
-          window.gtag('event', 'custom_click_go_naver', {
-            from: 'text',
-            // name: coffeeDetail.name,
-            branchName: '길찾기 글자 클릭',
-          });
-        };
-
-        // TODO: 여기엔 GA 어떻게 넣냐
-        const iwContent = `<a style="padding-left: 3.25rem" href='${url}' target="_blank" rel="noopener noreferrer" onclick='(${handleGA})()'>길찾기</a>`;
-
-        // 인포윈도우를 생성합니다
-        const infowindow = new window.kakao.maps.InfoWindow({
-          position,
-          content: iwContent,
-        });
-
-        // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-        infowindow.open(map, marker);
-
-        console.log('loaded kakao detail map');
-      });
-    };
-
-    onShowKakaoMap();
-  }, [branch, handleOpenNaverMap]);
+  const ClickMapMarker = () => {
+    handleOpenNaverMap();
+    gaClickNaverMap('click_text_navermap', coffeeName, branch.name);
+  };
 
   return (
     <Box sx={{ my: '2rem' }}>
@@ -120,7 +68,21 @@ function SellerAndBranch({
         >
           길찾기
         </Button> */}
-        <div style={{ aspectRatio: '1 / 1' }} id="map-with-cafe" />
+
+        <Map
+          id="map-cafe"
+          center={{ lat, lng }}
+          style={{ aspectRatio: '1 / 1' }}
+        >
+          <MapMarker position={{ lat, lng }} onClick={ClickMapMarker}>
+            <div
+              style={{ width: '150px', textAlign: 'center', cursor: 'pointer' }}
+              onClick={ClickMapMarker}
+            >
+              길찾기
+            </div>
+          </MapMarker>
+        </Map>
       </Box>
       <Box
         margin="1.5rem auto"

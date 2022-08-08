@@ -17,8 +17,7 @@ import BeanTable from './BeanTable';
 import SellerAndBranch from './SellerAndBranch';
 import { KakaoShareButton } from '../../../common/KakaoShareButton';
 import proj4 from 'proj4';
-import { analytics } from '../../../utils/firebase/firebaseInit';
-import { logEvent } from 'firebase/analytics';
+import { gaClickNaverMap, gaShare } from '../../../utils/firebase/analytics';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -42,7 +41,7 @@ export default function AlertDialogSlide({
 }: AlertDialogSlideProps) {
   // const [open, setOpen] = React.useState(false);
 
-  const handleOpenNaverMap = async (from: 'top' | 'bottom') => {
+  const handleOpenNaverMap = () => {
     const p = proj4('EPSG:4326', 'EPSG:3857');
     const position = p.forward([
       parseFloat(coffeeDetail.branch.addressX),
@@ -50,33 +49,31 @@ export default function AlertDialogSlide({
     ]);
 
     const url = makeNaverMapURL(coffeeDetail.branch.name, position);
-    console.log('position : ', position);
-    console.log('url : ', url);
+    // console.log('position : ', position);
+    // console.log('url : ', url);
 
     const anchor = document.createElement('a');
     anchor.href = url;
     anchor.target = '_blank';
     anchor.rel = 'noopener noreferrer';
     anchor.click();
-
-    const ga = await analytics;
-    if (ga && process.env.NODE_ENV === 'production') {
-      logEvent(ga!, 'custom_click_go_naver', {
-        from,
-        name: coffeeDetail.name,
-        branchName: coffeeDetail.branch.name,
-      });
-    }
   };
 
-  const handleShareClick = async () => {
-    const ga = await analytics;
-    if (ga && process.env.NODE_ENV === 'production') {
-      logEvent(ga!, 'kakao_share_click', {
-        name: coffeeDetail.name,
-        branchName: coffeeDetail.branch.name,
-      });
-    }
+  const ClickLocationIcon = () => {
+    handleOpenNaverMap();
+    gaClickNaverMap(
+      'click_icon_navermap',
+      coffeeDetail.name,
+      coffeeDetail.branch.name
+    );
+  };
+
+  const handleShareClick = () => {
+    gaShare(
+      'Kakao',
+      'image',
+      `${coffeeDetail.name} - ${coffeeDetail.branch.name}`
+    );
   };
 
   return (
@@ -105,7 +102,7 @@ export default function AlertDialogSlide({
           <IconButton
             color="primary"
             sx={{ padding: 0 }}
-            onClick={() => handleOpenNaverMap('top')}
+            onClick={ClickLocationIcon}
           >
             <LocationOnIcon fontSize="large" />
           </IconButton>
@@ -164,9 +161,10 @@ export default function AlertDialogSlide({
 
         <DialogContent>
           <SellerAndBranch
+            coffeeName={coffeeDetail.name}
             seller={coffeeDetail.seller}
             branch={coffeeDetail.branch}
-            handleOpenNaverMap={() => handleOpenNaverMap('bottom')}
+            handleOpenNaverMap={handleOpenNaverMap}
           />
         </DialogContent>
 

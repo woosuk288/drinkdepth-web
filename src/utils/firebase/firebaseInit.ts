@@ -26,7 +26,7 @@ auth.useDeviceLanguage();
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-export { auth, analytics, db, storage };
+export { app, auth, analytics, db, storage };
 export const useAuthFb = () => useAuthState(auth);
 
 declare global {

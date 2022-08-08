@@ -17,8 +17,6 @@ import Selectors from '../../src/o2o/place/Selectors';
 
 import AlertDialogSlide from '../../src/o2o/place/coffeeDetailDialog';
 import ImagesDialog from '../../src/o2o/place/ImagesDialog';
-import { analytics } from '../../src/utils/firebase/firebaseInit';
-import { logEvent } from 'firebase/analytics';
 import { labelFromOneToFive } from '../../src/utils/combos';
 import { getAddressXY } from '../../src/utils/kakaoAPI';
 import {
@@ -29,6 +27,10 @@ import {
 } from 'react-kakao-maps-sdk';
 import Meta from '../../src/common/Meta';
 import KakaoChat from '../../src/common/KakaoChat';
+import {
+  gaClickMarkerFromClusterer,
+  gaSelectContent,
+} from '../../src/utils/firebase/analytics';
 
 export type ChoiceType = {
   caffein: string[];
@@ -159,7 +161,7 @@ const PlacePage: NextPage = () => {
     );
   }, []);
 
-  const handleChange = async (event: SelectChangeEvent<string[]>) => {
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
     const {
       target: { value },
     } = event;
@@ -195,17 +197,11 @@ const PlacePage: NextPage = () => {
       });
 
       // 마커에 클릭이벤트를 등록합
-      window.kakao.maps.event.addListener(marker, 'click', async function () {
+      window.kakao.maps.event.addListener(marker, 'click', function () {
         setCoffeeDetail(coffee);
         setOpenDetail(true);
 
-        const ga = await analytics;
-        if (ga && process.env.NODE_ENV === 'production') {
-          logEvent(ga, 'custom_click_marker_main', {
-            name: coffee.name,
-            branchName: coffee.branch.name,
-          });
-        }
+        gaClickMarkerFromClusterer(coffee.name, coffee.branch.name);
       });
       return marker;
     });
@@ -224,27 +220,15 @@ const PlacePage: NextPage = () => {
     setOpenImages(false);
   };
 
-  const handleImageClick = async (coffeeResult: CoffeeResultType) => {
+  const handleImageClick = (coffeeResult: CoffeeResultType) => {
     // open Dialog? image slide
     setCoffeeDetail(coffeeResult);
     setOpenImages(true);
 
-    const ga = await analytics;
-    if (ga && process.env.NODE_ENV === 'production') {
-      logEvent(ga, 'select_content', {
-        content_type: 'image',
-        content_id: coffeeResult.name,
-        items: [
-          {
-            branchName: coffeeResult.branch.name,
-            drinkName: coffeeResult.name,
-          },
-        ],
-      });
-    }
+    gaSelectContent('image', coffeeResult.name);
   };
 
-  const handleTextClick = async (coffeeResult: CoffeeResultType) => {
+  const handleTextClick = (coffeeResult: CoffeeResultType) => {
     // const info = await getAddressXY(
     //   // 한글 주소
     //   '서울 강남구 테헤란로 142 아크플레이스 1층'
@@ -254,13 +238,7 @@ const PlacePage: NextPage = () => {
     setCoffeeDetail(coffeeResult);
     setOpenDetail(true);
 
-    const ga = await analytics;
-    if (ga && process.env.NODE_ENV === 'production') {
-      logEvent(ga!, 'select_content', {
-        content_type: 'content',
-        item_id: coffeeResult.name,
-      });
-    }
+    gaSelectContent('content', coffeeResult.name);
   };
 
   const handleGPSClick = () => {
