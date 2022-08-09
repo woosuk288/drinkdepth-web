@@ -81,11 +81,16 @@ function SectionGradient({ handleScroll }: SectionGradientProps) {
             padding: ' 1rem 2rem',
             borderRadius: '30px',
             fontSize: '1.25rem',
+            textDecorationLine: 'line-through',
           }}
           onClick={handleScroll}
         >
-          250만원 상당
+          100만원 상당
         </Button>
+
+        <Typography variant="h3" fontWeight="bold" sx={{ padding: '2rem' }}>
+          무료
+        </Typography>
       </Box>
     </Box>
   );

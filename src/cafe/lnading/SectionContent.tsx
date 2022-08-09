@@ -18,46 +18,35 @@ import Image from 'next/image';
 
 function SectionContent() {
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '5rem' }}>
       <span style={{ flex: 1 }}></span>
 
       <Typography
         variant="h4"
-        fontWeight="bold"
         align="center"
+        fontWeight="bold"
+        gutterBottom
         sx={{
-          marginX: '1rem',
           marginTop: '5rem',
-          marginBottom: '3rem',
-          // backgroundColor: 'rgba(2, 32, 71, 0.05)',
-          backgroundColor: '#4f9cff',
-          color: 'white',
-          padding: '2.5rem 1rem',
-          borderRadius: '24px',
         }}
       >
-        드링크뎁스 메뉴판
+        {`'친절한 메뉴판'`}의 단점은
+        <br />
+        모바일 전문 메뉴판으로 <br />
+        해결 가능합니다.
       </Typography>
 
-      <Box display="flex" justifyContent={'center'}>
-        <img
-          src="/images/o2o/모바일 메뉴판.png  "
-          alt="landing-2"
-          width={'100%'}
-          // width={800}
-          // height={1198.75}
+      <Box sx={{ width: '30%', marginX: 'auto' }}>
+        <Image
+          src="/images/o2o/landing_check.png"
+          alt="two_drink"
+          width={800}
+          height={800}
         />
       </Box>
 
-      <Typography align="center" fontWeight="bold">
-        음료 특화 메뉴판
-      </Typography>
-
       <List
         sx={{
-          width: '100%',
-          maxWidth: 360,
-          marginTop: '1rem',
           bgcolor: 'background.paper',
           '.MuiListItemText-primary': {
             fontSize: '1.5rem',
@@ -133,6 +122,42 @@ function SectionContent() {
           />
         </ListItem>
       </List>
+
+      <Box
+        sx={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}
+      >
+        <img
+          src="/images/o2o/landing_cafe_intro.png"
+          alt="landing-2"
+          width={'100%'}
+          // width={800}
+          // height={1198.75}
+        />
+      </Box>
+
+      <Typography
+        align="center"
+        fontWeight="bold"
+        sx={{
+          padding: '1rem',
+          backgroundColor: '#4f9cff',
+          color: 'white',
+          borderRadius: '16px',
+          marginY: '1rem',
+        }}
+      >
+        드링크뎁스 메뉴판
+      </Typography>
+
+      <Box display="flex" justifyContent={'center'}>
+        <img
+          src="/images/o2o/모바일 메뉴판.png"
+          alt="landing-2"
+          width={'100%'}
+          // width={800}
+          // height={1198.75}
+        />
+      </Box>
 
       <span style={{ flex: 1 }}></span>
     </Box>

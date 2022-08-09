@@ -51,8 +51,6 @@ function LandingPage() {
         {/* Section main */}
         <SectionMain handleScroll={handleScroll} />
 
-        {/* <hr /> */}
-
         {/* SectionIntro */}
         <SectionIntro />
 

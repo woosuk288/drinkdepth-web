@@ -26,20 +26,14 @@ function SectionServey() {
 
       <Typography
         variant="h4"
-        fontWeight="bold"
         align="center"
+        fontWeight="bold"
+        gutterBottom
         sx={{
-          marginX: '1rem',
-          marginTop: '5rem',
-          marginBottom: '3rem',
-          backgroundColor: 'rgba(2, 32, 71, 0.05)',
-          // backgroundColor: '#4f9cff',
-          // color: 'white',
-          padding: '2.5rem 1rem',
-          borderRadius: '24px',
+          marginTop: '10rem',
         }}
       >
-        설문 조사 결과
+        만약 친절하면 어떨까요?
       </Typography>
 
       <Box display="flex" justifyContent={'center'}>
@@ -51,9 +45,26 @@ function SectionServey() {
         />
       </Box>
 
-      <Typography align="center" fontWeight="bold" component="div">
-        사전 경험적 요소가 포함된
-        <div>친절한 메뉴판(B) 선택</div>
+      <Typography
+        variant="h6"
+        align="center"
+        // fontWeight="bold"
+        sx={{ padding: '1rem' }}
+      >
+        {`실제로 해당 경험이 반영된 메뉴판 테스트 결과 사전 경험이 잘 반영된
+        '착한메뉴판' b 메뉴판을 더 선호하는 것으로 알려졌습니다.`}
+      </Typography>
+
+      <Typography
+        variant="h4"
+        align="center"
+        fontWeight="bold"
+        gutterBottom
+        sx={{
+          marginTop: '5rem',
+        }}
+      >
+        하지만 단점도 존재합니다.
       </Typography>
 
       <List

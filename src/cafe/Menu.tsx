@@ -52,17 +52,7 @@ function Menu(item: CafeMenuType) {
         <Typography fontWeight={'bold'} gutterBottom>
           {item.name}
         </Typography>
-        <Typography
-          sx={{
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            display: '-webkit-box',
-            WebkitLineClamp: '2',
-            WebkitBoxOrient: 'vertical',
-          }}
-          variant="subtitle2"
-          gutterBottom
-        >
+        <Typography noWrap variant="subtitle2" gutterBottom>
           {isSmartMenu && item.description}
         </Typography>
 
