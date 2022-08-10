@@ -52,7 +52,7 @@ function Menu(item: CafeMenuType) {
         <Typography fontWeight={'bold'} gutterBottom>
           {item.name}
         </Typography>
-        <Typography noWrap variant="subtitle2" gutterBottom>
+        <Typography noWrap variant="body2" gutterBottom>
           {isSmartMenu && item.description}
         </Typography>
 

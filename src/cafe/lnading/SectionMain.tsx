@@ -36,7 +36,7 @@ function SectionMain({ handleScroll }: SectionMainProps) {
         국내 유명 로스터리들의 개성있고 특별한 원두를 최저가로 도입해 보세요.
       </Typography> */}
 
-      <Box sx={{ width: '50%', marginX: 'auto' }}>
+      <Box sx={{ width: '50%', maxWidth: '280px', marginX: 'auto' }}>
         <Image
           src="/images/o2o/landing_menu.png"
           alt="menu"

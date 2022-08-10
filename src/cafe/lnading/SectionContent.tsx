@@ -151,7 +151,7 @@ function SectionContent() {
 
       <Box display="flex" justifyContent={'center'}>
         <img
-          src="/images/o2o/모바일 메뉴판.png"
+          src="/images/o2o/landing_drinkdepth_menu.png"
           alt="landing-2"
           width={'100%'}
           // width={800}

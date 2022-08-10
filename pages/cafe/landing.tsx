@@ -48,23 +48,18 @@ function LandingPage() {
       <Meta data={metaData} />
 
       <Box display="flex" flexDirection={'column'}>
-        {/* Section main */}
         <SectionMain handleScroll={handleScroll} />
 
-        {/* SectionIntro */}
         <SectionIntro />
 
-        {/* SectionServey */}
         <SectionServey />
 
-        {/* SectionContent */}
         <SectionContent />
 
         <SectionGradient handleScroll={handleScroll} />
 
         <SectionForm />
 
-        {/* kakao */}
         <KakaoShare />
 
         {/* TODO: 채널톡 넣기 */}

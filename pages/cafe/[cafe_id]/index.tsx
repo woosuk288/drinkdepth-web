@@ -68,7 +68,7 @@ export const cafeMenus = [
     cafeId: '1',
     id: '2',
     name: '아메리카노',
-    description: '',
+    description: '다크로스팅한 아메리카노로 묵직함을 가지고 있습니다.',
     labels: ['다크로스팅', '산미보통'],
     imageURL:
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
@@ -112,7 +112,8 @@ export const cafeMenus = [
     cafeId: '1',
     id: '6',
     name: '하이로 게샤',
-    description: '',
+    description:
+      '48시간 무산소 발효 커피로 향미의 개성이 극대화된 커피입니다. 신비로운 경험을 해보세요.',
     labels: ['얼그레이', '민트', '자스민', '오렌지 껍질 향'],
     imageURL:
       'https://images.unsplash.com/photo-1610889556528-9a770e32642f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzEyfHxjb2ZmZWV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
@@ -146,7 +147,8 @@ export const cafeMenus = [
     cafeId: '1',
     id: '9',
     name: '콤부차',
-    description: '',
+    description:
+      '다이어트 음료로 유명한 콤부차는 탄산감과 청량감이 특징입니다.',
     labels: ['발효', '탄산', '새콤달콤'],
     imageURL:
       'https://images.unsplash.com/photo-1547149617-609fafa00a6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHRlYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
