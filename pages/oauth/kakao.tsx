@@ -45,8 +45,8 @@ const Auth = () => {
         // console.log("res : ", res);
 
         // firebaseCustomToken 받기
-        const result: { ok: boolean; firebaseToken: string } = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/verifyToken`,
+        const result: { firebase_token: string } = await fetch(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/kakao/verifyToken`,
           {
             method: 'POST',
             headers: {
@@ -60,7 +60,7 @@ const Auth = () => {
 
         console.log('result : ', result);
 
-        if (!result.ok) {
+        if (!result.firebase_token) {
           alert('로그인 처리 중 오류 발생!');
           router.back();
           return;
@@ -69,15 +69,17 @@ const Auth = () => {
         // 받아온 토큰으로 client에서 로그인
         const userCredential = await signInWithCustomToken(
           auth,
-          result.firebaseToken
+          result.firebase_token
         );
 
-        // console.log("userCredential : ", userCredential);
+        // console.log('userCredential : ', userCredential);
 
         router.push(ROUTE_CAFE);
       } catch (err) {
         console.log(err);
-        alert('로그인 처리 즁 서버에서 오류가 발생했습니다.');
+        // console.log('err : ', err.code);
+        // console.log('err : ', err.message);
+        alert('로그인 처리 중 오류가 발생했습니다.');
         router.back();
         return;
       }

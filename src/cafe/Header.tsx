@@ -79,7 +79,7 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
     try {
       // kakao logout?
       const kakaoUID = auth.currentUser?.uid.replace('kakao:', '');
-      await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/logoutKakao`, {
+      await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/kakao/logout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
