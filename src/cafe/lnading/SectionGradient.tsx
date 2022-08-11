@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
+import Image from 'next/image';
 import { sxCenter } from '../../styles/GlobalSx';
 
 type SectionGradientProps = {
@@ -88,9 +89,15 @@ function SectionGradient({ handleScroll }: SectionGradientProps) {
           100만원 상당
         </Button>
 
-        <Typography variant="h3" fontWeight="bold" sx={{ padding: '2rem' }}>
+        {/* <Typography variant="h3" fontWeight="bold" sx={{ padding: '2rem' }}>
           무료
-        </Typography>
+        </Typography> */}
+        <Image
+          src="/images/o2o/landing_event_all.png"
+          alt="event_word"
+          width={1080}
+          height={1080}
+        />
       </Box>
     </Box>
   );

@@ -24,7 +24,7 @@ function SectionContent() {
       <Typography
         variant="h4"
         align="center"
-        fontWeight="bold"
+        // fontWeight="bold"
         gutterBottom
         sx={{
           marginTop: '5rem',
@@ -32,13 +32,16 @@ function SectionContent() {
       >
         {`'친절한 메뉴판'`}의 단점은
         <br />
-        모바일 전문 메뉴판으로 <br />
+        <span style={{ fontWeight: 'bold', color: '#4f9cff' }}>
+          모바일 전문 메뉴판
+        </span>
+        으로 <br />
         해결 가능합니다.
       </Typography>
 
       <Box sx={{ width: '30%', marginX: 'auto' }}>
         <Image
-          src="/images/o2o/landing_check.png"
+          src="/images/o2o/landing_check_green.png"
           alt="two_drink"
           width={800}
           height={800}
@@ -126,12 +129,11 @@ function SectionContent() {
       <Box
         sx={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}
       >
-        <img
+        <Image
           src="/images/o2o/landing_cafe_intro.png"
           alt="landing-2"
-          width={'100%'}
-          // width={800}
-          // height={1198.75}
+          width={749}
+          height={1333}
         />
       </Box>
 
@@ -150,12 +152,11 @@ function SectionContent() {
       </Typography>
 
       <Box display="flex" justifyContent={'center'}>
-        <img
+        <Image
           src="/images/o2o/landing_drinkdepth_menu.png"
           alt="landing-2"
-          width={'100%'}
-          // width={800}
-          // height={1198.75}
+          width={749}
+          height={919}
         />
       </Box>
 

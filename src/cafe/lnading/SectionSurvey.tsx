@@ -28,9 +28,9 @@ function SectionServey() {
         variant="h4"
         align="center"
         fontWeight="bold"
-        gutterBottom
         sx={{
           marginTop: '10rem',
+          marginBottom: '3rem',
         }}
       >
         만약 친절하면 어떨까요?
@@ -58,13 +58,14 @@ function SectionServey() {
       <Typography
         variant="h4"
         align="center"
-        fontWeight="bold"
+        // fontWeight="bold"
         gutterBottom
         sx={{
           marginTop: '5rem',
         }}
       >
-        하지만 단점도 존재합니다.
+        하지만 <span style={{ fontWeight: 'bold', color: 'red' }}>단점</span>도
+        존재합니다.
       </Typography>
 
       <List

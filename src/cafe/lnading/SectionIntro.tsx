@@ -23,7 +23,8 @@ function SectionIntro() {
         }}
       >
         혹시 음료 메뉴별 <br />
-        <span style={{ fontWeight: 'bold' }}>매출 편차</span>가 크신가요?
+        <span style={{ fontWeight: 'bold', color: '#4f9cff' }}>매출 편차</span>
+        가 크신가요?
       </Typography>
 
       <Typography variant="h6" align="center">
@@ -97,9 +98,10 @@ function SectionIntro() {
           marginTop: '6rem',
         }}
       >
-        <span style={{ fontWeight: 'bold' }}>시행 착오를</span> 줄여줄 만한{' '}
-        <br />
-        <span style={{ fontWeight: 'bold' }}>가치전달</span>이 필수입니다.
+        <span style={{ fontWeight: 'bold', color: '#4f9cff' }}>시행 착오</span>
+        를 줄여줄 만한 <br />
+        <span style={{ fontWeight: 'bold', color: '#4f9cff' }}>가치전달</span>이
+        필수입니다.
       </Typography>
 
       <Typography variant="h6" align="center">
