@@ -20,7 +20,7 @@ function SectionForm() {
           sx={{ marginTop: '2rem', marginBottom: '0.5rem' }}
         >
           협업하실 소수 파트너 카페를 모집합니다.
-          <div>{`<기간 ~부터 ~ (00일 발표)>`}</div>
+          <div>{`<기간 2022.08.22 ~ 08.28 (31일 발표)>`}</div>
           <div>{`선별 후 개별 연락`}</div>
         </Typography>
 

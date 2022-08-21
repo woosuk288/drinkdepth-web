@@ -191,8 +191,8 @@ const PlacePage: NextPage = () => {
     const markers = newCoffees.map((coffee) => {
       const marker = new window.kakao.maps.Marker({
         position: new window.kakao.maps.LatLng(
-          coffee.branch.addressY,
-          coffee.branch.addressX
+          parseFloat(coffee.branch.addressY),
+          parseFloat(coffee.branch.addressX)
         ),
       });
 
