@@ -12,6 +12,9 @@ import KakaoChat from '../../src/cafe/lnading/KakaoChat';
 import { GetStaticProps } from 'next';
 import SectionIntro from '../../src/cafe/lnading/SectionIntro';
 import SectionServey from '../../src/cafe/lnading/SectionSurvey';
+import { gaSelectPromotion } from '../../src/utils/firebase/analytics';
+import { useRecoilState } from 'recoil';
+import { landingFormState } from '../../atoms/landingFormAtom';
 
 const metaData = {
   title: '깊이를 마시다 | 스마트 메뉴판',
@@ -21,6 +24,8 @@ const metaData = {
 };
 
 function LandingPage() {
+  const [, setLandingForm] = useRecoilState(landingFormState);
+
   const handleScroll = () => {
     // console.log('window.scrollY : ', window.scrollY);
 
@@ -43,12 +48,26 @@ function LandingPage() {
     // fbq.event('Schedule', { event_name: '사전 알림 신청 버튼 클릭' });
   };
 
+  const clickPromotion = (name: string) => {
+    gaSelectPromotion('cafe_menu', window.location.origin, name);
+
+    const nextApplyBtn = name === '메뉴판 신청하기';
+    const nextMoneyBtn = name === '100만원 상당';
+
+    setLandingForm((curr) => ({
+      applyBtn: nextApplyBtn || curr.applyBtn,
+      moneyBtn: nextMoneyBtn || curr.moneyBtn,
+    }));
+
+    handleScroll();
+  };
+
   return (
     <Layout header={<LandingHeader />}>
       <Meta data={metaData} />
 
       <Box display="flex" flexDirection={'column'}>
-        <SectionMain handleScroll={handleScroll} />
+        <SectionMain handleScroll={() => clickPromotion('메뉴판 신청하기')} />
 
         <SectionIntro />
 
@@ -56,7 +75,7 @@ function LandingPage() {
 
         <SectionContent />
 
-        <SectionGradient handleScroll={handleScroll} />
+        <SectionGradient handleScroll={() => clickPromotion('100만원 상당')} />
 
         <SectionForm />
 

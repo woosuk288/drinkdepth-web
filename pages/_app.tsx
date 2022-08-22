@@ -8,13 +8,11 @@ import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import GlobalStyle from '../src/styles/GlobalStyle';
 
-import { useRouter } from 'next/router';
 import Script from 'next/script';
-import { logEvent, setCurrentScreen } from 'firebase/analytics';
-import { analytics } from '../src/utils/firebase/firebaseInit';
 
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { getGA } from '../src/utils/firebase/analytics';
+import { RecoilRoot } from 'recoil';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -27,25 +25,6 @@ interface MyAppProps extends AppProps {
 
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  const router = useRouter();
-
-  // React.useEffect(() => {
-  //   const handleRouteChange = async () => {
-  //     const ga = await analytics;
-  //     if (ga && process.env.NODE_ENV === 'production') {
-  //       setCurrentScreen(ga, window.location.pathname);
-  //       logEvent(ga, 'screen_view');
-  //     }
-  //   };
-
-  //   // This pageview only triggers the first time (it's important for Pixel to have real information)
-  //   handleRouteChange();
-
-  //   router.events.on('routeChangeComplete', handleRouteChange);
-  //   return () => {
-  //     router.events.off('routeChangeComplete', handleRouteChange);
-  //   };
-  // }, [router.events]);
 
   React.useEffect(() => {
     getGA();
@@ -69,7 +48,9 @@ export default function MyApp(props: MyAppProps) {
             onLoad={() => console.log('kakao script loaded')}
           />
 
-          <Component {...pageProps} />
+          <RecoilRoot>
+            <Component {...pageProps} />
+          </RecoilRoot>
         </QueryClientProvider>
       </ThemeProvider>
     </CacheProvider>

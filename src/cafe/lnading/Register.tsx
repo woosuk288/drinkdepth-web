@@ -14,6 +14,10 @@ import * as fbq from '../../../facebook/fpixel';
 import { useMutation } from 'react-query';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../utils/firebase/firebaseInit';
+import { gaSignUp } from '../../utils/firebase/analytics';
+
+import { useRecoilState } from 'recoil';
+import { landingFormState } from '../../../atoms/landingFormAtom';
 
 const initContactInfo = {
   ip: '',
@@ -23,6 +27,7 @@ const initContactInfo = {
 };
 
 const Register = () => {
+  const [landingForm] = useRecoilState(landingFormState);
   const [contactInfo, setContactInfo] = React.useState(initContactInfo);
 
   const { data, isLoading, isError, mutate } = useMutation<
@@ -57,11 +62,13 @@ const Register = () => {
     const { name, contact, memo } = contactInfo;
 
     mutate(
-      { name, contact, memo },
+      { name, contact, memo, ...landingForm },
       {
         onSuccess: (data) => {
           setOpen(true);
           setContactInfo(initContactInfo);
+
+          gaSignUp('temporary form');
         },
       }
     );
@@ -194,8 +201,18 @@ type RegisterType = {
   contact: string;
   name: string;
   memo: string;
+
+  // for GA
+  applyBtn?: boolean;
+  moneyBtn?: boolean;
 };
-async function mutationRegister({ name, contact, memo }: RegisterType) {
+async function mutationRegister({
+  name,
+  contact,
+  memo,
+  applyBtn,
+  moneyBtn,
+}: RegisterType) {
   const ip: string = await fetch('https://jsonip.com', { mode: 'cors' })
     .then((resp) => resp.json())
     .then(({ ip }) => {
@@ -208,6 +225,8 @@ async function mutationRegister({ name, contact, memo }: RegisterType) {
     contact,
     memo,
     ip,
+    applyBtn,
+    moneyBtn,
   });
 
   return '등록 완료';
