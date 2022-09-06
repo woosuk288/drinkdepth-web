@@ -1,11 +1,13 @@
 import {
   Avatar,
   Box,
+  IconButton,
   ListItem,
   ListItemAvatar,
   ListItemText,
   Typography,
 } from '@mui/material';
+
 import { useRouter } from 'next/router';
 import { useLayoutEffect, useState } from 'react';
 import { getLabelWithColor, getTestType } from '../utils/combos';
@@ -31,6 +33,9 @@ function Menu(item: CafeMenuType) {
         })
       }
     >
+      {/* <IconButton sx={{ position: 'absolute', left: 0, zIndex: 100 }}>
+        <FavoriteBorderIcon />
+      </IconButton> */}
       <ListItemAvatar sx={{ marginRight: '1rem' }}>
         <Avatar
           alt={item.name}
@@ -86,7 +91,7 @@ function Menu(item: CafeMenuType) {
             ))}
         </Typography>
 
-        <Typography variant="subtitle2" sx={{ color: 'red' }}>
+        <Typography variant="subtitle2" gutterBottom sx={{ color: 'red' }}>
           {item.price.toLocaleString()}
         </Typography>
       </ListItemText>
@@ -94,17 +99,3 @@ function Menu(item: CafeMenuType) {
   );
 }
 export default Menu;
-
-const ItemLabel = () => {
-  return (
-    <Box
-      component="span"
-      sx={{
-        marginRight: '2px',
-        color: '#fff',
-        padding: '2px',
-        borderRadius: '2px',
-      }}
-    ></Box>
-  );
-};

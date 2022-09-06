@@ -45,6 +45,7 @@ function SellerAndBranch({
           {branch.name}
         </Typography>
       </Box>
+
       <Box
         margin="1.5rem auto 0"
         maxWidth={(theme) => theme.breakpoints.values.sm}
@@ -84,6 +85,7 @@ function SellerAndBranch({
           </MapMarker>
         </Map>
       </Box>
+
       <Box
         margin="1.5rem auto"
         maxWidth={(theme) => theme.breakpoints.values.md}

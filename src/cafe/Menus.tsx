@@ -70,6 +70,9 @@ function Menus({ cafeMenus }: CafeMenusProps) {
         sx={{
           width: '100%',
           bgcolor: 'background.paper',
+          '& > li': {
+            borderTop: '1px solid #bdbdbd',
+          },
         }}
       >
         {/* <ListSubheader>
