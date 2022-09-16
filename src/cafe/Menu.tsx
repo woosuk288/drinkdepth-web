@@ -40,20 +40,11 @@ function Menu(item: CafeMenuType) {
         <Avatar
           alt={item.name}
           src={item.imageURL}
-          sx={{ width: 96, height: 96 }}
+          sx={{ width: 104, height: 104 }}
           variant="rounded"
         />
       </ListItemAvatar>
-      <ListItemText<'div', 'div'>
-        sx={{
-          '& .MuiListItemText-primary': {
-            fontWeight: 'bold',
-            marginBottom: '0.35em',
-          },
-        }}
-        // primary={item.name}
-        // secondary={}
-      >
+      <ListItemText>
         <Typography fontWeight={'bold'} gutterBottom>
           {item.name}
         </Typography>
@@ -91,7 +82,7 @@ function Menu(item: CafeMenuType) {
             ))}
         </Typography>
 
-        <Typography variant="subtitle2" gutterBottom sx={{ color: 'red' }}>
+        <Typography variant="subtitle2" sx={{ color: 'red' }}>
           {item.price.toLocaleString()}
         </Typography>
       </ListItemText>

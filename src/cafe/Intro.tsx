@@ -1,7 +1,17 @@
-import { Box, Button, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Collapse,
+  IconButton,
+  IconButtonProps,
+  styled,
+  Typography,
+} from '@mui/material';
 import { useRouter } from 'next/router';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import { makeNaverMapURL } from '../o2o/place/coffeeDetailDialog';
 import proj4 from 'proj4';
 import { CafeIntroProps } from '../utils/types';
@@ -30,7 +40,23 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthUserContext';
 import { getTestType } from '../utils/combos';
 
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
+}
+
+const ExpandMore = styled((props: ExpandMoreProps) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
+
 function Intro({ cafeIntro }: CafeIntroProps) {
+  const [expanded, setExpanded] = useState(false);
   const router = useRouter();
   const cafeId = router.query.cafe_id as string;
   const { user } = useAuth();
@@ -114,40 +140,50 @@ function Intro({ cafeIntro }: CafeIntroProps) {
     setOpen(false);
   };
 
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+  const clipIntroduce = clipText(cafeIntro.introduce);
+
   return (
     <>
-      <Box
-        sx={{
-          width: '100%',
-          position: 'relative',
-          '&::after': {
-            content: '""',
-            display: 'block',
-            paddingBottom: '100%',
-          },
-          ' .img': {
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          },
-        }}
-      >
-        <img
-          className="img"
-          src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2FmZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-          alt="cafe_name"
-        />
+      <Box sx={sx.cafeImage}>
+        <img className="img" src={cafeIntro.imageURL} alt={cafeIntro.name} />
       </Box>
 
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
+          // display: 'flex',
+          // justifyContent: 'space-between',
+          position: 'relative',
           padding: '1rem',
         }}
       >
-        <Typography>{cafeIntro.introduce}</Typography>
+        {expanded ? (
+          <Typography whiteSpace="pre-line">
+            {cafeIntro.introduce}
+            <ExpandMoreIcon
+              sx={{ verticalAlign: 'middle', transform: 'rotate(180deg)' }}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="hide more"
+            />
+          </Typography>
+        ) : (
+          <Typography whiteSpace="pre-line">
+            {clipIntroduce}
+            {cafeIntro.introduce.length > clipIntroduce.length && (
+              <ExpandMoreIcon
+                sx={{ verticalAlign: 'middle' }}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              />
+            )}
+          </Typography>
+        )}
+        {/* <Box sx={{ textAlign: 'center' }}></Box> */}
       </Box>
 
       <Box sx={{ margin: '1rem' }}>
@@ -155,7 +191,6 @@ function Intro({ cafeIntro }: CafeIntroProps) {
           onClick={handleOpenNaverMap}
           fullWidth
           // variant="contained"
-          size="small"
           color="inherit"
           startIcon={<LocationOnIcon color="primary" />}
         >
@@ -204,6 +239,21 @@ function Intro({ cafeIntro }: CafeIntroProps) {
 export default Intro;
 
 const sx = {
+  cafeImage: {
+    width: '100%',
+    position: 'relative',
+    '&::after': {
+      content: '""',
+      display: 'block',
+      paddingBottom: '100%',
+    },
+    ' .img': {
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    },
+  },
   btnCoupon: {
     width: '50%',
     height: 64,
@@ -255,3 +305,14 @@ function mutationIssueCoupon({ cafeId, customerId }: IssueCouponType) {
 
   return result;
 }
+
+const clipText = (text: string) => {
+  const MIN_LENGTH = 100;
+  const idx = text.indexOf('\n', MIN_LENGTH);
+
+  if (idx === -1 || text.length < MIN_LENGTH) {
+    return text;
+  } else {
+    return text.slice(0, idx);
+  }
+};

@@ -18,6 +18,7 @@ export type CafeProps = {
 export type CafeType = {
   id: string;
   name: string;
+  imageURL: string;
   introduce: string;
   address: string;
   addressY: string;

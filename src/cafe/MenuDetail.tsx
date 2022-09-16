@@ -55,10 +55,9 @@ function MenuDetail({ item }: MenuDetailProps) {
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             display: '-webkit-box',
-            WebkitLineClamp: '2',
+            WebkitLineClamp: '3',
             WebkitBoxOrient: 'vertical',
           }}
-          variant="subtitle2"
         >
           {isSmartMenu && item.description}
         </Typography>
@@ -76,9 +75,6 @@ function MenuDetail({ item }: MenuDetailProps) {
             },
           }}
           component="span"
-          // variant="body2"
-          // color="text.primary"
-          // color={'primary'}
           fontWeight="bold"
           gutterBottom
         >
@@ -95,7 +91,7 @@ function MenuDetail({ item }: MenuDetailProps) {
             ))}
         </Typography>
 
-        <Typography variant="subtitle2" sx={{ color: 'red' }}>
+        <Typography sx={{ color: 'red' }}>
           {item.price.toLocaleString()}
         </Typography>
       </Box>

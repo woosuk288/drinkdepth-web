@@ -55,7 +55,7 @@ function Menus({ cafeMenus }: CafeMenusProps) {
         variant="h6"
         fontWeight="bold"
         align="center"
-        sx={{ marginTop: '2rem' }}
+        sx={{ marginTop: '2rem', marginBottom: '1.5rem' }}
       >
         메뉴
       </Typography>
@@ -71,7 +71,7 @@ function Menus({ cafeMenus }: CafeMenusProps) {
           width: '100%',
           bgcolor: 'background.paper',
           '& > li': {
-            borderTop: '1px solid #bdbdbd',
+            borderBottom: '1px solid #ededed',
           },
         }}
       >
