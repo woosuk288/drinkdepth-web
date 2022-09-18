@@ -32,6 +32,8 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthUserContext';
 import { getTestType } from '../utils/combos';
 import { sxSquareImg } from '../styles/GlobalSx';
+import { OATUH_LOGIN_PATH } from '../utils/routes';
+import { PATH_AFTER_LOGIN } from '../utils/constants';
 
 function Intro({ cafeIntro }: CafeIntroProps) {
   const [expanded, setExpanded] = useState(false);
@@ -101,8 +103,8 @@ function Intro({ cafeIntro }: CafeIntroProps) {
       );
       return;
     } else {
-      // TODO: 쿠폰 정보 recoil 보관
-      router.push('/oauth/login');
+      localStorage.setItem(PATH_AFTER_LOGIN, router.asPath);
+      router.push(OATUH_LOGIN_PATH);
     }
   };
 
@@ -250,7 +252,7 @@ function mutationIssueCoupon({ cafeId, customerId }: IssueCouponType) {
     const type = getTestType();
 
     if (newCoupon.exists()) {
-      throw '쿠폰을 코드 중복 오류!';
+      throw '쿠폰 코드 중복 오류!';
     } else {
       tx.update(counterRef, { total: nextCount });
       tx.set(couponRef, {

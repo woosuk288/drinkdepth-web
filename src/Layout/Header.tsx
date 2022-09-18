@@ -17,6 +17,8 @@ import { auth, useAuthFb } from '../utils/firebase/firebaseInit';
 // import { USER_ROLES } from '../utils/constants';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { OATUH_LOGIN_PATH } from '../utils/routes';
+import { PATH_AFTER_LOGIN } from '../utils/constants';
 
 const pages = [
   {
@@ -24,16 +26,8 @@ const pages = [
     link: '/',
   },
   {
-    name: '오늘의 음료',
-    link: '/blog',
-  },
-  // {
-  //   name: '커뮤니티',
-  //   link: '/community',
-  // },
-  {
-    name: '음료 장터',
-    link: '/coffee',
+    name: '인생 커피맵',
+    link: '/o2o',
   },
 ];
 
@@ -44,39 +38,17 @@ const Header = () => {
     null
   );
 
-  console.log('router.pathname : ', router.pathname);
-
-  React.useEffect(() => {
-    if (user) {
-      //   userVar(user);
-      //   user
-      //     .getIdTokenResult()
-      //     .then((idTokenResult) => {
-      //       const role = Object.keys(idTokenResult.claims).find((c) =>
-      //         USER_ROLES.includes(c)
-      //       );
-      //       roleVar(role as Role);
-      //       if (idTokenResult.claims.Company) {
-      //         userVar({
-      //           ...user,
-      //           company_id: idTokenResult.claims.Company as string,
-      //         });
-      //       }
-      //     })
-      //     .catch((error) => {
-      //       console.log(error);
-      //     });
-      // } else {
-      //   roleVar(undefined);
-    }
-  }, [user]);
-
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const goLoginPage = () => {
+    localStorage.setItem(PATH_AFTER_LOGIN, router.asPath);
+    router.push(OATUH_LOGIN_PATH);
   };
 
   return (
@@ -147,15 +119,7 @@ const Header = () => {
                     </Button>
                   </>
                 ) : (
-                  <Button
-                    variant="contained"
-                    onClick={() =>
-                      router.push({
-                        pathname: '/login',
-                        query: { prev: router.pathname },
-                      })
-                    }
-                  >
+                  <Button variant="contained" onClick={goLoginPage}>
                     로그인
                   </Button>
                 )}
@@ -226,15 +190,7 @@ const Header = () => {
                       </Button>
                     </>
                   ) : (
-                    <Button
-                      variant="contained"
-                      onClick={() =>
-                        router.push({
-                          pathname: '/login',
-                          query: { prev: router.pathname },
-                        })
-                      }
-                    >
+                    <Button variant="contained" onClick={goLoginPage}>
                       로그인
                     </Button>
                   )}

@@ -25,6 +25,8 @@ import {
 import { auth } from '../utils/firebase/firebaseInit';
 import { signOut } from 'firebase/auth';
 import { useAuth } from '../context/AuthUserContext';
+import { CAFE_PATH, OATUH_LOGIN_PATH } from '../utils/routes';
+import { PATH_AFTER_LOGIN } from '../utils/constants';
 
 const pages = [
   // {
@@ -34,7 +36,7 @@ const pages = [
   // },
   {
     name: '소개 및 메뉴',
-    link: '/',
+    link: CAFE_PATH,
     icon: CoffeeIcon,
   },
   // {
@@ -50,9 +52,9 @@ type CafeHeaderProps = {
 
 const CafeHeader = ({ title }: CafeHeaderProps) => {
   const router = useRouter();
-  const CAFE_PATH = '/cafe/' + router.query.cafe_id;
 
   const { user } = useAuth();
+  console.log('CafeHeader user : ', user);
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -67,12 +69,15 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
   };
 
   const handleListItemClick = (path: string) => {
+    console.log('path : ', path);
+
     router.push(`${path}`);
     handleCloseNavMenu();
   };
 
   const handleLogin = () => {
-    router.push('/oauth/login');
+    localStorage.setItem(PATH_AFTER_LOGIN, router.asPath);
+    router.push(OATUH_LOGIN_PATH);
   };
 
   const handleLogout = async () => {
@@ -138,7 +143,9 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
                 <ListItem
                   key={page.name}
                   disablePadding
-                  onClick={() => handleListItemClick(CAFE_PATH + page.link)}
+                  onClick={() =>
+                    handleListItemClick(page.link + '/' + router.query.cafe_id)
+                  }
                 >
                   <ListItemButton>
                     <ListItemIcon>

@@ -3,8 +3,8 @@ import { signInWithCustomToken } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { sxCenter } from '../../src/styles/GlobalSx';
+import { PATH_AFTER_LOGIN } from '../../src/utils/constants';
 import { auth } from '../../src/utils/firebase/firebaseInit';
-import { ROUTE_CAFE } from '../../src/utils/routes';
 
 const Auth = () => {
   const router = useRouter();
@@ -74,7 +74,9 @@ const Auth = () => {
 
         // console.log('userCredential : ', userCredential);
 
-        router.push(ROUTE_CAFE);
+        const path = localStorage.getItem(PATH_AFTER_LOGIN);
+
+        router.replace(path ?? '/');
       } catch (err) {
         console.log(err);
         // console.log('err : ', err.code);

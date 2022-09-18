@@ -1,1 +1,3 @@
-export const ROUTE_CAFE = '/cafe/1';
+export const CAFE_PATH = '/cafe';
+
+export const OATUH_LOGIN_PATH = '/oauth/login';
