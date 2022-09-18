@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Collapse,
-  IconButton,
-  IconButtonProps,
-  styled,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -39,21 +31,7 @@ import CouponDialog from './CouponDialog';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthUserContext';
 import { getTestType } from '../utils/combos';
-
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import { sxSquareImg } from '../styles/GlobalSx';
 
 function Intro({ cafeIntro }: CafeIntroProps) {
   const [expanded, setExpanded] = useState(false);
@@ -148,7 +126,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
 
   return (
     <>
-      <Box sx={sx.cafeImage}>
+      <Box sx={sxSquareImg}>
         <img className="img" src={cafeIntro.imageURL} alt={cafeIntro.name} />
       </Box>
 
@@ -239,21 +217,6 @@ function Intro({ cafeIntro }: CafeIntroProps) {
 export default Intro;
 
 const sx = {
-  cafeImage: {
-    width: '100%',
-    position: 'relative',
-    '&::after': {
-      content: '""',
-      display: 'block',
-      paddingBottom: '100%',
-    },
-    ' .img': {
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-    },
-  },
   btnCoupon: {
     width: '50%',
     height: 64,

@@ -17,7 +17,16 @@ import { RecoilRoot } from 'recoil';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+      staleTime: 5000,
+      cacheTime: Infinity,
+    },
+  },
+});
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;

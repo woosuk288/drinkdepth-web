@@ -2,14 +2,18 @@ import { Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import CafeHeader from '../../../../src/cafe/Header';
 import MenuDetail from '../../../../src/cafe/MenuDetail';
-import { cafeMenus } from '..';
-import { MenuDetailProps } from '../../../../src/utils/types';
+import { cafeMenus } from '../../[cafe_id]';
+import { AuthUserProvider } from '../../../../src/context/AuthUserContext';
+import { fetchMenu } from '../../../../src/utils/firebase/services';
 
-const MenuDetailPage: NextPage<MenuDetailProps> = ({ item }) => {
+const MenuDetailPage: NextPage<{ item: CafeMenuType }> = ({ item }) => {
   return (
     <Container maxWidth="sm" disableGutters>
-      <CafeHeader title={item.name} />
-      <MenuDetail item={item} />
+      {/* Meta */}
+      <AuthUserProvider>
+        <CafeHeader title={item.name} />
+        <MenuDetail item={item} />
+      </AuthUserProvider>
     </Container>
   );
 };
@@ -21,7 +25,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: {
         cafe_id: menu.cafeId,
         menu_id: menu.id,
-        name: menu.name,
       },
     })),
     fallback: 'blocking',
@@ -29,13 +32,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log('params : ', params);
+  const { menu_id } = params as { cafe_id: string; menu_id: string };
+  const menuItem = await fetchMenu(menu_id);
 
-  let item = cafeMenus.find(
-    (menu) => menu.cafeId === params?.cafe_id && menu.id === params?.menu_id
-  );
-
-  if (!item) {
+  if (!menuItem) {
     return {
       notFound: true,
     };
@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      item,
+      item: JSON.parse(JSON.stringify(menuItem)),
     },
 
     // revalidate: 900,

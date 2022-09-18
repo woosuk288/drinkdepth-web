@@ -1,7 +1,5 @@
 import {
   Avatar,
-  Box,
-  IconButton,
   ListItem,
   ListItemAvatar,
   ListItemText,
@@ -11,7 +9,6 @@ import {
 import { useRouter } from 'next/router';
 import { useLayoutEffect, useState } from 'react';
 import { getLabelWithColor, getTestType } from '../utils/combos';
-import { CafeMenuType } from '../utils/types';
 
 function Menu(item: CafeMenuType) {
   const router = useRouter();

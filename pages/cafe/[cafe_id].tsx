@@ -1,16 +1,26 @@
 import { Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { testCafes } from '..';
-import CafeHeader from '../../../src/cafe/Header';
-import Intro from '../../../src/cafe/Intro';
-import Menus from '../../../src/cafe/Menus';
-import { AuthUserProvider } from '../../../src/context/AuthUserContext';
-import { CafePageProps } from '../../../src/utils/types';
+import { testCafes } from '.';
+import CafeHeader from '../../src/cafe/Header';
+import Intro from '../../src/cafe/Intro';
+import Menus from '../../src/cafe/Menus';
+import Meta from '../../src/common/Meta';
+import { AuthUserProvider } from '../../src/context/AuthUserContext';
+import { CafePageProps } from '../../src/utils/types';
 
 const CafePage: NextPage<CafePageProps> = ({ cafeIntro, cafeMenus }) => {
+  const metaData = {
+    title: `깊이를 마시다 | ${cafeIntro.name}`,
+    description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
+    image: cafeIntro.imageURL,
+    canonical: `cafe/${cafeIntro.id}`,
+  };
+
   return (
     <Container maxWidth="sm" disableGutters>
       {/* TODO: meta 넣기 */}
+      <Meta data={metaData} />
+
       <AuthUserProvider>
         <CafeHeader title={cafeIntro.name} />
         <Intro cafeIntro={cafeIntro} />
@@ -22,6 +32,8 @@ const CafePage: NextPage<CafePageProps> = ({ cafeIntro, cafeMenus }) => {
 export default CafePage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  // await fetchMenu()
+
   return {
     paths: testCafes.map((cafe) => ({
       params: {
@@ -64,6 +76,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 6000,
     category: '필터 커피',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -75,6 +88,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 6000,
     category: '필터 커피',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -86,6 +100,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 6000,
     category: '필터 커피',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -97,6 +112,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 6000,
     category: '필터 커피',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -108,6 +124,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 5500,
     category: '필터 커피',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -119,6 +136,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 5500,
     category: '필터 커피',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -130,6 +148,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 5500,
     category: '필터 커피',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -141,6 +160,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 5500,
     category: '필터 커피',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -152,6 +172,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 5500,
     category: '필터 커피',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -163,6 +184,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211022_29%2F1634862235144Uf8mf_JPEG%2FfnLVysOWSwIT1ZKOtBMoVlvR.jpeg.jpg',
     price: 10000,
     category: '필터 커피',
+    commentCount: 0,
   },
 
   {
@@ -175,6 +197,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220722_46%2F1658476265855uy1sw_JPEG%2FKakaoTalk_20211113_130427102.jpg',
     price: 7500,
     category: '시그니처',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -186,6 +209,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 7500,
     category: '시그니처',
+    commentCount: 0,
   },
 
   {
@@ -199,6 +223,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 4500,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -210,6 +235,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220722_67%2F1658476150874DzrQ0_JPEG%2F%25BE%25C6%25B8%25DE%25B8%25AE%25C4%25AB%25B3%25EB.jpg',
     price: 4500,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -221,6 +247,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220722_52%2F1658476211679TOw1s_JPEG%2FKakaoTalk_20211109_205006166.jpg',
     price: 5000,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -232,6 +259,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 6900,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -243,6 +271,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 5500,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -254,6 +283,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 5500,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -265,6 +295,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 5500,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -276,6 +307,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 5500,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -287,6 +319,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 6500,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -298,6 +331,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220722_234%2F1658476751275AHVyG_JPEG%2F%25B9%25D0%25C5%25A9_%25BE%25C6%25C0%25CE%25BD%25B4%25C6%25E4%25B3%25CA.jpg',
     price: 6500,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -309,6 +343,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220722_227%2F1658476795138X2ISd_JPEG%2F%25BC%25D6%25C6%25BC_%25BE%25C6%25C0%25CE%25BD%25B4%25C6%25E4%25B3%25CA.jpg',
     price: 6000,
     category: '에스프레소',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -320,6 +355,7 @@ export const cafeMenus = [
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220722_85%2F1658476833390x89Sj_JPEG%2F%25BE%25F3%25B1%25D7%25B7%25B9%25C0%25CC%25BE%25C6%25C0%25CE%25BD%25B4%25C6%25E4%25B3%25CA.jpg',
     price: 6000,
     category: '에스프레소',
+    commentCount: 0,
   },
 
   {
@@ -332,6 +368,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 5500,
     category: '음료',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -343,6 +380,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 5000,
     category: '음료',
+    commentCount: 0,
   },
 
   {
@@ -355,6 +393,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 5500,
     category: '음료',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -366,6 +405,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 5000,
     category: '음료',
+    commentCount: 0,
   },
 
   {
@@ -378,6 +418,7 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 4000,
     category: '디저트',
+    commentCount: 0,
   },
   {
     cafeId: 'babacarmel',
@@ -389,5 +430,6 @@ export const cafeMenus = [
       'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     price: 8000,
     category: '디저트',
+    commentCount: 0,
   },
 ];

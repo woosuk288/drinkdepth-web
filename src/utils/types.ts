@@ -30,21 +30,7 @@ export type CafeMenusProps = {
   cafeMenus: CafeMenuType[];
 };
 
-export type CafeMenuType = {
-  id: string;
-  name: string;
-  description: string;
-  labels: string[];
-  imageURL: string;
-  price: number;
-  category: string;
-};
-
 export type CafeMenuCategoryType = {
   label: string;
   value: string;
-};
-
-export type MenuDetailProps = {
-  item: CafeMenuType;
 };
