@@ -15,11 +15,11 @@ type CouponDialogProps = {
 };
 
 function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
-  console.log('coupon : ', coupon);
+  // console.log('coupon : ', coupon);
 
   const handleShareKakao = () => {
     const url = window.location.href;
-    console.log('url : ', url);
+    // console.log('url : ', url);
     if (window.Kakao) {
       const kakao = window.Kakao;
       // console.log('kakao : ', kakao);

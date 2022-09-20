@@ -15,64 +15,68 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import {
-  addMenuComment,
-  DB_COMMENTS,
-  deleteMenuComment,
-  fetchMenuComments,
+  addMenuReview,
+  DB_REVIEWS,
+  deleteMenuReview,
+  fetchCafeMenuReviews,
 } from '../utils/firebase/services';
 import { auth } from '../utils/firebase/firebaseInit';
+import { useRouter } from 'next/router';
+import { REVIEWS_PATH } from '../utils/routes';
 
 const SLICE_COUNT = 3;
 
 type MenuReviewProps = {
+  cafeId: string;
   menuId: string;
-  commentCount: number;
+  reviewCount: number;
 };
 
-function MenuReview({ menuId, commentCount }: MenuReviewProps) {
-  const [comment, setComment] = useState('');
+function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
+  const router = useRouter();
+  const [review, setComment] = useState('');
   const queryClient = useQueryClient();
-  const [reviewCount, setReviewCount] = useState(commentCount);
+  const [count, setCount] = useState(reviewCount);
 
-  const { isLoading: isLoadingComments, data: comments } = useQuery(
-    [DB_COMMENTS, menuId],
-    fetchMenuComments,
+  const { isLoading: isLoadingReviews, data: reviews } = useQuery(
+    DB_REVIEWS,
+    () => fetchCafeMenuReviews(cafeId, menuId),
     {
       onSuccess: (data) => {
-        console.log('comments : ', data);
+        console.log('reviews : ', data);
       },
     }
   );
-  const { mutate: addCommentMutate, isLoading: isAddingComment } = useMutation(
-    addMenuComment,
+  const { mutate: addReviewMutate, isLoading: isAddingReview } = useMutation(
+    addMenuReview,
     {
       onSuccess: (data) => {
-        queryClient.invalidateQueries([DB_COMMENTS, menuId]);
-        setReviewCount((prev) => prev + 1);
+        queryClient.invalidateQueries(DB_REVIEWS);
+        setCount((prev) => prev + 1);
       },
     }
   );
 
-  const { mutate: deleteCommentMutate } = useMutation(deleteMenuComment, {
-    onSuccess: (_, { commentId }) => {
-      queryClient.invalidateQueries([DB_COMMENTS, menuId]);
-      setReviewCount((prev) => prev - 1);
+  const { mutate: deleteReviewMutate } = useMutation(deleteMenuReview, {
+    onSuccess: (_, { reviewId }) => {
+      queryClient.invalidateQueries(DB_REVIEWS);
+      setCount((prev) => prev - 1);
     },
   });
 
-  const handleAddComment = () => {
-    addCommentMutate({ menuId, comment }, { onSuccess: () => setComment('') });
+  const handleAddReview = () => {
+    addReviewMutate(
+      { cafeId, menuId, review },
+      { onSuccess: () => setComment('') }
+    );
   };
 
-  const handleDeleteComment = (commentId: string) => {
-    deleteCommentMutate({ menuId, commentId });
+  const handleDeleteReview = (reviewId: string) => {
+    deleteReviewMutate({ cafeId, menuId, reviewId });
   };
-
-  console.log('menuId : ', menuId);
-  console.log('reviewCount : ', reviewCount);
 
   return (
-    <List>
+    <>
       <Typography
         variant="h6"
         fontWeight="bold"
@@ -81,59 +85,62 @@ function MenuReview({ menuId, commentCount }: MenuReviewProps) {
       >
         고객 리뷰
       </Typography>
+      <List>
+        {/* Review */}
 
-      {/* Comments */}
-
-      {isLoadingComments ? (
-        <ListItem sx={{ justifyContent: 'center' }}>
-          <CircularProgress />
-        </ListItem>
-      ) : !comments || comments.length === 0 ? (
-        <Typography
-          // fontWeight="bold"
-          align="center"
-          color="GrayText"
-          sx={{ marginBottom: '2rem' }}
-        >
-          고객님이 첫 번째 리뷰를 등록하세요.
-        </Typography>
-      ) : (
-        comments?.slice(0, SLICE_COUNT).map((comment) => (
-          <ListItem key={comment.id}>
-            <Typography
-              fontWeight="bold"
-              component="span"
-              sx={{ marginRight: '1rem' }}
-            >
-              {comment.displayName.charAt(0) + '**'}
-            </Typography>
-            <Typography sx={{ flex: 1 }} noWrap>
-              {comment.comment}
-            </Typography>
-
-            {auth.currentUser?.uid === comment.uid && (
-              <IconButton
-                size="small"
-                onClick={() => handleDeleteComment(comment.id!)}
-              >
-                <CloseIcon fontSize="small" />
-              </IconButton>
-            )}
+        {isLoadingReviews ? (
+          <ListItem sx={{ justifyContent: 'center' }}>
+            <CircularProgress />
           </ListItem>
-        ))
-      )}
-
-      {reviewCount > SLICE_COUNT && (
-        <ListItem>
+        ) : !reviews || reviews.length === 0 ? (
           <Typography
-            variant="subtitle2"
-            gutterBottom
-            sx={{ cursor: 'pointer' }}
+            // fontWeight="bold"
+            align="center"
+            color="GrayText"
+            sx={{ marginBottom: '2rem' }}
           >
-            댓글 {reviewCount}개 모두 보기
+            고객님이 첫 번째 리뷰를 등록하세요.
           </Typography>
-        </ListItem>
-      )}
+        ) : (
+          reviews?.slice(0, SLICE_COUNT).map((review) => (
+            <ListItem key={review.id}>
+              <Typography
+                fontWeight="bold"
+                component="span"
+                sx={{ marginRight: '1rem' }}
+              >
+                {review.displayName.charAt(0) + '**'}
+              </Typography>
+              <Typography sx={{ flex: 1 }} noWrap>
+                {review.text}
+              </Typography>
+
+              {auth.currentUser?.uid === review.uid && (
+                <IconButton
+                  size="small"
+                  onClick={() => handleDeleteReview(review.id!)}
+                >
+                  <CloseIcon fontSize="small" />
+                </IconButton>
+              )}
+            </ListItem>
+          ))
+        )}
+
+        {count > SLICE_COUNT && (
+          <ListItem
+            onClick={() => router.push(`${router.asPath}${REVIEWS_PATH}`)}
+          >
+            <Typography
+              variant="subtitle2"
+              gutterBottom
+              sx={{ cursor: 'pointer' }}
+            >
+              리뷰 {count}개 모두 보기
+            </Typography>
+          </ListItem>
+        )}
+      </List>
 
       {/* TextField */}
       <TextField
@@ -141,7 +148,7 @@ function MenuReview({ menuId, commentCount }: MenuReviewProps) {
         autoComplete="off"
         sx={{ paddingLeft: '1rem', paddingY: '0.5rem' }}
         placeholder={
-          auth.currentUser ? '댓글 달기...' : '로그인 후 가능합니다.'
+          auth.currentUser ? '리뷰 달기...' : '로그인 후 가능합니다.'
         }
         fullWidth
         variant="standard"
@@ -155,8 +162,8 @@ function MenuReview({ menuId, commentCount }: MenuReviewProps) {
             <InputAdornment position="end">
               <Button
                 sx={{ fontWeight: 'bold' }}
-                onClick={handleAddComment}
-                disabled={comment.length < 1 || isAddingComment}
+                onClick={handleAddReview}
+                disabled={review.length < 1 || isAddingReview}
               >
                 게시
               </Button>
@@ -165,10 +172,10 @@ function MenuReview({ menuId, commentCount }: MenuReviewProps) {
 
           disableUnderline: true,
         }}
-        value={comment}
+        value={review}
         onChange={(e) => setComment(e.target.value)}
       />
-    </List>
+    </>
   );
 }
 export default MenuReview;

@@ -54,7 +54,6 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
   const router = useRouter();
 
   const { user } = useAuth();
-  console.log('CafeHeader user : ', user);
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null

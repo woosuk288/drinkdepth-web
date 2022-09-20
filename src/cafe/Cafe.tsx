@@ -1,8 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-import { CafeProps } from '../utils/types';
 
-function Cafe({ cafe }: CafeProps) {
+function Cafe({ cafe }: { cafe: CafeType }) {
   const router = useRouter();
 
   const handleClick = () => {

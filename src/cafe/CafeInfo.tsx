@@ -6,7 +6,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { makeNaverMapURL } from '../o2o/place/coffeeDetailDialog';
 import proj4 from 'proj4';
-import { CafeIntroProps } from '../utils/types';
 import { db } from '../utils/firebase/firebaseInit';
 import {
   collection,
@@ -35,7 +34,11 @@ import { sxSquareImg } from '../styles/GlobalSx';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
 import { PATH_AFTER_LOGIN } from '../utils/constants';
 
-function Intro({ cafeIntro }: CafeIntroProps) {
+export type CafeInfoProps = {
+  cafe: CafeType;
+};
+
+function CafeInfo({ cafe }: CafeInfoProps) {
   const [expanded, setExpanded] = useState(false);
   const router = useRouter();
   const cafeId = router.query.cafe_id as string;
@@ -76,11 +79,11 @@ function Intro({ cafeIntro }: CafeIntroProps) {
   const handleOpenNaverMap = () => {
     const p = proj4('EPSG:4326', 'EPSG:3857');
     const position = p.forward([
-      parseFloat(cafeIntro.addressX),
-      parseFloat(cafeIntro.addressY),
+      parseFloat(cafe.addressX),
+      parseFloat(cafe.addressY),
     ]);
 
-    const url = makeNaverMapURL(cafeIntro.name, position);
+    const url = makeNaverMapURL(cafe.name, position);
     // console.log('position : ', position);
     // console.log('url : ', url);
 
@@ -124,12 +127,12 @@ function Intro({ cafeIntro }: CafeIntroProps) {
     setExpanded(!expanded);
   };
 
-  const clipIntroduce = clipText(cafeIntro.introduce);
+  const clipInfoduce = clipText(cafe.introduce);
 
   return (
     <>
       <Box sx={sxSquareImg}>
-        <img className="img" src={cafeIntro.imageURL} alt={cafeIntro.name} />
+        <img className="img" src={cafe.imageURL} alt={cafe.name} />
       </Box>
 
       <Box
@@ -142,7 +145,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
       >
         {expanded ? (
           <Typography whiteSpace="pre-line">
-            {cafeIntro.introduce}
+            {cafe.introduce}
             <ExpandMoreIcon
               sx={{ verticalAlign: 'middle', transform: 'rotate(180deg)' }}
               onClick={handleExpandClick}
@@ -152,8 +155,8 @@ function Intro({ cafeIntro }: CafeIntroProps) {
           </Typography>
         ) : (
           <Typography whiteSpace="pre-line">
-            {clipIntroduce}
-            {cafeIntro.introduce.length > clipIntroduce.length && (
+            {clipInfoduce}
+            {cafe.introduce.length > clipInfoduce.length && (
               <ExpandMoreIcon
                 sx={{ verticalAlign: 'middle' }}
                 onClick={handleExpandClick}
@@ -174,10 +177,10 @@ function Intro({ cafeIntro }: CafeIntroProps) {
           color="inherit"
           startIcon={<LocationOnIcon color="primary" />}
         >
-          {cafeIntro.address}
+          {cafe.address}
         </Button>
         <Typography variant="caption" component="p" align="center">
-          {cafeIntro.addressETC}
+          {cafe.addressETC}
         </Typography>
       </Box>
 
@@ -216,7 +219,7 @@ function Intro({ cafeIntro }: CafeIntroProps) {
     </>
   );
 }
-export default Intro;
+export default CafeInfo;
 
 const sx = {
   btnCoupon: {

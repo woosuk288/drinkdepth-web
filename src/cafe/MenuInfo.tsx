@@ -1,24 +1,18 @@
 import styled from '@emotion/styled';
 import {
   Box,
-  Button,
   ImageListItem,
   ImageListItemBar,
-  InputAdornment,
-  List,
-  ListItem,
-  TextField,
   Typography,
 } from '@mui/material';
 import { useLayoutEffect, useState } from 'react';
 import LazyImage from '../common/LazyImage';
 import { getLabelWithColor, getTestType } from '../utils/combos';
 
-import MoodIcon from '@mui/icons-material/Mood';
 import MenuReview from './MenuReview';
 import { sxSquareImg } from '../styles/GlobalSx';
 
-function MenuDetail({ item }: { item: CafeMenuType }) {
+function MenuInfo({ menu }: { menu: CafeMenuType }) {
   const [isSmartMenu, setIsSmartMenu] = useState(false);
 
   useLayoutEffect(() => {
@@ -26,12 +20,10 @@ function MenuDetail({ item }: { item: CafeMenuType }) {
     setIsSmartMenu(isSmart);
   }, []);
 
-  console.log('date : ', item);
-
   return (
     <div>
       <Box sx={sxSquareImg}>
-        <img className="img" src={item.imageURL} alt={item.description} />
+        <img className="img" src={menu.imageURL} alt={menu.description} />
       </Box>
 
       <Box sx={{ padding: '2rem' }}>
@@ -46,7 +38,7 @@ function MenuDetail({ item }: { item: CafeMenuType }) {
             WebkitBoxOrient: 'vertical',
           }}
         >
-          {isSmartMenu && item.description}
+          {isSmartMenu && menu.description}
         </Typography>
 
         <Typography
@@ -66,7 +58,7 @@ function MenuDetail({ item }: { item: CafeMenuType }) {
           gutterBottom
         >
           {isSmartMenu &&
-            item.labels.map((label) => (
+            menu.labels.map((label) => (
               <span
                 key={label}
                 style={{
@@ -79,7 +71,7 @@ function MenuDetail({ item }: { item: CafeMenuType }) {
         </Typography>
 
         <Typography sx={{ color: 'red' }}>
-          {item.price.toLocaleString()}
+          {menu.price.toLocaleString()}
         </Typography>
       </Box>
 
@@ -106,7 +98,11 @@ function MenuDetail({ item }: { item: CafeMenuType }) {
         </RoasteryImagesWrapper>
       </Box>
 
-      <MenuReview menuId={item.id} commentCount={item.commentCount} />
+      <MenuReview
+        cafeId={menu.cafeId}
+        menuId={menu.id}
+        reviewCount={menu.reviewCount}
+      />
 
       {/* <Box sx={{ textAlign: 'center' }}>
         <Button
@@ -127,7 +123,7 @@ function MenuDetail({ item }: { item: CafeMenuType }) {
     </div>
   );
 }
-export default MenuDetail;
+export default MenuInfo;
 
 const RoasteryImagesWrapper = styled.div`
   position: relative;

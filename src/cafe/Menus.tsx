@@ -1,22 +1,17 @@
-import {
-  Avatar,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  ListSubheader,
-  Typography,
-} from '@mui/material';
+import { List, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useMemo, useState } from 'react';
-import { CafeMenuCategoryType, CafeMenusProps } from '../utils/types';
 import CategoryTabs from './CategoryTabs';
 import Menu from './Menu';
 
-function Menus({ cafeMenus }: CafeMenusProps) {
+export type CafeMenusProps = {
+  menus: CafeMenuType[];
+};
+
+function Menus({ menus }: CafeMenusProps) {
   const router = useRouter();
   console.log('path : ', router.asPath);
-  const [filteredMenus, setFilteredMenus] = useState(cafeMenus);
+  const [filteredMenus, setFilteredMenus] = useState(menus);
 
   const [tabIndex, setTabIndex] = React.useState(0);
 
@@ -24,10 +19,10 @@ function Menus({ cafeMenus }: CafeMenusProps) {
     setTabIndex(newValue);
 
     if (newValue === 0) {
-      setFilteredMenus(cafeMenus);
+      setFilteredMenus(menus);
     } else {
       const categoryValue = categories[newValue].value;
-      const menusByCategory = cafeMenus.filter(
+      const menusByCategory = menus.filter(
         (cafemenu) => cafemenu.category === categoryValue
       );
       setFilteredMenus(menusByCategory);
@@ -37,7 +32,7 @@ function Menus({ cafeMenus }: CafeMenusProps) {
   const categories = useMemo(() => {
     const initialCategories = [{ label: '전체', value: '전체' }];
 
-    return cafeMenus.reduce((pre, cur) => {
+    return menus.reduce((pre, cur) => {
       let nextList: CafeMenuCategoryType[] = [...pre];
       if (pre.some((p) => p.value === cur.category) === false) {
         nextList.push({
@@ -47,7 +42,7 @@ function Menus({ cafeMenus }: CafeMenusProps) {
       }
       return nextList;
     }, initialCategories as CafeMenuCategoryType[]);
-  }, [cafeMenus]);
+  }, [menus]);
 
   return (
     <>
@@ -72,6 +67,7 @@ function Menus({ cafeMenus }: CafeMenusProps) {
           bgcolor: 'background.paper',
           '& > li': {
             borderBottom: '1px solid #ededed',
+            cursor: 'pointer',
           },
         }}
       >
