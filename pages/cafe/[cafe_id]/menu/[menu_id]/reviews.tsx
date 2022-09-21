@@ -20,17 +20,19 @@ import {
 import { Props } from '../[menu_id]';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-// const metaData = {
-//   title: '깊이를 마시다 | 인기 추천 카페',
-//   description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
-//   image: '/images/logo_icon.png',
-//   canonical: 'cafe/landing',
-// };
+import Meta from 'src/common/Meta';
+import { CAFE_PATH, MENU_PATH, REVIEWS_PATH } from 'src/utils/routes';
 
 const REVIEW_ALL = 'REVIEW_ALL';
 
 const ReviewsPage: NextPage<Props> = ({ menu }) => {
+  const metaData = {
+    title: `메뉴 리뷰 | ${menu.name}`,
+    description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
+    image: '/images/logo_icon.png',
+    canonical: `${CAFE_PATH}/${menu.cafeId}${MENU_PATH}/${menu.id}${REVIEWS_PATH}`,
+  };
+
   const LIMIT = 15;
   const { cafeId, id: menuId } = menu;
   const queryClient = useQueryClient();
@@ -66,26 +68,24 @@ const ReviewsPage: NextPage<Props> = ({ menu }) => {
   if (!data) return null;
 
   return (
-    <>
-      {/* <Meta data={metaData} /> */}
-      <Container maxWidth="sm" disableGutters>
-        <HeaderCustom leftIcon="back" centerComponent={'리뷰'} />
+    <Container maxWidth="sm" disableGutters>
+      <Meta data={metaData} />
+      <HeaderCustom leftIcon="back" centerComponent={'리뷰'} />
 
-        <MenuReviewAll data={data} handleDeleteReview={handleDeleteReview} />
+      <MenuReviewAll data={data} handleDeleteReview={handleDeleteReview} />
 
-        {hasNextPage && (
-          <div style={{ textAlign: 'center' }}>
-            {isFetchingNextPage ? (
-              <CircularProgress />
-            ) : (
-              <IconButton size="small" onClick={() => fetchNextPage()}>
-                <ExpandMoreIcon fontSize="large" />
-              </IconButton>
-            )}
-          </div>
-        )}
-      </Container>
-    </>
+      {hasNextPage && (
+        <div style={{ textAlign: 'center' }}>
+          {isFetchingNextPage ? (
+            <CircularProgress />
+          ) : (
+            <IconButton size="small" onClick={() => fetchNextPage()}>
+              <ExpandMoreIcon fontSize="large" />
+            </IconButton>
+          )}
+        </div>
+      )}
+    </Container>
   );
 };
 export default ReviewsPage;

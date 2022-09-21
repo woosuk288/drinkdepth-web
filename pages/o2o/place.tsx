@@ -111,7 +111,7 @@ const metaData = {
   title: '깊이를 마시다 | 스페셜티 커피 지도',
   description: '유명 국내 로스터리 카페들의 커피 데이터를 분석했습니다.',
   image: '/images/o2o/o2o_coffee_map.png',
-  canonical: 'o2o/place',
+  canonical: '/o2o/place',
 };
 
 const PlacePage: NextPage = () => {

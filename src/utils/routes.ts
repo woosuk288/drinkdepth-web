@@ -1,4 +1,5 @@
 export const CAFE_PATH = '/cafe';
+export const MENU_PATH = '/menu';
 
 export const REVIEWS_PATH = '/reviews';
 
