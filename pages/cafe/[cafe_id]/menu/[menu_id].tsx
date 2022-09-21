@@ -23,7 +23,7 @@ const MenuDetailPage: NextPage<Props> = ({ menu }) => {
 };
 export default MenuDetailPage;
 
-type Props = {
+export type Props = {
   // cafe: CafeType;
   menu: CafeMenuType;
 };

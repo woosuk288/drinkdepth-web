@@ -15,7 +15,7 @@ import {
 
 const CafePage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
-    title: `깊이를 마시다 | ${cafe.name}`,
+    title: `메뉴 | ${cafe.name}`,
     description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
     image: cafe.imageURL,
     canonical: `cafe/${cafe.id}`,

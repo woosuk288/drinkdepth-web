@@ -20,9 +20,9 @@ import {
   deleteMenuReview,
   fetchCafeMenuReviews,
 } from '../utils/firebase/services';
-import { auth } from '../utils/firebase/firebaseInit';
 import { useRouter } from 'next/router';
 import { REVIEWS_PATH } from '../utils/routes';
+import useFirebaseAuth from '../hooks/useFirebaseAuth';
 
 const SLICE_COUNT = 3;
 
@@ -37,6 +37,7 @@ function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
   const [review, setComment] = useState('');
   const queryClient = useQueryClient();
   const [count, setCount] = useState(reviewCount);
+  const { user } = useFirebaseAuth();
 
   const { isLoading: isLoadingReviews, data: reviews } = useQuery(
     DB_REVIEWS,
@@ -115,7 +116,7 @@ function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
                 {review.text}
               </Typography>
 
-              {auth.currentUser?.uid === review.uid && (
+              {user?.uid === review.uid && (
                 <IconButton
                   size="small"
                   onClick={() => handleDeleteReview(review.id!)}
@@ -144,12 +145,10 @@ function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
 
       {/* TextField */}
       <TextField
-        disabled={!auth.currentUser}
+        disabled={!user}
         autoComplete="off"
         sx={{ paddingLeft: '1rem', paddingY: '0.5rem' }}
-        placeholder={
-          auth.currentUser ? '리뷰 달기...' : '로그인 후 가능합니다.'
-        }
+        placeholder={user ? '리뷰 달기...' : '로그인 후 가능합니다.'}
         fullWidth
         variant="standard"
         InputProps={{

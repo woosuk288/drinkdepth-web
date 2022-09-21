@@ -12,6 +12,7 @@ import {
   orderBy,
   query,
   QuerySnapshot,
+  startAfter,
   updateDoc,
   writeBatch,
 } from 'firebase/firestore';
@@ -49,31 +50,27 @@ export const UPDATE = () => ({ updatedAt: new Date() });
 //
 
 export const fetchCafes = async () => {
-  // const q = query(collection(db, DB_CAFES));
-  // const querySnapshot = await getDocs(q);
-  // const data = querySnapshot.docs.map(
-  //   (doc) => ({ ...doc.data(), id: doc.id } as CafeType)
-  // );
-  // return data;
-  return testCafes as CafeType[];
+  const q = query(collection(db, DB_CAFES));
+  const querySnapshot = await getDocs(q);
+  const data = getDocsData<CafeType>(querySnapshot);
+  return data;
+  // return testCafes as CafeType[];
 };
 
 export const fetchCafe = async (cafeId: string) => {
-  // const cafeRef = doc(db, DB_CAFES, cafeId);
-  // const cafeDoc = await getDoc(cafeRef);
+  const cafeRef = doc(db, DB_CAFES, cafeId);
+  const cafeDoc = await getDoc(cafeRef);
 
-  // return getDocData<CafeType>(cafeDoc);
-  return testCafes.find((cafe) => cafe.id === cafeId) as CafeType;
+  return getDocData<CafeType>(cafeDoc);
+  // return testCafes.find((cafe) => cafe.id === cafeId) as CafeType;
 };
 
 export const fetchCafeMenus = async (cafeId: string) => {
-  // const q = query(collection(db, DB_CAFES, cafeId, DB_MENUS));
-  // const querySnapshot = await getDocs(q);
-  // const data = querySnapshot.docs.map(
-  //   (doc) => ({ ...doc.data(), id: doc.id } as CafeMenuType)
-  // );
-  // return data;
-  return allMenus.filter((menu) => menu.cafeId === cafeId) as CafeMenuType[];
+  const q = query(collection(db, DB_CAFES, cafeId, DB_MENUS));
+  const querySnapshot = await getDocs(q);
+  const data = getDocsData<CafeMenuType>(querySnapshot);
+  return data;
+  // return allMenus.filter((menu) => menu.cafeId === cafeId) as CafeMenuType[];
 };
 
 export const fetchCafeMenu = async (cafeId: string, menuId: string) => {
@@ -93,16 +90,21 @@ export const fetchAllMenus = async () => {
   return allMenus as CafeMenuType[];
 };
 
-export const fetchCafeMenuReviews = async (cafeId: string, menuId: string) => {
+export const fetchCafeMenuReviews = async (
+  cafeId: string,
+  menuId: string,
+  count: number = 3,
+  createdAt?: string
+) => {
   const q = query(
     collection(db, DB_CAFES, cafeId, DB_MENUS, menuId, DB_REVIEWS),
-    limit(15),
-    orderBy('createdAt', 'desc')
+    orderBy('createdAt', 'desc'),
+    limit(count),
+    startAfter(createdAt || new Date().toISOString())
   );
   const querySnapshot = await getDocs(q);
-  const data = querySnapshot.docs.map(
-    (doc) => ({ ...doc.data(), id: doc.id } as ReviewType)
-  );
+
+  const data = getDocsData<ReviewType>(querySnapshot);
   return data;
 };
 
