@@ -20,12 +20,6 @@ import {
 
 import { useMutation } from 'react-query';
 
-import {
-  CouponCounterType,
-  COUPONS,
-  CouponType,
-  COUPON_COUNTER_ID,
-} from '../utils/firebase/models';
 import CouponDialog from './CouponDialog';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthUserContext';
@@ -33,6 +27,8 @@ import { getTestType } from '../utils/combos';
 import { sxSquareImg } from '../styles/GlobalSx';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
 import { PATH_AFTER_LOGIN } from '../utils/constants';
+import { DB_COUPONS, issueCoupon } from 'src/utils/firebase/services';
+import { FirebaseError } from 'firebase/app';
 
 export type CafeInfoProps = {
   cafe: CafeType;
@@ -49,7 +45,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
     if (user?.uid) {
       const unsubscribe = onSnapshot(
         query(
-          collection(db, COUPONS),
+          collection(db, DB_COUPONS),
           limit(1),
           where('cafeId', '==', cafeId),
           where('customerId', '==', user.uid)
@@ -70,9 +66,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
     }
   }, [cafeId, user?.uid]);
 
-  const mutation = useMutation<string, string, IssueCouponType>(
-    mutationIssueCoupon
-  );
+  const mutation = useMutation(issueCoupon);
 
   const [open, setOpen] = useState(false);
 
@@ -128,6 +122,8 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   };
 
   const clipInfoduce = clipText(cafe.introduce);
+
+  console.log('mutation.error : ', mutation.error);
 
   return (
     <>
@@ -206,7 +202,13 @@ function CafeInfo({ cafe }: CafeInfoProps) {
           </Button>
         )}
 
-        {mutation.isError && <p>{mutation.error}</p>}
+        {mutation.isError && (
+          <p>
+            {typeof mutation.error === 'string'
+              ? mutation.error
+              : (mutation.error as FirebaseError).message}
+          </p>
+        )}
 
         {open && !coupon?.isUsed && (
           <CouponDialog
@@ -231,48 +233,6 @@ const sx = {
     borderRadius: 16,
   },
 };
-
-type IssueCouponType = {
-  cafeId: string;
-  customerId: string;
-};
-/**
- * 쿠폰 발행
- * mutationIssueCoupon
- */
-function mutationIssueCoupon({ cafeId, customerId }: IssueCouponType) {
-  const result = runTransaction(db, async (tx) => {
-    const counterRef = doc(db, COUPONS, COUPON_COUNTER_ID);
-    const couponDoc = await tx.get(counterRef);
-
-    const total = (couponDoc.data() as CouponCounterType).total;
-    const nextCount = total + 1;
-    const nextCode = nextCount.toString(10).padStart(6, '0');
-
-    const couponRef = doc(db, COUPONS, nextCode);
-    const newCoupon = await tx.get(couponRef);
-
-    const type = getTestType();
-
-    if (newCoupon.exists()) {
-      throw '쿠폰 코드 중복 오류!';
-    } else {
-      tx.update(counterRef, { total: nextCount });
-      tx.set(couponRef, {
-        code: nextCode,
-        cafeId: cafeId,
-        customerId: customerId,
-        type,
-        isUsed: false,
-        createdAt: serverTimestamp(),
-      });
-
-      return '쿠폰 발급 완료!';
-    }
-  });
-
-  return result;
-}
 
 const clipText = (text: string) => {
   const MIN_LENGTH = 100;

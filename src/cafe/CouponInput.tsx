@@ -10,13 +10,9 @@ import { doc, increment, runTransaction } from 'firebase/firestore';
 import { useState } from 'react';
 import { sxCenter } from '../styles/GlobalSx';
 import { db } from '../utils/firebase/firebaseInit';
-import {
-  CouponCounterType,
-  COUPONS,
-  CouponType,
-  COUPON_COUNTER_ID,
-} from '../utils/firebase/models';
+
 import { useMutation } from 'react-query';
+import { acceptCoupon } from 'src/utils/firebase/services';
 
 function CouponInput() {
   const [open, setOpen] = useState(false);
@@ -33,43 +29,20 @@ function CouponInput() {
 
   const [code, setCode] = useState('');
 
-  const mutation = useMutation(
-    () => {
-      const ref = doc(db, COUPONS, code);
-      const counterRef = doc(db, COUPONS, COUPON_COUNTER_ID);
-
-      const usedCoupon = runTransaction(db, async (tx) => {
-        const couponDoc = await tx.get(ref);
-        const coupon = couponDoc.data() as CouponType;
-
-        if (!couponDoc.exists()) {
-          throw '등록되지 않은 코드 입니다.';
-        } else if (coupon.isUsed === true) {
-          throw '이미 사용한 코드 입니다.';
-        } else {
-          tx.update(ref, { isUsed: true });
-          tx.update(counterRef, { [coupon.type]: increment(1) });
-          return '쿠폰 사용 완료!';
-        }
-      });
-
-      return usedCoupon;
+  const mutation = useMutation(acceptCoupon, {
+    onSuccess: (data) => {
+      console.log('data : ', data);
+      setOpen(true);
+      setCode('');
     },
-    {
-      onSuccess: (data) => {
-        console.log('data : ', data);
-        setOpen(true);
-        setCode('');
-      },
-    }
-  );
+  });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCode(event.target.value.slice(0, 6));
   };
 
   const handleConfirmCoupon = () => {
-    mutation.mutate();
+    mutation.mutate({ code });
   };
 
   return (
@@ -81,7 +54,6 @@ function CouponInput() {
         error={mutation.isError}
         helperText={mutation.isError && (mutation.error as string)}
       />
-      {/* {mutation.isError && <p>{(mutation.error as FirebaseError).code}</p>} */}
       <Button
         variant="contained"
         size="large"

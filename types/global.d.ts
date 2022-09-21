@@ -34,3 +34,20 @@ type CafeMenuCategoryType = {
   label: string;
   value: string;
 };
+
+type CouponType = {
+  id?: string;
+  code: string;
+  // itemId: string;
+  cafeId: string;
+  customerId: string;
+  typeIssued: 'normal' | 'smart';
+  typeUsed?: 'normal' | 'smart';
+  isUsed: boolean;
+  createdAt: Date | string;
+};
+type CouponCounterType = {
+  total: number;
+  normal: number;
+  smart: number;
+};

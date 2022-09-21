@@ -12,15 +12,20 @@ import {
   orderBy,
   query,
   QuerySnapshot,
+  runTransaction,
+  serverTimestamp,
   startAfter,
   updateDoc,
   writeBatch,
 } from 'firebase/firestore';
+import { getTestType } from '../combos';
+import { COUPON_COUNTER_ISSUED_ID, COUPON_COUNTER_USED_ID } from '../constants';
 import { auth, db } from './firebaseInit';
 
 export const DB_CAFES = 'cafes';
 export const DB_MENUS = 'menus';
 export const DB_REVIEWS = 'reviews';
+export const DB_COUPONS = 'coupons';
 
 export function getDocData<T>(doc: DocumentSnapshot<DocumentData>) {
   if (doc.exists()) {
@@ -177,31 +182,93 @@ export const deleteMenuReview = async ({
   await batch.commit();
 };
 
-const testCafes = [
-  {
-    id: 'babacarmel',
-    name: '바바카멜',
-    imageURL:
-      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211021_259%2F1634788006349s8KvS_JPEG%2FKakaoTalk_20211020_181656262.jpg',
-    introduce: `※ 카페 바바카멜은 안산 플라워&로스터리 카페입니다.
-      엄선된 생두와 특별한 공법으로 로스팅한 바바카멜만의 싱글오리진 원두로 내린 필터커피와 제대로 된 에스프레소를 즐겨보세요.
+export const issueCoupon = async ({
+  cafeId,
+  customerId,
+}: {
+  cafeId: string;
+  customerId: string;
+}) => {
+  const result = runTransaction(db, async (tx) => {
+    const counterRef = doc(db, DB_COUPONS, COUPON_COUNTER_ISSUED_ID);
+    const counterDoc = await tx.get(counterRef);
+    const counter = getDocData<CouponCounterType>(counterDoc) ?? {
+      normal: 0,
+      smart: 0,
+      total: 0,
+    };
 
-      ※ 그동안 쉽게 맛보기 힘들었던 두종류의 게이샤 커피를 처음으로 선보입니다.
+    const type = getTestType();
 
-      ※ 애견동반은 테라스(도그파킹) 이용은 언제든 가능하며, 유모차나 케이지, 슬링백안에 있을 경우 매장 이용도 가능합니다. 단, 매장안에 내려놓으시면 안됩니다.
+    const nextTotal = counter.total + 1;
+    const nextCounter: CouponCounterType = {
+      normal: type === 'normal' ? counter.normal + 1 : counter.normal,
+      smart: type === 'smart' ? counter.smart + 1 : counter.smart,
+      total: nextTotal,
+    };
+    const nextCode = nextTotal.toString(10).padStart(6, '0');
 
-      ※꽃바구니나 꽃다발 예약 가능하며, 매장내에서 소량의 꽃 구입도 가능합니다. 손님이 많으실 경우 포장에 조금 시간이 걸릴 수 있으니 미리 예약하시기를 권장합니다.
+    const couponRef = doc(db, DB_COUPONS, nextCode);
+    const newCouponDoc = await tx.get(couponRef);
 
-      ※주차는 매장 건너편 무료 공원주차장을 이용하시거나, 매장 뒷편 이면도로와 공원옆 이면도로 주차장을 이용하시면 됩니다.
+    if (newCouponDoc.exists()) {
+      throw '쿠폰 코드 중복 오류!';
+    } else {
+      tx.set(counterRef, nextCounter, { merge: true });
 
-      ※매장 뿐 아니라 온라인에서도 꽃과 커피의 향미를 통해 지친 현대인에게 느려도 되는 순간들, 여유로운 순간들을 지켜주는 존재로 일상의 행복을 담아 보냅니다.`,
-    address: '경기 안산시 상록구 충장로 8 1층',
-    addressY: '37.2825273384935',
-    addressX: '126.855799779277',
-    addressETC: '',
-    // addressETC: '3호선 경복궁역 7번 출구에서273m',
-  },
-];
+      const newCoupon: CouponType = {
+        code: nextCode,
+        cafeId,
+        customerId,
+        typeIssued: type,
+        isUsed: false,
+        createdAt: serverTimestamp() as any,
+      };
+      tx.set(couponRef, newCoupon);
+
+      return '쿠폰 발급 완료!';
+    }
+  });
+
+  return result;
+};
+
+export const acceptCoupon = async ({ code }: { code: string }) => {
+  const couponRef = doc(db, DB_COUPONS, code);
+  const counterRef = doc(db, DB_COUPONS, COUPON_COUNTER_USED_ID);
+
+  const usedCoupon = runTransaction(db, async (tx) => {
+    const couponDoc = await tx.get(couponRef);
+    const coupon = getDocData<CouponType>(couponDoc);
+
+    const counterDoc = await tx.get(counterRef);
+    const counter = getDocData<CouponCounterType>(counterDoc) ?? {
+      normal: 0,
+      smart: 0,
+      total: 0,
+    };
+    const type = getTestType();
+
+    const nextTotal = counter.total + 1;
+    const nextCounter: CouponCounterType = {
+      normal: type === 'normal' ? counter.normal + 1 : counter.normal,
+      smart: type === 'smart' ? counter.smart + 1 : counter.smart,
+      total: nextTotal,
+    };
+
+    if (!coupon) {
+      throw '등록되지 않은 코드 입니다.';
+    } else if (coupon.isUsed === true) {
+      throw '이미 사용한 코드 입니다.';
+    } else {
+      tx.update(couponRef, { isUsed: true, typeUsed: type });
+      tx.set(counterRef, nextCounter, { merge: true });
+      return '쿠폰 사용 완료!';
+    }
+  });
+
+  return usedCoupon;
+};
 
 export const allMenus = [
   {
