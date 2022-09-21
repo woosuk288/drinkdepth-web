@@ -41,7 +41,7 @@ function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
 
   const { isLoading: isLoadingReviews, data: reviews } = useQuery(
     DB_REVIEWS,
-    () => fetchCafeMenuReviews(cafeId, menuId),
+    () => fetchCafeMenuReviews(cafeId, menuId, 3, new Date()),
     {
       onSuccess: (data) => {
         console.log('reviews : ', data);

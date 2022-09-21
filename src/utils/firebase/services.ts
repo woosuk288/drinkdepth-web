@@ -93,14 +93,14 @@ export const fetchAllMenus = async () => {
 export const fetchCafeMenuReviews = async (
   cafeId: string,
   menuId: string,
-  count: number = 3,
-  createdAt?: string
+  count: number,
+  createdAt: string | Date
 ) => {
   const q = query(
     collection(db, DB_CAFES, cafeId, DB_MENUS, menuId, DB_REVIEWS),
     orderBy('createdAt', 'desc'),
     limit(count),
-    startAfter(createdAt || new Date().toISOString())
+    startAfter(createdAt)
   );
   const querySnapshot = await getDocs(q);
 
