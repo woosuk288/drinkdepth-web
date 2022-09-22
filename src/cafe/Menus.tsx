@@ -10,9 +10,7 @@ export type CafeMenusProps = {
 
 function Menus({ menus }: CafeMenusProps) {
   const router = useRouter();
-  console.log('path : ', router.asPath);
   const [filteredMenus, setFilteredMenus] = useState(menus);
-
   const [tabIndex, setTabIndex] = React.useState(0);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {

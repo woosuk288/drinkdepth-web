@@ -2,15 +2,14 @@ import { Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Meta from 'src/common/Meta';
+import { apiMenuCache } from 'src/utils/cacheAPIs';
 import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
-import CafeHeader from '../../../../src/cafe/Header';
-import MenuInfo from '../../../../src/cafe/MenuInfo';
+import CafeHeader from 'src/cafe/Header';
+import MenuInfo from 'src/cafe/MenuInfo';
 
-import { AuthUserProvider } from '../../../../src/context/AuthUserContext';
-import {
-  fetchAllMenus,
-  fetchCafeMenu,
-} from '../../../../src/utils/firebase/services';
+import { AuthUserProvider } from 'src/context/AuthUserContext';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import { fetchAllMenus, fetchCafeMenu } from 'src/utils/firebase/services';
 
 const MenuDetailPage: NextPage<Props> = ({ menu }) => {
   const metaData = {
@@ -43,7 +42,20 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const menus = await fetchAllMenus();
+  let menus: CafeMenuType[] | undefined | null;
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    // 캐시에서 가져온다.
+    menus = await apiMenuCache.list();
+    if (!menus) {
+      // 없으면 서버에서 가져온다.
+      menus = await fetchAllMenus();
+      // 캐시에 저장한다.
+      await apiMenuCache.set(menus);
+    }
+  } else {
+    menus = await fetchAllMenus();
+  }
 
   return {
     paths: menus.map((menu) => ({
@@ -59,7 +71,17 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const menu = await fetchCafeMenu(params!.cafe_id, params!.menu_id);
+  const { cafe_id, menu_id } = params!;
+
+  let menu: CafeMenuType | undefined | null;
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    menu = await apiMenuCache.get(cafe_id, menu_id);
+  }
+
+  if (!menu) {
+    menu = await fetchCafeMenu(cafe_id, menu_id);
+  }
 
   if (!menu) {
     return {
@@ -72,6 +94,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
       menu,
     },
 
-    // revalidate: 900,
+    revalidate: 1800,
   };
 };

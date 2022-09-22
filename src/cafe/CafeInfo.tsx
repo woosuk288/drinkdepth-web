@@ -123,8 +123,6 @@ function CafeInfo({ cafe }: CafeInfoProps) {
 
   const clipInfoduce = clipText(cafe.introduce);
 
-  console.log('mutation.error : ', mutation.error);
-
   return (
     <>
       <Box sx={sxSquareImg}>
