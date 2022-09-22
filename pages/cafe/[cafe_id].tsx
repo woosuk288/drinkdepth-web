@@ -17,7 +17,7 @@ import { CAFE_PATH } from 'src/utils/routes';
 const CafePage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
     title: `카페 소개 및 메뉴 | ${cafe.name}`,
-    description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
+    description: cafe.introduce,
     image: cafe.imageURL,
     canonical: `${CAFE_PATH}/${cafe.id}`,
   };

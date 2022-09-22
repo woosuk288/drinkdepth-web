@@ -15,7 +15,7 @@ import {
 const MenuDetailPage: NextPage<Props> = ({ menu }) => {
   const metaData = {
     title: `메뉴 설명 | ${menu.name}`,
-    description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
+    description: menu.description,
     image: menu.imageURL,
     canonical: `${CAFE_PATH}/${menu.cafeId}${MENU_PATH}/${menu.id}`,
   };
