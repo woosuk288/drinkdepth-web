@@ -43,7 +43,6 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   let menus: CafeMenuType[] | undefined | null;
-
   if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
     // 캐시에서 가져온다.
     menus = await apiMenuCache.list();
@@ -74,7 +73,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   const { cafe_id, menu_id } = params!;
 
   let menu: CafeMenuType | undefined | null;
-
   if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
     menu = await apiMenuCache.get(cafe_id, menu_id);
   }
