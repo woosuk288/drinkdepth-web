@@ -8,6 +8,7 @@ import {
 
 import { useRouter } from 'next/router';
 import { useLayoutEffect, useState } from 'react';
+// import { updateImages } from 'src/utils/firebase/services';
 import { getLabelWithColor, getTestType } from '../utils/combos';
 
 function Menu(item: CafeMenuType) {
@@ -20,23 +21,27 @@ function Menu(item: CafeMenuType) {
     setIsSmartMenu(isSmart);
   }, []);
 
+  const handleClick = () => {
+    // const path = `cafes/${item.cafeId}/menus/${item.id}`;
+    // const prefix = 'images/menus/babacarmel/';
+    // const filename = '';
+    // const suffix = '.jpg';
+    // updateImages(path, prefix, filename, suffix);
+
+    router.push({
+      pathname: `${router.asPath}/menu/${item.id}`,
+    });
+  };
+
   return (
-    <ListItem
-      key={item.id}
-      alignItems="flex-start"
-      onClick={() =>
-        router.push({
-          pathname: `${router.asPath}/menu/${item.id}`,
-        })
-      }
-    >
+    <ListItem key={item.id} alignItems="flex-start" onClick={handleClick}>
       {/* <IconButton sx={{ position: 'absolute', left: 0, zIndex: 100 }}>
         <FavoriteBorderIcon />
       </IconButton> */}
       <ListItemAvatar sx={{ marginRight: '1rem' }}>
         <Avatar
           alt={item.name}
-          src={item.imageURL}
+          src={item.images?.['240x240'] || item.imageURL}
           sx={{ width: 104, height: 104 }}
           variant="rounded"
         />

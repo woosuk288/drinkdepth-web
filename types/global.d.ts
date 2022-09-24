@@ -25,6 +25,11 @@ type CafeMenuType = {
   description: string;
   labels: string[];
   imageURL: string;
+  images?: {
+    '240x240': string;
+    '480x480': string;
+    '960x960': string;
+  };
   price: number;
   category: string;
   reviewCount: number;

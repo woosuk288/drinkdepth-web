@@ -19,9 +19,10 @@ import {
   updateDoc,
   writeBatch,
 } from 'firebase/firestore';
+import { getDownloadURL, ref } from 'firebase/storage';
 import { getTestType } from '../combos';
 import { COUPON_COUNTER_ISSUED_ID, COUPON_COUNTER_USED_ID } from '../constants';
-import { auth, db } from './firebaseInit';
+import { auth, db, storage } from './firebaseInit';
 
 export const DB_CAFES = 'cafes';
 export const DB_MENUS = 'menus';
@@ -259,4 +260,50 @@ export const acceptCoupon = async ({ code }: { code: string }) => {
   });
 
   return usedCoupon;
+};
+
+export const getImageURLs = async (
+  prefix: string,
+  name: string,
+  subfix: string
+) => {
+  const sizes = ['240x240', '480x480', '960x960'] as const;
+
+  const urls = await Promise.all(
+    sizes.map((size) => {
+      const url = prefix + name + `_` + size + subfix;
+      console.log('url : ', url);
+
+      const imageRef = ref(storage, url);
+      return getDownloadURL(imageRef);
+    })
+  );
+
+  const images = urls.reduce((acc, cur, i) => {
+    const key = sizes[i];
+    acc[key] = cur;
+    return acc;
+  }, {} as any);
+  return images;
+};
+
+export const updateImages = async (
+  firestorePath: string,
+  prefix: string,
+  filename: string,
+  suffix: string
+) => {
+  const docRef = doc(db, firestorePath);
+  const docSnap = await getDoc(docRef);
+  const data: any = getDocData(docSnap);
+
+  console.log('data : ', data.name);
+
+  if (docSnap.exists()) {
+    // const prefix = 'images/menus/babacarmel/';
+    // const name = menu.category + ' - ' + menu.name;
+    // const suffix = '.jpg';
+    const images = await getImageURLs(prefix, filename, suffix);
+    updateDoc(docRef, { images });
+  }
 };
