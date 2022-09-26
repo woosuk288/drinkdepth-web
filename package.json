@@ -29,6 +29,7 @@
     "react-kakao-maps-sdk": "^1.1.1",
     "react-markdown": "^8.0.0",
     "react-number-format": "^4.9.1",
+    "react-qr-code": "^2.0.8",
     "react-query": "^3.39.1",
     "recoil": "^0.7.5"
   },

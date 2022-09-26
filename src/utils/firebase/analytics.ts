@@ -10,9 +10,9 @@ export async function getGA() {
   const yes = await isSupported();
 
   if (yes) {
-    console.info('google analytics 사용 가능.');
+    console.info('is supported');
   } else {
-    console.error('google analytics가 지원되지 않습니다.');
+    console.error('is not supported');
   }
 
   if (
@@ -21,7 +21,7 @@ export async function getGA() {
     window.location.hostname !== DOMAIN_LOCALHOST &&
     window.location.hostname !== DOMAIN_STAGE
   ) {
-    console.info('done GA.');
+    console.info('done. ', window.location.hostname);
     return getAnalytics(app);
   }
 }

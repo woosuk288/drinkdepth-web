@@ -8,6 +8,7 @@ import {
 
 import { useRouter } from 'next/router';
 import { useLayoutEffect, useState } from 'react';
+import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
 // import { updateImages } from 'src/utils/firebase/services';
 import { getLabelWithColor, getTestType } from '../utils/combos';
 
@@ -29,7 +30,7 @@ function Menu(item: CafeMenuType) {
     // updateImages(path, prefix, filename, suffix);
 
     router.push({
-      pathname: `${router.asPath}/menu/${item.id}`,
+      pathname: `${CAFE_PATH}/${item.cafeId}${MENU_PATH}/${item.id}`,
     });
   };
 

@@ -1,4 +1,4 @@
-import { List, Typography } from '@mui/material';
+import { Box, List, SxProps, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useMemo, useState } from 'react';
 import CategoryTabs from './CategoryTabs';
@@ -6,9 +6,10 @@ import Menu from './Menu';
 
 export type CafeMenusProps = {
   menus: CafeMenuType[];
+  sx?: SxProps;
 };
 
-function Menus({ menus }: CafeMenusProps) {
+function Menus({ menus, sx }: CafeMenusProps) {
   const router = useRouter();
   const [filteredMenus, setFilteredMenus] = useState(menus);
   const [tabIndex, setTabIndex] = React.useState(0);
@@ -43,7 +44,7 @@ function Menus({ menus }: CafeMenusProps) {
   }, [menus]);
 
   return (
-    <>
+    <Box sx={sx}>
       <Typography
         variant="h6"
         fontWeight="bold"
@@ -78,7 +79,7 @@ function Menus({ menus }: CafeMenusProps) {
 
         {/* <Divider variant="inset" component="li" /> */}
       </List>
-    </>
+    </Box>
   );
 }
 export default Menus;
