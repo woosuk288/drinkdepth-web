@@ -184,19 +184,14 @@ export const issueCoupon = async ({
   const result = runTransaction(db, async (tx) => {
     const counterRef = doc(db, DB_COUPONS, COUPON_COUNTER_ISSUED_ID);
     const counterDoc = await tx.get(counterRef);
-    const counter = getDocData<CouponCounterType>(counterDoc) ?? {
-      normal: 0,
-      smart: 0,
-      total: 0,
-    };
+    const counter = getDocData<CouponCounterType>(counterDoc);
 
     const type = getTestType();
 
-    const nextTotal = counter.total + 1;
-    const nextCounter: CouponCounterType = {
-      normal: type === 'normal' ? counter.normal + 1 : counter.normal,
-      smart: type === 'smart' ? counter.smart + 1 : counter.smart,
-      total: nextTotal,
+    const nextTotal = (counter?.total ?? 0) + 1;
+    const nextCounter = {
+      [type]: increment(1),
+      total: increment(1),
     };
     const nextCode = nextTotal.toString(10).padStart(6, '0');
 
@@ -233,19 +228,11 @@ export const acceptCoupon = async ({ code }: { code: string }) => {
     const couponDoc = await tx.get(couponRef);
     const coupon = getDocData<CouponType>(couponDoc);
 
-    const counterDoc = await tx.get(counterRef);
-    const counter = getDocData<CouponCounterType>(counterDoc) ?? {
-      normal: 0,
-      smart: 0,
-      total: 0,
-    };
     const type = getTestType();
 
-    const nextTotal = counter.total + 1;
-    const nextCounter: CouponCounterType = {
-      normal: type === 'normal' ? counter.normal + 1 : counter.normal,
-      smart: type === 'smart' ? counter.smart + 1 : counter.smart,
-      total: nextTotal,
+    const nextCounter = {
+      [type]: increment(1),
+      total: increment(1),
     };
 
     if (!coupon) {
@@ -283,7 +270,7 @@ export const getImageURLs = async (
     const key = sizes[i];
     acc[key] = cur;
     return acc;
-  }, {} as any);
+  }, {} as ImagesType);
   return images;
 };
 

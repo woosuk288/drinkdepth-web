@@ -18,6 +18,12 @@ type ReviewType = {
   uid: string;
 };
 
+type ImagesType = {
+  '240x240': string;
+  '480x480': string;
+  '960x960': string;
+};
+
 type CafeMenuType = {
   id: string;
   cafeId: string;
@@ -25,11 +31,7 @@ type CafeMenuType = {
   description: string;
   labels: string[];
   imageURL: string;
-  images?: {
-    '240x240': string;
-    '480x480': string;
-    '960x960': string;
-  };
+  images?: ImagesType;
   price: number;
   category: string;
   reviewCount: number;
@@ -40,14 +42,21 @@ type CafeMenuCategoryType = {
   value: string;
 };
 
+type CouponNameType =
+  | 'normal'
+  | 'smart'
+  | 'offline_qr'
+  | 'offline_qr_tablet'
+  | 'etc';
+
 type CouponType = {
   id?: string;
   code: string;
   // itemId: string;
   cafeId: string;
   customerId: string;
-  typeIssued: 'normal' | 'smart';
-  typeUsed?: 'normal' | 'smart';
+  typeIssued: CouponNameType;
+  typeUsed?: CouponNameType;
   isUsed: boolean;
   createdAt: Date | string;
 };

@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { ConfirmationResult, getAuth, RecaptchaVerifier } from 'firebase/auth';
-import { getAnalytics, isSupported } from 'firebase/analytics';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
@@ -18,7 +17,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
 
 const auth = getAuth(app);
 auth.useDeviceLanguage();
@@ -40,7 +38,7 @@ if (process.env.NODE_ENV !== 'production') {
   startEmulators();
 }
 
-export { app, auth, analytics, db, storage };
+export { app, auth, db, storage };
 export const useAuthFb = () => useAuthState(auth);
 
 declare global {

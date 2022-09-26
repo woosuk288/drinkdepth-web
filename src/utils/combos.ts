@@ -1,3 +1,10 @@
+import {
+  DOMAIN_DEFAULT,
+  DOMAIN_OFFLINE_QR,
+  DOMAIN_OFFLINE_QR_TABLET,
+  DOMAIN_WWW,
+} from './constants';
+
 export const labelFromOneToFive = (value: number) => {
   switch (value) {
     case 1:
@@ -35,8 +42,21 @@ export const valueFromLowToHigh = (label: string) => {
 export const getTestType = () => {
   const SMART = 'smart';
   const NORMAL = 'normal';
+  const OFFLINE_QR = 'offline_qr';
+  const OFFLINE_QR_TABLET = 'offline_qr_tablet';
 
-  const type = window.location.hostname === 'drinkdepth.com' ? NORMAL : SMART;
+  const hostname = window.location.hostname;
+
+  const type =
+    hostname === DOMAIN_DEFAULT
+      ? NORMAL
+      : hostname === DOMAIN_WWW
+      ? SMART
+      : hostname === DOMAIN_OFFLINE_QR
+      ? OFFLINE_QR
+      : hostname === DOMAIN_OFFLINE_QR_TABLET
+      ? OFFLINE_QR_TABLET
+      : 'etc';
   return type;
 };
 

@@ -1,19 +1,28 @@
 // [gtag.js 이벤트 참조] (https://developers.google.com/tag-platform/gtagjs/reference/events)
 
-import { logEvent } from 'firebase/analytics';
-import { analytics } from './firebaseInit';
+import { getAnalytics, isSupported, logEvent } from 'firebase/analytics';
+import { DOMAIN_LOCALHOST, DOMAIN_STAGE } from '../constants';
+import { app } from './firebaseInit';
 
 export async function getGA() {
-  if (!analytics) {
+  console.info(window.location.hostname);
+
+  const yes = await isSupported();
+
+  if (yes) {
+    console.info('google analytics 사용 가능.');
+  } else {
     console.error('google analytics가 지원되지 않습니다.');
   }
 
-  if (process.env.NODE_ENV !== 'production') {
-    console.info('ENV : ', process.env.NODE_ENV);
-  }
-
-  if (analytics && process.env.NODE_ENV === 'production') {
-    return analytics;
+  if (
+    yes &&
+    process.env.NODE_ENV === 'production' &&
+    window.location.hostname !== DOMAIN_LOCALHOST &&
+    window.location.hostname !== DOMAIN_STAGE
+  ) {
+    console.info('done GA.');
+    return getAnalytics(app);
   }
 }
 
