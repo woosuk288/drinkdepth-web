@@ -27,10 +27,7 @@ import {
 } from 'react-kakao-maps-sdk';
 import Meta from '../../src/common/Meta';
 import KakaoChat from '../../src/common/KakaoChat';
-import {
-  gaClickMarkerFromClusterer,
-  gaSelectContent,
-} from '../../src/utils/firebase/analytics';
+import TagManager from 'react-gtm-module';
 
 export type ChoiceType = {
   caffein: string[];
@@ -201,13 +198,22 @@ const PlacePage: NextPage = () => {
         setCoffeeDetail(coffee);
         setOpenDetail(true);
 
-        gaClickMarkerFromClusterer(coffee.name, coffee.branch.name);
+        TagManager.dataLayer({
+          dataLayer: {
+            event: 'mapMarkerClick',
+            cafeName: coffee.branch.name,
+            drinkName: coffee.name,
+            addressCity: coffee.branch.address.split(' ', 2).join(' '),
+          },
+        });
       });
       return marker;
     });
 
     // 클러스터러에 마커들을 추가합니다
     clustererRef.current?.addMarkers(markers);
+
+    // clustererRef.current.
   };
 
   const handleCloseDetail = () => {
@@ -224,8 +230,6 @@ const PlacePage: NextPage = () => {
     // open Dialog? image slide
     setCoffeeDetail(coffeeResult);
     setOpenImages(true);
-
-    gaSelectContent('image', coffeeResult.name);
   };
 
   const handleTextClick = (coffeeResult: CoffeeResultType) => {
@@ -237,8 +241,6 @@ const PlacePage: NextPage = () => {
     // console.log(`     "addressY" : "${info.y}", "addressX" : "${info.x}",`);
     setCoffeeDetail(coffeeResult);
     setOpenDetail(true);
-
-    gaSelectContent('content', coffeeResult.name);
   };
 
   const handleGPSClick = () => {
@@ -299,6 +301,8 @@ const PlacePage: NextPage = () => {
           >
             {/* 대량의 마커 표시 및 삭제 마다 렉이 크게 발생하여 함수에서 따로 처리 */}
           </MarkerClusterer>
+
+          {/* 내 위치 표시 */}
           {myCoordi && (
             <MapMarker // 마커를 생성합니다
               position={{ lat: myCoordi.y, lng: myCoordi.x }}

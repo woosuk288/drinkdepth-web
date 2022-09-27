@@ -12,7 +12,7 @@ import KakaoChat from '../../src/cafe/lnading/KakaoChat';
 import { GetStaticProps } from 'next';
 import SectionIntro from '../../src/cafe/lnading/SectionIntro';
 import SectionServey from '../../src/cafe/lnading/SectionSurvey';
-import { gaSelectPromotion } from '../../src/utils/firebase/analytics';
+
 import { useRecoilState } from 'recoil';
 import { landingFormState } from '../../atoms/landingFormAtom';
 
@@ -49,8 +49,6 @@ function LandingPage() {
   };
 
   const clickPromotion = (name: string) => {
-    gaSelectPromotion('cafe_menu', window.location.origin, name);
-
     const nextApplyBtn = name === '메뉴판 신청하기';
     const nextMoneyBtn = name === '100만원 상당';
 

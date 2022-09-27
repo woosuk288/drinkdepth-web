@@ -66,10 +66,12 @@ function CoffeeResultList({
         <ListItem
           key={coffeeResult.id + coffeeResult.branch.address}
           alignItems="flex-start"
+          onClick={() => handleTextClick(coffeeResult)}
+          className="gtm-coffeeResultListItem"
         >
           <ListItemAvatar
             sx={{ marginRight: '1rem' }}
-            onClick={() => handleImageClick(coffeeResult)}
+            // onClick={() => handleImageClick(coffeeResult)}
           >
             <Box sx={{ width: 96, height: 96 }}>
               <LazyImage
@@ -84,7 +86,7 @@ function CoffeeResultList({
             </Box>
           </ListItemAvatar>
           <ListItemText
-            onClick={() => handleTextClick(coffeeResult)}
+            // onClick={() => handleTextClick(coffeeResult)}
             primary={coffeeResult.branch.name}
             secondary={
               <React.Fragment>

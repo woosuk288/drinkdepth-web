@@ -23,7 +23,11 @@ function MenuInfo({ menu }: { menu: CafeMenuType }) {
   return (
     <div>
       <Box sx={sxSquareImg}>
-        <img className="img" src={menu.imageURL} alt={menu.description} />
+        <img
+          className="img"
+          src={menu.images?.['960x960'] || menu.imageURL}
+          alt={menu.description}
+        />
       </Box>
 
       <Box sx={{ padding: '2rem' }}>

@@ -11,8 +11,9 @@ import GlobalStyle from '../src/styles/GlobalStyle';
 import Script from 'next/script';
 
 import { QueryClientProvider, QueryClient } from 'react-query';
-import { getGA } from '../src/utils/firebase/analytics';
 import { RecoilRoot } from 'recoil';
+
+import TagManager from 'react-gtm-module';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -32,11 +33,15 @@ interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
+const tagManagerArgs = {
+  gtmId: process.env.NEXT_PUBLIC_GTM_ID!,
+};
+
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   React.useEffect(() => {
-    getGA();
+    TagManager.initialize(tagManagerArgs);
   }, []);
 
   return (

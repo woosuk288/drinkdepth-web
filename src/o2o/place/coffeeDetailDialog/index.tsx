@@ -17,7 +17,6 @@ import BeanTable from './BeanTable';
 import SellerAndBranch from './SellerAndBranch';
 import { KakaoShareButton } from '../../../common/KakaoShareButton';
 import proj4 from 'proj4';
-import { gaClickNaverMap, gaShare } from '../../../utils/firebase/analytics';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -59,23 +58,6 @@ export default function AlertDialogSlide({
     anchor.click();
   };
 
-  const ClickLocationIcon = () => {
-    handleOpenNaverMap();
-    gaClickNaverMap(
-      'click_icon_navermap',
-      coffeeDetail.name,
-      coffeeDetail.branch.name
-    );
-  };
-
-  const handleShareClick = () => {
-    gaShare(
-      'Kakao',
-      'image',
-      `${coffeeDetail.name} - ${coffeeDetail.branch.name}`
-    );
-  };
-
   return (
     <div>
       <Dialog
@@ -86,6 +68,7 @@ export default function AlertDialogSlide({
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
+        className="gtm-detailByMarkerClick"
       >
         <DialogTitle sx={{ display: 'flex', alignItems: 'center' }}>
           <Avatar
@@ -102,7 +85,8 @@ export default function AlertDialogSlide({
           <IconButton
             color="primary"
             sx={{ padding: 0 }}
-            onClick={ClickLocationIcon}
+            onClick={handleOpenNaverMap}
+            className="gtm-navigation-icon"
           >
             <LocationOnIcon fontSize="large" />
           </IconButton>
@@ -188,11 +172,7 @@ export default function AlertDialogSlide({
 
           <span style={{ flex: 1 }}></span>
 
-          <Box
-            id="kakao-link-btn"
-            sx={{ display: 'flex', cursor: 'pointer' }}
-            onClick={handleShareClick}
-          >
+          <Box id="kakao-link-btn" sx={{ display: 'flex', cursor: 'pointer' }}>
             <KakaoShareButton url={'https://drinkdepth.com/o2o'} />
             <Typography
               // variant="h6"

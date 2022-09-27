@@ -4,9 +4,7 @@ import { BranchType, SellerType } from '../../../../pages/o2o/place';
 
 import styled from '@emotion/styled';
 import proj4 from 'proj4';
-import { makeNaverMapURL } from '.';
 import LazyImage from '../../../common/LazyImage';
-import { gaClickNaverMap } from '../../../utils/firebase/analytics';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 type SellerAndBranchProps = {
@@ -24,11 +22,6 @@ function SellerAndBranch({
 }: SellerAndBranchProps) {
   const lat = parseFloat(branch.addressY);
   const lng = parseFloat(branch.addressX);
-
-  const ClickMapMarker = () => {
-    handleOpenNaverMap();
-    gaClickNaverMap('click_text_navermap', coffeeName, branch.name);
-  };
 
   return (
     <Box sx={{ my: '2rem' }}>
@@ -75,10 +68,11 @@ function SellerAndBranch({
           center={{ lat, lng }}
           style={{ aspectRatio: '1 / 1' }}
         >
-          <MapMarker position={{ lat, lng }} onClick={ClickMapMarker}>
+          <MapMarker position={{ lat, lng }}>
             <div
               style={{ width: '150px', textAlign: 'center', cursor: 'pointer' }}
-              onClick={ClickMapMarker}
+              onClick={handleOpenNaverMap}
+              className="gtm-navigation-text"
             >
               길찾기
             </div>
