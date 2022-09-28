@@ -14,7 +14,6 @@ import * as fbq from '../../../facebook/fpixel';
 import { useMutation } from 'react-query';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../utils/firebase/firebaseInit';
-import { gaSignUp } from '../../utils/firebase/analytics';
 
 import { useRecoilState } from 'recoil';
 import { landingFormState } from '../../../atoms/landingFormAtom';
@@ -67,8 +66,6 @@ const Register = () => {
         onSuccess: (data) => {
           setOpen(true);
           setContactInfo(initContactInfo);
-
-          gaSignUp('temporary form');
         },
       }
     );
