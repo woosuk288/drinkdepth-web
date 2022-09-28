@@ -15,6 +15,7 @@ import {
   QuerySnapshot,
   runTransaction,
   serverTimestamp,
+  setDoc,
   startAfter,
   updateDoc,
   writeBatch,
@@ -293,4 +294,13 @@ export const updateImages = async (
     const images = await getImageURLs(prefix, filename, suffix);
     updateDoc(docRef, { images });
   }
+};
+
+export const createMenu = async (menu: CafeMenuType, images: ImagesType) => {
+  const { id, ...data } = menu;
+
+  const docRef = doc(db, DB_CAFES, data.cafeId, DB_MENUS, id);
+  setDoc(docRef, { ...data, images });
+
+  return '완료';
 };

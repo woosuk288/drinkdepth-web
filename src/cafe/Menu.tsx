@@ -9,7 +9,7 @@ import {
 import { useRouter } from 'next/router';
 import { useLayoutEffect, useState } from 'react';
 import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
-// import { updateImages } from 'src/utils/firebase/services';
+
 import { getLabelWithColor, getTestType } from '../utils/combos';
 
 function Menu(item: CafeMenuType) {
@@ -23,12 +23,6 @@ function Menu(item: CafeMenuType) {
   }, []);
 
   const handleClick = () => {
-    // const path = `cafes/${item.cafeId}/menus/${item.id}`;
-    // const prefix = 'images/menus/babacarmel/';
-    // const filename = '';
-    // const suffix = '.jpg';
-    // updateImages(path, prefix, filename, suffix);
-
     router.push({
       pathname: `${CAFE_PATH}/${item.cafeId}${MENU_PATH}/${item.id}`,
     });

@@ -1,5 +1,4 @@
 import { Box, List, SxProps, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
 import React, { useMemo, useState } from 'react';
 import CategoryTabs from './CategoryTabs';
 import Menu from './Menu';
@@ -10,7 +9,6 @@ export type CafeMenusProps = {
 };
 
 function Menus({ menus, sx }: CafeMenusProps) {
-  const router = useRouter();
   const [filteredMenus, setFilteredMenus] = useState(menus);
   const [tabIndex, setTabIndex] = React.useState(0);
 
