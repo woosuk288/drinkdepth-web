@@ -27,7 +27,11 @@ import { getTestType } from '../utils/combos';
 import { sxSquareImg } from '../styles/GlobalSx';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
 import { PATH_AFTER_LOGIN } from '../utils/constants';
-import { DB_COUPONS, issueCoupon } from 'src/utils/firebase/services';
+import {
+  DB_COUPONS,
+  issueCoupon,
+  checkOpenCoupon,
+} from 'src/utils/firebase/services';
 import { FirebaseError } from 'firebase/app';
 
 export type CafeInfoProps = {
@@ -69,6 +73,12 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   const mutation = useMutation(issueCoupon);
 
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (open && coupon?.code) {
+      checkOpenCoupon(coupon?.code);
+    }
+  }, [open, coupon?.code]);
 
   const handleOpenNaverMap = () => {
     const p = proj4('EPSG:4326', 'EPSG:3857');

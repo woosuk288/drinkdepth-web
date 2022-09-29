@@ -221,6 +221,27 @@ export const issueCoupon = async ({
   return result;
 };
 
+export const checkOpenCoupon = async (code: string) => {
+  const couponRef = doc(db, DB_COUPONS, code);
+
+  const type = getTestType();
+
+  runTransaction(db, async (tx) => {
+    const couponDoc = await tx.get(couponRef);
+    const coupon = getDocData<CouponType>(couponDoc);
+
+    if (!coupon) {
+      throw '등록되지 않은 코드 입니다.';
+    } else if (coupon.isUsed === true) {
+      throw '이미 사용한 코드 입니다.';
+    } else {
+      await tx.update(couponRef, { typeUsed: type });
+    }
+  });
+
+  return;
+};
+
 export const acceptCoupon = async ({ code }: { code: string }) => {
   const couponRef = doc(db, DB_COUPONS, code);
   const counterRef = doc(db, DB_COUPONS, COUPON_COUNTER_USED_ID);
@@ -229,19 +250,17 @@ export const acceptCoupon = async ({ code }: { code: string }) => {
     const couponDoc = await tx.get(couponRef);
     const coupon = getDocData<CouponType>(couponDoc);
 
-    const type = getTestType();
-
-    const nextCounter = {
-      [type]: increment(1),
-      total: increment(1),
-    };
-
     if (!coupon) {
       throw '등록되지 않은 코드 입니다.';
     } else if (coupon.isUsed === true) {
       throw '이미 사용한 코드 입니다.';
     } else {
-      tx.update(couponRef, { isUsed: true, typeUsed: type });
+      const nextCounter = {
+        [coupon.typeUsed!]: increment(1),
+        total: increment(1),
+      };
+
+      tx.update(couponRef, { isUsed: true });
       tx.set(counterRef, nextCounter, { merge: true });
       return '쿠폰 사용 완료!';
     }
