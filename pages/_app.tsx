@@ -33,15 +33,13 @@ interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
-const tagManagerArgs = {
-  gtmId: process.env.NEXT_PUBLIC_GTM_ID!,
-};
-
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   React.useEffect(() => {
-    TagManager.initialize(tagManagerArgs);
+    process.env.NEXT_PUBLIC_GTM_ID
+      ? TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID })
+      : console.warn(process.env.NEXT_PUBLIC_GTM_ID);
   }, []);
 
   return (
