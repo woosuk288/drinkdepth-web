@@ -3,6 +3,10 @@ import {
   DOMAIN_OFFLINE_QR,
   DOMAIN_OFFLINE_QR_TABLET,
   DOMAIN_WWW,
+  NORMAL,
+  OFFLINE_QR,
+  OFFLINE_QR_TABLET,
+  SMART,
 } from './constants';
 
 export const labelFromOneToFive = (value: number) => {
@@ -40,11 +44,6 @@ export const valueFromLowToHigh = (label: string) => {
 };
 
 export const getTestType = () => {
-  const SMART = 'smart';
-  const NORMAL = 'normal';
-  const OFFLINE_QR = 'offline_qr';
-  const OFFLINE_QR_TABLET = 'offline_qr_tablet';
-
   const hostname = window.location.hostname;
 
   const type =

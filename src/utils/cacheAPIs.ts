@@ -1,6 +1,6 @@
 import path from 'path';
 import { readFile, writeFile } from 'fs/promises';
-import { DB_CAFES, DB_MENUS, fetchAllMenus } from './firebase/services';
+import { DB_MENUS, fetchAllMenus, fetchCafeMenu } from './firebase/services';
 
 const readCacheDB = async <T>(name: string) => {
   try {
@@ -14,39 +14,41 @@ const readCacheDB = async <T>(name: string) => {
   }
 };
 
-// export const apiCafeCache = {
-//   list: async () => {
-//     const cafes = await readCacheDB<CafeType>(DB_MENUS);
-//     return cafes;
-//   },
-//   get: async (id: string): Promise<CafeType | null | undefined> => {
-//     const cafes = await readCacheDB<CafeType>(DB_MENUS);
-//     return cafes.find((cafe) => cafe.id === id);
-//   },
-//   set: async (cafes: CafeType[]) => {
-//     return await writeFile(
-//       path.join(process.cwd(), `${DB_CAFES}.db`),
-//       JSON.stringify(cafes)
-//     );
-//   },
-// };
+export const menuApi = {
+  list: async () => {
+    const menus = await readCacheDB<CafeMenuType>(DB_MENUS);
+    if (process.env.NODE_ENV !== 'production' && menus) {
+      return menus;
+    }
 
-export const apiMenuCache = {
-  list: async (): Promise<CafeMenuType[] | null | undefined> => {
-    const menus = await readCacheDB<CafeMenuType>(DB_MENUS);
-    return menus;
+    return fetchAllMenus();
   },
-  get: async (
-    cafeId: CafeMenuType['cafeId'],
-    menuId: CafeMenuType['id']
-  ): Promise<CafeMenuType | null | undefined> => {
-    const menus = await readCacheDB<CafeMenuType>(DB_MENUS);
-    return menus?.find((menu) => menu.id === menuId && menu.cafeId === cafeId);
+  fetch: async (cafeId: string, menuId: string) => {
+    return fetchCafeMenu(cafeId, menuId);
   },
-  set: async (menus: CafeMenuType[]) => {
-    return await writeFile(
-      path.join(process.cwd(), `${DB_MENUS}.db`),
-      JSON.stringify(menus)
-    );
+  cache: {
+    get: async (
+      cafeId: string,
+      menuId: string
+    ): Promise<CafeMenuType | null | undefined> => {
+      const menus = await readCacheDB<CafeMenuType>(DB_MENUS);
+      return menus?.find(
+        (menus) => menus.id === menuId && menus.cafeId === cafeId
+      );
+    },
+    set: async (menus: CafeMenuType[]) => {
+      return await writeFile(
+        path.join(process.cwd(), `${DB_MENUS}.db`),
+        JSON.stringify(menus)
+      );
+    },
+    getByCafeId: async (cafeId: string) => {
+      const menus = await readCacheDB<CafeMenuType>(DB_MENUS);
+      return menus?.find((menu) => menu.cafeId === cafeId);
+    },
+    all: async () => {
+      const menus = await readCacheDB<CafeMenuType>(DB_MENUS);
+      return menus;
+    },
   },
 };

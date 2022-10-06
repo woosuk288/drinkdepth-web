@@ -11,12 +11,13 @@ import { getLabelWithColor, getTestType } from '../utils/combos';
 
 import MenuReview from './MenuReview';
 import { sxSquareImg } from '../styles/GlobalSx';
+import { NORMAL } from 'src/utils/constants';
 
 function MenuInfo({ menu }: { menu: CafeMenuType }) {
   const [isSmartMenu, setIsSmartMenu] = useState(false);
 
   useLayoutEffect(() => {
-    const isSmart = getTestType() === 'smart';
+    const isSmart = getTestType() !== NORMAL;
     setIsSmartMenu(isSmart);
   }, []);
 

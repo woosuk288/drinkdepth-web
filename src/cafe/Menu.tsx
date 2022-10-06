@@ -6,30 +6,29 @@ import {
   Typography,
 } from '@mui/material';
 
-import { useRouter } from 'next/router';
 import { useLayoutEffect, useState } from 'react';
+import { NextLinkComposed } from 'src/common/Link';
+import { NORMAL } from 'src/utils/constants';
 import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
 
 import { getLabelWithColor, getTestType } from '../utils/combos';
 
 function Menu(item: CafeMenuType) {
-  const router = useRouter();
-
   const [isSmartMenu, setIsSmartMenu] = useState(false);
 
   useLayoutEffect(() => {
-    const isSmart = getTestType() === 'smart';
+    const isSmart = getTestType() !== NORMAL;
     setIsSmartMenu(isSmart);
   }, []);
 
-  const handleClick = () => {
-    router.push({
-      pathname: `${CAFE_PATH}/${item.cafeId}${MENU_PATH}/${item.id}`,
-    });
-  };
-
   return (
-    <ListItem key={item.id} alignItems="flex-start" onClick={handleClick}>
+    <ListItem
+      key={item.id}
+      alignItems="flex-start"
+      component={NextLinkComposed}
+      to={`${CAFE_PATH}/${item.cafeId}${MENU_PATH}/${item.id}`}
+      sx={{ color: 'inherit' }}
+    >
       {/* <IconButton sx={{ position: 'absolute', left: 0, zIndex: 100 }}>
         <FavoriteBorderIcon />
       </IconButton> */}

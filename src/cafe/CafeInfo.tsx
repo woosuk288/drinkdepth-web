@@ -9,12 +9,9 @@ import proj4 from 'proj4';
 import { db } from '../utils/firebase/firebaseInit';
 import {
   collection,
-  doc,
   limit,
   onSnapshot,
   query,
-  runTransaction,
-  serverTimestamp,
   where,
 } from 'firebase/firestore';
 
@@ -23,7 +20,6 @@ import { useMutation } from 'react-query';
 import CouponDialog from './CouponDialog';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthUserContext';
-import { getTestType } from '../utils/combos';
 import { sxSquareImg } from '../styles/GlobalSx';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
 import { PATH_AFTER_LOGIN } from '../utils/constants';
