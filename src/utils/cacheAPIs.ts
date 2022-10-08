@@ -39,7 +39,7 @@ export const menuApi = {
     set: async (menus: CafeMenuType[]) => {
       return await writeFile(
         path.join(process.cwd(), `${DB_MENUS}.db`),
-        JSON.stringify(menus)
+        JSON.stringify(menus, null, 2)
       );
     },
     getByCafeId: async (cafeId: string) => {

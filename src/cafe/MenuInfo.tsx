@@ -1,8 +1,13 @@
 import styled from '@emotion/styled';
 import {
+  Avatar,
   Box,
   ImageListItem,
   ImageListItemBar,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
   Typography,
 } from '@mui/material';
 import { useLayoutEffect, useState } from 'react';
@@ -78,6 +83,41 @@ function MenuInfo({ menu }: { menu: CafeMenuType }) {
         <Typography sx={{ color: 'red' }}>
           {menu.price.toLocaleString()}
         </Typography>
+      </Box>
+
+      <Box>
+        <Typography
+          variant="h6"
+          fontWeight="bold"
+          align="center"
+          sx={{ marginTop: '2rem' }}
+        >
+          {menu.cafeId + "'s TIP"}
+        </Typography>
+        <Typography align="center" sx={{ marginTop: '1rem', paddingX: '1rem' }}>
+          {menu.ownerComment}
+        </Typography>
+        {/* <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar
+                alt={menu.cafeId.toUpperCase()}
+                src="/static/images/avatar/1.jpg"
+              />
+            </ListItemAvatar>
+            <ListItemText
+              sx={
+                {
+                  // '& > .MuiListItemText-primary': { fontSize: '18px' },
+                  // '& > .MuiListItemText-secondary': { fontSize: '16px' },
+                }
+              }
+              // primary={menu.cafeId}
+              // secondary="상쾌함이 있는 커피와 조합된 시그니처 음료 입니다."
+              primary="상쾌함이 있는 커피와 조합된 시그니처 음료 입니다."
+            />
+          </ListItem>
+        </List> */}
       </Box>
 
       <Box

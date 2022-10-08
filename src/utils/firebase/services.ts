@@ -315,6 +315,10 @@ export const updateImages = async (
   }
 };
 
+//
+// 관리용
+//
+
 export const createMenu = async (menu: CafeMenuType, images: ImagesType) => {
   const { id, ...data } = menu;
 
@@ -322,4 +326,15 @@ export const createMenu = async (menu: CafeMenuType, images: ImagesType) => {
   setDoc(docRef, { ...data, images });
 
   return '완료';
+};
+
+export const batchUpdate = async (data: any[]) => {
+  const batch = writeBatch(db);
+
+  data.forEach((item) => {
+    const docRef = doc(db, DB_CAFES, 'babacarmel', DB_MENUS, item.id);
+    batch.update(docRef, { ownerComment: item.ownerComment });
+  });
+
+  await batch.commit();
 };

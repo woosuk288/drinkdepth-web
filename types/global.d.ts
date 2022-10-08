@@ -35,6 +35,7 @@ type CafeMenuType = {
   price: number;
   category: string;
   reviewCount: number;
+  ownerComment?: string;
 };
 
 type CafeMenuCategoryType = {
