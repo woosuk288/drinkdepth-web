@@ -10,7 +10,7 @@ import MenuInfo from 'src/cafe/MenuInfo';
 import { AuthUserProvider } from 'src/context/AuthUserContext';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
-const MenuDetailPage: NextPage<Props> = ({ menu }) => {
+const MenuDetailPage: NextPage<Props> = ({ menu, pairingMenus }) => {
   const metaData = {
     title: `메뉴 설명 | ${menu.name}`,
     description: menu.description,
@@ -23,7 +23,7 @@ const MenuDetailPage: NextPage<Props> = ({ menu }) => {
       <Meta data={metaData} />
       <AuthUserProvider>
         <CafeHeader title={menu.name} />
-        <MenuInfo menu={menu} />
+        <MenuInfo menu={menu} pairingMenus={pairingMenus} />
       </AuthUserProvider>
     </Container>
   );
@@ -33,6 +33,7 @@ export default MenuDetailPage;
 export type Props = {
   // cafe: CafeType;
   menu: CafeMenuType;
+  pairingMenus?: CafeMenuType[];
 };
 
 interface Params extends ParsedUrlQuery {
@@ -75,9 +76,17 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
     };
   }
 
+  // pairingMenus
+  const cafeMenus = await menuApi.cache.getByCafeId(cafe_id);
+  const pairingMenus = cafeMenus?.filter((cafeMenu) =>
+    menu?.pairingMenus?.includes(cafeMenu.id)
+  );
+  console.log('pairingMenus : ', pairingMenus);
+
   return {
     props: {
       menu,
+      pairingMenus,
     },
 
     revalidate: 1800,

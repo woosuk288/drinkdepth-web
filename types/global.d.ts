@@ -36,6 +36,7 @@ type CafeMenuType = {
   category: string;
   reviewCount: number;
   ownerComment?: string;
+  pairingMenus?: string[];
 };
 
 type CafeMenuCategoryType = {

@@ -6,6 +6,8 @@ const readCacheDB = async <T>(name: string) => {
   try {
     const data = await readFile(path.join(process.cwd(), `${name}.db`));
     const list: T[] = JSON.parse(data as unknown as string);
+    console.info(`Hit ${name}`);
+
     return list;
   } catch (error) {
     console.info(`No cache ${name}.db`);
@@ -16,6 +18,7 @@ const readCacheDB = async <T>(name: string) => {
 
 export const menuApi = {
   list: async () => {
+    // 개발 테스트용
     const menus = await readCacheDB<CafeMenuType>(DB_MENUS);
     if (process.env.NODE_ENV !== 'production' && menus) {
       return menus;
@@ -44,7 +47,7 @@ export const menuApi = {
     },
     getByCafeId: async (cafeId: string) => {
       const menus = await readCacheDB<CafeMenuType>(DB_MENUS);
-      return menus?.find((menu) => menu.cafeId === cafeId);
+      return menus?.filter((menu) => menu.cafeId === cafeId);
     },
     all: async () => {
       const menus = await readCacheDB<CafeMenuType>(DB_MENUS);

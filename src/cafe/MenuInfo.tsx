@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import {
   Avatar,
   Box,
+  Button,
+  IconButton,
   ImageListItem,
   ImageListItemBar,
   List,
@@ -10,6 +12,9 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
+
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+
 import { useLayoutEffect, useState } from 'react';
 import LazyImage from '../common/LazyImage';
 import { getLabelWithColor, getTestType } from '../utils/combos';
@@ -18,13 +23,27 @@ import MenuReview from './MenuReview';
 import { sxSquareImg } from '../styles/GlobalSx';
 import { NORMAL } from 'src/utils/constants';
 
-function MenuInfo({ menu }: { menu: CafeMenuType }) {
+function MenuInfo({
+  menu,
+  pairingMenus,
+}: {
+  menu: CafeMenuType;
+  pairingMenus?: CafeMenuType[];
+}) {
   const [isSmartMenu, setIsSmartMenu] = useState(false);
+  const [showMorePair, setShowMorePair] = useState(false);
 
   useLayoutEffect(() => {
     const isSmart = getTestType() !== NORMAL;
     setIsSmartMenu(isSmart);
   }, []);
+
+  // const shuffledMenus = shuffle<CafeMenuType>(pairingMenus?? []);
+  const sortedPairingMenus = (pairingMenus ?? [])
+    .map((menu) => menu)
+    .sort((a, b) => (a.images?.['240x240'] ? -1 : 1));
+
+  const displayPairsLength = showMorePair ? (pairingMenus ?? []).length : 4;
 
   return (
     <div>
@@ -134,13 +153,42 @@ function MenuInfo({ menu }: { menu: CafeMenuType }) {
           추천 궁합
         </Typography>
         <RoasteryImagesWrapper>
-          {pairingMenus.map((pairingMenu, key) => (
-            <ImageListItem key={key}>
-              <LazyImage src={pairingMenu.imageURL} />
-              <ImageListItemBar title={pairingMenu.name} />
-            </ImageListItem>
-          ))}
+          {sortedPairingMenus
+            ?.slice(0, displayPairsLength)
+            .map((pairingMenu, key) => (
+              <ImageListItem key={key}>
+                <LazyImage
+                  src={
+                    pairingMenu.images?.['240x240'] ||
+                    '/images/logo_name_vertical.png'
+                  }
+                />
+                <ImageListItemBar title={pairingMenu.name} />
+              </ImageListItem>
+            ))}
         </RoasteryImagesWrapper>
+        {sortedPairingMenus.length > 4 && (
+          <div
+            style={{
+              marginTop: '-32px',
+              marginBottom: '20px',
+              textAlign: 'center',
+            }}
+          >
+            {showMorePair ? (
+              <IconButton onClick={() => setShowMorePair(() => !showMorePair)}>
+                <ExpandLessIcon />
+              </IconButton>
+            ) : (
+              <Button
+                color="inherit"
+                onClick={() => setShowMorePair(() => !showMorePair)}
+              >
+                더 보기
+              </Button>
+            )}
+          </div>
+        )}
       </Box>
 
       <MenuReview
@@ -180,38 +228,37 @@ const RoasteryImagesWrapper = styled.div`
   grid-gap: 20px;
   justify-content: center;
 
-  & > img {
+  & img {
     border-radius: 0.5rem;
+    height: 200px;
   }
 
   @media (max-width: 900px) {
     display: grid;
-    grid-template-columns: repeat(2, minmax(168px, 300px));
+    /* grid-template-columns: repeat(2, minmax(168px, 300px)); */
+    grid-template-columns: repeat(2, minmax(168px, 168px));
     grid-auto-flow: unset;
-    grid-template-rows: repeat(2, minmax(168px, 1fr));
+    /* grid-template-rows: repeat(2, minmax(168px, 1fr)); */
+    grid-template-rows: repeat(2, minmax(168px, 168px));
     grid-gap: 8px;
+
+    & img {
+      height: 160px;
+    }
   }
 `;
 
-const pairingMenus = [
-  {
-    name: '크루아상 센드위치',
-    imageURL:
-      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220527_195%2F1653632505388lV5Al_JPEG%2F04009EE0-4DE0-4C4A-8A60-F0EF4A52C349.jpeg',
-  },
-  {
-    name: '레몬 타코타치즈 케이크',
-    imageURL:
-      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220527_112%2F16536328265160BwhU_JPEG%2FB19778C9-B311-47E8-A416-4EEB256205BB.jpeg',
-  },
-  {
-    name: '플레인 크로플',
-    imageURL:
-      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220527_279%2F1653632749019LpKCl_JPEG%2F9F56D59B-3927-483E-9530-0137C2AB5198.jpeg',
-  },
-  {
-    name: '브라운치즈 크로플',
-    imageURL:
-      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220527_145%2F1653632772543vNQWz_JPEG%2F6D5A8DB3-3D18-4AE1-A051-F2F61966B8FC.jpeg',
-  },
-];
+// 출처: https://7942yongdae.tistory.com/96 [프로그래머 YD:티스토리]
+// function shuffle<T>(array: T[]) {
+//   const resultArray = array.map(item => item);
+//   for (let index = resultArray.length - 1; index > 0; index--) {
+//     // 무작위 index 값을 만든다. (0 이상의 배열 길이 값)
+//     const randomPosition = Math.floor(Math.random() * (index + 1));
+
+//     // 임시로 원본 값을 저장하고, randomPosition을 사용해 배열 요소를 섞는다.
+//     const temporary = resultArray[index];
+//     resultArray[index] = resultArray[randomPosition];
+//     resultArray[randomPosition] = temporary;
+//   }
+//   return resultArray;
+// }
