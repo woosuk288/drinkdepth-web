@@ -2,6 +2,7 @@ type CafeType = {
   id: string;
   name: string;
   imageURL: string;
+  imageURLs?: string[];
   introduce: string;
   address: string;
   addressY: string;

@@ -26,7 +26,7 @@ import { auth } from '../utils/firebase/firebaseInit';
 import { signOut } from 'firebase/auth';
 import { useAuth } from '../context/AuthUserContext';
 import { CAFE_PATH, OATUH_LOGIN_PATH } from '../utils/routes';
-import { PATH_AFTER_LOGIN } from '../utils/constants';
+import { DOMAIN_OFFLINE_QR_TABLET, PATH_AFTER_LOGIN } from '../utils/constants';
 
 const pages = [
   // {
@@ -54,6 +54,11 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
   const router = useRouter();
 
   const { user } = useAuth();
+
+  const hostname =
+    typeof window !== 'undefined' && window.location.hostname
+      ? window.location.hostname
+      : '';
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -130,54 +135,58 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
           </Typography>
 
           <IconButton style={{ minWidth: 48 }} />
-          <Drawer
-            anchor={'left'}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-          >
-            <Toolbar />
-            <Divider />
-            <List sx={{ width: 250 }}>
-              {pages.map((page) => (
-                <ListItem
-                  key={page.name}
-                  disablePadding
-                  onClick={() =>
-                    handleListItemClick(page.link + '/' + router.query.cafe_id)
-                  }
-                >
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <page.icon />
-                    </ListItemIcon>
-                    <ListItemText primary={page.name} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
+          {hostname !== DOMAIN_OFFLINE_QR_TABLET && (
+            <Drawer
+              anchor={'left'}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+            >
+              <Toolbar />
+              <Divider />
+              <List sx={{ width: 250 }}>
+                {pages.map((page) => (
+                  <ListItem
+                    key={page.name}
+                    disablePadding
+                    onClick={() =>
+                      handleListItemClick(
+                        page.link + '/' + router.query.cafe_id
+                      )
+                    }
+                  >
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <page.icon />
+                      </ListItemIcon>
+                      <ListItemText primary={page.name} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
 
-            <Toolbar>
-              {user ? (
-                <Button
-                  fullWidth
-                  color="error"
-                  sx={{ marginTop: '2rem' }}
-                  onClick={handleLogout}
-                >
-                  로그아웃
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  fullWidth
-                  sx={{ marginTop: '2rem' }}
-                  onClick={handleLogin}
-                >
-                  로그인
-                </Button>
-              )}
-            </Toolbar>
-          </Drawer>
+              <Toolbar>
+                {user ? (
+                  <Button
+                    fullWidth
+                    color="error"
+                    sx={{ marginTop: '2rem' }}
+                    onClick={handleLogout}
+                  >
+                    로그아웃
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    sx={{ marginTop: '2rem' }}
+                    onClick={handleLogin}
+                  >
+                    로그인
+                  </Button>
+                )}
+              </Toolbar>
+            </Drawer>
+          )}
         </Box>
       </Toolbar>
     </AppBar>

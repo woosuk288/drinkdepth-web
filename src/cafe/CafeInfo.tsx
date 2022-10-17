@@ -29,6 +29,7 @@ import {
   checkOpenCoupon,
 } from 'src/utils/firebase/services';
 import { FirebaseError } from 'firebase/app';
+import BannerCarousel from './tablet/BannerCarousel';
 
 export type CafeInfoProps = {
   cafe: CafeType;
@@ -131,9 +132,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
 
   return (
     <>
-      <Box sx={sxSquareImg}>
-        <img className="img" src={cafe.imageURL} alt={cafe.name} />
-      </Box>
+      <BannerCarousel imageURLs={cafe.imageURLs} />
 
       <Box
         sx={{

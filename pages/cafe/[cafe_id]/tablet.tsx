@@ -13,6 +13,8 @@ import {
 import { CAFE_PATH } from 'src/utils/routes';
 
 import CouponWIthQR from 'src/cafe/tablet/CouponWIthQR';
+import BannerCarousel from 'src/cafe/tablet/BannerCarousel';
+import CafeHeader from 'src/cafe/Header';
 
 const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
@@ -31,8 +33,8 @@ const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
       <Meta data={metaData} />
 
       <AuthUserProvider>
-        {/* <CafeHeader title={cafe.name} /> */}
-        {/* <CafeInfo cafe={cafe} /> */}
+        <CafeHeader title={cafe.name} />
+        <BannerCarousel imageURLs={cafe.imageURLs} />
         <CouponWIthQR cafeId={cafe.id} />
         <Menus
           menus={menus}

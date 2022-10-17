@@ -25,7 +25,7 @@ function CouponWIthQR({ cafeId }: CouponWIthQRProps) {
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: 'center', margin: '3rem 0' }}>
       <Button
         sx={{
           width: '50%',
