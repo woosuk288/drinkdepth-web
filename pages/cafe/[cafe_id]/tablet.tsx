@@ -11,7 +11,8 @@ import {
   fetchCafes,
 } from 'src/utils/firebase/services';
 import { CAFE_PATH } from 'src/utils/routes';
-import TabletQR from 'src/cafe/TabletQR';
+
+import CouponWIthQR from 'src/cafe/tablet/CouponWIthQR';
 
 const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
@@ -32,6 +33,7 @@ const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
       <AuthUserProvider>
         {/* <CafeHeader title={cafe.name} /> */}
         {/* <CafeInfo cafe={cafe} /> */}
+        <CouponWIthQR cafeId={cafe.id} />
         <Menus
           menus={menus}
           sx={{
@@ -41,7 +43,6 @@ const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
         />
 
         <div style={{ height: '80px' }}></div>
-        <TabletQR cafeId={cafe.id} />
       </AuthUserProvider>
     </Container>
   );

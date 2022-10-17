@@ -1,4 +1,4 @@
-import { IconButton, SvgIcon } from '@mui/material';
+import { IconButton, SvgIcon, SvgIconProps } from '@mui/material';
 import { useEffect } from 'react';
 
 interface KakaoShareButtonProps {
@@ -69,7 +69,7 @@ export const KakaoShareButton = ({ url, iconStyle }: KakaoShareButtonProps) => {
   );
 };
 
-export const KakaoIcon = (props: any) => (
+export const KakaoIcon = (props: SvgIconProps) => (
   <SvgIcon
     {...props}
     viewBox="0 0 60 60"

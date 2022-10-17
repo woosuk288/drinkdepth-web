@@ -80,13 +80,18 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
       </DialogTitle>
 
       <DialogContent>
-        <DialogContentText align="center" fontSize="3rem">
+        <DialogContentText align="center" fontSize="3rem" marginBottom={'1rem'}>
           {coupon.code}
         </DialogContentText>
         <DialogContentText align="center">
-          (캡쳐해서 보여주셔도 됩니다)
+          1000원 할인 or 아메리카노+1 <br />
+          (둘중하나 선택)
         </DialogContentText>
       </DialogContent>
+
+      <DialogContentText variant="caption" align="center" marginY={'1rem'}>
+        1인당 한개의 쿠폰만 가능합니다.
+      </DialogContentText>
 
       <DialogActions>
         <Button onClick={handleClose} color="inherit" fullWidth>
@@ -98,10 +103,10 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
           autoFocus
           sx={{ color: '#3A1D1D', bgcolor: '#F7E600' }}
           fullWidth
-          startIcon={<KakaoIcon />}
+          startIcon={<KakaoIcon style={{ fontSize: '24px' }} />}
           id="kakao-share-btn"
         >
-          카카오톡 공유
+          쿠폰 보내기
         </Button>
       </DialogActions>
     </Dialog>
