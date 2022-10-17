@@ -20,7 +20,6 @@ import { useMutation } from 'react-query';
 import CouponDialog from './CouponDialog';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthUserContext';
-import { sxSquareImg } from '../styles/GlobalSx';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
 import { PATH_AFTER_LOGIN } from '../utils/constants';
 import {

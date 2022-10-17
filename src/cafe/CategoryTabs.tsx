@@ -31,6 +31,7 @@ export default function CategoryTabs({
         onChange={handleTabChange}
         variant="scrollable"
         scrollButtons="auto"
+        allowScrollButtonsMobile
         aria-label="scrollable auto tabs example"
       >
         {categories.map((category) => (

@@ -1,5 +1,8 @@
 import { Box, List, SxProps, Typography } from '@mui/material';
-import React, { useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useMemo, useState } from 'react';
+import { SCROLL_Y } from 'src/utils/constants';
+import { CAFE_PATH } from 'src/utils/routes';
 import CategoryTabs from './CategoryTabs';
 import Menu from './Menu';
 
@@ -9,10 +12,19 @@ export type CafeMenusProps = {
 };
 
 function Menus({ menus, sx }: CafeMenusProps) {
-  const [filteredMenus, setFilteredMenus] = useState(menus);
-  const [tabIndex, setTabIndex] = React.useState(0);
+  const router = useRouter();
+  const initialTabIndex = parseInt(
+    (router.query.index as string | undefined) ?? '1',
+    10
+  );
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const [filteredMenus, setFilteredMenus] = useState(menus);
+  const [tabIndex, setTabIndex] = React.useState(initialTabIndex);
+
+  const handleTabChange = (
+    _event: React.SyntheticEvent | null,
+    newValue: number
+  ) => {
     setTabIndex(newValue);
 
     if (newValue === 0) {
@@ -23,6 +35,9 @@ function Menus({ menus, sx }: CafeMenusProps) {
         (cafemenu) => cafemenu.category === categoryValue
       );
       setFilteredMenus(menusByCategory);
+      const path = CAFE_PATH + '/' + router.query.cafe_id;
+      // router.asPath = path + `?index=${newValue}`;
+      router.push(path + `?index=${newValue}`, undefined, { shallow: true });
     }
   };
 
@@ -40,6 +55,13 @@ function Menus({ menus, sx }: CafeMenusProps) {
       return nextList;
     }, initialCategories as CafeMenuCategoryType[]);
   }, [menus]);
+
+  useEffect(() => {
+    if (categories.length > 0) {
+      handleTabChange(null, initialTabIndex);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categories]);
 
   return (
     <Box sx={sx}>
@@ -61,6 +83,7 @@ function Menus({ menus, sx }: CafeMenusProps) {
       <List
         sx={{
           width: '100%',
+          minHeight: '100vh',
           bgcolor: 'background.paper',
           '& > li': {
             borderBottom: '1px solid #ededed',

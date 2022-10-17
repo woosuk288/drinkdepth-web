@@ -8,7 +8,7 @@ import {
 
 import { useLayoutEffect, useState } from 'react';
 import { NextLinkComposed } from 'src/common/Link';
-import { NORMAL } from 'src/utils/constants';
+import { NORMAL, SCROLL_Y } from 'src/utils/constants';
 import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
 
 import { getLabelWithColor, getTestType } from '../utils/combos';
@@ -21,12 +21,18 @@ function Menu(item: CafeMenuType) {
     setIsSmartMenu(isSmart);
   }, []);
 
+  const handleItemClick = () => {
+    console.log('handleItemClick : ', window.scrollY);
+    sessionStorage.setItem(SCROLL_Y, `${window.scrollY}`);
+  };
+
   return (
     <ListItem
       key={item.id}
       alignItems="flex-start"
       component={NextLinkComposed}
       to={`${CAFE_PATH}/${item.cafeId}${MENU_PATH}/${item.id}`}
+      onClick={handleItemClick}
       sx={{ color: 'inherit' }}
     >
       {/* <IconButton sx={{ position: 'absolute', left: 0, zIndex: 100 }}>

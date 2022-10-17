@@ -14,3 +14,5 @@ export const SMART = 'smart';
 export const NORMAL = 'normal';
 export const OFFLINE_QR = 'offline_qr';
 export const OFFLINE_QR_TABLET = 'offline_qr_tablet';
+
+export const SCROLL_Y = 'scrollY';
