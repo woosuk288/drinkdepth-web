@@ -16,7 +16,7 @@ import HeaderCustom from '../../../../../src/common/HeaderCustom';
 import {
   deleteMenuReview,
   fetchCafeMenuReviews,
-} from '../../../../../src/utils/firebase/services';
+} from '../../../../../src/firebase/services';
 import { Props } from '../[menu_id]';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';

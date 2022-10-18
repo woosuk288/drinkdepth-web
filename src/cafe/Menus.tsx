@@ -13,7 +13,7 @@ export type CafeMenusProps = {
 function Menus({ menus, sx }: CafeMenusProps) {
   const router = useRouter();
   const initialTabIndex = parseInt(
-    (router.query.index as string | undefined) ?? '1',
+    (router.query.index as string | undefined) ?? '2',
     10
   );
 

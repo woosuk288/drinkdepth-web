@@ -21,9 +21,12 @@ import {
   writeBatch,
 } from 'firebase/firestore';
 import { getDownloadURL, ref } from 'firebase/storage';
-import { getTestType } from '../combos';
-import { COUPON_COUNTER_ISSUED_ID, COUPON_COUNTER_USED_ID } from '../constants';
-import { auth, db, storage } from './firebaseInit';
+import { getTestType } from '../utils/combos';
+import {
+  COUPON_COUNTER_ISSUED_ID,
+  COUPON_COUNTER_USED_ID,
+} from '../utils/constants';
+import { auth, db, storage } from './FirebaseProvider';
 
 export const DB_CAFES = 'cafes';
 export const DB_MENUS = 'menus';

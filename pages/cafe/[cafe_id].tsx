@@ -11,7 +11,7 @@ import {
   fetchCafe,
   fetchCafeMenus,
   fetchCafes,
-} from '../../src/utils/firebase/services';
+} from '../../src/firebase/services';
 import { CAFE_PATH } from 'src/utils/routes';
 import { useEffect, useRef } from 'react';
 import { SCROLL_Y } from 'src/utils/constants';

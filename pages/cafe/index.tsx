@@ -3,7 +3,7 @@ import { GetStaticProps, NextPage } from 'next';
 import { CAFE_PATH } from 'src/utils/routes';
 import Cafe from '../../src/cafe/Cafe';
 import Meta from '../../src/common/Meta';
-import { fetchCafes } from '../../src/utils/firebase/services';
+import { fetchCafes } from '../../src/firebase/services';
 
 const metaData = {
   title: '깊이를 마시다 | 인기 추천 카페',

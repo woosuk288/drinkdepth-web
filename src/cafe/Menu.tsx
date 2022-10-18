@@ -27,7 +27,6 @@ function Menu({ item, index }: MenuProps) {
   }, []);
 
   const handleItemClick = () => {
-    console.log('handleItemClick : ', window.scrollY);
     sessionStorage.setItem(SCROLL_Y, `${window.scrollY}`);
   };
 

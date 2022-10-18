@@ -18,5 +18,5 @@
     "baseUrl": "./" // 절대 경로 설정
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "src/utils/firebase/*.json"]
+  "exclude": ["node_modules", "src/firebase/*.json"]
 }

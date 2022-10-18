@@ -5,11 +5,7 @@ import { ParsedUrlQuery } from 'querystring';
 import Menus from 'src/cafe/Menus';
 import Meta from 'src/common/Meta';
 import { AuthUserProvider } from 'src/context/AuthUserContext';
-import {
-  fetchCafe,
-  fetchCafeMenus,
-  fetchCafes,
-} from 'src/utils/firebase/services';
+import { fetchCafe, fetchCafeMenus, fetchCafes } from 'src/firebase/services';
 import { CAFE_PATH } from 'src/utils/routes';
 
 import CouponWIthQR from 'src/cafe/tablet/CouponWIthQR';

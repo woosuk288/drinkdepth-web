@@ -14,6 +14,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { RecoilRoot } from 'recoil';
 
 import TagManager from 'react-gtm-module';
+import FirebaseProvider from 'src/firebase/FirebaseProvider';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -53,17 +54,19 @@ export default function MyApp(props: MyAppProps) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
 
-        <QueryClientProvider client={queryClient}>
-          <Script
-            src="https://developers.kakao.com/sdk/js/kakao.js"
-            strategy="beforeInteractive"
-            onLoad={() => console.log('kakao script loaded')}
-          />
+        <FirebaseProvider>
+          <QueryClientProvider client={queryClient}>
+            <Script
+              src="https://developers.kakao.com/sdk/js/kakao.js"
+              strategy="beforeInteractive"
+              onLoad={() => console.log('kakao script loaded')}
+            />
 
-          <RecoilRoot>
-            <Component {...pageProps} />
-          </RecoilRoot>
-        </QueryClientProvider>
+            <RecoilRoot>
+              <Component {...pageProps} />
+            </RecoilRoot>
+          </QueryClientProvider>
+        </FirebaseProvider>
       </ThemeProvider>
     </CacheProvider>
   );

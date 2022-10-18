@@ -150,12 +150,10 @@ const PlacePage: NextPage = () => {
   const [openImages, setOpenImages] = useState(false);
 
   useEffect(() => {
-    import('../../src/utils/firebase/productsDetailsWithCafes.json').then(
-      (data) => {
-        setSetCoffees(data.default);
-        setLoadingData(false);
-      }
-    );
+    import('../../src/firebase/productsDetailsWithCafes.json').then((data) => {
+      setSetCoffees(data.default);
+      setLoadingData(false);
+    });
   }, []);
 
   const handleChange = (event: SelectChangeEvent<string[]>) => {

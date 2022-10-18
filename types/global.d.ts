@@ -68,3 +68,21 @@ type CouponCounterType = {
   normal: number;
   smart: number;
 };
+
+/**
+ * global Window
+ */
+
+declare module globalThis {
+  var __EMULATORS_STARTED__: boolean;
+
+  interface Window {
+    recaptchaVerifier: RecaptchaVerifier;
+    confirmationResult: ConfirmationResult;
+    grecaptcha: any;
+    fbq: any;
+    Kakao: any;
+    // kakao: any;
+    gtag: any;
+  }
+}

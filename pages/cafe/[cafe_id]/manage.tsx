@@ -8,7 +8,7 @@ import {
   createMenu,
   getImageURLs,
   updateImages,
-} from 'src/utils/firebase/services';
+} from 'src/firebase/services';
 import { NOT_FOUND_PATH } from 'src/utils/routes';
 
 import CafeHeader from '../../../src/cafe/Header';

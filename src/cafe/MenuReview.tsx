@@ -19,7 +19,7 @@ import {
   DB_REVIEWS,
   deleteMenuReview,
   fetchCafeMenuReviews,
-} from '../utils/firebase/services';
+} from '../firebase/services';
 import { useRouter } from 'next/router';
 import { REVIEWS_PATH } from '../utils/routes';
 import useFirebaseAuth from '../hooks/useFirebaseAuth';

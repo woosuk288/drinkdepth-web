@@ -13,12 +13,12 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 // import { userVar, Role, roleVar } from '../../apollo/client';
-import { auth, useAuthFb } from '../utils/firebase/firebaseInit';
 // import { USER_ROLES } from '../utils/constants';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
 import { PATH_AFTER_LOGIN } from '../utils/constants';
+import useFirebaseAuth from 'src/hooks/useFirebaseAuth';
 
 const pages = [
   {
@@ -33,7 +33,7 @@ const pages = [
 
 const Header = () => {
   const router = useRouter();
-  const [user, loading, error] = useAuthFb();
+  const { user, loading, error } = useFirebaseAuth();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );

@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { makeNaverMapURL } from '../o2o/place/coffeeDetailDialog';
 import proj4 from 'proj4';
-import { db } from '../utils/firebase/firebaseInit';
+import { db } from '../firebase/FirebaseProvider';
 import {
   collection,
   limit,
@@ -26,7 +26,7 @@ import {
   DB_COUPONS,
   issueCoupon,
   checkOpenCoupon,
-} from 'src/utils/firebase/services';
+} from 'src/firebase/services';
 import { FirebaseError } from 'firebase/app';
 import BannerCarousel from './tablet/BannerCarousel';
 

@@ -1,6 +1,6 @@
 import path from 'path';
 import { readFile, writeFile } from 'fs/promises';
-import { DB_MENUS, fetchAllMenus, fetchCafeMenu } from './firebase/services';
+import { DB_MENUS, fetchAllMenus, fetchCafeMenu } from '../firebase/services';
 
 const readCacheDB = async <T>(name: string) => {
   try {

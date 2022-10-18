@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { sxCenter } from '../../src/styles/GlobalSx';
 import { PATH_AFTER_LOGIN } from '../../src/utils/constants';
-import { auth } from '../../src/utils/firebase/firebaseInit';
+import { auth } from 'src/firebase/FirebaseProvider';
 
 const Auth = () => {
   const router = useRouter();

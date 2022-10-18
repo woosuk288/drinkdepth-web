@@ -9,10 +9,10 @@ import {
 import { doc, increment, runTransaction } from 'firebase/firestore';
 import { useState } from 'react';
 import { sxCenter } from '../styles/GlobalSx';
-import { db } from '../utils/firebase/firebaseInit';
+import { db } from '../firebase/FirebaseProvider';
 
 import { useMutation } from 'react-query';
-import { acceptCoupon } from 'src/utils/firebase/services';
+import { acceptCoupon } from 'src/firebase/services';
 
 function CouponInput() {
   const [open, setOpen] = useState(false);

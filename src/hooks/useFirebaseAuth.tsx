@@ -1,6 +1,6 @@
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { auth } from '../utils/firebase/firebaseInit';
+import { auth } from '../firebase/FirebaseProvider';
 
 type FirebaseAuthHook = {
   user: User | null | undefined;
