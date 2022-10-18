@@ -1,7 +1,6 @@
 import { Box, List, SxProps, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useState } from 'react';
-import { SCROLL_Y } from 'src/utils/constants';
 import { CAFE_PATH } from 'src/utils/routes';
 import CategoryTabs from './CategoryTabs';
 import Menu from './Menu';
@@ -94,8 +93,8 @@ function Menus({ menus, sx }: CafeMenusProps) {
         {/* <ListSubheader>
 
       </ListSubheader> */}
-        {filteredMenus.map((item) => (
-          <Menu key={item.id} {...item} />
+        {filteredMenus.map((item, i) => (
+          <Menu key={item.id} item={item} index={i} />
         ))}
 
         {/* <Divider variant="inset" component="li" /> */}

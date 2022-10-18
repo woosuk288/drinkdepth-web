@@ -7,12 +7,16 @@ interface ILazyImage {
   src: string;
   alt?: string;
   style?: React.CSSProperties;
+  options?: IntersectionObserverInit;
 }
 
 const LazyImage: React.FC<ILazyImage> = ({
   src,
   alt,
   style = {},
+  options = {
+    // threshold: 0.5, // 확인을 위해 이미지 절반이 나타날 때 로딩한다.
+  },
 }): JSX.Element => {
   // state
   const [isLoaded, setIsLoaded] = React.useState<boolean>(false); // 실제 화면에 보여지고 있는지 여부를 확인
@@ -25,9 +29,10 @@ const LazyImage: React.FC<ILazyImage> = ({
   React.useEffect(() => {
     if (!observer.current) {
       // 인스턴스 생성
-      observer.current = new IntersectionObserver(intersectionOberserver, {
-        threshold: 0.5, // 확인을 위해 이미지 절반이 나타날 때 로딩한다.
-      });
+      observer.current = new IntersectionObserver(
+        intersectionOberserver,
+        options
+      );
     }
     imgRef.current && observer.current.observe(imgRef.current); // 이미지 태그 관찰 시작
 
@@ -56,7 +61,7 @@ const LazyImage: React.FC<ILazyImage> = ({
       ref={imgRef}
       src={isLoaded ? src : PLACEHOLDER}
       alt={alt}
-      style={{ width: '100%', ...style }}
+      style={{ width: '100%', height: '100%', objectFit: 'cover', ...style }}
     />
   );
 };

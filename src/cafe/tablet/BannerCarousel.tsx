@@ -13,18 +13,25 @@ type BannerCarouselProps = {
 
 function BannerCarousel({ imageURLs = tempImages }: BannerCarouselProps) {
   return (
-    <div>
-      <Carousel indicators={imageURLs.length > 1}>
-        {imageURLs.map((image, i) => (
+    <Carousel indicators={imageURLs.length > 1}>
+      {imageURLs.map((image, i) => (
+        <div
+          key={i}
+          style={{ content: '""', display: 'block', paddingBottom: '100%' }}
+        >
           <img
-            key={i}
             src={image}
             alt={'사진' + (i + 1)}
-            style={{ width: '100%' }}
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
           />
-        ))}
-      </Carousel>
-    </div>
+        </div>
+      ))}
+    </Carousel>
   );
 }
 export default BannerCarousel;

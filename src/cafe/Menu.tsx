@@ -7,13 +7,18 @@ import {
 } from '@mui/material';
 
 import { useLayoutEffect, useState } from 'react';
+import LazyImage from 'src/common/LazyImage';
 import { NextLinkComposed } from 'src/common/Link';
 import { NORMAL, SCROLL_Y } from 'src/utils/constants';
 import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
 
 import { getLabelWithColor, getTestType } from '../utils/combos';
 
-function Menu(item: CafeMenuType) {
+type MenuProps = {
+  item: CafeMenuType;
+  index: number;
+};
+function Menu({ item, index }: MenuProps) {
   const [isSmartMenu, setIsSmartMenu] = useState(false);
 
   useLayoutEffect(() => {
@@ -39,12 +44,25 @@ function Menu(item: CafeMenuType) {
         <FavoriteBorderIcon />
       </IconButton> */}
       <ListItemAvatar sx={{ marginRight: '1rem' }}>
-        <Avatar
-          alt={item.name}
-          src={item.images?.['240x240'] || item.imageURL}
-          sx={{ width: 104, height: 104 }}
-          variant="rounded"
-        />
+        {index < 6 ? (
+          <Avatar
+            src={item.images?.['240x240'] || item.imageURL}
+            alt={item.name}
+            sx={{ width: 104, height: 104, bgcolor: 'white' }}
+            variant="rounded"
+          />
+        ) : (
+          <Avatar
+            sx={{ width: 104, height: 104, bgcolor: 'white' }}
+            variant="rounded"
+          >
+            <LazyImage
+              src={item.images?.['240x240'] || item.imageURL}
+              alt={item.name}
+              options={{ rootMargin: '200px' }}
+            />
+          </Avatar>
+        )}
       </ListItemAvatar>
       <ListItemText>
         <Typography fontWeight={'bold'} gutterBottom>
