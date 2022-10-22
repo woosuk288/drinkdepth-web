@@ -24,6 +24,8 @@ const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
    * only access offlineqrtablet.drinkdepth.com
    */
 
+  console.log('TabletPage : ', 'TabletPage');
+
   return (
     <Container maxWidth="sm" disableGutters>
       <Meta data={metaData} />

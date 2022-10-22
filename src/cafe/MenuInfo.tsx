@@ -184,7 +184,7 @@ function MenuInfo({
                 color="inherit"
                 onClick={() => setShowMorePair(() => !showMorePair)}
               >
-                더 보기
+                메뉴 더 보기
               </Button>
             )}
           </div>

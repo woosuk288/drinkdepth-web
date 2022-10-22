@@ -1,7 +1,6 @@
 import { Box, List, SxProps, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useState } from 'react';
-import { CAFE_PATH } from 'src/utils/routes';
 import CategoryTabs from './CategoryTabs';
 import Menu from './Menu';
 
@@ -34,9 +33,15 @@ function Menus({ menus, sx }: CafeMenusProps) {
         (cafemenu) => cafemenu.category === categoryValue
       );
       setFilteredMenus(menusByCategory);
-      const path = CAFE_PATH + '/' + router.query.cafe_id;
-      // router.asPath = path + `?index=${newValue}`;
-      router.push(path + `?index=${newValue}`, undefined, { shallow: true });
+
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { cafe_id: router.query.cafe_id, index: newValue },
+        },
+        undefined,
+        { shallow: true }
+      );
     }
   };
 
