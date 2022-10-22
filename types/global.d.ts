@@ -3,6 +3,7 @@ type CafeType = {
   name: string;
   imageURL: string;
   imageURLs?: string[];
+  imageOfflineURLs?: string[];
   introduce: string;
   address: string;
   addressY: string;

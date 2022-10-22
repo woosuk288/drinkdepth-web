@@ -52,13 +52,7 @@ type CafeHeaderProps = {
 
 const CafeHeader = ({ title }: CafeHeaderProps) => {
   const router = useRouter();
-
   const { user } = useAuth();
-
-  const hostname =
-    typeof window !== 'undefined' && window.location.hostname
-      ? window.location.hostname
-      : '';
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -105,6 +99,8 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
     }
   };
 
+  const lastSegmentOfURL = router.pathname.split('/').pop();
+
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar disableGutters>
@@ -118,75 +114,76 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
             alignItems: 'center',
           }}
         >
-          <IconButton
-            size="large"
-            aria-label="menu"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
-            style={{ minWidth: 48 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          {lastSegmentOfURL !== 'tablet' ? (
+            <IconButton
+              size="large"
+              aria-label="menu"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+              style={{ minWidth: 48 }}
+            >
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            <div style={{ minWidth: 48 }} />
+          )}
 
           <Typography variant="h6" fontWeight="bold">
             {title}
           </Typography>
 
           <IconButton style={{ minWidth: 48 }} />
-          {hostname !== DOMAIN_OFFLINE_QR_TABLET && (
-            <Drawer
-              anchor={'left'}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-            >
-              <Toolbar />
-              <Divider />
-              <List sx={{ width: 250 }}>
-                {pages.map((page) => (
-                  <ListItem
-                    key={page.name}
-                    disablePadding
-                    onClick={() =>
-                      handleListItemClick(
-                        page.link + '/' + router.query.cafe_id
-                      )
-                    }
-                  >
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <page.icon />
-                      </ListItemIcon>
-                      <ListItemText primary={page.name} />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
 
-              <Toolbar>
-                {user ? (
-                  <Button
-                    fullWidth
-                    color="error"
-                    sx={{ marginTop: '2rem' }}
-                    onClick={handleLogout}
-                  >
-                    로그아웃
-                  </Button>
-                ) : (
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    sx={{ marginTop: '2rem' }}
-                    onClick={handleLogin}
-                  >
-                    로그인
-                  </Button>
-                )}
-              </Toolbar>
-            </Drawer>
-          )}
+          <Drawer
+            anchor={'left'}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+          >
+            <Toolbar />
+            <Divider />
+            <List sx={{ width: 250 }}>
+              {pages.map((page) => (
+                <ListItem
+                  key={page.name}
+                  disablePadding
+                  onClick={() =>
+                    handleListItemClick(page.link + '/' + router.query.cafe_id)
+                  }
+                >
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <page.icon />
+                    </ListItemIcon>
+                    <ListItemText primary={page.name} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+
+            <Toolbar>
+              {user ? (
+                <Button
+                  fullWidth
+                  color="error"
+                  sx={{ marginTop: '2rem' }}
+                  onClick={handleLogout}
+                >
+                  로그아웃
+                </Button>
+              ) : (
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{ marginTop: '2rem' }}
+                  onClick={handleLogin}
+                >
+                  로그인
+                </Button>
+              )}
+            </Toolbar>
+          </Drawer>
         </Box>
       </Toolbar>
     </AppBar>

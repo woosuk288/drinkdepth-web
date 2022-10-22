@@ -24,15 +24,13 @@ const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
    * only access offlineqrtablet.drinkdepth.com
    */
 
-  console.log('TabletPage : ', 'TabletPage');
-
   return (
     <Container maxWidth="sm" disableGutters>
       <Meta data={metaData} />
 
       <AuthUserProvider>
         <CafeHeader title={cafe.name} />
-        <BannerCarousel imageURLs={cafe.imageURLs} />
+        <BannerCarousel imageURLs={cafe.imageOfflineURLs} />
         <CouponWIthQR cafeId={cafe.id} />
         <Menus
           menus={menus}

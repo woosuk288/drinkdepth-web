@@ -21,7 +21,11 @@ import CouponDialog from './CouponDialog';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthUserContext';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
-import { PATH_AFTER_LOGIN } from '../utils/constants';
+import {
+  DOMAIN_OFFLINE_QR,
+  DOMAIN_OFFLINE_QR_TABLET,
+  PATH_AFTER_LOGIN,
+} from '../utils/constants';
 import {
   DB_COUPONS,
   issueCoupon,
@@ -128,10 +132,20 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   };
 
   const clipInfoduce = clipText(cafe.introduce);
+  const hostname =
+    typeof window !== 'undefined' && window.location.hostname
+      ? window.location.hostname
+      : '';
+  const isFromOffline =
+    hostname === DOMAIN_OFFLINE_QR_TABLET || hostname === DOMAIN_OFFLINE_QR
+      ? true
+      : false;
 
   return (
     <>
-      <BannerCarousel imageURLs={cafe.imageURLs} />
+      <BannerCarousel
+        imageURLs={isFromOffline ? cafe.imageOfflineURLs : cafe.imageURLs}
+      />
 
       <Box
         sx={{
