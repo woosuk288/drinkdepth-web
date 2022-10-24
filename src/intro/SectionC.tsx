@@ -10,7 +10,6 @@ function SectionC() {
 
   const handleImageClick = (path: string) => {
     // console.log('router.pathname : ', window.location.origin);
-    console.log('path : ', path);
     if (path) {
       router.push(path);
     }

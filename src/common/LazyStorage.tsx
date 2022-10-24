@@ -1,6 +1,6 @@
 import { getDownloadURL, ref } from 'firebase/storage';
 import * as React from 'react';
-import { storage } from '../firebase/FirebaseProvider';
+import { storage } from 'src/firebase/services';
 // import NoImage from '/image/logo_name_vertical.png';
 
 const PLACEHOLDER = '/images/logo_name_vertical.png';

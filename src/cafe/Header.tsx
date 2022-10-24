@@ -22,7 +22,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { auth } from '../firebase/FirebaseProvider';
+import { auth } from 'src/firebase/services';
 import { signOut } from 'firebase/auth';
 import { useAuth } from '../context/AuthUserContext';
 import { CAFE_PATH, OATUH_LOGIN_PATH } from '../utils/routes';

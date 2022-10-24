@@ -81,7 +81,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   const pairingMenus = cafeMenus?.filter((cafeMenu) =>
     menu?.pairingMenus?.includes(cafeMenu.id)
   );
-  console.log('pairingMenus : ', pairingMenus);
+  // console.log('pairingMenus : ', pairingMenus);
 
   return {
     props: {

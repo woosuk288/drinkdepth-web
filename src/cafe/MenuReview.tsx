@@ -44,7 +44,7 @@ function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
     () => fetchCafeMenuReviews(cafeId, menuId, 3, new Date()),
     {
       onSuccess: (data) => {
-        console.log('reviews : ', data);
+        // console.log('reviews : ', data);
       },
     }
   );

@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { makeNaverMapURL } from '../o2o/place/coffeeDetailDialog';
 import proj4 from 'proj4';
-import { db } from '../firebase/FirebaseProvider';
+import { db } from 'src/firebase/services';
 import {
   collection,
   limit,
@@ -104,7 +104,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
         { cafeId, customerId: user.uid },
         {
           onSuccess: (data) => {
-            console.log('data : ', data);
+            // console.log('data : ', data);
           },
         }
       );

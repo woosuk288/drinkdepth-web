@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { sxCenter } from '../../src/styles/GlobalSx';
 import { PATH_AFTER_LOGIN } from '../../src/utils/constants';
-import { auth } from 'src/firebase/FirebaseProvider';
+import { auth } from 'src/firebase/services';
 
 const Auth = () => {
   const router = useRouter();
@@ -30,7 +30,7 @@ const Auth = () => {
 
       const payload = params.toString();
 
-      console.log('payload : ', payload);
+      // console.log('payload : ', payload);
 
       try {
         // access token 가져오기
@@ -58,7 +58,7 @@ const Auth = () => {
           }
         ).then((response) => response.json());
 
-        console.log('result : ', result);
+        // console.log('result : ', result);
 
         if (!result.firebase_token) {
           alert('로그인 처리 중 오류 발생!');
@@ -90,7 +90,7 @@ const Auth = () => {
     code && redirectWithKakao(code as string);
   }, [code, router]);
 
-  console.log('code : ', code);
+  // console.log('code : ', code);
 
   return (
     <Box sx={{ ...sxCenter, height: '100vh' }}>

@@ -10,10 +10,10 @@ import {
   TextField,
 } from '@mui/material';
 
-import * as fbq from '../../../facebook/fpixel';
+// import * as fbq from '../../../facebook/fpixel';
 import { useMutation } from 'react-query';
 import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../../firebase/FirebaseProvider';
+import { db } from 'src/firebase/services';
 
 import { useRecoilState } from 'recoil';
 import { landingFormState } from '../../../atoms/landingFormAtom';
