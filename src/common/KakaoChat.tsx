@@ -22,6 +22,7 @@ function KakaoChat() {
         borderRadius: '50%',
       }}
       rel="noreferrer"
+      className="kakao-chat"
     >
       <img
         src="/images/logo_icon.png"

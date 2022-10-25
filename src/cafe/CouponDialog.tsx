@@ -16,56 +16,6 @@ type CouponDialogProps = {
 function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
   // console.log('coupon : ', coupon);
 
-  const handleShareKakao = () => {
-    const url = window.location.href;
-    // console.log('url : ', url);
-    if (window.Kakao) {
-      const kakao = window.Kakao;
-      // console.log('kakao : ', kakao);
-      // 중복 initialization 방지
-      if (!kakao.isInitialized()) {
-        // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
-        kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
-      }
-      kakao.Link.createDefaultButton({
-        // Render 부분 id=kakao-share-btn 을 찾아 그부분에 렌더링을 합니다
-        container: '#kakao-share-btn',
-        objectType: 'feed',
-        content: {
-          title: '깊이를 마시다',
-          description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
-          imageUrl:
-            'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/images%2Fdrinkdepth600x600.png?alt=media&token=f3cb9980-ccf2-4113-b72d-3539b638b7a6',
-          link: {
-            mobileWebUrl: url,
-            webUrl: url,
-          },
-        },
-        // social: {
-        //   likeCount: 77,
-        //   commentCount: 55,
-        //   sharedCount: 333,
-        // },
-        // buttons: [
-        //   {
-        //     title: "웹으로 보기",
-        //     link: {
-        //       mobileWebUrl: url,
-        //       webUrl: url,
-        //     },
-        //   },
-        //   {
-        //     title: "앱으로 보기",
-        //     link: {
-        //       mobileWebUrl: url,
-        //       webUrl: url,
-        //     },
-        //   },
-        // ],
-      });
-    }
-  };
-
   return (
     <Dialog
       // fullScreen={true}
@@ -101,7 +51,11 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
         <Button
           onClick={handleShareKakao}
           autoFocus
-          sx={{ color: '#3A1D1D', bgcolor: '#F7E600' }}
+          sx={{
+            color: '#3A1D1D',
+            bgcolor: '#F7E600',
+            ':hover': { bgcolor: '#F7E600CC' },
+          }}
           fullWidth
           startIcon={<KakaoIcon style={{ fontSize: '24px' }} />}
           id="kakao-share-btn"
@@ -113,3 +67,51 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
   );
 }
 export default CouponDialog;
+
+const handleShareKakao = () => {
+  const url = window.location.href;
+
+  if (window.Kakao) {
+    const kakao = window.Kakao;
+    // console.log('kakao : ', kakao);
+    // 중복 initialization 방지
+    if (!kakao.isInitialized()) {
+      // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
+      kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
+    }
+    kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '깊이를 마시다',
+        description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
+        imageUrl:
+          'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/images%2Fdrinkdepth600x600.png?alt=media&token=f3cb9980-ccf2-4113-b72d-3539b638b7a6',
+        link: {
+          mobileWebUrl: url,
+          webUrl: url,
+        },
+      },
+      // social: {
+      //   likeCount: 77,
+      //   commentCount: 55,
+      //   sharedCount: 333,
+      // },
+      // buttons: [
+      //   {
+      //     title: "웹으로 보기",
+      //     link: {
+      //       mobileWebUrl: url,
+      //       webUrl: url,
+      //     },
+      //   },
+      //   {
+      //     title: "앱으로 보기",
+      //     link: {
+      //       mobileWebUrl: url,
+      //       webUrl: url,
+      //     },
+      //   },
+      // ],
+    });
+  }
+};

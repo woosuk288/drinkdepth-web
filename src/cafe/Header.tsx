@@ -27,6 +27,7 @@ import { signOut } from 'firebase/auth';
 import { useAuth } from '../context/AuthUserContext';
 import { CAFE_PATH, OATUH_LOGIN_PATH } from '../utils/routes';
 import { DOMAIN_OFFLINE_QR_TABLET, PATH_AFTER_LOGIN } from '../utils/constants';
+import KakaoChat from 'src/common/KakaoChat';
 
 const pages = [
   // {
@@ -169,6 +170,7 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
                   color="error"
                   sx={{ marginTop: '2rem' }}
                   onClick={handleLogout}
+                  className="gtm-logout"
                 >
                   로그아웃
                 </Button>
@@ -183,6 +185,7 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
                 </Button>
               )}
             </Toolbar>
+            {Boolean(anchorElNav) && <KakaoChat />}
           </Drawer>
         </Box>
       </Toolbar>

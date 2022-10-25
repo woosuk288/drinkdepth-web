@@ -3,6 +3,15 @@ import { NextPage } from 'next';
 import { sxCenter } from '../../src/styles/GlobalSx';
 import Header from '../../src/cafe/Header';
 import { useRouter } from 'next/router';
+import { OATUH_LOGIN_PATH } from 'src/utils/routes';
+import Meta from 'src/common/Meta';
+
+const metaData = {
+  title: `로그인`,
+  description: 'DrinkDepth 로그인 화면입니다.',
+  image: '/images/logo_icon.png',
+  canonical: `${OATUH_LOGIN_PATH}`,
+};
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
@@ -18,6 +27,8 @@ const LoginPage: NextPage = () => {
   return (
     <Container maxWidth="sm" disableGutters>
       <Header title="로그인" />
+      <Meta data={metaData} />
+
       <Box
         sx={{
           height: '100vh',
@@ -32,6 +43,7 @@ const LoginPage: NextPage = () => {
           width={'80%'}
           style={{ maxWidth: '300px', cursor: 'pointer' }}
           onClick={handleLoginWithKakao}
+          className="gtm-login-with-kakao"
         />
       </Box>
     </Container>
