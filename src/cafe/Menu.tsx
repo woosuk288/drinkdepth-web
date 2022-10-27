@@ -26,8 +26,10 @@ function Menu({ item, index }: MenuProps) {
     setIsSmartMenu(isSmart);
   }, []);
 
-  const handleItemClick = () => {
+  const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     sessionStorage.setItem(SCROLL_Y, `${window.scrollY}`);
+
+    isSmartMenu === false && e.preventDefault();
   };
 
   return (

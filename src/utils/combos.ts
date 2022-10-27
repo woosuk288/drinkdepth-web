@@ -89,14 +89,14 @@ export const getLabelWithColor = (name: string) => {
       label: '부드러운',
       color: '#e9b762',
     },
-    {
-      label: '우유',
-      color: '#fcfce0',
-    },
-    {
-      label: '달콤한',
-      color: '#fcfce0',
-    },
+    // {
+    //   label: '우유',
+    //   color: '#fcfce0',
+    // },
+    // {
+    //   label: '달콤한',
+    //   color: '#fcfce0',
+    // },
     {
       label: '고소함',
       color: '#894810',
