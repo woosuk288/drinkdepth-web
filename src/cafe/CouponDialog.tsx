@@ -4,6 +4,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useState } from 'react';
+import { useMutation } from 'react-query';
+import { acceptCoupon } from 'src/firebase/services';
 
 import { KakaoIcon } from '../common/KakaoShareButton';
 
@@ -16,6 +19,19 @@ type CouponDialogProps = {
 function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
   // console.log('coupon : ', coupon);
 
+  const [isCouponOn, setIsCouponOn] = useState(false);
+
+  const mutation = useMutation(acceptCoupon, {
+    onSuccess: (data) => {
+      // console.log('data : ', data);
+      handleClose();
+    },
+  });
+
+  const handleConfirmCoupon = () => {
+    mutation.mutate({ code: coupon.code });
+  };
+
   return (
     <Dialog
       // fullScreen={true}
@@ -25,44 +41,99 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
       onClose={handleClose}
       aria-labelledby="optional-dialog-title"
     >
-      <DialogTitle id="optional-dialog-title" sx={{ textAlign: 'center' }}>
-        쿠폰 번호
-      </DialogTitle>
+      {isCouponOn ? (
+        <>
+          {/* 사용 완료 */}
 
-      <DialogContent>
-        <DialogContentText align="center" fontSize="3rem" marginBottom={'1rem'}>
-          {coupon.code}
-        </DialogContentText>
-        <DialogContentText align="center">
-          1000원 할인 or 아메리카노+1 <br />
-          (둘중하나 선택)
-        </DialogContentText>
-      </DialogContent>
+          <DialogTitle sx={{ textAlign: 'center', fontWeight: 'bold' }}>
+            * 주의 *
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText color="inherit" align="center">
+              사용 처리가 되면 다시 재발급
+              <br />
+              받을 수 없습니다.
+              <br />
+              그래도 쿠폰을 사용하시겠습니까?
+            </DialogContentText>
+          </DialogContent>
+          <DialogContentText variant="caption" align="center" marginY={'1rem'}>
+            쿠폰 사용시 스탬프 중복적용은 불가능 합니다.
+          </DialogContentText>
+          <DialogActions>
+            <Button
+              onClick={handleClose}
+              color="inherit"
+              fullWidth
+              disabled={mutation.isLoading}
+            >
+              취소
+            </Button>
+            <Button
+              onClick={handleConfirmCoupon}
+              variant="contained"
+              color="error"
+              // sx={{ color: 'red' }}
+              fullWidth
+              disabled={mutation.isLoading}
+            >
+              사용 완료
+            </Button>
+          </DialogActions>
+        </>
+      ) : (
+        <>
+          <DialogTitle id="optional-dialog-title" sx={{ textAlign: 'center' }}>
+            쿠폰
+          </DialogTitle>
 
-      <DialogContentText variant="caption" align="center" marginY={'1rem'}>
-        1인당 한개의 쿠폰만 가능합니다.
-      </DialogContentText>
+          <DialogContent>
+            <Button
+              variant="contained"
+              size="large"
+              fullWidth
+              sx={{ fontSize: '1rem', fontWeight: 700, marginTop: '1rem' }}
+              onClick={() => setIsCouponOn(true)}
+            >
+              사용하기
+            </Button>
+          </DialogContent>
+          <DialogContent>
+            {/* <DialogContentText align="center" fontSize="3rem" marginBottom={'1rem'}> */}
+            {/* {coupon.code} */}
+            {/* </DialogContentText> */}
+            <DialogContentText align="center">
+              1000원 할인 or 아메리카노+1 <br />
+              (둘중하나 선택)
+            </DialogContentText>
+          </DialogContent>
 
-      <DialogActions>
-        <Button onClick={handleClose} color="inherit" fullWidth>
-          취소
-        </Button>
+          <DialogContentText variant="caption" align="center" marginY={'1rem'}>
+            1인당 한개의 쿠폰만 가능합니다.
+          </DialogContentText>
 
-        <Button
-          onClick={handleShareKakao}
-          autoFocus
-          sx={{
-            color: '#3A1D1D',
-            bgcolor: '#F7E600',
-            ':hover': { bgcolor: '#F7E600CC' },
-          }}
-          fullWidth
-          startIcon={<KakaoIcon style={{ fontSize: '24px' }} />}
-          id="kakao-share-btn"
-        >
-          쿠폰 보내기
-        </Button>
-      </DialogActions>
+          <DialogActions>
+            <Button onClick={handleClose} color="inherit" fullWidth>
+              취소
+            </Button>
+
+            <Button
+              onClick={handleShareKakao}
+              autoFocus
+              sx={{
+                color: '#3A1D1D',
+                bgcolor: '#F7E600',
+                ':hover': { bgcolor: '#F7E600CC' },
+              }}
+              fullWidth
+              startIcon={<KakaoIcon style={{ fontSize: '24px' }} />}
+              id="kakao-share-btn"
+            >
+              URL 보내기
+            </Button>
+          </DialogActions>
+        </>
+      )}
     </Dialog>
   );
 }

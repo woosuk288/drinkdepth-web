@@ -196,44 +196,46 @@ function CafeInfo({ cafe }: CafeInfoProps) {
         </Typography>
       </Box>
 
-      <Box sx={{ textAlign: 'center' }}>
-        {coupon ? (
-          <Button
-            variant="contained"
-            color="secondary"
-            sx={sx.btnCoupon}
-            onClick={handleUseCoupon}
-            disabled={coupon.isUsed}
-          >
-            쿠폰 사용
-          </Button>
-        ) : (
-          <Button
-            variant="contained"
-            sx={sx.btnCoupon}
-            onClick={handleIssueCoupon}
-            disabled={mutation.isLoading || coupon === undefined}
-          >
-            쿠폰 발행
-          </Button>
-        )}
+      {isFromOffline === false && (
+        <Box sx={{ textAlign: 'center' }}>
+          {coupon ? (
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={sx.btnCoupon}
+              onClick={handleUseCoupon}
+              disabled={coupon.isUsed}
+            >
+              쿠폰 사용
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              sx={sx.btnCoupon}
+              onClick={handleIssueCoupon}
+              disabled={mutation.isLoading || coupon === undefined}
+            >
+              쿠폰 발행
+            </Button>
+          )}
 
-        {mutation.isError && (
-          <p>
-            {typeof mutation.error === 'string'
-              ? mutation.error
-              : (mutation.error as FirebaseError).message}
-          </p>
-        )}
+          {mutation.isError && (
+            <p>
+              {typeof mutation.error === 'string'
+                ? mutation.error
+                : (mutation.error as FirebaseError).message}
+            </p>
+          )}
 
-        {open && !coupon?.isUsed && (
-          <CouponDialog
-            coupon={coupon!}
-            open={open}
-            handleClose={handleClose}
-          />
-        )}
-      </Box>
+          {open && !coupon?.isUsed && (
+            <CouponDialog
+              coupon={coupon!}
+              open={open}
+              handleClose={handleClose}
+            />
+          )}
+        </Box>
+      )}
     </>
   );
 }
