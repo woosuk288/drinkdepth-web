@@ -19,6 +19,9 @@ function Menus({ menus, sx }: CafeMenusProps) {
   const [filteredMenus, setFilteredMenus] = useState(menus);
   const [tabIndex, setTabIndex] = React.useState(initialTabIndex);
 
+  // TODO: tab index 0 안됨
+  // scoroll y hook
+
   const handleTabChange = (
     _event: React.SyntheticEvent | null,
     newValue: number

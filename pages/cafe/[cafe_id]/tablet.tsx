@@ -11,6 +11,11 @@ import { CAFE_PATH } from 'src/utils/routes';
 import CouponWIthQR from 'src/cafe/tablet/CouponWIthQR';
 import BannerCarousel from 'src/cafe/tablet/BannerCarousel';
 import CafeHeader from 'src/cafe/Header';
+import useScrollY from 'src/hooks/useScrollY';
+
+/**
+ * only access offlineqrtablet.drinkdepth.com
+ */
 
 const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
@@ -20,9 +25,7 @@ const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
     canonical: `${CAFE_PATH}/${cafe.id}`,
   };
 
-  /**
-   * only access offlineqrtablet.drinkdepth.com
-   */
+  const {} = useScrollY();
 
   return (
     <Container maxWidth="sm" disableGutters>

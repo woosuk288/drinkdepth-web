@@ -13,8 +13,7 @@ import {
   fetchCafes,
 } from '../../src/firebase/services';
 import { CAFE_PATH } from 'src/utils/routes';
-import { useEffect, useRef } from 'react';
-import { SCROLL_Y } from 'src/utils/constants';
+import useScrollY from 'src/hooks/useScrollY';
 
 const CafePage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
@@ -27,41 +26,7 @@ const CafePage: NextPage<Props> = ({ cafe, menus }) => {
   /**
    * 페이지 스크롤 위치 기억 처리 위함
    */
-  // const divRef = useRef<HTMLDivElement>(null); // 태그 요소
-  const divRef = useRef<HTMLDivElement>(null); // 태그 요소
-  const divRef2 = useRef<HTMLDivElement>(null); // 태그 요소
-  useEffect(() => {
-    const divObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // 관찰되고 있는 entry가 보여지게 된 다면
-            sessionStorage.setItem(SCROLL_Y, '0');
-          } else {
-          }
-        });
-      },
-      {
-        // threshold: 0.5, // 확인을 위해 이미지 절반이 나타날 때 로딩한다.
-      }
-    );
-
-    if (divRef.current && divRef2.current) {
-      divObserver.observe(divRef.current);
-      divObserver.observe(divRef2.current);
-    }
-    return () => {
-      divObserver.disconnect();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [divRef.current, divRef2.current]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const scroll = parseInt(sessionStorage.getItem(SCROLL_Y) ?? '0', 10);
-      window.scrollTo(0, scroll);
-    });
-  }, []);
+  const {} = useScrollY();
 
   return (
     <Container maxWidth="sm" disableGutters>
@@ -69,10 +34,8 @@ const CafePage: NextPage<Props> = ({ cafe, menus }) => {
 
       <AuthUserProvider>
         <CafeHeader title={cafe.name} />
-        <div ref={divRef}></div>
         <CafeInfo cafe={cafe} />
         <Menus menus={menus} />
-        <div ref={divRef2}></div>
       </AuthUserProvider>
     </Container>
   );

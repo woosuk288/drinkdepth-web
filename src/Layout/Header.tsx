@@ -106,17 +106,6 @@ const Header = () => {
                     >
                       <AccountCircleIcon fontSize="large" />
                     </IconButton>
-                    <Button
-                      variant="contained"
-                      onClick={() => router.push({ pathname: '/order' })}
-                      sx={{
-                        fontWeight: router.pathname.includes('/order')
-                          ? 700
-                          : 'inherit',
-                      }}
-                    >
-                      주문관리
-                    </Button>
                   </>
                 ) : (
                   <Button variant="contained" onClick={goLoginPage}>
@@ -176,18 +165,6 @@ const Header = () => {
                       >
                         <AccountCircleIcon fontSize="large" />
                       </IconButton>
-                      <Button
-                        variant="contained"
-                        onClick={() => router.push({ pathname: '/order' })}
-                        sx={{
-                          mr: '1rem',
-                          fontWeight: router.pathname.includes('/order')
-                            ? 700
-                            : 'inherit',
-                        }}
-                      >
-                        주문관리
-                      </Button>
                     </>
                   ) : (
                     <Button variant="contained" onClick={goLoginPage}>

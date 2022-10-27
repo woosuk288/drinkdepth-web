@@ -9,7 +9,8 @@ import {
 import { useLayoutEffect, useState } from 'react';
 import LazyImage from 'src/common/LazyImage';
 import { NextLinkComposed } from 'src/common/Link';
-import { NORMAL, SCROLL_Y } from 'src/utils/constants';
+import { getScrollYKey } from 'src/hooks/useScrollY';
+import { NORMAL } from 'src/utils/constants';
 import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
 
 import { getLabelWithColor, getTestType } from '../utils/combos';
@@ -27,7 +28,8 @@ function Menu({ item, index }: MenuProps) {
   }, []);
 
   const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    sessionStorage.setItem(SCROLL_Y, `${window.scrollY}`);
+    const key = getScrollYKey();
+    sessionStorage.setItem(key, `${window.scrollY}`);
 
     isSmartMenu === false && e.preventDefault();
   };
