@@ -8,7 +8,7 @@ import { AuthUserProvider } from 'src/context/AuthUserContext';
 import { fetchCafe, fetchCafeMenus, fetchCafes } from 'src/firebase/services';
 import { CAFE_PATH } from 'src/utils/routes';
 
-import CouponWIthQR from 'src/cafe/tablet/CouponWIthQR';
+// import CouponWIthQR from 'src/cafe/tablet/CouponWIthQR';
 import BannerCarousel from 'src/cafe/tablet/BannerCarousel';
 import CafeHeader from 'src/cafe/Header';
 import useScrollY from 'src/hooks/useScrollY';
@@ -34,10 +34,11 @@ const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
       <AuthUserProvider>
         <CafeHeader title={cafe.name} />
         <BannerCarousel imageURLs={cafe.imageOfflineURLs} />
-        <CouponWIthQR cafeId={cafe.id} />
+        {/* <CouponWIthQR cafeId={cafe.id} /> */}
         <Menus
           menus={menus}
           sx={{
+            marginTop: '3rem',
             '& > h6': { marginTop: '0.75rem', marginBottom: 0 },
             '& > ul > li .MuiAvatar-root': { width: '160px', height: '160px' },
           }}
