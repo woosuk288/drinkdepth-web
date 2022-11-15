@@ -38,7 +38,7 @@ export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   React.useEffect(() => {
-    process.env.NEXT_PUBLIC_GTM_ID
+    process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GTM_ID
       ? TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID })
       : console.warn(process.env.NEXT_PUBLIC_GTM_ID);
   }, []);

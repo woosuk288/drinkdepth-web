@@ -87,12 +87,18 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
             쿠폰
           </DialogTitle>
 
-          <DialogContent>
+          <DialogContent sx={{ textAlign: 'center' }}>
             <Button
               variant="contained"
               size="large"
               fullWidth
-              sx={{ fontSize: '1rem', fontWeight: 700, marginTop: '1rem' }}
+              sx={{
+                fontSize: '1.25rem',
+                marginTop: '1rem',
+                height: 64,
+                borderRadius: 64,
+                width: 240,
+              }}
               onClick={() => setIsCouponOn(true)}
             >
               사용하기
