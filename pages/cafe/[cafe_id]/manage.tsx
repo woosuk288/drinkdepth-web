@@ -81,18 +81,20 @@ function Manage() {
 
   return (
     <>
-      <div style={{ whiteSpace: 'pre' }}>{JSON.stringify(data, null, 4)}</div>
+      {/* <div style={{ whiteSpace: 'pre' }}>{JSON.stringify(data, null, 4)}</div>
       <Button variant="contained" onClick={handleMenuCreate}>
         메뉴 추가
-      </Button>
+      </Button> */}
 
-      {/* <div>
+      <div>
         docPath: {path} <br />
         {prefix}
         {filename}
         {suffix}
-      </div> */}
-      {/* <Button variant="contained" onClick={handleUdpateMenuImages}>사진 업데이트</Button> */}
+      </div>
+      <Button variant="contained" onClick={handleUdpateMenuImages}>
+        사진 업데이트
+      </Button>
 
       {/* <div style={{ whiteSpace: 'pre' }}>
         {JSON.stringify(batchdata, null, 4)}
@@ -103,25 +105,25 @@ function Manage() {
 }
 
 const cafeId = 'babacarmel';
-const menuId = 'babacarmel-416';
+const menuId = 'babacarmel-122';
 
 const data = {
   id: menuId,
   cafeId,
-  name: '악마의 로투스 르뱅 쿠키',
+  name: '에스프레소 제제',
   description: '',
   labels: [],
   imageURL: '/images/logo_icon.png',
   images: {} as ImagesType,
-  price: 3800,
-  category: '디저트',
+  price: 4800,
+  category: '에스프레소',
   reviewCount: 0,
   createdAt: new Date(),
 };
 
 const path = `cafes/${cafeId}/menus/${menuId}`;
 const prefix = `images/menus/${data.cafeId}/`;
-const filename = '디저트 - 악마의 로투스 르뱅쿠키';
+const filename = '에스프레소 제제';
 const suffix = '.jpg';
 
 // const data = {

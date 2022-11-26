@@ -1,15 +1,10 @@
 import styled from '@emotion/styled';
 import {
-  Avatar,
   Box,
   Button,
   IconButton,
   ImageListItem,
   ImageListItemBar,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
   Typography,
 } from '@mui/material';
 
@@ -21,7 +16,8 @@ import { getLabelWithColor, getTestType } from '../utils/combos';
 
 import MenuReview from './MenuReview';
 import { sxSquareImg } from '../styles/GlobalSx';
-import { NORMAL } from 'src/utils/constants';
+import { MASKABLE_ICON_PATH, NORMAL } from 'src/utils/constants';
+import { COLOR_PRICE } from 'src/theme';
 
 function MenuInfo({
   menu,
@@ -50,7 +46,7 @@ function MenuInfo({
       <Box sx={sxSquareImg}>
         <img
           className="img"
-          src={menu.images?.['960x960'] || menu.imageURL}
+          src={menu.images?.['960x960'] || MASKABLE_ICON_PATH}
           alt={menu.description}
         />
       </Box>
@@ -99,8 +95,8 @@ function MenuInfo({
             ))}
         </Typography>
 
-        <Typography sx={{ color: 'red' }}>
-          {menu.price.toLocaleString()}
+        <Typography fontWeight={'bold'} sx={{ color: COLOR_PRICE }}>
+          {menu.price.toLocaleString()}원
         </Typography>
       </Box>
 

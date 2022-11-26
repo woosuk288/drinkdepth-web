@@ -309,6 +309,8 @@ export const getImageURLs = async (
     acc[key] = cur;
     return acc;
   }, {} as ImagesType);
+  console.log('images : ', images);
+
   return images;
 };
 

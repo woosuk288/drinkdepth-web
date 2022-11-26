@@ -18,3 +18,5 @@ const theme = createTheme({
 });
 
 export default theme;
+
+export const COLOR_PRICE = 'rgba(255, 87, 87)';

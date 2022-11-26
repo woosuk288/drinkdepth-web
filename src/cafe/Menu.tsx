@@ -10,7 +10,8 @@ import { useLayoutEffect, useState } from 'react';
 import LazyImage from 'src/common/LazyImage';
 import { NextLinkComposed } from 'src/common/Link';
 import { getScrollYKey } from 'src/hooks/useScrollY';
-import { NORMAL } from 'src/utils/constants';
+import { COLOR_PRICE } from 'src/theme';
+import { MASKABLE_ICON_PATH, NORMAL } from 'src/utils/constants';
 import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
 
 import { getLabelWithColor, getTestType } from '../utils/combos';
@@ -49,7 +50,7 @@ function Menu({ item, index }: MenuProps) {
       <ListItemAvatar sx={{ marginRight: '1rem' }}>
         {index < 6 ? (
           <Avatar
-            src={item.images?.['240x240'] || item.imageURL}
+            src={item.images?.['240x240'] || MASKABLE_ICON_PATH}
             alt={item.name}
             sx={{ width: 104, height: 104, bgcolor: 'white' }}
             variant="rounded"
@@ -60,7 +61,7 @@ function Menu({ item, index }: MenuProps) {
             variant="rounded"
           >
             <LazyImage
-              src={item.images?.['240x240'] || item.imageURL}
+              src={item.images?.['240x240'] || MASKABLE_ICON_PATH}
               alt={item.name}
               options={{ rootMargin: '200px' }}
             />
@@ -105,8 +106,12 @@ function Menu({ item, index }: MenuProps) {
             ))}
         </Typography>
 
-        <Typography variant="subtitle2" sx={{ color: 'red' }}>
-          {item.price.toLocaleString()}
+        <Typography
+          variant="subtitle2"
+          fontWeight={'bold'}
+          sx={{ color: COLOR_PRICE }}
+        >
+          {item.price.toLocaleString()}원
         </Typography>
       </ListItemText>
     </ListItem>
