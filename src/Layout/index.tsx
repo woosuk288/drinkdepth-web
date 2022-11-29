@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
-import { Box, Theme } from '@mui/system';
-import { SxProps } from '@mui/material';
+import { Box, Theme, SxProps } from '@mui/system';
+// import { SxProps } from '@mui/material';
 
 type LayoutProps = {
   header?: React.ReactNode;
   children: React.ReactNode;
-  sxMain?: SxProps<Theme> | undefined;
+  sxMain?: SxProps<Theme>;
   showFooter?: boolean;
 };
 
