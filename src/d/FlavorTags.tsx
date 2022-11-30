@@ -1,6 +1,5 @@
 import {
   Autocomplete,
-  Box,
   Chip,
   FormHelperText,
   TextField,
@@ -92,11 +91,7 @@ function FlavorTags({ tooltip, helperText }: Props) {
           ))
         }
         renderInput={(params) => (
-          <Box
-            sx={{
-              paddingLeft: '1rem',
-            }}
-          >
+          <div>
             <Tooltip
               arrow
               enterTouchDelay={10}
@@ -116,15 +111,15 @@ function FlavorTags({ tooltip, helperText }: Props) {
             <TextField
               {...params}
               inputRef={textRef}
-              autoFocus
+              // autoFocus
               // size="small"
               sx={{ '& .MuiOutlinedInput-root': { paddingY: '2px' } }}
             />
-          </Box>
+          </div>
         )}
       />
 
-      <input ref={focusRef} style={{ position: 'fixed', top: '-190px' }} />
+      <input ref={focusRef} style={{ position: 'fixed', top: 0 }} />
     </>
   );
 }

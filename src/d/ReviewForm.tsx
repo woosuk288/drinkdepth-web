@@ -57,6 +57,7 @@ function ReviewForm() {
         aria-describedby="my-helper-text"
         size="small"
         fullWidth
+        autoFocus
       />
       <FormHelperText id="my-helper-text">주소</FormHelperText>
 
@@ -67,7 +68,7 @@ function ReviewForm() {
         </div>
         {/* <div>어떤 종류의 메뉴를 드셨나요?</div> */}
 
-        <div css={{ display: 'flex', paddingLeft: '1rem', marginTop: '10px' }}>
+        <div css={{ display: 'flex', paddingLeft: '3rem', marginTop: '10px' }}>
           <SelectorOne
             helperText="산미"
             tooltip="커피에서 긍정적인 신맛 상큼함을 의미합니다. 산미단계가 높을수록 신맛이 강해집니다"
@@ -101,7 +102,7 @@ function ReviewForm() {
           />
         </div>
 
-        <div>
+        <div css={{ paddingLeft: '3rem' }}>
           <FlavorTags tooltip="......" helperText="맛과향" />
         </div>
       </div>

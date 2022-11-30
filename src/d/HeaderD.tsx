@@ -18,7 +18,11 @@ const HeaderD = ({ leftIcon, centerComponent, rightIcon }: HeaderDProps) => {
     <AppBar color="transparent" elevation={1}>
       <Toolbar
         disableGutters
-        sx={{ minHeight: { xs: '44px', sm: '44px' }, paddingX: '0.5rem' }}
+        sx={{
+          minHeight: { xs: '44px', sm: '44px' },
+          paddingX: '0.5rem',
+          bgcolor: 'white',
+        }}
       >
         <Box
           sx={{

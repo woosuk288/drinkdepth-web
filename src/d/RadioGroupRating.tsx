@@ -14,7 +14,7 @@ const StyledRating = styled(Rating)(({ theme }) => ({
   },
 }));
 
-const customIcons: {
+export const customIcons: {
   [index: string]: {
     icon: React.ReactElement;
     label: string;
@@ -22,23 +22,23 @@ const customIcons: {
 } = {
   1: {
     icon: <SentimentVeryDissatisfiedIcon color="error" />,
-    label: 'Very Dissatisfied',
+    label: '이건 아니야', //'Very Dissatisfied',
   },
   2: {
     icon: <SentimentDissatisfiedIcon color="error" />,
-    label: 'Dissatisfied',
+    label: '별로', //'Dissatisfied',
   },
   3: {
     icon: <SentimentSatisfiedIcon color="warning" />,
-    label: 'Neutral',
+    label: '괜찮음', //'Neutral',
   },
   4: {
-    icon: <SentimentSatisfiedAltIcon color="success" />,
-    label: 'Satisfied',
+    icon: <SentimentSatisfiedAltIcon color="primary" />,
+    label: '맛있음', //'Satisfied',
   },
   5: {
-    icon: <SentimentVerySatisfiedIcon color="success" />,
-    label: 'Very Satisfied',
+    icon: <SentimentVerySatisfiedIcon color="primary" />,
+    label: '대박', //'Very Satisfied',
   },
 };
 
@@ -57,8 +57,6 @@ type Props = {
 };
 
 export default function RadioGroupRating({ name, value, onChange }: Props) {
-  console.log('value : ', value);
-
   return (
     <>
       <StyledRating
@@ -72,21 +70,9 @@ export default function RadioGroupRating({ name, value, onChange }: Props) {
         sx={{ svg: { fontSize: '3rem' } }}
       />
 
-      <Typography variant="h6">{getRatingText(value)}</Typography>
+      <Typography variant="h6">
+        {value ? customIcons[value].label : null}
+      </Typography>
     </>
   );
 }
-
-const getRatingText = (rating: number | null) => {
-  return rating === 1
-    ? '별로'
-    : rating === 2
-    ? '다른 거 먹을듯'
-    : rating === 3
-    ? '괜찮음'
-    : rating === 4
-    ? '또 먹고 싶음'
-    : rating === 5
-    ? '대박'
-    : '';
-};

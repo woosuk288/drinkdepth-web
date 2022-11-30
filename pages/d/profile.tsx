@@ -9,6 +9,7 @@ import { NextSeo } from 'next-seo';
 import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Profile from 'src/d/Profile';
+import Navbar from 'src/d/Navbar';
 
 const ProfilePage: NextPage = () => {
   return (
@@ -24,7 +25,7 @@ const ProfilePage: NextPage = () => {
           <Profile />
         </Main>
 
-        {/* <StyleTabs /> */}
+        <Navbar />
       </AuthContainer>
     </>
   );

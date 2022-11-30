@@ -20,3 +20,4 @@ const theme = createTheme({
 export default theme;
 
 export const COLOR_PRICE = 'rgba(255, 87, 87)';
+export const THEME_SEPERATOR = 'rgb(219, 219, 219)';
