@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 
 import LocalCafeIcon from '@mui/icons-material/LocalCafe';
+import CoffeeIcon from '@mui/icons-material/Coffee';
 import { customIcons } from './RadioGroupRating';
 
 function ReviewHome() {
@@ -24,7 +25,8 @@ function ReviewHome() {
 
       {data.map((review, i) => (
         <Card
-          /* variant="outlined" */ sx={{
+          /* variant="outlined" */
+          sx={{
             borderRadius: '8px',
             marginBottom: '0.25rem',
           }}
@@ -56,16 +58,16 @@ function ReviewHome() {
 
           <div css={{ display: 'flex' }}>
             <CardContent sx={{ paddingY: 0 }}>
-              <Typography color="text.secondary" gutterBottom noWrap>
-                {review.cafeName}
-              </Typography>
-              <Typography fontWeight={600} gutterBottom noWrap>
+              <Typography fontWeight={600} noWrap>
                 {/* be{bull}nev{bull}o{bull}lent */}
-                <LocalCafeIcon
+                <CoffeeIcon
                   fontSize="small"
                   sx={{ verticalAlign: 'text-bottom', marginRight: '0.25rem' }}
                 />
                 {review.menuName}
+              </Typography>
+              <Typography color="text.secondary" gutterBottom noWrap>
+                {review.cafeName}
               </Typography>
 
               <Typography
