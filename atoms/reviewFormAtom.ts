@@ -6,6 +6,15 @@ export const defaultCafeMenuReview: CafeMenuReviewType = {
   images: [],
   caption: '',
   flavors: [],
+
+  type: '',
+
+  cafe: {
+    keywords: [],
+  },
+
+  place: null,
+
   uid: '',
   displayName: '',
   photoURL: '',

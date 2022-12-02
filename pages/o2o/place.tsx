@@ -288,6 +288,7 @@ const PlacePage: NextPage = () => {
       <Box className="map-area" sx={{ position: 'relative' }}>
         <Map
           ref={mapRef}
+          key={'d'}
           center={{ lat: coordi.y, lng: coordi.x }}
           style={{ aspectRatio: '1 / 1' }}
           level={12}

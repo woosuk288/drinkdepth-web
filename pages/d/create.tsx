@@ -11,9 +11,13 @@ import { NextLinkComposed } from 'src/common/Link';
 import { CREATE_PATH } from 'src/utils/routes';
 import Main from 'src/d/Main';
 import ReviewForm from 'src/d/ReviewForm';
+import { useRecoilValue } from 'recoil';
+import { cafeMenuReviewState } from 'atoms/reviewFormAtom';
 
 const CreatePage: NextPage = () => {
   const router = useRouter();
+
+  const review = useRecoilValue(cafeMenuReviewState);
 
   return (
     <>
@@ -22,7 +26,9 @@ const CreatePage: NextPage = () => {
         <HeaderD
           leftIcon="back"
           centerComponent={
-            <Typography fontWeight={'bold'}>새로운 리뷰</Typography>
+            <Typography fontWeight={'bold'}>
+              {review.place?.place_name}
+            </Typography>
           }
           rightIcon={
             <Button

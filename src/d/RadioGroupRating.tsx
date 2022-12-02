@@ -22,7 +22,7 @@ export const customIcons: {
 } = {
   1: {
     icon: <SentimentVeryDissatisfiedIcon color="error" />,
-    label: '이건 아니야', //'Very Dissatisfied',
+    label: '불만', //'Very Dissatisfied',
   },
   2: {
     icon: <SentimentDissatisfiedIcon color="error" />,
@@ -34,7 +34,7 @@ export const customIcons: {
   },
   4: {
     icon: <SentimentSatisfiedAltIcon color="primary" />,
-    label: '맛있음', //'Satisfied',
+    label: '만족', //'Satisfied',
   },
   5: {
     icon: <SentimentVerySatisfiedIcon color="primary" />,
