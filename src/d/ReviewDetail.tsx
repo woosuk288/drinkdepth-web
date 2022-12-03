@@ -10,11 +10,9 @@ import {
   Typography,
 } from '@mui/material';
 
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import EditIcon from '@mui/icons-material/Edit';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import AddCommentIcon from '@mui/icons-material/AddComment';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 
 import { customIcons } from './RadioGroupRating';
@@ -28,11 +26,16 @@ const data = {
   coffee: {
     rating: 5,
   },
-  comment: `처음 마셧을때 커피 보다 티?를 마시는 느낌이었습니다.
+  text: `처음 마셧을때 커피 보다 티?를 마시는 느낌이었습니다.
     약간 아카시아 꿀 같은 느낌 부담없이 꿀꺽마실 수있고 뒷맛에 설탕넣은 듯 단맛이 너무 좋습니다 식었을때 부터 나오는 베르가못향과 베리류 산미도 좋게 마셨습니다`,
 };
 
-function ReviewMenu() {
+type Props = {
+  review: CafeMenuReviewType;
+};
+
+function ReviewDetail({ review }: Props) {
+  // console.log('review : ', review);
   return (
     <div>
       {/* <Card
@@ -120,72 +123,87 @@ function ReviewMenu() {
             // marginRight: '1rem',
             borderRadius: '4px',
           }}
-          image="/maskable_icon_x512.png"
+          image={
+            review.images.length > 0
+              ? review.images[0].url
+              : '/maskable_icon_x512.png'
+          }
           alt="thumbnail"
         />
         <CardHeader
           // avatar={<Avatar aria-label="photo">R</Avatar>}
           action={
             // <div css={{ display: 'flex', flexDirection: 'column' }}>
-            <IconButton
-              aria-label="settings"
-              sx={{ padding: 0, svg: { fontSize: '2.4rem' } }}
-            >
-              {/* <FavoriteBorderIcon /> */}
-              {customIcons[data.coffee.rating].icon}
-              {/* <SentimentVerySatisfiedIcon fontSize="large" /> */}
-              <Typography
-                variant="overline"
-                sx={{ position: 'absolute', bottom: '-1.5rem' }}
+            review.rating ? (
+              <IconButton
+                aria-label="settings"
+                sx={{ padding: 0, svg: { fontSize: '2.4rem' } }}
               >
-                {customIcons[data.coffee.rating].label}
-              </Typography>
-            </IconButton>
+                {customIcons[review.rating].icon}
+                <Typography
+                  variant="overline"
+                  sx={{ position: 'absolute', bottom: '-1.5rem' }}
+                >
+                  {customIcons[review.rating].label}
+                </Typography>
+              </IconButton>
+            ) : null
             // </div>
           }
-          title={<Typography variant="h6">{data.menuName}</Typography>}
-          subheader={data.cafeName}
+          title={
+            <Typography variant="h6">{review.place?.place_name}</Typography>
+          }
+          subheader={<Typography>{review.menuName}</Typography>}
         />
 
-        <div css={{ display: 'flex' }}>
-          <CardContent sx={{ paddingY: 0 }}>
-            <Typography variant="body1" gutterBottom>
-              산미 - 높음
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              단맛 - 보통
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              맛과향 - 꿀, 딸기, 아몬드
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                marginTop: '1rem',
-              }}
-            >
-              {data.comment}
-            </Typography>
-          </CardContent>
-        </div>
-        <CardActions sx={{ justifyContent: 'flex-end' }}>
+        <CardContent sx={{ paddingY: 0 }}>
+          <Typography variant="body1" gutterBottom>
+            원두명 - {review.coffee?.bean}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            원산지 - {review.coffee?.country}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            산미 - {review.coffee?.acidity}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            단맛 - {review.coffee?.sweetness}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            향미노트 - {review.coffee?.flavors?.map((f) => `#${f} `)}
+          </Typography>
+          <Typography
+            variant="body1"
+            gutterBottom
+            sx={{
+              marginTop: '1rem',
+            }}
+          >
+            {review.text}
+          </Typography>
+          <Typography variant="overline" color="text.secondary">
+            {review.createdAt.toLocaleString()}
+          </Typography>
+        </CardContent>
+
+        <CardActions>
           <Button
             variant="outlined"
             color="inherit"
             startIcon={<ThumbUpOutlinedIcon />}
           >
-            도움이됨
+            0
           </Button>
-          <Button
+          {/* <Button
             variant="outlined"
             color="inherit"
             startIcon={<MapsUgcOutlinedIcon />}
           >
             댓글쓰기
-          </Button>
+          </Button> */}
         </CardActions>
       </Card>
     </div>
   );
 }
-export default ReviewMenu;
+export default ReviewDetail;

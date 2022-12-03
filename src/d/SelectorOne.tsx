@@ -60,7 +60,7 @@ function SelectorOne({
         value={value}
         displayEmpty
         onChange={handleChange}
-        sx={{ fontWeight: value.length > 0 ? 'bold' : 'inherit' }}
+        // sx={{ fontWeight: value.length > 0 ? 'bold' : 'inherit' }}
       >
         {options.map((option) => (
           <MenuItem

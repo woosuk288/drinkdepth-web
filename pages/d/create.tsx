@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import AuthContainer from 'src/d/AuthContainer';
 import { NextLinkComposed } from 'src/common/Link';
-import { CREATE_PATH } from 'src/utils/routes';
+import { REVIEW_PATH } from 'src/utils/routes';
 import Main from 'src/d/Main';
 import ReviewForm from 'src/d/ReviewForm';
 import { useRecoilValue } from 'recoil';
@@ -18,6 +18,10 @@ const CreatePage: NextPage = () => {
   const router = useRouter();
 
   const review = useRecoilValue(cafeMenuReviewState);
+
+  const handleSubmit = () => {
+    router.replace(REVIEW_PATH);
+  };
 
   return (
     <>
@@ -41,9 +45,7 @@ const CreatePage: NextPage = () => {
                 width: '36px',
                 lineHeight: '1.2rem',
               }}
-              component={NextLinkComposed}
-              to={CREATE_PATH}
-              shallow={true}
+              onClick={handleSubmit}
             >
               생성완료
             </Button>

@@ -1,29 +1,17 @@
 type CafeMenuReviewType = {
   id: string;
-  name: string;
+  menuName: string;
   images: ImageType[];
-  caption: '';
-  flavors: string[];
-
   type: string;
-
-  cafe: {
-    // address: string, // 주소
-    // 도, 시, 구, 동
-    // x: number, // 위도 lat
-    // y: number, // 경도 lng
-    // cafeName: string,
-    keywords?: string[];
-    // cafeId: '나중에 생기고 정리되어질 때 넣기',
-  };
 
   place: PlacesSearchResultItem | null;
 
   coffee?: {
+    bean?: string;
+    country?: string;
     acidity?: string;
     sweetness?: string;
-    tastingNote?: string[];
-    rating?: number | null;
+    flavors?: string[];
   };
   // desert: {
   // 	pair?: boolean,
@@ -31,7 +19,9 @@ type CafeMenuReviewType = {
   // 	flavors?: string[],
   // },
 
-  // comment: string, // 한줄평?
+  keywords?: string[];
+  text: string; // 한줄평?
+  rating: number | null;
 
   uid: string;
   displayName: string;

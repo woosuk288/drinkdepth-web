@@ -2,18 +2,16 @@ import { atom } from 'recoil';
 
 export const defaultCafeMenuReview: CafeMenuReviewType = {
   id: '',
-  name: '',
+  menuName: '',
   images: [],
-  caption: '',
-  flavors: [],
 
   type: '',
 
-  cafe: {
-    keywords: [],
-  },
-
   place: null,
+
+  keywords: [],
+  text: '',
+  rating: null,
 
   uid: '',
   displayName: '',

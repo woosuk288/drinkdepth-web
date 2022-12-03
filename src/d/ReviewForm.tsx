@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 
 import { cafeMenuReviewState } from 'atoms/reviewFormAtom';
-import { SyntheticEvent, useEffect, useRef } from 'react';
+import { ChangeEvent, SyntheticEvent, useEffect, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import StringTags from './StringTags';
 import RadioGroupRating from './RadioGroupRating';
@@ -41,35 +41,23 @@ function ReviewForm() {
     }
   }, [review.place]);
 
-  const handleChange = (event: SelectChangeEvent) => {
-    if (event.target.name === 'acidity') {
-      setReview((prev) => ({
-        ...prev,
-        coffee: { ...prev.coffee, acidity: event.target.value },
-      }));
-    } else if (event.target.name === 'sweetness') {
-      setReview((prev) => ({
-        ...prev,
-        coffee: { ...prev.coffee, sweetness: event.target.value },
-      }));
-    }
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    const keys = name.split('.');
+    setReview(setNestedProp(review, keys, e.target.value));
+  };
+
+  const handleSelectChange = (e: SelectChangeEvent) => {
+    const name = e.target.name;
+    const keys = name.split('.');
+    setReview(setNestedProp(review, keys, e.target.value));
   };
 
   const handleRatingChange = (
     event: SyntheticEvent<Element, Event>,
     value: number | null
   ) => {
-    setReview((prev) => ({
-      ...prev,
-      coffee: { ...prev.coffee, rating: value },
-    }));
-  };
-
-  const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setReview((prev) => ({
-      ...prev,
-      type: (event.target as HTMLInputElement).value,
-    }));
+    setReview((prev) => ({ ...prev, rating: value }));
   };
 
   const onFileChangeCapture = async (
@@ -158,9 +146,10 @@ function ReviewForm() {
 
   const handleTagsChange = (name: string, tags: string[]) => {
     const keys = name.split('.');
-
     setReview(setNestedProp(review, keys, tags));
   };
+
+  // console.log('hiyo : ', review);
 
   return (
     <Box
@@ -182,21 +171,23 @@ function ReviewForm() {
           <OutlinedInput
             inputRef={focusRef}
             id="input-review-menu"
+            name="menuName"
             size="small"
             fullWidth
             placeholder="메뉴명을 입력해주세요"
+            onChange={handleChange}
           />
         </div>
         {/* <div>어떤 종류의 메뉴를 드셨나요?</div> */}
         <FormControl sx={{ marginTop: '1rem' }}>
-          <FormLabel id="demo-radio-buttons-group-label">종류</FormLabel>
+          <FormLabel id="input-review-type-label">종류</FormLabel>
 
           <RadioGroup
             row
-            aria-labelledby="demo-radio-buttons-group-label"
+            aria-labelledby="input-review-type-label"
             defaultValue=""
-            name="radio-buttons-group"
-            onChange={handleTypeChange}
+            name="type"
+            onChange={handleChange}
             value={review.type}
           >
             <FormControlLabel
@@ -222,12 +213,18 @@ function ReviewForm() {
           <div css={{ '> div': { marginTop: '12px' } }}>
             <div>
               <InputLabel
-                htmlFor="input-review-coffee"
+                htmlFor="input-review-bean"
                 sx={{ fontSize: 14, marginLeft: '14px' }}
               >
                 원두명
               </InputLabel>
-              <OutlinedInput id="input-review-coffee" size="small" fullWidth />
+              <OutlinedInput
+                id="input-review-bean"
+                name="coffee.bean"
+                size="small"
+                fullWidth
+                onChange={handleChange}
+              />
             </div>
             <div>
               <InputLabel
@@ -236,13 +233,16 @@ function ReviewForm() {
               >
                 원산지
               </InputLabel>
-              <ContryComboBox />
+              <ContryComboBox
+                name="coffee.country"
+                handleChange={handleChange}
+              />
             </div>
             <div css={{ display: 'flex' }}>
               <SelectorOne
                 helperText="산미"
                 tooltip="커피에서 긍정적인 신맛 상큼함을 의미합니다. 산미단계가 높을수록 신맛이 강해집니다"
-                name="acidity"
+                name="coffee.acidity"
                 value={review.coffee?.acidity ?? ''}
                 options={[
                   { label: '매우 낮음', value: '매우 낮음' },
@@ -251,14 +251,14 @@ function ReviewForm() {
                   { label: '높음', value: '높음' },
                   { label: '매우 높음', value: '매우 높음' },
                 ]}
-                handleChange={handleChange}
+                handleChange={handleSelectChange}
                 // disabled={disabled}
               />
 
               <SelectorOne
                 helperText="단맛"
                 tooltip="......"
-                name="sweetness"
+                name="coffee.sweetness"
                 value={review.coffee?.sweetness ?? ''}
                 options={[
                   { label: '매우 낮음', value: '매우 낮음' },
@@ -267,7 +267,7 @@ function ReviewForm() {
                   { label: '높음', value: '높음' },
                   { label: '매우 높음', value: '매우 높음' },
                 ]}
-                handleChange={handleChange}
+                handleChange={handleSelectChange}
                 // disabled={disabled}
               />
             </div>
@@ -276,8 +276,8 @@ function ReviewForm() {
               <FlavorTags
                 tooltip="맛과 향을 의미합니다"
                 helperText="향미노트"
-                value={review.coffee?.tastingNote}
-                name={'coffee.tastingNote'}
+                value={review.coffee?.flavors}
+                name={'coffee.flavors'}
                 onChange={handleTagsChange}
               />
             </div>
@@ -287,8 +287,8 @@ function ReviewForm() {
             <FlavorTags
               tooltip="맛과 향을 의미합니다"
               helperText="향미노트"
-              value={review.coffee?.tastingNote}
-              name={'coffee.tastingNote'}
+              value={review.coffee?.flavors}
+              name={'coffee.flavors'}
               onChange={handleTagsChange}
             />
           </div>
@@ -310,29 +310,30 @@ function ReviewForm() {
         <InputLabel htmlFor="input-review-keywords">편의적 측면</InputLabel>
         <StringTags
           id="input-review-keywords"
-          value={review.cafe.keywords}
-          name={'cafe.keywords'}
+          value={review.keywords}
+          name={'keywords'}
           onChange={handleTagsChange}
           placeholder="키워드를 입력해주세요"
         />
       </div>
 
       <div css={{ marginTop: '1rem' }}>
-        <InputLabel htmlFor="input-review-comment">한줄평</InputLabel>
+        <InputLabel htmlFor="input-review-text">한줄평</InputLabel>
         <OutlinedInput
-          id="input-review-comment"
+          id="input-review-text"
+          name="text"
           size="small"
           fullWidth
           multiline
           rows={3}
-
           // maxRows={3}
+          onChange={handleChange}
         />
 
         <div css={{ marginTop: '2rem', textAlign: 'center' }}>
           <RadioGroupRating
             name="rating"
-            value={review.coffee?.rating ?? null}
+            value={review.rating}
             onChange={handleRatingChange}
           />
         </div>

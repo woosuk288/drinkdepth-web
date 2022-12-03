@@ -15,6 +15,7 @@ export const NOT_FOUND_PATH = '/404';
  */
 export const D_PATH = '/d';
 export const CREATE_PATH = '/d/create';
+export const REVIEW_PATH = '/d/review';
 export const PROFILE_PATH = '/d/profile';
 export const PROFILE_MYREVIEW_PATH = '/d/profile/myreview';
 export const PROFILE_BOOKMARK_PATH = '/d/profile/bookmark';
