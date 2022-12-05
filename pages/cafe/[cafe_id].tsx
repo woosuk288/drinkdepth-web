@@ -14,6 +14,7 @@ import {
 } from '../../src/firebase/services';
 import { CAFE_PATH } from 'src/utils/routes';
 import useScrollY from 'src/hooks/useScrollY';
+import { menuApi } from 'src/utils/cacheAPIs';
 
 const CafePage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
@@ -68,7 +69,16 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
   const cafe = await fetchCafe(params!.cafe_id);
-  const menus = await fetchCafeMenus(params!.cafe_id);
+  // const menus = await fetchCafeMenus(params!.cafe_id);
+  const menus = await menuApi.listByCafe(params!.cafe_id);
+
+  if (menus) {
+    const allMenus = await menuApi.list();
+    const newMenues = allMenus.map(
+      (cacheMenu) => menus.find((menu) => menu.id === cacheMenu.id) ?? cacheMenu
+    );
+    await menuApi.cache.set(newMenues);
+  }
 
   if (!cafe) {
     return {

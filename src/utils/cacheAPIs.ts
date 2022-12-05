@@ -1,6 +1,11 @@
 import path from 'path';
 import { readFile, writeFile } from 'fs/promises';
-import { DB_MENUS, fetchAllMenus, fetchCafeMenu } from '../firebase/services';
+import {
+  DB_MENUS,
+  fetchAllMenus,
+  fetchCafeMenu,
+  fetchCafeMenus,
+} from '../firebase/services';
 
 const readCacheDB = async <T>(name: string) => {
   try {
@@ -26,6 +31,15 @@ export const menuApi = {
 
     return fetchAllMenus();
   },
+  listByCafe: async (cafeId: string) => {
+    // 개발 테스트용
+    const menus = await readCacheDB<CafeMenuType>(DB_MENUS);
+    if (process.env.NODE_ENV !== 'production' && menus) {
+      return menus.filter((menu) => menu.cafeId === cafeId);
+    }
+
+    return fetchCafeMenus(cafeId);
+  },
   fetch: async (cafeId: string, menuId: string) => {
     return fetchCafeMenu(cafeId, menuId);
   },
@@ -40,6 +54,7 @@ export const menuApi = {
       );
     },
     set: async (menus: CafeMenuType[]) => {
+      console.info(`Set cache ${DB_MENUS}.db`);
       return await writeFile(
         path.join(process.cwd(), `${DB_MENUS}.db`),
         JSON.stringify(menus, null, 2)
