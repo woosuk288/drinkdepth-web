@@ -81,12 +81,12 @@ function Manage() {
 
   return (
     <>
-      {/* <div style={{ whiteSpace: 'pre' }}>{JSON.stringify(data, null, 4)}</div>
+      <div style={{ whiteSpace: 'pre' }}>{JSON.stringify(data, null, 4)}</div>
       <Button variant="contained" onClick={handleMenuCreate}>
         메뉴 추가
-      </Button> */}
+      </Button>
 
-      <div>
+      {/* <div>
         docPath: {path} <br />
         {prefix}
         {filename}
@@ -94,7 +94,7 @@ function Manage() {
       </div>
       <Button variant="contained" onClick={handleUdpateMenuImages}>
         사진 업데이트
-      </Button>
+      </Button> */}
 
       {/* <div style={{ whiteSpace: 'pre' }}>
         {JSON.stringify(batchdata, null, 4)}
@@ -105,17 +105,17 @@ function Manage() {
 }
 
 const cafeId = 'babacarmel';
-const menuId = 'babacarmel-122';
+const menuId = 'babacarmel-114';
 
 const data = {
   id: menuId,
   cafeId,
-  name: '에스프레소 제제',
-  description: '',
-  labels: [],
-  imageURL: '/images/logo_icon.png',
+  name: '군고구마 카페라떼 (HOT)',
+  description: '벽난로에 구운 찐 군고구마로 만들어요!',
+  labels: ['군고구마', '우유'],
+  imageURL: '',
   images: {} as ImagesType,
-  price: 4800,
+  price: 6500,
   category: '에스프레소',
   reviewCount: 0,
   createdAt: new Date(),
@@ -123,7 +123,7 @@ const data = {
 
 const path = `cafes/${cafeId}/menus/${menuId}`;
 const prefix = `images/menus/${data.cafeId}/`;
-const filename = '에스프레소 제제';
+const filename = '음료 - 고구마 라떼 음료 이미지 사용';
 const suffix = '.jpg';
 
 // const data = {
