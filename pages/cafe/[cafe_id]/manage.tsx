@@ -105,17 +105,17 @@ function Manage() {
 }
 
 const cafeId = 'babacarmel';
-const menuId = 'babacarmel-114';
+const menuId = 'babacarmel-123';
 
 const data = {
   id: menuId,
   cafeId,
-  name: '군고구마 카페라떼 (HOT)',
-  description: '벽난로에 구운 찐 군고구마로 만들어요!',
-  labels: ['군고구마', '우유'],
+  name: '에스프레소 콘빠냐',
+  description: '',
+  labels: [],
   imageURL: '',
   images: {} as ImagesType,
-  price: 6500,
+  price: 4800,
   category: '에스프레소',
   reviewCount: 0,
   createdAt: new Date(),
@@ -123,7 +123,7 @@ const data = {
 
 const path = `cafes/${cafeId}/menus/${menuId}`;
 const prefix = `images/menus/${data.cafeId}/`;
-const filename = '음료 - 고구마 라떼 음료 이미지 사용';
+const filename = '에스프레소 콘빠냐';
 const suffix = '.jpg';
 
 // const data = {
