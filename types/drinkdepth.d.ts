@@ -4,7 +4,7 @@ type CafeMenuReviewType = {
   images: ImageType[];
   type: string;
 
-  place: PlacesSearchResultItem | null;
+  place?: PlacesSearchResultItem;
 
   coffee?: {
     bean?: string;
@@ -21,11 +21,11 @@ type CafeMenuReviewType = {
 
   keywords?: string[];
   text: string; // 한줄평?
-  rating: number | null;
+  rating: number;
 
   uid: string;
-  displayName: string;
-  photoURL: string;
+  displayName?: string;
+  photoURL?: string;
   createdAt: Date;
   updatedAt?: Date;
 };

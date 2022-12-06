@@ -34,7 +34,6 @@ export default function AlignItemsList() {
       <List
         sx={{
           width: '100%',
-          maxWidth: 360,
           bgcolor: 'background.paper',
           '> .MuiListItemButton-root': {
             borderBottom: `1px solid ${THEME_SEPERATOR}`,
@@ -43,8 +42,8 @@ export default function AlignItemsList() {
       >
         {pageList.map((page) => (
           <ListItemButton
-            // component={NextLinkComposed}
-            // to={TAG_PATH}
+            component={NextLinkComposed}
+            to={page.path}
             key={page.text}
           >
             <ListItemText primary={page.text} />

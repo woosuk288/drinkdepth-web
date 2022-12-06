@@ -7,11 +7,11 @@ export const defaultCafeMenuReview: CafeMenuReviewType = {
 
   type: '',
 
-  place: null,
+  // place:
 
   keywords: [],
   text: '',
-  rating: null,
+  rating: 0,
 
   uid: '',
   displayName: '',

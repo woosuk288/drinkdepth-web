@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 
 import HeaderD from 'src/d/HeaderD';
 
-import { Button, Typography } from '@mui/material';
+import { Button, LinearProgress, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import AuthContainer from 'src/d/AuthContainer';
@@ -11,17 +11,38 @@ import { NextLinkComposed } from 'src/common/Link';
 import { REVIEW_PATH } from 'src/utils/routes';
 import Main from 'src/d/Main';
 import ReviewForm from 'src/d/ReviewForm';
-import { useRecoilValue } from 'recoil';
-import { cafeMenuReviewState } from 'atoms/reviewFormAtom';
+import { useRecoilState } from 'recoil';
+import {
+  cafeMenuReviewState,
+  defaultCafeMenuReview,
+} from 'atoms/reviewFormAtom';
+import { useMutation } from 'react-query';
+import { createReview } from 'src/firebase/services';
 
 const CreatePage: NextPage = () => {
   const router = useRouter();
 
-  const review = useRecoilValue(cafeMenuReviewState);
+  const [review, setReview] = useRecoilState(cafeMenuReviewState);
+
+  const { mutate, isLoading } = useMutation(createReview, {
+    onSuccess: (newReview) => {
+      router
+        .replace(`${REVIEW_PATH}/${newReview.id}`)
+        .then(() => setReview(defaultCafeMenuReview));
+    },
+    onError(error: any) {
+      console.log('error.code : ', error.code);
+      console.log('error.message : ', error.message);
+    },
+  });
 
   const handleSubmit = () => {
-    router.replace(REVIEW_PATH);
+    // console.log('review : ', review);
+    mutate(review);
+    // router.replace(REVIEW_PATH);
   };
+
+  const isValid = review.place && review.coffee && review.type;
 
   return (
     <>
@@ -46,6 +67,7 @@ const CreatePage: NextPage = () => {
                 lineHeight: '1.2rem',
               }}
               onClick={handleSubmit}
+              disabled={isLoading || !isValid}
             >
               생성완료
             </Button>
@@ -53,6 +75,7 @@ const CreatePage: NextPage = () => {
         />
 
         <Main>
+          {isLoading && <LinearProgress />}
           <ReviewForm />
         </Main>
       </AuthContainer>

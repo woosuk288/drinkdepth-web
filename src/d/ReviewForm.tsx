@@ -57,7 +57,7 @@ function ReviewForm() {
     event: SyntheticEvent<Element, Event>,
     value: number | null
   ) => {
-    setReview((prev) => ({ ...prev, rating: value }));
+    setReview((prev) => ({ ...prev, rating: value ?? 0 }));
   };
 
   const onFileChangeCapture = async (
@@ -93,41 +93,41 @@ function ReviewForm() {
         };
       });
 
-      setReview((prev) => ({
-        ...prev,
-        images: uploadImages,
-      }));
+      // setReview((prev) => ({
+      //   ...prev,
+      //   images: uploadImages,
+      // }));
 
       // console.log('uploadImages : ', uploadImages);
 
-      // setPost((oldPost) => {
-      //   // 파일 업로드시 이름 중복 방지 (ios safari에서 버그 발견)
-      //   const images = [...oldPost.images, ...uploadImages].map(
-      //     (image, i, array) => {
-      //       let name = image.name;
-      //       if (
-      //         image.name === 'image' ||
-      //         (i > 0 &&
-      //           array
-      //             .filter((_, j) => j !== i)
-      //             .find((item) => item.name === name))
-      //       ) {
-      //         name = image.name + '_' + new Date().toISOString();
-      //       }
+      setReview((oldReview) => {
+        // 파일 업로드시 이름 중복 방지 (ios safari에서 버그 발견)
+        const images = [...oldReview.images, ...uploadImages].map(
+          (image, i, array) => {
+            let name = image.name;
+            if (
+              image.name === 'image' ||
+              (i > 0 &&
+                array
+                  .filter((_, j) => j !== i)
+                  .find((item) => item.name === name))
+            ) {
+              name = new Date().toISOString() + '_' + image.name;
+            }
 
-      //       return { ...image, name };
-      //     }
-      //   );
+            return { ...image, name };
+          }
+        );
 
-      //   // console.log('images : ', images);
+        // console.log('images : ', images);
 
-      //   return {
-      //     ...oldPost,
-      //     images,
-      //   };
-      // });
+        return {
+          ...oldReview,
+          images,
+        };
+      });
 
-      // setSelectedIndex(post.images.length);
+      // setSelectedIndex(review.images.length);
     }
   };
 
@@ -173,13 +173,14 @@ function ReviewForm() {
             id="input-review-menu"
             name="menuName"
             size="small"
+            required
             fullWidth
             placeholder="메뉴명을 입력해주세요"
             onChange={handleChange}
           />
         </div>
         {/* <div>어떤 종류의 메뉴를 드셨나요?</div> */}
-        <FormControl sx={{ marginTop: '1rem' }}>
+        <FormControl sx={{ marginTop: '1rem' }} required>
           <FormLabel id="input-review-type-label">종류</FormLabel>
 
           <RadioGroup
@@ -274,6 +275,7 @@ function ReviewForm() {
 
             <div>
               <FlavorTags
+                id="filtered-coffee"
                 tooltip="맛과 향을 의미합니다"
                 helperText="향미노트"
                 value={review.coffee?.flavors}
@@ -285,6 +287,7 @@ function ReviewForm() {
         ) : (
           <div css={{ marginTop: '0.5rem' }}>
             <FlavorTags
+              id="tags-coffee-drink"
               tooltip="맛과 향을 의미합니다"
               helperText="향미노트"
               value={review.coffee?.flavors}

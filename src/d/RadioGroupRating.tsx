@@ -49,7 +49,7 @@ function IconContainer(props: IconContainerProps) {
 
 type Props = {
   name: string;
-  value: number | null;
+  value: number;
   onChange: (
     event: React.SyntheticEvent<Element, Event>,
     value: number | null

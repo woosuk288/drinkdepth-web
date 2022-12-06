@@ -2,12 +2,14 @@ import { FirebaseOptions, getApp, initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import {
   addDoc,
+  arrayUnion,
   collection,
   collectionGroup,
   deleteDoc,
   doc,
   DocumentData,
   DocumentSnapshot,
+  getCountFromServer,
   getDoc,
   getDocs,
   getFirestore,
@@ -21,9 +23,15 @@ import {
   setDoc,
   startAfter,
   updateDoc,
+  where,
   writeBatch,
 } from 'firebase/firestore';
-import { getDownloadURL, getStorage, ref } from 'firebase/storage';
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadString,
+} from 'firebase/storage';
 import { getTestType } from '../utils/combos';
 import {
   COUPON_COUNTER_ISSUED_ID,
@@ -51,11 +59,17 @@ export const DB_MENUS = 'menus';
 export const DB_REVIEWS = 'reviews';
 export const DB_COUPONS = 'coupons';
 
+export const DB_PROFILES = 'profiles';
+export const DB_PRIVACIES = 'privacies';
+
+const DOC_FLAVOR = 'flavor';
+const DOC_KEYWORD = 'keyword';
+
 export function getDocData<T>(doc: DocumentSnapshot<DocumentData>) {
   if (doc.exists()) {
     return {
-      id: doc.id,
       ...doc.data(),
+      id: doc.id,
       updatedAt: doc.data()?.updatedAt?.toDate().toISOString() || null,
       createdAt: doc.data()?.createdAt?.toDate().toISOString() || null,
     } as unknown as T;
@@ -357,4 +371,131 @@ export const batchUpdate = async (data: any[]) => {
   });
 
   await batch.commit();
+};
+
+/**
+ * d
+ */
+export const createReview = async ({ id, ...review }: CafeMenuReviewType) => {
+  const newReviewRef = doc(collection(db, DB_REVIEWS));
+
+  const uploadTasks = await Promise.all(
+    review.images.map((image) =>
+      uploadString(
+        ref(
+          storage,
+          `d/${DB_REVIEWS}/${newReviewRef.id}/${review.uid}/${image.name}`
+        ),
+        image.url,
+        'data_url'
+      )
+    )
+  );
+
+  const imageURLs = await Promise.all(
+    uploadTasks.map((task) => getDownloadURL(task.ref))
+  );
+  const images = review.images.map((image, i) => ({
+    ...image,
+    url: imageURLs[i],
+  }));
+
+  const newReview: Omit<CafeMenuReviewType, 'id'> = {
+    ...review,
+    images,
+    createdAt: new Date(),
+  };
+
+  const batch = writeBatch(db);
+
+  batch.set(newReviewRef, newReview);
+
+  const profileRef = doc(db, DB_PROFILES, review.uid);
+  batch.set(profileRef, { reviewCount: increment(1) }, { merge: true });
+
+  const userFlavorRef = doc(
+    db,
+    DB_PROFILES,
+    review.uid,
+    DB_PRIVACIES,
+    DOC_FLAVOR
+  );
+  review.coffee?.flavors?.length &&
+    batch.set(
+      userFlavorRef,
+      { names: arrayUnion(...review.coffee.flavors) },
+      { merge: true }
+    );
+  const userKeywordRef = doc(
+    db,
+    DB_PROFILES,
+    review.uid,
+    DB_PRIVACIES,
+    DOC_KEYWORD
+  );
+  review.keywords?.length &&
+    batch.set(
+      userKeywordRef,
+      { names: arrayUnion(...review.keywords) },
+      { merge: true }
+    );
+
+  await batch.commit();
+
+  return { ...newReview, id: newReviewRef.id };
+};
+
+export const fetchMyReviews = async (uid: string, createdAt: Date) => {
+  const LIMIT = 15;
+
+  const q = query(
+    collection(db, DB_REVIEWS),
+    where('uid', '==', uid),
+    orderBy('createdAt', 'desc'),
+    limit(LIMIT),
+    startAfter(createdAt)
+  );
+  const querySnapshot = await getDocs(q);
+
+  return getDocsData<CafeMenuReviewType>(querySnapshot);
+};
+
+export const fetchMyReviewCount = async (uid: string) => {
+  const q = query(
+    collection(db, DB_REVIEWS),
+    where('uid', '==', uid),
+    orderBy('createdAt', 'desc')
+  );
+
+  const snapshot = await getCountFromServer(q);
+  return snapshot.data().count;
+};
+
+export const fetchReview = async (reviewId: string) => {
+  const reviewDoc = doc(db, DB_REVIEWS, reviewId);
+  const reviewSnap = await getDoc(reviewDoc);
+  const review = getDocData<CafeMenuReviewType>(reviewSnap);
+
+  return review;
+};
+
+export const fetchReviews = async (createdAt: Date) => {
+  const LIMIT = 15;
+
+  const q = query(
+    collection(db, DB_REVIEWS),
+    orderBy('createdAt', 'desc'),
+    limit(LIMIT),
+    startAfter(createdAt)
+  );
+  const querySnapshot = await getDocs(q);
+
+  return getDocsData<CafeMenuReviewType>(querySnapshot);
+};
+
+export const fetchReviewCount = async () => {
+  const q = query(collection(db, DB_REVIEWS), orderBy('createdAt', 'desc'));
+
+  const snapshot = await getCountFromServer(q);
+  return snapshot.data().count;
 };

@@ -39,6 +39,21 @@ export default function Navbar() {
 
   const AVATAR_SIZE = value === 2 ? 26 : 24;
 
+  const handleChange = (_: any, newValue: number) => {
+    // setValue(newValue);
+    const path = BOTTOM_LINKS[newValue];
+
+    if (path === CREATE_PATH && user)
+      setPost({
+        ...defaultCafeMenuReview,
+        uid: user.uid,
+        displayName: user.displayName ?? '',
+        photoURL: user.photoURL ?? '',
+      });
+
+    router.push(path);
+  };
+
   return (
     <Box
       sx={{
@@ -53,14 +68,7 @@ export default function Navbar() {
       <BottomNavigation
         showLabels
         value={value}
-        onChange={(event, newValue) => {
-          // setValue(newValue);
-          const path = BOTTOM_LINKS[newValue];
-
-          if (path === CREATE_PATH) setPost(defaultCafeMenuReview);
-
-          router.push(path);
-        }}
+        onChange={handleChange}
         sx={{
           height: '44px',
           '& button.Mui-selected': { color: '#000000' },

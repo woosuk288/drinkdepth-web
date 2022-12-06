@@ -157,20 +157,31 @@ function ReviewDetail({ review }: Props) {
         />
 
         <CardContent sx={{ paddingY: 0 }}>
-          <Typography variant="body1" gutterBottom>
-            원두명 - {review.coffee?.bean}
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            원산지 - {review.coffee?.country}
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            산미 - {review.coffee?.acidity}
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            단맛 - {review.coffee?.sweetness}
-          </Typography>
+          {review.coffee?.bean && (
+            <Typography variant="body1" gutterBottom>
+              원두명 - {review.coffee?.bean}
+            </Typography>
+          )}
+          {review.coffee?.country && (
+            <Typography variant="body1" gutterBottom>
+              원산지 - {review.coffee?.country}
+            </Typography>
+          )}
+          {review.coffee?.acidity && (
+            <Typography variant="body1" gutterBottom>
+              산미 - {review.coffee?.acidity}
+            </Typography>
+          )}
+          {review.coffee?.sweetness && (
+            <Typography variant="body1" gutterBottom>
+              단맛 - {review.coffee?.sweetness}
+            </Typography>
+          )}
           <Typography variant="body1" gutterBottom>
             향미노트 - {review.coffee?.flavors?.map((f) => `#${f} `)}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            편의적 측면 - {review.keywords?.map((f) => `#${f} `)}
           </Typography>
           <Typography
             variant="body1"
@@ -181,8 +192,9 @@ function ReviewDetail({ review }: Props) {
           >
             {review.text}
           </Typography>
+
           <Typography variant="overline" color="text.secondary">
-            {review.createdAt.toLocaleString()}
+            {new Date(review.createdAt).toLocaleString()}
           </Typography>
         </CardContent>
 
