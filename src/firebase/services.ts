@@ -67,11 +67,13 @@ const DOC_KEYWORD = 'keyword';
 
 export function getDocData<T>(doc: DocumentSnapshot<DocumentData>) {
   if (doc.exists()) {
+    const updatedAt = doc.data()?.updatedAt?.toDate().toISOString();
+
     return {
       ...doc.data(),
       id: doc.id,
-      updatedAt: doc.data()?.updatedAt?.toDate().toISOString() || null,
-      createdAt: doc.data()?.createdAt?.toDate().toISOString() || null,
+      ...(updatedAt && { updatedAt }),
+      createdAt: doc.data()?.createdAt?.toDate().toISOString(),
     } as unknown as T;
   } else {
     return null;
@@ -499,3 +501,13 @@ export const fetchReviewCount = async () => {
   const snapshot = await getCountFromServer(q);
   return snapshot.data().count;
 };
+
+export const fetchProfile = async (uid: string) => {
+  const profileDoc = doc(db, DB_PROFILES, uid);
+  const profileSnap = await getDoc(profileDoc);
+  const profile = getDocData<ProfileType>(profileSnap);
+
+  return profile;
+};
+
+export const updateProfile = async () => {};

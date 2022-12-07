@@ -7,27 +7,37 @@ import Typography from '@mui/material/Typography';
 import { Button, ListItemButton } from '@mui/material';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { NextLinkComposed } from 'src/common/Link';
+import Link, { NextLinkComposed } from 'src/common/Link';
 import { THEME_SEPERATOR } from 'src/theme';
 import {
   PROFILE_BADGE_PATH,
   PROFILE_BOOKMARK_PATH,
+  PROFILE_EDIT_PATH,
   PROFILE_MYREVIEW_PATH,
 } from 'src/utils/routes';
 
-export default function AlignItemsList() {
+type Props = {
+  me: ProfileType;
+};
+export default function Profile({ me }: Props) {
   return (
     <div css={{ padding: '1rem' }}>
       <div
         css={{ display: 'flex', marginBottom: '1rem', alignItems: 'center' }}
       >
         <Avatar
-          src="/favicon2.ico"
+          src={me.photoURL}
           sx={{ width: 56, height: 56, marginRight: '1rem' }}
         />
-        <Typography fontWeight={600}>커피유공자</Typography>
+        <Typography fontWeight={600}>{me.displayName}</Typography>
       </div>
-      <Button variant="contained" color="inherit" fullWidth>
+      <Button
+        variant="contained"
+        color="inherit"
+        fullWidth
+        component={Link}
+        href={PROFILE_EDIT_PATH}
+      >
         프로필 수정
       </Button>
 

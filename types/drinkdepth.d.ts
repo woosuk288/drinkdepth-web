@@ -26,8 +26,8 @@ type CafeMenuReviewType = {
   uid: string;
   displayName?: string;
   photoURL?: string;
-  createdAt: Date;
-  updatedAt?: Date;
+  createdAt: Date | string;
+  updatedAt?: Date | string;
 };
 
 type ImageType = {
@@ -102,4 +102,16 @@ type PlacesSearchResultItem = {
    * 중심좌표까지의 거리(x,y 파라미터를 준 경우에만 존재). 단위 meter
    */
   distance: string;
+};
+
+type ProfileType = {
+  id: string;
+  uid: string;
+  displayName: string;
+  photoURL?: string;
+  biography?: string;
+  createdAt: Date | string;
+  updatedAt?: Date | string;
+
+  lastSignInTime?: string;
 };

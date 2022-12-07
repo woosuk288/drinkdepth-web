@@ -43,13 +43,17 @@ export default function Navbar() {
     // setValue(newValue);
     const path = BOTTOM_LINKS[newValue];
 
-    if (path === CREATE_PATH && user)
+    if (path === CREATE_PATH && user) {
       setPost({
         ...defaultCafeMenuReview,
         uid: user.uid,
         displayName: user.displayName ?? '',
         photoURL: user.photoURL ?? '',
       });
+    } else if (path === PROFILE_PATH) {
+      router.push(path + '/' + user?.uid);
+      return;
+    }
 
     router.push(path);
   };
