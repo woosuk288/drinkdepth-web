@@ -1,13 +1,12 @@
 import * as React from 'react';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Button, ListItemButton } from '@mui/material';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import Link, { NextLinkComposed } from 'src/common/Link';
+import Link from 'src/common/Link';
 import { THEME_SEPERATOR } from 'src/theme';
 import {
   PROFILE_BADGE_PATH,
@@ -51,11 +50,7 @@ export default function Profile({ me }: Props) {
         }}
       >
         {pageList.map((page) => (
-          <ListItemButton
-            component={NextLinkComposed}
-            to={page.path}
-            key={page.text}
-          >
+          <ListItemButton component={Link} href={page.path} key={page.text}>
             <ListItemText primary={page.text} />
             <NavigateNextIcon />
           </ListItemButton>

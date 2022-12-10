@@ -63,16 +63,15 @@ function Review({ review }: Props) {
         <CardContent
           sx={{ paddingY: 0, overflow: 'hidden', whiteSpace: 'nowrap' }}
         >
-          <Typography fontWeight={500} noWrap>
+          <Typography fontSize={18} noWrap>
             {review.place?.place_name}
           </Typography>
-          <Typography fontWeight={600} noWrap /* gutterBottom */>
-            {/* be{bull}nev{bull}o{bull}lent */}
+          <Typography fontWeight={600} noWrap gutterBottom>
+            {review.menuName}
             <CoffeeIcon
               fontSize="small"
               sx={{ verticalAlign: 'text-bottom', marginRight: '0.25rem' }}
             />
-            {review.menuName}
           </Typography>
 
           <Typography variant="body1" noWrap>
@@ -81,13 +80,8 @@ function Review({ review }: Props) {
           <Typography variant="body1" noWrap>
             편의 : {review.keywords?.map((t) => `#${t} `)}
           </Typography>
-          <Typography variant="body1" noWrap>
-            한줄평 : {review.text}
-          </Typography>
-          <Typography variant="body2" fontSize={12} sx={{ marginY: '0.75rem' }}>
-            {new Date(review.createdAt).toLocaleString()}
-          </Typography>
         </CardContent>
+        <div css={{ flex: 1 }}></div>
         {review.images.length && (
           <CardMedia
             component="img"
@@ -102,12 +96,23 @@ function Review({ review }: Props) {
           />
         )}
       </div>
+
+      <CardContent sx={{ ':last-child': { paddingBottom: '1rem' } }}>
+        <Typography variant="body1" noWrap>
+          한줄평 : {review.text}
+        </Typography>
+        <Typography variant="body2" fontSize={12} sx={{ marginTop: '0.75rem' }}>
+          {new Date(review.createdAt).toLocaleString()}
+        </Typography>
+      </CardContent>
+
       {/* <CardActions>
-      <IconButton aria-label="add to favorites">
+
+        <IconButton aria-label="add to favorites">
         <FavoriteIcon />
         <FavoriteBorderIcon />
       </IconButton>
-    </CardActions> */}
+      </CardActions> */}
     </Card>
   );
 }

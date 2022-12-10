@@ -54,7 +54,7 @@ export default function CafeSearchDialog({
         TransitionComponent={Transition}
       >
         <HeaderD leftIcon="back" centerComponent="리뷰 쓰기" />
-        <Main sx={{ marginX: 'unset' }}>
+        <Main sx={{ width: '100%' }}>
           <KakaoMapsSearch handleSelect={handleSelect} />
         </Main>
       </Dialog>

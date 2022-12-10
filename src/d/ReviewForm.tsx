@@ -172,6 +172,7 @@ function ReviewForm() {
             inputRef={focusRef}
             id="input-review-menu"
             name="menuName"
+            value={review.menuName}
             size="small"
             required
             fullWidth
@@ -325,10 +326,11 @@ function ReviewForm() {
         <OutlinedInput
           id="input-review-text"
           name="text"
+          value={review.text}
           size="small"
           fullWidth
           multiline
-          rows={3}
+          minRows={3}
           // maxRows={3}
           onChange={handleChange}
         />

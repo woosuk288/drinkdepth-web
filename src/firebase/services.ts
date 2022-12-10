@@ -447,6 +447,82 @@ export const createReview = async ({ id, ...review }: CafeMenuReviewType) => {
   return { ...newReview, id: newReviewRef.id };
 };
 
+export const editReview = async ({
+  id,
+  createdAt,
+  ...review
+}: CafeMenuReviewType) => {
+  if (!id) throw '리뷰가 존재하지 않습니다.';
+
+  const uploadTasks = await Promise.all(
+    review.images.map((image) =>
+      image.url.startsWith('data:image')
+        ? uploadString(
+            ref(storage, `d/${DB_REVIEWS}/${id}/${review.uid}/${image.name}`),
+            image.url,
+            'data_url'
+          )
+        : image.url
+    )
+  );
+
+  const imageURLs = await Promise.all(
+    uploadTasks.map((task) =>
+      typeof task === 'string' ? task : getDownloadURL(task.ref)
+    )
+  );
+  const images = review.images.map((image, i) => ({
+    ...image,
+    url: imageURLs[i],
+  }));
+
+  const isValid = images.every((image) => image.url.startsWith('https://'));
+
+  if (!isValid) {
+    throw '이미지 업로드 중 오류가 발생했습니다.';
+  }
+
+  const batch = writeBatch(db);
+  const reviewRef = doc(db, DB_REVIEWS, id);
+  const updatedAt = new Date();
+  const nextReview = { ...review, images, updatedAt };
+  batch.update(reviewRef, nextReview as CafeMenuReviewType);
+
+  const profileRef = doc(db, DB_PROFILES, review.uid);
+  batch.set(profileRef, { reviewCount: increment(1) }, { merge: true });
+
+  const userFlavorRef = doc(
+    db,
+    DB_PROFILES,
+    review.uid,
+    DB_PRIVACIES,
+    DOC_FLAVOR
+  );
+  review.coffee?.flavors?.length &&
+    batch.set(
+      userFlavorRef,
+      { names: arrayUnion(...review.coffee.flavors) },
+      { merge: true }
+    );
+  const userKeywordRef = doc(
+    db,
+    DB_PROFILES,
+    review.uid,
+    DB_PRIVACIES,
+    DOC_KEYWORD
+  );
+  review.keywords?.length &&
+    batch.set(
+      userKeywordRef,
+      { names: arrayUnion(...review.keywords) },
+      { merge: true }
+    );
+
+  await batch.commit();
+
+  return { ...nextReview, id };
+};
+
 export const fetchMyReviews = async (uid: string, createdAt: Date) => {
   const LIMIT = 15;
 

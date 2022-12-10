@@ -16,25 +16,16 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 
 import { customIcons } from './RadioGroupRating';
-
-const data = {
-  uid: '123',
-  displayName: '커피유공자',
-  createdAt: new Date(),
-  cafeName: '바바카멜',
-  menuName: '에티오피아 하로 게샤',
-  coffee: {
-    rating: 5,
-  },
-  text: `처음 마셧을때 커피 보다 티?를 마시는 느낌이었습니다.
-    약간 아카시아 꿀 같은 느낌 부담없이 꿀꺽마실 수있고 뒷맛에 설탕넣은 듯 단맛이 너무 좋습니다 식었을때 부터 나오는 베르가못향과 베리류 산미도 좋게 마셨습니다`,
-};
+import Link, { NextLinkComposed } from 'src/common/Link';
+import { REVIEW_EDIT_PATH } from 'src/utils/routes';
+// import Link from 'next/link';
 
 type Props = {
   review: CafeMenuReviewType;
+  userId?: string;
 };
 
-function ReviewDetail({ review }: Props) {
+function ReviewDetail({ review, userId }: Props) {
   // console.log('review : ', review);
   return (
     <div>
@@ -167,16 +158,24 @@ function ReviewDetail({ review }: Props) {
               원산지 - {review.coffee?.country}
             </Typography>
           )}
-          {review.coffee?.acidity && (
-            <Typography variant="body1" gutterBottom>
-              산미 - {review.coffee?.acidity}
-            </Typography>
-          )}
-          {review.coffee?.sweetness && (
-            <Typography variant="body1" gutterBottom>
-              단맛 - {review.coffee?.sweetness}
-            </Typography>
-          )}
+          <div css={{ display: 'flex' }}>
+            {review.coffee?.acidity && (
+              <Typography
+                variant="body1"
+                gutterBottom
+                component="span"
+                sx={{ marginRight: '1rem' }}
+              >
+                산미 - {review.coffee?.acidity}
+              </Typography>
+            )}
+
+            {review.coffee?.sweetness && (
+              <Typography variant="body1" gutterBottom component="span">
+                단맛 - {review.coffee?.sweetness}
+              </Typography>
+            )}
+          </div>
           <Typography variant="body1" gutterBottom>
             향미노트 - {review.coffee?.flavors?.map((f) => `#${f} `)}
           </Typography>
@@ -189,6 +188,7 @@ function ReviewDetail({ review }: Props) {
             sx={{
               marginTop: '1rem',
             }}
+            whiteSpace="pre-line"
           >
             {review.text}
           </Typography>
@@ -213,6 +213,31 @@ function ReviewDetail({ review }: Props) {
           >
             댓글쓰기
           </Button> */}
+
+          <div css={{ flex: 1 }}></div>
+
+          {review.uid === userId && (
+            <div css={{ '> button': { marginLeft: '0.25rem' } }}>
+              <Button
+                variant="outlined"
+                color="inherit"
+                component={NextLinkComposed}
+                to={{
+                  pathname: REVIEW_EDIT_PATH,
+
+                  query: { id: review.id, review: JSON.stringify(review) },
+
+                  // as: {REVIEW_EDIT_PATH}
+                }}
+                linkAs={`${REVIEW_EDIT_PATH}/${review.id}`}
+              >
+                수정
+              </Button>
+              <Button variant="outlined" color="inherit">
+                삭제
+              </Button>
+            </div>
+          )}
         </CardActions>
       </Card>
     </div>
