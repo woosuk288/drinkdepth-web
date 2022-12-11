@@ -2,6 +2,15 @@ import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import GlobalStyle from '../src/styles/GlobalStyle';
+import { useRouter } from 'next/router';
+
+import {
+  CAFE_PATH,
+  D_PATH,
+  NOT_FOUND_PATH,
+  O2O_PATH,
+  ROOT_PATH,
+} from 'src/utils/routes';
 
 const NotFoundPageWrapper = styled.div`
   display: flex;
@@ -41,6 +50,14 @@ const GoToMainButton = styled(Link)`
 `;
 
 const NotFoundPage: FunctionComponent = function () {
+  const router = useRouter();
+  const errorPath = (router.query.previousPath as string) ?? router.asPath;
+
+  const homePath =
+    [D_PATH, O2O_PATH, CAFE_PATH].find((pathname) =>
+      errorPath.startsWith(pathname)
+    ) ?? ROOT_PATH;
+
   return (
     <NotFoundPageWrapper>
       <GlobalStyle />
@@ -56,7 +73,7 @@ const NotFoundPage: FunctionComponent = function () {
         <br />
         고객센터에 문의해주세요.
       */}
-      <GoToMainButton href="/">메인으로</GoToMainButton>
+      <GoToMainButton href={homePath}>메인으로</GoToMainButton>
     </NotFoundPageWrapper>
   );
 };
