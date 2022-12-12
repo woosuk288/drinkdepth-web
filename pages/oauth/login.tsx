@@ -1,10 +1,13 @@
-import { Box, Container } from '@mui/material';
+import { Box, Container, LinearProgress } from '@mui/material';
 import { NextPage } from 'next';
 import { sxCenter } from '../../src/styles/GlobalSx';
 import Header from '../../src/cafe/Header';
 import { useRouter } from 'next/router';
 import { OATUH_LOGIN_PATH } from 'src/utils/routes';
 import Meta from 'src/common/Meta';
+import { useSigninCheck } from 'reactfire';
+import BackPage from 'src/common/BackPage';
+import { PATH_AFTER_LOGIN } from 'src/utils/constants';
 
 const metaData = {
   title: `로그인`,
@@ -15,14 +18,22 @@ const metaData = {
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
+  const prevPath = router.query.previousPath as string;
+  const { status, data: signInCheckResult } = useSigninCheck();
 
   const handleLoginWithKakao = () => {
     const REST_API_KEY = process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY;
     const REDIRECT_URI = `${window.location.origin}/oauth/kakao`;
     const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
+    localStorage.setItem(PATH_AFTER_LOGIN, prevPath);
+
     router.push(KAKAO_AUTH_URL);
   };
+
+  if (!prevPath) return <div>문제가 발생했습니다.</div>;
+  if (status === 'loading') return <LinearProgress />;
+  if (signInCheckResult.signedIn === true) return <BackPage />;
 
   return (
     <Container maxWidth="sm" disableGutters>

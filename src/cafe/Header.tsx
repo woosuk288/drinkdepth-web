@@ -26,7 +26,6 @@ import { auth } from 'src/firebase/services';
 import { signOut } from 'firebase/auth';
 import { useAuth } from '../context/AuthUserContext';
 import { CAFE_PATH, OATUH_LOGIN_PATH } from '../utils/routes';
-import { DOMAIN_OFFLINE_QR_TABLET, PATH_AFTER_LOGIN } from '../utils/constants';
 import KakaoChat from 'src/common/KakaoChat';
 
 const pages = [
@@ -75,8 +74,10 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
   };
 
   const handleLogin = () => {
-    localStorage.setItem(PATH_AFTER_LOGIN, router.asPath);
-    router.push(OATUH_LOGIN_PATH);
+    router.push({
+      pathname: OATUH_LOGIN_PATH,
+      query: { previousPath: router.asPath },
+    });
   };
 
   const handleLogout = async () => {
@@ -115,21 +116,7 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
             alignItems: 'center',
           }}
         >
-          {lastSegmentOfURL !== 'tablet' ? (
-            <IconButton
-              size="large"
-              aria-label="menu"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-              style={{ minWidth: 48 }}
-            >
-              <MenuIcon />
-            </IconButton>
-          ) : (
-            <div style={{ minWidth: 48 }} />
-          )}
+          <div style={{ minWidth: 48 }} />
 
           <Typography variant="h6" fontWeight="bold">
             {title}

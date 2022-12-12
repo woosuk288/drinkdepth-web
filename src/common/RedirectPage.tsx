@@ -10,7 +10,7 @@ function RedirectPage({ path }: RedirectPageProps) {
   if (typeof window !== 'undefined') {
     router.replace({
       pathname: path,
-      query: { previousPath: router.pathname },
+      query: { previousPath: router.asPath },
     });
   }
 

@@ -24,7 +24,6 @@ import { OATUH_LOGIN_PATH } from '../utils/routes';
 import {
   DOMAIN_OFFLINE_QR,
   DOMAIN_OFFLINE_QR_TABLET,
-  PATH_AFTER_LOGIN,
 } from '../utils/constants';
 import {
   DB_COUPONS,
@@ -110,8 +109,10 @@ function CafeInfo({ cafe }: CafeInfoProps) {
       );
       return;
     } else {
-      localStorage.setItem(PATH_AFTER_LOGIN, router.asPath);
-      router.push(OATUH_LOGIN_PATH);
+      router.push({
+        pathname: OATUH_LOGIN_PATH,
+        query: { previousPath: router.asPath },
+      });
     }
   };
 

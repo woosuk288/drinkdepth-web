@@ -17,8 +17,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
-import { PATH_AFTER_LOGIN } from '../utils/constants';
 import useFirebaseAuth from 'src/hooks/useFirebaseAuth';
+import { logoutKakao } from 'src/firebase/services';
 
 const pages = [
   {
@@ -47,8 +47,10 @@ const Header = () => {
   };
 
   const goLoginPage = () => {
-    localStorage.setItem(PATH_AFTER_LOGIN, router.asPath);
-    router.push(OATUH_LOGIN_PATH);
+    router.push({
+      pathname: OATUH_LOGIN_PATH,
+      query: { previousPath: router.asPath },
+    });
   };
 
   return (
@@ -102,13 +104,13 @@ const Header = () => {
                   <>
                     <IconButton
                       color="primary"
-                      onClick={() => router.push('/user')}
+                      // onClick={() => router.push(OATUH_LOGIN_PATH)}
                     >
                       <AccountCircleIcon fontSize="large" />
                     </IconButton>
                   </>
                 ) : (
-                  <Button variant="contained" onClick={goLoginPage}>
+                  <Button variant="contained" /* onClick={goLoginPage} */>
                     로그인
                   </Button>
                 )}
@@ -159,17 +161,33 @@ const Header = () => {
                     <Button disabled>loading</Button>
                   ) : user ? (
                     <>
-                      <IconButton
-                        color="primary"
-                        onClick={() => router.push('/user')}
+                      <div css={{ textAlign: 'center' }}>
+                        <IconButton
+                          color="primary"
+                          // onClick={() => router.push(OATUH_LOGIN_PATH)}
+                        >
+                          <AccountCircleIcon fontSize="large" />
+                        </IconButton>
+                      </div>
+                      <Button
+                        fullWidth
+                        // variant="outlined"
+                        color="inherit"
+                        onClick={logoutKakao}
                       >
-                        <AccountCircleIcon fontSize="large" />
-                      </IconButton>
+                        로그아웃
+                      </Button>
                     </>
                   ) : (
-                    <Button variant="contained" onClick={goLoginPage}>
-                      로그인
-                    </Button>
+                    <MenuItem>
+                      <Button
+                        variant="contained"
+                        fullWidth
+                        onClick={goLoginPage}
+                      >
+                        로그인
+                      </Button>
+                    </MenuItem>
                   )}
                 </Box>
               </Menu>
