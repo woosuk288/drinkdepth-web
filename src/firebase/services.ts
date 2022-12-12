@@ -1,5 +1,5 @@
 import { FirebaseOptions, getApp, initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
 import {
   addDoc,
   arrayUnion,
@@ -587,3 +587,19 @@ export const fetchProfile = async (uid: string) => {
 };
 
 export const updateProfile = async () => {};
+
+export const logoutKakao = async () => {
+  // kakao logout?
+  const kakaoUID = auth.currentUser?.uid.replace('kakao:', '');
+  await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/kakao/logout`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      kakaoUID,
+    }),
+  });
+  // firebase logout
+  signOut(auth).then(() => console.log('로그아웃 완료!'));
+};

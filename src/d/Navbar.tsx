@@ -22,6 +22,7 @@ import {
   cafeMenuReviewState,
   defaultCafeMenuReview,
 } from 'atoms/reviewFormAtom';
+import { getProfileId } from 'src/utils/etc';
 
 const NAV_ROUTES: { [key: string]: number } = {
   [D_PATH]: 0,
@@ -51,7 +52,8 @@ export default function Navbar() {
         photoURL: user.photoURL ?? '',
       });
     } else if (path === PROFILE_PATH) {
-      router.push(path + '/' + user?.uid);
+      const profileId = user ? getProfileId(user.uid) : '';
+      router.push(path + '/' + profileId);
       return;
     }
 

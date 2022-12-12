@@ -9,6 +9,7 @@ import Main from 'src/d/Main';
 import Navbar from 'src/d/Navbar';
 import ProfileForm from 'src/d/ProfileForm';
 import { auth, fetchProfile } from 'src/firebase/services';
+import { getProfileId } from 'src/utils/etc';
 import { FETCH_PROFILE_KEY } from 'src/utils/queryKeys';
 
 const ProfileEditPage: NextPage = () => {
@@ -31,7 +32,7 @@ function ProfileEditContainer() {
   const submitRef = useRef<HTMLInputElement>(null);
   const [isEditValid, setIsEditValid] = useState(false);
   const { isLoading, data, error } = useQuery(FETCH_PROFILE_KEY, () =>
-    fetchProfile(user.uid)
+    fetchProfile(getProfileId(user.uid))
   );
 
   const handleUpdate = () => {
@@ -41,15 +42,6 @@ function ProfileEditContainer() {
   if (isLoading) return <LinearProgress />;
   if (error) return <div>오류가 발생했습니다!</div>;
   if (!data) return <div>데이터가 존재하지 않습니다.</div>;
-
-  const me = {
-    ...data,
-    displayName: user.displayName ?? '',
-    photoURL: user.photoURL ?? '',
-    uid: user.uid,
-    email: user.email,
-    lastSignInTime: user.metadata.lastSignInTime,
-  };
 
   return (
     <>
@@ -69,7 +61,7 @@ function ProfileEditContainer() {
 
       <Main>
         <ProfileForm
-          me={me}
+          me={data}
           submitRef={submitRef}
           setIsEditValid={setIsEditValid}
         />

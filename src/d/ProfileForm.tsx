@@ -133,8 +133,6 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
     formik.setFieldValue('photoURL', me.photoURL);
   };
 
-  console.log('formik : ', formik.values);
-
   return (
     <>
       {formik.isSubmitting && <LinearProgress />}

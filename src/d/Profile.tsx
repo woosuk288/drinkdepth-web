@@ -16,19 +16,19 @@ import {
 } from 'src/utils/routes';
 
 type Props = {
-  me: ProfileType;
+  profile: ProfileType;
 };
-export default function Profile({ me }: Props) {
+export default function Profile({ profile }: Props) {
   return (
     <div css={{ padding: '1rem' }}>
       <div
         css={{ display: 'flex', marginBottom: '1rem', alignItems: 'center' }}
       >
         <Avatar
-          src={me.photoURL}
+          src={profile.photoURL}
           sx={{ width: 56, height: 56, marginRight: '1rem' }}
         />
-        <Typography fontWeight={600}>{me.displayName}</Typography>
+        <Typography fontWeight={600}>{profile.displayName}</Typography>
       </div>
       <Button
         variant="contained"
