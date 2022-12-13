@@ -32,6 +32,7 @@ import {
   ref,
   uploadString,
 } from 'firebase/storage';
+import { getProfileId } from 'src/utils/etc';
 import { getTestType } from '../utils/combos';
 import {
   COUPON_COUNTER_ISSUED_ID,
@@ -419,13 +420,14 @@ export const createReview = async ({ id, ...review }: CafeMenuReviewType) => {
 
   batch.set(newReviewRef, newReview);
 
-  const profileRef = doc(db, DB_PROFILES, review.uid);
+  const profileId = getProfileId(review.uid);
+  const profileRef = doc(db, DB_PROFILES, profileId);
   batch.set(profileRef, { reviewCount: increment(1) }, { merge: true });
 
   const userFlavorRef = doc(
     db,
     DB_PROFILES,
-    review.uid,
+    profileId,
     DB_PRIVACIES,
     DOC_FLAVOR
   );
@@ -438,7 +440,7 @@ export const createReview = async ({ id, ...review }: CafeMenuReviewType) => {
   const userKeywordRef = doc(
     db,
     DB_PROFILES,
-    review.uid,
+    profileId,
     DB_PRIVACIES,
     DOC_KEYWORD
   );
@@ -495,13 +497,14 @@ export const editReview = async ({
   const nextReview = { ...review, images, updatedAt };
   batch.update(reviewRef, nextReview as CafeMenuReviewType);
 
-  const profileRef = doc(db, DB_PROFILES, review.uid);
+  const profileId = getProfileId(review.uid);
+  const profileRef = doc(db, DB_PROFILES, profileId);
   batch.set(profileRef, { reviewCount: increment(1) }, { merge: true });
 
   const userFlavorRef = doc(
     db,
     DB_PROFILES,
-    review.uid,
+    profileId,
     DB_PRIVACIES,
     DOC_FLAVOR
   );
@@ -514,7 +517,7 @@ export const editReview = async ({
   const userKeywordRef = doc(
     db,
     DB_PROFILES,
-    review.uid,
+    profileId,
     DB_PRIVACIES,
     DOC_KEYWORD
   );
@@ -585,8 +588,8 @@ export const fetchReviewCount = async () => {
   return snapshot.data().count;
 };
 
-export const fetchProfile = async (uid: string) => {
-  const profileDoc = doc(db, DB_PROFILES, uid);
+export const fetchProfile = async (profileId: string) => {
+  const profileDoc = doc(db, DB_PROFILES, profileId);
   const profileSnap = await getDoc(profileDoc);
   const profile = getDocData<ProfileType>(profileSnap);
 
