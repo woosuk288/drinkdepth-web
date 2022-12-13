@@ -75,6 +75,7 @@ function PhoneDialog({
                 },
               },
             }}
+            autoFocus
           />
         </DialogContent>
 
