@@ -32,6 +32,16 @@ const Footer: FunctionComponent = function () {
         </MuiLink>{' '}
         {new Date().getFullYear()}.
       </Typography>
+
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        align="center"
+        sx={{ padding: '2rem 1rem' }}
+      >
+        요드(YOD) 개발책임자 양우석 | 주소 : 경상남도 창원시 마산회원구 내서읍
+        광려북천로 198-2, 1층 169호 월드비즈타운 | 사업자등록번호 : 894-15-01596
+      </Typography>
     </FooterWrapper>
   );
 };
