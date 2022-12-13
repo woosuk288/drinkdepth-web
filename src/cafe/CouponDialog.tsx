@@ -97,7 +97,8 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
                 marginTop: '1rem',
                 height: 64,
                 borderRadius: 64,
-                width: 240,
+                minWidth: '180px',
+                width: '50%',
               }}
               onClick={() => setIsCouponOn(true)}
             >

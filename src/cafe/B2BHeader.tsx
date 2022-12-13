@@ -46,11 +46,11 @@ const pages = [
   // },
 ];
 
-type CafeHeaderProps = {
+type B2BHeaderProps = {
   title: string;
 };
 
-const CafeHeader = ({ title }: CafeHeaderProps) => {
+const B2BHeader = ({ title }: B2BHeaderProps) => {
   const router = useRouter();
   const { user } = useAuth();
 
@@ -102,6 +102,8 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
   };
 
   const lastSegmentOfURL = router.pathname.split('/').pop();
+  const hasMenu =
+    lastSegmentOfURL !== 'tablet' && router.pathname.startsWith('/cafe');
 
   return (
     <AppBar position="static" color="transparent" elevation={0}>
@@ -116,7 +118,21 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
             alignItems: 'center',
           }}
         >
-          <div style={{ minWidth: 48 }} />
+          {hasMenu ? (
+            <IconButton
+              size="large"
+              aria-label="menu"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+              style={{ minWidth: 48 }}
+            >
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            <div style={{ minWidth: 48 }} />
+          )}
 
           <Typography variant="h6" fontWeight="bold">
             {title}
@@ -179,4 +195,4 @@ const CafeHeader = ({ title }: CafeHeaderProps) => {
     </AppBar>
   );
 };
-export default CafeHeader;
+export default B2BHeader;

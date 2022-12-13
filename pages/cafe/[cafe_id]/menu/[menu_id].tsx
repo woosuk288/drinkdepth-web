@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from 'querystring';
 import Meta from 'src/common/Meta';
 import { menuApi } from 'src/utils/cacheAPIs';
 import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
-import CafeHeader from 'src/cafe/Header';
+import CafeHeader from 'src/cafe/B2BHeader';
 import MenuInfo from 'src/cafe/MenuInfo';
 
 import { AuthUserProvider } from 'src/context/AuthUserContext';

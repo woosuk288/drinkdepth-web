@@ -2,7 +2,7 @@ import { Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
-import CafeHeader from '../../src/cafe/Header';
+import CafeHeader from '../../src/cafe/B2BHeader';
 import CafeInfo from '../../src/cafe/CafeInfo';
 import Menus from '../../src/cafe/Menus';
 import Meta from '../../src/common/Meta';

@@ -1,7 +1,7 @@
 import { Box, Container, LinearProgress } from '@mui/material';
 import { NextPage } from 'next';
 import { sxCenter } from '../../src/styles/GlobalSx';
-import Header from '../../src/cafe/Header';
+import Header from '../../src/cafe/B2BHeader';
 import { useRouter } from 'next/router';
 import { OATUH_LOGIN_PATH } from 'src/utils/routes';
 import Meta from 'src/common/Meta';

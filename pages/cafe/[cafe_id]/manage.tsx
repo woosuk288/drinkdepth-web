@@ -11,7 +11,7 @@ import {
 } from 'src/firebase/services';
 import { NOT_FOUND_PATH } from 'src/utils/routes';
 
-import CafeHeader from '../../../src/cafe/Header';
+import CafeHeader from '../../../src/cafe/B2BHeader';
 
 function ManagePage() {
   const { user, loading } = useFirebaseAuth();

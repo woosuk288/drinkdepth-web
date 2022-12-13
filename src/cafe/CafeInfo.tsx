@@ -32,6 +32,8 @@ import {
 } from 'src/firebase/services';
 import { FirebaseError } from 'firebase/app';
 import BannerCarousel from './tablet/BannerCarousel';
+import { clipText } from 'src/utils/etc';
+import PhoneDialog from './PhoneDialog';
 
 export type CafeInfoProps = {
   cafe: CafeType;
@@ -43,6 +45,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   const cafeId = router.query.cafe_id as string;
   const { user } = useAuth();
 
+  // 주의! undefined와 null 처리 각각 다름
   const [coupon, setCoupon] = useState<CouponType | null>();
   useEffect(() => {
     if (user?.uid) {
@@ -53,15 +56,17 @@ function CafeInfo({ cafe }: CafeInfoProps) {
           where('cafeId', '==', cafeId),
           where('customerId', '==', user.uid)
         ),
-        (snapshot) =>
-          setCoupon(
-            snapshot.size > 0
-              ? ({
-                  ...snapshot.docs[0].data(),
-                  id: snapshot.docs[0].id,
-                } as CouponType)
-              : null
-          )
+        (snapshot) => {
+          if (snapshot.size > 0) {
+            setCoupon({
+              ...snapshot.docs[0].data(),
+              id: snapshot.docs[0].id,
+            } as CouponType);
+          } else {
+            setOpenPhone(true);
+            setCoupon(null);
+          }
+        }
       );
       return unsubscribe;
     } else {
@@ -72,6 +77,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   const mutation = useMutation(issueCoupon);
 
   const [open, setOpen] = useState(false);
+  const [openPhone, setOpenPhone] = useState(false);
 
   useEffect(() => {
     if (open && coupon?.code) {
@@ -97,23 +103,28 @@ function CafeInfo({ cafe }: CafeInfoProps) {
     anchor.click();
   };
 
-  const handleIssueCoupon = () => {
-    if (user) {
-      mutation.mutate(
-        { cafeId, customerId: user.uid },
-        {
-          onSuccess: (data) => {
-            // console.log('data : ', data);
-          },
-        }
-      );
-      return;
+  const handleIssueClick = () => {
+    if (user && !coupon) {
+      setOpenPhone(true);
     } else {
       router.push({
         pathname: OATUH_LOGIN_PATH,
         query: { previousPath: router.asPath },
       });
     }
+  };
+
+  const handleIssueCoupon = (phoneNumber: string) => {
+    user &&
+      mutation.mutate(
+        { cafeId, customerId: user.uid, phoneNumber },
+        {
+          onSuccess: (data) => {
+            // console.log('data : ', data);
+            setOpenPhone(false);
+          },
+        }
+      );
   };
 
   const handleUseCoupon = () => {
@@ -132,7 +143,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
     setExpanded(!expanded);
   };
 
-  const clipInfoduce = clipText(cafe.introduce);
+  const clipInfoduce = clipText(cafe.introduce, 100);
   const hostname =
     typeof window !== 'undefined' && window.location.hostname
       ? window.location.hostname
@@ -213,7 +224,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
             <Button
               variant="contained"
               sx={sx.btnCoupon}
-              onClick={handleIssueCoupon}
+              onClick={handleIssueClick}
               disabled={mutation.isLoading || coupon === undefined}
             >
               쿠폰 발행
@@ -235,6 +246,14 @@ function CafeInfo({ cafe }: CafeInfoProps) {
               handleClose={handleClose}
             />
           )}
+
+          {openPhone && (
+            <PhoneDialog
+              open={openPhone}
+              handleClose={() => setOpenPhone(false)}
+              handleIssueCoupon={handleIssueCoupon}
+            />
+          )}
         </Box>
       )}
     </>
@@ -251,15 +270,4 @@ const sx = {
     fontWeight: 500,
     borderRadius: 16,
   },
-};
-
-const clipText = (text: string) => {
-  const MIN_LENGTH = 100;
-  const idx = text.indexOf('\n', MIN_LENGTH);
-
-  if (idx === -1 || text.length < MIN_LENGTH) {
-    return text;
-  } else {
-    return text.slice(0, idx);
-  }
 };

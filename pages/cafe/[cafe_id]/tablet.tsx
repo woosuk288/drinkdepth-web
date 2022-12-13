@@ -10,7 +10,7 @@ import { CAFE_PATH } from 'src/utils/routes';
 
 // import CouponWIthQR from 'src/cafe/tablet/CouponWIthQR';
 import BannerCarousel from 'src/cafe/tablet/BannerCarousel';
-import CafeHeader from 'src/cafe/Header';
+import CafeHeader from 'src/cafe/B2BHeader';
 import useScrollY from 'src/hooks/useScrollY';
 
 /**
