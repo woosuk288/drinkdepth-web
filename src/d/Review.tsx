@@ -63,26 +63,34 @@ function Review({ review }: Props) {
         <CardContent
           sx={{ paddingY: 0, overflow: 'hidden', whiteSpace: 'nowrap' }}
         >
-          <Typography fontSize={18} noWrap>
+          <Typography /* fontSize={18} */ variant="h6" noWrap>
             {review.place?.place_name}
           </Typography>
-          <Typography fontWeight={600} noWrap gutterBottom>
-            {review.menuName}
+
+          {(review.keywords?.length ?? 0) > 0 && (
+            <Typography variant="body1" noWrap>
+              {review.keywords?.map((t) => `#${t} `)}
+            </Typography>
+          )}
+
+          <div css={{ margin: '0.5rem' }}></div>
+
+          <Typography fontWeight={600} noWrap>
             <CoffeeIcon
               fontSize="small"
               sx={{ verticalAlign: 'text-bottom', marginRight: '0.25rem' }}
             />
+            {review.menuName}
           </Typography>
 
-          <Typography variant="body1" noWrap>
-            맛 : {review.coffee?.flavors?.map((t) => `#${t} `)}
-          </Typography>
-          <Typography variant="body1" noWrap>
-            편의 : {review.keywords?.map((t) => `#${t} `)}
-          </Typography>
+          {(review.coffee?.flavors?.length ?? 0) > 0 && (
+            <Typography variant="body1" noWrap>
+              {review.coffee?.flavors?.map((t) => `#${t} `)}
+            </Typography>
+          )}
         </CardContent>
         <div css={{ flex: 1 }}></div>
-        {review.images.length && (
+        {review.images.length ? (
           <CardMedia
             component="img"
             sx={{
@@ -94,12 +102,12 @@ function Review({ review }: Props) {
             image={review.images[0].url}
             alt="thumbnail"
           />
-        )}
+        ) : null}
       </div>
 
       <CardContent sx={{ ':last-child': { paddingBottom: '1rem' } }}>
         <Typography variant="body1" noWrap>
-          한줄평 : {review.text}
+          {review.text}
         </Typography>
         <Typography variant="body2" fontSize={12} sx={{ marginTop: '0.75rem' }}>
           {new Date(review.createdAt).toLocaleString()}

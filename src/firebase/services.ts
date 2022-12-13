@@ -611,7 +611,7 @@ export const logoutKakao = async () => {
     }),
   });
   // firebase logout
-  signOut(auth).then(() => console.log('로그아웃 완료!'));
+  return signOut(auth);
 };
 
 type createPhoneType = {

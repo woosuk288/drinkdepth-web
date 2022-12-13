@@ -32,3 +32,4 @@ export const PROFILE_EDIT_PATH = '/d/profile/edit';
 export const PROFILE_MYREVIEW_PATH = '/d/profile/myreview';
 export const PROFILE_BOOKMARK_PATH = '/d/profile/bookmark';
 export const PROFILE_BADGE_PATH = '/d/profile/badge';
+export const PROFILE_SETTINGS_PATH = '/d/profile/settings';

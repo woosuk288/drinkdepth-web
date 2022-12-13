@@ -9,25 +9,17 @@ import { NextSeo } from 'next-seo';
 import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Navbar from 'src/d/Navbar';
-import ReviewHome from 'src/d/ReviewHome';
+import Settings from 'src/d/Settings';
 
-const MainPage: NextPage = () => {
+const SettingsPage: NextPage = () => {
   return (
     <>
-      <NextSeo title="DrinkDepth | 리뷰 홈" />
+      <NextSeo title="DrinkDepth | 설정" />
       <AuthContainer>
-        <HeaderD
-          centerComponent={
-            <div css={{ display: 'flex' }}>
-              <Typography fontSize={18} fontWeight={600}>
-                위치
-              </Typography>
-            </div>
-          }
-        />
+        <HeaderD centerComponent={'설정'} />
 
         <Main>
-          <ReviewHome />
+          <Settings />
         </Main>
 
         <Navbar />
@@ -36,4 +28,4 @@ const MainPage: NextPage = () => {
   );
 };
 
-export default MainPage;
+export default SettingsPage;

@@ -3,7 +3,10 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import HeaderD from 'src/d/HeaderD';
 
-import { Button, LinearProgress, Typography } from '@mui/material';
+import { Button, IconButton, LinearProgress, Typography } from '@mui/material';
+
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import AuthContainer from 'src/d/AuthContainer';
@@ -14,6 +17,7 @@ import { fetchProfile } from 'src/firebase/services';
 import { FETCH_PROFILE_KEY } from 'src/utils/queryKeys';
 import { useQuery } from 'react-query';
 import { ParsedUrlQuery } from 'querystring';
+import { PROFILE_SETTINGS_PATH } from 'src/utils/routes';
 
 // TODO: SSR or SSG
 const ProfilePage: NextPage /* <Props> */ = () => {
@@ -45,7 +49,14 @@ function ProfileContainer() {
 
   return (
     <>
-      <HeaderD leftIcon="back" centerComponent={'프로필'} />
+      <HeaderD
+        leftIcon={
+          <IconButton onClick={() => router.push(PROFILE_SETTINGS_PATH)}>
+            <SettingsOutlinedIcon />
+          </IconButton>
+        }
+        centerComponent={'프로필'}
+      />
 
       <Main>
         <Profile profile={data} />
