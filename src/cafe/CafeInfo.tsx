@@ -35,8 +35,6 @@ import BannerCarousel from './tablet/BannerCarousel';
 import { clipText } from 'src/utils/etc';
 import PhoneDialog from './PhoneDialog';
 
-const ISSUE_COUPON = 'issue_coupon';
-
 export type CafeInfoProps = {
   cafe: CafeType;
 };
@@ -51,12 +49,6 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   const [coupon, setCoupon] = useState<CouponType | null>();
   useEffect(() => {
     if (user?.uid) {
-      // 로그인 전 쿠폰 발행 클릭시 로그인 후 처음 한 번 팝업 띠워주기
-      if (sessionStorage.getItem(ISSUE_COUPON)) {
-        setOpenPhone(true);
-        sessionStorage.removeItem(ISSUE_COUPON);
-      }
-
       const unsubscribe = onSnapshot(
         query(
           collection(db, DB_COUPONS),
@@ -111,15 +103,13 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   };
 
   const handleIssueClick = () => {
-    if (user && !coupon) {
+    if (user && !user.phoneNumber && !coupon) {
       setOpenPhone(true);
     } else {
-      router
-        .push({
-          pathname: OATUH_LOGIN_PATH,
-          query: { previousPath: router.asPath },
-        })
-        .then(() => sessionStorage.setItem(ISSUE_COUPON, 'click'));
+      router.push({
+        pathname: OATUH_LOGIN_PATH,
+        query: { previousPath: router.asPath },
+      });
     }
   };
 

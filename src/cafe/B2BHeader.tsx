@@ -13,6 +13,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useRouter } from 'next/router';
 // import Image from 'next/image';
 import {
+  Avatar,
   Button,
   Divider,
   Drawer,
@@ -145,7 +146,20 @@ const B2BHeader = ({ title }: B2BHeaderProps) => {
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
           >
-            <Toolbar />
+            <Toolbar>
+              {user && (
+                <div>
+                  <IconButton sx={{ mr: '4px', pl: 0 }}>
+                    <Avatar
+                      sx={{ width: 40, height: 40 }}
+                      src={user.photoURL ?? ''}
+                    ></Avatar>
+                  </IconButton>
+                  {user.displayName}
+                </div>
+              )}
+            </Toolbar>
+
             <Divider />
             <List sx={{ width: 250 }}>
               {pages.map((page) => (
