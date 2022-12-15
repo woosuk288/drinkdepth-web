@@ -5,6 +5,15 @@ import React from 'react';
 import { sxCenter } from '../../src/styles/GlobalSx';
 import { PATH_AFTER_LOGIN } from '../../src/utils/constants';
 import { auth } from 'src/firebase/services';
+import { OATUH_KAKAO_PATH } from 'src/utils/routes';
+import Meta from 'src/common/Meta';
+
+const metaData = {
+  title: `카카오 로그인`,
+  description: 'DrinkDepth 카카오 로그인',
+  image: '/images/logo_icon.png',
+  canonical: `${OATUH_KAKAO_PATH}`,
+};
 
 const Auth = () => {
   const router = useRouter();
@@ -93,10 +102,13 @@ const Auth = () => {
   // console.log('code : ', code);
 
   return (
-    <Box sx={{ ...sxCenter, height: '100vh' }}>
-      <CircularProgress />
-      <Typography sx={{ marginTop: '1rem' }}>로그인 처리 중...</Typography>
-    </Box>
+    <>
+      <Meta data={metaData} />
+      <Box sx={{ ...sxCenter, height: '100vh' }}>
+        <CircularProgress />
+        <Typography sx={{ marginTop: '1rem' }}>로그인 처리 중...</Typography>
+      </Box>
+    </>
   );
 };
 

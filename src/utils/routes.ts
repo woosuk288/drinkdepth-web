@@ -17,6 +17,7 @@ export const REVIEWS_PATH = '/reviews';
  *
  */
 export const OATUH_LOGIN_PATH = '/oauth/login';
+export const OATUH_KAKAO_PATH = '/oauth/kakao';
 
 export const NOT_FOUND_PATH = '/404';
 
