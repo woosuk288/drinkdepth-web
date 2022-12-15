@@ -76,7 +76,6 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   const mutation = useMutation(issueCoupon);
 
   const [open, setOpen] = useState(false);
-  const [openPhone, setOpenPhone] = useState(false);
 
   useEffect(() => {
     if (open && coupon?.code) {
@@ -102,25 +101,20 @@ function CafeInfo({ cafe }: CafeInfoProps) {
     anchor.click();
   };
 
-  const handleIssueClick = () => {
-    if (user && !user.phoneNumber && !coupon) {
-      setOpenPhone(true);
-    } else {
-      router.push({
-        pathname: OATUH_LOGIN_PATH,
-        query: { previousPath: router.asPath },
-      });
-    }
+  const handleGetCoupon = () => {
+    router.push({
+      pathname: OATUH_LOGIN_PATH,
+      query: { previousPath: router.asPath },
+    });
   };
 
-  const handleIssueCoupon = (phoneNumber: string) => {
+  const handleIssueCoupon = () => {
     user &&
       mutation.mutate(
-        { cafeId, customerId: user.uid, phoneNumber },
+        { cafeId, customerId: user.uid },
         {
           onSuccess: (data) => {
             // console.log('data : ', data);
-            setOpenPhone(false);
           },
         }
       );
@@ -219,11 +213,20 @@ function CafeInfo({ cafe }: CafeInfoProps) {
             >
               쿠폰 사용
             </Button>
+          ) : !user ? (
+            <Button
+              variant="contained"
+              sx={sx.btnCoupon}
+              onClick={handleGetCoupon}
+              disabled={mutation.isLoading || coupon === undefined}
+            >
+              쿠폰 받기
+            </Button>
           ) : (
             <Button
               variant="contained"
               sx={sx.btnCoupon}
-              onClick={handleIssueClick}
+              onClick={handleIssueCoupon}
               disabled={mutation.isLoading || coupon === undefined}
             >
               쿠폰 발행
@@ -243,14 +246,6 @@ function CafeInfo({ cafe }: CafeInfoProps) {
               coupon={coupon!}
               open={open}
               handleClose={handleClose}
-            />
-          )}
-
-          {openPhone && (
-            <PhoneDialog
-              open={openPhone}
-              handleClose={() => setOpenPhone(false)}
-              handleIssueCoupon={handleIssueCoupon}
             />
           )}
         </Box>

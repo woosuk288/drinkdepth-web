@@ -14,7 +14,7 @@ import NumberFormat, { InputAttributes } from 'react-number-format';
 type PhoneDialogProps = {
   open: boolean;
   handleClose: () => void;
-  handleIssueCoupon: (handleIssueCoupon: string) => void;
+  handleIssueCoupon: (phoneNumber?: string) => void;
 };
 
 function PhoneDialog({

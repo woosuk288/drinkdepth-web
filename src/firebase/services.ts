@@ -59,7 +59,6 @@ export const DB_CAFES = 'cafes';
 export const DB_MENUS = 'menus';
 export const DB_REVIEWS = 'reviews';
 export const DB_COUPONS = 'coupons';
-export const DB_PHONES = 'phones';
 
 export const DB_PROFILES = 'profiles';
 export const DB_PRIVACIES = 'privacies';
@@ -214,11 +213,9 @@ export const deleteMenuReview = async ({
 export const issueCoupon = async ({
   cafeId,
   customerId,
-  phoneNumber,
 }: {
   cafeId: string;
   customerId: string;
-  phoneNumber: string;
 }) => {
   const result = runTransaction(db, async (tx) => {
     const counterRef = doc(db, DB_COUPONS, COUPON_COUNTER_ISSUED_ID);
@@ -237,8 +234,6 @@ export const issueCoupon = async ({
     const couponRef = doc(db, DB_COUPONS, nextCode);
     const newCouponDoc = await tx.get(couponRef);
 
-    const phoneRef = doc(db, DB_PHONES, customerId);
-
     if (newCouponDoc.exists()) {
       throw '쿠폰 코드 중복 오류!';
     } else {
@@ -253,8 +248,6 @@ export const issueCoupon = async ({
         createdAt: serverTimestamp() as any,
       };
       tx.set(couponRef, newCoupon);
-
-      tx.set(phoneRef, { phoneNumber });
 
       return '쿠폰 발급 완료!';
     }
@@ -612,16 +605,4 @@ export const logoutKakao = async () => {
   });
   // firebase logout
   return signOut(auth);
-};
-
-type createPhoneType = {
-  uid: string;
-  displayName: string;
-  phoneNumber: string;
-  createdAt: Date;
-};
-export const createPhone = async (data: createPhoneType) => {
-  const ref = doc(db, 'phones', data.uid);
-
-  await setDoc(ref, data);
 };
