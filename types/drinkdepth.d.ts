@@ -112,6 +112,5 @@ type ProfileType = {
   biography?: string;
   createdAt: Date | string;
   updatedAt?: Date | string;
-
-  lastSignInTime?: string;
+  provider: 'KAKAO';
 };

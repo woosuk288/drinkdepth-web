@@ -1,5 +1,5 @@
 import { FirebaseOptions, getApp, initializeApp } from 'firebase/app';
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth, signOut, User } from 'firebase/auth';
 import {
   addDoc,
   arrayUnion,
@@ -27,8 +27,10 @@ import {
   writeBatch,
 } from 'firebase/firestore';
 import {
+  deleteObject,
   getDownloadURL,
   getStorage,
+  listAll,
   ref,
   uploadString,
 } from 'firebase/storage';
@@ -605,4 +607,27 @@ export const logoutKakao = async () => {
   });
   // firebase logout
   return signOut(auth);
+};
+
+export const deleteReview = async ({
+  reviewId,
+  uid,
+}: {
+  reviewId: string;
+  uid: string;
+}) => {
+  const reviewRef = doc(db, DB_REVIEWS, reviewId);
+  const dir = await listAll(ref(storage, `d/${DB_REVIEWS}/${reviewId}/${uid}`));
+  await Promise.all(dir.items.map((item) => deleteObject(item)));
+
+  const batch = writeBatch(db);
+
+  batch.delete(reviewRef);
+
+  const profileRef = doc(db, DB_PROFILES, getProfileId(uid));
+  batch.update(profileRef, { reviewCount: increment(-1) });
+
+  await batch.commit();
+
+  return reviewId;
 };

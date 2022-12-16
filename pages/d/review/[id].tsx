@@ -12,10 +12,10 @@ import { useRecoilValue } from 'recoil';
 import { cafeMenuReviewState } from 'atoms/reviewFormAtom';
 import RedirectPage from 'src/common/RedirectPage';
 import { NOT_FOUND_PATH } from 'src/utils/routes';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { FETCH_REVIEW_KEY } from 'src/utils/queryKeys';
 import { useRouter } from 'next/router';
-import { auth, fetchReview } from 'src/firebase/services';
+import { auth, deleteReview, fetchReview } from 'src/firebase/services';
 import { LinearProgress } from '@mui/material';
 
 const ReviewDetailPage: NextPage = () => {
@@ -48,9 +48,27 @@ function ReviewDetailContainer() {
     { enabled: !!id }
   );
 
+  const deleteMutation = useMutation(deleteReview, {
+    onSuccess: () => {
+      router.back();
+    },
+  });
+
+  const handleReviewDelete = () => {
+    if (user && confirm('삭제하시겠어요?')) {
+      deleteMutation.mutate({ reviewId: id, uid: user.uid });
+    }
+  };
+
   if (isLoading) return <LinearProgress />;
   if (error) return <div>오류 발생!</div>;
   if (!id || !data) return <RedirectPage path={NOT_FOUND_PATH} />;
 
-  return <ReviewDetail review={data} userId={user?.uid} />;
+  return (
+    <ReviewDetail
+      review={data}
+      userId={user?.uid}
+      handleReviewDelete={handleReviewDelete}
+    />
+  );
 }

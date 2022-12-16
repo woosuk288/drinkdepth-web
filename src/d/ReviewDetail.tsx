@@ -16,16 +16,17 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 
 import { customIcons } from './RadioGroupRating';
-import Link, { NextLinkComposed } from 'src/common/Link';
+import { NextLinkComposed } from 'src/common/Link';
 import { REVIEW_EDIT_PATH } from 'src/utils/routes';
 // import Link from 'next/link';
 
 type Props = {
   review: CafeMenuReviewType;
   userId?: string;
+  handleReviewDelete: () => void;
 };
 
-function ReviewDetail({ review, userId }: Props) {
+function ReviewDetail({ review, userId, handleReviewDelete }: Props) {
   // console.log('review : ', review);
   return (
     <div>
@@ -109,7 +110,7 @@ function ReviewDetail({ review, userId }: Props) {
           component="img"
           sx={{
             // width: '100%',
-            height: '56.25vw',
+            height: { xs: '56.25vw', sm: '337.5px' },
             // maxHeight: '70%',
             // marginRight: '1rem',
             borderRadius: '4px',
@@ -233,7 +234,11 @@ function ReviewDetail({ review, userId }: Props) {
               >
                 수정
               </Button>
-              <Button variant="outlined" color="inherit">
+              <Button
+                variant="outlined"
+                color="inherit"
+                onClick={handleReviewDelete}
+              >
                 삭제
               </Button>
             </div>

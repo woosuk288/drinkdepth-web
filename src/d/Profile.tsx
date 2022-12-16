@@ -6,19 +6,23 @@ import Typography from '@mui/material/Typography';
 import { Button, ListItemButton } from '@mui/material';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import Link from 'src/common/Link';
+import Link, { NextLinkComposed } from 'src/common/Link';
 import { THEME_SEPERATOR } from 'src/theme';
 import {
-  PROFILE_BADGE_PATH,
-  PROFILE_BOOKMARK_PATH,
+  BADGE_PATH,
+  // PROFILE_BADGE_PATH,
+  BOOKMARK_PATH,
   PROFILE_EDIT_PATH,
-  PROFILE_MYREVIEW_PATH,
+  MYREVIEW_PATH,
 } from 'src/utils/routes';
+import { useRouter } from 'next/router';
 
 type Props = {
   profile: ProfileType;
 };
 export default function Profile({ profile }: Props) {
+  const router = useRouter();
+
   return (
     <div css={{ padding: '1rem' }}>
       <div
@@ -50,7 +54,15 @@ export default function Profile({ profile }: Props) {
         }}
       >
         {pageList.map((page) => (
-          <ListItemButton component={Link} href={page.path} key={page.text}>
+          <ListItemButton
+            component={NextLinkComposed}
+            to={{
+              pathname: router.asPath + page.path,
+              query: { uid: profile.provider.toLowerCase() + ':' + profile.id },
+            }}
+            linkAs={router.asPath + page.path}
+            key={page.text}
+          >
             <ListItemText primary={page.text} />
             <NavigateNextIcon />
           </ListItemButton>
@@ -63,14 +75,14 @@ export default function Profile({ profile }: Props) {
 const pageList = [
   {
     text: '찜한 리뷰',
-    path: PROFILE_BOOKMARK_PATH,
+    path: BOOKMARK_PATH,
   },
   {
     text: '작성한 리뷰',
-    path: PROFILE_MYREVIEW_PATH,
+    path: MYREVIEW_PATH,
   },
   {
     text: '업적 보기',
-    path: PROFILE_BADGE_PATH,
+    path: BADGE_PATH,
   },
 ];

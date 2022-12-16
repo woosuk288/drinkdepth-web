@@ -10,7 +10,6 @@ import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Profile from 'src/d/Profile';
 import Navbar from 'src/d/Navbar';
-import ReviewDetailList from 'src/d/ReviewDetailList';
 import { useInfiniteQuery, useQuery } from 'react-query';
 import {
   auth,
@@ -21,6 +20,7 @@ import {
   FETCH_MY_REVIEWS_KEY,
   FETCH_MY_REVIEW_COUNT_KEY,
 } from 'src/utils/queryKeys';
+import Review from 'src/d/Review';
 
 const BookmarkReviewPage: NextPage = () => {
   return (
@@ -66,5 +66,9 @@ function BookmarkReviewContainer() {
 
   if (isLoadingCount || isLoading) return <LinearProgress />;
 
-  return <ReviewDetailList infiniteReviews={data} />;
+  <div css={{ '& > a': { marginBottom: '0.125rem', display: 'block' } }}>
+    {data?.pages.map((reviews) =>
+      reviews.map((review) => <Review key={review.id} review={review} />)
+    )}
+  </div>;
 }

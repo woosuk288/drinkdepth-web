@@ -10,17 +10,13 @@ import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Profile from 'src/d/Profile';
 import Navbar from 'src/d/Navbar';
-import ReviewDetailList from 'src/d/ReviewDetailList';
-import { useInfiniteQuery, useQuery } from 'react-query';
-import {
-  auth,
-  fetchMyReviewCount,
-  fetchMyReviews,
-} from 'src/firebase/services';
+import { useInfiniteQuery, useMutation, useQuery } from 'react-query';
+import { fetchMyReviewCount, fetchMyReviews } from 'src/firebase/services';
 import {
   FETCH_MY_REVIEWS_KEY,
   FETCH_MY_REVIEW_COUNT_KEY,
 } from 'src/utils/queryKeys';
+import Review from 'src/d/Review';
 
 const MyReviewPage: NextPage = () => {
   return (
@@ -47,31 +43,39 @@ const MyReviewPage: NextPage = () => {
 export default MyReviewPage;
 
 function MyReviewContainer() {
-  const user = auth.currentUser!;
-  // const router = useRouter();
+  const router = useRouter();
+  const uid = router.query.uid as string;
 
-  const { data: postCount = 0, isLoading: isLoadingCount } = useQuery(
+  const { data: reviewCount = 0, isLoading: isLoadingCount } = useQuery(
     FETCH_MY_REVIEW_COUNT_KEY,
-    () => fetchMyReviewCount(user.uid)
+    () => fetchMyReviewCount(uid),
+    { enabled: !!uid }
   );
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
       FETCH_MY_REVIEWS_KEY,
       ({ pageParam = new Date() }) => {
-        return fetchMyReviews(user.uid, pageParam);
+        return fetchMyReviews(uid, pageParam);
       },
       {
         getNextPageParam: (lastPage, allPages) => {
           return (
-            allPages.flat().length < postCount &&
+            allPages.flat().length < reviewCount &&
             new Date(lastPage[lastPage.length - 1].createdAt)
           );
         },
-        // enabled: ''
+        enabled: !!uid,
       }
     );
 
   if (isLoadingCount || isLoading) return <LinearProgress />;
+  if (!uid) return null;
 
-  return <ReviewDetailList infiniteReviews={data} />;
+  return (
+    <div css={{ '& > a': { marginBottom: '0.125rem', display: 'block' } }}>
+      {data?.pages.map((reviews) =>
+        reviews.map((review) => <Review key={review.id} review={review} />)
+      )}
+    </div>
+  );
 }

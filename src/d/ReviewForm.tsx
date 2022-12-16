@@ -149,7 +149,7 @@ function ReviewForm() {
     setReview(setNestedProp(review, keys, tags));
   };
 
-  // console.log('hiyo : ', review);
+  // console.log('review : ', review);
 
   return (
     <Box
@@ -166,20 +166,22 @@ function ReviewForm() {
       {!review.place && <CafeSearchDialog setter={setReview} />}
 
       <div>
-        <div>
-          <InputLabel htmlFor="input-review-menu">메뉴명</InputLabel>
+        <FormControl required fullWidth>
+          {/* <InputLabel htmlFor="input-review-menu">메뉴명</InputLabel> */}
+          <FormLabel id="input-review-menu" sx={{ marginBottom: '4px' }}>
+            메뉴명
+          </FormLabel>
           <OutlinedInput
             inputRef={focusRef}
             id="input-review-menu"
             name="menuName"
+            // label="메뉴명"
             value={review.menuName}
             size="small"
-            required
-            fullWidth
             placeholder="메뉴명을 입력해주세요"
             onChange={handleChange}
           />
-        </div>
+        </FormControl>
         {/* <div>어떤 종류의 메뉴를 드셨나요?</div> */}
         <FormControl sx={{ marginTop: '1rem' }} required>
           <FormLabel id="input-review-type-label">종류</FormLabel>
@@ -278,7 +280,7 @@ function ReviewForm() {
               <FlavorTags
                 id="filtered-coffee"
                 tooltip="맛과 향을 의미합니다"
-                helperText="향미노트"
+                helperText="#향미노트"
                 value={review.coffee?.flavors}
                 name={'coffee.flavors'}
                 onChange={handleTagsChange}
@@ -311,7 +313,7 @@ function ReviewForm() {
       </div>
 
       <div css={{ marginTop: '1rem' }}>
-        <InputLabel htmlFor="input-review-keywords">편의적 측면</InputLabel>
+        <InputLabel htmlFor="input-review-keywords">#편의적 측면</InputLabel>
         <StringTags
           id="input-review-keywords"
           value={review.keywords}

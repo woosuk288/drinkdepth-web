@@ -177,20 +177,6 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
               {me.displayName}
             </Typography>
           }
-          subheader={
-            <>
-              {me.lastSignInTime && (
-                <Typography
-                  variant="body2"
-                  component="div"
-                  style={{ height: '30.75px' }}
-                >
-                  {new Date(me.lastSignInTime).toLocaleString()}
-                  <p>마지막 로그인 시간</p>
-                </Typography>
-              )}
-            </>
-          }
         />
 
         <Box
