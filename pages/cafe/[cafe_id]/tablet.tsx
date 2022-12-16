@@ -36,6 +36,7 @@ const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
         <BannerCarousel imageURLs={cafe.imageOfflineURLs} />
         {/* <CouponWIthQR cafeId={cafe.id} /> */}
         <Menus
+          menuCategories={cafe.menuCategories}
           menus={menus}
           sx={{
             marginTop: '3rem',

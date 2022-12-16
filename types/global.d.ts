@@ -9,6 +9,8 @@ type CafeType = {
   addressY: string;
   addressX: string;
   addressETC?: string;
+
+  menuCategories: CafeMenuCategoryType[];
 };
 
 type ReviewType = {
@@ -32,13 +34,14 @@ type CafeMenuType = {
   name: string;
   description: string;
   labels: string[];
-  imageURL: string;
   images?: ImagesType;
   price: number;
-  category: string;
+  categorySeqs: string[];
+  categories: string[];
   reviewCount: number;
   ownerComment?: string;
   pairingMenus?: string[];
+  disabled?: boolean;
 };
 
 type CafeMenuCategoryType = {

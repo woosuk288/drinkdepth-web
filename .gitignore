@@ -38,5 +38,6 @@ yarn-error.log*
 # local db files
 cafes.db
 menus.db
+menus.json
 
 tsconfig.tsbuildinfo

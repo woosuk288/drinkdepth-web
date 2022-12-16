@@ -5,14 +5,15 @@ import CategoryTabs from './CategoryTabs';
 import Menu from './Menu';
 
 export type CafeMenusProps = {
+  menuCategories: CafeMenuCategoryType[];
   menus: CafeMenuType[];
   sx?: SxProps;
 };
 
-function Menus({ menus, sx }: CafeMenusProps) {
+function Menus({ menuCategories, menus, sx }: CafeMenusProps) {
   const router = useRouter();
   const initialTabIndex = parseInt(
-    (router.query.index as string | undefined) ?? '2',
+    (router.query.index as string | undefined) ?? '0',
     10
   );
 
@@ -23,19 +24,33 @@ function Menus({ menus, sx }: CafeMenusProps) {
   // scoroll y hook
 
   const handleTabChange = (
-    _event: React.SyntheticEvent | null,
+    _: React.SyntheticEvent | null,
     newValue: number
   ) => {
-    setTabIndex(newValue);
-
-    if (newValue === 0) {
+    if (menuCategories.length === 0) {
       setFilteredMenus(menus);
     } else {
-      const categoryValue = categories[newValue].value;
-      const menusByCategory = menus.filter(
-        (cafemenu) => cafemenu.category === categoryValue
+      setTabIndex(newValue);
+
+      const categoryValue = menuCategories[newValue].value;
+      const menusByCategory = menus.filter((cafemenu) =>
+        cafemenu.categories.includes(categoryValue)
       );
-      setFilteredMenus(menusByCategory);
+      const sortedMenus = menusByCategory.slice().sort((a, b) => {
+        if (a.categories.length !== a.categorySeqs.length) {
+          return 1;
+        } else if (b.categories.length !== b.categorySeqs.length) {
+          return -1;
+        } else {
+          const idx = a.categories.findIndex((c) => c === categoryValue);
+          const seq = a.categorySeqs[idx];
+
+          const idx2 = b.categories.findIndex((c) => c === categoryValue);
+          const seq2 = b.categorySeqs[idx2];
+          return seq < seq2 ? -1 : 1;
+        }
+      });
+      setFilteredMenus(sortedMenus);
 
       router.push(
         {
@@ -48,27 +63,12 @@ function Menus({ menus, sx }: CafeMenusProps) {
     }
   };
 
-  const categories = useMemo(() => {
-    const initialCategories = [{ label: '전체', value: '전체' }];
-
-    return menus.reduce((pre, cur) => {
-      let nextList: CafeMenuCategoryType[] = [...pre];
-      if (pre.some((p) => p.value === cur.category) === false) {
-        nextList.push({
-          label: cur.category,
-          value: cur.category,
-        });
-      }
-      return nextList;
-    }, initialCategories as CafeMenuCategoryType[]);
-  }, [menus]);
-
   useEffect(() => {
-    if (categories.length > 0) {
+    if (menuCategories.length > 0) {
       handleTabChange(null, initialTabIndex);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categories]);
+  }, [menuCategories]);
 
   return (
     <Box sx={sx}>
@@ -81,11 +81,13 @@ function Menus({ menus, sx }: CafeMenusProps) {
         메뉴
       </Typography>
 
-      <CategoryTabs
-        categories={categories}
-        tabIndex={tabIndex}
-        handleTabChange={handleTabChange}
-      />
+      {menuCategories.length > 0 && (
+        <CategoryTabs
+          categories={menuCategories}
+          tabIndex={tabIndex}
+          handleTabChange={handleTabChange}
+        />
+      )}
 
       <List
         sx={{

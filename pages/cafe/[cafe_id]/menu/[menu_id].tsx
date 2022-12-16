@@ -14,7 +14,7 @@ const MenuDetailPage: NextPage<Props> = ({ menu, pairingMenus }) => {
   const metaData = {
     title: `메뉴 설명 | ${menu.name}`,
     description: menu.description,
-    image: menu.imageURL,
+    image: menu.images?.['480x480'] ?? '/images/logo_icon.png',
     canonical: `${CAFE_PATH}/${menu.cafeId}${MENU_PATH}/${menu.id}`,
   };
 

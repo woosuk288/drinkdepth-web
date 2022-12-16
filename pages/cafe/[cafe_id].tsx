@@ -36,7 +36,10 @@ const CafePage: NextPage<Props> = ({ cafe, menus }) => {
       <AuthUserProvider>
         <CafeHeader title={cafe.name} />
         <CafeInfo cafe={cafe} />
-        <Menus menus={menus} />
+        <Menus
+          menuCategories={cafe.menuCategories}
+          menus={menus.filter((m) => !m.disabled)}
+        />
       </AuthUserProvider>
     </Container>
   );

@@ -33,7 +33,6 @@ import {
 import { FirebaseError } from 'firebase/app';
 import BannerCarousel from './tablet/BannerCarousel';
 import { clipText } from 'src/utils/etc';
-import PhoneDialog from './PhoneDialog';
 
 export type CafeInfoProps = {
   cafe: CafeType;
