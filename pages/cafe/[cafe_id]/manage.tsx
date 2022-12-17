@@ -81,12 +81,12 @@ function Manage() {
 
   return (
     <>
-      <div style={{ whiteSpace: 'pre' }}>{JSON.stringify(data, null, 4)}</div>
+      {/* <div style={{ whiteSpace: 'pre' }}>{JSON.stringify(data, null, 4)}</div>
       <Button variant="contained" onClick={handleMenuCreate}>
         메뉴 추가
-      </Button>
+      </Button> */}
 
-      {/* <div>
+      <div>
         docPath: {path} <br />
         {prefix}
         {filename}
@@ -94,7 +94,7 @@ function Manage() {
       </div>
       <Button variant="contained" onClick={handleUdpateMenuImages}>
         사진 업데이트
-      </Button> */}
+      </Button>
 
       {/* <div style={{ whiteSpace: 'pre' }}>
         {JSON.stringify(batchdata, null, 4)}
@@ -105,7 +105,7 @@ function Manage() {
 }
 
 const cafeId = 'babacarmel';
-const menuId = 'babacarmel-123';
+const menuId = 'babacarmel-4630';
 
 const data = {
   id: menuId,
@@ -123,5 +123,5 @@ const data = {
 
 const path = `cafes/${cafeId}/menus/${menuId}`;
 const prefix = `images/menus/${data.cafeId}/`;
-const filename = '에스프레소 콘빠냐';
+const filename = '디저트 - 바바 크로플 흑임자';
 const suffix = '.jpg';

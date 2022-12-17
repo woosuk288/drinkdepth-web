@@ -210,7 +210,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
               onClick={handleUseCoupon}
               disabled={coupon.isUsed}
             >
-              쿠폰 사용
+              {coupon.isUsed ? '사용 완료' : '쿠폰 사용'}
             </Button>
           ) : !user ? (
             <Button
