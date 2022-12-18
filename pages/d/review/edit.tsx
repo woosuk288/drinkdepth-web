@@ -17,11 +17,12 @@ import {
   defaultCafeMenuReview,
 } from 'atoms/reviewFormAtom';
 import { useMutation } from 'react-query';
-import { editReview } from 'src/firebase/services';
+import { auth, editReview } from 'src/firebase/services';
 
 const ReviewEditPage: NextPage = () => {
   const router = useRouter();
   const id = router.query.id as string;
+  const user = auth.currentUser;
 
   const [review, setReview] = useRecoilState(cafeMenuReviewState);
 
@@ -42,8 +43,14 @@ const ReviewEditPage: NextPage = () => {
   });
 
   const handleSubmit = () => {
-    if ((router.query.review as string) !== JSON.stringify(review)) {
-      mutate(review);
+    if (user && (router.query.review as string) !== JSON.stringify(review)) {
+      const { displayName, uid, photoURL } = user;
+      mutate({
+        ...review,
+        displayName: displayName ?? '',
+        uid,
+        photoURL: photoURL ?? '',
+      });
     } else {
       router
         .replace(`${REVIEW_PATH}/${id}`)
