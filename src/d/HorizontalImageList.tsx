@@ -28,7 +28,7 @@ SingleLineImageListProps) {
               // onClick={() => handleThumbnailClick(i)}
               sx={sx.image}
               style={{
-                backgroundImage: `url(${item.url})`,
+                backgroundImage: `url('${item.url}')`,
               }}
             ></Box>
             <IconButton
