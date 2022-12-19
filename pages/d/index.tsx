@@ -20,7 +20,7 @@ const MainPage: NextPage = () => {
           centerComponent={
             <div css={{ display: 'flex' }}>
               <Typography fontSize={18} fontWeight={600}>
-                위치
+                전체
               </Typography>
             </div>
           }

@@ -16,14 +16,30 @@ import { useMutation, useQuery } from 'react-query';
 import { FETCH_REVIEW_KEY } from 'src/utils/queryKeys';
 import { useRouter } from 'next/router';
 import { auth, deleteReview, fetchReview } from 'src/firebase/services';
-import { LinearProgress } from '@mui/material';
+import { IconButton, LinearProgress } from '@mui/material';
+
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
 const ReviewDetailPage: NextPage = () => {
+  const [bookmark, setBookmark] = React.useState(false);
+
   return (
     <>
       <NextSeo title="DrinkDepth | 리뷰 상세" />
       <AuthContainer>
-        <HeaderD leftIcon="back" centerComponent={'리뷰'} />
+        <HeaderD
+          leftIcon="back"
+          centerComponent={'리뷰 상세'}
+          rightIcon={
+            <IconButton
+              color="inherit"
+              onClick={() => setBookmark((prev) => !prev)}
+            >
+              {bookmark ? <BookmarkIcon /> : <BookmarkBorderOutlinedIcon />}
+            </IconButton>
+          }
+        />
 
         <Main>
           <ReviewDetailContainer />

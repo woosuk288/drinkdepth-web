@@ -58,11 +58,19 @@ export default function ContryComboBox({ name, handleChange }: Props) {
 
 const coffeeCountries = [
   '에티오피아',
-  '케냐',
-  '브라질',
   '콜롬비아',
+  '브라질',
+  '케냐',
   '과테말라',
-  '베트남',
-  '인도네시아',
+  '코스타리카',
+  '에콰도르',
+  '엘살바도르',
+  '파푸아뉴기니',
+  '페루',
+  '파나마',
+  '온두라스',
+  '르완다',
   '인도',
+  '인도네시아',
+  '베트남',
 ];

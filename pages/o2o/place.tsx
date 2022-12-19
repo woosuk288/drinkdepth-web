@@ -28,6 +28,7 @@ import {
 import Meta from '../../src/common/Meta';
 import KakaoChat from '../../src/common/KakaoChat';
 import TagManager from 'react-gtm-module';
+// import ReviewFilters from 'src/d/ReviewFilters';
 
 export type ChoiceType = {
   caffein: string[];
@@ -345,6 +346,7 @@ const PlacePage: NextPage = () => {
         handleChange={handleChange}
         disabled={loadingData}
       />
+      {/* <ReviewFilters /> */}
 
       {filteredCoffees.length > 0 && (
         <CoffeeResultList

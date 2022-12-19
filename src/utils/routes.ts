@@ -4,6 +4,7 @@ export const ROOT_PATH = '/';
  * o2o
  */
 export const O2O_PATH = '/o2o';
+export const O2O_PLACE_PATH = '/o2o/place';
 
 /**
  * cafe 친절한 메뉴판
@@ -31,6 +32,7 @@ export const REVIEW_EDIT_PATH = '/d/review/edit';
 export const PROFILE_PATH = '/d/profile';
 export const PROFILE_EDIT_PATH = '/d/profile/edit';
 export const MYREVIEW_PATH = '/myreview';
+export const PLACE_PATH = '/place';
 export const BOOKMARK_PATH = '/bookmark';
 export const BADGE_PATH = '/badge';
 export const PROFILE_SETTINGS_PATH = '/d/profile/settings';

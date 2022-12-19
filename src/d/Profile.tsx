@@ -3,7 +3,7 @@ import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { Button, ListItemButton } from '@mui/material';
+import { Badge, Button, ListItemButton } from '@mui/material';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Link, { NextLinkComposed } from 'src/common/Link';
@@ -55,15 +55,24 @@ export default function Profile({ profile }: Props) {
       >
         {pageList.map((page) => (
           <ListItemButton
+            key={page.id}
             component={NextLinkComposed}
             to={{
               pathname: router.asPath + page.path,
               query: { uid: profile.provider.toLowerCase() + ':' + profile.id },
             }}
             linkAs={router.asPath + page.path}
-            key={page.text}
           >
-            <ListItemText primary={page.text} />
+            {news.includes(page.id) ? (
+              <div css={{ flex: 1 }}>
+                <Badge color="secondary" badgeContent="N">
+                  <ListItemText primary={page.text} />
+                </Badge>
+              </div>
+            ) : (
+              <ListItemText primary={page.text} />
+            )}
+
             <NavigateNextIcon />
           </ListItemButton>
         ))}
@@ -74,15 +83,20 @@ export default function Profile({ profile }: Props) {
 
 const pageList = [
   {
+    id: 'bookmark',
     text: '찜한 리뷰',
     path: BOOKMARK_PATH,
   },
   {
+    id: 'review',
     text: '작성한 리뷰',
     path: MYREVIEW_PATH,
   },
   {
+    id: 'badge',
     text: '업적 보기',
     path: BADGE_PATH,
   },
 ];
+
+const news = ['badge'];

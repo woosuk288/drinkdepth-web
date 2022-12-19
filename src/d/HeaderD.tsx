@@ -56,7 +56,7 @@ const HeaderD = ({ leftIcon, centerComponent, rightIcon }: HeaderDProps) => {
 
           <div style={{ flex: 1 }} />
 
-          <div style={{ width: '48px' }}>{rightIcon}</div>
+          <div style={{ width: '48px', textAlign: 'right' }}>{rightIcon}</div>
         </Box>
       </Toolbar>
     </AppBar>

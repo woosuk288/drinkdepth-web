@@ -19,8 +19,9 @@ import { REVIEW_PATH } from 'src/utils/routes';
 
 type Props = {
   review: CafeMenuReviewType;
+  uid?: string;
 };
-function Review({ review }: Props) {
+function Review({ review, uid }: Props) {
   return (
     <Card
       /* variant="outlined" */
@@ -30,23 +31,25 @@ function Review({ review }: Props) {
       underline="none"
     >
       <CardHeader
-        avatar={<Avatar aria-label="photo" />}
-        // action={
-        // <div css={{ display: 'flex', flexDirection: 'column' }}>
-        // <IconButton
-        //   aria-label="settings"
-        //   sx={{ padding: 0, svg: { fontSize: '2.4rem' } }}
-        // >
-        //   {customIcons[review.coffee.rating].icon}
-        //   <Typography
-        //     variant="overline"
-        //     sx={{ position: 'absolute', bottom: '-1.5rem' }}
-        //   >
-        //     {customIcons[review.coffee.rating].label}
-        //   </Typography>
-        // </IconButton>
-        // </div>
-        // }
+        avatar={<Avatar aria-label="photo" src={review.photoURL} />}
+        action={
+          uid && review.rating ? (
+            <div css={{ display: 'flex', flexDirection: 'column' }}>
+              <IconButton
+                aria-label="settings"
+                sx={{ padding: 0, svg: { fontSize: '2.4rem' } }}
+              >
+                {customIcons[review.rating].icon}
+                <Typography
+                  variant="overline"
+                  sx={{ position: 'absolute', bottom: '-1.5rem' }}
+                >
+                  {customIcons[review.rating].label}
+                </Typography>
+              </IconButton>
+            </div>
+          ) : null
+        }
         title={
           <Typography variant="subtitle1" fontWeight={500}>
             {review.displayName}
@@ -63,7 +66,7 @@ function Review({ review }: Props) {
         <CardContent
           sx={{ paddingY: 0, overflow: 'hidden', whiteSpace: 'nowrap' }}
         >
-          <Typography /* fontSize={18} */ variant="h6" noWrap>
+          <Typography fontSize={18} fontWeight={600} noWrap>
             {review.place?.place_name}
           </Typography>
 

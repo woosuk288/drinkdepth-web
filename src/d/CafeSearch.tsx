@@ -40,7 +40,7 @@ type Props = {
 export default function KakaoMapsSearch({ sx, handleSelect }: Props) {
   const { loading, error } = useInjectKakaoMapApi({
     appkey: process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY!, // 발급 받은 APPKEY
-    libraries: ['services' /* , 'clusterer' */],
+    libraries: ['services', 'clusterer'],
   });
 
   const [value, setValue] = React.useState<PlaceType | null>(null);

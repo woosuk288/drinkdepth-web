@@ -28,77 +28,9 @@ type Props = {
 
 function ReviewDetail({ review, userId, handleReviewDelete }: Props) {
   // console.log('review : ', review);
+
   return (
     <div>
-      {/* <Card
-        sx={{
-          borderRadius: '8px',
-          marginBottom: '0.25rem',
-        }}
-      >
-        <CardMedia
-          component="img"
-          sx={{
-            // width: '100%',
-            height: '56.25vw',
-            // maxHeight: '70%',
-            // marginRight: '1rem',
-            borderRadius: '4px',
-          }}
-          image="/maskable_icon_x512.png"
-          alt="thumbnail"
-        />
-        <CardHeader
-          action={
-            <IconButton
-              aria-label="settings"
-              sx={{ padding: 0, svg: { fontSize: '2.4rem' } }}
-            >
-              {customIcons[data.coffee.rating].icon}
-              <Typography
-                variant="overline"
-                sx={{ position: 'absolute', bottom: '-1.5rem' }}
-              >
-                {customIcons[data.coffee.rating].label}
-              </Typography>
-            </IconButton>
-          }
-          title={<Typography variant="h6">{data.menuName}</Typography>}
-          subheader={data.cafeName}
-        />
-
-        <div css={{ display: 'flex' }}>
-          <CardContent sx={{ paddingY: 0 }}>
-            <Typography
-              variant="body1"
-              sx={{
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                display: '-webkit-box',
-                WebkitLineClamp: '3',
-                WebkitBoxOrient: 'vertical',
-                whiteSpace: 'pre-line',
-              }}
-            >
-              수제자몽청과 핸드드립커피가 토닉과 함께 어울어진 어디서도 맛보지
-              못한 음료같은 커피
-            </Typography>
-          </CardContent>
-        </div>
-        <CardActions sx={{ justifyContent: 'flex-end' }}>
-          <Button
-            variant="outlined"
-            color="inherit"
-            startIcon={<FavoriteBorderIcon />}
-          >
-            먹고싶다
-          </Button>
-          <Button variant="outlined" color="inherit" startIcon={<EditIcon />}>
-            리뷰쓰기
-          </Button>
-        </CardActions>
-      </Card> */}
-
       <Card
         /* variant="outlined" */
         sx={{
@@ -122,6 +54,7 @@ function ReviewDetail({ review, userId, handleReviewDelete }: Props) {
           }
           alt="thumbnail"
         />
+
         <CardHeader
           // avatar={<Avatar aria-label="photo">R</Avatar>}
           action={
