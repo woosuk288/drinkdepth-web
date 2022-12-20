@@ -166,22 +166,6 @@ function ReviewForm() {
       {!review.place && <CafeSearchDialog setter={setReview} />}
 
       <div>
-        <FormControl required fullWidth>
-          {/* <InputLabel htmlFor="input-review-menu">메뉴명</InputLabel> */}
-          <FormLabel id="input-review-menu" sx={{ marginBottom: '4px' }}>
-            메뉴명
-          </FormLabel>
-          <OutlinedInput
-            inputRef={focusRef}
-            id="input-review-menu"
-            name="menuName"
-            // label="메뉴명"
-            value={review.menuName}
-            size="small"
-            placeholder="메뉴명을 입력해주세요"
-            onChange={handleChange}
-          />
-        </FormControl>
         {/* <div>어떤 종류의 메뉴를 드셨나요?</div> */}
         <FormControl sx={{ marginTop: '1rem' }} required>
           <FormLabel id="input-review-type-label">종류</FormLabel>
@@ -215,33 +199,65 @@ function ReviewForm() {
         {/* menu-options */}
         {review.type === '' ? null : review.type === 'filtered_coffee' ? (
           <div css={{ '> div': { marginTop: '12px' } }}>
-            <div>
-              <InputLabel
-                htmlFor="input-review-bean"
-                sx={{ fontSize: 14, marginLeft: '14px' }}
-              >
-                원두명
-              </InputLabel>
+            <FormControl required fullWidth>
+              {/* <InputLabel htmlFor="input-review-menu">메뉴명</InputLabel> */}
+              <FormLabel id="input-review-menu" sx={{ marginBottom: '4px' }}>
+                메뉴명(원두명)
+              </FormLabel>
               <OutlinedInput
-                id="input-review-bean"
-                name="coffee.bean"
+                inputRef={focusRef}
+                id="input-review-menu"
+                name="menuName"
+                // label="메뉴명"
+                value={review.menuName}
                 size="small"
-                fullWidth
+                placeholder="메뉴명을 입력해주세요"
                 onChange={handleChange}
               />
-            </div>
+            </FormControl>
+
             <div>
-              <InputLabel
-                htmlFor="input-review-country"
-                sx={{ fontSize: 14, marginLeft: '14px' }}
+              <FormLabel
+                id="input-review-bean-type-label"
+                // sx={{ fontSize: 14, marginLeft: '14px' }}
               >
-                원산지
-              </InputLabel>
-              <ContryComboBox
-                name="coffee.country"
-                handleChange={handleChange}
-              />
+                원두
+              </FormLabel>
+
+              <RadioGroup
+                row
+                aria-labelledby="input-review-bean-type-label"
+                defaultValue=""
+                name="coffee.beanType"
+                onChange={handleChange}
+                value={review.coffee?.beanType ?? ''}
+              >
+                <FormControlLabel
+                  value="single_origin"
+                  control={<Radio />}
+                  label="싱글오리진"
+                />
+                <FormControlLabel
+                  value="blend"
+                  control={<Radio />}
+                  label="블렌드"
+                />
+              </RadioGroup>
             </div>
+            {review.coffee?.beanType === 'single_origin' && (
+              <div>
+                <InputLabel
+                  htmlFor="input-review-country"
+                  sx={{ fontSize: 14, marginLeft: '14px' }}
+                >
+                  원산지
+                </InputLabel>
+                <ContryComboBox
+                  name="coffee.country"
+                  handleChange={handleChange}
+                />
+              </div>
+            )}
             <div css={{ display: 'flex' }}>
               <SelectorOne
                 helperText="산미"
@@ -288,15 +304,34 @@ function ReviewForm() {
             </div>
           </div>
         ) : (
-          <div css={{ marginTop: '0.5rem' }}>
-            <FlavorTags
-              id="tags-coffee-drink"
-              tooltip="맛과 향을 의미합니다"
-              helperText="향미노트"
-              value={review.coffee?.flavors}
-              name={'coffee.flavors'}
-              onChange={handleTagsChange}
-            />
+          <div>
+            <FormControl required fullWidth>
+              {/* <InputLabel htmlFor="input-review-menu">메뉴명</InputLabel> */}
+              <FormLabel id="input-review-menu" sx={{ marginBottom: '4px' }}>
+                메뉴명
+              </FormLabel>
+              <OutlinedInput
+                inputRef={focusRef}
+                id="input-review-menu"
+                name="menuName"
+                // label="메뉴명"
+                value={review.menuName}
+                size="small"
+                placeholder="메뉴명을 입력해주세요"
+                onChange={handleChange}
+              />
+            </FormControl>
+
+            <div css={{ marginTop: '0.5rem' }}>
+              <FlavorTags
+                id="tags-coffee-drink"
+                tooltip="맛과 향을 의미합니다"
+                helperText="향미노트"
+                value={review.coffee?.flavors}
+                name={'coffee.flavors'}
+                onChange={handleTagsChange}
+              />
+            </div>
           </div>
         )}
       </div>

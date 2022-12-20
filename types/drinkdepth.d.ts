@@ -7,7 +7,8 @@ type CafeMenuReviewType = {
   place?: PlacesSearchResultItem;
 
   coffee?: {
-    bean?: string;
+    bean?: string; // TODO: 테스트 후 데이터 삭제시 같이 삭제
+    beanType?: string;
     country?: string;
     acidity?: string;
     sweetness?: string;
