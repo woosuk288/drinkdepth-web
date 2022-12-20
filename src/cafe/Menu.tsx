@@ -38,6 +38,8 @@ function Menu({ item, index }: MenuProps) {
   return (
     <ListItem
       key={item.id}
+      id={item.id}
+      className="gtm-menu"
       alignItems="flex-start"
       component={NextLinkComposed}
       to={`${CAFE_PATH}/${item.cafeId}${MENU_PATH}/${item.id}`}
