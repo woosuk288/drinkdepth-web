@@ -13,11 +13,15 @@ import CommonDialog from 'src/common/CommonDialog';
 import { useQueryClient } from 'react-query';
 import { logoutKakao } from 'src/firebase/services';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { D_PATH } from 'src/utils/routes';
 
 function Settings() {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const handleLogout = () => {
+    router.asPath = D_PATH;
     logoutKakao().then(() => queryClient.removeQueries());
   };
 

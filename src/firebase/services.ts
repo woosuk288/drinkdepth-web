@@ -35,6 +35,7 @@ import {
   uploadString,
 } from 'firebase/storage';
 import { getProfileId } from 'src/utils/etc';
+import { deleteKakaoAuthCookie } from 'src/utils/kakaoAPI';
 import { getTestType } from '../utils/combos';
 import {
   COUPON_COUNTER_ISSUED_ID,
@@ -605,6 +606,9 @@ export const logoutKakao = async () => {
       kakaoUID,
     }),
   });
+
+  deleteKakaoAuthCookie();
+
   // firebase logout
   return signOut(auth);
 };

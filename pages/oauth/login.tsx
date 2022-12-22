@@ -49,9 +49,9 @@ const LoginPage: NextPage = () => {
         }}
       >
         <img
-          src="/images/btn_kakao_login.png"
+          src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_large_wide.png"
           alt="카카오 아이디로 로그인"
-          width={'80%'}
+          // width={'80%'}
           style={{ maxWidth: '300px', cursor: 'pointer' }}
           onClick={handleLoginWithKakao}
           className="gtm-login-with-kakao"

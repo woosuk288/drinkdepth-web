@@ -52,3 +52,11 @@ export const getAddressXY = (
     );
   });
 };
+
+/**
+ * 카카오 로그아웃시 쿠키 삭제
+ */
+export function deleteKakaoAuthCookie() {
+  document.cookie =
+    'authorize-access-token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
