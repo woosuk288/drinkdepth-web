@@ -1,8 +1,6 @@
-import { Button, Container } from '@mui/material';
+import { Button, Container, LinearProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
 import RedirectPage from 'src/common/RedirectPage';
-import { AuthUserProvider, useAuth } from 'src/context/AuthUserContext';
-import useFirebaseAuth from 'src/hooks/useFirebaseAuth';
 import {
   // batchUpdate,
   createMenu,
@@ -12,41 +10,24 @@ import {
 import { NOT_FOUND_PATH } from 'src/utils/routes';
 
 import CafeHeader from '../../../src/cafe/B2BHeader';
+import { useFirestore, useSigninCheck, useStorage, useUser } from 'reactfire';
+import { User } from 'firebase/auth';
 
 function ManagePage() {
-  const { user, loading } = useFirebaseAuth();
-  const [isChecking, setIsChecking] = useState(false);
-  const [admin, setAdmin] = useState(false);
+  const { status, data: signInCheckResult } = useSigninCheck({
+    requiredClaims: { admin: true },
+  });
 
-  useEffect(() => {
-    if (user) {
-      setIsChecking(true);
-      user
-        .getIdTokenResult()
-        .then((token) => {
-          setAdmin(token.claims.admin);
-        })
-        .finally(() => {
-          setIsChecking(false);
-        });
-    }
-  }, [user]);
+  if (status === 'loading') return <LinearProgress />;
 
-  if (loading) return null;
-
-  if (!user) return <RedirectPage path={NOT_FOUND_PATH} />;
-
-  if (isChecking) return null;
-
-  if (!admin) return <RedirectPage path={NOT_FOUND_PATH} />;
+  if (!signInCheckResult.signedIn)
+    return <RedirectPage path={NOT_FOUND_PATH} />;
 
   return (
     <Container maxWidth="sm" disableGutters>
-      <AuthUserProvider>
-        <CafeHeader title="관리" />
+      <CafeHeader title="관리" />
 
-        <Manage />
-      </AuthUserProvider>
+      <Manage user={signInCheckResult.user} />
     </Container>
   );
 }
@@ -55,8 +36,12 @@ export default ManagePage;
 /**
  *
  */
-function Manage() {
-  const { user } = useAuth();
+type Props = {
+  user: User;
+};
+function Manage({ user }: Props) {
+  const db = useFirestore();
+  const storage = useStorage();
 
   const handleMenuCreate = async (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -64,9 +49,9 @@ function Manage() {
     const token = await user?.getIdTokenResult();
     if (token?.claims.admin !== true) return;
 
-    const images = await getImageURLs(prefix, filename, suffix);
+    const images = await getImageURLs(storage, prefix, filename, suffix);
 
-    const result = await createMenu(data, images);
+    const result = await createMenu(db, data, images);
     console.log('data : ', { ...data, images });
     alert(result);
   };
@@ -76,7 +61,7 @@ function Manage() {
     // const prefix = 'images/menus/babacarmel/';
     // const filename = '';
     // const suffix = '.jpg';
-    updateImages(path, prefix, filename, suffix);
+    updateImages(db, storage, path, prefix, filename, suffix);
   };
 
   return (
@@ -99,7 +84,7 @@ function Manage() {
       {/* <div style={{ whiteSpace: 'pre' }}>
         {JSON.stringify(batchdata, null, 4)}
       </div>
-      <Button onClick={() => batchUpdate(batchdata)}>일괄 수정</Button> */}
+      <Button onClick={() => batchUpdate(db, batchdata)}>일괄 수정</Button> */}
     </>
   );
 }

@@ -15,11 +15,12 @@ import { NOT_FOUND_PATH } from 'src/utils/routes';
 import { useMutation, useQuery } from 'react-query';
 import { FETCH_REVIEW_KEY } from 'src/utils/queryKeys';
 import { useRouter } from 'next/router';
-import { auth, deleteReview, fetchReview } from 'src/firebase/services';
+import { deleteReview, fetchReview } from 'src/firebase/services';
 import { IconButton, LinearProgress } from '@mui/material';
 
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import { useFirestore, useStorage, useUser } from 'reactfire';
 
 const ReviewDetailPage: NextPage = () => {
   const [bookmark, setBookmark] = React.useState(false);
@@ -56,11 +57,13 @@ export default ReviewDetailPage;
 function ReviewDetailContainer() {
   const router = useRouter();
   const id = router.query.id as string;
-  const user = auth.currentUser;
+  const { data: user } = useUser();
+  const db = useFirestore();
+  const storage = useStorage();
 
   const { data, isLoading, error } = useQuery(
     FETCH_REVIEW_KEY(id),
-    () => fetchReview(id),
+    () => fetchReview(db, id),
     { enabled: !!id }
   );
 
@@ -72,7 +75,7 @@ function ReviewDetailContainer() {
 
   const handleReviewDelete = () => {
     if (user && confirm('삭제하시겠어요?')) {
-      deleteMutation.mutate({ reviewId: id, uid: user.uid });
+      deleteMutation.mutate({ db, storage, reviewId: id, uid: user.uid });
     }
   };
 

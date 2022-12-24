@@ -13,14 +13,14 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 
 import { InfiniteData } from 'react-query';
-import useFirebaseAuth from '../hooks/useFirebaseAuth';
+import { useUser } from 'reactfire';
 
 type MenuReviewAllProps = {
-  data: InfiniteData<ReviewType[]>;
+  data: InfiniteData<B2BReviewType[]>;
   handleDeleteReview: (reviewId: string) => void;
 };
 function MenuReviewAll({ data, handleDeleteReview }: MenuReviewAllProps) {
-  const { user } = useFirebaseAuth();
+  const { data: user } = useUser();
 
   return (
     <List>

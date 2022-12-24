@@ -23,11 +23,11 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { auth } from 'src/firebase/services';
-import { signOut } from 'firebase/auth';
-import { useAuth } from '../context/AuthUserContext';
+
+import { getAuth, signOut } from 'firebase/auth';
 import { CAFE_PATH, OATUH_LOGIN_PATH } from '../utils/routes';
 import KakaoChat from 'src/common/KakaoChat';
+import { useUser } from 'reactfire';
 
 const pages = [
   // {
@@ -53,7 +53,8 @@ type B2BHeaderProps = {
 
 const B2BHeader = ({ title }: B2BHeaderProps) => {
   const router = useRouter();
-  const { user } = useAuth();
+  const auth = getAuth();
+  const { status, data: user } = useUser();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -82,9 +83,11 @@ const B2BHeader = ({ title }: B2BHeaderProps) => {
   };
 
   const handleLogout = async () => {
+    if (!user) return;
+
     try {
       // kakao logout?
-      const kakaoUID = auth.currentUser?.uid.replace('kakao:', '');
+      const kakaoUID = user.uid.replace('kakao:', '');
       await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/kakao/logout`, {
         method: 'POST',
         headers: {

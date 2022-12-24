@@ -10,7 +10,7 @@ import {
 
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import LazyImage from '../common/LazyImage';
 import { getLabelWithColor, getTestType } from '../utils/combos';
 
@@ -29,7 +29,7 @@ function MenuInfo({
   const [isSmartMenu, setIsSmartMenu] = useState(false);
   const [showMorePair, setShowMorePair] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const isSmart = getTestType() !== NORMAL;
     setIsSmartMenu(isSmart);
   }, []);

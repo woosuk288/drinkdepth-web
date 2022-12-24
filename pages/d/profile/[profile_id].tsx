@@ -18,6 +18,7 @@ import { FETCH_PROFILE_KEY } from 'src/utils/queryKeys';
 import { useQuery } from 'react-query';
 import { ParsedUrlQuery } from 'querystring';
 import { PROFILE_SETTINGS_PATH } from 'src/utils/routes';
+import { useFirestore } from 'reactfire';
 
 // TODO: SSR or SSG
 const ProfilePage: NextPage /* <Props> */ = () => {
@@ -34,12 +35,13 @@ const ProfilePage: NextPage /* <Props> */ = () => {
 export default ProfilePage;
 
 function ProfileContainer() {
+  const db = useFirestore();
   const router = useRouter();
   const profile_id = router.query.profile_id as string;
 
   const { isLoading, data, error } = useQuery(
     FETCH_PROFILE_KEY,
-    () => fetchProfile(profile_id),
+    () => fetchProfile(db, profile_id),
     { enabled: !!profile_id }
   );
 

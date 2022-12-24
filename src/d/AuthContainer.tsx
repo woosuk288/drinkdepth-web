@@ -1,15 +1,16 @@
 import { LinearProgress } from '@mui/material';
 import React from 'react';
+import { useSigninCheck } from 'reactfire';
 import RedirectPage from 'src/common/RedirectPage';
-import useFirebaseAuth from 'src/hooks/useFirebaseAuth';
+
 import { OATUH_LOGIN_PATH } from 'src/utils/routes';
 
 function AuthContainer({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useFirebaseAuth();
+  const { data, error, status } = useSigninCheck();
 
-  if (loading) return <LinearProgress />;
-
-  if (!user) return <RedirectPage path={OATUH_LOGIN_PATH} />;
+  if (status === 'loading') return <LinearProgress />;
+  if (error) return <div>인증 오류!</div>;
+  if (!data.signedIn) return <RedirectPage path={OATUH_LOGIN_PATH} />;
 
   return (
     <div css={{ height: '100%', minHeight: '100vh', position: 'relative' }}>

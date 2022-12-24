@@ -6,7 +6,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import LazyImage from 'src/common/LazyImage';
 import { NextLinkComposed } from 'src/common/Link';
 import { getScrollYKey } from 'src/hooks/useScrollY';
@@ -23,7 +23,7 @@ type MenuProps = {
 function Menu({ item, index }: MenuProps) {
   const [isSmartMenu, setIsSmartMenu] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const isSmart = getTestType() !== NORMAL;
     setIsSmartMenu(isSmart);
   }, []);

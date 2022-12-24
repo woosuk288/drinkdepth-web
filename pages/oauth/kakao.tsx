@@ -1,10 +1,10 @@
 import { Box, CircularProgress, Typography } from '@mui/material';
-import { signInWithCustomToken } from 'firebase/auth';
+import { getAuth, signInWithCustomToken } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { sxCenter } from '../../src/styles/GlobalSx';
 import { PATH_AFTER_LOGIN } from '../../src/utils/constants';
-import { auth } from 'src/firebase/services';
+
 import { OATUH_KAKAO_PATH } from 'src/utils/routes';
 import Meta from 'src/common/Meta';
 
@@ -76,6 +76,7 @@ const Auth = () => {
         }
 
         // 받아온 토큰으로 client에서 로그인
+        const auth = getAuth();
         const userCredential = await signInWithCustomToken(
           auth,
           result.firebase_token

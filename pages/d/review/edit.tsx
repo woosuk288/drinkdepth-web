@@ -17,12 +17,15 @@ import {
   defaultCafeMenuReview,
 } from 'atoms/reviewFormAtom';
 import { useMutation } from 'react-query';
-import { auth, editReview } from 'src/firebase/services';
+import { editReview } from 'src/firebase/services';
+import { useFirestore, useStorage, useUser } from 'reactfire';
 
 const ReviewEditPage: NextPage = () => {
   const router = useRouter();
   const id = router.query.id as string;
-  const user = auth.currentUser;
+  const { data: user } = useUser();
+  const db = useFirestore();
+  const storage = useStorage();
 
   const [review, setReview] = useRecoilState(cafeMenuReviewState);
 
@@ -46,6 +49,8 @@ const ReviewEditPage: NextPage = () => {
     if (user && (router.query.review as string) !== JSON.stringify(review)) {
       const { displayName, uid, photoURL } = user;
       mutate({
+        db,
+        storage,
         ...review,
         displayName: displayName ?? '',
         uid,

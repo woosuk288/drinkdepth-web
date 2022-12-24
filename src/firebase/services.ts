@@ -6,6 +6,7 @@ import {
   doc,
   DocumentData,
   DocumentSnapshot,
+  Firestore,
   getCountFromServer,
   getDoc,
   getDocs,
@@ -25,6 +26,7 @@ import {
 } from 'firebase/firestore';
 import {
   deleteObject,
+  FirebaseStorage,
   getDownloadURL,
   getStorage,
   listAll,
@@ -48,12 +50,6 @@ function createFirebaseApp(config: FirebaseOptions) {
     return initializeApp(config);
   }
 }
-
-export const app = createFirebaseApp(firebaseConfig);
-export const auth = getAuth(app);
-// auth.useDeviceLanguage();
-export const db = getFirestore(app);
-export const storage = getStorage(app);
 
 export const DB_CAFES = 'cafes';
 export const DB_MENUS = 'menus';
@@ -100,6 +96,7 @@ export const CREATE = (id?: string) => ({
 export const UPDATE = () => ({ updatedAt: new Date() });
 
 export const fetchCafeMenuReviews = async (
+  db: Firestore,
   cafeId: string,
   menuId: string,
   count: number,
@@ -113,38 +110,34 @@ export const fetchCafeMenuReviews = async (
   );
   const querySnapshot = await getDocs(q);
 
-  const data = getDocsData<ReviewType>(querySnapshot);
+  const data = getDocsData<B2BReviewType>(querySnapshot);
   return data;
 };
 
 export const addMenuReview = async ({
-  cafeId,
-  menuId,
-  review,
+  db,
+  newReview,
 }: {
-  cafeId: string;
-  menuId: string;
-  review: string;
+  db: Firestore;
+  newReview: B2BReviewType;
 }) => {
-  const user = auth.currentUser!;
   const reviewsRef = collection(
     db,
     DB_CAFES,
-    cafeId,
+    newReview.cafeId,
     DB_MENUS,
-    menuId,
+    newReview.menuId,
     DB_REVIEWS
   );
-  const menuRef = doc(db, DB_CAFES, cafeId, DB_MENUS, menuId);
+  const menuRef = doc(
+    db,
+    DB_CAFES,
+    newReview.cafeId,
+    DB_MENUS,
+    newReview.menuId
+  );
   const batch = writeBatch(db);
 
-  const newReview: ReviewType = {
-    text: review,
-    displayName: user.displayName ?? '',
-    photoURL: user.photoURL ?? '',
-    uid: user.uid,
-    createdAt: new Date(),
-  };
   const newReviewRef = doc(reviewsRef);
 
   batch.set(newReviewRef, newReview);
@@ -158,10 +151,12 @@ export const addMenuReview = async ({
 };
 
 export const deleteMenuReview = async ({
+  db,
   cafeId,
   menuId,
   reviewId,
 }: {
+  db: Firestore;
   cafeId: string;
   menuId: string;
   reviewId: string;
@@ -184,9 +179,11 @@ export const deleteMenuReview = async ({
 };
 
 export const issueCoupon = async ({
+  db,
   cafeId,
   customerId,
 }: {
+  db: Firestore;
   cafeId: string;
   customerId: string;
 }) => {
@@ -229,7 +226,7 @@ export const issueCoupon = async ({
   return result;
 };
 
-export const checkOpenCoupon = async (code: string) => {
+export const checkOpenCoupon = async (db: Firestore, code: string) => {
   const couponRef = doc(db, DB_COUPONS, code);
 
   const type = getTestType();
@@ -250,7 +247,13 @@ export const checkOpenCoupon = async (code: string) => {
   return;
 };
 
-export const acceptCoupon = async ({ code }: { code: string }) => {
+export const acceptCoupon = async ({
+  db,
+  code,
+}: {
+  db: Firestore;
+  code: string;
+}) => {
   const couponRef = doc(db, DB_COUPONS, code);
   const counterRef = doc(db, DB_COUPONS, COUPON_COUNTER_USED_ID);
 
@@ -278,6 +281,7 @@ export const acceptCoupon = async ({ code }: { code: string }) => {
 };
 
 export const getImageURLs = async (
+  storage: FirebaseStorage,
   prefix: string,
   name: string,
   subfix: string
@@ -305,6 +309,8 @@ export const getImageURLs = async (
 };
 
 export const updateImages = async (
+  db: Firestore,
+  storage: FirebaseStorage,
   firestorePath: string,
   prefix: string,
   filename: string,
@@ -320,7 +326,7 @@ export const updateImages = async (
     // const prefix = 'images/menus/babacarmel/';
     // const name = menu.category + ' - ' + menu.name;
     // const suffix = '.jpg';
-    const images = await getImageURLs(prefix, filename, suffix);
+    const images = await getImageURLs(storage, prefix, filename, suffix);
     updateDoc(docRef, { images });
   }
 };
@@ -329,7 +335,11 @@ export const updateImages = async (
 // 관리용
 //
 
-export const createMenu = async (menu: CafeMenuType, images: ImagesType) => {
+export const createMenu = async (
+  db: Firestore,
+  menu: CafeMenuType,
+  images: ImagesType
+) => {
   const { id, ...data } = menu;
 
   const docRef = doc(db, DB_CAFES, data.cafeId, DB_MENUS, id);
@@ -338,7 +348,7 @@ export const createMenu = async (menu: CafeMenuType, images: ImagesType) => {
   return '완료';
 };
 
-export const batchUpdate = async (data: any[]) => {
+export const batchUpdate = async (db: Firestore, data: any[]) => {
   const batch = writeBatch(db);
 
   data.forEach((item) => {
@@ -352,7 +362,12 @@ export const batchUpdate = async (data: any[]) => {
 /**
  * d
  */
-export const createReview = async ({ id, ...review }: CafeMenuReviewType) => {
+export const createReview = async ({
+  db,
+  storage,
+  id,
+  ...review
+}: CafeMenuReviewType & { db: Firestore; storage: FirebaseStorage }) => {
   const newReviewRef = doc(collection(db, DB_REVIEWS));
 
   const uploadTasks = await Promise.all(
@@ -423,10 +438,12 @@ export const createReview = async ({ id, ...review }: CafeMenuReviewType) => {
 };
 
 export const editReview = async ({
+  db,
+  storage,
   id,
   createdAt,
   ...review
-}: CafeMenuReviewType) => {
+}: CafeMenuReviewType & { db: Firestore; storage: FirebaseStorage }) => {
   if (!id) throw '리뷰가 존재하지 않습니다.';
 
   const uploadTasks = await Promise.all(
@@ -499,7 +516,11 @@ export const editReview = async ({
   return { ...nextReview, id };
 };
 
-export const fetchMyReviews = async (uid: string, createdAt: Date) => {
+export const fetchMyReviews = async (
+  db: Firestore,
+  uid: string,
+  createdAt: Date
+) => {
   const LIMIT = 15;
 
   const q = query(
@@ -514,7 +535,7 @@ export const fetchMyReviews = async (uid: string, createdAt: Date) => {
   return getDocsData<CafeMenuReviewType>(querySnapshot);
 };
 
-export const fetchMyReviewCount = async (uid: string) => {
+export const fetchMyReviewCount = async (db: Firestore, uid: string) => {
   const q = query(
     collection(db, DB_REVIEWS),
     where('uid', '==', uid),
@@ -525,7 +546,7 @@ export const fetchMyReviewCount = async (uid: string) => {
   return snapshot.data().count;
 };
 
-export const fetchReview = async (reviewId: string) => {
+export const fetchReview = async (db: Firestore, reviewId: string) => {
   const reviewDoc = doc(db, DB_REVIEWS, reviewId);
   const reviewSnap = await getDoc(reviewDoc);
   const review = getDocData<CafeMenuReviewType>(reviewSnap);
@@ -533,7 +554,7 @@ export const fetchReview = async (reviewId: string) => {
   return review;
 };
 
-export const fetchReviews = async (createdAt: Date) => {
+export const fetchReviews = async (db: Firestore, createdAt: Date) => {
   const LIMIT = 15;
 
   const q = query(
@@ -547,14 +568,14 @@ export const fetchReviews = async (createdAt: Date) => {
   return getDocsData<CafeMenuReviewType>(querySnapshot);
 };
 
-export const fetchReviewCount = async () => {
+export const fetchReviewCount = async (db: Firestore) => {
   const q = query(collection(db, DB_REVIEWS), orderBy('createdAt', 'desc'));
 
   const snapshot = await getCountFromServer(q);
   return snapshot.data().count;
 };
 
-export const fetchProfile = async (profileId: string) => {
+export const fetchProfile = async (db: Firestore, profileId: string) => {
   const profileDoc = doc(db, DB_PROFILES, profileId);
   const profileSnap = await getDoc(profileDoc);
   const profile = getDocData<ProfileType>(profileSnap);
@@ -565,6 +586,7 @@ export const fetchProfile = async (profileId: string) => {
 export const updateProfile = async () => {};
 
 export const logoutKakao = async () => {
+  const auth = getAuth();
   // kakao logout?
   const kakaoUID = auth.currentUser?.uid.replace('kakao:', '');
   await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/kakao/logout`, {
@@ -584,9 +606,13 @@ export const logoutKakao = async () => {
 };
 
 export const deleteReview = async ({
+  db,
+  storage,
   reviewId,
   uid,
 }: {
+  db: Firestore;
+  storage: FirebaseStorage;
   reviewId: string;
   uid: string;
 }) => {

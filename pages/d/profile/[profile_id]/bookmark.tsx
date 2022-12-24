@@ -11,25 +11,25 @@ import Main from 'src/d/Main';
 import Profile from 'src/d/Profile';
 import Navbar from 'src/d/Navbar';
 import { useInfiniteQuery, useQuery } from 'react-query';
-import {
-  auth,
-  fetchMyReviewCount,
-  fetchMyReviews,
-} from 'src/firebase/services';
+import { fetchMyReviewCount, fetchMyReviews } from 'src/firebase/services';
 import {
   FETCH_MY_REVIEWS_KEY,
   FETCH_MY_REVIEW_COUNT_KEY,
 } from 'src/utils/queryKeys';
 import Review from 'src/d/Review';
+import { useFirestore, useUser } from 'reactfire';
+import { User } from 'firebase/auth';
 
 const BookmarkReviewPage: NextPage = () => {
+  const { data: user } = useUser();
+
   return (
     <>
       <NextSeo title="DrinkDepth | 찜한 리뷰" />
       <AuthContainer>
         <HeaderD leftIcon="back" centerComponent={'찜한 리뷰'} />
 
-        <Main>찜{/* <BookmarkReviewContainer /> */}</Main>
+        <Main>찜{/* <BookmarkReviewContainer user={user} /> */}</Main>
 
         <Navbar />
       </AuthContainer>
@@ -39,19 +39,19 @@ const BookmarkReviewPage: NextPage = () => {
 
 export default BookmarkReviewPage;
 
-function BookmarkReviewContainer() {
-  const user = auth.currentUser!;
+function BookmarkReviewContainer({ user }: { user: User }) {
   // const router = useRouter();
+  const db = useFirestore();
 
   const { data: postCount = 0, isLoading: isLoadingCount } = useQuery(
     FETCH_MY_REVIEW_COUNT_KEY,
-    () => fetchMyReviewCount(user.uid)
+    () => fetchMyReviewCount(db, user.uid)
   );
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
       FETCH_MY_REVIEWS_KEY,
       ({ pageParam = new Date() }) => {
-        return fetchMyReviews(user.uid, pageParam);
+        return fetchMyReviews(db, user.uid, pageParam);
       },
       {
         getNextPageParam: (lastPage, allPages) => {

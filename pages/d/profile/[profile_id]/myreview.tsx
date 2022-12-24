@@ -21,6 +21,7 @@ import {
 } from 'src/utils/queryKeys';
 import Review from 'src/d/Review';
 import { MYREVIEW_PATH, PLACE_PATH, REVIEWS_PATH } from 'src/utils/routes';
+import { useFirestore } from 'reactfire';
 
 const MyReviewPage: NextPage = () => {
   const router = useRouter();
@@ -63,17 +64,18 @@ export default MyReviewPage;
 function MyReviewContainer() {
   const router = useRouter();
   const uid = router.query.uid as string;
+  const db = useFirestore();
 
   const { data: reviewCount = 0, isLoading: isLoadingCount } = useQuery(
     FETCH_MY_REVIEW_COUNT_KEY,
-    () => fetchMyReviewCount(uid),
+    () => fetchMyReviewCount(db, uid),
     { enabled: !!uid }
   );
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
       FETCH_MY_REVIEWS_KEY,
       ({ pageParam = new Date() }) => {
-        return fetchMyReviews(uid, pageParam);
+        return fetchMyReviews(db, uid, pageParam);
       },
       {
         getNextPageParam: (lastPage, allPages) => {

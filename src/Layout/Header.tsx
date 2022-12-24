@@ -17,8 +17,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
-import useFirebaseAuth from 'src/hooks/useFirebaseAuth';
 import { logoutKakao } from 'src/firebase/services';
+import { useUser } from 'reactfire';
 
 const pages = [
   {
@@ -33,7 +33,7 @@ const pages = [
 
 const Header = () => {
   const router = useRouter();
-  const { user, loading, error } = useFirebaseAuth();
+  const { status, data: user } = useUser();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -97,7 +97,7 @@ const Header = () => {
                   ml: '1.5rem',
                 }}
               >
-                {loading ? (
+                {status === 'loading' ? (
                   <Button disabled>loading</Button>
                 ) : user ? (
                   //  && userRole
@@ -157,7 +157,7 @@ const Header = () => {
                 ))}
 
                 <Box>
-                  {loading ? (
+                  {status === 'loading' ? (
                     <Button disabled>loading</Button>
                   ) : user ? (
                     <>

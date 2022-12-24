@@ -4,6 +4,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { Firestore } from 'firebase/firestore';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { acceptCoupon } from 'src/firebase/services';
@@ -11,12 +12,13 @@ import { acceptCoupon } from 'src/firebase/services';
 import { KakaoIcon } from '../common/KakaoShareButton';
 
 type CouponDialogProps = {
+  db: Firestore;
   coupon: CouponType;
   open: boolean;
   handleClose: () => void;
 };
 
-function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
+function CouponDialog({ db, coupon, open, handleClose }: CouponDialogProps) {
   // console.log('coupon : ', coupon);
 
   const [isCouponOn, setIsCouponOn] = useState(false);
@@ -29,7 +31,7 @@ function CouponDialog({ coupon, open, handleClose }: CouponDialogProps) {
   });
 
   const handleConfirmCoupon = () => {
-    mutation.mutate({ code: coupon.code });
+    mutation.mutate({ db, code: coupon.code });
   };
 
   return (

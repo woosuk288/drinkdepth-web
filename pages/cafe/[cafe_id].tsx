@@ -6,7 +6,6 @@ import CafeHeader from '../../src/cafe/B2BHeader';
 import CafeInfo from '../../src/cafe/CafeInfo';
 import Menus from '../../src/cafe/Menus';
 import Meta from '../../src/common/Meta';
-import { AuthUserProvider } from '../../src/context/AuthUserContext';
 
 import { CAFE_PATH } from 'src/utils/routes';
 import useScrollY from 'src/hooks/useScrollY';
@@ -31,14 +30,12 @@ const CafePage: NextPage<Props> = ({ cafe, menus }) => {
     <Container maxWidth="sm" disableGutters>
       <Meta data={metaData} />
 
-      <AuthUserProvider>
-        <CafeHeader title={cafe.name} />
-        <CafeInfo cafe={cafe} />
-        <Menus
-          menuCategories={cafe.menuCategories}
-          menus={menus.filter((m) => !m.disabled)}
-        />
-      </AuthUserProvider>
+      <CafeHeader title={cafe.name} />
+      <CafeInfo cafe={cafe} />
+      <Menus
+        menuCategories={cafe.menuCategories}
+        menus={menus.filter((m) => !m.disabled)}
+      />
     </Container>
   );
 };

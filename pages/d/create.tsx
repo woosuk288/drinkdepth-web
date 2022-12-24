@@ -17,11 +17,14 @@ import {
   defaultCafeMenuReview,
 } from 'atoms/reviewFormAtom';
 import { useMutation } from 'react-query';
-import { auth, createReview } from 'src/firebase/services';
+import { createReview } from 'src/firebase/services';
+import { useFirestore, useStorage, useUser } from 'reactfire';
 
 const CreatePage: NextPage = () => {
   const router = useRouter();
-  const user = auth.currentUser;
+  const { data: user } = useUser();
+  const db = useFirestore();
+  const storage = useStorage();
 
   const [review, setReview] = useRecoilState(cafeMenuReviewState);
 
@@ -41,6 +44,8 @@ const CreatePage: NextPage = () => {
     // console.log('review : ', review);
     if (user) {
       mutate({
+        db,
+        storage,
         ...review,
         displayName: user.displayName ?? '',
         uid: user?.uid,
@@ -92,3 +97,5 @@ const CreatePage: NextPage = () => {
 };
 
 export default CreatePage;
+
+function CreateContainer() {}

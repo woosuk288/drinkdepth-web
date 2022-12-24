@@ -13,7 +13,9 @@ type CafeType = {
   menuCategories: CafeMenuCategoryType[];
 };
 
-type ReviewType = {
+type B2BReviewType = {
+  cafeId: string;
+  menuId: string;
   id?: string;
   text: string;
   createdAt: Date | string;

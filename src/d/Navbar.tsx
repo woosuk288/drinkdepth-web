@@ -17,12 +17,12 @@ import { useRouter } from 'next/router';
 // import { auth } from 'src/firebase/firebaseInit';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { auth } from 'src/firebase/services';
 import {
   cafeMenuReviewState,
   defaultCafeMenuReview,
 } from 'atoms/reviewFormAtom';
 import { getProfileId } from 'src/utils/etc';
+import { useUser } from 'reactfire';
 
 const NAV_ROUTES: { [key: string]: number } = {
   [D_PATH]: 0,
@@ -31,7 +31,7 @@ const NAV_ROUTES: { [key: string]: number } = {
 } as const;
 
 export default function Navbar() {
-  const user = auth.currentUser;
+  const { data: user } = useUser();
   const router = useRouter();
   const setPost = useSetRecoilState(cafeMenuReviewState);
 

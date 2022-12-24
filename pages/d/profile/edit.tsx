@@ -3,12 +3,13 @@ import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import { useRef, useState } from 'react';
 import { useQuery } from 'react-query';
+import { useFirestore, useUser } from 'reactfire';
 import AuthContainer from 'src/d/AuthContainer';
 import HeaderD from 'src/d/HeaderD';
 import Main from 'src/d/Main';
 import Navbar from 'src/d/Navbar';
 import ProfileForm from 'src/d/ProfileForm';
-import { auth, fetchProfile } from 'src/firebase/services';
+import { fetchProfile } from 'src/firebase/services';
 import { getProfileId } from 'src/utils/etc';
 import { FETCH_PROFILE_KEY } from 'src/utils/queryKeys';
 
@@ -28,11 +29,13 @@ const ProfileEditPage: NextPage = () => {
 export default ProfileEditPage;
 
 function ProfileEditContainer() {
-  const user = auth.currentUser!;
+  const db = useFirestore();
+  const { data: user } = useUser();
+
   const submitRef = useRef<HTMLInputElement>(null);
   const [isEditValid, setIsEditValid] = useState(false);
   const { isLoading, data, error } = useQuery(FETCH_PROFILE_KEY, () =>
-    fetchProfile(getProfileId(user.uid))
+    fetchProfile(db, getProfileId(user!.uid))
   );
 
   const handleUpdate = () => {

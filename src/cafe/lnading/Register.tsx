@@ -12,11 +12,11 @@ import {
 
 // import * as fbq from '../../../facebook/fpixel';
 import { useMutation } from 'react-query';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from 'src/firebase/services';
+import { addDoc, collection, Firestore } from 'firebase/firestore';
 
 import { useRecoilState } from 'recoil';
 import { landingFormState } from '../../../atoms/landingFormAtom';
+import { useFirestore } from 'reactfire';
 
 const initContactInfo = {
   ip: '',
@@ -26,13 +26,15 @@ const initContactInfo = {
 };
 
 const Register = () => {
+  const db = useFirestore();
+
   const [landingForm] = useRecoilState(landingFormState);
   const [contactInfo, setContactInfo] = React.useState(initContactInfo);
 
   const { data, isLoading, isError, mutate } = useMutation<
     string,
     string,
-    RegisterType
+    RegisterType & { db: Firestore }
   >(mutationRegister);
 
   const [open, setOpen] = React.useState(false);
@@ -61,7 +63,7 @@ const Register = () => {
     const { name, contact, memo } = contactInfo;
 
     mutate(
-      { name, contact, memo, ...landingForm },
+      { db, name, contact, memo, ...landingForm },
       {
         onSuccess: (data) => {
           setOpen(true);
@@ -204,12 +206,13 @@ type RegisterType = {
   moneyBtn?: boolean;
 };
 async function mutationRegister({
+  db,
   name,
   contact,
   memo,
   applyBtn,
   moneyBtn,
-}: RegisterType) {
+}: RegisterType & { db: Firestore }) {
   const ip: string = await fetch('https://jsonip.com', { mode: 'cors' })
     .then((resp) => resp.json())
     .then(({ ip }) => {

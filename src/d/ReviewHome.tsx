@@ -3,17 +3,19 @@ import { FETCH_REVIEWS_KEY, FETCH_REVIEW_COUNT_KEY } from 'src/utils/queryKeys';
 import { fetchReviewCount, fetchReviews } from 'src/firebase/services';
 import { LinearProgress } from '@mui/material';
 import Review from './Review';
+import { useFirestore } from 'reactfire';
 
 function ReviewHome() {
+  const db = useFirestore();
   const { data: postCount = 0, isLoading: isLoadingCount } = useQuery(
     FETCH_REVIEW_COUNT_KEY,
-    () => fetchReviewCount()
+    () => fetchReviewCount(db)
   );
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
       FETCH_REVIEWS_KEY,
       ({ pageParam = new Date() }) => {
-        return fetchReviews(pageParam);
+        return fetchReviews(db, pageParam);
       },
       {
         getNextPageParam: (lastPage, allPages) => {

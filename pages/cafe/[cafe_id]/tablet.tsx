@@ -4,7 +4,6 @@ import { ParsedUrlQuery } from 'querystring';
 
 import Menus from 'src/cafe/Menus';
 import Meta from 'src/common/Meta';
-import { AuthUserProvider } from 'src/context/AuthUserContext';
 import { CAFE_PATH } from 'src/utils/routes';
 
 // import CouponWIthQR from 'src/cafe/tablet/CouponWIthQR';
@@ -32,22 +31,20 @@ const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
     <Container maxWidth="sm" disableGutters>
       <Meta data={metaData} />
 
-      <AuthUserProvider>
-        <CafeHeader title={cafe.name} />
-        <BannerCarousel imageURLs={cafe.imageOfflineURLs} />
-        {/* <CouponWIthQR cafeId={cafe.id} /> */}
-        <Menus
-          menuCategories={cafe.menuCategories}
-          menus={menus}
-          sx={{
-            marginTop: '3rem',
-            '& > h6': { marginTop: '0.75rem', marginBottom: 0 },
-            '& > ul > li .MuiAvatar-root': { width: '160px', height: '160px' },
-          }}
-        />
+      <CafeHeader title={cafe.name} />
+      <BannerCarousel imageURLs={cafe.imageOfflineURLs} />
+      {/* <CouponWIthQR cafeId={cafe.id} /> */}
+      <Menus
+        menuCategories={cafe.menuCategories}
+        menus={menus}
+        sx={{
+          marginTop: '3rem',
+          '& > h6': { marginTop: '0.75rem', marginBottom: 0 },
+          '& > ul > li .MuiAvatar-root': { width: '160px', height: '160px' },
+        }}
+      />
 
-        <div style={{ height: '80px' }}></div>
-      </AuthUserProvider>
+      <div style={{ height: '80px' }}></div>
     </Container>
   );
 };

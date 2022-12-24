@@ -22,7 +22,8 @@ import {
 } from '../firebase/services';
 import { useRouter } from 'next/router';
 import { REVIEWS_PATH } from '../utils/routes';
-import useFirebaseAuth from '../hooks/useFirebaseAuth';
+
+import { useFirestore, useUser } from 'reactfire';
 
 const SLICE_COUNT = 3;
 
@@ -37,11 +38,13 @@ function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
   const [review, setComment] = useState('');
   const queryClient = useQueryClient();
   const [count, setCount] = useState(reviewCount);
-  const { user } = useFirebaseAuth();
+
+  const { status, data: user } = useUser();
+  const db = useFirestore();
 
   const { isLoading: isLoadingReviews, data: reviews } = useQuery(
     DB_REVIEWS,
-    () => fetchCafeMenuReviews(cafeId, menuId, 3, new Date()),
+    () => fetchCafeMenuReviews(db, cafeId, menuId, 3, new Date()),
     {
       onSuccess: (data) => {
         // console.log('reviews : ', data);
@@ -66,14 +69,23 @@ function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
   });
 
   const handleAddReview = () => {
-    addReviewMutate(
-      { cafeId, menuId, review },
-      { onSuccess: () => setComment('') }
-    );
+    if (!user) return;
+
+    const newReview: B2BReviewType = {
+      cafeId,
+      menuId,
+      text: review,
+      displayName: user.displayName ?? '',
+      photoURL: user.photoURL ?? '',
+      uid: user?.uid,
+      createdAt: new Date(),
+    };
+
+    addReviewMutate({ db, newReview }, { onSuccess: () => setComment('') });
   };
 
   const handleDeleteReview = (reviewId: string) => {
-    deleteReviewMutate({ cafeId, menuId, reviewId });
+    deleteReviewMutate({ db, cafeId, menuId, reviewId });
   };
 
   return (

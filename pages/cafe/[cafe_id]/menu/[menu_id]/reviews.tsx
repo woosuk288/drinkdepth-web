@@ -11,17 +11,15 @@ import {
   useMutation,
   useQueryClient,
 } from 'react-query';
-import MenuReviewAll from '../../../../../src/cafe/MenuReviewAll';
-import HeaderCustom from '../../../../../src/common/HeaderCustom';
-import {
-  deleteMenuReview,
-  fetchCafeMenuReviews,
-} from '../../../../../src/firebase/services';
+import MenuReviewAll from 'src/cafe/MenuReviewAll';
+import HeaderCustom from 'src/common/HeaderCustom';
+import { deleteMenuReview, fetchCafeMenuReviews } from 'src/firebase/services';
 import { Props } from '../[menu_id]';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Meta from 'src/common/Meta';
 import { CAFE_PATH, MENU_PATH, REVIEWS_PATH } from 'src/utils/routes';
+import { useFirestore } from 'reactfire';
 
 const REVIEW_ALL = 'REVIEW_ALL';
 
@@ -33,6 +31,8 @@ const ReviewsPage: NextPage<Props> = ({ menu }) => {
     canonical: `${CAFE_PATH}/${menu.cafeId}${MENU_PATH}/${menu.id}${REVIEWS_PATH}`,
   };
 
+  const db = useFirestore();
+
   const LIMIT = 15;
   const { cafeId, id: menuId } = menu;
   const queryClient = useQueryClient();
@@ -40,7 +40,7 @@ const ReviewsPage: NextPage<Props> = ({ menu }) => {
     useInfiniteQuery(
       REVIEW_ALL,
       ({ pageParam = new Date() }) => {
-        return fetchCafeMenuReviews(cafeId, menuId, LIMIT, pageParam);
+        return fetchCafeMenuReviews(db, cafeId, menuId, LIMIT, pageParam);
       },
       {
         getNextPageParam: (lastPage, allPages) => {
@@ -54,7 +54,7 @@ const ReviewsPage: NextPage<Props> = ({ menu }) => {
 
   const { mutate: deleteReviewMutate } = useMutation(deleteMenuReview, {
     onSuccess: (_, { reviewId }) => {
-      const nextData: InfiniteData<ReviewType[]> = {
+      const nextData: InfiniteData<B2BReviewType[]> = {
         ...data!,
         pages: data!.pages.map((page) =>
           page.filter((review) => review.id !== reviewId)
@@ -66,7 +66,7 @@ const ReviewsPage: NextPage<Props> = ({ menu }) => {
   });
 
   const handleDeleteReview = (reviewId: string) => {
-    deleteReviewMutate({ cafeId, menuId, reviewId });
+    deleteReviewMutate({ db, cafeId, menuId, reviewId });
   };
 
   if (status === 'loading') return <LinearProgress />;

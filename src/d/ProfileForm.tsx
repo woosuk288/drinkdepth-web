@@ -26,8 +26,9 @@ import { resize_image_file } from 'src/utils/resizeImages';
 import { useRouter } from 'next/router';
 import { PROFILE_PATH } from 'src/utils/routes';
 import { doc, setDoc } from 'firebase/firestore';
-import { auth, db, storage, DB_PROFILES } from 'src/firebase/services';
+import { DB_PROFILES } from 'src/firebase/services';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
+import { useFirestore, useStorage, useUser } from 'reactfire';
 
 type ProfileFormProps = {
   me: ProfileType;
@@ -35,6 +36,10 @@ type ProfileFormProps = {
   setIsEditValid: React.Dispatch<React.SetStateAction<boolean>>;
 };
 function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
+  const { data: user } = useUser();
+  const db = useFirestore();
+  const storage = useStorage();
+
   const router = useRouter();
   // const [showPhone, setShowPhone] = React.useState(false);
   const [previewImage, setPreviewImage] = React.useState<string>();
@@ -68,7 +73,7 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
           newPhotoURL = await getDownloadURL(uploadResult.ref);
         }
 
-        await updateProfile(auth.currentUser!, {
+        await updateProfile(user!, {
           displayName: values.displayName,
           photoURL: newPhotoURL || values.photoURL,
         });

@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { makeNaverMapURL } from '../o2o/place/coffeeDetailDialog';
 import proj4 from 'proj4';
-import { db } from 'src/firebase/services';
+
 import {
   collection,
   limit,
@@ -19,7 +19,6 @@ import { useMutation } from 'react-query';
 
 import CouponDialog from './CouponDialog';
 import { useEffect, useState } from 'react';
-import { useAuth } from '../context/AuthUserContext';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
 import {
   DOMAIN_OFFLINE_QR,
@@ -33,6 +32,7 @@ import {
 import { FirebaseError } from 'firebase/app';
 import BannerCarousel from './tablet/BannerCarousel';
 import { clipText } from 'src/utils/etc';
+import { useFirestore, useUser } from 'reactfire';
 
 export type CafeInfoProps = {
   cafe: CafeType;
@@ -42,10 +42,12 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   const [expanded, setExpanded] = useState(false);
   const router = useRouter();
   const cafeId = router.query.cafe_id as string;
-  const { user } = useAuth();
+  const { data: user } = useUser();
+  const db = useFirestore();
 
   // 주의! undefined와 null 처리 각각 다름
   const [coupon, setCoupon] = useState<CouponType | null>();
+
   useEffect(() => {
     if (user?.uid) {
       const unsubscribe = onSnapshot(
@@ -70,7 +72,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
     } else {
       setCoupon(null);
     }
-  }, [cafeId, user?.uid]);
+  }, [db, cafeId, user?.uid]);
 
   const mutation = useMutation(issueCoupon);
 
@@ -78,9 +80,9 @@ function CafeInfo({ cafe }: CafeInfoProps) {
 
   useEffect(() => {
     if (open && coupon?.code) {
-      checkOpenCoupon(coupon?.code);
+      checkOpenCoupon(db, coupon?.code);
     }
-  }, [open, coupon?.code]);
+  }, [db, open, coupon?.code]);
 
   const handleOpenNaverMap = () => {
     const p = proj4('EPSG:4326', 'EPSG:3857');
@@ -110,7 +112,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
   const handleIssueCoupon = () => {
     user &&
       mutation.mutate(
-        { cafeId, customerId: user.uid },
+        { db, cafeId, customerId: user.uid },
         {
           onSuccess: (data) => {
             // console.log('data : ', data);
@@ -242,6 +244,7 @@ function CafeInfo({ cafe }: CafeInfoProps) {
 
           {open && !coupon?.isUsed && (
             <CouponDialog
+              db={db}
               coupon={coupon!}
               open={open}
               handleClose={handleClose}

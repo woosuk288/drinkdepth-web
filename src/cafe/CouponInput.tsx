@@ -11,8 +11,11 @@ import { sxCenter } from '../styles/GlobalSx';
 
 import { useMutation } from 'react-query';
 import { acceptCoupon } from 'src/firebase/services';
+import { useFirestore } from 'reactfire';
 
 function CouponInput() {
+  const db = useFirestore();
+
   const [open, setOpen] = useState(false);
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -40,7 +43,7 @@ function CouponInput() {
   };
 
   const handleConfirmCoupon = () => {
-    mutation.mutate({ code });
+    mutation.mutate({ db, code });
   };
 
   return (

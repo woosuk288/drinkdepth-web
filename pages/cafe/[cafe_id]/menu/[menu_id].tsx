@@ -7,7 +7,6 @@ import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
 import CafeHeader from 'src/cafe/B2BHeader';
 import MenuInfo from 'src/cafe/MenuInfo';
 
-import { AuthUserProvider } from 'src/context/AuthUserContext';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import { apiMenu, fetchCafePairingMenus } from 'src/firebase/api';
 
@@ -22,10 +21,9 @@ const MenuDetailPage: NextPage<Props> = ({ menu, pairingMenus }) => {
   return (
     <Container maxWidth="sm" disableGutters>
       <Meta data={metaData} />
-      <AuthUserProvider>
-        <CafeHeader title={menu.name} />
-        <MenuInfo menu={menu} pairingMenus={pairingMenus} />
-      </AuthUserProvider>
+
+      <CafeHeader title={menu.name} />
+      <MenuInfo menu={menu} pairingMenus={pairingMenus} />
     </Container>
   );
 };

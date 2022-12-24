@@ -1,6 +1,7 @@
 import { getDownloadURL, ref } from 'firebase/storage';
 import * as React from 'react';
-import { storage } from 'src/firebase/services';
+import { useStorage } from 'reactfire';
+
 // import NoImage from '/image/logo_name_vertical.png';
 
 const PLACEHOLDER = '/images/logo_name_vertical.png';
@@ -16,6 +17,8 @@ const LazyStorage: React.FC<ILazyStorage> = ({
   alt,
   style = {},
 }): JSX.Element => {
+  const storage = useStorage();
+
   // state
   const [isLoaded, setIsLoaded] = React.useState<boolean>(false); // 실제 화면에 보여지고 있는지 여부를 확인
   const [src, setSrc] = React.useState<string>();
@@ -59,7 +62,7 @@ const LazyStorage: React.FC<ILazyStorage> = ({
         setSrc(url);
       });
     }
-  }, [isLoaded, storagePath]);
+  }, [isLoaded, storage, storagePath]);
 
   return (
     // 화면에 보여지기 전이라면 NoImage, 화면에 보여지고 있다면 src에 해당하는 이미지
