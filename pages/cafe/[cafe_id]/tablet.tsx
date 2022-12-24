@@ -5,13 +5,14 @@ import { ParsedUrlQuery } from 'querystring';
 import Menus from 'src/cafe/Menus';
 import Meta from 'src/common/Meta';
 import { AuthUserProvider } from 'src/context/AuthUserContext';
-import { fetchCafe, fetchCafeMenus, fetchCafes } from 'src/firebase/services';
 import { CAFE_PATH } from 'src/utils/routes';
 
 // import CouponWIthQR from 'src/cafe/tablet/CouponWIthQR';
 import BannerCarousel from 'src/cafe/tablet/BannerCarousel';
 import CafeHeader from 'src/cafe/B2BHeader';
 import useScrollY from 'src/hooks/useScrollY';
+import { apiCafe, apiMenu } from 'src/firebase/api';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 /**
  * only access offlineqrtablet.drinkdepth.com
@@ -62,7 +63,11 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const cafes = await fetchCafes();
+  const cafes = await apiCafe.list();
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    await apiCafe.cache.set(cafes);
+  }
 
   return {
     paths: cafes.map((cafe) => ({
@@ -77,13 +82,22 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const cafe = await fetchCafe(params!.cafe_id);
-  const menus = await fetchCafeMenus(params!.cafe_id);
+  let cafe = await apiCafe.cache.get(params!.cafe_id);
+
+  if (!cafe) {
+    cafe = await apiCafe.fetch(params!.cafe_id);
+  }
 
   if (!cafe) {
     return {
       notFound: true,
     };
+  }
+
+  const menus = await apiMenu.list();
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    await apiMenu.cache.set(menus);
   }
 
   return {

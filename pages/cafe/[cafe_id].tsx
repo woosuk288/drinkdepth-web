@@ -7,14 +7,12 @@ import CafeInfo from '../../src/cafe/CafeInfo';
 import Menus from '../../src/cafe/Menus';
 import Meta from '../../src/common/Meta';
 import { AuthUserProvider } from '../../src/context/AuthUserContext';
-import {
-  fetchCafe,
-  fetchCafeMenus,
-  fetchCafes,
-} from '../../src/firebase/services';
+
 import { CAFE_PATH } from 'src/utils/routes';
 import useScrollY from 'src/hooks/useScrollY';
-import { menuApi } from 'src/utils/cacheAPIs';
+
+import { apiCafe, apiMenu, fetchCafeMenus } from 'src/firebase/api';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 const CafePage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
@@ -56,7 +54,11 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const cafes = await fetchCafes();
+  const cafes = await apiCafe.list();
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    await apiCafe.cache.set(cafes);
+  }
 
   return {
     paths: cafes.map((cafe) => ({
@@ -71,19 +73,33 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const cafe = await fetchCafe(params!.cafe_id);
-  // const menus = await fetchCafeMenus(params!.cafe_id);
-  const menus = await menuApi.listByCafe(params!.cafe_id);
+  const { cafe_id } = params!;
 
-  if (menus) {
-    const allMenus = await menuApi.list();
-    const newMenues = allMenus.map(
-      (cacheMenu) => menus.find((menu) => menu.id === cacheMenu.id) ?? cacheMenu
-    );
-    await menuApi.cache.set(newMenues);
+  let cafe = await apiCafe.cache.get(cafe_id);
+
+  if (!cafe) {
+    cafe = await apiCafe.fetch(cafe_id);
   }
 
   if (!cafe) {
+    return {
+      notFound: true,
+    };
+  }
+
+  let menus;
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    menus = await apiMenu.cache.list();
+    if (!menus) {
+      menus = await apiMenu.list();
+    }
+    await apiMenu.cache.set(menus);
+  } else {
+    menus = await fetchCafeMenus(cafe_id);
+  }
+
+  if (!menus || !Array.isArray(menus)) {
     return {
       notFound: true,
     };

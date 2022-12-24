@@ -1,11 +1,8 @@
 import { FirebaseOptions, getApp, initializeApp } from 'firebase/app';
-import { getAuth, signOut, User } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
 import {
-  addDoc,
   arrayUnion,
   collection,
-  collectionGroup,
-  deleteDoc,
   doc,
   DocumentData,
   DocumentSnapshot,
@@ -71,13 +68,21 @@ const DOC_KEYWORD = 'keyword';
 
 export function getDocData<T>(doc: DocumentSnapshot<DocumentData>) {
   if (doc.exists()) {
-    const updatedAt = doc.data()?.updatedAt?.toDate().toISOString();
+    const updatedAt =
+      typeof doc.data().updatedAt === 'object'
+        ? doc.data()?.updatedAt?.toDate().toISOString()
+        : doc.data().updatedAt;
+
+    const createdAt =
+      typeof doc.data().createdAt === 'object'
+        ? doc.data()?.createdAt?.toDate().toISOString()
+        : doc.data().createdAt;
 
     return {
       ...doc.data(),
       id: doc.id,
       ...(updatedAt && { updatedAt }),
-      createdAt: doc.data()?.createdAt?.toDate().toISOString(),
+      ...(createdAt && { createdAt }),
     } as unknown as T;
   } else {
     return null;
@@ -93,41 +98,6 @@ export const CREATE = (id?: string) => ({
   ...(id && { id }),
 });
 export const UPDATE = () => ({ updatedAt: new Date() });
-
-export const fetchCafes = async () => {
-  const q = query(collection(db, DB_CAFES));
-  const querySnapshot = await getDocs(q);
-  const data = getDocsData<CafeType>(querySnapshot);
-  return data;
-};
-
-export const fetchCafe = async (cafeId: string) => {
-  const cafeRef = doc(db, DB_CAFES, cafeId);
-  const cafeDoc = await getDoc(cafeRef);
-
-  return getDocData<CafeType>(cafeDoc);
-};
-
-export const fetchCafeMenus = async (cafeId: string) => {
-  const q = query(collection(db, DB_CAFES, cafeId, DB_MENUS));
-  const querySnapshot = await getDocs(q);
-  const data = getDocsData<CafeMenuType>(querySnapshot);
-  return data;
-};
-
-export const fetchCafeMenu = async (cafeId: string, menuId: string) => {
-  const menuRef = doc(db, DB_CAFES, cafeId, DB_MENUS, menuId);
-  const menuDoc = await getDoc(menuRef);
-
-  return getDocData<CafeMenuType>(menuDoc);
-};
-
-export const fetchAllMenus = async () => {
-  const q = query(collectionGroup(db, DB_MENUS));
-  const querySnapshot = await getDocs(q);
-  const data = getDocsData<CafeMenuType>(querySnapshot);
-  return data;
-};
 
 export const fetchCafeMenuReviews = async (
   cafeId: string,

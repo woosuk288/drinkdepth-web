@@ -2,13 +2,14 @@ import { Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import Meta from 'src/common/Meta';
-import { menuApi } from 'src/utils/cacheAPIs';
+
 import { CAFE_PATH, MENU_PATH } from 'src/utils/routes';
 import CafeHeader from 'src/cafe/B2BHeader';
 import MenuInfo from 'src/cafe/MenuInfo';
 
 import { AuthUserProvider } from 'src/context/AuthUserContext';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import { apiMenu, fetchCafePairingMenus } from 'src/firebase/api';
 
 const MenuDetailPage: NextPage<Props> = ({ menu, pairingMenus }) => {
   const metaData = {
@@ -42,10 +43,10 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  let menus = await menuApi.list();
+  const menus = await apiMenu.list();
 
   if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
-    await menuApi.cache.set(menus);
+    await apiMenu.cache.set(menus);
   }
 
   return {
@@ -64,10 +65,10 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 }) => {
   const { cafe_id, menu_id } = params!;
 
-  let menu = await menuApi.cache.get(cafe_id, menu_id);
+  let menu = await apiMenu.cache.get(cafe_id, menu_id);
 
   if (!menu) {
-    menu = await menuApi.fetch(cafe_id, menu_id);
+    menu = await apiMenu.fetch(cafe_id, menu_id);
   }
 
   if (!menu) {
@@ -76,12 +77,21 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
     };
   }
 
-  // pairingMenus
-  const cafeMenus = await menuApi.cache.getByCafeId(cafe_id);
-  const pairingMenus = cafeMenus?.filter((cafeMenu) =>
-    menu?.pairingMenus?.includes(cafeMenu.id)
-  );
-  // console.log('pairingMenus : ', pairingMenus);
+  let pairingMenus: CafeMenuType[] = [];
+  const menuIds = menu.pairingMenus;
+
+  if (menuIds) {
+    if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+      const allMenus = await apiMenu.cache.list();
+      if (allMenus) {
+        pairingMenus = allMenus.filter((cafeMenu) =>
+          menuIds.includes(cafeMenu.id)
+        );
+      }
+    } else {
+      pairingMenus = await fetchCafePairingMenus(cafe_id, menuIds);
+    }
+  }
 
   return {
     props: {
