@@ -1,6 +1,7 @@
 import { Container } from '@mui/material';
 import { GetStaticProps, NextPage } from 'next';
-import { fetchCafes } from 'src/firebase/api';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import { apiCafe, fetchCafes } from 'src/firebase/api';
 import { CAFE_PATH } from 'src/utils/routes';
 import Cafe from '../../src/cafe/Cafe';
 import Meta from '../../src/common/Meta';
@@ -31,7 +32,25 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const cafes = await fetchCafes();
+  // const cafes = await fetchCafes();
+
+  let cafes;
+
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    cafes = await apiCafe.cache.list();
+    if (!cafes) {
+      cafes = await apiCafe.list();
+      await apiCafe.cache.set(cafes);
+    }
+  } else {
+    cafes = await fetchCafes();
+  }
+
+  if (!cafes || !Array.isArray(cafes)) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

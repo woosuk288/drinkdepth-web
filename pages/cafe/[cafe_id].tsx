@@ -10,7 +10,7 @@ import Meta from '../../src/common/Meta';
 import { CAFE_PATH } from 'src/utils/routes';
 import useScrollY from 'src/hooks/useScrollY';
 
-import { apiCafe, apiMenu, fetchCafeMenus } from 'src/firebase/api';
+import { apiCafe, apiMenu, fetchCafeMenus, fetchCafes } from 'src/firebase/api';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 const CafePage: NextPage<Props> = ({ cafe, menus }) => {
@@ -51,11 +51,23 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const cafes = await apiCafe.list();
+  let cafes;
 
   if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
-    await apiCafe.cache.set(cafes);
+    cafes = await apiCafe.cache.list();
+    if (!cafes) {
+      cafes = await apiCafe.list();
+      await apiCafe.cache.set(cafes);
+    }
+  } else {
+    cafes = await fetchCafes();
   }
+
+  // const cafes = await apiCafe.list();
+
+  // if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+  //   await apiCafe.cache.set(cafes);
+  // }
 
   return {
     paths: cafes.map((cafe) => ({
@@ -90,8 +102,8 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
     menus = await apiMenu.cache.list();
     if (!menus) {
       menus = await apiMenu.list();
+      await apiMenu.cache.set(menus);
     }
-    await apiMenu.cache.set(menus);
   } else {
     menus = await fetchCafeMenus(cafe_id);
   }

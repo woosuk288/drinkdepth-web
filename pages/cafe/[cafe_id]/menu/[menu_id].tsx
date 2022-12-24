@@ -41,10 +41,16 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const menus = await apiMenu.list();
+  let menus;
 
   if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
-    await apiMenu.cache.set(menus);
+    menus = await apiMenu.cache.list();
+    if (!menus) {
+      menus = await apiMenu.list();
+      await apiMenu.cache.set(menus);
+    }
+  } else {
+    menus = await apiMenu.list();
   }
 
   return {

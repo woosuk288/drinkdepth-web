@@ -26,6 +26,18 @@ export const apiCafe = {
     return fetchCafe(cafeId);
   },
   cache: {
+    list: async () => {
+      return fs
+        .readFile(path.join(process.cwd(), 'cafes.db'))
+        .then((data) => {
+          const cafes: CafeType[] = JSON.parse(data as unknown as string);
+          return cafes;
+        })
+        .catch((error) => {
+          console.info(`No cache cafes.db`);
+          return null;
+        });
+    },
     get: async (id: string): Promise<CafeType | null | undefined> => {
       return fs
         .readFile(path.join(process.cwd(), 'cafes.db'))

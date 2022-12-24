@@ -1,6 +1,5 @@
 import { Container } from '@mui/material';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { ParsedUrlQuery } from 'querystring';
+import { NextPage } from 'next';
 
 import Menus from 'src/cafe/Menus';
 import Meta from 'src/common/Meta';
@@ -10,8 +9,6 @@ import { CAFE_PATH } from 'src/utils/routes';
 import BannerCarousel from 'src/cafe/tablet/BannerCarousel';
 import CafeHeader from 'src/cafe/B2BHeader';
 import useScrollY from 'src/hooks/useScrollY';
-import { apiCafe, apiMenu } from 'src/firebase/api';
-import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 /**
  * only access offlineqrtablet.drinkdepth.com
@@ -55,54 +52,4 @@ type Props = {
   menus: CafeMenuType[];
 };
 
-interface Params extends ParsedUrlQuery {
-  cafe_id: string;
-}
-
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const cafes = await apiCafe.list();
-
-  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
-    await apiCafe.cache.set(cafes);
-  }
-
-  return {
-    paths: cafes.map((cafe) => ({
-      params: {
-        cafe_id: cafe.id,
-      },
-    })),
-    fallback: 'blocking',
-  };
-};
-
-export const getStaticProps: GetStaticProps<Props, Params> = async ({
-  params,
-}) => {
-  let cafe = await apiCafe.cache.get(params!.cafe_id);
-
-  if (!cafe) {
-    cafe = await apiCafe.fetch(params!.cafe_id);
-  }
-
-  if (!cafe) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const menus = await apiMenu.list();
-
-  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
-    await apiMenu.cache.set(menus);
-  }
-
-  return {
-    props: {
-      cafe,
-      menus,
-    },
-
-    revalidate: 1800,
-  };
-};
+export { getStaticPaths, getStaticProps } from '../[cafe_id]';

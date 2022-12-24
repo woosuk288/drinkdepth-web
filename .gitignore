@@ -36,8 +36,8 @@ yarn-error.log*
 .vercel
 
 # local db files
-cafes.db
-menus.db
+*.db
 menus.json
+
 
 tsconfig.tsbuildinfo
