@@ -82,40 +82,59 @@ function ReviewDetail({ review, userId, handleReviewDelete }: Props) {
         />
 
         <CardContent sx={{ paddingY: 0 }}>
-          {review.coffee?.bean && (
-            <Typography variant="body1" gutterBottom>
-              원두명 - {review.coffee?.bean}
-            </Typography>
-          )}
-          {review.coffee?.country && (
-            <Typography variant="body1" gutterBottom>
-              원산지 - {review.coffee?.country}
-            </Typography>
-          )}
-          <div css={{ display: 'flex' }}>
+          <div
+            css={{
+              display: 'flex',
+              marginBottom: '0.35em',
+              '> .MuiTypography-root + .MuiTypography-root': {
+                marginLeft: '1rem',
+              },
+            }}
+          >
+            {review.coffee?.country && (
+              <Typography variant="body1">
+                원산지 - {review.coffee?.country}
+              </Typography>
+            )}
+            {review.coffee?.process && (
+              <Typography variant="body1">
+                가공 방식 - {review.coffee?.process}
+              </Typography>
+            )}
+          </div>
+          <div
+            css={{
+              display: 'flex',
+              marginBottom: '0.35em',
+              '> span + span': { marginLeft: '1rem' },
+            }}
+          >
             {review.coffee?.acidity && (
-              <Typography
-                variant="body1"
-                gutterBottom
-                component="span"
-                sx={{ marginRight: '1rem' }}
-              >
+              <Typography variant="body1" component="span">
                 산미 - {review.coffee?.acidity}
               </Typography>
             )}
 
             {review.coffee?.sweetness && (
-              <Typography variant="body1" gutterBottom component="span">
+              <Typography variant="body1" component="span">
                 단맛 - {review.coffee?.sweetness}
+              </Typography>
+            )}
+            {review.coffee?.roasting && (
+              <Typography variant="body1" component="span">
+                로스팅 - {review.coffee?.roasting}
               </Typography>
             )}
           </div>
           <Typography variant="body1" gutterBottom>
             향미노트 - {review.coffee?.flavors?.map((f) => `#${f} `)}
           </Typography>
-          <Typography variant="body1" gutterBottom>
-            편의적 측면 - {review.keywords?.map((f) => `#${f} `)}
-          </Typography>
+
+          {(review.keywords?.length ?? 0) > 0 && (
+            <Typography variant="body1" gutterBottom sx={{ marginTop: '1rem' }}>
+              편의적 측면 - {review.keywords?.map((f) => `#${f} `)}
+            </Typography>
+          )}
           <Typography
             variant="body1"
             gutterBottom

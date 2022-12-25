@@ -17,12 +17,12 @@ import { useRecoilState } from 'recoil';
 import StringTags from './StringTags';
 import RadioGroupRating from './RadioGroupRating';
 import SelectorOne from './SelectorOne';
-import ContryComboBox from './ContryComboBox';
 import { resize_image_file } from 'src/utils/resizeImages';
 import SingleLineImageList from './HorizontalImageList';
 import FlavorTags from './FlavorTags';
-import CafeSearch from './CafeSearch';
+// import CafeSearch from './CafeSearch';
 import CafeSearchDialog from './CafeSearchDialog';
+import ComboBox from './ComboBox';
 
 function ReviewForm() {
   const [review, setReview] = useRecoilState(cafeMenuReviewState);
@@ -244,20 +244,37 @@ function ReviewForm() {
                 />
               </RadioGroup>
             </div>
-            {review.coffee?.beanType === 'single_origin' && (
-              <div>
+
+            <div css={{ display: 'flex' }}>
+              {review.coffee?.beanType === 'single_origin' && (
+                <div css={{ flex: 0.5 }}>
+                  <InputLabel
+                    htmlFor="input-review-country"
+                    sx={{ fontSize: 14, marginLeft: '14px' }}
+                  >
+                    원산지
+                  </InputLabel>
+                  <ComboBox
+                    options={coffeeCountries}
+                    name="coffee.country"
+                    handleChange={handleChange}
+                  />
+                </div>
+              )}
+              <div css={{ flex: 0.5 }}>
                 <InputLabel
-                  htmlFor="input-review-country"
+                  htmlFor="input-review-process"
                   sx={{ fontSize: 14, marginLeft: '14px' }}
                 >
-                  원산지
+                  가공 방식
                 </InputLabel>
-                <ContryComboBox
-                  name="coffee.country"
+                <ComboBox
+                  options={processList}
+                  name="coffee.process"
                   handleChange={handleChange}
                 />
               </div>
-            )}
+            </div>
             <div css={{ display: 'flex' }}>
               <SelectorOne
                 helperText="산미"
@@ -280,6 +297,22 @@ function ReviewForm() {
                 tooltip="......"
                 name="coffee.sweetness"
                 value={review.coffee?.sweetness ?? ''}
+                options={[
+                  { label: '매우 낮음', value: '매우 낮음' },
+                  { label: '낮음', value: '낮음' },
+                  { label: '보통', value: '보통' },
+                  { label: '높음', value: '높음' },
+                  { label: '매우 높음', value: '매우 높음' },
+                ]}
+                handleChange={handleSelectChange}
+                // disabled={disabled}
+              />
+
+              <SelectorOne
+                helperText="로스팅"
+                tooltip="다크로 갈수록 쓴맛 진한맛이 강해집니다. 미디움 라이트로 갈수록 신맛 감미로운 향이 강조됩니다"
+                name="coffee.roasting"
+                value={review.coffee?.roasting ?? ''}
                 options={[
                   { label: '매우 낮음', value: '매우 낮음' },
                   { label: '낮음', value: '낮음' },
@@ -393,3 +426,31 @@ const setNestedProp = (
   ...obj,
   [first]: rest.length ? setNestedProp(obj[first], rest, value) : value,
 });
+
+const coffeeCountries = [
+  '에티오피아',
+  '콜롬비아',
+  '브라질',
+  '케냐',
+  '과테말라',
+  '코스타리카',
+  '에콰도르',
+  '엘살바도르',
+  '파푸아뉴기니',
+  '페루',
+  '파나마',
+  '온두라스',
+  '르완다',
+  '인도',
+  '인도네시아',
+  '베트남',
+];
+
+const processList = [
+  '워시드',
+  '내추럴',
+  '허니',
+  '무산소 발효',
+  '웻홀링',
+  '펄프트 내추럴',
+];
