@@ -113,11 +113,13 @@ export const LetterDIcon = (props: SvgIconProps) => (
   </SvgIcon>
 );
 
-const badges = [
+export const badges = [
   {
     id: '010',
     image: <LetterDIcon />,
     name: '개국 공신',
+    description:
+      '드링크뎁스의 초창기 유저로서 성장에 기여한 분에게만 제공되는 한정판 배지',
     hasBadge: true,
     color: '#4f9cff',
   },
@@ -125,8 +127,9 @@ const badges = [
     id: '020',
     image: <OpacityIcon />,
     name: '식초단',
+    description: '산미가 4, 5단계인 음료를 10회 이상 달성 시 부여',
     hasBadge: true,
-    color: '#ffe9ab',
+    color: '#ffd356',
   },
   { id: '030', image: <OutdoorGrillIcon />, name: '석탄단' },
   { id: '110', image: <SmokingRoomsIcon />, name: '게이샤갱' },

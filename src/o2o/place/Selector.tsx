@@ -12,7 +12,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 type SelectorProps = {
   helperText: string;
-  tooltip: string;
+  tooltip?: string;
   name: string;
   value: string[];
   options: {
@@ -34,19 +34,25 @@ function Selector({
 }: SelectorProps) {
   return (
     <FormControl size="small" disabled={disabled} sx={{ flex: 1 }}>
-      <Tooltip
-        arrow
-        enterTouchDelay={10}
-        leaveTouchDelay={3000}
-        title={tooltip}
-      >
+      {tooltip ? (
+        <Tooltip
+          arrow
+          enterTouchDelay={10}
+          leaveTouchDelay={3000}
+          title={tooltip}
+        >
+          <FormHelperText sx={{ fontSize: 14, position: 'relative' }}>
+            {helperText}
+            <InfoOutlinedIcon
+              sx={{ position: 'absolute', paddingBottom: '0.5rem' }}
+            />
+          </FormHelperText>
+        </Tooltip>
+      ) : (
         <FormHelperText sx={{ fontSize: 14, position: 'relative' }}>
           {helperText}
-          <InfoOutlinedIcon
-            sx={{ position: 'absolute', paddingBottom: '0.5rem' }}
-          />
         </FormHelperText>
-      </Tooltip>
+      )}
       <Badge
         badgeContent={value.length}
         color="primary"

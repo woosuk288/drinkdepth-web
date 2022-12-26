@@ -1,5 +1,6 @@
 import {
   Avatar,
+  AvatarGroup,
   Button,
   Card,
   CardActions,
@@ -7,14 +8,17 @@ import {
   CardHeader,
   CardMedia,
   IconButton,
+  Tooltip,
   Typography,
 } from '@mui/material';
 
 import LocalCafeIcon from '@mui/icons-material/LocalCafe';
 import CoffeeIcon from '@mui/icons-material/Coffee';
+import { badges, LetterDIcon } from './BadgeList';
+import OpacityIcon from '@mui/icons-material/Opacity';
 
 import { customIcons } from './RadioGroupRating';
-import Link from 'src/common/Link';
+import Link, { NextLinkComposed } from 'src/common/Link';
 import { REVIEW_PATH } from 'src/utils/routes';
 
 type Props = {
@@ -26,45 +30,100 @@ function Review({ review, uid }: Props) {
     <Card
       /* variant="outlined" */
       sx={{ borderRadius: '8px' }}
-      component={Link}
-      href={`${REVIEW_PATH}/${review.id}`}
-      underline="none"
     >
       <CardHeader
-        avatar={<Avatar aria-label="photo" src={review.photoURL} />}
+        avatar={
+          <Avatar aria-label={review.displayName} src={review.photoURL} />
+        }
         action={
-          uid && review.rating ? (
-            <div css={{ display: 'flex', flexDirection: 'column' }}>
-              <IconButton
-                aria-label="settings"
-                sx={{ padding: 0, svg: { fontSize: '2.4rem' } }}
-              >
-                {customIcons[review.rating].icon}
-                <Typography
-                  variant="overline"
-                  sx={{ position: 'absolute', bottom: '-1.5rem' }}
+          <>
+            {uid && review.rating ? (
+              <div css={{ display: 'flex', flexDirection: 'column' }}>
+                <IconButton
+                  aria-label="settings"
+                  sx={{ padding: 0, svg: { fontSize: '2.4rem' } }}
                 >
-                  {customIcons[review.rating].label}
-                </Typography>
-              </IconButton>
-            </div>
-          ) : null
+                  {customIcons[review.rating].icon}
+                  <Typography
+                    variant="overline"
+                    sx={{ position: 'absolute', bottom: '-1.5rem' }}
+                  >
+                    {customIcons[review.rating].label}
+                  </Typography>
+                </IconButton>
+              </div>
+            ) : null}
+          </>
         }
         title={
-          <Typography variant="subtitle1" fontWeight={500}>
-            {review.displayName}
-          </Typography>
+          <div css={{ display: 'flex', alignItems: 'center' }}>
+            <Typography variant="subtitle1" fontWeight={500} marginRight="1rem">
+              {review.displayName}
+            </Typography>
+
+            {review.uid === 'kakao:2341305282' && (
+              <AvatarGroup
+                sx={{
+                  '> div': {
+                    width: 32,
+                    height: 32,
+                    bgcolor: 'transparent',
+                  },
+                }}
+              >
+                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /> */}
+                <Tooltip
+                  arrow
+                  enterTouchDelay={10}
+                  leaveTouchDelay={30000}
+                  title={`${badges[0].name} - ${badges[0].description}`}
+                >
+                  <Avatar
+                    sx={{
+                      border: `1px solid ${badges[0].color} !important`,
+                      '> svg': { color: badges[0].color },
+                    }}
+                  >
+                    {badges[0].image}
+                  </Avatar>
+                </Tooltip>
+                {/* <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" /> */}
+                <Tooltip
+                  arrow
+                  enterTouchDelay={10}
+                  leaveTouchDelay={30000}
+                  title={`${badges[1].name} - ${badges[1].description}`}
+                >
+                  <Avatar
+                    sx={{
+                      border: `1px solid ${badges[1].color} !important`,
+                      '> svg': { color: badges[1].color },
+                    }}
+                  >
+                    {badges[1].image}
+                    {/* <OpacityIcon color="error" /> */}
+                  </Avatar>
+                </Tooltip>
+              </AvatarGroup>
+            )}
+          </div>
         }
-        // subheader={
-        //   <Typography variant="body2" fontSize={12}>
-        //     {review.createdAt.toLocaleString().slice(5)}
-        //   </Typography>
-        // }
       />
 
-      <div css={{ display: 'flex' }}>
+      <Link
+        sx={{ display: 'flex' }}
+        href={`${REVIEW_PATH}/${review.id}`}
+        underline="none"
+        color="inherit"
+      >
         <CardContent
-          sx={{ paddingY: 0, overflow: 'hidden', whiteSpace: 'nowrap' }}
+          sx={{
+            paddingY: 0,
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            display: 'block',
+          }}
+          // component={Link}
         >
           <Typography fontSize={18} fontWeight={600} noWrap>
             {review.place?.place_name}
@@ -106,13 +165,22 @@ function Review({ review, uid }: Props) {
             alt="thumbnail"
           />
         ) : null}
-      </div>
+      </Link>
 
-      <CardContent sx={{ ':last-child': { paddingBottom: '1rem' } }}>
+      <CardContent
+        sx={{ paddingBottom: 0, display: 'block' }}
+        component={Link}
+        href={`${REVIEW_PATH}/${review.id}`}
+        underline="none"
+        color="inherit"
+      >
         <Typography variant="body1" noWrap>
           {review.text}
         </Typography>
-        <Typography variant="body2" fontSize={12} sx={{ marginTop: '0.75rem' }}>
+      </CardContent>
+
+      <CardContent sx={{ ':last-child': { paddingBottom: '1rem' } }}>
+        <Typography variant="body2" fontSize={12}>
           {new Date(review.createdAt).toLocaleString()}
         </Typography>
       </CardContent>

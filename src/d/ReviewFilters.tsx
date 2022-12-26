@@ -51,6 +51,24 @@ function ReviewFilters() {
           handleChange={() => {}}
           // disabled={disabled}
         />
+
+        <Selector
+          helperText="가공방식"
+          tooltip="워시드 등..."
+          name="process"
+          value={[]}
+          options={[
+            { label: '워시드', value: '워시드' },
+            { label: '내추럴', value: '내추럴' },
+            { label: '허니', value: '허니' },
+            { label: '무산소 발효', value: '무산소 발효' },
+            { label: '웻홀링', value: '웻홀링' },
+            { label: '펄프트 내추럴', value: '펄프트 내추럴' },
+          ]}
+          // handleChange={handleChange}
+          handleChange={() => {}}
+          // disabled={disabled}
+        />
       </div>
 
       {/* 만족도 */}

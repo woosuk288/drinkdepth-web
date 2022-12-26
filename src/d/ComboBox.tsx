@@ -29,7 +29,8 @@ export default function ComboBox({ options, name, handleChange }: Props) {
   return (
     <Autocomplete
       disablePortal
-      id="input-review-country"
+      // id="input-review-country"
+
       options={options}
       onChange={onChange}
       renderInput={({ InputLabelProps, InputProps, ...params }) => (
@@ -38,6 +39,7 @@ export default function ComboBox({ options, name, handleChange }: Props) {
           ref={InputProps.ref}
           name={name}
           size="small"
+          // placeholder="asdas"
         />
       )}
     />

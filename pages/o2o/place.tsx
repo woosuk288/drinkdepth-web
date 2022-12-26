@@ -28,12 +28,15 @@ import {
 import Meta from '../../src/common/Meta';
 import KakaoChat from '../../src/common/KakaoChat';
 import TagManager from 'react-gtm-module';
-// import ReviewFilters from 'src/d/ReviewFilters';
+import ReviewFilters from 'src/d/ReviewFilters';
+import ComboBox from 'src/d/ComboBox';
+import Selector from 'src/o2o/place/Selector';
 
 export type ChoiceType = {
   caffein: string[];
   roasting: string[];
   acidity: string[];
+  district: string[];
 };
 
 export type CoffeeType = {
@@ -140,6 +143,7 @@ const PlacePage: NextPage = () => {
     acidity: [],
     caffein: [],
     roasting: [],
+    district: [],
   });
 
   const [filteredCoffees, setFilteredCoffees] = useState<CoffeeResultType[]>(
@@ -166,6 +170,8 @@ const PlacePage: NextPage = () => {
     // console.log('info : ', info);
 
     clustererRef.current?.clear();
+
+    console.log('event.target : ', event.target);
 
     const newChoice = {
       ...choice,
@@ -341,11 +347,25 @@ const PlacePage: NextPage = () => {
       </Box>
       {loadingGPS && <LinearProgress />}
 
+      {/* <div
+        css={{ margin: '0.5rem', display: 'flex', '> div': { flex: '0.5' } }}
+      >
+        <Selector
+          helperText="지역"
+          name="district"
+          value={choice.district}
+          options={locations}
+          handleChange={handleChange}
+          disabled={loadingData}
+        />
+      </div> */}
+
       <Selectors
         choice={choice}
         handleChange={handleChange}
         disabled={loadingData}
       />
+
       {/* <ReviewFilters /> */}
 
       {filteredCoffees.length > 0 && (
@@ -373,7 +393,7 @@ const PlacePage: NextPage = () => {
         />
       )}
 
-      <KakaoChat />
+      {/* <KakaoChat /> */}
     </Container>
   );
 };
@@ -523,3 +543,92 @@ export const getFilePath = (imageUrl: string) => {
   // return path.replace(delimiter, "/");
   return decodedPath;
 };
+
+const locations = [
+  {
+    id: 1,
+    label: '서울특별시',
+    value: '서울특별시',
+  },
+  {
+    id: 2,
+    label: '부산광역시',
+    value: '부산광역시',
+  },
+  {
+    id: 3,
+    label: '인천광역시',
+    value: '인천광역시',
+  },
+  {
+    id: 4,
+    label: '대구광역시',
+    value: '대구광역시',
+  },
+  {
+    id: 5,
+    label: '대전광역시',
+    value: '대전광역시',
+  },
+  {
+    id: 6,
+    label: '광주광역시',
+    value: '광주광역시',
+  },
+  // {
+  //   id: 8,
+  //   label: '울산광역시',
+  //   value: '울산광역시',
+  // },
+
+  // {
+  //   id: 9,
+  //   label: '세종특별자치시',
+  //   value: '세종특별자치시',
+  // },
+  // {
+  //   id: 10,
+  //   label: '경기도',
+  //   value: '경기도',
+  // },
+  // {
+  //   id: 11,
+  //   label: '강원도',
+  //   value: '강원도',
+  // },
+  // {
+  //   id: 12,
+  //   label: '충청북도',
+  //   value: '충청북도',
+  // },
+  // {
+  //   id: 13,
+  //   label: '충청남도',
+  //   value: '충청남도',
+  // },
+  // {
+  //   id: 14,
+  //   label: '전라북도',
+  //   value: '전라북도',
+  // },
+  // {
+  //   id: 15,
+  //   label: '전라남도',
+  //   value: '전라남도',
+  // },
+  // {
+  //   id: 16,
+  //   label: '경상북도',
+  //   value: '경상북도',
+  // },
+  // {
+  //   id: 17,
+  //   label: '경상남도',
+  //   value: '경상남도',
+  // },
+  // {
+  //   id: 18,
+  //   label: '제주특별자치도',
+  //   value: '제주특별자치도',
+  // },
+];
