@@ -8,8 +8,9 @@ import SectionC from '../src/intro/SectionC';
 import { Box } from '@mui/material';
 
 const metaData = {
-  title: '깊이를 마시다',
-  description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
+  title: '드링크뎁스',
+  description:
+    '오늘도 뭘 마실지 고민될 땐? 마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
   image: '/images/logo_name.png',
 };
 
