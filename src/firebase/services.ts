@@ -33,7 +33,6 @@ import {
   ref,
   uploadString,
 } from 'firebase/storage';
-import { getProfileId } from 'src/utils/etc';
 import { deleteKakaoAuthCookie } from 'src/utils/kakaoAPI';
 import { getTestType } from '../utils/combos';
 import {
@@ -401,14 +400,13 @@ export const createReview = async ({
 
   batch.set(newReviewRef, newReview);
 
-  const profileId = getProfileId(review.uid);
-  const profileRef = doc(db, DB_PROFILES, profileId);
+  const profileRef = doc(db, DB_PROFILES, review.uid);
   batch.set(profileRef, { reviewCount: increment(1) }, { merge: true });
 
   const userFlavorRef = doc(
     db,
     DB_PROFILES,
-    profileId,
+    review.uid,
     DB_PRIVACIES,
     DOC_FLAVOR
   );
@@ -421,7 +419,7 @@ export const createReview = async ({
   const userKeywordRef = doc(
     db,
     DB_PROFILES,
-    profileId,
+    review.uid,
     DB_PRIVACIES,
     DOC_KEYWORD
   );
@@ -480,14 +478,13 @@ export const editReview = async ({
   const nextReview = { ...review, images, updatedAt };
   batch.update(reviewRef, nextReview as CafeMenuReviewType);
 
-  const profileId = getProfileId(review.uid);
-  const profileRef = doc(db, DB_PROFILES, profileId);
+  const profileRef = doc(db, DB_PROFILES, review.uid);
   batch.set(profileRef, { reviewCount: increment(1) }, { merge: true });
 
   const userFlavorRef = doc(
     db,
     DB_PROFILES,
-    profileId,
+    review.uid,
     DB_PRIVACIES,
     DOC_FLAVOR
   );
@@ -500,7 +497,7 @@ export const editReview = async ({
   const userKeywordRef = doc(
     db,
     DB_PROFILES,
-    profileId,
+    review.uid,
     DB_PRIVACIES,
     DOC_KEYWORD
   );
@@ -588,14 +585,14 @@ export const updateProfile = async () => {};
 export const logoutKakao = async () => {
   const auth = getAuth();
   // kakao logout?
-  const kakaoUID = auth.currentUser?.uid.replace('kakao:', '');
+  const uid = auth.currentUser?.uid;
   await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/kakao/logout`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      kakaoUID,
+      uid,
     }),
   });
 
@@ -624,7 +621,7 @@ export const deleteReview = async ({
 
   batch.delete(reviewRef);
 
-  const profileRef = doc(db, DB_PROFILES, getProfileId(uid));
+  const profileRef = doc(db, DB_PROFILES, uid);
   batch.update(profileRef, { reviewCount: increment(-1) });
 
   await batch.commit();

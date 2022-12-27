@@ -1,6 +1,7 @@
 import { FirebaseOptions, getApp, initializeApp } from 'firebase/app';
 import { connectAuthEmulator, getAuth } from 'firebase/auth'; // Firebase v9+
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
+import { connectFunctionsEmulator } from 'firebase/functions';
 import { getStorage } from 'firebase/storage';
 import { ReactNode } from 'react';
 
@@ -22,17 +23,6 @@ export const firebaseConfig = {
   // measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// function startEmulators() {
-//   if (!globalThis.__EMULATORS_STARTED__) {
-//     globalThis.__EMULATORS_STARTED__ = true;
-//     connectFirestoreEmulator(db, 'localhost', 8080);
-//   }
-// }
-
-// if (process.env.NODE_ENV !== 'production') {
-//   startEmulators();
-// }
-
 function FirebaseComponents({ children }: { children: ReactNode }) {
   const app = useFirebaseApp(); // a parent component contains a `FirebaseAppProvider`
 
@@ -43,12 +33,27 @@ function FirebaseComponents({ children }: { children: ReactNode }) {
 
   auth.useDeviceLanguage();
 
-  // Check for dev/test mode however your app tracks that.
-  // `process.env.NODE_ENV` is a common React pattern
+  function startEmulators() {
+    if (!globalThis.__EMULATORS_STARTED__) {
+      globalThis.__EMULATORS_STARTED__ = true;
+      // connectFunctionsEmulator()
+      connectFirestoreEmulator(db, 'localhost', 8080);
+      connectAuthEmulator(auth, 'http://localhost:9099', {
+        disableWarnings: true,
+      });
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    startEmulators();
+  }
+
+  // // Check for dev/test mode however your app tracks that.
+  // // `process.env.NODE_ENV` is a common React pattern
   // if (process.env.NODE_ENV !== 'production') {
   //   // Set up emulators
   //   connectFirestoreEmulator(db, 'localhost', 8080);
-  //   connectAuthEmulator(auth, 'http://localhost:9099');
+  //   // connectAuthEmulator(auth, 'http://localhost:9099');
   // }
 
   // any child components will be able to use `useUser`, `useDatabaseObjectData`, etc

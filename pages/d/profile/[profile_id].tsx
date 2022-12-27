@@ -18,7 +18,7 @@ import { FETCH_PROFILE_KEY } from 'src/utils/queryKeys';
 import { useQuery } from 'react-query';
 import { ParsedUrlQuery } from 'querystring';
 import { PROFILE_SETTINGS_PATH } from 'src/utils/routes';
-import { useFirestore } from 'reactfire';
+import { useFirestore, useUser } from 'reactfire';
 
 // TODO: SSR or SSG
 const ProfilePage: NextPage /* <Props> */ = () => {
@@ -36,18 +36,23 @@ export default ProfilePage;
 
 function ProfileContainer() {
   const db = useFirestore();
+  // const { data: user } = useUser();
   const router = useRouter();
-  const profile_id = router.query.profile_id as string;
+  const uid = router.query.profile_id as string;
+
+  // console.log('user : ', user);
+
+  // console.log('uid : ', uid);
 
   const { isLoading, data, error } = useQuery(
     FETCH_PROFILE_KEY,
-    () => fetchProfile(db, profile_id),
-    { enabled: !!profile_id }
+    () => fetchProfile(db, uid),
+    { enabled: !!uid }
   );
 
   if (isLoading) return <LinearProgress />;
   if (error) return <div>오류가 발생했습니다!</div>;
-  if (!data || !profile_id) return <div>데이터가 존재하지 않습니다.</div>;
+  if (!data || !uid) return <div>데이터가 존재하지 않습니다.</div>;
 
   return (
     <>

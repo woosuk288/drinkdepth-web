@@ -21,7 +21,6 @@ import {
   cafeMenuReviewState,
   defaultCafeMenuReview,
 } from 'atoms/reviewFormAtom';
-import { getProfileId } from 'src/utils/etc';
 import { useUser } from 'reactfire';
 
 const NAV_ROUTES: { [key: string]: number } = {
@@ -52,8 +51,7 @@ export default function Navbar() {
         photoURL: user.photoURL ?? '',
       });
     } else if (path === PROFILE_PATH) {
-      const profileId = user ? getProfileId(user.uid) : '';
-      router.push(path + '/' + profileId);
+      router.push(path + '/' + user?.uid);
       return;
     }
 

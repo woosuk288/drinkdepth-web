@@ -24,10 +24,10 @@ import {
   ListItemText,
 } from '@mui/material';
 
-import { getAuth, signOut } from 'firebase/auth';
 import { CAFE_PATH, OATUH_LOGIN_PATH } from '../utils/routes';
 import KakaoChat from 'src/common/KakaoChat';
 import { useUser } from 'reactfire';
+import { logoutKakao } from 'src/firebase/services';
 
 const pages = [
   // {
@@ -53,7 +53,6 @@ type B2BHeaderProps = {
 
 const B2BHeader = ({ title }: B2BHeaderProps) => {
   const router = useRouter();
-  const auth = getAuth();
   const { status, data: user } = useUser();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -86,19 +85,7 @@ const B2BHeader = ({ title }: B2BHeaderProps) => {
     if (!user) return;
 
     try {
-      // kakao logout?
-      const kakaoUID = user.uid.replace('kakao:', '');
-      await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/kakao/logout`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          kakaoUID,
-        }),
-      });
-      // firebase logout
-      signOut(auth).then(() => handleCloseNavMenu());
+      logoutKakao().then(() => handleCloseNavMenu());
     } catch (error) {
       console.log(error);
       alert('로그아웃 중 오류 발생!');

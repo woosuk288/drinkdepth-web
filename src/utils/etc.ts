@@ -7,8 +7,3 @@ export const clipText = (text: string, minLenth: number) => {
     return text.slice(0, idx);
   }
 };
-
-export const getProfileId = (uid: string) => {
-  const id = uid.split(':').length === 1 ? uid : uid.split(':')[1];
-  return id;
-};

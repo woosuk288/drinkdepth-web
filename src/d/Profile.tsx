@@ -59,7 +59,7 @@ export default function Profile({ profile }: Props) {
             component={NextLinkComposed}
             to={{
               pathname: router.asPath + page.path,
-              query: { uid: profile.provider.toLowerCase() + ':' + profile.id },
+              query: { uid: profile.id },
             }}
             linkAs={router.asPath + page.path}
           >
