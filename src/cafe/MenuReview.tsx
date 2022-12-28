@@ -44,7 +44,7 @@ function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
 
   const { isLoading: isLoadingReviews, data: reviews } = useQuery(
     DB_REVIEWS,
-    () => fetchCafeMenuReviews(db, cafeId, menuId, 3, new Date()),
+    () => fetchCafeMenuReviews(db, cafeId, menuId, 3, new Date().toISOString()),
     {
       onSuccess: (data) => {
         // console.log('reviews : ', data);
@@ -78,7 +78,7 @@ function MenuReview({ cafeId, menuId, reviewCount }: MenuReviewProps) {
       displayName: user.displayName ?? '',
       photoURL: user.photoURL ?? '',
       uid: user?.uid,
-      createdAt: new Date(),
+      createdAt: new Date().toISOString(),
     };
 
     addReviewMutate({ db, newReview }, { onSuccess: () => setComment('') });

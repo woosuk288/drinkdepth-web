@@ -115,7 +115,7 @@ export const LetterDIcon = (props: SvgIconProps) => (
 
 export const badges = [
   {
-    id: '010',
+    id: '00010',
     image: <LetterDIcon />,
     name: '개국 공신',
     description:
@@ -124,24 +124,24 @@ export const badges = [
     color: '#4f9cff',
   },
   {
-    id: '020',
+    id: '00020',
     image: <OpacityIcon />,
     name: '식초단',
     description: '산미가 4, 5단계인 음료를 10회 이상 달성 시 부여',
     hasBadge: true,
     color: '#ffd356',
   },
-  { id: '030', image: <OutdoorGrillIcon />, name: '석탄단' },
-  { id: '110', image: <SmokingRoomsIcon />, name: '게이샤갱' },
-  { id: '040', image: <QuestionMarkIcon />, name: '에티단' },
-  { id: '050', image: <QuestionMarkIcon />, name: '케냐는 외로워' },
-  { id: '060', image: <QuestionMarkIcon />, name: '???' }, // 콜롬비아
-  { id: '070', image: <QuestionMarkIcon />, name: '???' }, // 브라질
-  { id: '080', image: <QuestionMarkIcon />, name: '???' }, // 인도
-  { id: '090', image: <QuestionMarkIcon />, name: '???' }, // 베트남
-  { id: '100', image: <QuestionMarkIcon />, name: '???' }, // 코스타리카
+  { id: '00030', image: <OutdoorGrillIcon />, name: '석탄단' },
+  { id: '00110', image: <SmokingRoomsIcon />, name: '게이샤갱' },
+  { id: '00040', image: <QuestionMarkIcon />, name: '에티단' },
+  { id: '00050', image: <QuestionMarkIcon />, name: '케냐는 외로워' },
+  { id: '00060', image: <QuestionMarkIcon />, name: '???' }, // 콜롬비아
+  { id: '00070', image: <QuestionMarkIcon />, name: '???' }, // 브라질
+  { id: '00080', image: <QuestionMarkIcon />, name: '???' }, // 인도
+  { id: '00090', image: <QuestionMarkIcon />, name: '???' }, // 베트남
+  { id: '00100', image: <QuestionMarkIcon />, name: '???' }, // 코스타리카
 
-  { id: '120', image: <QuestionMarkIcon />, name: '???' }, // 티피카갱
+  { id: '00120', image: <QuestionMarkIcon />, name: '???' }, // 티피카갱
 ];
 
 const news = ['020'];

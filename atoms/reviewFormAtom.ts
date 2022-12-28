@@ -19,7 +19,7 @@ export const defaultCafeMenuReview: CafeMenuReviewType = {
   // isPublic: false,
   // followerIds: [],
   // hasFollower: false,
-  createdAt: new Date(),
+  createdAt: new Date().toISOString(),
 };
 
 export const cafeMenuReviewState = atom<CafeMenuReviewType>({

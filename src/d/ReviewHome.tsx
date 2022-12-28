@@ -14,14 +14,14 @@ function ReviewHome() {
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
       FETCH_REVIEWS_KEY,
-      ({ pageParam = new Date() }) => {
+      ({ pageParam = new Date().toISOString() }) => {
         return fetchReviews(db, pageParam);
       },
       {
         getNextPageParam: (lastPage, allPages) => {
           return (
             allPages.flat().length < postCount &&
-            new Date(lastPage[lastPage.length - 1].createdAt)
+            new Date(lastPage[lastPage.length - 1].createdAt).toISOString()
           );
         },
         // enabled: ''

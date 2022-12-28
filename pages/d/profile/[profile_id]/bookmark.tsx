@@ -50,14 +50,14 @@ function BookmarkReviewContainer({ user }: { user: User }) {
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
       FETCH_MY_REVIEWS_KEY,
-      ({ pageParam = new Date() }) => {
+      ({ pageParam = new Date().toISOString() }) => {
         return fetchMyReviews(db, user.uid, pageParam);
       },
       {
         getNextPageParam: (lastPage, allPages) => {
           return (
             allPages.flat().length < postCount &&
-            new Date(lastPage[lastPage.length - 1].createdAt)
+            new Date(lastPage[lastPage.length - 1].createdAt).toISOString()
           );
         },
         // enabled: ''

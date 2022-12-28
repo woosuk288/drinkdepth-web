@@ -44,15 +44,17 @@ function ProfileContainer() {
 
   // console.log('uid : ', uid);
 
-  const { isLoading, data, error } = useQuery(
-    FETCH_PROFILE_KEY,
-    () => fetchProfile(db, uid),
-    { enabled: !!uid }
-  );
+  const {
+    isLoading,
+    data: profile,
+    error,
+  } = useQuery(FETCH_PROFILE_KEY, () => fetchProfile(db, uid), {
+    enabled: !!uid,
+  });
 
   if (isLoading) return <LinearProgress />;
   if (error) return <div>오류가 발생했습니다!</div>;
-  if (!data || !uid) return <div>데이터가 존재하지 않습니다.</div>;
+  if (!profile || !uid) return <div>데이터가 존재하지 않습니다.</div>;
 
   return (
     <>
@@ -66,7 +68,7 @@ function ProfileContainer() {
       />
 
       <Main>
-        <Profile profile={data} />
+        <Profile profile={profile} />
       </Main>
 
       <Navbar />

@@ -109,11 +109,9 @@ type PlacesSearchResultItem = {
 
 type ProfileType = {
   id: string;
-  uid: string;
   displayName: string;
   photoURL?: string;
   biography?: string;
-  createdAt: Date | string;
+  createdAt: string;
   updatedAt?: Date | string;
-  provider: 'KAKAO';
 };

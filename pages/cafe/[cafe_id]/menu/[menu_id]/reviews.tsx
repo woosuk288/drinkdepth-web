@@ -39,14 +39,14 @@ const ReviewsPage: NextPage<Props> = ({ menu }) => {
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, status } =
     useInfiniteQuery(
       REVIEW_ALL,
-      ({ pageParam = new Date() }) => {
+      ({ pageParam = new Date().toISOString() }) => {
         return fetchCafeMenuReviews(db, cafeId, menuId, LIMIT, pageParam);
       },
       {
         getNextPageParam: (lastPage, allPages) => {
           return (
             lastPage.length === LIMIT &&
-            new Date(lastPage[lastPage.length - 1].createdAt)
+            new Date(lastPage[lastPage.length - 1].createdAt).toISOString()
           );
         },
       }

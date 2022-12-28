@@ -103,7 +103,7 @@ const data = {
   categorySeqs: [],
   categories: [],
   reviewCount: 0,
-  createdAt: new Date(),
+  createdAt: new Date().toISOString(),
 };
 
 const path = `cafes/${cafeId}/menus/${menuId}`;

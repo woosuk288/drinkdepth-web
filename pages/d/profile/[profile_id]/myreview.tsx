@@ -74,14 +74,14 @@ function MyReviewContainer() {
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
       FETCH_MY_REVIEWS_KEY,
-      ({ pageParam = new Date() }) => {
+      ({ pageParam = new Date().toISOString() }) => {
         return fetchMyReviews(db, uid, pageParam);
       },
       {
         getNextPageParam: (lastPage, allPages) => {
           return (
             allPages.flat().length < reviewCount &&
-            new Date(lastPage[lastPage.length - 1].createdAt)
+            new Date(lastPage[lastPage.length - 1].createdAt).toISOString()
           );
         },
         enabled: !!uid,

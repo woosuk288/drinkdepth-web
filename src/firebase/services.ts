@@ -89,17 +89,17 @@ export function getDocsData<T>(query: QuerySnapshot<DocumentData>) {
 }
 
 export const CREATE = (id?: string) => ({
-  createdAt: new Date(),
+  createdAt: new Date().toISOString(),
   ...(id && { id }),
 });
-export const UPDATE = () => ({ updatedAt: new Date() });
+export const UPDATE = () => ({ updatedAt: new Date().toISOString() });
 
 export const fetchCafeMenuReviews = async (
   db: Firestore,
   cafeId: string,
   menuId: string,
   count: number,
-  createdAt: string | Date
+  createdAt: string
 ) => {
   const q = query(
     collection(db, DB_CAFES, cafeId, DB_MENUS, menuId, DB_REVIEWS),
@@ -393,7 +393,7 @@ export const createReview = async ({
   const newReview: Omit<CafeMenuReviewType, 'id'> = {
     ...review,
     images,
-    createdAt: new Date(),
+    createdAt: new Date().toISOString(),
   };
 
   const batch = writeBatch(db);
@@ -474,7 +474,7 @@ export const editReview = async ({
 
   const batch = writeBatch(db);
   const reviewRef = doc(db, DB_REVIEWS, id);
-  const updatedAt = new Date();
+  const updatedAt = new Date().toISOString();
   const nextReview = { ...review, images, updatedAt };
   batch.update(reviewRef, nextReview as CafeMenuReviewType);
 

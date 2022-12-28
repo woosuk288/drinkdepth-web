@@ -84,7 +84,7 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
             displayName: values.displayName,
             biography: values.biography,
             photoURL: newPhotoURL || values.photoURL,
-            updatedAt: new Date(),
+            updatedAt: new Date().toISOString(),
           },
           { merge: true }
         );
