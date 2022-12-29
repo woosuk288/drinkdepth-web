@@ -340,11 +340,19 @@ function ReviewForm() {
 
                 <div>
                   <FlavorTags
-                    id="other-drink"
+                    id="flavor-tags"
                     tooltip="맛과 향을 의미합니다"
                     helperText="#향미노트"
-                    value={review.otherDrink?.flavors}
-                    name={'otherDrink.flavors'}
+                    value={
+                      review.type === 'filtered_coffee'
+                        ? review.coffee.flavors
+                        : review.otherDrink?.flavors
+                    }
+                    name={
+                      review.type === 'filtered_coffee'
+                        ? 'coffee.flavors'
+                        : 'otherDrink.flavors'
+                    }
                     onChange={handleTagsChange}
                   />
                 </div>
