@@ -85,7 +85,7 @@ function Review({ review, uid }: Props) {
                     arrow
                     enterTouchDelay={10}
                     leaveTouchDelay={30000}
-                    title={`${badge.name} - ${badge.description}`}
+                    title={`[${badge.name}] - ${badge.description}`}
                   >
                     <Avatar
                       sx={{

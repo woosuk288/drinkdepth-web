@@ -16,6 +16,9 @@ type DReviewType = {
     roasting?: string;
     flavors?: string[];
   };
+  otherDrink?: {
+    flavors?: string[];
+  };
   // desert: {
   // 	pair?: boolean,
   // 	pairRating?: string,

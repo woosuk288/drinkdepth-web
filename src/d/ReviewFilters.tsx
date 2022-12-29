@@ -25,7 +25,7 @@ function ReviewFilters() {
           value={[]}
           options={[
             { label: '원두커피', value: 'filtered_coffee' },
-            { label: '커피음료', value: 'coffee_drink' },
+            { label: '커피음료', value: 'other_drink' },
           ]}
           // handleChange={handleChange}
           handleChange={() => {}}

@@ -146,7 +146,7 @@ const testData: DReviewType[] = [
       place_name: '탁이로스터리',
     },
     menuName: '꼰대라떼',
-    type: 'coffee_drink',
+    type: 'other_drink',
     coffee: {
       flavors: ['막걸리', '식초단', '무알콜'],
     },
@@ -278,7 +278,7 @@ const testData: DReviewType[] = [
       place_name: '탁이로스터리',
     },
     menuName: '꼰대라떼',
-    type: 'coffee_drink',
+    type: 'other_drink',
     coffee: {
       flavors: ['막걸리', '식초단', '무알콜'],
     },

@@ -184,9 +184,9 @@ function ReviewForm() {
               label="원두커피"
             />
             <FormControlLabel
-              value="coffee_drink"
+              value="other_drink"
               control={<Radio />}
-              label="커피음료"
+              label="그 외 음료"
             />
           </RadioGroup>
           {!review.type && (
@@ -242,6 +242,11 @@ function ReviewForm() {
                   control={<Radio />}
                   label="블렌드"
                 />
+                <FormControlLabel
+                  value="americano"
+                  control={<Radio />}
+                  label="아메리카노"
+                />
               </RadioGroup>
             </div>
 
@@ -257,84 +262,94 @@ function ReviewForm() {
                   <ComboBox
                     options={coffeeCountries}
                     name="coffee.country"
+                    value={review.coffee.country}
                     handleChange={handleChange}
                   />
                 </div>
               )}
-              <div css={{ flex: 0.5 }}>
-                <InputLabel
-                  htmlFor="input-review-process"
-                  sx={{ fontSize: 14, marginLeft: '14px' }}
-                >
-                  가공 방식
-                </InputLabel>
-                <ComboBox
-                  options={processList}
-                  name="coffee.process"
-                  handleChange={handleChange}
-                />
+              {(review.coffee?.beanType === 'single_origin' ||
+                review.coffee?.beanType === 'blend') && (
+                <div css={{ flex: 0.5 }}>
+                  <InputLabel
+                    htmlFor="input-review-process"
+                    sx={{ fontSize: 14, marginLeft: '14px' }}
+                  >
+                    가공 방식
+                  </InputLabel>
+                  <ComboBox
+                    options={processList}
+                    name="coffee.process"
+                    value={review.coffee.process}
+                    handleChange={handleChange}
+                  />
+                </div>
+              )}
+            </div>
+
+            {review.coffee?.beanType && (
+              <div>
+                <div css={{ display: 'flex' }}>
+                  <SelectorOne
+                    helperText="산미"
+                    tooltip="커피에서 긍정적인 신맛 상큼함을 의미합니다. 산미단계가 높을수록 신맛이 강해집니다"
+                    name="coffee.acidity"
+                    value={review.coffee?.acidity ?? ''}
+                    options={[
+                      { label: '매우 낮음', value: '매우 낮음' },
+                      { label: '낮음', value: '낮음' },
+                      { label: '보통', value: '보통' },
+                      { label: '높음', value: '높음' },
+                      { label: '매우 높음', value: '매우 높음' },
+                    ]}
+                    handleChange={handleSelectChange}
+                    // disabled={disabled}
+                  />
+
+                  <SelectorOne
+                    helperText="단맛"
+                    tooltip="......"
+                    name="coffee.sweetness"
+                    value={review.coffee?.sweetness ?? ''}
+                    options={[
+                      { label: '매우 낮음', value: '매우 낮음' },
+                      { label: '낮음', value: '낮음' },
+                      { label: '보통', value: '보통' },
+                      { label: '높음', value: '높음' },
+                      { label: '매우 높음', value: '매우 높음' },
+                    ]}
+                    handleChange={handleSelectChange}
+                    // disabled={disabled}
+                  />
+
+                  <SelectorOne
+                    helperText="로스팅"
+                    tooltip="다크로 갈수록 쓴맛 진한맛이 강해집니다. 미디움 라이트로 갈수록 신맛 감미로운 향이 강조됩니다"
+                    name="coffee.roasting"
+                    value={review.coffee?.roasting ?? ''}
+                    options={[
+                      { label: '매우 낮음', value: '매우 낮음' },
+                      { label: '낮음', value: '낮음' },
+                      { label: '보통', value: '보통' },
+                      { label: '높음', value: '높음' },
+                      { label: '매우 높음', value: '매우 높음' },
+                    ]}
+                    handleChange={handleSelectChange}
+                    // disabled={disabled}
+                  />
+                </div>
+
+                <div>
+                  <FlavorTags
+                    id="other-drink"
+                    tooltip="맛과 향을 의미합니다"
+                    helperText="#향미노트"
+                    value={review.otherDrink?.flavors}
+                    name={'otherDrink.flavors'}
+                    onChange={handleTagsChange}
+                  />
+                </div>
               </div>
-            </div>
-            <div css={{ display: 'flex' }}>
-              <SelectorOne
-                helperText="산미"
-                tooltip="커피에서 긍정적인 신맛 상큼함을 의미합니다. 산미단계가 높을수록 신맛이 강해집니다"
-                name="coffee.acidity"
-                value={review.coffee?.acidity ?? ''}
-                options={[
-                  { label: '매우 낮음', value: '매우 낮음' },
-                  { label: '낮음', value: '낮음' },
-                  { label: '보통', value: '보통' },
-                  { label: '높음', value: '높음' },
-                  { label: '매우 높음', value: '매우 높음' },
-                ]}
-                handleChange={handleSelectChange}
-                // disabled={disabled}
-              />
-
-              <SelectorOne
-                helperText="단맛"
-                tooltip="......"
-                name="coffee.sweetness"
-                value={review.coffee?.sweetness ?? ''}
-                options={[
-                  { label: '매우 낮음', value: '매우 낮음' },
-                  { label: '낮음', value: '낮음' },
-                  { label: '보통', value: '보통' },
-                  { label: '높음', value: '높음' },
-                  { label: '매우 높음', value: '매우 높음' },
-                ]}
-                handleChange={handleSelectChange}
-                // disabled={disabled}
-              />
-
-              <SelectorOne
-                helperText="로스팅"
-                tooltip="다크로 갈수록 쓴맛 진한맛이 강해집니다. 미디움 라이트로 갈수록 신맛 감미로운 향이 강조됩니다"
-                name="coffee.roasting"
-                value={review.coffee?.roasting ?? ''}
-                options={[
-                  { label: '매우 낮음', value: '매우 낮음' },
-                  { label: '낮음', value: '낮음' },
-                  { label: '보통', value: '보통' },
-                  { label: '높음', value: '높음' },
-                  { label: '매우 높음', value: '매우 높음' },
-                ]}
-                handleChange={handleSelectChange}
-                // disabled={disabled}
-              />
-            </div>
-
-            <div>
-              <FlavorTags
-                id="filtered-coffee"
-                tooltip="맛과 향을 의미합니다"
-                helperText="#향미노트"
-                value={review.coffee?.flavors}
-                name={'coffee.flavors'}
-                onChange={handleTagsChange}
-              />
-            </div>
+            )}
           </div>
         ) : (
           <div>

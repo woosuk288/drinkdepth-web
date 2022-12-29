@@ -7,9 +7,15 @@ import { OutlinedInput } from '@mui/material';
 type Props = {
   options: string[];
   name: string;
+  value?: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
-export default function ComboBox({ options, name, handleChange }: Props) {
+export default function ComboBox({
+  options,
+  name,
+  value,
+  handleChange,
+}: Props) {
   const onChange = (
     e: React.SyntheticEvent<Element, Event>,
     value: any,
@@ -30,7 +36,7 @@ export default function ComboBox({ options, name, handleChange }: Props) {
     <Autocomplete
       disablePortal
       // id="input-review-country"
-
+      value={value}
       options={options}
       onChange={onChange}
       renderInput={({ InputLabelProps, InputProps, ...params }) => (

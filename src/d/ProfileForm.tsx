@@ -50,7 +50,7 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
       displayName: me.displayName,
       // phoneNumber: me.phoneNumber,
       photoURL: me.photoURL,
-      biography: me?.biography,
+      biography: me.biography ?? '',
     },
     validationSchema: Yup.object({
       displayName: Yup.string()
