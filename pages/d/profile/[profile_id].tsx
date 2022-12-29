@@ -17,7 +17,7 @@ import { fetchProfile } from 'src/firebase/services';
 import { FETCH_PROFILE_KEY } from 'src/utils/queryKeys';
 import { useQuery } from 'react-query';
 import { ParsedUrlQuery } from 'querystring';
-import { PROFILE_SETTINGS_PATH } from 'src/utils/routes';
+import { D_PROFILE_SETTINGS_PATH } from 'src/utils/routes';
 import { useFirestore, useUser } from 'reactfire';
 
 // TODO: SSR or SSG
@@ -48,7 +48,7 @@ function ProfileContainer() {
     isLoading,
     data: profile,
     error,
-  } = useQuery(FETCH_PROFILE_KEY, () => fetchProfile(db, uid), {
+  } = useQuery(FETCH_PROFILE_KEY(uid), () => fetchProfile(db, uid), {
     enabled: !!uid,
   });
 
@@ -60,7 +60,7 @@ function ProfileContainer() {
     <>
       <HeaderD
         leftIcon={
-          <IconButton onClick={() => router.push(PROFILE_SETTINGS_PATH)}>
+          <IconButton onClick={() => router.push(D_PROFILE_SETTINGS_PATH)}>
             <SettingsOutlinedIcon />
           </IconButton>
         }

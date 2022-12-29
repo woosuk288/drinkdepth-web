@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import AuthContainer from 'src/d/AuthContainer';
 import { NextLinkComposed } from 'src/common/Link';
-import { REVIEW_PATH } from 'src/utils/routes';
+import { D_REVIEW_PATH } from 'src/utils/routes';
 import Main from 'src/d/Main';
 import ReviewForm from 'src/d/ReviewForm';
 import { useRecoilState } from 'recoil';
@@ -17,7 +17,11 @@ import {
   defaultCafeMenuReview,
 } from 'atoms/reviewFormAtom';
 import { useMutation } from 'react-query';
-import { createReview } from 'src/firebase/services';
+import {
+  createReview,
+  fetchProfile,
+  giveEventBadge,
+} from 'src/firebase/services';
 import { useFirestore, useStorage, useUser } from 'reactfire';
 
 const CreatePage: NextPage = () => {
@@ -28,31 +32,45 @@ const CreatePage: NextPage = () => {
 
   const [review, setReview] = useRecoilState(cafeMenuReviewState);
 
-  const { mutate, isLoading } = useMutation(createReview, {
-    onSuccess: (newReview) => {
-      router
-        .replace(`${REVIEW_PATH}/${newReview.id}`)
-        .then(() => setReview(defaultCafeMenuReview));
-    },
-    onError(error: any) {
-      console.log('error.code : ', error.code);
-      console.log('error.message : ', error.message);
-    },
-  });
+  const { mutate, isLoading } = useMutation(createReview);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (!user || isLoading) return;
+
+    const profile = await fetchProfile(db, user.uid);
+
     // console.log('review : ', review);
     if (user) {
-      mutate({
-        db,
-        storage,
-        ...review,
-        displayName: user.displayName ?? '',
-        uid: user?.uid,
-        photoURL: user.photoURL ?? '',
-      });
+      mutate(
+        {
+          db,
+          storage,
+          ...review,
+          profile: {
+            displayName: user.displayName ?? '',
+            uid: user.uid,
+            photoURL: user.photoURL ?? '',
+            badgeIds: profile?.badgeIds ?? [],
+          },
+        },
+        {
+          async onSuccess(newReview, variables, context) {
+            // TODO: 개국공신 배지 지급 | 추후 삭제
+            // 리뷰를 생선한적이 있고, 해당 배지가 없을시 증정
+            if (!profile?.badgeIds?.includes('00010')) {
+              await giveEventBadge(db, user);
+            }
+            router
+              .replace(`${D_REVIEW_PATH}/${newReview.id}`)
+              .then(() => setReview(defaultCafeMenuReview));
+          },
+          onError(error: any) {
+            console.log('error.code : ', error.code);
+            console.log('error.message : ', error.message);
+          },
+        }
+      );
     }
-    // router.replace(REVIEW_PATH);
   };
 
   const isValid = review.place && review.coffee && review.type;

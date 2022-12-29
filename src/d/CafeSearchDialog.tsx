@@ -20,7 +20,7 @@ const Transition = React.forwardRef(function Transition(
 
 type Props = {
   initialOpen?: boolean;
-  setter: SetterOrUpdater<CafeMenuReviewType>;
+  setter: SetterOrUpdater<DReviewType>;
 };
 
 export default function CafeSearchDialog({

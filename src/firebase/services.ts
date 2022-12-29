@@ -1,5 +1,5 @@
 import { FirebaseOptions, getApp, initializeApp } from 'firebase/app';
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth, signOut, User } from 'firebase/auth';
 import {
   arrayUnion,
   collection,
@@ -57,6 +57,7 @@ export const DB_COUPONS = 'coupons';
 
 export const DB_PROFILES = 'profiles';
 export const DB_PRIVACIES = 'privacies';
+export const DB_BADGES = 'badges';
 
 const DOC_FLAVOR = 'flavor';
 const DOC_KEYWORD = 'keyword';
@@ -366,16 +367,14 @@ export const createReview = async ({
   storage,
   id,
   ...review
-}: CafeMenuReviewType & { db: Firestore; storage: FirebaseStorage }) => {
+}: DReviewType & { db: Firestore; storage: FirebaseStorage }) => {
   const newReviewRef = doc(collection(db, DB_REVIEWS));
+  const uid = review.profile.uid;
 
   const uploadTasks = await Promise.all(
     review.images.map((image) =>
       uploadString(
-        ref(
-          storage,
-          `d/${DB_REVIEWS}/${newReviewRef.id}/${review.uid}/${image.name}`
-        ),
+        ref(storage, `d/${DB_REVIEWS}/${newReviewRef.id}/${uid}/${image.name}`),
         image.url,
         'data_url'
       )
@@ -390,7 +389,7 @@ export const createReview = async ({
     url: imageURLs[i],
   }));
 
-  const newReview: Omit<CafeMenuReviewType, 'id'> = {
+  const newReview: Omit<DReviewType, 'id'> = {
     ...review,
     images,
     createdAt: new Date().toISOString(),
@@ -400,29 +399,17 @@ export const createReview = async ({
 
   batch.set(newReviewRef, newReview);
 
-  const profileRef = doc(db, DB_PROFILES, review.uid);
+  const profileRef = doc(db, DB_PROFILES, uid);
   batch.set(profileRef, { reviewCount: increment(1) }, { merge: true });
 
-  const userFlavorRef = doc(
-    db,
-    DB_PROFILES,
-    review.uid,
-    DB_PRIVACIES,
-    DOC_FLAVOR
-  );
+  const userFlavorRef = doc(db, DB_PROFILES, uid, DB_PRIVACIES, DOC_FLAVOR);
   review.coffee?.flavors?.length &&
     batch.set(
       userFlavorRef,
       { names: arrayUnion(...review.coffee.flavors) },
       { merge: true }
     );
-  const userKeywordRef = doc(
-    db,
-    DB_PROFILES,
-    review.uid,
-    DB_PRIVACIES,
-    DOC_KEYWORD
-  );
+  const userKeywordRef = doc(db, DB_PROFILES, uid, DB_PRIVACIES, DOC_KEYWORD);
   review.keywords?.length &&
     batch.set(
       userKeywordRef,
@@ -441,14 +428,16 @@ export const editReview = async ({
   id,
   createdAt,
   ...review
-}: CafeMenuReviewType & { db: Firestore; storage: FirebaseStorage }) => {
+}: DReviewType & { db: Firestore; storage: FirebaseStorage }) => {
   if (!id) throw '리뷰가 존재하지 않습니다.';
+
+  const uid = review.profile.uid;
 
   const uploadTasks = await Promise.all(
     review.images.map((image) =>
       image.url.startsWith('data:image')
         ? uploadString(
-            ref(storage, `d/${DB_REVIEWS}/${id}/${review.uid}/${image.name}`),
+            ref(storage, `d/${DB_REVIEWS}/${id}/${uid}/${image.name}`),
             image.url,
             'data_url'
           )
@@ -476,31 +465,19 @@ export const editReview = async ({
   const reviewRef = doc(db, DB_REVIEWS, id);
   const updatedAt = new Date().toISOString();
   const nextReview = { ...review, images, updatedAt };
-  batch.update(reviewRef, nextReview as CafeMenuReviewType);
+  batch.update(reviewRef, nextReview as DReviewType);
 
-  const profileRef = doc(db, DB_PROFILES, review.uid);
+  const profileRef = doc(db, DB_PROFILES, uid);
   batch.set(profileRef, { reviewCount: increment(1) }, { merge: true });
 
-  const userFlavorRef = doc(
-    db,
-    DB_PROFILES,
-    review.uid,
-    DB_PRIVACIES,
-    DOC_FLAVOR
-  );
+  const userFlavorRef = doc(db, DB_PROFILES, uid, DB_PRIVACIES, DOC_FLAVOR);
   review.coffee?.flavors?.length &&
     batch.set(
       userFlavorRef,
       { names: arrayUnion(...review.coffee.flavors) },
       { merge: true }
     );
-  const userKeywordRef = doc(
-    db,
-    DB_PROFILES,
-    review.uid,
-    DB_PRIVACIES,
-    DOC_KEYWORD
-  );
+  const userKeywordRef = doc(db, DB_PROFILES, uid, DB_PRIVACIES, DOC_KEYWORD);
   review.keywords?.length &&
     batch.set(
       userKeywordRef,
@@ -522,20 +499,20 @@ export const fetchMyReviews = async (
 
   const q = query(
     collection(db, DB_REVIEWS),
-    where('uid', '==', uid),
+    where('profile.uid', '==', uid),
     orderBy('createdAt', 'desc'),
     limit(LIMIT),
     startAfter(createdAt)
   );
   const querySnapshot = await getDocs(q);
 
-  return getDocsData<CafeMenuReviewType>(querySnapshot);
+  return getDocsData<DReviewType>(querySnapshot);
 };
 
 export const fetchMyReviewCount = async (db: Firestore, uid: string) => {
   const q = query(
     collection(db, DB_REVIEWS),
-    where('uid', '==', uid),
+    where('profile.uid', '==', uid),
     orderBy('createdAt', 'desc')
   );
 
@@ -546,7 +523,7 @@ export const fetchMyReviewCount = async (db: Firestore, uid: string) => {
 export const fetchReview = async (db: Firestore, reviewId: string) => {
   const reviewDoc = doc(db, DB_REVIEWS, reviewId);
   const reviewSnap = await getDoc(reviewDoc);
-  const review = getDocData<CafeMenuReviewType>(reviewSnap);
+  const review = getDocData<DReviewType>(reviewSnap);
 
   return review;
 };
@@ -562,7 +539,7 @@ export const fetchReviews = async (db: Firestore, createdAt: Date) => {
   );
   const querySnapshot = await getDocs(q);
 
-  return getDocsData<CafeMenuReviewType>(querySnapshot);
+  return getDocsData<DReviewType>(querySnapshot);
 };
 
 export const fetchReviewCount = async (db: Firestore) => {
@@ -627,4 +604,54 @@ export const deleteReview = async ({
   await batch.commit();
 
   return reviewId;
+};
+
+/**
+ * 개국공신 배지 증정용 임시
+ */
+export async function giveEventBadge(db: Firestore, user: User) {
+  const ref = doc(db, DB_PROFILES, user.uid);
+
+  const profile = {
+    displayName: user.displayName,
+    photoURL: user.photoURL,
+    uid: user.uid,
+  };
+
+  await updateDoc(ref, { badgeIds: arrayUnion('00010'), hasNewBadge: true });
+
+  const badgeRef = doc(db, DB_PROFILES, user.uid, DB_BADGES, '00010');
+  await setDoc(badgeRef, { ...CREATE('00010'), profile, isNew: true });
+}
+
+export const fetchMyBadges = async (db: Firestore, uid: string) => {
+  const q = query(collection(db, DB_PROFILES, uid, DB_BADGES));
+  const querySnapshot = await getDocs(q);
+
+  const data = getDocsData<UserBadgeType>(querySnapshot);
+  return data;
+};
+
+export const checkNewBadge = async ({
+  db,
+  uid,
+  badgeId,
+}: {
+  db: Firestore;
+  uid: string;
+  badgeId: string;
+}) => {
+  const ref = doc(db, DB_PROFILES, uid, DB_BADGES, badgeId);
+  await updateDoc(ref, { isNew: false });
+};
+
+export const hideNewBadge = async ({
+  db,
+  uid,
+}: {
+  db: Firestore;
+  uid: string;
+}) => {
+  const ref = doc(db, DB_PROFILES, uid);
+  await updateDoc(ref, { hasNewBadge: false });
 };

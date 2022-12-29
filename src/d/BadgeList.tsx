@@ -4,6 +4,7 @@ import {
   ImageListItem,
   SvgIcon,
   SvgIconProps,
+  Tooltip,
   Typography,
 } from '@mui/material';
 
@@ -11,69 +12,100 @@ import CollectionsIcon from '@mui/icons-material/Collections';
 // import { NextLinkComposed } from './Link';
 // import { POST_PATH } from 'src/routes';
 import { sxSquareImg } from 'src/styles/GlobalSx';
-import { NextLinkComposed } from 'src/common/Link';
+// import { NextLinkComposed } from 'src/common/Link';
 import { useRouter } from 'next/router';
-import { BADGE_PATH } from 'src/utils/routes';
 
-import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+// import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import OutdoorGrillIcon from '@mui/icons-material/OutdoorGrill';
 import SmokingRoomsIcon from '@mui/icons-material/SmokingRooms';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
-function BadgeList() {
-  const router = useRouter();
+type Props = {
+  myBadges: UserBadgeType[];
+  handleCheckNewBadge: (badgeId: string) => () => void;
+};
+function BadgeList({ myBadges, handleCheckNewBadge }: Props) {
+  // const router = useRouter();
+
+  const badges = allBadges.map((badge) => {
+    const hasBadge = Boolean(
+      myBadges.find((myBadge) => myBadge.id === badge.id)
+    );
+    const color = hasBadge ? badge.color : 'gray';
+    const isNew = Boolean(
+      myBadges.find((myBadge) => myBadge.isNew && myBadge.id === badge.id)
+    );
+
+    return {
+      ...badge,
+      color,
+      hasBadge,
+      isNew,
+    };
+  });
 
   return (
     <ImageList cols={3} gap={3} sx={{ marginTop: 0 }}>
       <>
         {badges.map((badge) => (
-          <div key={badge.id} css={{ margin: '0.25rem' }}>
-            <ImageListItem
-              sx={sxSquareImg}
-              component={NextLinkComposed}
-              to={`${BADGE_PATH}/${badge.id}`}
-            >
-              {/* <img
+          <Tooltip
+            key={badge.id}
+            title={badge.description}
+            arrow
+            enterTouchDelay={10}
+            leaveTouchDelay={5000}
+          >
+            <div css={{ margin: '0.25rem' }}>
+              <ImageListItem
+                sx={sxSquareImg}
+                onClick={
+                  badge.isNew ? handleCheckNewBadge(badge.id) : undefined
+                }
+                // component={NextLinkComposed}
+                // to={`${MYBADGE_PATH}/${badge.id}`}
+              >
+                {/* <img
                 src={badge.image}
                 alt={badge.name}
                 loading="lazy"
                 className="img"
               /> */}
-              <div
-                className="img"
-                css={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  '> svg': {
-                    fontSize: '80px',
-                    color: badge.hasBadge ? badge.color : 'gray',
-                  },
-                }}
-              >
-                {badge.image}
-              </div>
-            </ImageListItem>
-
-            <Typography
-              align="center"
-              fontWeight={700}
-              sx={{ marginTop: '0.5rem' }}
-            >
-              {news.includes(badge.id) ? (
-                <Badge
-                  color="secondary"
-                  badgeContent="N"
-                  sx={{ '.MuiBadge-badge': { right: '-8px' } }}
+                <div
+                  className="img"
+                  css={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    '> svg': {
+                      fontSize: '80px',
+                      color: badge.color,
+                    },
+                  }}
                 >
-                  {badge.name}
-                </Badge>
-              ) : (
-                badge.name
-              )}
-            </Typography>
-          </div>
+                  {badge.image}
+                </div>
+              </ImageListItem>
+
+              <Typography
+                align="center"
+                fontWeight={700}
+                sx={{ marginTop: '0.5rem' }}
+              >
+                {badge.isNew ? (
+                  <Badge
+                    color="secondary"
+                    badgeContent="N"
+                    sx={{ '.MuiBadge-badge': { right: '-8px' } }}
+                  >
+                    {badge.name}
+                  </Badge>
+                ) : (
+                  badge.name
+                )}
+              </Typography>
+            </div>
+          </Tooltip>
         ))}
       </>
     </ImageList>
@@ -113,14 +145,14 @@ export const LetterDIcon = (props: SvgIconProps) => (
   </SvgIcon>
 );
 
-export const badges = [
+export const allBadges = [
   {
     id: '00010',
     image: <LetterDIcon />,
     name: '개국 공신',
     description:
       '드링크뎁스의 초창기 유저로서 성장에 기여한 분에게만 제공되는 한정판 배지',
-    hasBadge: true,
+    hasBadge: false,
     color: '#4f9cff',
   },
   {
@@ -128,10 +160,17 @@ export const badges = [
     image: <OpacityIcon />,
     name: '식초단',
     description: '산미가 4, 5단계인 음료를 10회 이상 달성 시 부여',
-    hasBadge: true,
+    hasBadge: false,
     color: '#ffd356',
   },
-  { id: '00030', image: <OutdoorGrillIcon />, name: '석탄단' },
+  {
+    id: '00030',
+    image: <OutdoorGrillIcon />,
+    name: '석탄단',
+    description: '로스팅이 4, 5단계인 음료를 10회 이상 달성 시 부여',
+    hasBadge: false,
+    color: '#2c2026',
+  },
   { id: '00110', image: <SmokingRoomsIcon />, name: '게이샤갱' },
   { id: '00040', image: <QuestionMarkIcon />, name: '에티단' },
   { id: '00050', image: <QuestionMarkIcon />, name: '케냐는 외로워' },
@@ -143,5 +182,3 @@ export const badges = [
 
   { id: '00120', image: <QuestionMarkIcon />, name: '???' }, // 티피카갱
 ];
-
-const news = ['020'];

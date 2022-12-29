@@ -34,7 +34,7 @@ function ProfileEditContainer() {
   const submitRef = useRef<HTMLInputElement>(null);
   const [isEditValid, setIsEditValid] = useState(false);
   const { isLoading, data, error } = useQuery(
-    FETCH_PROFILE_KEY,
+    FETCH_PROFILE_KEY(user!.uid),
     () => fetchProfile(db, user!.uid),
     { enabled: !!user }
   );

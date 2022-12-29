@@ -12,7 +12,7 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-import { D_PATH, CREATE_PATH, PROFILE_PATH } from 'src/utils/routes';
+import { D_PATH, D_CREATE_PATH, D_PROFILE_PATH } from 'src/utils/routes';
 import { useRouter } from 'next/router';
 // import { auth } from 'src/firebase/firebaseInit';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -25,17 +25,17 @@ import { useUser } from 'reactfire';
 
 const NAV_ROUTES: { [key: string]: number } = {
   [D_PATH]: 0,
-  [CREATE_PATH]: 1,
-  [PROFILE_PATH]: 2,
+  [D_CREATE_PATH]: 1,
+  [D_PROFILE_PATH]: 2,
 } as const;
 
 export default function Navbar() {
   const { data: user } = useUser();
   const router = useRouter();
-  const setPost = useSetRecoilState(cafeMenuReviewState);
+  const setReview = useSetRecoilState(cafeMenuReviewState);
 
   const [value, setValue] = React.useState(NAV_ROUTES[router.pathname]);
-  const BOTTOM_LINKS = [D_PATH, CREATE_PATH, PROFILE_PATH];
+  const BOTTOM_LINKS = [D_PATH, D_CREATE_PATH, D_PROFILE_PATH];
 
   const AVATAR_SIZE = value === 2 ? 26 : 24;
 
@@ -43,14 +43,11 @@ export default function Navbar() {
     // setValue(newValue);
     const path = BOTTOM_LINKS[newValue];
 
-    if (path === CREATE_PATH && user) {
-      setPost({
+    if (path === D_CREATE_PATH && user) {
+      setReview({
         ...defaultCafeMenuReview,
-        uid: user.uid,
-        displayName: user.displayName ?? '',
-        photoURL: user.photoURL ?? '',
       });
-    } else if (path === PROFILE_PATH) {
+    } else if (path === D_PROFILE_PATH) {
       router.push(path + '/' + user?.uid);
       return;
     }

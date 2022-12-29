@@ -14,18 +14,22 @@ import {
 
 import LocalCafeIcon from '@mui/icons-material/LocalCafe';
 import CoffeeIcon from '@mui/icons-material/Coffee';
-import { badges, LetterDIcon } from './BadgeList';
+import { allBadges, LetterDIcon } from './BadgeList';
 import OpacityIcon from '@mui/icons-material/Opacity';
 
 import { customIcons } from './RadioGroupRating';
 import Link, { NextLinkComposed } from 'src/common/Link';
-import { REVIEW_PATH } from 'src/utils/routes';
+import { D_REVIEW_PATH } from 'src/utils/routes';
 
 type Props = {
-  review: CafeMenuReviewType;
+  review: DReviewType;
   uid?: string;
 };
 function Review({ review, uid }: Props) {
+  const badges = allBadges.filter((badge) =>
+    review.profile.badgeIds.includes(badge.id)
+  );
+
   return (
     <Card
       /* variant="outlined" */
@@ -33,7 +37,10 @@ function Review({ review, uid }: Props) {
     >
       <CardHeader
         avatar={
-          <Avatar aria-label={review.displayName} src={review.photoURL} />
+          <Avatar
+            aria-label={review.profile.displayName}
+            src={review.profile.photoURL}
+          />
         }
         action={
           <>
@@ -58,10 +65,10 @@ function Review({ review, uid }: Props) {
         title={
           <div css={{ display: 'flex', alignItems: 'center' }}>
             <Typography variant="subtitle1" fontWeight={500} marginRight="1rem">
-              {review.displayName}
+              {review.profile.displayName}
             </Typography>
 
-            {review.uid === 'kakao:2341305282' && (
+            {review.profile.badgeIds.length > 0 && (
               <AvatarGroup
                 sx={{
                   '> div': {
@@ -72,38 +79,24 @@ function Review({ review, uid }: Props) {
                 }}
               >
                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /> */}
-                <Tooltip
-                  arrow
-                  enterTouchDelay={10}
-                  leaveTouchDelay={30000}
-                  title={`${badges[0].name} - ${badges[0].description}`}
-                >
-                  <Avatar
-                    sx={{
-                      border: `1px solid ${badges[0].color} !important`,
-                      '> svg': { color: badges[0].color },
-                    }}
+                {badges.map((badge) => (
+                  <Tooltip
+                    key={badge.id}
+                    arrow
+                    enterTouchDelay={10}
+                    leaveTouchDelay={30000}
+                    title={`${badge.name} - ${badge.description}`}
                   >
-                    {badges[0].image}
-                  </Avatar>
-                </Tooltip>
-                {/* <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" /> */}
-                <Tooltip
-                  arrow
-                  enterTouchDelay={10}
-                  leaveTouchDelay={30000}
-                  title={`${badges[1].name} - ${badges[1].description}`}
-                >
-                  <Avatar
-                    sx={{
-                      border: `1px solid ${badges[1].color} !important`,
-                      '> svg': { color: badges[1].color },
-                    }}
-                  >
-                    {badges[1].image}
-                    {/* <OpacityIcon color="error" /> */}
-                  </Avatar>
-                </Tooltip>
+                    <Avatar
+                      sx={{
+                        border: `1px solid ${badge.color} !important`,
+                        '> svg': { color: badge.color },
+                      }}
+                    >
+                      {badge.image}
+                    </Avatar>
+                  </Tooltip>
+                ))}
               </AvatarGroup>
             )}
           </div>
@@ -112,7 +105,7 @@ function Review({ review, uid }: Props) {
 
       <Link
         sx={{ display: 'flex' }}
-        href={`${REVIEW_PATH}/${review.id}`}
+        href={`${D_REVIEW_PATH}/${review.id}`}
         underline="none"
         color="inherit"
       >
@@ -170,7 +163,7 @@ function Review({ review, uid }: Props) {
       <CardContent
         sx={{ paddingBottom: 0, display: 'block' }}
         component={Link}
-        href={`${REVIEW_PATH}/${review.id}`}
+        href={`${D_REVIEW_PATH}/${review.id}`}
         underline="none"
         color="inherit"
       >

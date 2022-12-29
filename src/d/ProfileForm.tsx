@@ -24,7 +24,7 @@ import { updateProfile } from 'firebase/auth';
 import React, { RefObject, useEffect } from 'react';
 import { resize_image_file } from 'src/utils/resizeImages';
 import { useRouter } from 'next/router';
-import { PROFILE_PATH } from 'src/utils/routes';
+import { D_PROFILE_PATH } from 'src/utils/routes';
 import { doc, setDoc } from 'firebase/firestore';
 import { DB_PROFILES } from 'src/firebase/services';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
@@ -89,7 +89,7 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
           { merge: true }
         );
 
-        router.replace(PROFILE_PATH + '/' + me.id);
+        router.replace(D_PROFILE_PATH + '/' + me.id);
       } catch (error: any) {
         setSubmitting(false);
         // User couldn't sign in (bad verification code?)

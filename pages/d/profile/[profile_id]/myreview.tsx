@@ -63,7 +63,7 @@ export default MyReviewPage;
 
 function MyReviewContainer() {
   const router = useRouter();
-  const uid = router.query.uid as string;
+  const uid = router.query.profile_id as string;
   const db = useFirestore();
 
   const { data: reviewCount = 0, isLoading: isLoadingCount } = useQuery(
@@ -71,6 +71,7 @@ function MyReviewContainer() {
     () => fetchMyReviewCount(db, uid),
     { enabled: !!uid }
   );
+
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
       FETCH_MY_REVIEWS_KEY,
@@ -99,14 +100,14 @@ function MyReviewContainer() {
         ))
       )}
 
-      {testData.map((review) => (
+      {/* {testData.map((review) => (
         <Review key={review.id} review={review} uid={uid} />
-      ))}
+      ))} */}
     </div>
   );
 }
 
-const testData: CafeMenuReviewType[] = [
+const testData: DReviewType[] = [
   {
     id: '1',
     // @ts-ignore
@@ -126,11 +127,14 @@ const testData: CafeMenuReviewType[] = [
         rotate: 0,
       },
     ],
-    uid: 'kakao:2336824408',
-    displayName: '막커피한잔',
-    photoURL:
-      'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
-    createdAt: new Date(),
+    profile: {
+      uid: 'kakao:2336824408',
+      displayName: '막커피한잔',
+      photoURL:
+        'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
+      badgeIds: [],
+    },
+    createdAt: new Date().toISOString(),
     text: '한모금 마시는데 상콤한 과일향이 나면서 바디감있는 무거운느낌이 갠적으로 나쁘지 않더라그유~ \n 딸기케익이랑 함께해도 좋았지만 함께나오는 리저브 전용 비스코티랑 함께해도 너무 맛있었네여.',
     rating: 4,
     keywords: ['친절한 파트너', '개비쌈', '비스코티추천'],
@@ -154,11 +158,14 @@ const testData: CafeMenuReviewType[] = [
         rotate: 0,
       },
     ],
-    uid: 'kakao:2336824408',
-    displayName: '막커피한잔',
-    photoURL:
-      'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
-    createdAt: new Date(),
+    profile: {
+      uid: 'kakao:2336824408',
+      displayName: '막커피한잔',
+      photoURL:
+        'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
+      badgeIds: [],
+    },
+    createdAt: new Date().toISOString(),
     text: '커피에서 막걸리맛이 난다길래 넘 궁금해서 먹으러 가봤어요. 막걸리 향이랑 살짝 나는데 조금만 더 강했으면 하는 아쉬움이 ㅋㅋ',
     rating: 4,
     keywords: ['테스트', '연예인카페', '주말복잡'],
@@ -182,11 +189,14 @@ const testData: CafeMenuReviewType[] = [
         rotate: 0,
       },
     ],
-    uid: 'kakao:2336824408',
-    displayName: '막커피한잔',
-    photoURL:
-      'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
-    createdAt: new Date(),
+    profile: {
+      uid: 'kakao:2336824408',
+      displayName: '막커피한잔',
+      photoURL:
+        'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
+      badgeIds: [],
+    },
+    createdAt: new Date().toISOString(),
     text: `날은 춥고 새로 산 모직 자켓은 얇아서 따뜻한 커피를 시켰는데 세로 아줄 게이샤는 확실히 따뜻한 커피가 더 잘 어울리는 것 같다. '샤인 머스캣, 멜론, 청사과' 라는 아로마 노트 답게 초록초록한 단맛과 청량함이 있다.
 
     ​
@@ -218,11 +228,14 @@ const testData: CafeMenuReviewType[] = [
         rotate: 0,
       },
     ],
-    uid: 'kakao:2336824408',
-    displayName: '막커피한잔',
-    photoURL:
-      'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
-    createdAt: new Date(),
+    profile: {
+      uid: 'kakao:2336824408',
+      displayName: '막커피한잔',
+      photoURL:
+        'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
+      badgeIds: [],
+    },
+    createdAt: new Date().toISOString(),
     text: '맛은 깔끔하고 쓰지 않으며 향이 좋아 마시기 좋았어요~ 연한 커피좋아하고 깔끔한거 좋아하시는 분들께 강추예요',
     rating: 4,
     keywords: ['가성비갑', '파란색간판', '크림치즈팥빵'],
@@ -246,11 +259,14 @@ const testData: CafeMenuReviewType[] = [
         rotate: 0,
       },
     ],
-    uid: 'kakao:2336824408',
-    displayName: '막커피한잔',
-    photoURL:
-      'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
-    createdAt: new Date(),
+    profile: {
+      uid: 'kakao:2336824408',
+      displayName: '막커피한잔',
+      photoURL:
+        'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
+      badgeIds: [],
+    },
+    createdAt: new Date().toISOString(),
     text: '한모금 마시는데 상콤한 과일향이 나면서 바디감있는 무거운느낌이 갠적으로 나쁘지 않더라그유~ \n 딸기케익이랑 함께해도 좋았지만 함께나오는 리저브 전용 비스코티랑 함께해도 너무 맛있었네여.',
     rating: 3,
     keywords: ['친절한 파트너', '개비쌈', '비스코티추천'],
@@ -274,11 +290,14 @@ const testData: CafeMenuReviewType[] = [
         rotate: 0,
       },
     ],
-    uid: 'kakao:2336824408',
-    displayName: '막커피한잔',
-    photoURL:
-      'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
-    createdAt: new Date(),
+    profile: {
+      uid: 'kakao:2336824408',
+      displayName: '막커피한잔',
+      photoURL:
+        'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
+      badgeIds: [],
+    },
+    createdAt: new Date().toISOString(),
     text: '커피에서 막걸리맛이 난다길래 넘 궁금해서 먹으러 가봤어요. 막걸리 향이랑 살짝 나는데 조금만 더 강했으면 하는 아쉬움이 ㅋㅋ',
     rating: 3,
     keywords: ['테스트', '연예인카페', '주말복잡'],
@@ -302,11 +321,14 @@ const testData: CafeMenuReviewType[] = [
         rotate: 0,
       },
     ],
-    uid: 'kakao:2336824408',
-    displayName: '막커피한잔',
-    photoURL:
-      'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
-    createdAt: new Date(),
+    profile: {
+      uid: 'kakao:2336824408',
+      displayName: '막커피한잔',
+      photoURL:
+        'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
+      badgeIds: [],
+    },
+    createdAt: new Date().toISOString(),
     text: `날은 춥고 새로 산 모직 자켓은 얇아서 따뜻한 커피를 시켰는데 세로 아줄 게이샤는 확실히 따뜻한 커피가 더 잘 어울리는 것 같다. '샤인 머스캣, 멜론, 청사과' 라는 아로마 노트 답게 초록초록한 단맛과 청량함이 있다.
 
     ​
@@ -338,11 +360,14 @@ const testData: CafeMenuReviewType[] = [
         rotate: 0,
       },
     ],
-    uid: 'kakao:2336824408',
-    displayName: '막커피한잔',
-    photoURL:
-      'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
-    createdAt: new Date(),
+    profile: {
+      uid: 'kakao:2336824408',
+      displayName: '막커피한잔',
+      photoURL:
+        'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/d%2Fprofiles%2Fkakao%3A2336824408%2Fpablo-merchan-montes-_Tw4vCs9C-8-unsplash.jpg?alt=media&token=d868e5a7-df02-4304-b2b8-3be263d11b3a',
+      badgeIds: [],
+    },
+    createdAt: new Date().toISOString(),
     text: '맛은 깔끔하고 쓰지 않으며 향이 좋아 마시기 좋았어요~ 연한 커피좋아하고 깔끔한거 좋아하시는 분들께 강추예요',
     rating: 4,
     keywords: ['가성비갑', '파란색간판', '크림치즈팥빵'],

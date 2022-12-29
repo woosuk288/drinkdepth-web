@@ -12,6 +12,8 @@ function AuthContainer({ children }: { children: React.ReactNode }) {
   if (error) return <div>인증 오류!</div>;
   if (!data.signedIn) return <RedirectPage path={OATUH_LOGIN_PATH} />;
 
+  // provider or export curreuntUser
+
   return (
     <div css={{ height: '100%', minHeight: '100vh', position: 'relative' }}>
       {children}

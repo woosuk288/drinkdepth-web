@@ -17,11 +17,11 @@ import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 
 import { customIcons } from './RadioGroupRating';
 import { NextLinkComposed } from 'src/common/Link';
-import { REVIEW_EDIT_PATH } from 'src/utils/routes';
+import { D_REVIEW_EDIT_PATH } from 'src/utils/routes';
 // import Link from 'next/link';
 
 type Props = {
-  review: CafeMenuReviewType;
+  review: DReviewType;
   userId?: string;
   handleReviewDelete: () => void;
 };
@@ -169,20 +169,20 @@ function ReviewDetail({ review, userId, handleReviewDelete }: Props) {
 
           <div css={{ flex: 1 }}></div>
 
-          {review.uid === userId && (
+          {review.profile.uid === userId && (
             <div css={{ '> button': { marginLeft: '0.25rem' } }}>
               <Button
                 variant="outlined"
                 color="inherit"
                 component={NextLinkComposed}
                 to={{
-                  pathname: REVIEW_EDIT_PATH,
+                  pathname: D_REVIEW_EDIT_PATH,
 
                   query: { id: review.id, review: JSON.stringify(review) },
 
                   // as: {REVIEW_EDIT_PATH}
                 }}
-                linkAs={`${REVIEW_EDIT_PATH}/${review.id}`}
+                linkAs={`${D_REVIEW_EDIT_PATH}/${review.id}`}
               >
                 수정
               </Button>

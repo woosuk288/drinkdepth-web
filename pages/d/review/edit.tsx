@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import AuthContainer from 'src/d/AuthContainer';
 import { NextLinkComposed } from 'src/common/Link';
-import { REVIEW_PATH } from 'src/utils/routes';
+import { D_REVIEW_PATH } from 'src/utils/routes';
 import Main from 'src/d/Main';
 import ReviewForm from 'src/d/ReviewForm';
 import { useRecoilState, useSetRecoilState } from 'recoil';
@@ -17,7 +17,7 @@ import {
   defaultCafeMenuReview,
 } from 'atoms/reviewFormAtom';
 import { useMutation } from 'react-query';
-import { editReview } from 'src/firebase/services';
+import { editReview, fetchProfile } from 'src/firebase/services';
 import { useFirestore, useStorage, useUser } from 'reactfire';
 
 const ReviewEditPage: NextPage = () => {
@@ -36,7 +36,7 @@ const ReviewEditPage: NextPage = () => {
   const { mutate, isLoading } = useMutation(editReview, {
     onSuccess: (nextReview) => {
       router
-        .replace(`${REVIEW_PATH}/${id}`)
+        .replace(`${D_REVIEW_PATH}/${id}`)
         .then(() => setReview(defaultCafeMenuReview));
     },
     onError(error: any) {
@@ -45,20 +45,24 @@ const ReviewEditPage: NextPage = () => {
     },
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (user && (router.query.review as string) !== JSON.stringify(review)) {
-      const { displayName, uid, photoURL } = user;
+      const profile = await fetchProfile(db, user.uid);
+
       mutate({
         db,
         storage,
         ...review,
-        displayName: displayName ?? '',
-        uid,
-        photoURL: photoURL ?? '',
+        profile: {
+          displayName: user.displayName ?? '',
+          uid: user.uid,
+          photoURL: user.photoURL ?? '',
+          badgeIds: profile?.badgeIds ?? [],
+        },
       });
     } else {
       router
-        .replace(`${REVIEW_PATH}/${id}`)
+        .replace(`${D_REVIEW_PATH}/${id}`)
         .then(() => setReview(defaultCafeMenuReview));
     }
 

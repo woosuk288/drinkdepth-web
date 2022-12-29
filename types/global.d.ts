@@ -18,7 +18,7 @@ type B2BReviewType = {
   menuId: string;
   id?: string;
   text: string;
-  createdAt: Date | string;
+  createdAt: string;
   displayName: string;
   photoURL: string;
   uid: string;
@@ -67,7 +67,7 @@ type CouponType = {
   typeIssued: CouponNameType;
   typeUsed?: CouponNameType;
   isUsed: boolean;
-  createdAt: Date | string;
+  createdAt: string;
 };
 type CouponCounterType = {
   total: number;

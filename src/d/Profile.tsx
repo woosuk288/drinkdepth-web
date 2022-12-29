@@ -9,10 +9,10 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Link, { NextLinkComposed } from 'src/common/Link';
 import { THEME_SEPERATOR } from 'src/theme';
 import {
-  BADGE_PATH,
+  MYBADGE_PATH,
   // PROFILE_BADGE_PATH,
   BOOKMARK_PATH,
-  PROFILE_EDIT_PATH,
+  D_PROFILE_EDIT_PATH,
   MYREVIEW_PATH,
 } from 'src/utils/routes';
 import { useRouter } from 'next/router';
@@ -39,7 +39,7 @@ export default function Profile({ profile }: Props) {
         color="inherit"
         fullWidth
         component={Link}
-        href={PROFILE_EDIT_PATH}
+        href={D_PROFILE_EDIT_PATH}
       >
         프로필 수정
       </Button>
@@ -57,13 +57,9 @@ export default function Profile({ profile }: Props) {
           <ListItemButton
             key={page.id}
             component={NextLinkComposed}
-            to={{
-              pathname: router.asPath + page.path,
-              query: { uid: profile.id },
-            }}
-            linkAs={router.asPath + page.path}
+            to={router.asPath + page.path}
           >
-            {news.includes(page.id) ? (
+            {page.path === MYBADGE_PATH && profile.hasNewBadge ? (
               <div css={{ flex: 1 }}>
                 <Badge color="secondary" badgeContent="N">
                   <ListItemText primary={page.text} />
@@ -95,8 +91,6 @@ const pageList = [
   {
     id: 'badge',
     text: '업적 보기',
-    path: BADGE_PATH,
+    path: MYBADGE_PATH,
   },
 ];
-
-const news = ['badge'];

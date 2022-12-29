@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const defaultCafeMenuReview: CafeMenuReviewType = {
+export const defaultCafeMenuReview: DReviewType = {
   id: '',
   menuName: '',
   images: [],
@@ -13,16 +13,19 @@ export const defaultCafeMenuReview: CafeMenuReviewType = {
   text: '',
   rating: 0,
 
-  uid: '',
-  displayName: '',
-  photoURL: '',
+  profile: {
+    uid: '',
+    displayName: '',
+    photoURL: '',
+    badgeIds: [],
+  },
   // isPublic: false,
   // followerIds: [],
   // hasFollower: false,
   createdAt: new Date().toISOString(),
 };
 
-export const cafeMenuReviewState = atom<CafeMenuReviewType>({
+export const cafeMenuReviewState = atom<DReviewType>({
   key: 'cafeMenuReviewState', // unique ID (with respect to other atoms/selectors)
   default: defaultCafeMenuReview, // default value (aka initial value)
 });

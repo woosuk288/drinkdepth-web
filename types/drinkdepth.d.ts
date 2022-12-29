@@ -1,4 +1,4 @@
-type CafeMenuReviewType = {
+type DReviewType = {
   id: string;
   menuName: string;
   images: ImageType[];
@@ -26,11 +26,15 @@ type CafeMenuReviewType = {
   text: string; // 한줄평?
   rating: number;
 
-  uid: string;
-  displayName?: string;
-  photoURL?: string;
-  createdAt: Date | string;
-  updatedAt?: Date | string;
+  profile: {
+    uid: string;
+    displayName: string;
+    photoURL: string;
+    badgeIds: string[];
+  };
+  // uid: string;
+  createdAt: string;
+  updatedAt?: string;
 };
 
 type ImageType = {
@@ -113,5 +117,22 @@ type ProfileType = {
   photoURL?: string;
   biography?: string;
   createdAt: string;
-  updatedAt?: Date | string;
+  updatedAt?: string;
+  badgeIds?: string[];
+  reviewCount?: number;
+
+  hasNewBadge?: boolean;
+};
+
+type UserBadgeType = {
+  id: string;
+
+  isNew: boolean;
+  createdAt: string;
+
+  profile: {
+    uid: string;
+    displayName: string;
+    photoURL: string;
+  };
 };

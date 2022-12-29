@@ -7,4 +7,8 @@ export const FETCH_MY_REVIEWS_KEY = 'fetch_my_reviews_key';
 export const FETCH_REVIEW_KEY = (reviewId: string) =>
   'fetch_review_key' + '_' + reviewId;
 
-export const FETCH_PROFILE_KEY = 'fetch_profile_key';
+export const FETCH_PROFILE_KEY = (profileId: string) =>
+  'fetch_profile_key' + '_' + profileId;
+
+export const FETCH_MY_BADGES_KEY = (profileId: string) =>
+  'fetch_my_badges_key' + '_' + profileId;

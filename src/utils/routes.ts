@@ -26,13 +26,14 @@ export const NOT_FOUND_PATH = '/404';
  * d
  */
 export const D_PATH = '/d';
-export const CREATE_PATH = '/d/create';
-export const REVIEW_PATH = '/d/review';
-export const REVIEW_EDIT_PATH = '/d/review/edit';
-export const PROFILE_PATH = '/d/profile';
-export const PROFILE_EDIT_PATH = '/d/profile/edit';
+export const D_CREATE_PATH = '/d/create';
+export const D_REVIEW_PATH = '/d/review';
+export const D_REVIEW_EDIT_PATH = '/d/review/edit';
+export const D_PROFILE_PATH = '/d/profile';
+export const D_PROFILE_EDIT_PATH = '/d/profile/edit';
+export const D_PROFILE_SETTINGS_PATH = '/d/profile/settings';
+
 export const MYREVIEW_PATH = '/myreview';
 export const PLACE_PATH = '/place';
 export const BOOKMARK_PATH = '/bookmark';
-export const BADGE_PATH = '/badge';
-export const PROFILE_SETTINGS_PATH = '/d/profile/settings';
+export const MYBADGE_PATH = '/mybadge';
