@@ -208,6 +208,7 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
             name="photoURL"
             type="file"
             onChange={handleFileChange}
+
             // onChange={formik.handleChange}
           />
 
@@ -243,6 +244,7 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
               error={
                 formik.touched.displayName && Boolean(formik.errors.displayName)
               }
+              onKeyDown={(e) => e.code === 'Enter' && e.preventDefault()}
             />
             <FormHelperText>
               {formik.touched.displayName && formik.errors.displayName}

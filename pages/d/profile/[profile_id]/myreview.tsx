@@ -28,9 +28,10 @@ const MyReviewPage: NextPage = () => {
   const uid = router.query.uid as string;
 
   const handlePlaceIconClick = () => {
-    const pathname = router.asPath.replace(MYREVIEW_PATH, PLACE_PATH);
+    alert('준비중입니다.');
+    // const pathname = router.asPath.replace(MYREVIEW_PATH, PLACE_PATH);
 
-    router.push({ pathname, query: { uid } }, pathname);
+    // router.push({ pathname, query: { uid } }, pathname);
   };
 
   return (
