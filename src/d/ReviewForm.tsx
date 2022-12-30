@@ -23,6 +23,7 @@ import FlavorTags from './FlavorTags';
 // import CafeSearch from './CafeSearch';
 import CafeSearchDialog from './CafeSearchDialog';
 import ComboBox from './ComboBox';
+import { FILTERED_COFFEE, OTHER_DRINK } from 'src/utils/constants';
 
 function ReviewForm() {
   const [review, setReview] = useRecoilState(cafeMenuReviewState);
@@ -177,12 +178,12 @@ function ReviewForm() {
             value={review.type}
           >
             <FormControlLabel
-              value="filtered_coffee"
+              value={FILTERED_COFFEE}
               control={<Radio />}
               label="원두커피"
             />
             <FormControlLabel
-              value="other_drink"
+              value={OTHER_DRINK}
               control={<Radio />}
               label="그 외 음료"
             />
@@ -195,7 +196,10 @@ function ReviewForm() {
         </FormControl>
 
         {/* menu-options */}
-        {review.type === '' ? null : review.type === 'filtered_coffee' ? (
+        {review.type === '' ? null : review.type === FILTERED_COFFEE ? (
+          /**
+           * FILTERED_COFFEE
+           */
           <div css={{ '> div': { marginTop: '12px' } }}>
             <FormControl required fullWidth>
               {/* <InputLabel htmlFor="input-review-menu">메뉴명</InputLabel> */}

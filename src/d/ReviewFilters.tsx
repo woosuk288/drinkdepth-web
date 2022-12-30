@@ -1,4 +1,5 @@
 import Selector from 'src/o2o/place/Selector';
+import { FILTERED_COFFEE, OTHER_DRINK } from 'src/utils/constants';
 import RadioGroupRating from './RadioGroupRating';
 
 function ReviewFilters() {
@@ -24,8 +25,8 @@ function ReviewFilters() {
           name="type"
           value={[]}
           options={[
-            { label: '원두커피', value: 'filtered_coffee' },
-            { label: '커피음료', value: 'other_drink' },
+            { label: '원두커피', value: FILTERED_COFFEE },
+            { label: '그 외 음료', value: OTHER_DRINK },
           ]}
           // handleChange={handleChange}
           handleChange={() => {}}

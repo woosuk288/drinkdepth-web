@@ -23,8 +23,6 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import { useFirestore, useStorage, useUser } from 'reactfire';
 
 const ReviewDetailPage: NextPage = () => {
-  const [bookmark, setBookmark] = React.useState(false);
-
   return (
     <>
       <NextSeo title="DrinkDepth | 리뷰 상세" />
@@ -32,14 +30,14 @@ const ReviewDetailPage: NextPage = () => {
         <HeaderD
           leftIcon="back"
           centerComponent={'리뷰 상세'}
-          rightIcon={
-            <IconButton
-              color="inherit"
-              onClick={() => setBookmark((prev) => !prev)}
-            >
-              {bookmark ? <BookmarkIcon /> : <BookmarkBorderOutlinedIcon />}
-            </IconButton>
-          }
+          // rightIcon={
+          //   <IconButton
+          //     color="inherit"
+          //     onClick={() => setBookmark((prev) => !prev)}
+          //   >
+          //     {bookmark ? <BookmarkIcon /> : <BookmarkBorderOutlinedIcon />}
+          //   </IconButton>
+          // }
         />
 
         <Main>
@@ -55,6 +53,8 @@ const ReviewDetailPage: NextPage = () => {
 export default ReviewDetailPage;
 
 function ReviewDetailContainer() {
+  const [thumbUp, setThumbUp] = React.useState(false);
+
   const router = useRouter();
   const id = router.query.id as string;
   const { data: user } = useUser();
@@ -79,6 +79,10 @@ function ReviewDetailContainer() {
     }
   };
 
+  const handleThumbUp = () => {
+    setThumbUp((prev) => !prev);
+  };
+
   if (isLoading) return <LinearProgress />;
   if (error) return <div>오류 발생!</div>;
   if (!id || !data) return <RedirectPage path={NOT_FOUND_PATH} />;
@@ -88,6 +92,8 @@ function ReviewDetailContainer() {
       review={data}
       userId={user?.uid}
       handleReviewDelete={handleReviewDelete}
+      thumbUp={thumbUp}
+      handleThumbUp={handleThumbUp}
     />
   );
 }

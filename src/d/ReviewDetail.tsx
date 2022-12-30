@@ -6,6 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
+  Chip,
   IconButton,
   Typography,
 } from '@mui/material';
@@ -18,16 +19,66 @@ import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 import { customIcons } from './RadioGroupRating';
 import { NextLinkComposed } from 'src/common/Link';
 import { D_REVIEW_EDIT_PATH } from 'src/utils/routes';
+import ChoiceTable from 'src/o2o/place/coffeeDetailDialog/ChoiceTable';
+import { FILTERED_COFFEE } from 'src/utils/constants';
+import { getBeanTypeLabel } from 'src/utils/combos';
 // import Link from 'next/link';
 
 type Props = {
   review: DReviewType;
   userId?: string;
   handleReviewDelete: () => void;
+  thumbUp: boolean;
+  handleThumbUp: () => void;
 };
 
-function ReviewDetail({ review, userId, handleReviewDelete }: Props) {
+function ReviewDetail({
+  review,
+  userId,
+  handleReviewDelete,
+  thumbUp,
+  handleThumbUp,
+}: Props) {
   // console.log('review : ', review);
+
+  const beanOptions =
+    review.type === FILTERED_COFFEE &&
+    [
+      {
+        name: '원두 유형',
+        value: getBeanTypeLabel(review.coffee?.beanType),
+      },
+      {
+        name: '원산지',
+        value: review.coffee?.country ?? '',
+      },
+      {
+        name: '가공법',
+        value: review.coffee?.process ?? '',
+      },
+    ].filter((o) => !!o.value);
+
+  const flavorOptions =
+    review.type === FILTERED_COFFEE &&
+    [
+      {
+        name: '산미',
+        value: review.coffee?.acidity ?? '',
+      },
+      {
+        name: '단맛',
+        value: review.coffee?.sweetness ?? '',
+      },
+      {
+        name: '로스팅',
+        value: review.coffee?.roasting ?? '',
+      },
+    ].filter((o) => !!o.value);
+
+  const flavors =
+    review.type === FILTERED_COFFEE
+      ? review.coffee?.flavors
+      : review.otherDrink?.flavors;
 
   return (
     <div>
@@ -81,60 +132,30 @@ function ReviewDetail({ review, userId, handleReviewDelete }: Props) {
           subheader={<Typography>{review.menuName}</Typography>}
         />
 
-        <CardContent sx={{ paddingY: 0 }}>
-          <div
-            css={{
-              display: 'flex',
-              marginBottom: '0.35em',
-              '> .MuiTypography-root + .MuiTypography-root': {
-                marginLeft: '1rem',
-              },
-            }}
-          >
-            {review.coffee?.country && (
-              <Typography variant="body1">
-                원산지 - {review.coffee?.country}
-              </Typography>
-            )}
-            {review.coffee?.process && (
-              <Typography variant="body1">
-                가공 방식 - {review.coffee?.process}
-              </Typography>
-            )}
-          </div>
-          <div
-            css={{
-              display: 'flex',
-              marginBottom: '0.35em',
-              '> span + span': { marginLeft: '1rem' },
-            }}
-          >
-            {review.coffee?.acidity && (
-              <Typography variant="body1" component="span">
-                산미 - {review.coffee?.acidity}
-              </Typography>
-            )}
+        {beanOptions && (
+          <CardContent>
+            <ChoiceTable choiceOptions={beanOptions} />
+          </CardContent>
+        )}
+        {flavorOptions && (
+          <CardContent>
+            <ChoiceTable choiceOptions={flavorOptions} />
+          </CardContent>
+        )}
 
-            {review.coffee?.sweetness && (
-              <Typography variant="body1" component="span">
-                단맛 - {review.coffee?.sweetness}
-              </Typography>
-            )}
-            {review.coffee?.roasting && (
-              <Typography variant="body1" component="span">
-                로스팅 - {review.coffee?.roasting}
-              </Typography>
-            )}
-          </div>
-          <Typography variant="body1" gutterBottom>
-            향미노트 - {review.coffee?.flavors?.map((f) => `#${f} `)}
-          </Typography>
+        <CardContent sx={{ '> div': { border: '1px solid darkgray' } }}>
+          {flavors?.map((flavor) => (
+            <Chip key={flavor} label={flavor} variant="filled" />
+          ))}
+        </CardContent>
 
-          {(review.keywords?.length ?? 0) > 0 && (
-            <Typography variant="body1" gutterBottom sx={{ marginTop: '1rem' }}>
-              편의적 측면 - {review.keywords?.map((f) => `#${f} `)}
-            </Typography>
-          )}
+        <CardContent sx={{ paddingBottom: 0 }}>
+          {review.keywords?.map((keyword) => (
+            <Chip key={keyword} label={keyword} variant="filled" />
+          ))}
+        </CardContent>
+
+        <CardContent>
           <Typography
             variant="body1"
             gutterBottom
@@ -145,27 +166,20 @@ function ReviewDetail({ review, userId, handleReviewDelete }: Props) {
           >
             {review.text}
           </Typography>
-
-          <Typography variant="overline" color="text.secondary">
-            {new Date(review.createdAt).toLocaleString()}
-          </Typography>
         </CardContent>
 
+        {/* <CardContent>
+
+        </CardContent> */}
+
         <CardActions>
-          <Button
-            variant="outlined"
-            color="inherit"
-            startIcon={<ThumbUpOutlinedIcon />}
+          <Typography
+            variant="overline"
+            color="text.secondary"
+            sx={{ marginLeft: '0.5rem', marginTop: '-1rem' }}
           >
-            0
-          </Button>
-          {/* <Button
-            variant="outlined"
-            color="inherit"
-            startIcon={<MapsUgcOutlinedIcon />}
-          >
-            댓글쓰기
-          </Button> */}
+            {new Date(review.createdAt).toLocaleString()}
+          </Typography>
 
           <div css={{ flex: 1 }}></div>
 
@@ -196,6 +210,24 @@ function ReviewDetail({ review, userId, handleReviewDelete }: Props) {
             </div>
           )}
         </CardActions>
+        <div css={{ margin: '1rem', textAlign: 'center' }}>
+          <IconButton size="large" onClick={handleThumbUp}>
+            {thumbUp ? (
+              <ThumbUpIcon sx={{ fontSize: 48 }} />
+            ) : (
+              <ThumbUpOutlinedIcon sx={{ fontSize: 48 }} />
+            )}
+
+            {thumbUp && <span css={{ marginLeft: '0.75rem' }}>1</span>}
+          </IconButton>
+        </div>
+        {/* <Button
+          variant="outlined"
+          color="inherit"
+          startIcon={<MapsUgcOutlinedIcon />}
+        >
+          댓글쓰기
+        </Button> */}
       </Card>
     </div>
   );

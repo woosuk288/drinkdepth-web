@@ -222,3 +222,17 @@ export const getLabelWithColor = (name: string) => {
     }
   );
 };
+
+export const getBeanTypeLabel = (beanType?: string) => {
+  switch (beanType) {
+    case 'single_origin':
+      return '싱글오리진';
+    case 'blend':
+      return '블랜드';
+    case 'americano':
+      return '아메리카노';
+
+    default:
+      return '';
+  }
+};

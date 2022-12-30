@@ -16,3 +16,6 @@ export const OFFLINE_QR = 'offline_qr';
 export const OFFLINE_QR_TABLET = 'offline_qr_tablet';
 
 export const MASKABLE_ICON_PATH = '/maskable_icon_x512.png';
+
+export const FILTERED_COFFEE = 'filtered_coffee';
+export const OTHER_DRINK = 'other_drink';
