@@ -149,8 +149,6 @@ function ReviewForm() {
     setReview(setNestedProp(review, keys, tags));
   };
 
-  // console.log('review : ', review);
-
   return (
     <Box
       component="form"
@@ -338,28 +336,21 @@ function ReviewForm() {
                   />
                 </div>
 
-                <div>
-                  <FlavorTags
-                    id="flavor-tags"
-                    tooltip="맛과 향을 의미합니다"
-                    helperText="#향미노트"
-                    value={
-                      review.type === 'filtered_coffee'
-                        ? review.coffee.flavors
-                        : review.otherDrink?.flavors
-                    }
-                    name={
-                      review.type === 'filtered_coffee'
-                        ? 'coffee.flavors'
-                        : 'otherDrink.flavors'
-                    }
-                    onChange={handleTagsChange}
-                  />
-                </div>
+                <FlavorTags
+                  id="review-coffee-flavor-tags"
+                  tooltip="맛과 향을 의미합니다"
+                  helperText="#향미노트"
+                  value={review.coffee.flavors}
+                  name={'coffee.flavors'}
+                  onChange={handleTagsChange}
+                />
               </div>
             )}
           </div>
         ) : (
+          /**
+           * other_drink
+           */
           <div>
             <FormControl required fullWidth>
               {/* <InputLabel htmlFor="input-review-menu">메뉴명</InputLabel> */}
@@ -380,11 +371,11 @@ function ReviewForm() {
 
             <div css={{ marginTop: '0.5rem' }}>
               <FlavorTags
-                id="tags-coffee-drink"
+                id="review-other-drink-flavor-tags"
                 tooltip="맛과 향을 의미합니다"
                 helperText="향미노트"
-                value={review.coffee?.flavors}
-                name={'coffee.flavors'}
+                value={review.otherDrink?.flavors}
+                name={'otherDrink.flavors'}
                 onChange={handleTagsChange}
               />
             </div>

@@ -73,8 +73,7 @@ const CreatePage: NextPage = () => {
     }
   };
 
-  const isValid =
-    review.menuName && review.place && review.coffee && review.type;
+  const isValid = review.menuName && review.place && review.type;
 
   return (
     <>

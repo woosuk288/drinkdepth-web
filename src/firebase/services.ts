@@ -455,7 +455,9 @@ export const editReview = async ({
     url: imageURLs[i],
   }));
 
-  const isValid = images.every((image) => image.url.startsWith('https://'));
+  const validStr =
+    process.env.NODE_ENV === 'production' ? 'https://' : 'http://';
+  const isValid = images.every((image) => image.url.startsWith(validStr));
 
   if (!isValid) {
     throw '이미지 업로드 중 오류가 발생했습니다.';

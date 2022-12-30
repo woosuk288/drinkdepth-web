@@ -69,7 +69,7 @@ const ReviewEditPage: NextPage = () => {
     // router.replace(REVIEW_PATH);
   };
 
-  const isValid = review.place && review.coffee && review.type;
+  const isValid = review.menuName && review.place && review.type;
 
   return (
     <>
