@@ -1,8 +1,7 @@
-import { FirebaseOptions, getApp, initializeApp } from 'firebase/app';
 import { connectAuthEmulator, getAuth } from 'firebase/auth'; // Firebase v9+
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
-import { connectFunctionsEmulator } from 'firebase/functions';
-import { getStorage } from 'firebase/storage';
+// import { connectFunctionsEmulator } from 'firebase/functions';
+import { connectStorageEmulator, getStorage } from 'firebase/storage';
 import { ReactNode } from 'react';
 
 import {
@@ -41,6 +40,7 @@ function FirebaseComponents({ children }: { children: ReactNode }) {
       connectAuthEmulator(auth, 'http://localhost:9099', {
         disableWarnings: true,
       });
+      connectStorageEmulator(storage, 'localhost', 9199);
     }
   }
 
