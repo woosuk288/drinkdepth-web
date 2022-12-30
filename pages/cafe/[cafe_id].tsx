@@ -15,7 +15,7 @@ import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 const CafePage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
-    title: `카페 소개 및 메뉴 | ${cafe.name}`,
+    title: `${cafe.name} 메뉴판 - 드링크뎁스`,
     description: cafe.introduce,
     image: cafe.imageURL,
     canonical: `${CAFE_PATH}/${cafe.id}`,

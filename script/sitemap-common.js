@@ -25,9 +25,7 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
     // include
 
     '../pages/index.tsx',
-    '../pages/cafe/landing.tsx',
-    '../pages/o2o/index.tsx',
-    '../pages/o2o/place.tsx',
+    '../pages/o2o/**/*.tsx',
     // '../pages/**/*.tsx',
     // '../pages/*.tsx',
 
@@ -61,10 +59,11 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
           .replace('../pages/', '')
           .replace('.tsx', '')
           .replace(/\/index/g, '');
-        const routePath = path === 'index' ? '' : path;
+        // console.log('path : ', path);
+        const routePath = path === 'index' ? '' : `/${path}`;
         return `
           <url>
-            <loc>${DRINKDEPTH_DOMAIN}/${routePath}</loc>
+            <loc>${DRINKDEPTH_DOMAIN}${routePath}</loc>
             <lastmod>${getDate}</lastmod>
           </url>
         `;

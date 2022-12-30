@@ -1,4 +1,3 @@
-import { FirebaseOptions, getApp, initializeApp } from 'firebase/app';
 import { getAuth, signOut, User } from 'firebase/auth';
 import {
   arrayUnion,
@@ -10,7 +9,6 @@ import {
   getCountFromServer,
   getDoc,
   getDocs,
-  getFirestore,
   increment,
   limit,
   orderBy,
@@ -28,7 +26,6 @@ import {
   deleteObject,
   FirebaseStorage,
   getDownloadURL,
-  getStorage,
   listAll,
   ref,
   uploadString,
@@ -39,16 +36,6 @@ import {
   COUPON_COUNTER_ISSUED_ID,
   COUPON_COUNTER_USED_ID,
 } from '../utils/constants';
-import { firebaseConfig } from './FirebaseProvider';
-// import { auth, db, storage } from './FirebaseProvider';
-
-function createFirebaseApp(config: FirebaseOptions) {
-  try {
-    return getApp();
-  } catch {
-    return initializeApp(config);
-  }
-}
 
 export const DB_CAFES = 'cafes';
 export const DB_MENUS = 'menus';

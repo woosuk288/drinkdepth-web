@@ -8,11 +8,11 @@ import CafeHeader from 'src/cafe/B2BHeader';
 import MenuInfo from 'src/cafe/MenuInfo';
 
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
-import { apiMenu, fetchCafePairingMenus } from 'src/firebase/api';
+import { apiCafe, apiMenu, fetchCafePairingMenus } from 'src/firebase/api';
 
-const MenuDetailPage: NextPage<Props> = ({ menu, pairingMenus }) => {
+const MenuDetailPage: NextPage<Props> = ({ cafe, menu, pairingMenus }) => {
   const metaData = {
-    title: `메뉴 설명 | ${menu.name}`,
+    title: `${menu.name} | ${cafe.name} - 드링크뎁스`,
     description: menu.description,
     image: menu.images?.['480x480'] ?? '/images/logo_icon.png',
     canonical: `${CAFE_PATH}/${menu.cafeId}${MENU_PATH}/${menu.id}`,
@@ -30,7 +30,7 @@ const MenuDetailPage: NextPage<Props> = ({ menu, pairingMenus }) => {
 export default MenuDetailPage;
 
 export type Props = {
-  // cafe: CafeType;
+  cafe: CafeType;
   menu: CafeMenuType;
   pairingMenus?: CafeMenuType[];
 };
@@ -69,6 +69,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 }) => {
   const { cafe_id, menu_id } = params!;
 
+  let cafe = await apiCafe.cache.get(cafe_id);
+
+  if (!cafe) {
+    cafe = await apiCafe.fetch(cafe_id);
+  }
+
   let menu = await apiMenu.cache.get(cafe_id, menu_id);
 
   if (!menu) {
@@ -99,6 +105,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 
   return {
     props: {
+      cafe,
       menu,
       pairingMenus,
     },
