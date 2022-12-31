@@ -68,7 +68,7 @@ export function getDocData<T>(doc: DocumentSnapshot<DocumentData>) {
       ...(createdAt && { createdAt }),
     } as unknown as T;
   } else {
-    return null;
+    return undefined;
   }
 }
 
