@@ -2,6 +2,49 @@ import path from 'path';
 import fs from 'fs/promises';
 import axios from 'axios';
 
+// export const api = {};
+
+export const fetchData = async <T>(url: string) => {
+  const result = await axios.get<T>(url, {
+    headers: { Authorization: process.env.API_SECRET_KEY },
+  });
+  return result.data;
+};
+export const getCacheList = async <T>(filename: string) => {
+  try {
+    const data = await fs.readFile(path.join(process.cwd(), `${filename}.db`));
+    const list: T[] = JSON.parse(data as unknown as string);
+    console.info(`Hit ${filename}`);
+
+    return list;
+  } catch (error) {
+    console.info(`No cache ${filename}.db`);
+
+    return;
+  }
+};
+
+// TODO: 일단 id로 해놓고, 추후 필요하면 predicate 처리하자
+export const getCacheItem = async <T extends { id: string }>(
+  filename: string,
+  id: string
+) => {
+  const list = await getCacheList<T>(filename);
+
+  if (list?.length) {
+    return list.find((item) => item.id === id);
+  } else {
+    return;
+  }
+};
+
+export const setCache = async (name: string, data: any[]) => {
+  await fs.writeFile(
+    path.join(process.cwd(), `${name}.db`),
+    JSON.stringify(data)
+  );
+};
+
 export const fetchCafes = async () => {
   const url = process.env.NEXT_PUBLIC_SERVER_URL + '/cafes';
   const cafes = await axios.get<CafeType[]>(url, {

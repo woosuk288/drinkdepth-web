@@ -7,7 +7,6 @@ type DReviewType = {
   place?: PlacesSearchResultItem;
 
   coffee?: {
-    bean?: string; // TODO: 테스트 후 데이터 삭제시 같이 삭제
     beanType?: string;
     country?: string;
     process?: string;
@@ -28,6 +27,7 @@ type DReviewType = {
   keywords?: string[];
   text: string; // 한줄평?
   rating: number;
+  thumbUpCount?: number;
 
   profile: {
     uid: string;
@@ -35,7 +35,7 @@ type DReviewType = {
     photoURL: string;
     badgeIds: string[];
   };
-  // uid: string;
+
   createdAt: string;
   updatedAt?: string;
 };

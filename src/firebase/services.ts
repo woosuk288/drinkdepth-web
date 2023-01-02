@@ -376,10 +376,11 @@ export const createReview = async ({
     url: imageURLs[i],
   }));
 
-  const newReview: Omit<DReviewType, 'id'> = {
+  const newReview: DReviewType = {
     ...review,
     images,
     createdAt: new Date().toISOString(),
+    id: newReviewRef.id,
   };
 
   const batch = writeBatch(db);
@@ -406,7 +407,7 @@ export const createReview = async ({
 
   await batch.commit();
 
-  return { ...newReview, id: newReviewRef.id };
+  return newReview;
 };
 
 export const editReview = async ({
@@ -442,9 +443,9 @@ export const editReview = async ({
     url: imageURLs[i],
   }));
 
-  const validStr =
-    process.env.NODE_ENV === 'production' ? 'https://' : 'http://';
-  const isValid = images.every((image) => image.url.startsWith(validStr));
+  // const validStr =
+  //   process.env.NODE_ENV === 'production' ? 'https://' : 'http://';
+  const isValid = images.every((image) => image.url.startsWith('http'));
 
   if (!isValid) {
     throw '이미지 업로드 중 오류가 발생했습니다.';
@@ -573,15 +574,21 @@ export const deleteReview = async ({
   storage,
   reviewId,
   uid,
+  hasImage,
 }: {
   db: Firestore;
   storage: FirebaseStorage;
   reviewId: string;
   uid: string;
+  hasImage: boolean;
 }) => {
   const reviewRef = doc(db, DB_REVIEWS, reviewId);
-  const dir = await listAll(ref(storage, `d/${DB_REVIEWS}/${reviewId}/${uid}`));
-  await Promise.all(dir.items.map((item) => deleteObject(item)));
+  if (hasImage) {
+    const dir = await listAll(
+      ref(storage, `d/${DB_REVIEWS}/${reviewId}/${uid}`)
+    );
+    await Promise.all(dir.items.map((item) => deleteObject(item)));
+  }
 
   const batch = writeBatch(db);
 
