@@ -16,9 +16,11 @@ import PlaceLocation from 'src/d/PlaceLocation';
 
 const CafePage: NextPage = () => {
   const router = useRouter();
-  const place: PlacesSearchResultItem = JSON.parse(
-    router.query.place as string
-  );
+  const place: PlacesSearchResultItem = router.query.place
+    ? JSON.parse(router.query.place as string)
+    : null;
+
+  if (!place) return <NextSeo title="DrinkDepth | 카페 위치" />;
 
   return (
     <>

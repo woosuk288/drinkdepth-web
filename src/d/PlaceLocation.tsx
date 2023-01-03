@@ -13,6 +13,10 @@ type Props = {
   place: PlacesSearchResultItem;
 };
 
+/**
+ * 위치에서 내 위치 눌렀을 때, 목적지와 내 위치의 중간 지점 zoom, 차, 대중교통, 걸어서의 거리를 보여주면 좋을듯
+ */
+
 function PlaceLocation({ place }: Props) {
   const { loading, error } = useInjectKakaoMapApi({
     appkey: process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY!, // 발급 받은 APPKEY
