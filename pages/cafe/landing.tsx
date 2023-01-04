@@ -17,7 +17,7 @@ import { useRecoilState } from 'recoil';
 import { landingFormState } from '../../atoms/landingFormAtom';
 
 const metaData = {
-  title: '깊이를 마시다 | 스마트 메뉴판',
+  title: '스마트 메뉴판 소개 - 드링크뎁스',
   description: '우리 카페만의 특별한 모바일 메뉴판을 도입해보세요.',
   image: '/images/logo_icon.png',
   canonical: '/cafe/landing',

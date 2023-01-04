@@ -92,6 +92,7 @@ function PlaceLocation({ place }: Props) {
         <IconButton onClick={handleGoogleMap}>
           <img src="/images/google_map.png" alt="카카오맵" width={64} />
         </IconButton>
+        {/* TODO: T map - https://sir.kr/g5_tip/13235 */}
       </div>
     </>
   );

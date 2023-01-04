@@ -8,6 +8,7 @@ import { Firestore } from 'firebase/firestore';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { acceptCoupon } from 'src/firebase/services';
+import { HTTPS_DOMAIN_DEFAULT } from 'src/utils/constants';
 
 import { KakaoIcon } from '../common/KakaoShareButton';
 
@@ -162,10 +163,9 @@ const handleShareKakao = () => {
     kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
-        title: '깊이를 마시다',
-        description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
-        imageUrl:
-          'https://firebasestorage.googleapis.com/v0/b/drinkdepth.appspot.com/o/images%2Fdrinkdepth600x600.png?alt=media&token=f3cb9980-ccf2-4113-b72d-3539b638b7a6',
+        title: '드링크뎁스',
+        description: '1000원 할인 or 아메리카노+1 쿠폰 (둘중하나 선택)',
+        imageUrl: HTTPS_DOMAIN_DEFAULT + '/images/logo_name_og.png',
         link: {
           mobileWebUrl: url,
           webUrl: url,

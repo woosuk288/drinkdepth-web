@@ -1,16 +1,10 @@
-import { IconButton } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box } from '@mui/material';
 
 function KakaoChat() {
   return (
     <Box
-      component="a"
-      href="https://pf.kakao.com/_ktxnJb/chat"
-      target="_blank"
       sx={{
         boxShadow: 3,
-      }}
-      style={{
         position: 'fixed',
         right: 16,
         bottom: 16,
@@ -21,15 +15,20 @@ function KakaoChat() {
         background: 'rgba(255, 255, 255, 0.85)',
         borderRadius: '50%',
       }}
-      rel="noreferrer"
       className="kakao-chat"
     >
-      <img
-        src="/images/logo_icon.png"
-        alt="1:1 채팅 문의"
-        width="44px"
-        height="44px"
-      />
+      <a
+        href="https://pf.kakao.com/_ktxnJb/chat"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          src="/images/logo_icon.png"
+          alt="1:1 채팅 문의"
+          width="44px"
+          height="44px"
+        />
+      </a>
     </Box>
   );
 }

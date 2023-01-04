@@ -23,11 +23,11 @@ import { useFirestore } from 'reactfire';
 
 const REVIEW_ALL = 'REVIEW_ALL';
 
-const ReviewsPage: NextPage<Props> = ({ menu }) => {
+const ReviewsPage: NextPage<Props> = ({ menu, cafe }) => {
   const metaData = {
-    title: `메뉴 리뷰 | ${menu.name}`,
+    title: `${menu.name} 메뉴 리뷰 | ${cafe.name} - 드링크뎁스 스마트 메뉴판`,
     description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
-    image: '/images/logo_icon.png',
+    image: menu.images?.['480x480'] ?? '/images/logo_icon.png',
     canonical: `${CAFE_PATH}/${menu.cafeId}${MENU_PATH}/${menu.id}${REVIEWS_PATH}`,
   };
 

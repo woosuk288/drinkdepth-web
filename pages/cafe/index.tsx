@@ -7,7 +7,7 @@ import Cafe from '../../src/cafe/Cafe';
 import Meta from '../../src/common/Meta';
 
 const metaData = {
-  title: '깊이를 마시다 | 인기 추천 카페',
+  title: '카페 목록 - 드링크뎁스',
   description: '마시는 경험이 바뀌면 인생의 깊이가 달라집니다.',
   image: '/images/logo_icon.png',
   canonical: `${CAFE_PATH}`,

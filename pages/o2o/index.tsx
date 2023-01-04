@@ -5,8 +5,9 @@ import { useRouter } from 'next/router';
 import Meta from '../../src/common/Meta';
 
 const metaData = {
-  title: '깊이를 마시다 | 인생 커피 맵',
-  description: '유명 국내 로스터리 카페들의 커피 데이터를 분석했습니다.',
+  title: '인생 커피 맵 - 드링크뎁스',
+  description:
+    '유명 국내 로스터리 카페들의 커피 데이터를 지도에서 쉽게 찾아보세요.',
   image: '/images/o2o/o2o_coffee_map.png',
   canonical: '/o2o',
 };

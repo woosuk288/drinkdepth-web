@@ -16,10 +16,10 @@ import useScrollY from 'src/hooks/useScrollY';
 
 const TabletPage: NextPage<Props> = ({ cafe, menus }) => {
   const metaData = {
-    title: `카페 메뉴 | ${cafe.name} | 태블릿`,
+    title: `카페 메뉴 | ${cafe.name} | 태블릿 - 드링크뎁스`,
     description: cafe.introduce,
     image: cafe.imageURL,
-    canonical: `${CAFE_PATH}/${cafe.id}`,
+    canonical: `${CAFE_PATH}/${cafe.id}/tablet`,
   };
 
   const {} = useScrollY();

@@ -12,7 +12,7 @@ import { apiCafe, apiMenu, fetchCafePairingMenus } from 'src/firebase/api';
 
 const MenuDetailPage: NextPage<Props> = ({ cafe, menu, pairingMenus }) => {
   const metaData = {
-    title: `${menu.name} | ${cafe.name} - 드링크뎁스`,
+    title: `메뉴 ${menu.name} | ${cafe.name} - 드링크뎁스 스마트 메뉴판`,
     description: menu.description,
     image: menu.images?.['480x480'] ?? '/images/logo_icon.png',
     canonical: `${CAFE_PATH}/${menu.cafeId}${MENU_PATH}/${menu.id}`,
