@@ -15,23 +15,23 @@ const MainPage: NextPage = () => {
   return (
     <>
       <NextSeo title="DrinkDepth | 리뷰 홈" />
-      <AuthContainer>
-        <HeaderD
-          centerComponent={
-            <div css={{ display: 'flex' }}>
-              <Typography fontSize={18} fontWeight={600}>
-                전체
-              </Typography>
-            </div>
-          }
-        />
+      {/* <AuthContainer> */}
+      <HeaderD
+        centerComponent={
+          <div css={{ display: 'flex' }}>
+            <Typography fontSize={18} fontWeight={600}>
+              전체
+            </Typography>
+          </div>
+        }
+      />
 
-        <Main>
-          <ReviewHome />
-        </Main>
+      <Main>
+        <ReviewHome />
+      </Main>
 
-        <Navbar />
-      </AuthContainer>
+      <Navbar />
+      {/* </AuthContainer> */}
     </>
   );
 };
