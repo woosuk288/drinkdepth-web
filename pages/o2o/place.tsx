@@ -172,7 +172,7 @@ const PlacePage: NextPage = () => {
 
     clustererRef.current?.clear();
 
-    console.log('event.target : ', event.target);
+    // console.log('event.target : ', event.target);
 
     const newChoice = {
       ...choice,
