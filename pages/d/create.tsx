@@ -32,7 +32,7 @@ const CreatePage: NextPage = () => {
 
   const [review, setReview] = useRecoilState(cafeMenuReviewState);
 
-  const { mutate, isLoading } = useMutation(createReview);
+  const { mutate, isLoading, isSuccess } = useMutation(createReview);
 
   const handleSubmit = async () => {
     if (!user || isLoading) return;
@@ -98,7 +98,7 @@ const CreatePage: NextPage = () => {
                 lineHeight: '1.2rem',
               }}
               onClick={handleSubmit}
-              disabled={isLoading || !isValid}
+              disabled={isSuccess || isLoading || !isValid}
             >
               생성완료
             </Button>

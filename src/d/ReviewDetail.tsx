@@ -143,17 +143,21 @@ function ReviewDetail({
           </CardContent>
         )}
 
-        <CardContent sx={{ '> div': { border: '1px solid darkgray' } }}>
-          {flavors?.map((flavor) => (
-            <Chip key={flavor} label={flavor} variant="filled" />
-          ))}
-        </CardContent>
+        {(flavors?.length ?? 0) > 0 && (
+          <CardContent sx={{ '> div': { border: '1px solid darkgray' } }}>
+            {flavors?.map((flavor) => (
+              <Chip key={flavor} label={flavor} variant="filled" />
+            ))}
+          </CardContent>
+        )}
 
-        <CardContent sx={{ paddingBottom: 0 }}>
-          {review.keywords?.map((keyword) => (
-            <Chip key={keyword} label={keyword} variant="filled" />
-          ))}
-        </CardContent>
+        {(review.keywords?.length ?? 0) > 0 && (
+          <CardContent sx={{ paddingBottom: 0 }}>
+            {review.keywords?.map((keyword) => (
+              <Chip key={keyword} label={keyword} variant="filled" />
+            ))}
+          </CardContent>
+        )}
 
         <CardContent>
           <Typography

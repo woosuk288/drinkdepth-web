@@ -33,7 +33,7 @@ const ReviewEditPage: NextPage = () => {
     setReview(() => JSON.parse(router.query.review as string));
   }, [router.query.review, setReview]);
 
-  const { mutate, isLoading } = useMutation(editReview, {
+  const { mutate, isLoading, isSuccess } = useMutation(editReview, {
     onSuccess: (nextReview) => {
       router
         .replace(`${D_REVIEW_PATH}/${id}`)
@@ -94,7 +94,7 @@ const ReviewEditPage: NextPage = () => {
                 lineHeight: '1.2rem',
               }}
               onClick={handleSubmit}
-              disabled={isLoading || !isValid}
+              disabled={isSuccess || isLoading || !isValid}
             >
               수정완료
             </Button>
