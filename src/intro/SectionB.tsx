@@ -8,13 +8,14 @@ function SectionB() {
   return (
     <Box mt="160px">
       <Typography
-        variant="h1"
+        // variant="h1"
         fontWeight={700}
         sx={{
           fontSize: { xs: 36, md: 50, lineHeight: 1.32, marginBottom: '3rem' },
         }}
       >
-        드링크뎁스는 어떤 팀 인가요?
+        {/* 드링크뎁스는 어떤 팀 인가요? */}
+        우리의 핵심 가치
       </Typography>
 
       <Box

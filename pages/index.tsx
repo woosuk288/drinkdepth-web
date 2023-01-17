@@ -21,6 +21,15 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <Meta data={metaData} />
+
+      <Box px={{ xs: '20px', lg: 0 }}>
+        <SectionA />
+        <SectionB />
+        {/* <SectionC /> */}
+      </Box>
+
+      <div style={{ marginBottom: '100px' }}></div>
+
       <a
         href="https://pf.kakao.com/_ktxnJb/chat"
         target="_blank"
@@ -35,14 +44,6 @@ const Home: NextPage = () => {
           height={64}
         />
       </a>
-
-      <Box px={{ xs: '20px', lg: 0 }}>
-        <SectionA />
-        <SectionB />
-        <SectionC />
-      </Box>
-
-      <div style={{ marginBottom: '100px' }}></div>
     </Layout>
   );
 };

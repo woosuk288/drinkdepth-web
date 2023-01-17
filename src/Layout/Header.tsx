@@ -29,6 +29,10 @@ const pages = [
     name: '인생 커피맵',
     link: '/o2o',
   },
+  {
+    name: '어떤 카페',
+    link: 'https://landing.drinkdepth.com',
+  },
 ];
 
 const Header = () => {
@@ -53,6 +57,18 @@ const Header = () => {
     });
   };
 
+  const handleNavLinkClick = (link: string) => () => {
+    if (link.startsWith('http')) {
+      const anchor = document.createElement('a');
+      anchor.href = link;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+      anchor.click();
+    } else {
+      router.push(`${link}`);
+    }
+  };
+
   return (
     <>
       <AppBar position="static" color="transparent">
@@ -74,7 +90,7 @@ const Header = () => {
               {pages.map((page) => (
                 <Button
                   key={page.name}
-                  onClick={() => router.push(`${page.link}`)}
+                  onClick={handleNavLinkClick(page.link)}
                   color="inherit"
                   sx={{
                     px: '1rem',

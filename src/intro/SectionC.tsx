@@ -18,13 +18,14 @@ function SectionC() {
   return (
     <Box mt="160px">
       <Typography
-        variant="h1"
+        // variant="h1"
         fontWeight={700}
         sx={{
           fontSize: { xs: 36, md: 50, lineHeight: 1.32, marginBottom: '3rem' },
         }}
       >
-        드링크 뎁스의 프로젝트
+        {/* 드링크뎁스의 프로젝트 */}
+        진행 및 예정 프로젝트
       </Typography>
 
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
