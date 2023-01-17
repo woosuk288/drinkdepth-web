@@ -12,3 +12,6 @@ export const FETCH_PROFILE_KEY = (profileId: string) =>
 
 export const FETCH_MY_BADGES_KEY = (profileId: string) =>
   'fetch_my_badges_key' + '_' + profileId;
+
+export const FETCH_REVIEW_THUMB_KEY = (reviewId: string) =>
+  'fetch_review_thumb_key' + '_' + reviewId;

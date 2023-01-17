@@ -45,6 +45,7 @@ export const DB_COUPONS = 'coupons';
 export const DB_PROFILES = 'profiles';
 export const DB_PRIVACIES = 'privacies';
 export const DB_BADGES = 'badges';
+export const DB_THUMBS = 'thumbs';
 
 const DOC_FLAVOR = 'flavor';
 const DOC_KEYWORD = 'keyword';
@@ -650,4 +651,56 @@ export const hideNewBadge = async ({
 }) => {
   const ref = doc(db, DB_PROFILES, uid);
   await updateDoc(ref, { hasNewBadge: false });
+};
+// TODO: 추후 삭제
+//
+//
+
+export const addThumbUp = async ({
+  db,
+  data,
+}: {
+  db: Firestore;
+  data: ThumbType;
+}) => {
+  const reviewRef = doc(db, DB_REVIEWS, data.reviewId);
+  const ref = doc(db, DB_REVIEWS, data.reviewId, DB_THUMBS, data.id);
+
+  const batch = writeBatch(db);
+  batch.update(reviewRef, { thumbUpCount: increment(1) });
+  batch.set(ref, data);
+  await batch.commit();
+
+  return data;
+};
+
+export const deleteThumbUp = async ({
+  db,
+  data,
+}: {
+  db: Firestore;
+  data: ThumbType;
+}) => {
+  const reviewRef = doc(db, DB_REVIEWS, data.reviewId);
+  const ref = doc(db, DB_REVIEWS, data.reviewId, DB_THUMBS, data.id);
+
+  const batch = writeBatch(db);
+  batch.update(reviewRef, { thumbUpCount: increment(-1) });
+  batch.delete(ref);
+  await batch.commit();
+};
+
+export const getThumbUp = async ({
+  db,
+  reviewId,
+  uid,
+}: {
+  db: Firestore;
+  reviewId: string;
+  uid: string;
+}) => {
+  const ref = doc(db, DB_REVIEWS, reviewId, DB_THUMBS, uid);
+  const snap = await getDoc(ref);
+  const thumb = getDocData<ThumbType>(snap);
+  return thumb;
 };

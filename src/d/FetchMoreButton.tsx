@@ -11,7 +11,10 @@ function FetchMoreButton({ isFetchingNextPage, onClick }: Props) {
   return (
     <div css={{ textAlign: 'center' }}>
       {isFetchingNextPage ? (
-        <CircularProgress disableShrink sx={{ animationDuration: '550ms' }} />
+        <CircularProgress
+          disableShrink
+          sx={{ animationDuration: '550ms', margin: '0.5rem' }}
+        />
       ) : (
         // <CircularProgress disableShrink sx={{ animationDuration: '550ms' }} />
         <IconButton onClick={onClick}>

@@ -4,14 +4,19 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import HeaderD from 'src/d/HeaderD';
 
 import { NextSeo } from 'next-seo';
-import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Navbar from 'src/d/Navbar';
 import ReviewDetail from 'src/d/ReviewDetail';
-import { D_CAFE_PATH } from 'src/utils/routes';
-import { useMutation } from 'react-query';
+import { D_CAFE_PATH, OATUH_LOGIN_PATH } from 'src/utils/routes';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useRouter } from 'next/router';
-import { deleteReview } from 'src/firebase/services';
+import {
+  addThumbUp,
+  deleteReview,
+  deleteThumbUp,
+  fetchProfile,
+  getThumbUp,
+} from 'src/firebase/services';
 import { IconButton } from '@mui/material';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -24,6 +29,7 @@ import {
   setCache,
 } from 'src/firebase/api';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import { FETCH_REVIEW_THUMB_KEY } from 'src/utils/queryKeys';
 
 const ReviewDetailPage: NextPage<Props> = ({ review }) => {
   const router = useRouter();
@@ -76,7 +82,11 @@ type ReviewDetailContainerProps = {
 
 function ReviewDetailContainer({ review }: ReviewDetailContainerProps) {
   const [thumbUp, setThumbUp] = React.useState(false);
+  const [thumbUpCount, setThumbUpCount] = React.useState(
+    review.thumbUpCount ?? 0
+  );
 
+  const queryClient = useQueryClient();
   const router = useRouter();
   const id = review.id;
 
@@ -84,15 +94,43 @@ function ReviewDetailContainer({ review }: ReviewDetailContainerProps) {
   const db = useFirestore();
   const storage = useStorage();
 
-  const deleteMutation = useMutation(deleteReview, {
+  const thumbQuery = useQuery(
+    FETCH_REVIEW_THUMB_KEY(review.id),
+    () => getThumbUp({ db, reviewId: id, uid: user!.uid }),
+    {
+      enabled: !!user,
+      onSuccess(data) {
+        if (data) {
+          setThumbUp(true);
+        }
+      },
+    }
+  );
+
+  const deleteReviewMutation = useMutation(deleteReview, {
     onSuccess: () => {
       router.back();
     },
   });
 
+  const addThumbUpMutation = useMutation(addThumbUp, {
+    onSuccess: (data) => {
+      setThumbUp(true);
+      setThumbUpCount((prev) => prev + 1);
+      queryClient.setQueryData(FETCH_REVIEW_THUMB_KEY(review.id), data);
+    },
+  });
+
+  const deleteThumbUpMutation = useMutation(deleteThumbUp, {
+    onSuccess: () => {
+      setThumbUp(false);
+      setThumbUpCount((prev) => prev - 1);
+    },
+  });
+
   const handleReviewDelete = () => {
     if (user && confirm('삭제하시겠어요?')) {
-      deleteMutation.mutate({
+      deleteReviewMutation.mutate({
         db,
         storage,
         reviewId: id,
@@ -102,8 +140,35 @@ function ReviewDetailContainer({ review }: ReviewDetailContainerProps) {
     }
   };
 
-  const handleThumbUp = () => {
-    setThumbUp((prev) => !prev);
+  const handleThumbUp = async () => {
+    if (!user) {
+      router.push(OATUH_LOGIN_PATH);
+      // path After Login
+      return;
+    }
+
+    const profile = await fetchProfile(db, user.uid);
+
+    addThumbUpMutation.mutate({
+      db,
+      data: {
+        id: user.uid,
+        reviewId: review.id,
+        createdAt: new Date().toISOString(),
+        profile: {
+          displayName: user.displayName ?? '',
+          uid: user.uid,
+          photoURL: user.photoURL ?? '',
+          badgeIds: profile?.badgeIds ?? [],
+        },
+      },
+    });
+  };
+
+  const CancelThumbUp = () => {
+    if (thumbQuery.data) {
+      deleteThumbUpMutation.mutate({ db, data: thumbQuery.data });
+    }
   };
 
   return (
@@ -111,8 +176,10 @@ function ReviewDetailContainer({ review }: ReviewDetailContainerProps) {
       review={review}
       userId={user?.uid}
       handleReviewDelete={handleReviewDelete}
+      thumbUpCount={thumbUpCount}
       thumbUp={thumbUp}
       handleThumbUp={handleThumbUp}
+      CancelThumbUp={CancelThumbUp}
     />
   );
 }

@@ -28,16 +28,20 @@ type Props = {
   review: DReviewType;
   userId?: string;
   handleReviewDelete: () => void;
+  thumbUpCount: number;
   thumbUp: boolean;
   handleThumbUp: () => void;
+  CancelThumbUp: () => void;
 };
 
 function ReviewDetail({
   review,
   userId,
   handleReviewDelete,
+  thumbUpCount,
   thumbUp,
   handleThumbUp,
+  CancelThumbUp,
 }: Props) {
   // console.log('review : ', review);
 
@@ -215,15 +219,21 @@ function ReviewDetail({
           )}
         </CardActions>
         <div css={{ margin: '1rem', textAlign: 'center' }}>
-          <IconButton size="large" onClick={handleThumbUp}>
-            {thumbUp ? (
+          {thumbUp ? (
+            <IconButton size="large" onClick={CancelThumbUp}>
               <ThumbUpIcon sx={{ fontSize: 48 }} />
-            ) : (
+              {thumbUpCount > 0 && (
+                <span css={{ marginLeft: '0.75rem' }}>{thumbUpCount}</span>
+              )}
+            </IconButton>
+          ) : (
+            <IconButton size="large" onClick={handleThumbUp}>
               <ThumbUpOutlinedIcon sx={{ fontSize: 48 }} />
-            )}
-
-            {thumbUp && <span css={{ marginLeft: '0.75rem' }}>1</span>}
-          </IconButton>
+              {thumbUpCount > 0 && (
+                <span css={{ marginLeft: '0.75rem' }}>{thumbUpCount}</span>
+              )}
+            </IconButton>
+          )}
         </div>
         {/* <Button
           variant="outlined"

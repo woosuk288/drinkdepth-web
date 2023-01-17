@@ -139,3 +139,17 @@ type UserBadgeType = {
     photoURL: string;
   };
 };
+
+type ThumbType = {
+  id: string;
+  reviewId: string;
+  createdAt: string;
+  updatedAt?: string;
+
+  profile: {
+    uid: string;
+    displayName: string;
+    photoURL: string;
+    badgeIds: string[];
+  };
+};
