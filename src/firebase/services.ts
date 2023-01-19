@@ -615,10 +615,12 @@ export async function giveEventBadge(db: Firestore, user: User) {
     uid: user.uid,
   };
 
-  await updateDoc(ref, { badgeIds: arrayUnion('00010'), hasNewBadge: true });
+  const batch = writeBatch(db);
+  batch.update(ref, { badgeIds: arrayUnion('00010'), hasNewBadge: true });
 
   const badgeRef = doc(db, DB_PROFILES, user.uid, DB_BADGES, '00010');
-  await setDoc(badgeRef, { ...CREATE('00010'), profile, isNew: true });
+  batch.set(badgeRef, { ...CREATE('00010'), profile, isNew: true });
+  await batch.commit();
 }
 
 export const fetchMyBadges = async (db: Firestore, uid: string) => {

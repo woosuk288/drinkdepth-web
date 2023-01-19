@@ -30,6 +30,7 @@ function ReviewHome() {
 
   const trigger = useScrollTrigger({ threshold: 4000 });
 
+  // 위치 검색 Dialog 뒤로가기 처리용
   useEffect(() => {
     if (router.asPath.includes('?q=')) {
       router.beforePopState((state) => {

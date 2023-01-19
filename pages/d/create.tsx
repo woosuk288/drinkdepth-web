@@ -23,6 +23,7 @@ import {
   giveEventBadge,
 } from 'src/firebase/services';
 import { useFirestore, useStorage, useUser } from 'reactfire';
+import { REVIEW_BADGE_REWARD } from 'src/utils/constants';
 
 const CreatePage: NextPage = () => {
   const router = useRouter();
@@ -59,6 +60,7 @@ const CreatePage: NextPage = () => {
             // 리뷰를 생선한적이 있고, 해당 배지가 없을시 증정
             if (!profile?.badgeIds?.includes('00010')) {
               await giveEventBadge(db, user);
+              localStorage.setItem(REVIEW_BADGE_REWARD, 'completed');
             }
             router
               .replace(`${D_REVIEW_PATH}/${newReview.id}`)

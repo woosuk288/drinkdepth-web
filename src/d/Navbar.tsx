@@ -11,6 +11,8 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CloseIcon from '@mui/icons-material/Close';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 import { D_PATH, D_CREATE_PATH, D_PROFILE_PATH } from 'src/utils/routes';
 import { useRouter } from 'next/router';
@@ -22,6 +24,9 @@ import {
   defaultCafeMenuReview,
 } from 'atoms/reviewFormAtom';
 import { useUser } from 'reactfire';
+import { IconButton, Tooltip, Typography } from '@mui/material';
+import CommonDialog from 'src/common/CommonDialog';
+import { REVIEW_BADGE_REWARD } from 'src/utils/constants';
 
 const NAV_ROUTES: { [key: string]: number } = {
   [D_PATH]: 0,
@@ -55,54 +60,124 @@ export default function Navbar() {
     router.push(path);
   };
 
+  const [tooltipOpen, setTooltipOpen] = React.useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const openDialog = () => setDialogOpen(true);
+  const closeDialog = () => setDialogOpen(false);
+  const handlePrimary = () => {
+    const today = new Date();
+    const tomorrow = today.setDate(today.getDate() + 1);
+    localStorage.setItem(REVIEW_BADGE_REWARD, new Date(tomorrow).toISOString());
+    setTooltipOpen(false);
+    setDialogOpen(false);
+  };
+  const handleSecondary = () => {
+    localStorage.setItem(REVIEW_BADGE_REWARD, 'disabled');
+    setTooltipOpen(false);
+    setDialogOpen(false);
+  };
+
+  // null, 날짜+1, disabled, completed
+  React.useEffect(() => {
+    const rewardStatus = localStorage.getItem(REVIEW_BADGE_REWARD);
+
+    if (
+      !rewardStatus ||
+      (isNaN(Date.parse(rewardStatus)) === false &&
+        new Date().toISOString() > rewardStatus)
+    ) {
+      setTooltipOpen(true);
+    }
+  }, []);
+
   return (
-    <Box
-      sx={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1,
-        // display: { md: 'none' },
-      }}
-    >
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={handleChange}
+    <>
+      <Box
         sx={{
-          height: '44px',
-          '& button.Mui-selected': { color: '#000000' },
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1,
+          // display: { md: 'none' },
         }}
       >
-        <BottomNavigationAction
+        <BottomNavigation
+          showLabels
+          value={value}
+          onChange={handleChange}
           sx={{
-            svg: { fontSize: '30px' },
+            height: '44px',
+            '& button.Mui-selected': { color: '#000000' },
           }}
-          icon={value === 0 ? <HomeRoundedIcon /> : <HomeOutlinedIcon />}
-        />
-        <BottomNavigationAction
-          icon={<AddBoxOutlinedIcon sx={{ fontSize: '28px' }} />}
-        />
+        >
+          <BottomNavigationAction
+            sx={{
+              svg: { fontSize: '30px' },
+            }}
+            icon={value === 0 ? <HomeRoundedIcon /> : <HomeOutlinedIcon />}
+          />
 
-        <BottomNavigationAction
-          icon={
-            user?.photoURL ? (
-              <Avatar
-                src={user?.photoURL}
-                sx={{ width: AVATAR_SIZE, height: AVATAR_SIZE }}
-              />
-            ) : (
-              <AccountCircleIcon
-                sx={{
-                  fontSize: '28px',
-                  color: value === 2 ? 'inherit' : '#bdbdbd',
-                }}
-              />
-            )
-          }
+          <Tooltip
+            title={
+              <div css={{ padding: '1rem 1.25rem', position: 'relative' }}>
+                <IconButton
+                  color="inherit"
+                  size="small"
+                  sx={{ position: 'absolute', right: -8, top: 0 }}
+                  onClick={openDialog}
+                >
+                  <CancelOutlinedIcon />
+                </IconButton>
+                <Typography>리뷰를 남기고 보상을 받으세요!</Typography>
+                {/*
+                오늘은 안 보기
+                더 이상 안 볼래요
+popup reveiw and badge
+               */}
+              </div>
+            }
+            open={tooltipOpen}
+            arrow
+          >
+            <BottomNavigationAction
+              icon={<AddBoxOutlinedIcon sx={{ fontSize: '28px' }} />}
+            />
+          </Tooltip>
+
+          <BottomNavigationAction
+            icon={
+              user?.photoURL ? (
+                <Avatar
+                  src={user?.photoURL}
+                  sx={{ width: AVATAR_SIZE, height: AVATAR_SIZE }}
+                />
+              ) : (
+                <AccountCircleIcon
+                  sx={{
+                    fontSize: '28px',
+                    color: value === 2 ? 'inherit' : '#bdbdbd',
+                  }}
+                />
+              )
+            }
+          />
+        </BottomNavigation>
+      </Box>
+
+      {/* {tooltipOpen && } */}
+      {dialogOpen && (
+        <CommonDialog
+          title="리뷰 쓰면 배지 보상"
+          open={dialogOpen}
+          handleClose={closeDialog}
+          textPrimary="오늘만 숨기기"
+          handlePrimary={handlePrimary}
+          textSecondary="더 이상 안 볼래요"
+          handleSecondary={handleSecondary}
+          textCancel={null}
         />
-      </BottomNavigation>
-    </Box>
+      )}
+    </>
   );
 }

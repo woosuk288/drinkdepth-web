@@ -15,7 +15,7 @@ interface DialogProps {
   handlePrimary?: () => void;
   textSecondary?: string;
   handleSecondary?: () => void;
-  textCancel?: string;
+  textCancel?: string | null;
   handleCancel?: () => void;
   keepMounted?: boolean;
   progressing?: boolean;
@@ -104,12 +104,14 @@ function CommonDialog({
             {nameSecondary}
           </Button>
         )}
-        <Button
-          color="inherit"
-          onClick={handleCancel || handleClose} /* autoFocus */
-        >
-          {textCancel || '취소'}
-        </Button>
+        {textCancel !== null && (
+          <Button
+            color="inherit"
+            onClick={handleCancel || handleClose} /* autoFocus */
+          >
+            {textCancel || '취소'}
+          </Button>
+        )}
       </Box>
     </Dialog>
   );

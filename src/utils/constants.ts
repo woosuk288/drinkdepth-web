@@ -1,5 +1,16 @@
+/**
+ *
+ */
 export const PATH_AFTER_LOGIN = 'pathAfterLogin';
 
+/**
+ * localStorage
+ */
+export const REVIEW_BADGE_REWARD = 'review_badge_reward';
+
+/**
+ *
+ */
 export const COUPON_COUNTER_ISSUED_ID = '###counter_issued###';
 export const COUPON_COUNTER_USED_ID = '###counter_used###';
 
