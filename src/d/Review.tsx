@@ -149,8 +149,9 @@ function Review({ review, uid }: Props) {
           <CardMedia
             component="img"
             sx={{
-              width: 100,
-              height: 100,
+              width: '100px',
+              minWidth: '100px',
+              height: '100px',
               marginRight: '1rem',
               borderRadius: '4px',
             }}
