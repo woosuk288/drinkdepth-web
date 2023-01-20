@@ -5,15 +5,24 @@ import {
   DialogTitle,
   LinearProgress,
 } from '@mui/material';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface DialogProps {
   open: boolean;
   handleClose: () => void;
-  title: string;
+  title: ReactNode;
   textPrimary?: string;
   handlePrimary?: () => void;
   textSecondary?: string;
+  colorSecondary?:
+    | 'primary'
+    | 'secondary'
+    | 'inherit'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | undefined;
   handleSecondary?: () => void;
   textCancel?: string | null;
   handleCancel?: () => void;
@@ -29,6 +38,7 @@ function CommonDialog({
   textPrimary: namePrimary,
   handlePrimary,
   textSecondary: nameSecondary,
+  colorSecondary,
   handleSecondary,
   textCancel,
   handleCancel,
@@ -81,9 +91,9 @@ function CommonDialog({
             minHeight: '48px',
             borderTop: '1px solid rgba(var(--b6a,219,219,219),1)',
           },
-          '& .MuiButton-textPrimary, .MuiButton-textSecondary': {
-            fontWeight: 800,
-          },
+          // '& .MuiButton-textPrimary, .MuiButton-textSecondary': {
+          //   fontWeight: 800,
+          // },
         }}
       >
         {namePrimary && (
@@ -91,6 +101,7 @@ function CommonDialog({
             onClick={handlePrimary}
             color="primary"
             disabled={progressing}
+            sx={{ fontWeight: 800 }}
           >
             {namePrimary}
           </Button>
@@ -98,8 +109,9 @@ function CommonDialog({
         {nameSecondary && (
           <Button
             onClick={handleSecondary}
-            color="secondary"
+            color={colorSecondary || 'secondary'}
             disabled={progressing}
+            sx={{ fontWeight: 800 }}
           >
             {nameSecondary}
           </Button>

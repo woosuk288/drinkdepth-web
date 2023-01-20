@@ -27,6 +27,7 @@ import { useUser } from 'reactfire';
 import { IconButton, Tooltip, Typography } from '@mui/material';
 import CommonDialog from 'src/common/CommonDialog';
 import { REVIEW_BADGE_REWARD } from 'src/utils/constants';
+import { LetterDIcon } from './BadgeList';
 
 const NAV_ROUTES: { [key: string]: number } = {
   [D_PATH]: 0,
@@ -168,12 +169,42 @@ popup reveiw and badge
       {/* {tooltipOpen && } */}
       {dialogOpen && (
         <CommonDialog
-          title="리뷰 쓰면 배지 보상"
+          // title={"지금 리뷰를 남기시면 배지를 드려요!"}
+          title={
+            <>
+              지금 리뷰를 남기고 <br />
+              <span css={{ position: 'relative' }}>
+                <Tooltip
+                  key={'00010'}
+                  arrow
+                  enterTouchDelay={10}
+                  leaveTouchDelay={30000}
+                  title={`[개국 공신] - 드링크뎁스의 초창기 유저로서 성장에 기여한 분에게만 제공되는 한정판 배지`}
+                >
+                  <Avatar
+                    sx={{
+                      position: 'absolute',
+                      right: 6,
+                      bottom: -8,
+                      bgcolor: 'transparent',
+                      border: `1px solid ${'#4f9cff'} !important`,
+                      '> svg': { color: '#4f9cff' },
+                    }}
+                  >
+                    <LetterDIcon />
+                  </Avatar>
+                </Tooltip>
+                <span css={{ visibility: 'hidden' }}>보상</span>
+              </span>
+              받으세요!
+            </>
+          }
           open={dialogOpen}
           handleClose={closeDialog}
           textPrimary="오늘만 숨기기"
           handlePrimary={handlePrimary}
           textSecondary="더 이상 안 볼래요"
+          colorSecondary="inherit"
           handleSecondary={handleSecondary}
           textCancel={null}
         />
