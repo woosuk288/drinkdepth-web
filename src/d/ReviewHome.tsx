@@ -20,6 +20,8 @@ import FetchMoreButton from './FetchMoreButton';
 import { useEffect, useState } from 'react';
 import SearchRegionDialog from './SearchRegionDialog';
 import { useRouter } from 'next/router';
+import { D_MANIA_CAFES_PATH } from 'src/utils/routes';
+import Link, { NextLinkComposed } from 'src/common/Link';
 
 function ReviewHome() {
   const [addressOpen, setAddressOpen] = useState(false);
@@ -91,9 +93,11 @@ function ReviewHome() {
         }}
       >
         <Card>
-          <Typography variant="h6">
-            커피 매니아 <br /> 추천 카페
-          </Typography>
+          <Link href={D_MANIA_CAFES_PATH} underline="none" color={'inherit'}>
+            <Typography variant="h6">
+              커피 매니아 <br /> 추천 카페
+            </Typography>
+          </Link>
         </Card>
         <Card>
           <Typography variant="h6">

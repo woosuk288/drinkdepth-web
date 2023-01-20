@@ -15,3 +15,5 @@ export const FETCH_MY_BADGES_KEY = (profileId: string) =>
 
 export const FETCH_REVIEW_THUMB_KEY = (reviewId: string) =>
   'fetch_review_thumb_key' + '_' + reviewId;
+
+export const FETCH_MANIA_CAFES_KEY = 'fetch_mania_cafes_key';

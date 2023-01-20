@@ -153,3 +153,21 @@ type ThumbType = {
     badgeIds: string[];
   };
 };
+
+type ManiaCafeType = {
+  name: string;
+  logo?: string;
+  address: string;
+  sido: string;
+  gungu: string;
+  dong: string;
+  subway?: string;
+  wifi?: string;
+  pet?: string;
+  parking?: string;
+
+  tags?: string;
+  description?: string;
+  'images.0'?: string;
+  'images.1'?: string;
+};

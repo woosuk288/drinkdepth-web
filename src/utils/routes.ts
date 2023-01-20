@@ -33,6 +33,8 @@ export const D_PROFILE_PATH = '/d/profile';
 export const D_PROFILE_EDIT_PATH = '/d/profile/edit';
 export const D_PROFILE_SETTINGS_PATH = '/d/profile/settings';
 export const D_CAFE_PATH = '/d/cafe';
+export const D_MANIA_CAFES_PATH = '/d/mania_cafes';
+export const D_HOT_BEANS_PATH = '/d/hot_beans';
 
 export const MYREVIEW_PATH = '/myreview';
 export const PLACE_PATH = '/place';
