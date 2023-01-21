@@ -138,6 +138,18 @@ function ReviewDetail({
           subheader={<Typography>{review.menuName}</Typography>}
         />
 
+        {(flavors?.length ?? 0) > 0 && (
+          <CardContent
+            sx={{
+              paddingBottom: 0,
+            }} /* sx={{ '> div': { border: '1px solid darkgray' } }} */
+          >
+            {flavors?.map((flavor) => (
+              <Chip key={flavor} label={flavor} variant="filled" />
+            ))}
+          </CardContent>
+        )}
+
         {beanOptions && (
           <CardContent>
             <ChoiceTable choiceOptions={beanOptions} />
@@ -146,14 +158,6 @@ function ReviewDetail({
         {flavorOptions && (
           <CardContent>
             <ChoiceTable choiceOptions={flavorOptions} />
-          </CardContent>
-        )}
-
-        {(flavors?.length ?? 0) > 0 && (
-          <CardContent sx={{ '> div': { border: '1px solid darkgray' } }}>
-            {flavors?.map((flavor) => (
-              <Chip key={flavor} label={flavor} variant="filled" />
-            ))}
           </CardContent>
         )}
 
@@ -166,60 +170,52 @@ function ReviewDetail({
         )}
 
         <CardContent>
-          <Typography
-            variant="body1"
-            gutterBottom
-            sx={{
-              marginTop: '1rem',
-            }}
-            whiteSpace="pre-line"
-          >
+          <Typography variant="body1" gutterBottom whiteSpace="pre-line">
             {review.text}
           </Typography>
-        </CardContent>
 
-        {/* <CardContent>
-
-        </CardContent> */}
-
-        <CardActions>
           <Typography
             variant="overline"
             color="text.secondary"
-            sx={{ marginLeft: '0.5rem', marginTop: '-1rem' }}
+            // sx={{ marginLeft: '0.5rem', marginTop: '-1rem' }}
           >
             {new Date(review.createdAt).toLocaleString()}
           </Typography>
+        </CardContent>
 
-          <div css={{ flex: 1 }}></div>
+        {review.profile.uid === userId && (
+          <CardActions
+            sx={{
+              justifyContent: 'center',
+              '> button': { marginLeft: '0.5rem' },
+            }}
+          >
+            {/* <div css={{ '> button': { marginLeft: '0.25rem' } }}> */}
+            <Button
+              variant="contained"
+              color="inherit"
+              component={NextLinkComposed}
+              to={{
+                pathname: D_REVIEW_EDIT_PATH,
 
-          {review.profile.uid === userId && (
-            <div css={{ '> button': { marginLeft: '0.25rem' } }}>
-              <Button
-                variant="outlined"
-                color="inherit"
-                component={NextLinkComposed}
-                to={{
-                  pathname: D_REVIEW_EDIT_PATH,
+                query: { id: review.id, review: JSON.stringify(review) },
 
-                  query: { id: review.id, review: JSON.stringify(review) },
-
-                  // as: {REVIEW_EDIT_PATH}
-                }}
-                linkAs={`${D_REVIEW_EDIT_PATH}/${review.id}`}
-              >
-                수정
-              </Button>
-              <Button
-                variant="outlined"
-                color="inherit"
-                onClick={handleReviewDelete}
-              >
-                삭제
-              </Button>
-            </div>
-          )}
-        </CardActions>
+                // as: {REVIEW_EDIT_PATH}
+              }}
+              linkAs={`${D_REVIEW_EDIT_PATH}/${review.id}`}
+            >
+              수정
+            </Button>
+            <Button
+              variant="contained"
+              color="inherit"
+              onClick={handleReviewDelete}
+            >
+              삭제
+            </Button>
+            {/* </div> */}
+          </CardActions>
+        )}
         <div css={{ margin: '1rem', textAlign: 'center' }}>
           {thumbUp ? (
             <IconButton

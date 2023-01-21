@@ -18,7 +18,7 @@ type ChoiceOptionTable = {
 export default function ChoiceTable({ choiceOptions }: ChoiceOptionTable) {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 300 }} aria-label="simple table">
+      <Table sx={{ minWidth: 250 }} aria-label="simple table">
         {/* <TableHead>
           <TableRow>
             <TableCell>Dessert (100g serving)</TableCell>
