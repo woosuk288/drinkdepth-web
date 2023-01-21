@@ -15,7 +15,7 @@ import { useQuery } from 'react-query';
 import HotBean from 'src/d/HotBean';
 
 const metaData = {
-  title: '핫(HOT) 원두 - 드링크뎁스',
+  title: '핫(HOT) 원두 5+5 - 드링크뎁스',
   description:
     '매주 트래픽 등 복합적인 조사를 통해 한 주간 가장 핫한 주제로 오르내리던 원두들을 종합해 게이샤 + 넌 게이샤로 집어서 올려보겠습니다',
   image: '/images/logo_name_og.png',

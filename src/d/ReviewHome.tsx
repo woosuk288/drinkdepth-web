@@ -22,6 +22,7 @@ import SearchRegionDialog from './SearchRegionDialog';
 import { useRouter } from 'next/router';
 import { D_HOT_BEANS_PATH, D_MANIA_CAFES_PATH } from 'src/utils/routes';
 import Link from 'src/common/Link';
+import Image from 'next/image';
 
 function ReviewHome() {
   const [addressOpen, setAddressOpen] = useState(false);
@@ -88,22 +89,50 @@ function ReviewHome() {
       <div
         css={{
           display: 'flex',
-          marginTop: '0.5rem',
-          '> div': { padding: '1rem', flex: 1, textAlign: 'center' },
+
+          height: '140px',
+          '> div': { padding: '1rem', flex: 1, position: 'relative' },
+          '> div + div': { marginLeft: '0.125rem' },
+          '.gradient': {
+            backgroundImage:
+              'linear-gradient(142deg,rgba(0,0,0,0.1),hsla(0,0%,100%,0) 65%)',
+            height: '100%',
+            left: '0',
+            position: 'absolute',
+            top: '0',
+            width: '100%',
+            zIndex: 1,
+          },
+          'h6.MuiTypography-root': {
+            fontWeight: 700,
+            color: 'white',
+            position: 'absolute',
+            textShadow: '0 1px 8px rgba(33,37,41,0.6)',
+          },
         }}
       >
         <Card>
           <Link href={D_MANIA_CAFES_PATH} underline="none" color={'inherit'}>
-            <Typography variant="h6">
-              커피 매니아 <br /> 추천 카페
-            </Typography>
+            <div className="gradient" />
+            <Image
+              src={'/images/reviewhome_cafe.jpg'}
+              alt="추천 카페"
+              layout="fill"
+              objectFit="cover"
+            />
+            <Typography variant="h6">추천 카페</Typography>
           </Link>
         </Card>
         <Card>
           <Link href={D_HOT_BEANS_PATH} underline="none" color={'inherit'}>
-            <Typography variant="h6">
-              0월 0주차 <br /> 핫한 원두 5+5
-            </Typography>
+            <div className="gradient" css={{}} />
+            <Image
+              src={'/images/reviewhome_bean.jpg'}
+              alt="핫(HOT) 원두 5+5"
+              layout="fill"
+              objectFit="cover"
+            />
+            <Typography variant="h6">핫 원두 5+5</Typography>
           </Link>
         </Card>
       </div>
