@@ -171,3 +171,18 @@ type ManiaCafeType = {
   'images.0'?: string;
   'images.1'?: string;
 };
+
+type HotBeanType = {
+  titleDate: {
+    month: number;
+    week: number;
+    fromDate: string;
+    toDate: string;
+  };
+  type: string;
+  no: number;
+  name: string;
+  flavors: string[];
+  feature: string;
+  roasters: string[];
+};

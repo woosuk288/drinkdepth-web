@@ -20,8 +20,8 @@ import FetchMoreButton from './FetchMoreButton';
 import { useEffect, useState } from 'react';
 import SearchRegionDialog from './SearchRegionDialog';
 import { useRouter } from 'next/router';
-import { D_MANIA_CAFES_PATH } from 'src/utils/routes';
-import Link, { NextLinkComposed } from 'src/common/Link';
+import { D_HOT_BEANS_PATH, D_MANIA_CAFES_PATH } from 'src/utils/routes';
+import Link from 'src/common/Link';
 
 function ReviewHome() {
   const [addressOpen, setAddressOpen] = useState(false);
@@ -100,9 +100,11 @@ function ReviewHome() {
           </Link>
         </Card>
         <Card>
-          <Typography variant="h6">
-            0월 0주차 <br /> 핫 원두 5+5
-          </Typography>
+          <Link href={D_HOT_BEANS_PATH} underline="none" color={'inherit'}>
+            <Typography variant="h6">
+              0월 0주차 <br /> 핫한 원두 5+5
+            </Typography>
+          </Link>
         </Card>
       </div>
 
@@ -121,8 +123,7 @@ function ReviewHome() {
             sx={{ fontSize: '1rem', marginRight: '1.5rem' }}
             onClick={handleOpen}
           >
-            {/* 전체 */}
-            {testReview?.address?.address_name ?? '전체'}
+            {testReview?.address?.address_name ?? '위치 선택'}
           </Button>
         </div>
         <div css={{ '& > div': { marginBottom: '0.125rem' } }}>

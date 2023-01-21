@@ -4,9 +4,9 @@ import type { NextPage } from 'next';
 import HeaderD from 'src/d/HeaderD';
 
 import { LinearProgress, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
-import AuthContainer from 'src/d/AuthContainer';
+// import { useRouter } from 'next/router';
+// import { NextSeo } from 'next-seo';
+// import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Navbar from 'src/d/Navbar';
 import Meta from 'src/common/Meta';
@@ -14,12 +14,13 @@ import { useInfiniteQuery, useQuery } from 'react-query';
 import ManiaCafe from 'src/d/ManiaCafe';
 import FetchMoreButton from 'src/d/FetchMoreButton';
 import { FETCH_MANIA_CAFES_KEY } from 'src/utils/queryKeys';
+import { D_MANIA_CAFES_PATH } from 'src/utils/routes';
 
 const metaData = {
   title: '카페 추천 - 드링크뎁스',
   description: '커피 매니아들이 꼭 가봐야 한다는 카페 리스트',
   image: '/images/logo_name_og.png',
-  canonical: '/d/mania_cafes',
+  canonical: D_MANIA_CAFES_PATH,
 };
 
 const ManiaCafesPage: NextPage = () => {
@@ -52,7 +53,7 @@ export default ManiaCafesPage;
 const MANIA_CAFES = 'mania_cafes';
 const LIMIT_PER_PAGE = 15;
 function ManiaCafesContainer() {
-  const [pageCount, setPageCount] = React.useState(1);
+  // const [pageCount, setPageCount] = React.useState(1);
 
   const {
     data: allCafes,
