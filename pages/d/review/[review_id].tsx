@@ -12,6 +12,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useRouter } from 'next/router';
 import {
   addThumbUp,
+  DB_REVIEWS,
   deleteReview,
   deleteThumbUp,
   fetchProfile,
@@ -152,6 +153,7 @@ function ReviewDetailContainer({ review }: ReviewDetailContainerProps) {
     addThumbUpMutation.mutate({
       db,
       data: {
+        collection: DB_REVIEWS,
         id: user.uid,
         reviewId: review.id,
         createdAt: new Date().toISOString(),
@@ -180,6 +182,12 @@ function ReviewDetailContainer({ review }: ReviewDetailContainerProps) {
       thumbUp={thumbUp}
       handleThumbUp={handleThumbUp}
       CancelThumbUp={CancelThumbUp}
+      isThumbUpDisabled={
+        addThumbUpMutation.isLoading ||
+        addThumbUpMutation.isSuccess ||
+        deleteThumbUpMutation.isLoading ||
+        deleteThumbUpMutation.isSuccess
+      }
     />
   );
 }

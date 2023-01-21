@@ -141,6 +141,7 @@ type UserBadgeType = {
 };
 
 type ThumbType = {
+  collection: 'reviews';
   id: string;
   reviewId: string;
   createdAt: string;

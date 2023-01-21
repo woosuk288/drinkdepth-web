@@ -13,32 +13,32 @@ import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Navbar from 'src/d/Navbar';
 import { useInfiniteQuery } from 'react-query';
-import { fetchMyReviews } from 'src/firebase/services';
-import { FETCH_MY_REVIEWS_KEY } from 'src/utils/queryKeys';
+import { fetchThumbReviews } from 'src/firebase/services';
+import { FETCH_THUMB_REVIEWS_KEY } from 'src/utils/queryKeys';
 import Review from 'src/d/Review';
-// import { MYREVIEW_PATH, PLACE_PATH } from 'src/utils/routes';
+// import { ThumbReview_PATH, PLACE_PATH } from 'src/utils/routes';
 import { useFirestore } from 'reactfire';
 import FetchMoreButton from 'src/d/FetchMoreButton';
 
-const MyReviewPage: NextPage = () => {
+const ThumbReviewPage: NextPage = () => {
   const router = useRouter();
   const uid = router.query.uid as string;
 
   const handlePlaceIconClick = () => {
     alert('준비중입니다.');
-    // const pathname = router.asPath.replace(MYREVIEW_PATH, PLACE_PATH);
+    // const pathname = router.asPath.replace(ThumbReview_PATH, PLACE_PATH);
 
     // router.push({ pathname, query: { uid } }, pathname);
   };
 
   return (
     <>
-      <NextSeo title="DrinkDepth | 작성한 리뷰" />
+      <NextSeo title="DrinkDepth | 찜한 리뷰" />
       <AuthContainer>
         <HeaderD
           leftIcon="back"
           centerComponent={
-            <Typography fontWeight={'bold'}>작성한 리뷰</Typography>
+            <Typography fontWeight={'bold'}>찜한 리뷰</Typography>
           }
           rightIcon={
             <IconButton onClick={handlePlaceIconClick}>
@@ -48,7 +48,7 @@ const MyReviewPage: NextPage = () => {
         />
 
         <Main>
-          <MyReviewContainer />
+          <ThumbReviewContainer />
         </Main>
 
         <Navbar />
@@ -57,24 +57,25 @@ const MyReviewPage: NextPage = () => {
   );
 };
 
-export default MyReviewPage;
+export default ThumbReviewPage;
 
 const LIMIT = 15;
-function MyReviewContainer() {
+function ThumbReviewContainer() {
   const router = useRouter();
   const uid = router.query.profile_id as string;
   const db = useFirestore();
 
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
-      FETCH_MY_REVIEWS_KEY,
+      FETCH_THUMB_REVIEWS_KEY,
       ({ pageParam = new Date().toISOString() }) => {
-        return fetchMyReviews(db, uid, pageParam, LIMIT);
+        return fetchThumbReviews(db, uid, pageParam, LIMIT);
       },
       {
         getNextPageParam: (lastPage, allPages) => {
           return (
-            lastPage.length === LIMIT && lastPage[lastPage.length - 1].createdAt
+            lastPage.length === LIMIT &&
+            lastPage[lastPage.length - 1]?.createdAt
           );
         },
         enabled: !!uid,
@@ -88,9 +89,13 @@ function MyReviewContainer() {
     <>
       <div css={{ '& > div': { marginBottom: '0.125rem' } }}>
         {data?.pages.map((reviews) =>
-          reviews.map((review) => (
-            <Review key={review.id} review={review} uid={uid} />
-          ))
+          reviews.map((review) =>
+            review?.id ? (
+              <Review key={review.id} review={review} uid={uid} />
+            ) : (
+              <div>리뷰가 존재하지 않습니다.</div>
+            )
+          )
         )}
       </div>
       <div css={{ margin: '0.5rem 0' }}>

@@ -2,6 +2,7 @@ import { getAuth, signOut, User } from 'firebase/auth';
 import {
   arrayUnion,
   collection,
+  collectionGroup,
   doc,
   DocumentData,
   DocumentSnapshot,
@@ -484,10 +485,9 @@ export const editReview = async ({
 export const fetchMyReviews = async (
   db: Firestore,
   uid: string,
-  createdAt: Date
+  createdAt: string,
+  LIMIT: 15
 ) => {
-  const LIMIT = 15;
-
   const q = query(
     collection(db, DB_REVIEWS),
     where('profile.uid', '==', uid),
@@ -500,23 +500,38 @@ export const fetchMyReviews = async (
   return getDocsData<DReviewType>(querySnapshot);
 };
 
-export const fetchMyReviewCount = async (db: Firestore, uid: string) => {
-  const q = query(
-    collection(db, DB_REVIEWS),
-    where('profile.uid', '==', uid),
-    orderBy('createdAt', 'desc')
-  );
-
-  const snapshot = await getCountFromServer(q);
-  return snapshot.data().count;
-};
-
 export const fetchReview = async (db: Firestore, reviewId: string) => {
   const reviewDoc = doc(db, DB_REVIEWS, reviewId);
   const reviewSnap = await getDoc(reviewDoc);
   const review = getDocData<DReviewType>(reviewSnap);
 
   return review;
+};
+
+export const fetchThumbReviews = async (
+  db: Firestore,
+  uid: string,
+  createdAt: string,
+  LIMIT: 15
+) => {
+  const q = query(
+    collectionGroup(db, DB_THUMBS),
+    where('collection', '==', DB_REVIEWS),
+    where('profile.uid', '==', uid),
+    orderBy('createdAt', 'desc'),
+    limit(LIMIT),
+    startAfter(createdAt)
+  );
+  const querySnapshot = await getDocs(q);
+
+  const reviewQuery = await Promise.all(
+    querySnapshot.docs.map((d) => {
+      return getDoc(doc(db, DB_REVIEWS, d.data().reviewId));
+    })
+  );
+
+  const reveiews = reviewQuery.map((d) => getDocData<DReviewType>(d));
+  return reveiews;
 };
 
 export const fetchReviews = async (db: Firestore, createdAt: Date) => {

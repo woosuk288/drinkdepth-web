@@ -36,7 +36,7 @@ export const D_CAFE_PATH = '/d/cafe';
 export const D_MANIA_CAFES_PATH = '/d/mania_cafes';
 export const D_HOT_BEANS_PATH = '/d/hot_beans';
 
+export const THUMBREVIEW_PATH = '/thumbreview';
 export const MYREVIEW_PATH = '/myreview';
 export const PLACE_PATH = '/place';
-export const BOOKMARK_PATH = '/bookmark';
 export const MYBADGE_PATH = '/mybadge';

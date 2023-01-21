@@ -11,9 +11,9 @@ import { THEME_SEPERATOR } from 'src/theme';
 import {
   MYBADGE_PATH,
   // PROFILE_BADGE_PATH,
-  BOOKMARK_PATH,
   D_PROFILE_EDIT_PATH,
   MYREVIEW_PATH,
+  THUMBREVIEW_PATH,
 } from 'src/utils/routes';
 import { useRouter } from 'next/router';
 
@@ -81,7 +81,7 @@ const pageList = [
   {
     id: 'bookmark',
     text: '찜한 리뷰',
-    path: BOOKMARK_PATH,
+    path: THUMBREVIEW_PATH,
   },
   {
     id: 'review',
