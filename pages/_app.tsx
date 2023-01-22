@@ -16,6 +16,13 @@ import { RecoilRoot } from 'recoil';
 import TagManager from 'react-gtm-module';
 import FirebaseProvider from 'src/firebase/FirebaseProvider';
 
+import dayjs from 'dayjs';
+// import relativeTime from 'dayjs/plugin/relativeTime';
+import locale_ko from 'dayjs/locale/ko';
+// import utc from 'dayjs/plugin/utc';
+
+dayjs.locale(locale_ko); // use locale globally
+
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 

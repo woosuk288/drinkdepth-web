@@ -1,34 +1,49 @@
 import {
   Avatar,
   AvatarGroup,
-  Button,
   Card,
-  CardActions,
   CardContent,
   CardHeader,
   CardMedia,
+  Chip,
   IconButton,
   Tooltip,
   Typography,
 } from '@mui/material';
 
-import LocalCafeIcon from '@mui/icons-material/LocalCafe';
-import CoffeeIcon from '@mui/icons-material/Coffee';
-import { allBadges, LetterDIcon } from './BadgeList';
-import OpacityIcon from '@mui/icons-material/Opacity';
+import PlaceIcon from '@mui/icons-material/Place';
+
+import { allBadges } from './BadgeList';
 
 import { customIcons } from './RadioGroupRating';
-import Link, { NextLinkComposed } from 'src/common/Link';
-import { D_REVIEW_PATH } from 'src/utils/routes';
+import Link from 'src/common/Link';
+import { D_CAFE_PATH, D_REVIEW_PATH } from 'src/utils/routes';
+
+import dayjs from 'dayjs';
+import { useRouter } from 'next/router';
 
 type Props = {
   review: DReviewType;
   uid?: string;
 };
 function Review({ review, uid }: Props) {
+  const router = useRouter();
+
   const badges = allBadges.filter((badge) =>
     review.profile.badgeIds.includes(badge.id)
   );
+
+  const handleLocationClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    const placeId = review.place?.id;
+    const pathname = D_CAFE_PATH + `/${placeId}`;
+
+    router.push(
+      { pathname, query: { place: JSON.stringify(review.place) } },
+      pathname
+    );
+  };
 
   return (
     <Card
@@ -38,6 +53,7 @@ function Review({ review, uid }: Props) {
       <CardHeader
         avatar={
           <Avatar
+            sx={{ bgcolor: 'rgba(0, 0, 0, 0.08)' }}
             aria-label={review.profile.displayName}
             src={review.profile.photoURL}
           />
@@ -64,20 +80,16 @@ function Review({ review, uid }: Props) {
         }
         title={
           <div css={{ display: 'flex', alignItems: 'center' }}>
-            <Typography variant="subtitle1" fontWeight={500} marginRight="1rem">
+            <Typography
+              variant="subtitle1"
+              fontWeight={600}
+              marginRight="0.25rem"
+            >
               {review.profile.displayName}
             </Typography>
 
             {review.profile.badgeIds.length > 0 && (
-              <AvatarGroup
-                sx={{
-                  '> div': {
-                    width: 32,
-                    height: 32,
-                    bgcolor: 'transparent',
-                  },
-                }}
-              >
+              <AvatarGroup>
                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /> */}
                 {badges.map((badge) => (
                   <Tooltip
@@ -89,8 +101,11 @@ function Review({ review, uid }: Props) {
                   >
                     <Avatar
                       sx={{
+                        width: '1rem',
+                        height: '1rem',
+                        bgcolor: 'transparent',
                         border: `1px solid ${badge.color} !important`,
-                        '> svg': { color: badge.color },
+                        '> svg': { color: badge.color, fontSize: '0.825rem' },
                       }}
                     >
                       {badge.image}
@@ -101,91 +116,124 @@ function Review({ review, uid }: Props) {
             )}
           </div>
         }
+        subheader={
+          <Typography variant="body2" fontSize={12}>
+            {dayjs(review.createdAt).format('YY.M.D.dd')}
+          </Typography>
+        }
       />
-
       <Link
-        sx={{ display: 'flex' }}
         href={`${D_REVIEW_PATH}/${review.id}`}
         underline="none"
         color="inherit"
       >
-        <CardContent
-          sx={{
-            paddingY: 0,
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            display: 'block',
-          }}
-          // component={Link}
-        >
-          <Typography fontSize={18} fontWeight={600} noWrap>
-            {review.place?.place_name}
-          </Typography>
-
-          {(review.keywords?.length ?? 0) > 0 && (
-            <Typography variant="body1" noWrap>
-              {review.keywords?.map((t) => `#${t} `)}
-            </Typography>
-          )}
-
-          <div css={{ margin: '0.5rem' }}></div>
-
+        <CardContent sx={{ paddingTop: 0 }}>
           <Typography fontWeight={600} noWrap>
-            <CoffeeIcon
-              fontSize="small"
-              sx={{ verticalAlign: 'text-bottom', marginRight: '0.25rem' }}
-            />
             {review.menuName}
           </Typography>
-
-          {(review.coffee?.flavors?.length ?? 0) > 0 && (
-            <Typography variant="body1" noWrap>
-              {review.coffee?.flavors?.map((t) => `#${t} `)}
-            </Typography>
-          )}
+          <div css={{ marginLeft: '-0.25rem' }}>
+            {(review.coffee?.flavors?.length ?? 0) > 0 &&
+              review.coffee?.flavors?.map((flavor) => (
+                <Chip
+                  key={flavor}
+                  label={flavor}
+                  variant="filled"
+                  size="small"
+                />
+              ))}
+          </div>
         </CardContent>
-        <div css={{ flex: 1 }}></div>
-        {review.images.length ? (
+
+        {(review.images?.length ?? 0) > 0 ? (
           <CardMedia
             component="img"
             sx={{
-              width: '100px',
-              minWidth: '100px',
-              height: '100px',
-              marginRight: '1rem',
+              // height: '200px',
+
+              // height: { xs: '56.25vw', sm: '337.5px' },
+              height: { xs: '75vw', sm: '337.5px' },
               borderRadius: '4px',
             }}
             image={review.images[0].url}
             alt="thumbnail"
           />
         ) : null}
+
+        <CardContent
+          sx={{
+            ':last-child': { paddingBottom: '0' },
+
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            display: 'block',
+          }}
+        >
+          <div css={{ marginLeft: '-0.25rem', marginBottom: '0.5rem' }}>
+            {(review.keywords?.length ?? 0) > 0 &&
+              review.keywords?.map((keyword) => (
+                <Chip
+                  key={keyword}
+                  label={keyword}
+                  variant="filled"
+                  size="small"
+                />
+              ))}
+          </div>
+
+          <Typography
+            variant="body2"
+            whiteSpace="pre-line"
+            sx={{
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: '3',
+              WebkitBoxOrient: 'vertical',
+            }}
+          >
+            {review.text}
+          </Typography>
+        </CardContent>
       </Link>
 
-      <CardContent
-        sx={{ paddingBottom: 0, display: 'block' }}
-        component={Link}
-        href={`${D_REVIEW_PATH}/${review.id}`}
-        underline="none"
-        color="inherit"
-      >
-        <Typography variant="body1" noWrap>
-          {review.text}
-        </Typography>
-      </CardContent>
-
-      <CardContent sx={{ ':last-child': { paddingBottom: '1rem' } }}>
+      {/* <CardContent sx={{ paddingTop: '0.5rem' }}>
         <Typography variant="body2" fontSize={12}>
           {new Date(review.createdAt).toLocaleString()}
         </Typography>
+      </CardContent> */}
+
+      <CardContent>
+        <Card>
+          <CardHeader
+            title={
+              <Typography
+                fontWeight={600}
+                component={'a'}
+                href="#"
+                sx={{
+                  color: 'inherit',
+                  textDecoration: 'none',
+                  ':hover': { textDecoration: 'underline' },
+                }}
+                onClick={handleLocationClick}
+              >
+                {review.place?.place_name}
+                <span css={{ position: 'relative' }}>
+                  <PlaceIcon
+                    fontSize="small"
+                    sx={{ position: 'absolute', left: 0, top: 0 }}
+                  />
+                </span>
+              </Typography>
+            }
+            subheader={
+              <Typography variant="body2" fontSize={13}>
+                {review.place?.address_name}
+              </Typography>
+            }
+          />
+        </Card>
       </CardContent>
-
-      {/* <CardActions>
-
-        <IconButton aria-label="add to favorites">
-        <FavoriteIcon />
-        <FavoriteBorderIcon />
-      </IconButton>
-      </CardActions> */}
     </Card>
   );
 }

@@ -9,7 +9,7 @@ function Main(props: BoxProps) {
       sx={{
         maxWidth: 'sm',
         marginX: 'auto',
-        paddingY: { xs: '44px' /* , md: '64px' */ },
+        paddingY: '44px',
         ...sxProps,
       }}
     >
