@@ -156,7 +156,7 @@ const PlacePage: NextPage = () => {
   const [openImages, setOpenImages] = useState(false);
 
   useEffect(() => {
-    import('../../src/firebase/productsDetailsWithCafes.json').then((data) => {
+    import('src/firebase/productsDetailsWithCafes').then((data) => {
       setSetCoffees(data.default);
       setLoadingData(false);
     });

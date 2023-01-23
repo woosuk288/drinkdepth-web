@@ -4,9 +4,6 @@ import type { NextPage } from 'next';
 import HeaderD from 'src/d/HeaderD';
 
 import { LinearProgress, Typography } from '@mui/material';
-// import { useRouter } from 'next/router';
-// import { NextSeo } from 'next-seo';
-// import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Navbar from 'src/d/Navbar';
 import Meta from 'src/common/Meta';
@@ -60,7 +57,7 @@ function ManiaCafesContainer() {
     isLoading: isLoadingAllCafes,
     error,
   } = useQuery<ManiaCafeType[]>(MANIA_CAFES, async () => {
-    const result = await import('src/firebase/mania_cafes.json');
+    const result = await import('src/firebase/mania_cafes');
     return result.default;
   });
 

@@ -4,9 +4,6 @@ import type { NextPage } from 'next';
 import HeaderD from 'src/d/HeaderD';
 
 import { CardHeader, LinearProgress, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
-import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Navbar from 'src/d/Navbar';
 import Meta from 'src/common/Meta';
