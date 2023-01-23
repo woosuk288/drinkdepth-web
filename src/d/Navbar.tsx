@@ -121,11 +121,11 @@ export default function Navbar() {
 
           <Tooltip
             title={
-              <div css={{ padding: '1rem 1.25rem', position: 'relative' }}>
+              <div css={{ padding: '0.75rem 1.5rem', position: 'relative' }}>
                 <IconButton
                   color="inherit"
                   size="small"
-                  sx={{ position: 'absolute', right: -8, top: 0 }}
+                  sx={{ position: 'absolute', right: -8, top: -4 }}
                   onClick={openDialog}
                 >
                   <CancelOutlinedIcon />

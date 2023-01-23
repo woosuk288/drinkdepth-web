@@ -1,6 +1,6 @@
-import { useInfiniteQuery, useQuery } from 'react-query';
-import { FETCH_REVIEWS_KEY, FETCH_REVIEW_COUNT_KEY } from 'src/utils/queryKeys';
-import { fetchReviewCount, fetchReviews } from 'src/firebase/services';
+import { useInfiniteQuery } from 'react-query';
+import { FETCH_REVIEWS_KEY } from 'src/utils/queryKeys';
+import { fetchReviews } from 'src/firebase/services';
 
 import {
   Button,
@@ -17,16 +17,18 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Review from './Review';
 import { useFirestore } from 'reactfire';
 import FetchMoreButton from './FetchMoreButton';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SearchRegionDialog from './SearchRegionDialog';
 import { useRouter } from 'next/router';
 import { D_HOT_BEANS_PATH, D_MANIA_CAFES_PATH } from 'src/utils/routes';
 import Link from 'src/common/Link';
 import Image from 'next/image';
+import { AddressType } from './SearchRegion';
 
+const LIMIT = 15;
 function ReviewHome() {
   const [addressOpen, setAddressOpen] = useState(false);
-  const [testReview, setTestReview] = useState<any>();
+  const [addressResult, setAddressResult] = useState<AddressType>();
 
   const router = useRouter();
   const db = useFirestore();
@@ -50,7 +52,7 @@ function ReviewHome() {
   }, [router]);
 
   const handleOpen = () => {
-    console.log('router: ', router);
+    // console.log('router: ', router);
     router.push(router.pathname + '?q=', undefined, { shallow: true });
     setAddressOpen(true);
   };
@@ -59,30 +61,27 @@ function ReviewHome() {
     setAddressOpen(false);
   };
 
-  const { data: reviewCount = 0, isLoading: isLoadingCount } = useQuery(
-    FETCH_REVIEW_COUNT_KEY,
-    () => fetchReviewCount(db)
-  );
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
     useInfiniteQuery(
-      FETCH_REVIEWS_KEY,
-      ({ pageParam = new Date().toISOString() }) => {
-        return fetchReviews(db, pageParam);
+      FETCH_REVIEWS_KEY(addressResult?.address_name ?? ''),
+      ({
+        pageParam = addressResult?.address_name || new Date().toISOString(),
+      }) => {
+        // console.log('pageParam : ', pageParam);
+        return fetchReviews(db, pageParam, LIMIT);
       },
       {
         getNextPageParam: (lastPage, allPages) => {
           return (
-            allPages.flat().length < reviewCount &&
-            new Date(lastPage[lastPage.length - 1].createdAt).toISOString()
+            lastPage.length === LIMIT &&
+            (addressResult?.address_name ||
+              lastPage[lastPage.length - 1].createdAt)
           );
         },
-        enabled: reviewCount > 0,
       }
     );
 
-  if (isLoadingCount || isLoading) return <LinearProgress />;
-
-  // console.log('testReview : ', testReview);
+  if (isLoading) return <LinearProgress />;
 
   return (
     <>
@@ -91,7 +90,7 @@ function ReviewHome() {
           display: 'flex',
 
           height: '140px',
-          '> div': { padding: '1rem', flex: 1, position: 'relative' },
+          '> .MuiCard-root': { padding: '1rem', flex: 1, position: 'relative' },
           '> div + div': { marginLeft: '0.125rem' },
           '.gradient': {
             backgroundImage:
@@ -152,7 +151,7 @@ function ReviewHome() {
             sx={{ fontSize: '1rem', marginRight: '1.5rem' }}
             onClick={handleOpen}
           >
-            {testReview?.address?.address_name ?? '위치 선택'}
+            {addressResult?.address_name ?? '위치 선택'}
           </Button>
         </div>
         <div css={{ '& > div': { marginBottom: '0.125rem' } }}>
@@ -203,9 +202,11 @@ function ReviewHome() {
         <SearchRegionDialog
           open={addressOpen}
           handleClose={handleClose}
-          setter={setTestReview}
+          setter={setAddressResult}
           hasHeader={true}
-          headerCenterComponent="관심지역을 설정해 주세요"
+          headerCenterComponent="관심지역 선택"
+          // 관심지역을 설정해 주세요
+          // 관심지역 설정
         />
       )}
       {/* 카페 이름... 도시군구동면 까지는 가능(도로명). 모각코 등 */}

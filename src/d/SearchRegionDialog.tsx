@@ -21,7 +21,7 @@ const Transition = React.forwardRef(function Transition(
 type Props = {
   open: boolean;
   handleClose: () => void;
-  setter: SetterOrUpdater<any>;
+  setter: SetterOrUpdater<AddressType | undefined>;
   headerCenterComponent?: React.ReactNode;
   hasHeader?: boolean;
 };
@@ -34,15 +34,13 @@ export default function SearchRegionDialog({
   hasHeader = false,
 }: Props) {
   const handleSelect = (address: AddressType) => {
-    setter((prev: any) => ({ ...prev, address }));
+    // console.log('address : ', address);
+    setter(address);
     handleClose();
   };
 
   return (
     <div>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Open full-screen dialog
-      </Button> */}
       <Dialog
         fullScreen
         open={open}

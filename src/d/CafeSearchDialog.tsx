@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 
 import Slide from '@mui/material/Slide';
@@ -44,9 +43,6 @@ export default function CafeSearchDialog({
 
   return (
     <div>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Open full-screen dialog
-      </Button> */}
       <Dialog
         fullScreen
         open={open}

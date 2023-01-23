@@ -7,7 +7,6 @@ import {
   DocumentData,
   DocumentSnapshot,
   Firestore,
-  getCountFromServer,
   getDoc,
   getDocs,
   increment,
@@ -534,25 +533,40 @@ export const fetchThumbReviews = async (
   return reveiews;
 };
 
-export const fetchReviews = async (db: Firestore, createdAt: Date) => {
-  const LIMIT = 15;
+export const fetchReviews = async (
+  db: Firestore,
+  cursor: string, // createdAt or addressName
+  // createdAt: string,
+  // addressName: string = '',
+  LIMIT: 15
+) => {
+  // console.log('cursor : ', cursor);
 
-  const q = query(
-    collection(db, DB_REVIEWS),
-    orderBy('createdAt', 'desc'),
-    limit(LIMIT),
-    startAfter(createdAt)
-  );
+  const cursorType = isNaN(new Date(cursor).getDate())
+    ? 'addressName'
+    : 'createdAt';
+
+  const q =
+    cursorType === 'createdAt'
+      ? query(
+          collection(db, DB_REVIEWS),
+          orderBy('createdAt', 'desc'),
+          startAfter(cursor),
+          limit(LIMIT)
+        )
+      : query(
+          collection(db, DB_REVIEWS),
+          // where('createdAt', '<=', createdAt), // 범위 쿼리 2개 안됨...
+          where('place.address_name', '>=', cursor),
+          where('place.address_name', '<=', cursor + '\uf8ff'),
+          orderBy('place.address_name'),
+          startAfter(cursor),
+          limit(LIMIT)
+        );
+
   const querySnapshot = await getDocs(q);
 
   return getDocsData<DReviewType>(querySnapshot);
-};
-
-export const fetchReviewCount = async (db: Firestore) => {
-  const q = query(collection(db, DB_REVIEWS), orderBy('createdAt', 'desc'));
-
-  const snapshot = await getCountFromServer(q);
-  return snapshot.data().count;
 };
 
 export const fetchProfile = async (db: Firestore, profileId: string) => {
