@@ -91,7 +91,7 @@ function ReviewHome() {
 
           height: '140px',
           '> .MuiCard-root': { padding: '1rem', flex: 1, position: 'relative' },
-          '> div + div': { marginLeft: '0.125rem' },
+          '> .MuiCard-root + .MuiCard-root': { marginLeft: '0.125rem' },
           '.gradient': {
             backgroundImage:
               'linear-gradient(142deg,rgba(0,0,0,0.1),hsla(0,0%,100%,0) 65%)',
@@ -110,29 +110,37 @@ function ReviewHome() {
           },
         }}
       >
-        <Card>
-          <Link href={D_MANIA_CAFES_PATH} underline="none" color={'inherit'}>
-            <div className="gradient" />
-            <Image
-              src={'/images/reviewhome_cafe.jpg'}
-              alt="추천 카페"
-              layout="fill"
-              objectFit="cover"
-            />
-            <Typography variant="h6">추천 카페</Typography>
-          </Link>
+        <Card
+          component={Link}
+          href={D_MANIA_CAFES_PATH}
+          underline="none"
+          color={'inherit'}
+        >
+          <div className="gradient" />
+          <Image
+            src={'/images/reviewhome_cafe.jpg'}
+            alt="추천 카페"
+            layout="fill"
+            // width={'100%'}
+            // height="100%"
+            objectFit="cover"
+          />
+          <Typography variant="h6">추천 카페</Typography>
         </Card>
-        <Card>
-          <Link href={D_HOT_BEANS_PATH} underline="none" color={'inherit'}>
-            <div className="gradient" css={{}} />
-            <Image
-              src={'/images/reviewhome_bean.jpg'}
-              alt="핫(HOT) 원두 5+5"
-              layout="fill"
-              objectFit="cover"
-            />
-            <Typography variant="h6">핫 원두 5+5</Typography>
-          </Link>
+        <Card
+          component={Link}
+          href={D_HOT_BEANS_PATH}
+          underline="none"
+          color={'inherit'}
+        >
+          <div className="gradient" css={{}} />
+          <Image
+            src={'/images/reviewhome_bean.jpg'}
+            alt="핫(HOT) 원두 5+5"
+            layout="fill"
+            objectFit="cover"
+          />
+          <Typography variant="h6">핫 원두 5+5</Typography>
         </Card>
       </div>
 

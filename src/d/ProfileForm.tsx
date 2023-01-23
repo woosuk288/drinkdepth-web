@@ -156,6 +156,7 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
                     height: { xs: 80, sm: 120, md: 160 },
                     marginRight: '1rem',
                     cursor: 'pointer',
+                    bgcolor: 'rgba(0, 0, 0, 0.08)',
                   }}
                 ></Avatar>
               </label>
@@ -191,7 +192,7 @@ function ProfileForm({ me, submitRef, setIsEditValid }: ProfileFormProps) {
           sx={{
             '& .MuiFormControl-root': {
               width: '100%',
-              maxWidth: '400px',
+              // maxWidth: '400px',
               marginBottom: '0.5rem',
             },
             '& .MuiFormLabel-root': {

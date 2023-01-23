@@ -48,9 +48,7 @@ function ManiaCafe({ cafe }: Props) {
         title={
           <Typography
             noWrap
-            variant="subtitle2"
-            // fontWeight={500}
-            fontSize={15}
+            fontWeight={500}
             sx={{ width: { xs: '200px', sm: '100%' } }}
           >
             {cafe.name}
@@ -63,7 +61,8 @@ function ManiaCafe({ cafe }: Props) {
             color="text.secondary"
             sx={{ width: { xs: '200px', sm: '100%' } }}
           >
-            {getSido(cafe.sido)} {cafe.gungu} {cafe.dong} • {cafe.subway}
+            {getSido(cafe.sido)} {cafe.gungu} {cafe.dong}
+            {cafe.subway && ' • ' + cafe.subway}
           </Typography>
         }
       />

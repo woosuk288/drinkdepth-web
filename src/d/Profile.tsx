@@ -30,9 +30,19 @@ export default function Profile({ profile }: Props) {
       >
         <Avatar
           src={profile.photoURL}
-          sx={{ width: 56, height: 56, marginRight: '1rem' }}
+          sx={{
+            width: 56,
+            height: 56,
+            marginRight: '1rem',
+            bgcolor: 'rgba(0, 0, 0, 0.08)',
+          }}
         />
-        <Typography fontWeight={600}>{profile.displayName}</Typography>
+        <div>
+          <Typography fontWeight={600}>{profile.displayName}</Typography>
+          <Typography noWrap variant="body2" color="text.secondary">
+            리뷰 {profile.reviewCount ?? 0}
+          </Typography>
+        </div>
       </div>
       <Button
         variant="contained"

@@ -71,7 +71,7 @@ function PlaceLocation({ place }: Props) {
       </Map>
 
       <div css={{ padding: '1rem', marginTop: '1rem' }}>
-        <Typography fontSize={18} align="center">
+        <Typography fontSize={18} align="center" fontWeight={500}>
           {place.road_address_name}
         </Typography>
       </div>
@@ -80,17 +80,18 @@ function PlaceLocation({ place }: Props) {
         css={{
           display: 'flex',
           justifyContent: 'center',
-          '> button + button': { marginLeft: '0.5rem' },
+          marginBottom: '3rem',
+          '> button + button': { marginLeft: '1.5rem' },
         }}
       >
         <IconButton onClick={handleNaverMap}>
-          <img src="/images/naver_map.png" alt="카카오맵" width={64} />
+          <img src="/images/naver_map.png" alt="네이버맵" width={56} />
         </IconButton>
         <IconButton onClick={handleKakaoMap}>
-          <img src="/images/kakao_map.png" alt="카카오맵" width={64} />
+          <img src="/images/kakao_map.png" alt="카카오맵" width={56} />
         </IconButton>
         <IconButton onClick={handleGoogleMap}>
-          <img src="/images/google_map.png" alt="카카오맵" width={64} />
+          <img src="/images/google_map.png" alt="구글맵" width={56} />
         </IconButton>
         {/* TODO: T map - https://sir.kr/g5_tip/13235 */}
       </div>
