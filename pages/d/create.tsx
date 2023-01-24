@@ -79,7 +79,7 @@ const CreatePage: NextPage = () => {
 
   return (
     <>
-      <NextSeo title="DrinkDepth | 리뷰 생성" />
+      <NextSeo title="어떤 카페 - 리뷰 생성" />
       <AuthContainer>
         <HeaderD
           leftIcon="back"

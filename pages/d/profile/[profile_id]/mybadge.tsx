@@ -3,14 +3,14 @@ import type { NextPage } from 'next';
 
 import HeaderD from 'src/d/HeaderD';
 
-import { LinearProgress, Typography } from '@mui/material';
+import { LinearProgress } from '@mui/material';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import AuthContainer from 'src/d/AuthContainer';
 import Main from 'src/d/Main';
 import Navbar from 'src/d/Navbar';
 import BadgeList from 'src/d/BadgeList';
-import { getAuth } from 'firebase/auth';
+// import { getAuth } from 'firebase/auth';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import {
   checkNewBadge,
@@ -23,7 +23,7 @@ import { FETCH_MY_BADGES_KEY, FETCH_PROFILE_KEY } from 'src/utils/queryKeys';
 const BadgePage: NextPage = () => {
   return (
     <>
-      <NextSeo title="DrinkDepth | 업적 보기" />
+      <NextSeo title="업적 보기 | 어떤 카페" />
       <AuthContainer>
         <HeaderD leftIcon="back" centerComponent={'활동 배지'} />
 

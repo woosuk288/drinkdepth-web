@@ -24,7 +24,7 @@ import { useFirestore, useUser } from 'reactfire';
 const ProfilePage: NextPage /* <Props> */ = () => {
   return (
     <>
-      <NextSeo title="DrinkDepth | 프로필" />
+      <NextSeo title="프로필 | 어떤 카페" />
       <AuthContainer>
         <ProfileContainer />
       </AuthContainer>

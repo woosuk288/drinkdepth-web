@@ -73,7 +73,7 @@ const ReviewEditPage: NextPage = () => {
 
   return (
     <>
-      <NextSeo title="DrinkDepth | 리뷰 수정" />
+      <NextSeo title="리뷰 수정 | 어떤 카페" />
       <AuthContainer>
         <HeaderD
           leftIcon="back"

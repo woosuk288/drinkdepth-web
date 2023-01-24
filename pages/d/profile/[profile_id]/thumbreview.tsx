@@ -33,7 +33,7 @@ const ThumbReviewPage: NextPage = () => {
 
   return (
     <>
-      <NextSeo title="DrinkDepth | 찜한 리뷰" />
+      <NextSeo title="찜한 리뷰 | 어떤 카페" />
       <AuthContainer>
         <HeaderD
           leftIcon="back"

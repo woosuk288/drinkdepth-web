@@ -14,7 +14,7 @@ import Settings from 'src/d/Settings';
 const SettingsPage: NextPage = () => {
   return (
     <>
-      <NextSeo title="DrinkDepth | 설정" />
+      <NextSeo title="설정 | 어떤 카페" />
       <AuthContainer>
         <HeaderD centerComponent={'설정'} />
 

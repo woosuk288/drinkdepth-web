@@ -47,7 +47,7 @@ const ReviewDetailPage: NextPage<Props> = ({ review }) => {
 
   return (
     <>
-      <NextSeo title="DrinkDepth | 리뷰 상세" />
+      <NextSeo title="리뷰 상세 | 어떤 카페" />
       {/* <AuthContainer> */}
       <HeaderD
         leftIcon="back"

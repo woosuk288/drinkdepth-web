@@ -20,11 +20,11 @@ const CafePage: NextPage = () => {
     ? JSON.parse(router.query.place as string)
     : null;
 
-  if (!place) return <NextSeo title="DrinkDepth | 카페 위치" />;
+  if (!place) return <NextSeo title="어떤 카페 - 카페 위치" />;
 
   return (
     <>
-      <NextSeo title="DrinkDepth | 카페 위치" />
+      <NextSeo title="어떤 카페 - 카페 위치" />
       {/* <AuthContainer> */}
       <HeaderD
         centerComponent={

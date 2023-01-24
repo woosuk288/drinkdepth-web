@@ -13,7 +13,7 @@ import { O2O_PLACE_PATH } from 'src/utils/routes';
 const PlacePage: NextPage = () => {
   return (
     <>
-      <NextSeo title="DrinkDepth | 지도 리뷰" />
+      <NextSeo title="리뷰 지도 | 어떤 카페" />
       <AuthContainer>
         <PlaceContainer />
         {/* <HeaderD leftIcon="back" centerComponent={'지도 리뷰'} />
