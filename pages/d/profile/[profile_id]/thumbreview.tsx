@@ -88,10 +88,10 @@ function ThumbReviewContainer() {
   return (
     <>
       <div css={{ '& > div': { marginBottom: '0.125rem' } }}>
-        {data?.pages.map((reviews) =>
+        {data?.pages.map((reviews, i) =>
           reviews.map((review) =>
             review?.id ? (
-              <Review key={review.id} review={review} uid={uid} />
+              <Review key={review.id} review={review} uid={uid} index={i} />
             ) : (
               <div>리뷰가 존재하지 않습니다.</div>
             )

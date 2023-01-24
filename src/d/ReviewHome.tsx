@@ -26,7 +26,10 @@ import Image from 'next/image';
 import { AddressType } from './SearchRegion';
 
 const LIMIT = 15;
-function ReviewHome() {
+type Props = {
+  initialReviews: DReviewType[];
+};
+function ReviewHome({ initialReviews }: Props) {
   const [addressOpen, setAddressOpen] = useState(false);
   const [addressResult, setAddressResult] = useState<AddressType>();
 
@@ -67,7 +70,6 @@ function ReviewHome() {
       ({
         pageParam = addressResult?.address_name || new Date().toISOString(),
       }) => {
-        // console.log('pageParam : ', pageParam);
         return fetchReviews(db, pageParam, LIMIT);
       },
       {
@@ -78,6 +80,9 @@ function ReviewHome() {
               lastPage[lastPage.length - 1].createdAt)
           );
         },
+        initialData: addressResult?.address_name
+          ? undefined
+          : { pageParams: [undefined], pages: [initialReviews] },
       }
     );
 
@@ -145,7 +150,7 @@ function ReviewHome() {
       </div>
 
       <div>
-        <div css={{ marginTop: '1rem', textAlign: 'center' }}>
+        <div css={{ marginTop: '2rem', textAlign: 'center' }}>
           {/* <IconButton>
             <SearchIcon />
             <Typography fontWeight={600}>위치</Typography>
@@ -169,8 +174,10 @@ function ReviewHome() {
         <span> - 메뉴이름</span>
       </div> */}
 
-          {data?.pages.map((reviews) =>
-            reviews.map((review) => <Review key={review.id} review={review} />)
+          {data?.pages.map((reviews, i) =>
+            reviews.map((review) => (
+              <Review key={review.id} review={review} index={i} />
+            ))
           )}
         </div>
         <div css={{ margin: '0.5rem 0' }}>

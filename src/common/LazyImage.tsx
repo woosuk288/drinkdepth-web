@@ -8,6 +8,7 @@ interface ILazyImage {
   alt?: string;
   style?: React.CSSProperties;
   options?: IntersectionObserverInit;
+  isImgLoaded?: boolean;
 }
 
 const LazyImage: React.FC<ILazyImage> = ({
@@ -17,9 +18,10 @@ const LazyImage: React.FC<ILazyImage> = ({
   options = {
     // threshold: 0.5, // 확인을 위해 이미지 절반이 나타날 때 로딩한다.
   },
+  isImgLoaded = false,
 }): JSX.Element => {
   // state
-  const [isLoaded, setIsLoaded] = React.useState<boolean>(false); // 실제 화면에 보여지고 있는지 여부를 확인
+  const [isLoaded, setIsLoaded] = React.useState<boolean>(isImgLoaded); // 실제 화면에 보여지고 있는지 여부를 확인
 
   // ref
   const imgRef = React.useRef<HTMLImageElement>(null); // 이미지 태그 요소

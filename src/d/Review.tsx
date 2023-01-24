@@ -21,12 +21,14 @@ import { D_CAFE_PATH, D_REVIEW_PATH } from 'src/utils/routes';
 
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
+import LazyImage from 'src/common/LazyImage';
 
 type Props = {
   review: DReviewType;
   uid?: string;
+  index: number;
 };
-function Review({ review, uid }: Props) {
+function Review({ review, uid, index }: Props) {
   const router = useRouter();
 
   const badges = allBadges.filter((badge) =>
@@ -146,7 +148,7 @@ function Review({ review, uid }: Props) {
 
         {(review.images?.length ?? 0) > 0 ? (
           <CardMedia
-            component="img"
+            // component="img"
             sx={{
               // height: '200px',
 
@@ -154,9 +156,15 @@ function Review({ review, uid }: Props) {
               height: { xs: '75vw', sm: '337.5px' },
               borderRadius: '4px',
             }}
-            image={review.images[0].url}
-            alt="thumbnail"
-          />
+            // image={review.images[0].url}
+          >
+            <LazyImage
+              src={review.images[0].url}
+              alt="thumbnail"
+              options={{ rootMargin: '400px' }}
+              isImgLoaded={index < 3}
+            />
+          </CardMedia>
         ) : null}
 
         <CardContent

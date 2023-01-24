@@ -88,8 +88,8 @@ function MyReviewContainer() {
     <>
       <div css={{ '& > div': { marginBottom: '0.125rem' } }}>
         {data?.pages.map((reviews) =>
-          reviews.map((review) => (
-            <Review key={review.id} review={review} uid={uid} />
+          reviews.map((review, i) => (
+            <Review key={review.id} review={review} uid={uid} index={i} />
           ))
         )}
       </div>

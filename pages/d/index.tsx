@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
+import { GetServerSideProps } from 'next';
 
 import HeaderD from 'src/d/HeaderD';
 
@@ -12,6 +13,7 @@ import Image from 'next/image';
 import Meta from 'src/common/Meta';
 
 import { D_PATH } from 'src/utils/routes';
+import { fetchData } from 'src/firebase/api';
 
 const metaData = {
   title: '어떤 카페 - 드링크뎁스',
@@ -21,7 +23,11 @@ const metaData = {
   canonical: D_PATH,
 };
 
-const MainPage: NextPage = () => {
+type Props = {
+  data: DReviewType[];
+};
+
+const CafeReviewHomePage: NextPage<Props> = ({ data }) => {
   return (
     <>
       <Meta data={metaData} />
@@ -44,7 +50,7 @@ const MainPage: NextPage = () => {
       />
 
       <Main>
-        <ReviewHome />
+        <ReviewHome initialReviews={data} />
       </Main>
 
       <Navbar />
@@ -52,4 +58,11 @@ const MainPage: NextPage = () => {
   );
 };
 
-export default MainPage;
+export default CafeReviewHomePage;
+
+// This gets called on every request
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const url = process.env.NEXT_PUBLIC_SERVER_URL + '/reviews' + '/ssr';
+  const data = await fetchData<DReviewType[]>(url);
+  return { props: { data } };
+};
