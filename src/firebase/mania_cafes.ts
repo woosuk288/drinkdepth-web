@@ -1,34 +1,51 @@
 const mania_cafes_data = [
   {
     name: '타짜도르 도곡점',
-    logo: 'https://cdn.imweb.me/upload/S201812145c13535647d46/5c174cf2c3395.png',
     address: '서울 강남구 남부순환로 2753 롯데시네마 도곡 1층',
     sido: '서울특별시',
     gungu: '강남구',
     dong: '도곡동',
+    '동 or 역 (DC)': '강남',
     subway: '매봉역',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '이탈리아',
     description:
       '이태리 로마 타짜도르 카페와 정식 라이선스를 체결한 매장입니다.',
+    logo: '/images/cafe_logos/19625037_128993034359338_8097512481229897728_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=110&_nc_ohc=gAyYq8S8pHgAX_ck4SO&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDbKIRKMzP4FClqHNo9PvRnGXTUdq6Ek6UclTfAQq_00A&oe=63DA99BC&_nc_sid=8fd12b',
     'images.0':
       'https://ldb-phinf.pstatic.net/20201028_220/1603869980825o0iyA_JPEG/_thEhTQwh-u08UrfG4SaGBB6.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201023_6%2F1603382199246GkXES_JPEG%2FoQ1iUCEmosX_JDKaO8yWALLy.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '리얼빈 로스팅하우스',
-    logo: 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20170222_267%2F1487691212592Rnctk_JPEG%2F186172406352513_0.jpeg',
     address: '서울 강남구 자곡로7길 22-2 b1 리얼빈 로스팅하우스',
     sido: '서울특별시',
     gungu: '강남구',
     dong: '자곡동',
+    '동 or 역 (DC)': '강남',
+    subway: '',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,가성비',
     description:
       '원두커피, 더치커피 전문업체 리얼빈 로스팅하우스가 여러분을 환영합니다.\n저희의 커피를 최고라고 말하는 자만은 하지 않겠습니다.\n다만, 회사의 모토인 가성비에 있어 여러분을 실망시켜 드리지 않음을 약속드립니다.\n\n좋은 가격에 드리는 고품질의 원두, 진하게 내려 맛과 향미가 살아있는 콜드브루.\n여러분의 삶에 작은 쉼표를 찍어드릴수 있기를 희망합니다.\n\nBe Real, Be Happy.\nRealBean Roasting House',
+    logo: '/images/cafe_logos/122292822_997969057348741_2723096057289004599_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=101&_nc_ohc=FL9LRgNBIX8AX-me9DW&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBKZb7nGzSbTDCvfoUFQ_YuRlVdMukNposIqVF02N-h9Q&oe=63DABFEC&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA3MjdfMTc5%2FMDAxNjU4ODk4MzcwMzMy._gJjo5do3VXfVX9l8SGymqTRqFx7cx05gCuDE9y0Bukg.LydRFEl0tyk55wNGUIUOPbjR81cIUXdPaubkcooM7H4g.JPEG%2Fupload_38c9dce57fdf101996c738f88e673051.jpeg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA3MjdfNjQg%2FMDAxNjU4ODk4MzcwMDc2.sRF8ASoQ1H6pnZkP1Ccl5KWCb1Je-mpXLGry1fZcC8sg.QQPooqmQfAq7UKx1qRh6B3mRTlHW3MAjplr2qVs6k_gg.JPEG%2Fupload_09a9843a8baffab2c6accde17a1d792d.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커피스니퍼 센터필드점',
@@ -36,16 +53,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강남구',
     dong: '역삼동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '역삼역',
     wifi: 'O',
+    pet: '',
     parking: 'O',
     tags: '로스터리',
     description:
       '커피 스니퍼 (Koffee Sniffer)는 커피를 사랑하는 여러 바리스타들이 모여 심혈을 기울여 만든 로스터리 브랜드 입니다. 커피 한 잔이 어제보다 나은 오늘을 만들 수 있다 믿고, 향기로운 커피를 끊임없이 탐닉하고 연구합니다.',
+    logo: '/images/cafe_logos/87784053_205131330558753_6351436270555627520_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=109&_nc_ohc=69k9vl6Bi9gAX_DToch&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAhtI6RBh33jEbxDY28mDwDKsphykIyALds_dV0ok6nXQ&oe=63D7E7BA&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMjdfMjE2%2FMDAxNjM3OTkyNjcyMTUy.wCCl0MpVoXC8uFJ2PeP2ltLO0rpk868tWzTadDWCA_Mg.V5_Xzk7ahMVIGwoGnDcaOKg6nVtGdKTq_2B-_nW0CsUg.JPEG.jainlee_star%2Foutput_1278544775.jpg',
     'images.1':
       'https://ldb-phinf.pstatic.net/20210712_172/1626053073569zulLS_JPEG/7WYwX4lsK2GDQxDP9_NeXId0.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '인텔리젠시아커피 디스트리뷰터 MH',
@@ -54,16 +78,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강남구',
     dong: '논현동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '신사역',
     wifi: 'O',
+    pet: '',
     parking: 'O',
     tags: '스페셜티커피',
     description:
       "※ 주차가능( 방문전 확인 전화 ) ※\n\n*USA 시카고에서 로스팅한 스페셜티 커피 ' 인텔리젠시아 ' 는 스페셜티 커피 산업을 주도하는 브랜드로서 옳은 방향성으로 커피를 만듭니다.\n\n*우리는 Thoughtfully sourced and roasted by intelligentsia coffee 인텔리젠시아 커피를 소개합니다.",
+    logo: '/images/cafe_logos/228526523_1858578200986051_2951173184902865517_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=107&_nc_ohc=TfxsyVcD8TkAX8KdclR&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfD19ldNwMxpKMtEHrWhFAF5Qs_aY3P7T-CZy-emnEL-eA&oe=63DB1A76&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210309_76%2F1615249734227LzJNj_JPEG%2FPBlioK9WvH4_Bf1Deko5Iq63.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210618_33%2F1623996457196N68fG_JPEG%2FFh_FE09hRJdnxYc25c5QgvD_.jpg',
+    FIELD16: '',
+    메뉴판: '텍스트,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '벙커컴퍼니 압구정점',
@@ -71,15 +102,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강남구',
     dong: '신사동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '압구정역',
     wifi: 'O',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피,대회 수상',
     description:
       '(주)벙커컴퍼니\n\n2019 Swift Latte Art Match Sponsor\n2019 Korea Barista Awards Sponsor\n2019 Korea Brewers Cup (국가대표 선발전) Sponsor\n2020 Korea National Barista (국가대표 선발전) Sponsor\n2022 Korea National Barista & KCIGS (국가대표선발전) Sponsor.\n\nAWARD\n2011 Espresso Throw Down 1위.\n2012 Barista Association of Korea Barista Championship 1위.\n2020 Korea Barista Awards Espresso 대상.',
+    logo: '/images/cafe_logos/15276524_1707641946216200_9149890961805934592_a.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=108&_nc_ohc=C876FGawPp4AX9wxqCF&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCEryjrgNF1nVRaCZeJ8Jz_IrKFluB5rmc9VwsojPr3rA&oe=63DB94DD&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210924_32%2F1632452759303yTAj8_JPEG%2FWf0RbPgaIKGhViH8TgBNhjlQ.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMDVfMTAy%2FMDAxNjcyOTE0MTc3OTQ1.PTJL_02MiSJk-uMHHcImeip0HAVEIAwQqWBUiPeA5HEg.2967bZW7DUSeyxXePGnSCNAYEsupURN74tuu6x4qhKwg.JPEG%2F1D4CD5BF-9005-419B-9D4B-AC1D8573B159.jpeg',
+    FIELD16: '',
+    메뉴판: '이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '스몰 배치 서울(Small Batch Seoul)',
@@ -87,16 +126,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강남구',
     dong: '신사동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '압구정역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '호주',
     description:
       'Small Batch Roasting co.의 국내 공식 수입원 호주 멜버른 스페셜티 커피 Small Batch Australia 의 서울 쇼룸\n\n호주 멜버른의 대표적인 마이크로로스터 스몰배치의 서울 쇼룸. 커피 음료에 집중한 메뉴 구성으로, 필터커피와 피넛버터크림이 올려진 스피키가 시그니처. 도산공원 인근 주택가 반지하에 아담하게 자리하고 있어 좌석 수는 적은 편이지만, 호주 커피의 맛을 즐기려는 이들이 많이 찾는다.',
+    logo: '/images/cafe_logos/221234907_190265746314520_4739321935766456494_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=104&_nc_ohc=jFyXvkOELZAAX_0ACEr&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDCPsRBHd5hBaFN1jXTJwAKgjGgmZ6L6Q3z1YnxK614yg&oe=63DA8671&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20220401_219%2F1648813670578Rzl9m_JPEG%2Fupload_cc7a87defa285f3d439634f22ce60d38.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MTFfMjQ4%2FMDAxNjMxMzYwNDc0NDk4.6huibV-AjQHyUVQ4F98dCkytoFJwrwaG8uMhaolHdEog.V9luLcF3DkY7pH62CXxV38ronm3m-0DJEp872iLa6Agg.JPEG.rypher%2FBED41C9B-948B-4BC9-8D34-F2EBF61DF29E.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지,여러메뉴판',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커피몽타주',
@@ -104,15 +150,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강동구',
     dong: '성내동',
+    '동 or 역 (DC)': '강동구청',
     subway: '강동구청역',
     wifi: 'O',
+    pet: '',
+    parking: '',
     tags: '로스터리',
     description:
       '로스팅 컴퍼니 커피몽타주에서 운영하는 카페로 커피몽타주의 대표 에스프레소 블렝딩 A Bittersweet Life로 추출하는 에스프레소 베리에이션 음료들과 더불어 다양한 커피 산지들의 싱글오리진 브루잉 커피들도 맛볼 수 있다. 다양한 커피 추출도구와 원두도 판매하고 있다.',
+    logo: '/images/cafe_logos/82305333_1380776672117958_7427076921072025600_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=106&_nc_ohc=gy-2hE9iUYsAX-KGOvB&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfD-wSGsGjJaQIopa_YnWrjbrXvGcgXD7A06-0v5wZKdUA&oe=63DAD9E1&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMDNfNiAg%2FMDAxNjE0NzUzMTE4NjY2.HciDulxarPnLfH02k-g1Kv7CtrK1C-SKyuqLCKGLDUAg.3gmmsaUeR1YrENCDPdjfsBIaI9mt6-p1a3vFsarxCH8g.JPEG.gofl9387%2FIMG_3464.JPG',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200104_222%2F1578146510582sjBit_JPEG%2FU88ytcKz5B4v5bW7Rtgm8Rfn.jpgg',
+    FIELD16: '',
+    메뉴판: '등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '애크로매틱 커피 컴퍼니',
@@ -120,15 +174,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강동구',
     dong: '성내동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '강동구청역',
+    wifi: '',
+    pet: '',
     parking: 'O',
     tags: '스페셜티커피',
     description:
       '스페셜티 커피 전문점으로 에스프레소와 브루잉 커피가 숙련된 바리스타를 통해 서비스된다. 매장에 별도의 공간을 두어 로스팅하고 있으며, 강배전 커피도 스페셜티 커피로 사용하고 있다는 점이 특징. 다양한 산지의 싱글 오리진 커피를 매년 지속해서 소개하고 있다.',
+    logo: '/images/cafe_logos/290343242_331229569212510_1503811382989820094_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=106&_nc_ohc=Omoc_vojbIoAX-NoDD6&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfB69npH1Ce_nav8a-3B9sBaY654-E1KneFF6UPFM3w8Jg&oe=63DB2261&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA2MjlfNzEg%2FMDAxNjU2NTEwMDcyMTMw.R2RDqpGe_vyeHYaKmRYHnwcVYVp2Mtub9hiBX6qiRIMg.oYwK8vqAsxYKfBf160OntCvW4b5JutPuNVgQxPuZAkcg.JPEG.smilefaceu%2F20220628%25A3%25DF192657.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMDhfMTMg%2FMDAxNjczMTgzMTc3NjQx.7HMGTRxtsuTMzTEQnrpC1XqPLO57JYBiW33Q9oZw4Kcg.ev6PZuvVOBEW3GPuCLj6q_Bp2WL5Iwo9wE_emLI6m2og.JPEG%2F3C537B5A-59E6-4F22-BA8E-4AE1434657FE.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '맥그레고르',
@@ -136,15 +198,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강동구',
     dong: '성내동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '강동구청역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '석탄단',
     description: '신 맛 없는 석탄단 카페 맥그레고르',
+    logo: '/images/cafe_logos/306737569_630869861942392_321363842131992956_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=104&_nc_ohc=_uQUXEElkTUAX-EuMmR&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAb_QGDjjZRMxMjybhDzmrxzSOAmjrgRH-Sx93pivnNMw&oe=63D9F535&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMTFfOTUg%2FMDAxNjM2NjA4NTYzODc0.d1yztIhoQwgUzjcTyAZyl-mbZPLqKGkhymgl2fA8_EMg.Macd01On8c-7-FugAVUbHfUKHL1ZVIYpNAiSW6TspKMg.JPEG.eatbbeum%2FIMG_4561.JPG',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220219_86%2F1645282189239r4AJ2_JPEG%2FE730BF1A-7B5C-4960-8BB4-7823C2AB0BC1.jpeg',
+    FIELD16: '',
+    메뉴판: '등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '컴 폴 커피',
@@ -152,15 +221,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강북구',
     dong: '번동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '수유역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '',
     description:
       '안녕하세요 컴 폴 커피 입니다.\n컴 폴 커피는 클래식한 블랜딩 원두로 묵직하며, 부드럽게 넘어가는 에스프레소를 제공 합니다.\n오셔서 맛있게 즐겨주세요.\n여러분 커피 마시러 오세요 Come For Coffee',
+    logo: '/images/cafe_logos/122982571_408612080532217_3255998354461891195_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=101&_nc_ohc=DFSdT83yUbQAX-dKCVM&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDJRdtoq5jAceNkKOoU2TJ426sSycb6EfNpvMnPZohcLw&oe=63DA9BAE&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MDRfMjY4%2FMDAxNjI4MDQyNTU3NTMy.thgWUq68D4GmJOrwUl2lHLlD5zEWOCQ_nWf9sa0EN9Mg.5jzmCzV2-qYBuiERNylP4BEl4eJQwqepjijr2YH_sgQg.JPEG.macciattocompany%2F2_%25BF%25DC%25B0%25FC.jpg',
     'images.1':
       'https://ldb-phinf.pstatic.net/20210429_10/1619677827016rvmMt_JPEG/rCW4_lBFgxbtDhGQyB0fmqUJ.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '리키커피숍',
@@ -168,13 +245,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강서구',
     dong: '공항동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '송정역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '',
+    description: '',
+    logo: '/images/cafe_logos/321216116_1500415213801980_8293776585923297296_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=100&_nc_ohc=SEUgkwyLcesAX96AdTf&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAKC0VXaYXXF00UAC28CJL9wfkqnk8dHQdP3n9Mjukf_w&oe=63DB6AFC&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEwMTJfNTYg%2FMDAxNjY1NTgyNTM3NTk2.o5XOKQtKK3jFVE7LtS_3AM2xP6Vjm7ySEU2feOIlXxwg.Lw9wNARiNUPNAHVBBpW4ZDd_xt4shMrJilERSPY2cXog.JPEG.grummy%2Foutput_483114440.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221005_226%2F1664950698062uw2qv_JPEG%2F60A524B7-56B1-4FA4-BE50-22A1F3DBFA98.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '르와조',
@@ -182,6 +268,7 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '강서구',
     dong: '마곡동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '발산역',
     wifi: 'O',
     pet: 'O',
@@ -189,10 +276,15 @@ const mania_cafes_data = [
     tags: '로스터리,스페셜티커피,대회 수상',
     description:
       '르와조는 원두납품을 전문으로 하는 로스터리 카페입니다.\n로스팅룸은 경기도 김포에 위치해 있으며,\n발산점은 쇼룸의 형태로 운영됩니다.\n\n[Brewing List]\nPanama Janson Falcon Geisha\n파나마 잔슨 팔콘 게이샤\nCosta Rica Don Mayo\n코스타리카 돈 마요 시나몬\nEthiopia Bensa Bombe\n에티오피아 벤사 봄베\nPeru Decaffeine\n페루 디카페인\nGuatemala El Socorro\n과테말라 엘 소코로\n\n[Special Espresso]\nColombia Cranberrry 콜롬비아 로꼬시리즈 크랜베리\n\n2019 KBrC 파이널리스트 /\n-브루잉부문 국가대표 바리스타 선발전 수상\n2019 GCA 에스프레소부문 금상 /\n2020 에스프레소 스로우다운 서울 1위 /\n2020 에스프레소 스로우다운 익산3위 /\n2020 에스프레소 스로우다운 파이널 4위 /\n2021 MOC 에스프레소부문 TOP 3 /\n2021 마스터오브카페 1위\n2022 MOC 브루잉부문 금상\n2022 마스터오브카페 3위\n2021-22 에스프레소 스로우다운 파이널 2위\n2022 골든커피어워드 하우스블렌드 부문 장려상\n2022 KBrC 파이널리스트 /\n-브루잉부문 국가대표 바리스타 선발전 수상',
+    logo: '/images/cafe_logos/322659964_755011259515427_7636272643558201639_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=111&_nc_ohc=IMID5grylloAX-neoQG&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCYWDHNVSN0BxYWXhP_oIoVi5QItGPK9__nxQeb6-Gdyw&oe=63DA5365&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA5MjVfNjkg%2FMDAxNjAxMDM2MTA5NTI4.cvHp5Y_n59cXe7lA_PBJhkzWRh1WmAnXy5LGpNWhPUMg.pGS8fnxgNasiLtG07wSqKMfrajejfnVB6lEKD0EIjccg.JPEG.joowon0208%2FDSCF4424.jpg',
     'images.1':
       'https://ldb-phinf.pstatic.net/20210701_196/1625129129379p6cWg_JPEG/Ejoswn54DvmT4b5jsZF28aaX.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '고로커피로스터스',
@@ -200,13 +292,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '관악구',
     dong: '봉천동',
+    '동 or 역 (DC)': '관악구',
     subway: '서울대입구역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '',
     description:
       '고로커피로스터스는 봉천동 한적한 골목안에 위치한 작은카페입니다.\n스쳐가는 사람들로 가득한 매장이기 보다는 안부를 묻고 소소한 이야기를 나눌 수 있는 공간이길 원합니다.\n그 안에서 정성을 다한 커피와 디저트가 조금이나마 온기를 더해줄 수 있기를 기원합니다.',
+    logo: '/images/cafe_logos/302197313_881302572840757_4233098059212447675_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=101&_nc_ohc=yrk4yRiotq0AX8zZdT2&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBSBFMxIqOO1M263OU-Z15WP7qC2bS-67TG0dsIpfllcw&oe=63D9A509&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200528_110%2F1590672571274vBuQW_JPEG%2FrnMpJ3dSLv6Su5NxZyvc2OW5.jpeg.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200505_251%2F1588680732469g6Ij8_JPEG%2FTmzLD1oImyak0P7o3uHEljOD.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '아이딜',
@@ -214,14 +316,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '관악구',
     dong: '봉천동',
+    '동 or 역 (DC)': '관악구',
     subway: '낙성대역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '디저트',
+    description: '',
+    logo: '/images/cafe_logos/273599700_1022045998347271_6075850925221010853_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=107&_nc_ohc=YRFvNbWOVHAAX8Pvzlp&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfA4QL4ROVM_IH2WhxBaX_dYePPFwNJNL69YqbN93CBQ7Q&oe=63DB7773&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MjlfMTI1%2FMDAxNjUxMjA5NDA5Mzkw.Enw4PqS73LyNfq3tpH1mTz2uR-RYPSIyLKU_oR8lwp0g.h4yvXhzsVGPaB32iHsik_MJZ_1xNIzCA_52lYeAhk64g.JPEG.luckyroadone%2FDSC08113-3.jpg',
     'images.1':
       'https://ldb-phinf.pstatic.net/20210120_208/1611123953747qftJQ_JPEG/A0RiG2AEqUbJ74VyOe6_c3-t.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '로프커피',
@@ -229,6 +339,7 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '광진구',
     dong: '군자동 ',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '군자역 ',
     wifi: 'O',
     pet: 'O',
@@ -236,10 +347,15 @@ const mania_cafes_data = [
     tags: '라떼아트',
     description:
       '"Hello+한국 라떼아트 챔피언이 직접 로스팅하고 매장을 운영하고 있습니다^^!!\n맛있는 커피 유니크한 인테리어 카페 핫 플레이스를 찾고 계시다면\n여기입니다!!!!!"',
+    logo: '/images/cafe_logos/315009196_660516352343767_6701467222578221842_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=107&_nc_ohc=tcU54J96m2UAX_cdxZT&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCTWFiVvOee4ZshSjE9E7m4w1K8crVIEOX4jhfY_tWyiQ&oe=63D9B5D5&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA3MjNfNjkg%2FMDAxNjI3MDIzNDUzODU2.UItCf3V3LJ86x5WkDEJUy9iXUVn2eMS9d9xw7cymh_Ag.02QSST42wByKMTYbOEcHVzxf6b3Q9ujEXd170Ny0TZAg.JPEG.zs2oo%2FIMG_7508.JPG',
     'images.1':
       'https://ldb-phinf.pstatic.net/20220213_32/1644737887446LP3b1_JPEG/KakaoTalk_20220213_161926238_01.jpg?type=f459_345_60_sharpen',
+    FIELD16: '',
+    메뉴판: '일부등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '카페원웨이',
@@ -247,16 +363,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '광진구',
     dong: '중곡동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '군자역',
     wifi: 'O',
+    pet: '',
     parking: 'O',
     tags: '라떼아트',
     description:
       '안녕하세요^^ 2012년에 오픈한 카페원웨이는 라떼아트 챔피언이 운영하는 카페입니다',
+    logo: '/images/cafe_logos/49651346_2182539305332799_755421340764209152_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=111&_nc_ohc=NtCKcOlUyu4AX92FX_y&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAF6f6PaAroGT6u1ywb41InchkScfhl_ujPgLxbAz5qpA&oe=63DB466A&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20150604_101%2Fdreamer_hsb_14333510122472bXix_JPEG%2F20150603_181946_385.jpg',
     'images.1':
       'https://ldb-phinf.pstatic.net/20200513_234/1589376877467SH75q_JPEG/ZmH5WgAIIVtQ1DrPdUa6ffyu.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '보난자커피 군자점',
@@ -264,16 +387,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '광진구',
     dong: '군자동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '어린이대공원역',
     wifi: 'O',
     pet: 'O',
     parking: 'O',
+    tags: '',
     description:
       '(Unnecessarily Good) Bonanza Coffee\n\n필요 이상의 집착, 끝없는 궁금증.\n혹자는 우리가 너무 과하다 말할지도 모른다. 그러나 그것이 우리가 꿈꾸는 것이다.\n커피라는 이름으로 남들이 가지 않았던 그 먼 곳으로 가보는 것.\n\n한때 베를린에서 스페셜티 등급의 좋은 커피를 찾을 수 없었다는 걸 알고 있는가?\n하지만 지난 몇 년간 커피에 목숨을 바친 사람들이 베를린을 제3의 물결, 스페셜티 커피의 천국으로 바꿔놓았다. 2006년 Unnecessarily Good 필요 이상의 집착을 외치며 등장한 보난자커피가 그 물결의 시작이었다. 아프리카의 아주 작은 농장에서부터 인도네시아, 남미까지 더 나은 한 잔의 커피를 만들기 위해서라면 어디든 찾아갔던 보난자커피는 세계의 많은 매체들로부터 당신이 죽기 전에 반드시 가봐야 할 세계 25대 카페, 유럽을 대표하는 5대 카페, 2021 세계 최고의 10대 카페로 선정되었다.\n\n보난자커피는 현재 베를린에 세 곳의 매장과 로스팅 공간을 가지고 있으며, 네 번째 매장을 준비하고 있다. 유럽 전역의 많은 카페와 다이닝에 원두를 공급하고 있으며, 국내에서는 2016년부터 mtl을 통해 한국 소비자들을 만난다. 2022년 5월, 한국을 거점으로 아시아 시장 진출을 준비하고 있는 보난자커피는 두 개의 매장을 선보였다. 군자점에는 로스터리와 카페, 키친까지 겸비한 플래그쉽 매장을, 롯데백화점 명동점에는 쇼룸 형태의 매장을 열었다.\n\n이들의 행보가 궁금하다면,\n\n@bonanzacoffee @bonanzacoffee_korea',
+    logo: '/images/cafe_logos/259184904_433578811491984_8046202212583363819_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=100&_nc_ohc=3dRuMQNM9j0AX_f9El5&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCb4WIQwdgngpcr7HG5GeihGwaOtVQRdkN1c_yldbivFw&oe=63DB48E8&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220518_282%2F1652862362691gyy2f_PNG%2F%25BD%25BA%25C5%25A9%25B8%25B0%25BC%25A6_2022-05-18_%25BF%25C0%25C8%25C4_5.20.43.png',
     'images.1':
       'https://ldb-phinf.pstatic.net/20220622_161/16558794048334TyFs_JPEG/%28%C7%CA%C5%CD%C4%BF%C7%C7%29Sasaba_ethiopia2.jpg?type=f459_345_60_sharpen',
+    FIELD16: '',
+    메뉴판: '등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '빈브라더스 현대백화점 디큐브시티점',
@@ -281,13 +411,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '구로구',
     dong: '신도림동',
+    '동 or 역 (DC)': '신도림',
     subway: '신도림역',
     wifi: 'O',
+    pet: '',
     parking: 'O',
+    tags: '',
+    description: '',
+    logo: '/images/cafe_logos/95916752_227064445255575_578603163595046912_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=103&_nc_ohc=EPOi-4mAi5MAX9U48HQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDIxPXWZrrawUatjTPr62ZeTyFwRa0pQvlQhLQQJXgXqg&oe=63DB4A84&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA1MzFfMTkx%2FMDAxNTkwODU2MjQzODI3.9bsSrukW4r-io6e-YzvkLUHKXru2AGcpf8WLBAflcP0g.EaTNUY1_uX02YTtIS57azMHMlCGfkPrHptaBqN4Hw6Yg.JPEG.romilywork%2FKakaoTalk_20200529_175200980_%25281%2529.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200415_143%2F15869154238886L73c_JPEG%2F5EpULsDXJFf0ItiIyQTR6dGf.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '무이커피랩',
@@ -295,15 +434,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '구로구',
     dong: '구로동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '남구로역',
+    wifi: '',
+    pet: '',
     parking: 'O',
     tags: '로스터리,스페셜티커피,카페창업컨설팅',
     description:
       '무이커피랩은 프로 로스팅 테크닉 부터 브랜드 디자인까지 카페 창업의 All in one system을 제공합니다.',
+    logo: '/images/cafe_logos/239424101_545341983483146_2630381358008983889_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=102&_nc_ohc=JFm1uxwVoysAX_vXQzx&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfB-kdgih4ZZ4yMTXPSDl-oWLihawhjATMsV6U7vdeiCQw&oe=63DA9580&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211109_195%2F1636435793951HNhny_PNG%2FzRwyupt1AWsq4yE9MXRJr707.png',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211109_147%2F1636435867737luDSM_JPEG%2FTRWY3eXKK6Qxf7OHr2Kr7nn1.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: 'X',
+    FIELD18: '',
+    '카카오 검색': 'X',
   },
   {
     name: '이미 커피 로스터스',
@@ -311,14 +458,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '구로구',
     dong: '구로동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '남구로역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '',
     description:
       '* 카페 영업은 하지 않습니다.\n\n이미커피로스터스는\n매일 마셔도 친숙한 커피부터\n특별한 경험과 즐거움을 주는 커피까지\n직접 생두를 선별하고 로스팅하는\n이미커피의 로스팅룸입니다.\n\n원두구매는 네이버 스마트 스토어에서 하실 수 있습니다.\nhttps://smartstore.naver.com/imicoffee\n\n카카오톡에서 이미커피 로스터스 채널을 추가하시면\n납품에 대한 상담과 안내를 받으실 수 있습니다.',
+    logo: '/images/cafe_logos/272080381_626184945137747_5501473296683216086_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=111&_nc_ohc=6oWJNlTdcPkAX-qIAfD&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfC27WQY1XrPx2sk7PIoWfTkrMiPEnQ_HOxyprdwatgjGw&oe=63DB8080&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190328_185%2F1553760849824DxPJW_JPEG%2F1T6WlIqxzvHz8lFk3VGCVXSj.jpg',
     'images.1':
       'https://ldb-phinf.pstatic.net/20200704_35/1593837144473Aok0G_JPEG/gFBt9wuDCYI6KDp61JYWYapT.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '블루마일스커피로스터즈',
@@ -326,16 +482,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '노원구',
     dong: '공릉동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '공릉역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티커피,대회 수상?',
     description:
       '블루마일스는 올바른 커피와 사계절을 느낄 수 있는 디저트로 매일매일의 일상에 새로움과 편안함을 동시에 제공하는 것을 목표로 하는 로스터리&디저트카페입니다.\n\n커피전문가가 직접 엄격한 기준을 통해 생두를 선별하고 재료에 따른 최적화된 로스팅으로 뻔하지 않은 다양한 매력의 커피를 소개합니다.\n\n뉴질랜드, 프랑스산 고메버터, 벨기에 초콜릿, 신선하게 로스팅한 견과류와 제철재료를 통해 수준 높은 디저트를 선보입니다.\n봄, 여름, 가을, 겨울 제철에만 맛볼 수 있는 재료들을 통해 커피와 가장 잘어울리는 시즌 한정 메뉴들을 자체 개발하고 있습니다.\n\n매일 와도 좋은 카페, 혼자 와도, 친구, 가족, 연인 누구와 와도 즐길 수 있는 카페를 만들기 위해 편안한 분위기, 한결같은 맛, 시즌마다 새로운 메뉴를 제공하기 위해 노력합니다.\n\n2층에 위치하고 창문을 전면 개방하여 경춘선 숲길의 풍경을 한 눈에 내려다 볼 수 있는 점 또한 장점입니다.\n\n커피와 매장소식(@bluemilescoffee)과 디저트 라인업(@bluemiles_c00kie)은 각각 인스타를 팔로우하시면 최신 정보를 빠르게 접하실 수 있습니다',
+    logo: '/images/cafe_logos/323312608_873013270355720_995040806047920346_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=108&_nc_ohc=4Qq8fGnvXocAX_vQcsJ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCiuErEuKbnFganJL5KxNWPcA7odKWI5FD3SphKCqhUkQ&oe=63DAA330&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEwMjBfMTgy%2FMDAxNjY2MjIwMjY0MDA5.e-U1aq2u6Bu54ReDOISBrKClkz1BuPxOpULzAp98dqog.OUg1Ih3oASynL9US6vvFOA7oo0R6ZFfrqKc_H4-eyKwg.JPEG.angle7211%2FIMG_5308.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210723_229%2F16270340589589OGcR_JPEG%2FZVGm2vx_NcCIaI3C80JVYhc7.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '슈퍼 내추럴',
@@ -343,15 +506,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '동대문구',
     dong: '전농동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '청량리역',
     wifi: 'O',
     pet: 'O',
     parking: 'O',
     tags: '로스터리,스페셜티커피',
+    description: '',
+    logo: '/images/cafe_logos/264931476_1266912380458835_5528791060712866547_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=111&_nc_ohc=Fu9GnNDoCyUAX9TNeQU&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDNTlRtxqCMfI7jVNR8F4oF7SA_kkC1Kh7G0yxGBHLCGA&oe=63DB3DEC&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220310_123%2F16469007457497ES5Y_JPEG%2F26579CE7-035B-4C37-B58F-23638F5BC302.jpeg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230105_73%2F16728967680917OJoD_JPEG%2F6CF606EE-5350-46F8-82E2-BF241B6B0B75.jpeg',
+    FIELD16: '',
+    메뉴판: '등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커피리브레 연남점',
@@ -359,15 +529,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '연남동',
+    '동 or 역 (DC)': '연남동',
     subway: '홍대입구역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티커피',
     description: '다양한 산지의 커피를 합리적인 가격으로 선보입니다.',
+    logo: '/images/cafe_logos/307679691_951503666251775_1957655834236409574_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=111&_nc_ohc=hsM2XmyHRRIAX9OeiYZ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBkgH94abn9jlDpZOtvTRzrOr9O6hzYXiw_iPPBwGbVRA&oe=63DAA0B0&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211009_78%2F1633785664286GcR8V_JPEG%2FSDGJWo5A8jvnr_sSfwsLOfnL.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211008_8%2F1633699939879FQF73_JPEG%2Fbs3nWXFItr1uhzs6owQzIJZN.jpg',
+    FIELD16: '',
+    메뉴판: '등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '올웨이즈어거스트 제작소',
@@ -375,15 +552,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '연남동',
+    '동 or 역 (DC)': '연남동',
     subway: '가좌역',
     wifi: 'O',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피',
     description:
       '자체 로스팅한 원두를 제공합니다. 약간의 디저트와 간단한 토스트를 함께 곁들일 수 있습니다',
+    logo: '/images/cafe_logos/140429973_831762087677164_1320923210762194498_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=104&_nc_ohc=YjpvmTC3JqQAX9Th2pV&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAGAMYC4kxbL6nhiU4LoSCs-zDn5wqAfuWQ6qkxkKwpVQ&oe=63DA52E2&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjExMTVfNjUg%2FMDAxNjY4NDY5NTI4Njkz._K0mY0ZH9kxBepWU194fnjzLuztLP3_duxsCO_dpDOsg.at5QsnjEPMb76LqRWgyGCbwuKSewyJp_uDzXES3DyAEg.JPEG.shw119527%2F1668393079661.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA5MjJfNjMg%2FMDAxNjYzODQwNzgzMjkx.Z8cq4c3GMEU-yw_exldq37rH6_GMFv_od_Qpgts7uNcg.efaETgIvLhYnllnerBqwqjAp7jxOrYGdLiXH7M4N9Lwg.JPEG%2F3197FA87-834B-4978-9E61-192112569642.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커퍼시티',
@@ -391,14 +576,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '합정동',
+    '동 or 역 (DC)': '망원동',
     subway: '망원역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티커피',
+    description: '',
+    logo: '/images/cafe_logos/257216325_2955397698123864_3231063036157124286_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=100&_nc_ohc=9jqP8w6uOqMAX-H6U7j&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAuFMxOfeBo3WtIkaecL_Deu6LI_f1QJetRzi8M3IS9OA&oe=63DA04C6&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220630_144%2F16565316835599Cil6_PNG%2F02.png',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA2MjRfODUg%2FMDAxNjI0NTIzOTEyNjY5.HfWdMHmjOX1kyk3emKpui0zX7-y1lNO5A5amLxddUeAg.LysJMyc8Q-eXkdz9fG9b0UPwNo7BQFcLWGmt1gLX0iMg.JPEG.kspring917%2FIMG_4202.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '빈브라더스 합정',
@@ -406,15 +599,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '합정동',
+    '동 or 역 (DC)': '합정',
     subway: '합정역',
     wifi: 'O',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피',
     description:
       '합정에는 늘 빈브라더스가 있습니다.\n\n언제든 오셔서 맛있는 싱글오리진 커피와 홈메이드 베이커리를 즐기세요.\n늘 에너지 넘치는 바리스타팀이 여러분의 커피 가이드가 되어드립니다',
+    logo: '/images/cafe_logos/95916752_227064445255575_578603163595046912_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=103&_nc_ohc=EPOi-4mAi5MAX9U48HQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDIxPXWZrrawUatjTPr62ZeTyFwRa0pQvlQhLQQJXgXqg&oe=63DB4A84&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20160726_155%2F1469502303512PLBDt_JPEG%2F176676523522287_0.jpeg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210801_280%2F1627820540942SWf4c_PNG%2F2Vm4N-5iF-EVno9kPtiohb9S.png',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '히트커피로스터스 서교',
@@ -422,16 +623,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '서교동',
+    '동 or 역 (DC)': '합정',
     subway: '홍대입구역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티커피',
     description:
       '- 2020 마스터오브로스터 8위\n- 2019 한국 로스팅 국가대표 선발전 9위\n- 영국 글로벌생두기업 falcon 업무제휴\n- 원두납품 / 원두구매 문의 (kakao : 히트커피)',
+    logo: '/images/cafe_logos/268214167_314148730574374_3622721051101470128_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=110&_nc_ohc=6EKAMH9sxBQAX8Tj8SJ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAz6t4NlTo9j3E6Kfrs_5QXDmfvZr8tWhttU0s7-ZAJtg&oe=63DA9BC8&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211213_244%2F1639354715571Dsj6g_JPEG%2F77BC9028-8833-4217-B7BF-4C7A0741BEC1.jpeg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210801_147%2F1627814351011sWjKb_JPEG%2FuHr9Q3DlOed8MI1Nfq58Lp9f.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '파스텔커피웍스 본점',
@@ -439,16 +647,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '합정동',
+    '동 or 역 (DC)': '합정',
     subway: '합정역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티커피',
     description:
       '2011년,\n10평 남짓한 작은 카페로 시작하여\n오직 맛있는 커피와 전문가라는\n두 단어에 집중한 커피전문 회사입니다.\n우리는 전 세계 커피를 테스팅하며,\n섬세한 로스팅 프로파일을 연구합니다.\n\nPASTEL COFFEE WORKS\n원두납품문의 Tel. 02-3141-1229\n\n38, Dongmak-ro 2-gil, Mapo-gu, Seoul, Republic of Korea (04071)',
+    logo: '/images/cafe_logos/100977681_2496655733767749_4390075348155367424_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=109&_nc_ohc=lsQiti_e1H0AX-9fvxG&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBNEKSPbjc-PaSRvEVMp9vXLEnpBwlMD6PXkD5e2xgG_A&oe=63D76647&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MDZfMTcx%2FMDAxNjU3MDM2ODA2NDY3.21AHwUUDV7GGaF7jmRgNbujUDQBiQIfyXEvX079sGnsg.6PqfZmQObSkB-7XrPPxIoyM5m2YvlHU-VdhyssrU1Jog.JPEG.juone7103%2FKakaoTalk_20220703_220710248.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200522_139%2F1590117856255DA2yS_JPEG%2FnrwLUQsY-s--vNQclDSJAagB.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '에스프레소바 슈가',
@@ -456,12 +671,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '합정동',
+    '동 or 역 (DC)': '합정',
     subway: '합정역',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피,특별한메뉴,에스프레소바',
+    description: '',
+    logo: '/images/cafe_logos/192339197_138865681634512_8887308056232824577_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=104&_nc_ohc=_lfNedywQ9oAX88QFzj&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCNvuuonv3_S2kvgbE_1RIR9yyGBVDZbwPmNXj9NrcubQ&oe=63DB764D&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210620_64%2F1624180318037xHTiE_JPEG%2Fwh_rjq3n9Zh8pZup9kbVpRtu.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEwMjFfNjgg%2FMDAxNjY2MzI5MTI5MjY1.4KOMyZmxOtoJXxw4eJITHtCbdoTsJfzI5-sRilw_MNwg.Ao5ns3PbFp0c4q68NkdZYgaCKyI_ZpHxdnF1Iani73Ag.JPEG.iilh_%2Foutput_1877936075.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '시러피하우스',
@@ -469,6 +694,7 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '상수동',
+    '동 or 역 (DC)': '합정',
     subway: '상수역',
     wifi: 'O',
     pet: 'O',
@@ -476,10 +702,15 @@ const mania_cafes_data = [
     tags: '로스터리,스페셜티커피,특별한메뉴,에스프레소바',
     description:
       '클래식한 컨셉의 인테리어와 분위기에서\n시러피하우스만의 독특한 에스프레소 메뉴를 비롯해\n<월드시그니처 배틀 챔피언> 고은미 바리스타의\n다양한 시그니처 메뉴를 맛 볼 수 있습니다.\n\n카페 뿐만 아니라 메뉴 개발 및 수업 공간을 가지고 있어 다양한 클래스가 진행됩니다.\n\n인스타그램 시러피하우스를 검색해 주세요.',
+    logo: '/images/cafe_logos/245328351_608024290199405_6565707353641531144_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=105&_nc_ohc=lFS-eO7HoPQAX8mokAr&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCt93UmnWG8d5ftdFWyDQD6TxHWriyClMIlf3uGoRPZBw&oe=63DA8678&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MDVfMyAg%2FMDAxNjU2OTc3NzAzMDE2.992QS9RGgPSTlymtTFEFftDn-s_zJFuONJC9skXvSUgg.sv4S6ybB9ojiKhGoealJHCqXtStzndlIHHaqMjDIjGEg.JPEG.sojeong1224%2Foutput_1615065626.jpg',
     'images.1':
       'https://ldb-phinf.pstatic.net/20220504_283/1651650175637afeKo_JPEG/%BB%F3%BC%F6%BF%AA_%BD%C5%BB%F3%C4%AB%C6%E4_%BD%C3%B7%AF%C7%C7%C7%CF%BF%EC%BD%BA_%286%29.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '딥블루레이크',
@@ -487,15 +718,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '망원1동',
+    '동 or 역 (DC)': '마포구',
     subway: '망원역',
     wifi: 'O',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피,원두구매',
     description:
       '커피를 음식이라고 본다면 재료가 중요하다고 생각합니다. 좋은 재료로 맛있는 커피를 만들기 위해 노력 중입니다.\n재료의 특성을 잘 나타내기 위해 북유럽 스타일의 로스팅',
+    logo: 'https://d1fdloi71mui9q.cloudfront.net/XIrcbsVRS8WNsdnpiWgT_Tm997A3B3ag5hZAR',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210716_263%2F1626425692386SFWA7_PNG%2FvnpsdvzsHBGmgWQVwvI2aZ3l.PNG.png',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzAzMjlfMjcy%2FMDAxNDkwNzY2NzkxNTY0.VgYLRIt_GOG9pAHnMQ9nnuOwODVE7BzkHAd1dVDio8Mg.PCbQ_GLbHZ0fmOdpo8AcGdzURgkXQGqxMHXze76518Mg.JPEG.pinkrose_95%2F5509D7D0-279D-4A60-981F-2BE7E5CA2B9B.JPG',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '도덕과 규범',
@@ -503,12 +742,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '신수동',
+    '동 or 역 (DC)': '마포구',
     subway: '광흥창역',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피,원두구매',
+    description: '',
+    logo: '/images/cafe_logos/273174274_138754578606729_4967700731922166413_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=109&_nc_ohc=v41Butnul24AX_zy0TO&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfC44Il3QUm3kR3r2Ko9h9kIK1OPgCc7TQ2OemWvVHOoww&oe=63DB80C7&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220915_74%2F1663230858125xxWDr_JPEG%2F0BAD9E37-E1C7-46E3-BC3F-34646A3391C1.jpeg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220310_159%2F16469041247952qvEU_JPEG%2F%25B7%25CE%25B0%25ED.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '후엘고',
@@ -516,16 +765,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '염리동',
+    '동 or 역 (DC)': '마포구',
     subway: '공덕역',
+    wifi: '',
     pet: 'O',
     parking: 'O',
     tags: '로스터리,스페셜티커피,원두구매',
     description:
       '주말 및 공휴일 노트북 사용을 제한합니다. 방문 하시는 모든분들의 편의를 위하여 양해 부탁드립니다.',
+    logo: '/images/cafe_logos/320312136_563387698491763_5703688480152492513_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=107&_nc_ohc=URxX1DaszO4AX-qq5VA&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCbgSDls_g85faw0XrBVyP1koJbGmhF0KZKEkEbn7QpZQ&oe=63D9AE14&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA4MDNfMjIy%2FMDAxNjU5NDk4NDUyNzIx.CtNmsqMlX3uYikJVyA_ePBA5qgJKcSjahB0G_zxxNOAg.AGx9-7heLOo4fxf04z5iLDVAtXDf2s_5BxdpnWB0naAg.JPEG.aintnuttin%2FIMG_7376.JPG',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180531_175%2F15277448500303LiWE_JPEG%2Fh2M_zuozCmDOonSTE-eNkgNV.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '몬스터케이브',
@@ -533,16 +789,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '동교동',
+    '동 or 역 (DC)': '마포구',
     subway: '홍대입구역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '특별한메뉴',
     description:
       '주인취향의 커피,음료,알콜,베이커리,음악,공간 을 함께 즐기는 리얼 커피바.\n가내수공업 수제의 길을 걷는 차기 커피장인의 공간으로 놀러오세요 :)',
+    logo: '/images/cafe_logos/15276749_1175077415915798_1816026960044752896_a.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=102&_nc_ohc=_7xQtPZFt00AX_L-YdW&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDc1_Kt3w6zkJg1lWgId1WE1nwVu64Y-7AB5gsI73li1w&oe=63DAFF77&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191016_185%2F1571231888984nMchM_JPEG%2FeTBDNawRthQKUxDOXfYJZiWP.jpeg.jpg',
     'images.1':
       'https://mblogthumb-phinf.pstatic.net/MjAxNzEyMDRfMjcy/MDAxNTEyMzk4MDkzNTk2.dqBxM5xQXUJB0-jQMde48lb6956WaueNOZpbU0vep9Ag.bjKTjggwAAU-1SzI26QURB6MN67EpMNBu3gbq5KclsUg.JPEG.snowa12/IMG_2645.JPG?type=w2',
+    FIELD16: '',
+    메뉴판: '등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '프릳츠 도화점',
@@ -550,14 +813,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '도화동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '마포역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티커피',
+    description:
+      '서울에서 손꼽히는 스페셜티 커피 전문점. 국가대표 바리스타인 박근하 바리스타와 원두 바이어 김병기, 오븐과주전자의 허민수 파티시에가 함께 운영하고 있다. 다이렉트 바잉으로 구매한 좋은 원두를 사용해 풍미 있는 커피를 맛볼 수 있으며 커피와 어울리는 다양한 베이커리 메뉴도 입맛을 사로잡는다. 무화과캉파뉴가 인기 메뉴.',
+    logo: '/images/cafe_logos/10584633_753077058090569_1137616471_a.jpg?_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=105&_nc_ohc=iGjXp-YQCiwAX-rZq4D&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAyMhwRQbLd4MVc5Sllkww6LIbee2z8JbsGtHU7hT9-Tg&oe=63D798B8&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180518_213%2F15266155090043BJKb_JPEG%2FyDTNCS3DtFGlKz_Bc9ZxbxLQ.JPG.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220922_160%2F1663825513836iidni_JPEG%2F%25B7%25D5%25BA%25ED%25B7%25A2.jpg',
+    FIELD16: '',
+    메뉴판: '등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '립하버(Liebhaber)',
@@ -565,16 +837,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '염리동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '대흥역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '디저트,독일',
     description:
       '진짜 독일인이 만드는 독일식 치즈와 치즈케이크, 호밀빵을 맛볼 수 있어요!\n\n독일인이신 사장님이 혼자 직접 만드는 치즈에는 칼슘, 프로틴, 비타민B 등 영양이 풍부하게 들어가 있고 설탕+방부제는 들어가지 않아, 운동이나 채식하시는 분들이 드시기에도 좋아요.\n또한 기본 치즈에 허브, 파프리카, 과일 등 여러가지 재료를 섞어 더 다양한 종류의 치즈를 즐기실 수 있어요.\n\n치즈케이크는 매일 다른 종류를 구워, 오늘의 치즈케이크를 골라먹는 재미도 있어요.',
+    logo: '/images/cafe_logos/278943701_501601221431218_9046058819368114592_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=110&_nc_ohc=PQSvJj-AqFIAX-6OqU5&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBEjwZYgbtiKz10BmF72ZBCqD45YPhG00BwbTo93h33gg&oe=63D9E285&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180910_140%2F1536564283992s8zWx_JPEG%2FsB6LnkW1ScslaUGAW9xbMd8f.jpeg.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220219_170%2F1645254813386qizcY_JPEG%2F62809CB0-FD72-4FB5-8CA7-BF739508B1FD.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커피하우스마이샤',
@@ -582,12 +861,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '합정동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '망원역',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피,강배전,석탄단',
+    description: '',
+    logo: '/images/cafe_logos/51137506_570767400089865_5738858721648312320_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=109&_nc_ohc=6DBPwLlpUuYAX8fllQX&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfA6abNlxi_TDuaFeUalbvA2jJa5IK1qfuRCyNgTbF_iiw&oe=63DA5619&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA4MjlfMTU3%2FMDAxNjYxNzY4NTg3NzU3.Cp42bnbmWSD7GlOSq2tVpiJjsMEOZlKkIlSgjzL1uI0g.xYr32djw-YBxd87d_dIujsY8SQa8MXq8ykkqcbKY2Rkg.JPEG.rnjsxodnd321%2F1661676675194.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200607_118%2F15915352205232TW15_JPEG%2FOe026SdTPqUkMYA2iK6gsUtU.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '이젤커피앤바',
@@ -595,16 +884,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '망원동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '망원역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '와인바',
     description:
       '파스타와 와인 모카포트로 만든 에스프레소를 소개합니다.\n빵도 굽고 예술서적도 판매합니다.\n\n12/6 ~ 13 겨울휴가 기간입니다.\n방문에 참고 부탁드립니다.\n\n감사합니다.',
+    logo: '/images/cafe_logos/270152773_981004712796678_5102608106872525052_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=106&_nc_ohc=paxhp73czKoAX-XjaVG&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCa3XT6mirMkndjodKqxtohoSq7kJjnbkMxrT0Ik3es1w&oe=63D9FE21&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220225_134%2F1645775557879MbagM_JPEG%2FIMG_6273.JPG',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220217_44%2F1645104240500hHwkE_JPEG%2FKakaoTalk_Photo_2022-02-17-22-23-02_002.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': 'X',
   },
   {
     name: '올웨이즈어거스트로스터스',
@@ -612,14 +908,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '망원동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '망원역',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피,스웨덴',
     description:
       '전화통화 연결이 어려울 수 있습니다. 매장 sns로 연락 부탁드립니다.\n\n스웨덴 스페셜티 Drop coffee로 브루잉, 에스프레소는 자체 블랜딩과 Drop coffee 두가지 운영중입니다.\n매장 내부는 저희가 직접 디자인한 제품 또는 빈티지, 해외 직접 수입한 제품들로 꾸며져 있습니다.',
+    logo: '/images/cafe_logos/140429973_831762087677164_1320923210762194498_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=104&_nc_ohc=YjpvmTC3JqQAX9Th2pV&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAGAMYC4kxbL6nhiU4LoSCs-zDn5wqAfuWQ6qkxkKwpVQ&oe=63DA52E2&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210308_108%2F16151596319920T3gp_JPEG%2FyzjVfDMoK0Qmc5VNc2G1jRHS.jpeg.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMDlfMjg4%2FMDAxNjczMjUxMzQyNDM0.HbfzwSgb7PCbhPNu3HOVuxNQKqH1MAzVunKqBiHmPIQg.dO_lSnMuwlZBGLiEM7GIOARnrPs8RQpBQ6gN--lRCWog.JPEG%2FF5183414-4D2E-4118-8092-6A0407036584.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '코페아신드롬 마포점',
@@ -627,14 +932,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '성산동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '마포구청역',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피,원두구매',
     description:
       '코페아신드롬은 마스터 김나영이 2017년 일본 귀국이후 인천에서 오픈한 로스터리 빈즈숍을 시작으로 2021년4월24일에 마포점을 오픈했습니다.\n마스터 김나영은 "커피대전"의 저자이며 "카페바흐"의 창업자인 커피거장 다구찌마모루가 아끼는 애제자로서 커피로스팅을 전수받았습니다. 한편, 커피의 다른 분야로서 강배전 융드립을 다이보커피점의 마스터였던 다이보카츠지 마스터로부터 사사했습니다.\n\n코페아신드롬 마포점은 로스팅레벨에 따라 순차적으로 변화하는 30종류의 원두들을 이용해서 핸드드립, 융드립, 사이폰, 점드립, 에스프레소 음료를 제공합니다.\n\n요즘 유행하는 스페셜티커피의 후루티한 산미부터 허브와 스파이스한 커피맛의 강배전까지 커피가 가지고 있는 다양성을 각각의 커피추출법을 통해 폭넓게 경험하실 수 있습니다.',
+    logo: '/images/cafe_logos/coffea syndrome.png',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA2MDJfMTk1%2FMDAxNjIyNjA3NzI2NDk3.L7RiO5ONVoaY8If4U87xEm7WqwTeUS6sZnsJlFT01Gkg.std6YYNM-3X3tbBlR4vPzWk065RiikJ8ktgs_69e1Twg.JPEG.kgskgs1108%2FKakaoTalk_20210602_090144445_05.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210419_291%2F16188429818093ffyl_JPEG%2FTTec0Y_gydD22bhrlBJ9YzWi.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '서교동 그 카페',
@@ -642,14 +956,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '서교동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '망원역',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피,가성비',
     description:
       '다양한 스페셜티 커피를 최대한 저렴한 가격에 드리도록 노력하는 스몰 로스터리 카페입니다.',
+    logo: '/images/cafe_logos/186269519_500110457973359_7516557555299872559_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=111&_nc_ohc=aLCAPn55xwAAX-_-8Aw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAeGRbidQ1M75h_EShItpaBz4YNOwjV174gHHO8hh3QpQ&oe=63D9D7DA&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210517_130%2F16212386661026uEOP_JPEG%2FzER80iC0H5IBwHGxbsbKO_ZP.jpeg.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210525_212%2F162191206096859ACU_JPEG%2FP20b1UVoXQPuqOPEJOpZB_Ns.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '충무공 커피바',
@@ -657,15 +980,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '동교동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '홍대입구역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티커피',
     description: '로스터리 충무공 커피바입니다.',
+    logo: '/images/cafe_logos/290521166_183592037432965_6477976085913272907_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=101&_nc_ohc=CSAb5C118HMAX_qDXq1&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAjlFt08mogjTaDQiu3wHMalkonrRfYIyK-8VThXhUIwA&oe=63DAE7C5&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjExMDlfMjM2%2FMDAxNjY3OTgyMjg2ODEz.kQgqEUO1BVMyZDiHSQYaDQffG5HEDOGIVdl_FEDkb6Ug.-qLnUYFfJ_6vLWOzONRqFpQxakx93_BpoM_I0U_dxpcg.JPEG.aivsrur%2FKakaoTalk_20221014_014946198.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220623_204%2F1655968136162UqM8P_JPEG%2FKakaoTalk_20220623_160452331_01.jpg',
+    FIELD16: '',
+    메뉴판: '이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '카페 바우',
@@ -673,15 +1003,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '서교동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '홍대입구역',
     wifi: 'O',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티커피,밀크티,영국',
     description:
       '냉침밀크티와 더치커피가 맛있는 리얼앤틱카페/\n\n35년경력의 청와대출신 커피마스터가 직접 제조하는 특허등록 와인더치.위스키더치.샴페인밀크티가 유명한 홍대앤틱카페/\n\n40여종의 더치커피와 밀크티.그외 각종 티.에스프레소가 준비되어있고. 200년이상된 앤틱찻잔을 직접 골라 고가구 테이블.의자에서 티타임을 가질 수 있습니다.(카페안의 가구들은 200여년이상된 중세유럽가구들입니다).',
+    logo: '/images/cafe_logos/209061404_186233906786276_8815968750199472508_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=108&_nc_ohc=-EHF42UsDVkAX_LFePS&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBHlPbeVMy4_HNPsw4BhOCANyBbbon9StwZYP0LSKnCvw&oe=63DA651F&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20181219_45%2F1545203309442bx1H5_JPEG%2FYhi2ZJb39LRl2CIq7wP6EbsR.JPG.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20181219_267%2F1545203315679AAApy_JPEG%2FRy5WI64QtqJbfVxBQbbzbc1w.JPG.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '8810 리스트레토 바',
@@ -689,6 +1027,7 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '동교동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '홍대입구역',
     wifi: 'O',
     pet: 'O',
@@ -696,10 +1035,15 @@ const mania_cafes_data = [
     tags: '로스터리,스페셜티커피',
     description:
       '스페셜티 100% 블렌딩 만을 사용하여 전문 바리스타들이 최고의 커피만을 추구합니다.\n\n라마르조꼬 레바X 국내 첫런칭 매장으로서 하이엔드급 머신 및 기기를 자랑합니다\n물론 리스트레토 스킬 및 머신 테크닉,메카니즘 에 대하여 끊이없이 노력합니다.\n\n맛을 위해서라면 어떤 재료든 사용하며 아끼지 않습니다.\n\n음료 한잔의 퀄리티는 가히 최고 수준입니다.\n\n스페셜티 커피 전문\n연남동 주차가능 카페',
+    logo: '/images/cafe_logos/32135647_1615231425241447_3100600911764914176_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=107&_nc_ohc=HyhbquPDmq8AX-GC1vE&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBtP1C2RrwP-mz4AkyUES59LWF893m88T4M2gQWGk7T2A&oe=63DA8972&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190701_278%2F1561950058454nlVHA_JPEG%2FRURkF-xT4f1GA65eiBIVj2C2.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190701_61%2F15619500585586qhwk_JPEG%2F_QZkNtFhMHqF-uBxtecFiCNQ.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '펠른',
@@ -707,16 +1051,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '연남동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '홍대입구역',
     wifi: 'O',
+    pet: '',
     parking: 'O',
     tags: '로스터리,스페셜티,특별한메뉴,디저트,블루리본',
     description:
       '단순 커피를 넘어 고객이 원하는 맛과 향을 선택할 수 있는 커피 페어링 코스를 통해 다양한 커피를 느껴보세요.\n이제 펠른에서 커피 페어링 코스를 경험해보시기 바랍니다.',
+    logo: '/images/cafe_logos/89075474_219570015833497_2640992149272788992_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=101&_nc_ohc=iO72P0k11GUAX9MBc6o&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfC1sgqIj0h4YsjsbVTWWSVPxq-d-yQMd2NOopcVSQBjSw&oe=63DA13D2&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220730_125%2F1659163416201uBaqM_JPEG%2FcwKO1PtNad5AFaiYf_VNm_xW.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220730_51%2F1659163412833YDuh4_JPEG%2FAT_Perlen_Spaces11_%25BF%25EB%25B7%25AE%25C1%25D9%25C0%25D3.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '리틀프레스커피',
@@ -724,14 +1075,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '연남동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '홍대입구역',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티,이탈리아',
     description:
       '연남동 리틀프레스커피는 모카포트가 있는 집으로 운영 되고 있습니다.\n신선한 원두와 드립백을 판매하고 있으며 런치 파스타와 스페셜티로 내린 모카포트커피를 제공하고 있습니다.\n모카포트가 있는 집에서 작은 이태리를 경험해 보세요.',
+    logo: '/images/cafe_logos/37251312_215228575852907_688358342719963136_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=111&_nc_ohc=r8dM3AHy3-wAX-2v-Oj&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAjYpBIRQrxa0froBF6YeZIJy-0DIultTvTiP2VQeplYQ&oe=63DA87E5&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190612_90%2F1560331447532iAUoi_JPEG%2FKw4ET9g9Ela7t1_8vNDYX2pg.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200703_250%2F1593771502465enhMl_JPEG%2F7yXkenNEs0y1qvVhG4maDur0.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '타셋커피 로스터스',
@@ -739,6 +1099,7 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '마포구',
     dong: '상암동',
+    '동 or 역 (DC)': '추가+',
     subway: '수색역',
     wifi: 'O',
     pet: 'O',
@@ -746,10 +1107,15 @@ const mania_cafes_data = [
     tags: '로스터리,스페셜티',
     description:
       "상암 누리꿈스퀘어 '로스터리카페' 타셋커피입니다 :)\n스페셜티커피 / 디카페인커피 / 핸드드립 / 콜드브루 / 원두도소매 / 휘낭시에 / 르뱅쿠키 맛.집.'ㅅ' !!!\n오늘도 수고한 당신에게 :)",
+    logo: 'https://shop-phinf.pstatic.net/20220219_269/1645237590335bffh1_PNG/46373424067675426_1707968874.png?type=m120',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220602_127%2F1654158152015Rffci_JPEG%2FKakaoTalk_20220506_140125047.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220602_181%2F1654158182182JTV1P_JPEG%2FKakaoTalk_20220506_140125047_03.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '디폴트밸류',
@@ -757,16 +1123,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '서대문구',
     dong: '연희동',
+    '동 or 역 (DC)': '연남동',
+    subway: '',
     wifi: 'O',
     pet: 'O',
     parking: 'O',
     tags: '로스터리,스페셜티',
     description:
       '디폴트밸류는 정기적으로 바리스타들이 애정하는 음료 3가지를 선정하고 그에 어울리는 디저트를 오마카세로 제공하고 있습니다',
+    logo: '/images/cafe_logos/321148159_710825060359307_5234177709139236174_n.jpg?_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=111&_nc_ohc=tL7c_ml3droAX_DpBmP&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAFe3WtmmQXUA1K395U-jz4n98YeF9KEiYKL6qrYANDuQ&oe=63DB5133&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA5MjNfMjU5%2FMDAxNjYzODk5Njg0OTAy.8lf1HcNPO60dOLkfwRxRFFTXbdBDMCqisNE5Qx74P_0g.mT_iFJ-hKiHC3PgxtOf65mtcZSyKQRfqVUfFV2kaJwcg.JPEG.mistakeni%2FIMG_2528.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210912_111%2F1631423396665RLqCh_JPEG%2Fimage.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '더니커피',
@@ -774,13 +1147,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '서대문구',
     dong: '연희동',
+    '동 or 역 (DC)': '연남동',
+    subway: '',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티,원두구매',
     description:
       '매주 다양한 스페셜티 커피를 소개하는 마이크로 로스터리 커피숍',
+    logo: '/images/cafe_logos/66663779_559993121205018_5988135531131699200_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=106&_nc_ohc=_fDTRK5bv2sAX9TDZUN&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCoq_EVFhgN5NhE4xLeaXCnYIdaxPbfMb3kGj3C6do71A&oe=63DAB6F9&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20181215_223%2F1544837462916YqNY6_JPEG%2FkAvcU7FOnWOat8ewLN2EMnzy.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA4MDNfMjEw%2FMDAxNTk2NDQ0MzY5Nzk0.sdoZHALfX7NnWoa_nrz148mlW0LJ-0jSul7RoVCeHMcg.7mKJ06guMjTWcn-IqMP2Rhp4KvadzYLpMs9OmT_3eAog.JPEG.y2kpjy7716%2FIMG_1470.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '아이덴티티커피랩',
@@ -788,12 +1171,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '서대문구',
     dong: '연희동',
+    '동 or 역 (DC)': '서대문구',
     subway: '홍제역',
+    wifi: '',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티,원두구매',
+    description: '',
+    logo: '/images/cafe_logos/208322268_4045238645556182_8061767331090054508_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=102&_nc_ohc=d7djYls4NSUAX-NaXCy&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAYAgxLJzvM4r2LZCWmiDL1d5YpPuM5xtuOMmf_zZ9GCQ&oe=63DB11A9&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAzMDlfNTcg%2FMDAxNjQ2ODI4NTY3MzE5.eLfoCWpY7-ziDdVx9ZsheEu-8UFT4v2NP7Ouy4OhDs8g.ckiDc7kNRXvEdaz7ia2ysfGo1WwHzaHMpPSEaT6gfaQg.JPEG.jjooo823%2Foutput_3433239587.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210520_113%2F1621503125128xDbeL_JPEG%2FcmmSDAhRrOvKlFZ-b7RDfezs.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '컬러드 빈(Coloured Bean)',
@@ -801,16 +1194,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '서대문구',
     dong: '연희동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '홍대입구역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티,호주',
     description:
       '호주에서 오랜기간 근무 후 돌아온 바리스타가 커피를 내려드리는 연희동 컬러드 빈 입니다. 다양한 우유 커피를 기본으로 깨끗하고 다채로운 필터커피도 동시에 제공합니다. (디카페인 및 논커피 메뉴도 동시에 준비되어있습니다.)',
+    logo: '/images/cafe_logos/100897432_728859014514193_8367979473940774912_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=101&_nc_ohc=yHv1nRHxcuUAX9Yan2O&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAGHbsm9YpShistA3kZT7OWYE-1yjIyjFhbNn2_Ti4vCw&oe=63DB6AA7&_nc_sid=8fd12b',
     'images.0':
       'https://ldb-phinf.pstatic.net/20230105_13/16729224314392C4Lt_JPEG/KakaoTalk_Photo_2022-07-12-19-04-10_006.jpeg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230105_217%2F1672922432177aPqfU_JPEG%2FKakaoTalk_Photo_2022-07-12-19-04-28_005.jpeg',
+    FIELD16: '',
+    메뉴판: '등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '니도 로스터리',
@@ -818,16 +1218,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '서대문구',
     dong: '연희동',
+    '동 or 역 (DC)': '네이버맵 공유',
+    subway: '',
     wifi: 'O',
     pet: 'O',
     parking: 'O',
     tags: '로스터리,스페셜티,원두판매',
     description:
       '도심속 작은 테라리움에서 즐기는 스페셜티 커피 Nido (Italia) : 둥지 Roastery (English) : 커피를 볶아 파는 장소',
+    logo: '/images/cafe_logos/277364215_433564221873382_8265099732274667328_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=110&_nc_ohc=tDm1j13NfEAAX-Vt7Fk&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBD0tICx1mC7QYVOeFiUoHO6yrI3Ie0kLuSBDXclMtxTQ&oe=63DA4B27&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220723_167%2F16585491704516nUvq_JPEG%2F%25C1%25A4%25B8%25E9jpg.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220502_194%2F1651479384381WKOFA_GIF%2F%25B4%25CF%25B5%25B5%25BB%25E7%25C1%25F82.gif',
+    FIELD16: '',
+    메뉴판: '일부등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '룰커피',
@@ -835,15 +1242,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '서초구',
     dong: '서초동',
+    '동 or 역 (DC)': '서초',
     subway: '남부터미널역',
+    wifi: '',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티,원두판매',
     description:
       '룰커피(LULL) LOVE YOU All 줄임말로 모두 사랑하며 행복하길 바라는 마음으로 만든 모던 카페입니다,\n\n서초동 예술의전당, 악기거리에 위치한 룰커피는 정인성 바리스타가 직접 로스팅하고 정성스럽게 커피를 내리며, 위트있게 이끌어 나가는 공간입니다,\n\n커피와 함께 소소하게 즐길 수 있는 디저트는 매일 아침 직접 반죽하여 구워내고 있습니다.',
+    logo: '/images/cafe_logos/266441293_352625899960521_3944965743352274375_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=109&_nc_ohc=wheYqbMUWCoAX-8gigc&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBcY0zXclAntiIC9LUDmjDnoxfsJ6Det3RdotUHQW5TaA&oe=63DAEE7D&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MDNfMSAg%2FMDAxNjQ4OTc1MjgxMTE2.TdAKHqiK3PtkIYY_5fVMxXWGaX80LqpJOOY_WgVLfz8g.pB5XmBI4i-XoqbJgpbFoDBvHIKrxi-1baFbpmQfGSdAg.JPEG.kmj35377%2F1648543582748%25A3%25AD1.jpg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220827_252%2F16616032394549JISv_JPEG%2FE3C60357-B34F-4B4C-BD87-FD931C0615C2.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '파이브브루잉',
@@ -851,15 +1266,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '서초구',
     dong: '방배동',
+    '동 or 역 (DC)': '서초',
     subway: '내방역',
+    wifi: '',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티,원두판매',
     description:
       '파이브브루잉 카페는 2012년 국내 최초 브루잉 커피를 이바지한 헤리티지를 담아 차별화된 공간으로 스토리를 만들어 우리가 지향하는 커피의 가치를 높이며 소개하고 있습니다. 만드는 사람의 감성이 반영되는 커피의 매력을 전하고자 하는 도형수 바리스타의 커피, 이제 직접 만나보세요.\n\n파이브브루잉 주식회사는 다양한 브랜드와 협업하며 원두 유통 및 OEM원두 QC에도 참여하고 있습니다. 만드는 사람의 감성이 반영되는 커피의 매력을 전하고자 하는 도형수 바리스타의 커피, 이제 직접 만나보세요.',
+    logo: '/images/cafe_logos/277279380_679841480129192_6723052145388670279_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=108&_nc_ohc=IzsfEq94sWcAX8RYkeX&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfC_6Mme0Y_w8Mp9cMOTgW7xEw2zocTS_MfWK3gWm7B1YA&oe=63DB3A0F&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA1MjFfMjg3%2FMDAxNjUzMTI3ODg3MDE1.8nUPrZaA6FiYUlwGvoUZnQceyA43q4qdfBfeW9LwxAYg.RJsyYAClWzqz88F6e1dMmiLC3InnKW1FKtwmJE6vQ2Ig.JPEG%2Fupload_ac81cc87f4e0b9b5945269b2fbf20fce.jpeg',
     'images.1':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA5MDRfMTk2%2FMDAxNjYyMjc3ODY1NzA4.gG84vl9sp7Iv7uzG5GqMnq6FpxbyTFvrSnjMkkGpfw8g.LDY5zlKPWIoZCZlLpErbNnNnKttsaqS87QwiVdc9MTIg.JPEG%2F1B5E3C2C-8DF7-47D2-B61E-E6F2C4DA6F55.jpeg',
+    FIELD16: '',
+    메뉴판: '텍스트,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '프릳츠 양재점',
@@ -867,9 +1290,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '서초구',
     dong: '서초동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '양재역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '양재동에 오픈한 프릳츠커피컴퍼니 3호점. 본점과 마찬가지로 질 좋은 원두를 사용한 커피를 선보인다. 1층과 지하 1층 공간으로 꾸몄으며, 빈티지하면서 레트로한 이곳만의 감각을 물씬 느낄 수 있다.',
+    logo: '/images/cafe_logos/10584633_753077058090569_1137616471_a.jpg?_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=105&_nc_ohc=iGjXp-YQCiwAX-rZq4D&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAyMhwRQbLd4MVc5Sllkww6LIbee2z8JbsGtHU7hT9-Tg&oe=63D798B8&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEyMTFfMTY0%2FMDAxNjcwNzMxNjYxMzUx.Ha-lLOOe_K_Fbgg1K4dX-6crBZxleuiD-gthUY44RdMg.mHN1ZtrZ4jX5bOC0O-RthY_HHp9eEGhJEFZ2BwEMhQAg.PNG.s2hayan%2Fimage.png',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220922_281%2F1663825868503W5W4l_JPEG%2F%25B7%25D5%25BA%25ED%25B7%25A2.jpg',
+    FIELD16: '',
+    메뉴판: '등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '피어커피',
@@ -877,8 +1314,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동2가',
+    '동 or 역 (DC)': '성수동',
     subway: '성수역',
     wifi: 'O',
+    pet: '',
+    parking: '건물 바로앞 성수동2가 3동 공영주차장 이용',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      'PEER : 동료, 친구\n피어 커피는 동료에게 전하는 마음을 커피로 표현하고 있습니다.\n가족에게 전해주듯 정성스러운 마음으로 한 잔을 더 마셔도\n부담스럽지 않은 단맛과 클린컵이 뛰어난 커피를 만들고 있습니다.',
+    logo: '/images/cafe_logos/peer.jpeg',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAyMTlfMjMz%2FMDAxNjQ1MjcwNDIyMzM1.Zs7LpTSCq47qY7s7UV1iHWE43u8wHHZofMwa_AFPG4wg.DVwys1NLNVFJZimpS_RmvlZklSF8UAuHfzmFFHEKMSYg.JPEG.supermoooon%2FIMG_1240.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20190927_132/15695809064823HQak_JPEG/dy-lRixUHsuCPiv36x2G_4Kt.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '로우키',
@@ -886,10 +1338,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동2가',
+    '동 or 역 (DC)': '성수동',
     subway: '성수역',
     wifi: 'O',
     pet: 'O',
-    tags: '로스터리',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '로우키는 서울을 기반으로 스페셜티 커피를 다루고 있는 로스터리 입니다. 2010년부터 로스팅과 원두 납품을 하고 있으며, 헤이그라운드점을 포함한 3개의 커피매장과 1개의 로스터리를 운영하고 있습니다.\n항상 커피의 품질을 최우선으로 생각하며, 스몰배치 로스팅으로 신선하고 가장 맛이 좋을때 커피를 제공하는 것을 원칙으로 합니다.\n커피가 가지고 있는 맛과 매력, 흥미로운 스토리가 온전히 전해질 수 있도록 노력하고 있습니다.\n다양한 스페셜티 핸드드립커피를 즐기실 수 있습니다.',
+    logo: '/images/cafe_logos/76869801_644260966312552_9133537633308246016_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=104&_nc_ohc=ZIk6DF3i0VcAX-27FH-&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfD8w0WNdjEbpRJmgjlw65Ofw2ume8V1a-_UPzZuiZPwTg&oe=63D76C7E&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjExMDdfMTA2%2FMDAxNjY3NzY5MDk2NTA3.qFcnpPIgNbtv9Do7414o28L36Cv1kxs_D6NUTh-yUaQg.A5T_AAu8NogqrhYtLS9fh8QSL01WHq-s0cEB-OPC-yAg.JPEG.soojung4853%2FIMG_6728.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjExMTVfMTcz%2FMDAxNjY4NTAxNzY5MzA2.srGNPRcBVlXYrIAnPEn6BebSXrE9el-GhzQa0HToWdUg.fw_RrnsLuz8lJ9w4S29eK0r1tqUVFJ0wQnyWBG2XzJog.JPEG%2F09F9126B-4889-4128-A6D9-FD0BB06398F7.jpeg',
+    FIELD16: '',
+    메뉴판: '텍스트,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '윈야드 성수',
@@ -897,9 +1362,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동1가',
+    '동 or 역 (DC)': '성수동',
     subway: '뚝섬역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매,와인바',
+    description:
+      "윈야드의 두번째 프로젝트,\n\n낮에는 커피, 저녁에는 와인을 통해,\n하루라는 시간 동안 즐길 수 있는 음료에 집중했습니다.\n\n단순히 음료를 제공함을 넘어서 모든 손님들이 각자의 기호나 기분에 맞는 음료를 통해 장면의 기억으로 남는 경험을 드리고 싶습니다.\n\n낮에는 진지하고 멋진 마음으로 하이 퀄리티의 로스팅을 하는 'NOMAD COFFEE'의 여러가지 싱글 빈들을 이용해 그 날, 그 순간 가장 원하는 맛의 커피를 컨설팅 해드리는 서비스를 제공하며, 독창적이고 놀라운 디저트를 만드는 새로운 헤드 페이스트리 셰프의 디저트를 통해 커피와의 멋진 페어링을 준비합니다.\n\n밤에는 내추럴 와인이라는 개성있는 와인들을 제공합니다. 손님이 정말 원하는 와인 한병을 위해, 와인 추천 과정에서 여러가지 와인들을 테이스팅하여, 직접 와인을 마셔보고 고르실 수 있는 서비스를 제공하며, 윈야드 스타일을 담은 캐주얼한 음식으로 페어링을 준비합니다.\n\n온전한 커피와 와인의 시간.\n공간의 변화를 통해 낮에는 커피, 저녁에는 와인에 집중할 수 있는 분위기의 공간으로 더 깊은 경험을 전하길 기대합니다.",
+    logo: '/images/cafe_logos/264845590_432614131776780_4013895315233726775_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=100&_nc_ohc=MiuSGD9VaNgAX-N9u0C&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAkrbZBt8Sdm-bmQzXIeOWWc0JDejfq3FnoTwlge0Nn5g&oe=63D60E2B&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAzMDFfMTkz%2FMDAxNjQ2MTM4OTMzNDM1.vRJ6ikTw4WfTXXtT1xeIHwXi54J7Pi90Q_tSh8q-p8Yg.ARZV6oQD4gcTbCr4WcQTZ-Y_W4kKcP60yqkn1J5bY-kg.JPEG.jshim84%2F20220301_150623.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA2MjRfNDYg%2FMDAxNjU2MDQyOTM3OTE2._eAS_7RAQ7BDetQEPvlxdKz38ysqWawbCg1rPil1BrQg.QG_GIM5QYDPyo6Ae784hQ25r0FUnWk0-Z46PYYBshOUg.JPEG%2Fupload_6e5fc5222b1d6eaa25562be95552c418.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '카모플라쥬(camouflage coffee)',
@@ -907,10 +1386,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동1가',
+    '동 or 역 (DC)': '성수동',
     subway: '뚝섬역',
     wifi: 'O',
     pet: 'O',
-    tags: '로스터리',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매,월드챔피언',
+    description:
+      '안녕하세요 카모플라쥬 커피입니다.\n저희는 2018컵테이스팅 월드챔피언이자 시드니 LEIBLE coffee소속의 Yama Kim과\n시드니 Skittle Lane Coffee 소속의 Ryan Yu가 함께 운영하는 커피쇼룸 겸 로스터리입니다.\n\n좋은소재를 심도있게 다루는 것에 중점을 두고있습니다.\n품질좋은 커피로 찾아뵐게요 감사합니다.',
+    logo: '/images/cafe_logos/194354936_281049867058919_6674656812021316387_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=111&_nc_ohc=8GoRJl-VenoAX-pVnpe&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBvywKfawJr6bLXMzZXimvp_lv55rey7bnSLoxb-LRV0w&oe=63D64CA9&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMjlfNzcg%2FMDAxNjE2OTg4MzY3ODg0._9aRJ9nM2F6U0Yd8DLkHkVZpUvkWWCaX9UR-hU_83ygg.vpYbgsFsreEi9FdmMt5MuKPv0-KiLDGa-Qjrf6KnNCAg.JPEG.withhhhy%2F4C3D2B95-F2F4-460A-95E1-D0A2DD034D96.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220903_181%2F1662212808891tkscl_PNG%2F%25BD%25BA%25C5%25A9%25B8%25B0%25BC%25A6_2022-09-03_%25BF%25C0%25C8%25C4_10.41.37.png',
+    FIELD16: '',
+    메뉴판: '없음, 이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '더반 베를린 성수점',
@@ -918,8 +1410,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동2가',
+    '동 or 역 (DC)': '성수동',
     subway: '성수역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매,독일',
+    description:
+      '안녕하세요. THE BARN BERLIN KOREA입니다. THE BARN 로스터리의 한국 최초 플래그십 스토어가 성수동에 오픈합니다. 영업시간은 소프트 오프닝 기간에 한하여 18시까지 맞이합니다.\n\nTHE BARN의 모든 카페는 공간의 역사를 담습니다. 한국 건축물의 멋과 이전 생활양식을 대표하는 한국식 오랜 가옥을 리모델링하여 카페를 오픈하게 되었습니다. 건물 자체에 대부분을 해치지 않고, 편안한 분위기 속에서 훌륭한 커피를 고객들에게 소개하고자 합니다.\n\n- Soft Opening : 11월 16일~\n\nabout)\n유럽을 대표하는 독일 베를린 스페셜티 로스터리 THE BARN입니다. 지속 가능성과 친환경을 추구하고, 오로지 SCA 차트 86점 이상의 싱글 오리진 생두만을 로스팅하여 최고의 커피를 만들어나가고 있습니다. 제철별 좋은 생두를 선별하여 다양한 싱글 오리진 커피를 선보이며, 떼루아에서 나타나는 본연의 향미를 표현하는데 집중하고 있습니다. 소비자가 즐기는 커피 한 잔이 어디로부터 생산되어 오는지를 전달하는데 큰 노력을 기울이고 있습니다.\n\n그들의 비전은 이렇습니다.\n: 우리는 매일매일 더 좋은 커피를 만들기 위해 노력합니다. 타협은 없습니다. 훌륭한 커피. 그거면 되죠. 우리는 여러 원두를 블랜딩 하지 않습니다. 그래야 커피 본연의 맛을 느낄 수 있을 뿐 아니라, 누가 이 커피를 생산했는지도 제대로 이해할 수 있기 때문이죠.\n\n[ROASTERY THE BARN BERLIN]\n\nTHE BARN is a leading coffee roaster in Europe and represents the Specialty Coffee Movement at the highest level since 2010. Our beans are served by many coffee shops and home brewers across the globe. Our vision has been very clear from the start: We focus on making our coffees better and better. No compromise - just great coffee. We would never blend our coffees in order to showcase specific flavour profiles and to present each farm we work with. This makes our farmers proud and the product fully traceable.내용 더보기\n정보 수정 제안',
+    logo: 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221102_143%2F1667378119007VqeNR_JPEG%2Fthebarn_logo_kakao.jpg',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221229_206%2F1672295023738MD3Uf_JPEG%2F_Z9A2825-w.jpg',
+    'images.1':
+      'https://pup-review-phinf.pstatic.net/MjAyMjEyMDRfMjE0/MDAxNjcwMTQwMTMwNDUx.5BxYKajfsd3UdA_rf94GRpIPZUpDpceVYbCPKjiQqyQg.8FIHGeE3oR2yObYPoWoZnJqpVoI4hBpawYQWFZbYEv8g.JPEG/20221204_153927.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '메쉬커피',
@@ -927,9 +1434,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동1가',
+    '동 or 역 (DC)': '성수동',
     subway: '뚝섬역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '서울숲 근처 맛있는 커피로 유명한 스탠딩카페\n\n메쉬커피는 2015년 스페셜티커피 산업에서 일하던 두 사람이 성수동 서울숲에서 시작한 커피 브랜드입니다. 저희는 동네에서 좋은 커피를 함께 마시는 문화를 만들고 싶었습니다. 한 잔의 커피를 통해서 재료를 준비하는 커피 산지의 농부들부터 이곳 카페에서 컵을 마주하는 손님이 서로 연결이 되는데 저희는 그 가운데에서 이야기를 전하는 도구이기도 합니다. 커피의 시작인 씨앗부터 마지막 컵까지 전체의 과정이 투명하고 완벽하게 즐기는 한잔의 커피를 지향하고 사람들이 좋은 커피를 마시면 세상이 긍정적으로 바뀐다고 믿습니다. 이것이 저희가 생각하는 커피의 힘입니다.',
+    logo: '/images/cafe_logos/292462173_396436348988835_8431793371738565000_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=103&_nc_ohc=R5X38P6b6kcAX9Kp5OA&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDwfUSlXO5J67qOWJTQ4_cArVQbfIWjHBnam5tBS_ludA&oe=63D5E0B9&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211208_155%2F1638938713151eNvUq_JPEG%2F3BDE2A64-A0C1-4D11-AF47-2A8E9BEC58CE.JPG',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEwMzFfMjAx%2FMDAxNjY3MjIzNzkzOTYx.ms_LYO_klaw9UpUhJSyI5E5CkkOmscCvzWi_vkf5G_wg.2uTCqh1B4pniedZwL4FHvVjDWuB5LR7GiIX-P3_j_esg.JPEG%2FB00F5CD7-79AD-4744-9AE3-F57AA9B0472F.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '기미사 성수',
@@ -937,8 +1458,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동2가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '성수역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '기미사는 커피를 포함한 음료 전문 브랜드입니다.\n\n기미 (氣味) 란 향과 맛, 기분을 뜻하는 옛말입니다.\n\n기미사(氣味士)는 커피와 음료의 새로운 향과 맛,\n그리고 특별한 경험을 추구합니다.\n\n홈페이지 : https://gimisa.com/\n\nSNS : @gimisa_seongsu\n\n*납품 혹은 대관문의는 SNS계정 DM으로 부탁드립니다.\n\n*주차가 불가합니다.\n인근 공영주차장 혹은 매장 앞 우리은행 건물 지하 주차장을 이용해주세요',
+    logo: '/images/cafe_logos/186198408_912796706180856_4666616596122081551_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=100&_nc_ohc=_M9siQjlsSwAX-V7Yg_&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCzJ-qwTi-WXakD8K6pCK74Hm_mkW-bvfWMdcMV95_LXA&oe=63D6AFB3&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210821_4%2F1629557441674kmC6D_JPEG%2Fj0-vnsUG0w3QYtYlq6eeHIfk.jpeg.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20220519_249/1652941201913f5UvF_JPEG/KakaoTalk_20211224_144519514_25.jpg?type=f459_345_60_sharpen',
+    FIELD16: '',
+    메뉴판: '등록(참고하기)',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '브루잉 세레모니',
@@ -946,9 +1482,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동2가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '성수역',
     wifi: 'O',
-    tags: '로스터리',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '우리는 커피를 볶습니다.\n우리는 커피를 내립니다.\n\n협의되지 않은 모든 상업적 촬영을 금합니다.\n\n감사합니다.',
+    logo: '/images/cafe_logos/166976931_2893787667577352_7038483579828534147_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=108&_nc_ohc=kZRFRmkuZqwAX8ncHw-&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfD9cW1mMkY_2FkOfz7PGEmjkkGjAmX8OlaXaJKB2WZ9FQ&oe=63D7558D&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTA5MTdfMjI1%2FMDAxNTY4Njc3MDQ0OTI2.Z7lT2dpHLUt3blx2elHYnikarXNdjwV9U9hiI-oc2jAg.q6w2JfgcC9v2992Xbtt-YrCkM2h__7SOpCkQOCXI09cg.JPEG.dahaeyoo%2FIMG_0863.JPG',
+    'images.1':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAyMDNfMTk0%2FMDAxNjQzODk0NjEwNTY4.zaKQ_2N6MwJesQ8ZvhdlZti4FNjQ5AM8vFFwVioNil4g.341Ezce990GGGBBg3YNP4qt9XdL6WdV5-0KKHPwtRoMg.JPEG.yunhs1115%2FKakaoTalk_20220120_223721869_14.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '로우키',
@@ -956,9 +1506,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동1가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '뚝섬역',
     wifi: 'O',
-    tags: '로스터리',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '로우키는 서울을 기반으로 스페셜티 커피를 다루고 있는 로스터리 입니다. 2010년부터 로스팅과 원두 납품을 하고 있으며, 헤이그라운드점을 포함한 3개의 커피매장과 1개의 로스터리를 운영하고 있습니다.\n항상 커피의 품질을 최우선으로 생각하며, 스몰배치 로스팅으로 신선하고 가장 맛이 좋을때 커피를 제공하는 것을 원칙으로 합니다.\n커피가 가지고 있는 맛과 매력, 흥미로운 스토리가 온전히 전해질 수 있도록 노력하고 있습니다.\n다양한 스페셜티 핸드드립커피를 즐기실 수 있습니다.',
+    logo: '/images/cafe_logos/76869801_644260966312552_9133537633308246016_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=104&_nc_ohc=ZIk6DF3i0VcAX-27FH-&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfD8w0WNdjEbpRJmgjlw65Ofw2ume8V1a-_UPzZuiZPwTg&oe=63D76C7E&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210828_100%2F1630129212654iz6c8_JPEG%2F9_UuxYfEcI_-PdwwTnszMBiH.JPG.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210828_51%2F1630129118081C6CCs_JPEG%2FAg6SZUdgxTH1ebXApvgmz7nA.JPG.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '에디션덴마크 서울숲 쇼룸',
@@ -966,7 +1530,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동1가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '서울숲역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '덴마크,커피,티,꿀',
+    description:
+      'DANISH LIFESTYLE ON YOUR TABLE\n덴마크의 여유를 당신의 식탁에\n에디션덴마크가 소개하는 덴마크 커피, 티, 꿀 제품을 더욱 폭넓게 경험할 수 있는 카페 겸 쇼룸 공간입니다.',
+    logo: '/images/cafe_logos/50268249_322813941690129_6261010785019887616_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=109&_nc_ohc=Jpssk6IzYKUAX8WipY-&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDd48-hOZIUphmiwPnz7O_303KzHYI3Pxg2oRVDaOGjOw&oe=63D67A91&_nc_sid=8fd12b',
+    'images.0':
+      'https://ldb-phinf.pstatic.net/20220510_146/1652165201388LDR1h_JPEG/3M7A2559.JPG',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20220510_294/1652166345643kObFg_JPEG/3M7A2698.JPG',
+    FIELD16: '',
+    메뉴판: '등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '목로정원',
@@ -974,9 +1554,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동1가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '서울숲역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '모카포트,커피,꽃,와인',
+    description:
+      '모카포트를 이용한 가정식 커피 목로다방\n\n꽃과 식물, 차와 커피를 소개하는 원예 공간 그리너리 서비스, 비건 지향 음식과 모카포트 커피, 그리고 와인 제공',
+    logo: '/images/cafe_logos/318486946_873294577227994_2344420194502947694_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=110&_nc_ohc=A3_cyCaOoxQAX8oKR2a&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBW8AwJIzkOIlwyRzEYv92PlcISuZynEeTen-2oVsSXjg&oe=63D6B4DE&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTEwMjRfMTgy%2FMDAxNjM1MDU0MDIxODY5.G7M-6aegwRyctpbLStyw7GllujN6VjIm1e0bkBxQdW8g.2jM3gIxn_iJMm6k6B13t4PeGom7mgOiX5WgoeAlD_pUg.JPEG.victory_jm%2Fimage11695866407870089931634979765610.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20200619_30/15925629195445E0nl_JPEG/1YD6I1H3acaSDeq3K9SYbBMV.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '센터커피 서울숲점',
@@ -984,10 +1578,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동1가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '서울숲역',
     wifi: 'O',
     pet: 'O',
-    tags: '로스터리',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '안녕하세요, 센터커피 입니다.\n센터 커피는 정말 멋진 커피를 고객에게 전달하기 위해 시작 되었습니다. 최고 수준의 생두와 로스팅, 추출을 고집하며 지속 가능한 스페셜티커피 문화 확산에 힘쓰고 있습니다. 센터 커피는 영국 바리스타 챔피언인 박상호 로스터 및 커피 전문가들과 함께 시작된 회사입니다. 맛있는 커피가 준비 되어 있으니 언제든지 방문 해주세요.내용 더보기\n정보 수정 제안',
+    logo: '/images/cafe_logos/42924042_508436919672075_4339179384402345984_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=103&_nc_ohc=axcDs-ZLiSIAX_funH1&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCbgJR17X9qd7H5JV47wtfH8zSBrYzcsHngT3zDMravsA&oe=63D79E5C&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMTRfMTE5%2FMDAxNjE1NjUyNDkyMjUz.bEBBYDoyNL2KrepRFyl6QZp5vX9k0Sq0-fTMpXmyXbEg.fE9_G-aNpPVuKhebLitGIqKteF3w1AR94QswGQ0ZSPUg.JPEG.kwonek1990%2FIMG_5460.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201123_217%2F1606104299551XSHhq_JPEG%2FyESeZxCPmZdjS4eJkhzshCyh.JPG.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '콜렉트',
@@ -995,9 +1602,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동1가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '서울숲역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매,모카포트',
+    description:
+      '집에서 즐길 수 있는 커피를 소개합니다\n-\n매장에 전화가 연결되어 있지 않습니다\n번거로우시겠지만 문의사항은\n인스타그램 DM 부탁드립니다\n최대한 빠른 답장 드리겠습니다',
+    logo: '/images/cafe_logos/277812571_1603142663394485_4965868781768934492_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=105&_nc_ohc=rUroIYHf-3YAX_A-NFs&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCmnkj1XeMDYSAGWbR6-m7L1b4dzk77cLSQtLmHoMPVvA&oe=63D5DFD0&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAzMTVfMjUy%2FMDAxNjQ3MzAyNTUwMDc3.FWhpF8VoHOBTSpoMfYYVBq-vAfB8VOjnSycMGWzkWVMg.9XfeUCDeHlU3LZGVrXJdAdxMy6gUvbVj_U5VxWvK3Gog.JPEG.gksalfm94%2FIMG_5499.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjExMTZfNzEg%2FMDAxNjY4NTM1ODA5NTA0.2hYIX0rUPAFOnyeMnas1rn78sw6I1o4XKlGnC0VZJiMg.Ff39A1NhjY38oBVBqNG3Kn0ZgoPvY5iMis9QCm5ry_sg.JPEG%2F52E1BDAE-725C-454C-B8E2-F888F616B412.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지(시즌마다변경)',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '리커버리커피바',
@@ -1005,7 +1626,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '성수동1가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '뚝섬역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description: '크로플이 있는 뚝섬카페',
+    logo: 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200920_24%2F16006128381787LbKJ_JPEG%2FcnUeTyxnDEkFHkB2SfErUXqx.jpeg.jpg',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MDNfMjgz%2FMDAxNjUxNTYxODUzNzQx.z_4SUiAJ-42EbuY379ZRLSF8xGDxhYhPZUtFOuuiRfcg.Dmf3TfSohOGi34BL1Zm-7ajWwsBjPr6qPqDq0ndW04Eg.JPEG.isg0106%2FIMG_6030.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20211217_231%2F16397132972548evHF_JPEG%2Fupload_6d78e4ee25a581869459d66afb3d8137.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '오버나잇 커피 로스터스',
@@ -1013,17 +1649,46 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '성동구',
     dong: '하왕십리동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '상왕십리역',
     wifi: 'O',
-    tags: '로스터리',
+    pet: '',
+    parking: '주차는 J동 상가주차장 2시간까지 무료입니다.',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '베리에이션 음료라던지 베이커리, 디저트는 없지만 다양한 커피를 끊임없이 찾아내고 소개시켜주어 더 나은 커피라이프를 만들고싶습니다.\n\n주기적으로 원두 라인업도 변경하기도 하며, 샘플로 가져온 생두가 괜찮으면 게스트빈으로도 운영을 하기도 합니다.\n\n먹기 편한 커피, 독특한 커피, 높은 퀄리티의 커피등등 고객들이 찾는 스타일의 커피가 항상 있게 운영하고 있습니다.\n\n',
+    logo: '/images/cafe_logos/318436911_826112271839251_5554349839482237965_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=107&_nc_ohc=mm5DBn8hXrsAX9XCdx9&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfA_B6NbdX9yESEo0HnMR6LQSZkAbhgHsSBooAgbR1PuiQ&oe=63D6CECF&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA1MjlfMjcy%2FMDAxNjIyMjE0MTM0Mjg0.wbKHfci3u2uJQinPCDE279L2b7Wpp57OsJ8UjwnLrA0g.78OQZMUCFRGEKpGFeB8QmPtwxaadPpZDeSFbA-o513Qg.JPEG.imsoheeme%2Foutput_2479417997.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210421_140%2F1619008310753YGBHp_JPEG%2FJlstpNiq1lTnOIqvdGQnwb6E.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
-    name: '리이케커피',
+    name: '리이케커피(liike coffee)',
     address: '서울 성북구 보문로34가길 24',
     sido: '서울특별시',
     gungu: '성북구',
     dong: '동선동3가',
+    '동 or 역 (DC)': '성북구',
     subway: '성신여대입구역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description: '커피 취향을 발견하고 즐기는 곳, 커피 상점 리이케입니다.',
+    logo: '/images/cafe_logos/44828635_2176236055730019_5821114719825559552_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=103&_nc_ohc=f46h3FMkgjMAX9GVH57&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDbTu7VMBJqGPO0-5T1Oo8sbmT3OIYbnZprQ_l0R-YFHg&oe=63D6EF48&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190215_240%2F1550212758357jmA3y_JPEG%2FyRmwXlETMS0mtJYsB9i8nQRM.jpg',
+    'images.1':
+      'https://myplace-phinf.pstatic.net/20220106_89/164146311543425Ak2_JPEG/upload_021005cf2b37f160e373ae7ebd603d3e.jpg',
+    FIELD16: '',
+    메뉴판: '등록(사진없음),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '하우스서울',
@@ -1031,8 +1696,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '송파구',
     dong: '잠실동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '종합운동장역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '서점 갤러리가 있는 복합문화공간\n1층은 스페셜티커피 카페, 2층은 개성있는 서적을 볼 수 있는 작은 책방, 지하는 갤러리와 카페가 어우러지는 곳입니다. HOWS는 도심 속 문화와 디자인, 그 소통의 힘을 전하겠습니다.',
+    logo: '/images/cafe_logos/322036123_200474035872353_6075710769782640446_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=105&_nc_ohc=-y1zoOkqkHkAX_lw3gS&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDOdRel5d5A0o9A6PEIkFKgudjg-GDT1gL5FpyOh4DaZA&oe=63D760AB&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211014_209%2F1634171968586Hh4MG_JPEG%2FcWosDkm2Ix55XkWDwX6lNE7t.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMTRfMTI3%2FMDAxNjczNjgwNTI1NjUx.Po1aOikajEPOuW-tx9nX7QHAgshzR8EMRjWaSZZcp0Eg.WTOy6mXJ5ilZZLjKOeYAUtxKN021-gxRnfsabZ5Hn28g.JPEG%2FBDBB2D5E-8B3D-44F2-B9A9-7544B7EFF9B0.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '뷰클런즈',
@@ -1040,8 +1720,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '송파구',
     dong: '송파동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '송파나루역',
     wifi: 'O',
+    pet: "송파여성문화회관' 공영주차장 이용을 부탁드려요",
+    parking: '',
+    tags: '스웨덴',
+    description:
+      '뷰클런즈(舊 뷰클랜드)는 쉼이 필요한 어른들을 위한 카페입니다.\n피곤하지 않을 정도의 전시와 스웨덴에서 온 커피를 준비했습니다.',
+    logo: '/images/cafe_logos/269822588_617025492872049_574587224386281806_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=109&_nc_ohc=EQ2uujHvRm0AX8FNkgS&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfA-wJkpTs0JU76oH2-skn0yS0rVNbf0EJys8ykrWImcBw&oe=63D62AF2&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMDJfMTgw%2FMDAxNjM1ODU5ODIyMjgz.aHkAra9LogdL8zflTqfdM3s8JIIqccQjUmUHBLMqTXMg.Nf4dgWQdLm8IWfnfm3l0xLY0jMraIZJzv-bRIKpboAsg.JPEG.rbxod123%2F1635859815593.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMDNfMjU2%2FMDAxNjcyNzM4MDg2NzE0.OpSsbjagGFb0Q85qTV-qR_4FdUhXesuwJ2JbvbjkOaUg.A4uefrKO4ZsfthjpdS5Qky9uXv_qy5MPA1JR7cunGdgg.JPEG%2F7FDFD815-B996-4B2F-AA3E-4549B0B409B2.jpeg',
+    FIELD16: '',
+    메뉴판: '등록(사진없음),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '선호 커피 로스터스',
@@ -1049,17 +1744,48 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '송파구',
     dong: '송파동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '송파역',
     wifi: 'O',
     pet: 'O',
+    parking:
+      "차량 이용시 도보 5분 거리에 ' 센틀민영주차장 ' 이용 부탁드리며\n유료 주차장 입니다.",
+    tags: '로스터리,스페셜티,원두판매,에스프레소바',
+    description:
+      '0. 원두 도/소매\n1. 에스프레소\n2. 브루잉\n3. 콜드브루\n4. 디저트\n\n환영 합니다.',
+    logo: '/images/cafe_logos/301015892_362131786122115_4305482444038786825_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=107&_nc_ohc=fpzXqfoLgl0AX-ao5di&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfA1PL9VozAqO4KOHrhprsfsm6JtrzsDX8g4krvQXxgopA&oe=63D722B7&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMjlfMjMg%2FMDAxNjM4MTk3NjI0NDAz.wJShWjkjTLOJKxNnOf0BnTpUN_76ALXlF5Aq9HAzufgg.5pK7e8XILTDmV2LG5ME5qRd7dHYO0OI-7e0Brrlx1Wcg.JPEG.yia0506%2FKakaoTalk_20211128_180554946_01.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20230119_281/1674083717715Lfrmz_JPEG/%BE%CB%C4%AB%C6%F7%B3%D7.jpg',
+    FIELD16: '',
+    메뉴판: '등록(참고하기)',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
-    name: '썸띵에스프레소',
+    name: '썸띵에스프레소(SOMETHING ESPRESSO)',
     address: '썸띵에스프레소',
     sido: '서울특별시',
     gungu: '송파구',
     dong: '오금동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '방이역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '직접 로스팅한 커피를 판매하는 카페입니다. 커피를 볶고 내리는 모든 과정에 세심함을 기울여 깊은 커피맛을 제공하는 곳이에요. 번화가에 있지는 않지만 커피맛에 예민한 마니아들에게 인기인 카페입니다. 초콜릿이 듬뿍 들어가 진한 초콜릿맛을 음료로 느낄 수 있는 딥초콜릿도 소문난 메뉴에요',
+    logo: '/images/cafe_logos/54512257_1063362220527519_7103015187547947008_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=103&_nc_ohc=3MVQSxjNGNEAX-J2ZGd&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCKIutIln0IwTJQtevOEjqpiSRCi1lIeXjDisi6ZvsJXQ&oe=63D7E7A7&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20131203_143%2Fcharm30303_1386044259933jFOIX_JPEG%2FIMG_0038.JPG',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMDVfMTY3%2FMDAxNjcyODQ1MDg0NDk3.v2Q7SjJ4S-suWSoaunlIjIe6HyEvTv1Wx9dvFFuU1Ksg.CWRcNvqD4613Wotbz_LZMFAYxZ98NmVPmAFotrIpDVYg.JPEG%2F27D17061-70C3-471F-95D0-35F1F2B4BA0D.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '쟈코피즈',
@@ -1067,7 +1793,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '송파구',
     dong: '방이동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '올림픽공원역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '',
+    description: '핸드드립커피 전문 ',
+    logo: '',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MjVfMTI4%2FMDAxNjUzNDM4MDY4MTE3.nfGZtzad_jMIL7zC_KXVtMMukY6lQjGWTl9uxo7yI0Eg.zk4FBbGEiLb-6waxjWIzuDAtc_iFcb1_gO1cuJ_j5VYg.JPEG.onedutchmachine%2F1653008722546-3.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMDRfMjI2%2FMDAxNjcyODA5NTkwOTA0._5J5rN7vwXYXu_2DEjZRwcWN3VFdnyGWVIfhumutA04g.bR6EvWOSIIxjadg5w77nKcvfcT2iQd1egTns1FKaYOMg.JPEG%2F20230103_121335.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '유어홈 커피로스터스',
@@ -1075,9 +1816,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '영등포구',
     dong: '문래동2가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '문래역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '문래동 스페셜티 커피로스터리\n유어홈 커피로스터스입니다.\n\n유어홈은\n모두에게 편안한 공간이 되어 쉼을 내어주고\n즐거움이 되고 싶은 공간입니다.\n\n그렇기 때문에\n커피도 편안하게 자주 마실 수 있는\n스타일을 지향하여\n단맛과 바디감의 밸런스를 중요시하며\n\n유어홈이라는 매개체를 통해 만나서\n단순한 생산자와 소비자의 관계가 아닌\n언제나 놀러가 듯 가벼운 마음으로\n다녀갈 수 있는 공간이 되었으면 좋겠습니다!',
+    logo: '/images/cafe_logos/101334969_286931136043604_7946151159339679744_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=108&_nc_ohc=OIy0XbHpWSQAX9BuvMo&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDyWGnscnlDOy4SiSOQwpvJ3h78Qv7Ggnf8jc2dzAkaYQ&oe=63D6D41F&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200806_9%2F1596708387725lubnv_JPEG%2FW18kgqRIWM16RoxzPGKv3ceh.jpg',
+    'images.1':
+      'https://naverbooking-phinf.pstatic.net/20220916_117/1663314252115PtblG_JPEG/%BE%C6%B8%DE%B8%AE%C4%AB%B3%EB_H.jpg?type=f459_345_60_sharpen',
+    FIELD16: '',
+    메뉴판: '등록(참고하기)',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '바마셀',
@@ -1085,7 +1840,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '원효로1가',
+    '동 or 역 (DC)': '남영역',
     subway: '남영역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,에스프레소바',
+    description: '원효로 다양한 에스프레소가 있는 카페',
+    logo: '/images/cafe_logos/65385798_386161975365648_8515589695948718080_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=100&_nc_ohc=ocirWC86lR4AX80Rl8d&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfB6WHz4hXJwKsFFQBSTD1JkzXh6ml9OHsm8G7YSvTF-Aw&oe=63D6D1EA&_nc_sid=8fd12b',
+    'images.0':
+      'https://ldb-phinf.pstatic.net/20190822_218/1566461448838scnsQ_JPEG/oYT3E54x9M94y969VqF0ffld.jpeg.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20201202_279/1606871951322evF1c_JPEG/psqhQ_WEC06Nq6-1TaAC8XeB.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '트레버틴',
@@ -1093,7 +1863,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '한강로3가',
+    '동 or 역 (DC)': '용산역',
+    subway: '',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매,덴마크',
+    description:
+      '맛있는 제철 커피와 샌드위치, 디저트를 즐길 수 있는 카페테리아',
+    logo: '/images/cafe_logos/272732317_330618485741416_4240996882796804361_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=104&_nc_ohc=ZUxMVM8AkOcAX9a53Pw&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfA_97sagzkvoG4EB4EWhNv2b9DddgIXfqQU1hgQ-ObN4Q&oe=63D7F3FF&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211122_187%2F1637562834606al6jN_JPEG%2F%25BC%25BC%25B1%25D7%25B8%25D5%25C6%25AE%25BB%25E7%25C1%25F8.jpeg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEyMTdfMTMz%2FMDAxNjcxMjU0MjA5NjE4.akmELgVZMuaCRamE_S3NsC5fkchIB-wv_TPRyzYjlDYg.vCvfSCnAVyDXnN1L9luCD5E-LzjB9vPxNxv-g5QkqPgg.JPEG%2F3EB47AA1-B8B8-4C17-9814-0B989B0FB286.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '센터커피 서울역점',
@@ -1101,9 +1887,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '동자동',
+    '동 or 역 (DC)': '서울역',
     subway: '서울역',
     wifi: 'O',
-    tags: '로스터리',
+    pet: '',
+    parking: 'O',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '전국의 허브 서울역에서 센터커피를 만나 보실 수 있습니다. 서울역 4층에 위치하고 있습니다!',
+    logo: '/images/cafe_logos/42924042_508436919672075_4339179384402345984_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=103&_nc_ohc=axcDs-ZLiSIAX8LgKM0&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCBZjqjFZu3FMVdvs3KPOsYuCvfs_Ggos5vqAA1hQEY4g&oe=63D79E5C&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220711_218%2F1657521725015izxEG_JPEG%2FIMG_3890.JPG',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMDlfNDUg%2FMDAxNjczMjQ2NDQ5NTMy.xOvuaK72uhAkgMR4zOPCyfCRJXaKxVib5eBIE_ZWM1kg.Fvg2wMKAs4ompZMxG27K5DanasGsrfelAM_rCsgJRPkg.JPEG%2F402C25BB-FDBC-401B-87E4-5AB83AB95508.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '엘카페커피로스터스',
@@ -1111,8 +1911,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '후암동',
+    '동 or 역 (DC)': '서울역',
     subway: '서울역',
     wifi: 'O',
+    pet: '',
+    parking: 'O',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '안녕하세요.\n엘카페 커피로스터스 입니다.\n\n직접 수입한 커피를 로스팅하여 최선을 다해\n제공해 드리고 있습니다.\n\n감사합니다.',
+    logo: '/images/cafe_logos/292472393_1089508928585608_1437443401604839662_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=104&_nc_ohc=YZudqbHbP-AAX-rjguc&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBRuNGCPGFJkXK-cbgaJ1GhAVybzKtRAr1RSWgxwo5VJQ&oe=63D67434&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA1MDNfMTkx%2FMDAxNjIwMDE1NTUzNTg4.AX1MtK3K4JVgwFzNbrGpkuo3rev4pZcXhsbC30-asjgg.u4tjc_ki_sn2d39KNet0Y37EmYpX0Yii0rT1YeyAkWEg.JPEG.snowindy%2FIMG_8107.JPG',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA5MjRfMTUw%2FMDAxNjY0MDE4MzkyMDAx.IN0WmxqHhOBgXIa_Dxw9o7qsYL34PwTYWyWgboX8W2wg.twiUbno7xPImgYU3VZGHEEkaj1TVWescP715XhjTmSYg.JPEG%2F20220924_144243.jpg',
+    FIELD16: '',
+    메뉴판: '등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '노리밋커피바',
@@ -1120,8 +1935,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '후암동',
+    '동 or 역 (DC)': '서울역',
     subway: '서울역',
+    wifi: '',
     pet: 'O',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매,오마카세',
+    description:
+      "노리밋커피바는\n다양한 로스터리의 원두를 매달 12종 이상 준비하여 취향에 맞춰 골라 드실 수 있는 공간으로 언제든 오셔서 편히 즐기실 수 있답니다!\n\n노리밋코스는,\n커피를 요리처럼 즐기실 수 있도록 만든 '커피 다이닝 코스'입니다.\n\n2016년부터 커피 오마카세를 운영하며,\n커피라는 재료를 활용한 여러 메뉴들을 만들어가고 있습니다.\n\n1인당 카페인 섭취량이 에스프레소 2shot(아메리카노 1잔의 양)정도 되는 코스를 준비하고 있으니, 밤에 잠 못 들 걱정은 내려놓고 즐겨주시길 바랍니다!\n\n한계가 없다는 것을 직접 보고 즐기실 수 있도록.\nthe place with nolimit.내용 더보기\n정보 수정 제안",
+    logo: '/images/cafe_logos/241731571_862971444589012_649630743945728158_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=104&_nc_ohc=uKfG2zy4U6IAX-8fKEU&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDTaLzbmHsTUDRkKhUzh82L8FO0tU3ZmWRJU74aV9bHDw&oe=63D64000&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMjRfMjc3%2FMDAxNjc0NTM5NTYzMjk3.AvxlNJgtLqQc5jjRSADDeNUCKCwLqEjQmOP8-6AeAKsg.l8ocjrcO7PSRc7n3LCtw0v8JPzX1R7B2vZnfSbDA3dAg.JPEG.dhkfydhd%2FIMG_3778.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20220716_139%2F16579826715997XKm7_JPEG%2Fimage.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: 'mtl 효창',
@@ -1129,10 +1959,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '효창동',
+    '동 or 역 (DC)': '마포구',
     subway: '효창공원앞역',
     wifi: 'O',
     pet: 'O',
-    description: '???',
+    parking: 'O',
+    tags: '로스터리,스페셜티,원두판매,독일',
+    description:
+      'mtl은 문화적 만족감이라는 지향점 아래, 건강하고 즐거운 삶을 탐구하는 컬처 플랫폼입니다. 사람들의 일상에 스며드는 로컬 셀렉샵&카페를 운영하며, 브랜딩 스튜디오를 통해 삶에 긍정적 영향을 미치는 브랜드를 만들어갑니다.',
+    logo: '/images/cafe_logos/270741646_1422625458153945_1726558539002144834_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=109&_nc_ohc=TOMjAVtWSwkAX-EYfsq&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAcJOqIvctDUnkF5Q6JC0VvjBqC2jj4opRXnee2bXF_dg&oe=63D7D1AA&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA4MDRfMTI1%2FMDAxNTk2NTUyMjI2MjA4.48McP5sm0en6RWcerkC0XTqNqbOPsBO0WALDxQ_uAvsg.63iOpO1pC0o1aI2Xkq-arHvEKGbp-Jm8i6pPrfb_NJkg.JPEG.foreverck%2F1596345171519.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjExMjJfMjEy%2FMDAxNjY5MDg3MzUwMzEy.3Worq9VTSlkcuW8ZQ2ncrO9ULd8zQFOaEfnXczwpkhEg.U0u6XXxIzBtwzrT6KACfQEOxFrexveCBkLUi9mKYFWQg.JPEG%2F3FB545A2-371C-4CCA-96C5-A61AEEB3CE2D.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '에이프릴커피',
@@ -1140,7 +1983,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '한남동',
+    '동 or 역 (DC)': '한강진',
     subway: '한강진역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매,덴마크,코펜하겐',
+    description:
+      '밸런스 좋은 커피 좋아하는 사람에게 추천 이태원 한남동에는 잘 없는 깔끔한 북유럽 느낌의 내부',
+    logo: '/images/cafe_logos/310795032_879886879572864_3842552026057902407_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=100&_nc_ohc=T8O7E61WgWEAX88zRVF&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAsVur84kNyzTaCB9hiLb8MqpPI_hwiX5T3o3uNg5QpKg&oe=63D70BF6&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221023_212%2F1666499019565AU6Xw_JPEG%2F8DF86711-7A5E-4F96-8754-390F2EB2DAE5.jpeg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEwMjlfNDAg%2FMDAxNjY3MDIzMjM4Mjc4.dn5Qti426AzCz0xm2m4BsfPdC7rlh-s0daYwevFHkZUg.d6Rw2cuzBDVYbDhr_9bz8T3tnQfVJuuZX1GGE3x0S40g.JPEG%2F20221029_142600.jpg',
+    FIELD16: '',
+    메뉴판: '없음',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '메쉬커피 해방촌',
@@ -1148,7 +2007,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '용산동2가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '녹사평역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '메쉬 커피의 두번 째 공간. 커피와 함께 조용히 휴식을 취해보세요. 메쉬 해방촌에서는 네이버 예약으로 커피 프로그램을 진행합니다.',
+    logo: '/images/cafe_logos/292462173_396436348988835_8431793371738565000_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=103&_nc_ohc=R5X38P6b6kcAX9Kp5OA&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDwfUSlXO5J67qOWJTQ4_cArVQbfIWjHBnam5tBS_ludA&oe=63D5E0B9&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210824_6%2F1629793527628A4FKQ_JPEG%2FG2qIL0Tlt-jA1CPR-u6U2Wo9.jpeg.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjExMDRfNjUg%2FMDAxNjY3NDg5OTYyNzk3.IuDnFCIjzR391jHzNwWXfLYbpY2jFCvpNES1KrrRVxsg.Aw08esf6b89-EFeoDEMHzFLcpsFuFSivnEYU4kOoQTgg.JPEG%2F20221102_145453.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '데일리루틴',
@@ -1156,9 +2031,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '남영동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '숙대입구역',
     wifi: 'O',
-    tags: '로스터리',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '남영아케이드 내에 위치한\n스몰 로스터리샵 데일리루틴커피 입니다.\n좋은커피,맛있는 커피를 일상생활로 즐길수 있도록\n준비하고있습니다.',
+    logo: '/images/cafe_logos/151001563_217876406700905_6827431731903976191_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=105&_nc_ohc=1KiFJiJMg5QAX_KmYXZ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfC5zEggXdbYwISxQfU5pyG0nTQo-XpsHJluLHQaxvLheA&oe=63D7CF0D&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA5MDRfMTk0%2FMDAxNjYyMjkxNTIxODI5.uQharmLA15dIpqp7XgcmCleqEfv_aklFx_Wa9HVoSDMg.3i9Wxb4UCcskJuyEtjjVkwaCxiciWsc7sqajkhgR6Kkg.JPEG.na9299yj%2F20220803%25A3%25DF182824.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA3MDFfMzAg%2FMDAxNjU2NjU1Mjg4MDI0.ErxbGTO8AIjrrZcHDXpIHHsNhYV2E0bv4osd4ivReQkg.PdUZZJYwPdbNJeYnrXUbHlwDDoi5qHgX9THUQwCqeRgg.JPEG%2Fupload_81182db510efe5502b631a7f4bd19663.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '오르소에스프레소바',
@@ -1166,8 +2055,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '용산구',
     dong: '후암동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '숙대입구역',
+    wifi: '',
     pet: 'O',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매,에스프레소바',
+    description:
+      '후암시장 근처에 위치한 ‘오르소 에스프레소 바’는 주황색 의자와 기다란 바 테이블이 눈에 띄는 이탈리아식 에스프레소 바다. 이곳에서는 에스프레소가 쓰거나 맛이 없다는 고정관념을 허물 수 있도록 누구나 호불호 없이 즐길 수 있는 커피를 선보인다. 에스프레소에 특제 초콜릿 소스와 우유, 크림을 넣은 ‘마로키노’가 대표 메뉴. 에스프레소 메뉴를 시키면 함께 나오는 탄산수는 커피를 마신 뒤 텁텁한 입 안을 깔끔하게 정리해준다.\n\n마키아토 에스프레소에 설탕과 우유 거품이 들어가는 이탈리아식 마키아토. 부드러운 풍미로 편하게 마실 수 있어 에스프레소 입문자에게 제격이다.',
+    logo: '/images/cafe_logos/195542192_862274321334951_2719580716035696195_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=103&_nc_ohc=DwG4bzOAc74AX-N27vn&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAM3v-ywbLgBW4BHn6zva5GO50_a51r8FLuqE3Mfk4Qkg&oe=63D79109&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210615_52%2F1623739526885fCCXz_JPEG%2FbutbTbUPfXD0ES-CZGiapOvt.jpeg.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210626_289%2F16246818963022BXJ9_JPEG%2FpexIS7rw2_9vvRLcNjGb7o0Y.jpeg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '와이엠 에스프레소 룸(YM ESPRESSO ROOM)',
@@ -1175,9 +2079,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '은평구',
     dong: '진관동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '구파발역',
     wifi: 'O',
     pet: 'O',
+    parking: 'O',
+    tags: '로스터리,스페셜티,원두판매,에스프레소바',
+    description:
+      'YM COFFEE PROJECT의 에스프레소를 마음껏 즐길 수 있는 곳입니다.',
+    logo: '/images/cafe_logos/61973366_387982268484800_7296025524567015424_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=108&_nc_ohc=a3O2t2UYrBIAX_RjL1M&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBdpBHNy0dkp8wB2Q2yhaCukgPEO3JbCj1ubM5UKtXu-w&oe=63D7BBC3&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MTNfMTY0%2FMDAxNjUyNDMwMDkyNjI1.j5c5Hj5Wvf5k8eNFo2xzU1WryhLkYUbG7JsysViV0CMg.eJvDhfGEIWxYBmkPxuucMF10RNIEW2Fv8VivZU8Tzrgg.JPEG.shr413%2F%25B1%25B8%25C6%25C4%25B9%25DF_%25C4%25AB%25C6%25E4_%25284%2529.JPG',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200917_180%2F16003407674012QxNe_JPEG%2Fcl7HF0zRNHp9YHvygvFyJb6m.JPG.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '톤티커피',
@@ -1185,15 +2103,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '재동',
+    '동 or 역 (DC)': '인사동',
     subway: '안국역',
     wifi: 'O',
+    pet: '',
+    parking: '',
     tags: '로스터리,밸런스',
     description:
-      '*대표메뉴*\n\n1.고소한 우유베이스+크림+에스프레소가 어우러진 아인슈페너 - 톤티베이비\n2.해가 지는 모습처럼 아름답고 청량+달달한 주스\n- 비포선셋\n\n(+그외 다양한 음료,디저트, 핸드드립, 드립백, 더치커피도 판매중\n/ take out 1000원 할인)',
+      '~Love at first sight ~\n\n안녕하세요 톤티 입니다 : )\n\n저희 톤티커피는 직접 로스팅 하는 로스터리 카페이자 신선하고 밸런스 있는 커피를 추구해요.\n\n복잡한 서울 도심 속 안국역 2번 출구를 나와 첫 골목으로 50m 걸어오면 톤티 커피 매장이 존재해요.\n여러 건물로 둘러 쌓여 외부 길가 에서는 매장이 보이지 않지만 , 덕분에 톤티 커피의 평화롭고 차분한 분위기를 더 매력적으로 느끼실 수 있을거에요.\n\n톤티커피를 찾아주신 고객들이 채워주는 따뜻함과 행복함으로 매장이 채워져서 , 시간이 흘러도 행복한 웃음과 맛있는 커피가 가득한 공간이고 싶어요.\n\n*대표메뉴*\n\n1.고소한 우유베이스+크림+에스프레소가 어우러진 아인슈페너 - 톤티베이비\n2.해가 지는 모습처럼 아름답고 청량+달달한 주스\n- 비포선셋\n\n(+그외 다양한 음료,디저트, 핸드드립, 드립백, 더치커피도 판매중\n/ take out 1000원 할인)\n\n* 안국역 주변에 북촌 한옥마을, 경복궁, 인사동, 국립 현대미술관, 서울 공예박물관 구경하시고 톤티커피에 오셔서 맛있는 커피와 음료 어떠신가요 ?\n\n-톤티 올림-',
+    logo: '/images/cafe_logos/278786291_162649652821260_4075088449044946863_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=100&_nc_ohc=q60fVZCJBtwAX-pNQCv&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfA4DeiJYkRx8_hxxdcZ4psSr5VJ_m7ymVtZ6qELHQra1w&oe=63D70F4B&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210803_209%2F1627996242580ov4oU_JPEG%2Fz61sdTfCf-670B5S-uPng7bp.jpeg.jpg',
     'images.1':
       'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbk6Ixs%2FbtrukfIx040%2FrBI3ucXeCp3ARXlPuuqMAk%2Fimg.png',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '카타딘',
@@ -1201,13 +2127,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '가회동',
+    '동 or 역 (DC)': '인사동',
     subway: '안국역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
     description:
       '디저트와 함께 필터커피, 차를 판매하고 있습니다.\n머무르는 시간동안 언제나 모두에게 담담한 휴식시간이 되길 바라고 있습니다.\n작은 공간으로 조용한 대화 부탁드리겠습니다. 감사합니다.\n\n당일 디저트 재료 소진 및 상황에 따라 운영시간의\n변동이 있는 점 양해 부탁드리겠습니다',
+    logo: '/images/cafe_logos/280601246_1267874113950658_8565940797620187663_n.jpg',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA2MjFfMTI1%2FMDAxNjU1Nzk0NTE2NjYy.N1MvudOVebAxarEoVF7Yf414bDXQ8uAGp4fJyoqTOCkg.EjWdL0gwXe8UsO4g3IjCWCuD_a26o-jAKNYujTaCOkIg.JPEG.roll5905%2F1.jpg',
     'images.1':
       'https://mblogthumb-phinf.pstatic.net/MjAyMjA4MjJfOTYg/MDAxNjYxMTY0MjUwODk5.NcbQEsjSaNXGk75346Lb6-lRPndT2kPnahMONMS-Anwg.0qR0NiTQOWIjKiJnE8GvelsoFWBlHQ1tngQCYm8edsYg.JPEG.506gywjd/IMG_0489.jpg?type=w800',
+    FIELD16: '',
+    메뉴판: '이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '파스텔커피웍스 서촌점',
@@ -1215,15 +2151,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '누하동',
+    '동 or 역 (DC)': '인사동',
     subway: '경복궁역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
     tags: '로스터리,스페셜티',
-    description: '*대표메뉴*\n\n - 샹티샹티',
+    description:
+      '2011년,\n10평 남짓한 작은 카페로 시작하여\n오직 맛있는 커피와 전문가라는\n두 단어에 집중한 커피전문 회사입니다.\n우리는 전 세계 커피를 테스팅하며,\n섬세한 로스팅 프로파일을 연구합니다.',
+    logo: '/images/cafe_logos/100977681_2496655733767749_4390075348155367424_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=109&_nc_ohc=lsQiti_e1H0AX-9fvxG&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBNEKSPbjc-PaSRvEVMp9vXLEnpBwlMD6PXkD5e2xgG_A&oe=63D76647&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAyMjRfMTYg%2FMDAxNjQ1Njk3ODQ0MTgy.zPjuovEVhXaXSH8NNrAzkJB1oTpX5UnxKXLJFDQR4gwg.Q7VL6le3hc07jSOrP6s6DoB50OMfdjtJwpUVn8gSzLkg.JPEG.iambine2fc%2Foutput_2823515295.jpg',
     'images.1':
       'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbZbgwF%2FbtraInRGHJR%2FFzxQUlr0wvgq669WC6ZkT1%2Fimg.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '에디션덴마크쇼룸',
@@ -1231,15 +2175,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '통인동',
+    '동 or 역 (DC)': '인사동',
     subway: '경복궁역',
     wifi: 'O',
+    pet: '',
+    parking: '',
     tags: '로스터리,스페셜티',
     description:
-      '에디션덴마크가 소개하는 덴마크 커피, 티, 꿀 제품을 경험할 수 있는 쇼룸 공간입니다.',
+      '서촌 덴마크 커피와 티를 판매하는 신상카페\n\n에디션덴마크가 소개하는 덴마크 커피, 티, 꿀 제품을 경험할 수 있는 쇼룸 공간입니다.',
+    logo: '/images/cafe_logos/50268249_322813941690129_6261010785019887616_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=109&_nc_ohc=Jpssk6IzYKUAX-ZqhC8&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfApoqNglLm83zi4vkVC1rfu4XFrqks4JXX_PkBWyQbz1g&oe=63D67A91&_nc_sid=8fd12b',
     'images.0':
       'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200707_81%2F1594126084213phlMJ_JPEG%2FS55APmL3gwNNtzXyDz0WTRKW.JPG.jpg',
     'images.1':
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA2MDJfOTQg%2FMDAxNjU0MTYyMzY0Nzc1.BNrSJwpW471GagI3zZwv-jSuhhV3n1RnbxW7PBr5Fmgg.qx42Em91WzRjEBZV11j5IULjobkDfeoU8diJgwxUcwMg.JPEG.gerbera__%2FIMG_4729.jpg',
+    FIELD16: '',
+    메뉴판: '등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '리셉션',
@@ -1247,9 +2199,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '효자동',
+    '동 or 역 (DC)': '인사동',
     subway: '경복궁역',
     wifi: 'O',
     pet: 'O',
+    parking: 'O',
+    tags: '',
+    description: '',
+    logo: 'https://ldb-phinf.pstatic.net/20230112_94/1673487153534btsxP_JPEG/RECEPTION_Profile.jpg',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA4MTlfMSAg%2FMDAxNjYwODc0NzY2Mzkz.n4Ex8Tz2bTaqeOn6uPh5rcc85Kinbrl3eCuVMUzZyrEg.yLKnLiCn3ecvXCyJ5RFFW9YGYRP7Efn5HmYO-A8GjiUg.JPEG.rudgmlekdud%2FKakaoTalk_20220819_104930192.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEyMjZfMTE0%2FMDAxNjcyMDU2MzkyNDM4.iN5eUUrTYWPRVzVMsxsXEVyYiPR2ECsGBeNXYlml8Msg._tPgBnW8nVnCg-6PLm8qQbuPLrdKeJCyi9BRVyiiWH4g.JPEG.jeheo1225%2Foutput_2962701361.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: 'TXT Coffee',
@@ -1257,8 +2222,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '원서동',
+    '동 or 역 (DC)': '원서동',
     subway: '안국역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '커피와 차 | 11:00-18:00 | 화-토\n.\n온라인 원두 및 사업자 구매',
+    logo: '/images/cafe_logos/20986841_1833253253655505_1672246526014914560_a.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=101&_nc_ohc=tbOrxsYecLEAX8l-CtX&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBXXndr7Qx198RtP-N1UcS5u9IxCNCFAHww5qSBFHFvSg&oe=63D721EE&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODAyMDlfMjM2%2FMDAxNTE4MTEwMTk4MTc4.bz1rkBsGaiCnfJI1ygAmeUmtCr4nmuZqF_T34GopEuog.mwscHacd0uIBho-mRiVgRRLx3F1_htDVBptrmW62aMQg.JPEG.alfm914%2FIMG_7744.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEwMDFfMTUw%2FMDAxNjY0NjAwMTc5Mjk3.XYc1if7J-6L6iYiYcU-awH0AajVi_VlnsbGMX7D7smMg.7sO5REkNhQ8rXOKNuVyfuvhUC_V4icBxhpfQTNzGUoEg.JPEG%2F55E5B9AC-265E-41FB-BE97-D8EBAFCF430B.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '결',
@@ -1266,8 +2246,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '공평동',
+    '동 or 역 (DC)': '공평동',
     subway: '종각역',
     wifi: 'O',
+    pet: '',
+    parking: 'O',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '[일상적인]\n특별하지 않은 가장 일상적인 하루의 파동과 결들을 함께 하고 싶습니다.\n하루를 시작하기 전의 리추얼. 동료들과 웃음을 나누는 여유로운 점심시간.\n\n[공간]\n종로의 한복판, 전통적인 서울의 모습을 간직한 곳에서 자연스러운 소재들을 사용하고 싶었습니다.\n돌, 나무, 콩알 크기의 자갈들, 염색되지 않은 천, 편안하고 따뜻한 공간이 되기를 바랍니다.\n\n[그리고 커피]\n질릴 새 없이, 제철 원두를 주기적으로 새롭게 선보입니다. 커피가 좋은 당신께 커피 가이드가 되겠습니다.\n\n*결은 빈브라더스가 운영합니다.',
+    logo: '/images/cafe_logos/95916752_227064445255575_578603163595046912_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=103&_nc_ohc=_U_fxih6h8IAX8Fw8Bk&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCMwXZl_IkewY8_NimweUqsjBpxB6unsEKFfJAJzt4L6A&oe=63D75604&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAyMDRfOTcg%2FMDAxNjQzOTU0MTAzNTcw.OmSbUHTM10TOcM7zG64SVipNKZDRYT2eeAxNhGFU0Kog.YsQ2PC9oGyA-6x-3AZRFp7rKJ6MXrS3Nk2TJDoitQ68g.JPEG.jeen315%2F1643952230789.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190417_230%2F1555495094856eLMFe_JPEG%2F-BxKvPPOAUa7NKvx4JGMdEoF.jpg',
+    FIELD16: '',
+    메뉴판: '등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '프릳츠 원서점',
@@ -1275,9 +2270,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '원서동',
+    '동 or 역 (DC)': '중구',
     subway: '안국역',
     wifi: 'O',
-    description: '???',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '원서동 아라리오뮤지엄 건물 내에 오픈한, 프릳츠커피컴퍼니 2호점. 본점과 마찬가지로 좋은 원두를 사용한 커피를 선보이며 크루아상, 팽오쇼콜라 등의 베이커리 메뉴도 만날 수 있다. 고풍스러운 한옥 구조가 운치를 더한다.',
+    logo: '/images/cafe_logos/10584633_753077058090569_1137616471_a.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=105&_nc_ohc=iGjXp-YQCiwAX94wMYw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCmRDuoKJsscyoqYUFVRVC5XZ_idkQI_GmhIeQS-2LomA&oe=63D798B8&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180530_238%2F1527668962442XVfSW_JPEG%2FEizoqTNyMnxGqhoahMssxXpa.JPG.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEwMTJfMjA3%2FMDAxNjY1NTA1MTAxNDg3.-AcZkHtj_KskB2w2DizRF7h7D0m1qnRN3ynJYoqxklQg.adxFQ2hYvfzU4s7Acr7glUGle5n2jfWqq1XoiahO3NMg.JPEG%2F97FD43C5-4351-4228-9B5E-3FDC9FF62521.jpeg',
+    FIELD16: '',
+    메뉴판: '등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '에이커피 서울',
@@ -1285,8 +2294,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '부암동',
+    '동 or 역 (DC)': '부암동',
+    subway: '',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '“Preserve natural flavour, Enhance distinctive characteristics”',
+    logo: '/images/cafe_logos/82228398_899216873852466_1173970602453630976_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=106&_nc_ohc=pQvbsrcgWyMAX-Dk7NN&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfB9sVDh-lbunfoNmuaXHTYZQHDyBQi4b7zaFhdp9qc0eg&oe=63D6E0A9&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201101_47%2F16042417141738zt4G_JPEG%2Fkg7PVnOL8d8wUdAsJ7MqwhmX.jpeg.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210822_227%2F1629606140605NTty6_JPEG%2Fupload_39ccc0ca8fc45eb9c229ed67cfcfdbd7.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '카페 E to E',
@@ -1294,8 +2318,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '관수동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '종로3가역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '[ 스페셜티커피 페어링 전문카페 E-E ]\n\nE-E(Experience to Emotion)\nE- : 카페 etoe에서의 다채로운 경험\n-E : 그 경험을 통해 얻는 감성을 의미합니다.\n\n+ 섬세한 페어링코스 +\n스페셜티커피 하이엔드 싱글오리진과 풍미를 더해줄 디저트를 페어링하여 코스로 제공합니다.\n\n+ 반응형 미디어아트 +\n3m 테이블에서 펼쳐지는 테마별 미디어아트, 내 손길에 따라 반응하는 작품을 감상할 수 있습니다.\n\ncafe E-E에 오셔서 당신의 이야기로 가득 채워주세요.\n\n*예약 관련 공지\n당일예약 불가,전화예약 불가입니다.\n네이버 예약으로만 예약을 받고있습니다.',
+    logo: '/images/cafe_logos/184531297_2772626196324661_8777459067737024618_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=101&_nc_ohc=2nY0XURMbskAX99C47f&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfB1ZxAoXsxfTcnxa-Gd16Zdwt-a0aB38MAbXw4HfOD7Tw&oe=63D7A83B&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MTBfMjM3%2FMDAxNjMxMjQ5MjEzNzQ5.ynKv-aCm37x3UIEv73lpMBpveJAGjEFj68s3jYn6UCUg.ko-kvuHTFt0enYtxMrKp63Zd27d4Vbps4iCfWdYTxCcg.JPEG.bonnuit21%2F20210905_161127.jpg',
+    'images.1':
+      'https://naverbooking-phinf.pstatic.net/20220114_300/1642125071383UPgvJ_JPEG/image.jpg',
+    FIELD16: '',
+    메뉴판: '등록(참고하기)',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '서울상회',
@@ -1303,7 +2342,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '관철동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '종각역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '2016년 서촌에서 시작한 작은 커피가게가 종각역 보신각으로 이전하여 작은 커피가게 상화 상점으로 이전 개업하였습니다.\n정보 수정 제안',
+    logo: '',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA4MjBfNTYg%2FMDAxNjYwOTY3OTczMzYw.3ACLwaTRM9CUYJnT5yZ0eUBmKPdL3khWUM_2LWLbSUYg.XEPQieeRRv0a7wywhPu6IiRy90PWerXjdDhYDJtydJ4g.JPEG.siksikso%2FIMG_8067.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEyMTVfNTMg%2FMDAxNjcxMDkxMDA1NzY5.L3cziJBccOQrjbwNMItnllSpgajFTASsMVCzpzdvvbsg.S9gK4EXRSzZhWjR7pC3mSP-sH5NJbg9xIAQ7I7LtORwg.JPEG%2FCC03CA4C-F984-44E1-87DF-961A27693CE5.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '헤르만의정원 광화문점',
@@ -1311,7 +2366,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '청진동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '광화문역',
+    wifi: '',
+    pet: '',
+    parking: 'O',
+    tags: '홍차,밀크티,인도,스리랑카',
+    description:
+      "헤르만의 정원'은 인도, 스리랑카 등의 홍차 산지에서 직수입한 프리미엄 홍차와 밀크티를 선보이는 홍차전문점 입니다.\n\n싱글 티 이스테이트 홍차와 함께 진한 맛 속에 향긋함을 담은 밀크티 베이스, 티 베리에이션 음료도 준비되어 있습니다.",
+    logo: '/images/cafe_logos/298670676_609956647449467_4590479651871657472_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=111&_nc_ohc=wBt8i4CSeZAAX-JpIj8&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCsAQrVtEUBYrMO_c1jp7oAL95O9fmsWOuBaJ64TNG7ag&oe=63D77178&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEwMTlfMjE2%2FMDAxNjY2MTY4ODgyMzM4.-StWZ_r4lOM7zCRXtlxZRglj9n46q02j6gUhj2fRD28g.6yBAYyqjP-K7jLOV_LTg8EVZ12Z165l7Urz1gG93fsQg.JPEG.seek4happieness%2Foutput_1596955332.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20220727_157/1658908338659tqdhH_JPEG/KakaoTalk_20220718_123241912.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '나무사이로',
@@ -1319,8 +2390,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '내자동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '경복궁역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '2002년 서울에서 시작한 나무사이로는\n한 잔의 커피로 우리의 일상이 풍요로워지기를 바랍니다.\n지속적으로 산지를 방문하여 농부/생산업자와 소통하며 좋은 재료와 논리적인 로스팅, 철저한 품질관리를 기반으로 커피가 가진 다양한 매력을 소개합니다.',
+    logo: '/images/cafe_logos/80101039_598876860879104_8067387340097585152_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=108&_nc_ohc=FOsPnNvRAQ4AX8HRItg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAIs3nJVHbnuDiO2DnSwtXXHZczl4vq-xlza848e-OMKA&oe=63D6619E&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTA3MDFfMjYy%2FMDAxNTYxOTQ4MjAzMDc3.SgbsDA2yaHsfkhF0UPnEYbU6-40Zhq2r3HMjYWq3FBsg.Eu3EImie0OdH8G5uhc9WMDFTpaLAVBnNH8c5Asdj4Skg.JPEG.bongbong323%2FKakaoTalk_20190701_112930616_02.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjExMDVfMTcy%2FMDAxNjY3NjEyNjEwNjM0.5m361jUkQV6IYKHfLb6EuoB9YYmmTNvveYs3RConqRkg.ttRlB1uXXjp1sVKTy8fqDTdMtSf2YEiaNEpY5GO62Dsg.JPEG%2F20221105_095350.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '쏘리에스프레소바',
@@ -1328,7 +2414,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '적선동 ',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '경복궁역 ',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '에스프레소바,포르투갈',
+    description:
+      '포르투갈 여행지에서 마셨던 그 델타커피 한국에서도 드실 수 있습니다. 우리에게 익숙한 에스프레소가 아닌 부드러운 포르투갈 스타일의 에스프레소를 맛보세요. 거기에 포르투갈 전통 에그타르트까지 함께 한다면 정말 최고겠죠?',
+    logo: '/images/cafe_logos/200687151_103692711888814_7169262957006431591_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=110&_nc_ohc=pdURhxDXz9QAX_5TCed&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCxYvTan4HNYucL7OXInJ4zGqO2d57CpeLVAv_-WfvcAw&oe=63D7B475&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAzMTNfMjg1%2FMDAxNjQ3MDk3NTQ0NDMz.DqCg5VS2Fgw2h2aQcGqH9mK35EQo53JPRR-u5MExN0Ag.CakioHErWy677bXaD63GlZKTQWurLLwmdw3pXa79nrcg.JPEG.sosohan_jj%2FIMG_5475.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20220514_133/1652487154293f2yy2_JPEG/51FC93F2-96C6-40D7-840D-DF6AF02F67F7.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커넥트계동',
@@ -1336,8 +2438,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '계동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '안국역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '대표메뉴 아인슈페너와 스콘.\n매장에서 직접 만드는 까눌레, 파운드케이크.\n직접 로스팅하는 원두와 브루잉커피.\n\n예쁜 정원과 루프탑, 한옥 모티브 2층 공간에서\n북촌한옥마을 계동의 감성을 느껴보세요!\n주문배송은 DM 및 연락처 문의\n북촌, 계동길, 정원카페, 루프탑, 한옥카페\n금요일~일요일(공휴일) 11:00~21:00\n월요일~목요일 11:00~20:00\n서울 종로구 계동길 72',
+    logo: '/images/cafe_logos/145239770_947181292772747_3848112310444772319_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=111&_nc_ohc=kZSgMeI6mzkAX8uT5-Z&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfD8qGoohxYHa6x3lbJH9GoMvTEab5B7zwwjo__r1zkZew&oe=63D717F2&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA5MjZfODUg%2FMDAxNjY0MTkwMjg4MTQy.aoNW2baWqdIyEhUx3f3vF-bnILlqKjlZ-ErhvJ5KJHUg.5DB-WLOzgE3lHCgV4mlcLxhU9O0Rq4i7VYgI5OO7N1og.JPEG.hyu_noo%2FKakaoTalk_20220925_220647371_21.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjExMDlfMTY3%2FMDAxNjY3OTYzOTA5MzU5.R0RxKJDcA-M8tClosdRV9PmZUhrv8tHUIxrFN9TWzJIg.H6gCu28DmuRFLlcNEmuMWgcEinuGL0mx5DcV3rIV1pkg.JPEG%2F20221109_112301.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '라콜롬브',
@@ -1345,8 +2462,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '동숭동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '혜화역',
-    tags: '로스터리',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매,뉴욕',
+    description:
+      '뉴욕의 라콜롬브가 한국에 들어왔다. 공정무역으로 수입한 최상급 원두를 한국에서 직접 로스팅하며 고소하고 달달한 풍미를 느낄 수 있다. 나무 그루터기를 연상시키는 테이블과 의자가 인상적이다. 라콜롬브가 아시아에 첫 번째로 오픈한 매장이다.',
+    logo: '/images/cafe_logos/320747624_886012722394668_3301444694601529702_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=100&_nc_ohc=dVTSMtTeiWEAX-ZLpmn&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCgd-X-7ZJQVhg6dXNtQww_BLUl61f5In9ehkLass7TRw&oe=63D7FBFA&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAxMjRfOTMg%2FMDAxNjExNDgzMTUxMTI4.AS5N_Fs71YsKqga4tml20_pWKbXbhrhZZNiSJH8AV1Eg.icfO4y5hXYIV9XBTJ8HOzPY45nZhIf1YWxV8m3RWBsMg.JPEG.jbscn63%2Foutput_2198110798.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220729_182%2F1659079554084eMYCS_JPEG%2F840984AD-C40B-48D7-8E6B-E251E321D265.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커피한약방 혜화점',
@@ -1354,8 +2486,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '동숭동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '혜화역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '',
+    description:
+      '커피한약방 혜화점은 커피한약방이 을지로를 벗어나 새로이 문을 연 공간이며, 다양한 원두를 선보이며 핸드드립 방식의 필터커피 추출합니다. 추후 커피한약방 혜화점에서는 새로이 와인을 맛볼 수 있는 공간으로 나아갈 예정입니다.',
+    logo: '/images/cafe_logos/260399377_140368185006326_2223059555549042923_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=102&_nc_ohc=ZiyN0xMe38wAX83asti&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfA7LvBvZ6TH9kPlYY8ieiC0PmLK6xH7I_MisRTwoWZehw&oe=63D712B5&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200323_28%2F1584965798401Hj4o7_JPEG%2FAO3PTT7GguhaP2U1ceElCQ9L.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20211119_200%2F1637314510015Rx2KS_JPEG%2Fupload_2d6157544fe0388aeb4d0c8b588ad901.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '동숭동커피',
@@ -1363,9 +2510,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '동숭동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '혜화역',
     wifi: 'O',
-    tags: '로스터리',
+    pet: '',
+    parking: '',
+    tags: '',
+    description: '직화식 로스팅 조용하고 분위기있는 카페',
+    logo: '/images/cafe_logos/dongsungdong.png',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200221_289%2F1582258203800S3uOv_JPEG%2FvczaFwJ5Cnp-hBbbWepElr0b.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEyMTZfMjgg%2FMDAxNjcxMTY3MDE0NDE1.LiI8YRquj4Tn3byXv3OkTlrKknnxecgdyIwhadtMJ3Ag.BcX3aLKYF2ANWgTjpebLPZ320LHfuR2KFaA6wO8PNBUg.JPEG%2F20221216_125537.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '체리 빈 커피',
@@ -1373,9 +2533,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '종로구',
     dong: '혜화동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '혜화역',
     wifi: 'O',
-    tags: '로스터리',
+    pet: '',
+    parking: 'O',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '체리부터 빈, 커피까지 이르는 모두를 연결시키고, 커피체인을 공유하는 즐거움을 제공하는 공유 로스터리입니다.',
+    logo: '',
+    'images.0':
+      'https://ldb-phinf.pstatic.net/20220916_279/1663310894829OP1sB_JPEG/%C1%B6%B5%BF%C8%F1_20220812_114259_4.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20220916_273/16633108948564Ql4U_JPEG/%C1%B6%B5%BF%C8%F1_20220812_114259_3.jpg',
+    FIELD16: '',
+    메뉴판: '없음',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커피스니퍼 시청점',
@@ -1383,10 +2557,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '북창동',
+    '동 or 역 (DC)': '서울역',
     subway: '시청역',
     wifi: 'O',
     pet: 'O',
-    description: '???',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '커피 스니퍼 Koffee Sniffer\n\n[History]\n1700년대 후반, 유럽 거리에 커피 향이 은은하게 퍼지던 날들이 있었습니다. 그 당시에도 커피는 지금과 같이 많은 사람들을 행복하게 해주는 음료였습니다. 그러나 커피에 대한 정부의 규제로 사람들은 커피를 몰래 숨어서 마시곤 하였고, 정부는 이를 단속하기 위해 거리 곳곳의 커피 향을 찾아내는 커피 스니퍼 (Koffee Sniffer)라는 직업을 만들어냅니다.\n\n[About]\n커피 스니퍼 (Koffee Sniffer)는 커피를 사랑하는 여러 바리스타들이 모여 심혈을 기울여 만든 로스터리 브랜드 입니다. 커피 한 잔이 어제보다 나은 오늘을 만들 수 있다 믿고, 향기로운 커피를 끊임없이 탐닉하고 연구합니다.',
+    logo: '/images/cafe_logos/87784053_205131330558753_6351436270555627520_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=109&_nc_ohc=69k9vl6Bi9gAX_DToch&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAhtI6RBh33jEbxDY28mDwDKsphykIyALds_dV0ok6nXQ&oe=63D7E7BA&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDAzMjdfODQg%2FMDAxNTg1MzEzNzMyMDc2.6Jy2kq2rMmOCJmsOlk8BUTy6x3VT1gFBlmybdL7_5YQg.EorehYyeQW8fc-beL439jWPyc7lLzdq5GikUq8M-rWog.JPEG.mania0209%2F%25C4%25BF%25C7%25C7%25BD%25BA%25B4%25CF%25C6%25DB_01.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20200109_67%2F1578553389652CuvWA_JPEG%2Fupload_8b82824499fcb6ba767b67b3ec3ac433.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '블루보틀 명동 카페',
@@ -1394,7 +2581,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '명동2가',
+    '동 or 역 (DC)': '중구',
     subway: '을지로입구역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '',
+    description:
+      '블루보틀 명동 카페는 좌석이 없는 온더고(On the go)형태로 준비되어 있으며, 현금 없는 카페로 운영되고 있습니다. 주차 등록은 불가합니다. 이 부분 많은 양해 부탁드립니다. 감사합니다.',
+    logo: '/images/cafe_logos/bluebottle.jpeg',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEyMTZfMTAz%2FMDAxNjcxMTgzNDg2NjA2.KDT4eas_Co3439ZsGaf9U_N0z24rBFJwXcwcrv-GjuEg.cLLp3qsZ71bRH4NrDxcgJr5aarIp4xJO5g32NEA3YY0g.JPEG.sm79513%2F1671179043236.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20221214_4/1671002276424zdF5d_PNG/%BD%BA%C5%A9%B8%B0%BC%A6_2022-12-14_%BF%C0%C8%C4_4.09.55.png',
+    FIELD16: '',
+    메뉴판: '등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '로투스',
@@ -1402,7 +2605,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '저동1가',
+    '동 or 역 (DC)': '중구',
     subway: '명동역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '메뉴가 올라와 있는것과 다릅니다.\n저희집 메뉴는 네이버에 올라와 있는 메뉴와 다릅니다.\n저희집은 가향 커피를 판매 안 한지 1년 되었습니다.\n커피의 라인업은 매주 바뀝니다.\n현장에 오셔서 확인 부탁드립니다.\n커피에 진심인 집입니다.\n지나친 향수, 화장품, 자제 부탁드립니다.\n작은 집입니다. 큰 공간을 원하신다면 저희집은 원하시는 공간이 아닙니다.\n단 커피에 관하여서는 맛과 향이 있는 커피를 드실 수 있습니다. 모두 자유롭에 드나드실 수 있지만 공간이 작은 만큼 에티켓 부탁드립니다.\n드실 메뉴는 커피 뿐입니다.\n디저트를 판매하지 않습니다.\n건물안에 화장실이 없습니다.\n계단이 불편합니다.\n이왕이면 방문전에 인스타 그램으로 어떤 커피를 하는지 확인 부탁드립니다.\n커피에 진심인 사람들이 하는 작은 가계입니다.\n사랑과 관심 부탁드리고 생각이 다를 수 있다고 인정합니다. 하지만 저희의 모습도 이렇게 생긴 사람들이니 있는 그대로 봐주세요~',
+    logo: '/images/cafe_logos/62262190_491646061590637_4834582546073255936_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=101&_nc_ohc=tCAdY9YwrFgAX9Wq_95&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBAAZd6b_f1NIRWmo85UoTvDJaPJOvYxx-Si3xD4kowWA&oe=63D725BB&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MDFfMjE1%2FMDAxNjI3NzU1MTY5NTU4.qlNalfqLFKzThi4uysLcRpB63eVvs1jSGrMI_050hiwg.o1Jryb9_I_pN3067R5m9kSJUHTz7YLATu_zkNJDksGAg.JPEG.sinbongbong%2F1627752809437.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEyMTdfMTc5%2FMDAxNjcxMjc4NjI2MTcy.r7oJNmy8f768t00CWCXIkV-KesU2NKdBJvqOaqrhRwUg.zllR0NW4l1UDCErXckxQSY9WnV-9l5SfijHgFqEyaGgg.JPEG%2F1000034143.jpg',
+    FIELD16: '',
+    메뉴판: '브루잉(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커피인쇄소',
@@ -1410,7 +2629,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '필동1가',
+    '동 or 역 (DC)': '',
     subway: '충무로역',
+    wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '',
+    description:
+      '자세한 영업시간 및 이용방법 등 모든 정보는 커피인쇄소 인스타그램에서 확인하고 오시길 바랍니다.',
+    logo: '/images/cafe_logos/322526695_165887486152003_160593857119967615_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=107&_nc_ohc=A55vktbtYPkAX8xR9sp&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBMeqiHIE3JY9pDVbeRn-5GoDHvDHH07MCCMNGby2le5Q&oe=63D6C460&_nc_sid=8fd12b',
+    'images.0':
+      'https://ldb-phinf.pstatic.net/20180709_1/1531067117312MSQzk_JPEG/MBrCEBf6L4bjaFZfms4vmfdP.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210516_34%2F1621154561263Q4QVc_JPEG%2Fupload_89f2677f2f951b25644ec5f50f36cf36.jpg',
+    FIELD16: '',
+    메뉴판: '브루잉(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '엘까페씨또바',
@@ -1418,8 +2653,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '신당동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '약수역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '에스프레소바',
+    description: '남미 에스프레소바 . 이국적인 메뉴와 함께 여행을 떠나보세요!',
+    logo: 'https://scontent.ficn3-3.fna.fbcdn.net/v/t39.30808-1/301994138_398920185711593_7234955040498008354_n.png?stp=dst-png_p480x480&_nc_cat=108&ccb=1-7&_nc_sid=c6021c&_nc_ohc=JZ0fDjJYWgUAX-rFsej&_nc_ht=scontent.ficn3-3.fna&oh=00_AfAurfma8NzrRR1DDk_TLkUGC645oQpE82oyy3Tv09pzng&oe=63D6AE9E',
+    'images.0':
+      'https://ldb-phinf.pstatic.net/20220914_262/1663136187025wgCAG_JPEG/IMG_6688.JPEG',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220914_124%2F1663136188000LvOq5_JPEG%2FIMG_7547.JPEG',
+    FIELD16: '',
+    메뉴판: '등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '리사르커피',
@@ -1427,8 +2676,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '신당동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '약수역',
-    tags: '로스터리',
+    wifi: '',
+    pet: '',
+    parking: 'O',
+    tags: '로스터리,에스프레소바',
+    description:
+      '에스프레소가 우리에게 가장 큰 가치이고 목표였다면, 이제는 에스프레소 보다 더 나은, 무한한 가치를 좇는다. 하나님을 사랑하고 나를 사랑하듯 이웃을 사랑하는 보이지 않는 가치에 집중한다.\n\n우리가 추구하는 가치와 약속의 종합적인 상징은 늑대 입니다. 늑대는 가족과 일원을 보호하고 함께 협력하여 공동체를 부양하는 본능을 가지고 있습니다. 그래서 우리는 사회적으로 가치를 실현하기 위해 전문 사회복지사를 통해 어려운 구성원을 부양하도록 후원하며 장애인, 고아 시설에도 후원을 이어갑니다. 좋은 품질의 원두를 합리적인 가격으로 소비자에게 제공하고 자체적으로 블렌딩하는 페키지에 의미를 부여함으로써 우리들의 가치를 전달합니다.\n',
+    logo: '/images/cafe_logos/67636550_509739409771300_274627961322209280_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=104&_nc_ohc=YNcssvZ8VlsAX-QG5PL&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCzDDz1g1p39MqfXBWtv-3vqQCcsPUG78hAlyiFcFcmbw&oe=63D836C8&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA0MzBfMTA1%2FMDAxNjE5NzQ0OTA2ODMw.4tOO68CMUeFqvnMT9Un-cLAAhN5eRBb_NHu54Bhd9mgg.DCcoJFIlIVwVlIbG93FsPq_gFYlE5DPSJAGwzOA3cFQg.JPEG.icebox34%2F7324E7B3-945D-428D-BC5D-2D16451F390E.jpeg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210410_34%2F16180632978541G6Rv_JPEG%2Fupload_0810f89720fc153fa5418bb5e44b0c7c.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '보헤이 커피',
@@ -1436,9 +2700,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '신당동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '약수역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '',
+    description:
+      '그럴 때 있잖아요, 조용히 있고 싶을 때.\n그리고 채워지고 싶을 때.\n커피로 서로의 마음을 채우는 공간입니다.\n공간을 벗어나면 비로소 홀가분해지길.\n\n홀가분 : 거추장스럽지 아니하고 가볍고 편안한.\n\n일상 속 숨은 정성찾기/\n커피,디저트,도자기 모두 정성들여 준비하고요\n싱글오리진 브루윙 커피와 카푸치노 전문입니다.\n\n영업시간은 인스타그램을 확인해주세요\n1인 운영 매장으로 전화응대가 어렵습니다.\n문의 사항은 인스타 DM으로 부탁드려요.',
+    logo: '/images/cafe_logos/324596733_883973029307345_8784936351193245868_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=105&_nc_ohc=omfF0UBfPOIAX9L1vMM&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAIcVt4AS3Kd43kdXIDdHfE_Pd9Fh_yEV7Tu_jRbAPovg&oe=63D79495&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220216_3%2F1644996366451foHUh_JPEG%2F93F0DDCA-349C-48F9-B836-FA379E25AD32.jpeg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA1MjRfNjQg%2FMDAxNjUzMzc1NjQwODgz.WZmeRcob9i0CeyGLPJuEQXcSc__7EnUHm3wPEWHZ10Ig.E2y2CEsAfW31xML2ife1WX4fNBS4M-woR-RzTtL_SoIg.JPEG%2Fupload_10b2110716f494014c35249c94a26c82.jpeg',
+    FIELD16: '',
+    메뉴판: '등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '알디비케이 커피 쇼룸(RDBK COFFEE SHOW ROOM)',
@@ -1446,9 +2724,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '신당동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '동대입구역',
     wifi: 'O',
     pet: 'O',
+    parking: '',
+    tags: '호주',
+    description: '호주 스페셜티 커피 REDBRICK의 한국지점 RDBK입니다.',
+    logo: '/images/cafe_logos/118346075_737781313731159_2629679843411894898_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=103&_nc_ohc=ajKzdNbmEU8AX8ew1qW&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAQMrLdXZQokTG6L5iJDMVy6pJPXCTG9TH6uGDwBiv5JA&oe=63D7D408&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MjhfMzkg%2FMDAxNjU4OTcyMjM1OTMx.uWegBcPZywZXxD487dhMoyiSLxLPpVM18nnkXQ2u6hMg.0ktH5kza_A_xL-1HZFwPmiW7MCbCZ7XnfONkQf7n9zEg.JPEG.jjh30417%2FIMG_6410.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20220609_130/1654751943806CMFkQ_JPEG/KakaoTalk_Photo_2022-06-09-13-59-20_015.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '헤베커피',
@@ -1456,10 +2747,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '필동2가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '충무로역',
     wifi: 'O',
     pet: 'O',
-    tags: '로스터리',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      'Hebe, moment to refresh\n맛있는 커피 한 잔이 주는 순간의 여유를 설계합니다.\n\n국가대표 출신 바리스타 운영하는 카페입니다. 스페셜티 커피와 맛있는 디저트, 쾌적한 공간까지 즐기실 수 있는 충무로 유명 카페입니다.',
+    logo: '/images/cafe_logos/66184173_735053373598193_4545401706543841280_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=105&_nc_ohc=y1lv4qPHfAEAX8SMMgn&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDCzRSd2OHpscJMpgPH53pbBuHSNtHEXGWpMDqw-_momQ&oe=63D66983&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200125_94%2F1579940612237WYTq0_JPEG%2FxS0XfgxeJQQD8hD-SFRfUbfv.JPG.jpg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20221129_204/1669717782294HlO79_JPEG/KakaoTalk_20221129_192221389_04.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '노띵커피',
@@ -1467,7 +2771,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '묵정동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '동대입구역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '',
+    description:
+      "서울의 중심이지만 골목 따라 오래된 인쇄소와 키작은 건물들이 모여 있는 곳입니다. 노띵커피는 이곳에서 70년을 버틴 오래된 건물을 개조해 스페셜티 싱글오리진을 제공합니다.\n\n매우 빠르게 변화하는 도심에서 카페를 찾는 고객과 지역 주민을 위해 맛있는 커피와 이곳만의 여유로운 시간을 준비합니다.\n\nDo Nothing.\nDon't Think.\nKeep Drinking.\nNothin Coffee.",
+    logo: 'https://ldb-phinf.pstatic.net/20221223_103/1671767814536oM54c_JPEG/1461731500103.jpg',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20210820_196%2F1629446722478k1Twn_JPEG%2Fupload_ae4ac029b74351040c36476f32f783d4.jpeg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20191203_80%2F1575351007299uapwE_JPEG%2Fupload_be5f9132e80ac883248061bf2da40d27.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '섹터 커피 바',
@@ -1475,9 +2795,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '필동2가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '충무로역',
     wifi: 'O',
-    tags: '로스터리',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '생두를 직접 핸드 픽해 로스팅하며 이후 고객이 마시는 한 잔을 위한 바리스타의 책임을 다하고 있습니다.\n디저트는 전문 파티시에가 매장에서 직접 정성을 다해 준비합니다.\n조도와 음악 선정 그리고 볼륨 쾌적한 실내 온도 및 공기를 위한 수시 환기와 공기청정기 등을 사용합니다.\n테이블과 식물 등 일부 인테리어는 계속해서 업데이트 될 예정입니다.\n비록 2층이지만 그만큼 만족하실 수 있도록 친절하게 최선을 다하는 섹터 커피 바를 지향합니다.',
+    logo: '/images/cafe_logos/277958062_164291576025060_2178504084873870512_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=100&_nc_ohc=rMPXsxuT94sAX-0OgD-&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDQc8c_REd_tqCPJTk0kP3wjEll9T2IvsMm02wyWYSefQ&oe=63D774A8&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211124_53%2F1637713358843eYTxz_JPEG%2F9CA794AF-3276-4BE5-993D-5C011C37D7D8.jpeg',
+    'images.1':
+      'https://myplace-phinf.pstatic.net/20210410_122/1618044505700UvRf6_JPEG/upload_17b99a8e61029a035c2a8840e90ee1e2.jpg',
+    FIELD16: '',
+    메뉴판: '등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '에쏘피리언스',
@@ -1485,8 +2819,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '충무로3가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '충무로역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '',
+    description:
+      'essoperience는 espresso와 experience의 합성어로 새로운 에스프레소를 경험하는 곳 이라는 의미입니다.',
+    logo: '',
+    'images.0':
+      'https://ldb-phinf.pstatic.net/20210131_189/1612056178503YuNrf_JPEG/FjI5w6nIEzaaT3sKwNz9V_UJ.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210421_270%2F1618993610524HrvKc_JPEG%2FRAFxAQZZZr8zIOKgcIoqfxGB.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '몰또 이탈리안 에스프레소바',
@@ -1494,7 +2843,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '명동1가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '명동역',
+    wifi: '',
+    pet: '',
+    parking: '',
+    tags: '',
+    description:
+      '이탈리아 여행 중, 성당 앞에 앉아 마시던 한잔의 카푸치노와 크라상을 명동 한복판에서도 즐길 수 있다면.\n몰또의 상상은 현실이 됩니다.\n코로나가 풀리면 우리 다닥다닥 붙어서 유럽의 노천카페 부럽지 않은 우리의 자랑거리를 함께 만들어가요.\n(코로나 기간에는 방역수칙을 지켜주시길 당부 당부드립니다.)내용 더보기\n정보 수정 제안\n',
+    logo: '/images/cafe_logos/281486224_1424130891433968_9007549288241450774_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=100&_nc_ohc=aoAgfiZ2cHkAX8ieRJX&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDYJJL8vYEXQFM__qHbDSts7PPyby7XD0BhPHBPMj-pAQ&oe=63D7BB6F&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220902_198%2F1662093137417QKWC8_JPEG%2FCDF8DB12-910C-4162-828C-CBFC09779A50.JPG',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMjZfMTg3%2FMDAxNjc0NzE2ODY0NzUz.xq51hAxrwf1pMfSZ3VajK2q5a26DCpmdkz85Ur0zuaAg.poMHz7Wf99hk8yfZNuYIYHhmsE0OOybQFts7LpNHi20g.JPEG%2F1674716825145.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커피사',
@@ -1502,8 +2867,22 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '을지로3가',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '을지로3가역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '',
+    description: '브루잉을 전문적으로 하는 카페입니다.',
+    logo: '/images/cafe_logos/135944801_428365601643749_6220139602933841767_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=105&_nc_ohc=gXwNTA17eOwAX-hCKXo&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDyquMZgCctGHqnFVux2o0XEL5_-IwUK9tYodzVxl_-IA&oe=63D67294&_nc_sid=8fd12b',
+    'images.0':
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEwMTVfMjk4%2FMDAxNjY1ODQ0Mzg4Njg1.MFcPe8sRcRZWXFKoS7DgU8zWX0K5tTvSugg2D6DWR7Yg.cRzYOMPheB8zRUfb3aNtptWDzuoh-2UNe1D2MlOX4Kog.JPEG.monk234%2F20221014_112246.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210106_106%2F1609907748056CLWpO_JPEG%2FVdz4de7dJYvMRsnSyGJDAApF.JPG.jpg',
+    FIELD16: '',
+    메뉴판: '일부등록,이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '커피루소 정동',
@@ -1511,8 +2890,23 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중구',
     dong: '정동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '서대문역',
     wifi: 'O',
+    pet: '',
+    parking: 'O',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '우리는 커피와 공간, 제품 모든 것에 각각의 개성을 표현하고 철학을 담기 위해 노력 합니다.\n\n커피에 관한 우리나라 최초의 기록은 1884년 퍼시벌 로런스 로웰이 쓴 조선, 조용한 아침의 나라에서 찾을 수 있습니다. 책의 내용 중 <조선의 최신 유행품 이었던 커피를 마셨다>는 문장은그 즈음 우리나라에 커피가 보급되었다는 사실을 짐작하게 합니다. 한국 최초의 커피 전문점은 손탁호텔 1층에 자리잡은 정동 구락부로 1894년, 고종에게 처음으로 커피를 대접한 곳 입니다.\n\n우리는 이러한 시간의 흔적과 기억, 커피에 대한 이야기를 커피루소 정동에 담았습니다.\n\n- 늘 한결같이 맛있는 다양한 블렌드 커피\n- 브루잉 바에서 바리스타와 마주하고 즐기는 필터커피\n- 커피를 더욱 맛있게, 베이커리와 디저트 페어링\n- 주문 즉시 전문 셰프가 선사하는 브런치\n\n* 영수증 지참 시, 주차 1시간 무료 제공',
+    logo: '/images/cafe_logos/bluelogo.png',
+    'images.0':
+      'https://ldb-phinf.pstatic.net/20170420_231/1492665527585oryir_JPEG/186370544867360_0.jpeg',
+    'images.1':
+      'https://ldb-phinf.pstatic.net/20160615_298/1465957188779mTskb_JPEG/30d7ee43-f207-4588-91c7-57fac54ce4f7.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
     name: '테바커피',
@@ -1520,25 +2914,71 @@ const mania_cafes_data = [
     sido: '서울특별시',
     gungu: '중랑구',
     dong: '상봉동',
+    '동 or 역 (DC)': '네이버맵 공유',
     subway: '중랑역',
     wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      '직접 로스팅한 스페셜티 원두로 진한 맛과 향이 있는 커피를 핸드드립으로 제공합니다',
+    logo: '/images/cafe_logos/262799390_1642071886130213_1474006110473219103_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-4.fna.fbcdn.net&_nc_cat=105&_nc_ohc=3so66UU6RL8AX8b7MDk&tn=RERF_rGXlaxJsw7S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDt1knR7ACu8twRV-1Ctf1vVOG4nrBJiuqbB4uSAd3H0Q&oe=63D6AF46&_nc_sid=8fd12b',
+    'images.0':
+      'https://ldb-phinf.pstatic.net/20211212_269/1639303931992OkeiS_JPEG/9A1AC3FE-325E-4947-A8EE-5BF1EAA4084B.jpeg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20220304_45%2F1646374390565a262T_JPEG%2Fupload_3ead5f007dc74e4867a6e022885b0312.jpg',
+    FIELD16: '',
+    메뉴판: '등록',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
-    name: '더반 여의도',
+    name: '더반 베를린 더현대 서울(더반 여의도)',
     address: '서울 영등포구 여의대로 108 더현대 서울 B1',
     sido: '서울특별시',
     gungu: '영등포구',
     dong: '여의도동',
+    '동 or 역 (DC)': '',
     subway: '여의나루역',
+    wifi: '',
+    pet: '',
     parking: 'O',
+    tags: '로스터리,스페셜티,원두판매,독일',
+    description:
+      '유럽을 대표하는 독일 베를린 스페셜티 로스터리 THE BARN입니다. 지속 가능성과 친환경을 추구하고, 오로지 SCA 차트 86점 이상의 싱글 오리진 생두만을 로스팅하여 최고의 커피를 만들어나가고 있습니다. 제철별 좋은 생두를 선별하여 다양한 싱글 오리진 커피를 선보이며, 떼루아에서 나타나는 본연의 향미를 표현하는데 집중하고 있습니다. 소비자가 즐기는 커피 한 잔이 어디로부터 생산되어 오는지를 전달하는데 큰 노력을 기울이고 있습니다.\n\nVision\n우리는 매일매일 더 좋은 커피를 만들기 위해 노력합니다. 타협은 없습니다. 훌륭한 커피. 그거면 되죠. 우리는 여러 원두를 블랜딩 하지 않습니다. 그래야 커피 본연의 맛을 느낄 수 있을 뿐 아니라, 누가 이 커피를 생산했는지도 제대로 이해할 수 있기 때문이죠.',
+    logo: 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221102_143%2F1667378119007VqeNR_JPEG%2Fthebarn_logo_kakao.jpg',
+    'images.0':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221201_115%2F1669874492559nTWFJ_JPEG%2F_Z9A2069-11.jpg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzAxMDJfNSAg%2FMDAxNjcyNjUzNjkwMjIx.7-bIkJVO_BbLrWFTBS6vp7UTAg2M_piHVBmrcAVlducg.FG2HtQPUZI0m-jBo4bJFzcjWoxLFDD2OW8TbzAyCGCsg.JPEG%2FC015C20B-E955-4E2B-AE79-4AFFCC1055B1.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
   {
-    name: '티에프티 여의도',
+    name: '티에프티커피로스터스(티에프티 여의도)',
     address: '서울 영등포구 여의대방로67길 11 잡지회관 1층, 2층',
     sido: '서울특별시',
     gungu: '영등포구',
     dong: '여의도동',
+    '동 or 역 (DC)': '',
     subway: '여의나루역',
+    wifi: 'O',
+    pet: '',
+    parking: '',
+    tags: '로스터리,스페셜티,원두판매',
+    description:
+      "커피와 스콘을 판매합니다.\n\n티에프티는 여의도 오피스 상권에 위치한 공간입니다.\n\n'Task Force Team'의 약자를 뜻하는 네이밍은 새로운 프로젝트를 추진할 때, 각 부서의 직원이 모여 팀을 만들고 프로젝트를 진행하는 것을 말하는 사무적 용어에서 출발했습니다.\n\n커피를 추출하는 사람과 제공받는 사람 모두가 하나의 팀이 되어 공간을 채운다는 의미로\n\n'TFT COFFEE ROASTER'는 모든 일하는 사람들의 쉬어 갈 수 있는 휴식 공간을 제공합니다. 우리는 직관적인 설명을 통해 스페셜티 문화에 대한 높은 허들을 허물고, 모든 직장인들이 쉽고 편하게 접근할 수 있는 데일리 스페셜티 카페를 지향합니다.",
+    logo: '/images/cafe_logos/310123408_2286845821480479_3810052889050301341_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ficn3-3.fna.fbcdn.net&_nc_cat=103&_nc_ohc=QTy6b9z9u2AAX--L0lJ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfBccukeR3h7obOcsLKNKrsv97jOqfLvGy2WRggA6-juKQ&oe=63D869F5&_nc_sid=8fd12b',
+    'images.0':
+      'https://ldb-phinf.pstatic.net/20221012_199/1665539964192KU359_JPEG/ABB8A182-C202-40E4-A496-FCF34277E953.jpeg',
+    'images.1':
+      'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjExMDFfMjQz%2FMDAxNjY3MzEwMzYxNDgy.rVFYMbRPVWBTWYWqsno29P9_vx9vDGBDktZVkRmJjTQg.nwz6R5c7g2AxI_Csd1mU5bq319kePgRgX_dSRN707gog.JPEG%2FCF9E2794-C2D2-4844-A0F0-9E6D61423D4E.jpeg',
+    FIELD16: '',
+    메뉴판: '일부등록(변동),이미지',
+    FIELD18: '',
+    '카카오 검색': '',
   },
 ];
 export default mania_cafes_data;
