@@ -32,9 +32,7 @@ function Settings() {
       <List>
         <ListItemButton
           onClick={() => setOpenLogout(true)}
-          sx={{
-            borderBottom: `1px solid ${THEME_SEPERATOR}`,
-          }}
+          sx={{ borderBottom: `1px solid ${THEME_SEPERATOR}` }}
         >
           <ListItemText primary="로그아웃" />
           <NavigateNextIcon />

@@ -1,11 +1,11 @@
 import { SxProps, Theme } from '@mui/material';
 
-export const sxCenter: SxProps<Theme> = {
+export const sxCenter = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-};
+} as const;
 
 export const sxSquareImg = {
   width: '100%',
