@@ -17,7 +17,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Review from './Review';
 import { useFirestore } from 'reactfire';
 import FetchMoreButton from './FetchMoreButton';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchRegionDialog from './SearchRegionDialog';
 import { useRouter } from 'next/router';
 import { D_HOT_BEANS_PATH, D_MANIA_CAFES_PATH } from 'src/utils/routes';

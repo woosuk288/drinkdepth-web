@@ -30,6 +30,9 @@ const HeaderD = ({ leftIcon, centerComponent, rightIcon }: HeaderDProps) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
+            width: '100%',
+            maxWidth: 'sm',
+            marginX: 'auto',
           }}
         >
           <div style={{ width: '48px' }}>
