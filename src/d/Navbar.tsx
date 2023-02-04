@@ -67,8 +67,8 @@ export default function Navbar() {
   const closeDialog = () => setDialogOpen(false);
   const handlePrimary = () => {
     const today = new Date();
-    const tomorrow = today.setDate(today.getDate() + 1);
-    localStorage.setItem(REVIEW_BADGE_REWARD, new Date(tomorrow).toISOString());
+    const week = today.setDate(today.getDate() + 7);
+    localStorage.setItem(REVIEW_BADGE_REWARD, new Date(week).toISOString());
     setTooltipOpen(false);
     setDialogOpen(false);
   };
@@ -78,7 +78,7 @@ export default function Navbar() {
     setDialogOpen(false);
   };
 
-  // null, 날짜+1, disabled, completed
+  // null, week(날짜+7), disabled, completed
   React.useEffect(() => {
     const rewardStatus = localStorage.getItem(REVIEW_BADGE_REWARD);
 
@@ -131,11 +131,6 @@ export default function Navbar() {
                   <CancelOutlinedIcon />
                 </IconButton>
                 <Typography>리뷰를 남기고 보상을 받으세요!</Typography>
-                {/*
-                오늘은 안 보기
-                더 이상 안 볼래요
-popup reveiw and badge
-               */}
               </div>
             }
             open={tooltipOpen}
@@ -201,7 +196,7 @@ popup reveiw and badge
           }
           open={dialogOpen}
           handleClose={closeDialog}
-          textPrimary="오늘만 숨기기"
+          textPrimary="일주일간 숨기기"
           handlePrimary={handlePrimary}
           textSecondary="더 이상 안 볼래요"
           colorSecondary="inherit"
