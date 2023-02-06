@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import Badge from '@mui/material/Badge';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -11,13 +10,17 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CloseIcon from '@mui/icons-material/Close';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
-import { D_PATH, D_CREATE_PATH, D_PROFILE_PATH } from 'src/utils/routes';
+import {
+  D_PATH,
+  D_CREATE_PATH,
+  D_PROFILE_PATH,
+  OATUH_LOGIN_PATH,
+} from 'src/utils/routes';
 import { useRouter } from 'next/router';
 // import { auth } from 'src/firebase/firebaseInit';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import {
   cafeMenuReviewState,
@@ -49,15 +52,22 @@ export default function Navbar() {
     // setValue(newValue);
     const path = BOTTOM_LINKS[newValue];
 
+    if (!user && path === D_PROFILE_PATH) {
+      router.push({
+        pathname: OATUH_LOGIN_PATH,
+        query: { previousPath: router.asPath },
+      });
+      return;
+    } else if (user && path === D_PROFILE_PATH) {
+      router.push(path + '/' + user.uid);
+      return;
+    }
+
     if (path === D_CREATE_PATH && user) {
       setReview({
         ...defaultCafeMenuReview,
       });
-    } else if (path === D_PROFILE_PATH) {
-      router.push(path + '/' + user?.uid);
-      return;
     }
-
     router.push(path);
   };
 
