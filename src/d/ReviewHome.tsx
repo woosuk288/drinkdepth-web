@@ -24,6 +24,7 @@ import { D_HOT_BEANS_PATH, D_MANIA_CAFES_PATH } from 'src/utils/routes';
 import Link from 'src/common/Link';
 import Image from 'next/image';
 import { AddressType } from './SearchRegion';
+import useScrollY, { getScrollYKey } from 'src/hooks/useScrollY';
 
 const LIMIT = 15;
 type Props = {
@@ -62,6 +63,15 @@ function ReviewHome({ initialReviews }: Props) {
   const handleClose = () => {
     router.back();
     setAddressOpen(false);
+  };
+
+  /**
+   * 페이지 스크롤 위치 기억 처리 위함
+   */
+  const {} = useScrollY();
+  const handleScrollSave = () => {
+    const key = getScrollYKey();
+    sessionStorage.setItem(key, `${window.scrollY}`);
   };
 
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading } =
@@ -176,7 +186,9 @@ function ReviewHome({ initialReviews }: Props) {
 
           {data?.pages.map((reviews, i) =>
             reviews.map((review) => (
-              <Review key={review.id} review={review} index={i} />
+              <div key={review.id} onClick={handleScrollSave}>
+                <Review review={review} index={i} />
+              </div>
             ))
           )}
         </div>

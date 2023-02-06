@@ -143,8 +143,10 @@ function ReviewDetailContainer({ review }: ReviewDetailContainerProps) {
 
   const handleThumbUp = async () => {
     if (!user) {
-      router.push(OATUH_LOGIN_PATH);
-      // path After Login
+      router.push({
+        pathname: OATUH_LOGIN_PATH,
+        query: { previousPath: router.asPath },
+      });
       return;
     }
 

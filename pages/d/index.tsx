@@ -60,8 +60,21 @@ const CafeReviewHomePage: NextPage<Props> = ({ data }) => {
 
 export default CafeReviewHomePage;
 
-// This gets called on every request
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+// This value is considered fresh for ten seconds (s-maxage=10).
+// If a request is repeated within the next 10 seconds, the previously
+// cached value will still be fresh. If the request is repeated before 59 seconds,
+// the cached value will be stale but still render (stale-while-revalidate=59).
+//
+// In the background, a revalidation request will be made to populate the cache
+// with a fresh value. If you refresh the page, you will see the new value.
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  res,
+}) => {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  );
+
   const url = process.env.NEXT_PUBLIC_SERVER_URL + '/reviews' + '/ssr';
   const data = await fetchData<DReviewType[]>(url);
   return { props: { data } };
