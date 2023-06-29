@@ -90,5 +90,8 @@ declare module globalThis {
     Kakao: any;
     // kakao: any;
     gtag: any;
+
+    ChannelIO?: IChannelIO;
+    ChannelIOInitialized?: boolean;
   }
 }

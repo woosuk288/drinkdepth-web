@@ -4,8 +4,9 @@ import Layout from '../src/Layout';
 import SectionA from '../src/intro/SectionA';
 import Meta from '../src/common/Meta';
 import SectionB from '../src/intro/SectionB';
-import SectionC from '../src/intro/SectionC';
+// import SectionC from '../src/intro/SectionC';
 import { Box } from '@mui/material';
+import ChannelTalk from 'src/common/ChannelTalk';
 
 const metaData = {
   title: '드링크뎁스',
@@ -30,20 +31,7 @@ const Home: NextPage = () => {
 
       <div style={{ marginBottom: '100px' }}></div>
 
-      <a
-        href="https://pf.kakao.com/_ktxnJb/chat"
-        target="_blank"
-        style={{ position: 'fixed', right: 20, bottom: 10, zIndex: 100 }}
-        rel="noreferrer"
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/btn_kakao.png"
-          alt="카카오톡투명로고"
-          width={64}
-          height={64}
-        />
-      </a>
+      <ChannelTalk />
     </Layout>
   );
 };
