@@ -90,8 +90,9 @@ function SectionA() {
             fontSize: { xs: 36, md: 50, lineHeight: 1.32, marginBottom: 24 },
           }}
         >
-          더 이상 나만의 카페를 찾는데 <br />
-          오래 시간 투자하지 마세요
+          마시는 즐거움과
+          <p>경험의 깊이를 바꾸는 혁신</p>
+          {/* 바꿉니다. 드립니다. 만드는, 채우는 */}
         </Typography>
         <Typography
           variant="h6"
@@ -99,8 +100,9 @@ function SectionA() {
           fontWeight={400}
           sx={{ lineHeight: { xs: 1.3, md: 1.6 }, maxWidth: '880px' }}
         >
-          별점 기반 이 아닌 취향 기반 밑 데이터 기반 <br />
-          개인화 된 AI로 카페를 찾는 당신의 시간과 시행착오를 줄여드립니다.
+          마시는 경험이 바뀌면 인생의 깊이가 달라집니다. 모두가 마시는 즐거움을
+          느낄 수 있도록 끊임없이 소통하고, 보다 깊은 삶의 경험을 만드는 기술
+          혁신과 도전을 이어갑니다.
         </Typography>
       </VisionWrapper>
 

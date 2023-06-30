@@ -4,7 +4,7 @@ import Layout from '../src/Layout';
 import SectionA from '../src/intro/SectionA';
 import Meta from '../src/common/Meta';
 import SectionB from '../src/intro/SectionB';
-// import SectionC from '../src/intro/SectionC';
+import SectionC from '../src/intro/SectionC';
 import { Box } from '@mui/material';
 import ChannelTalk from 'src/common/ChannelTalk';
 
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
       <Box px={{ xs: '20px', lg: 0 }}>
         <SectionA />
         <SectionB />
-        {/* <SectionC /> */}
+        <SectionC />
       </Box>
 
       <div style={{ marginBottom: '100px' }}></div>

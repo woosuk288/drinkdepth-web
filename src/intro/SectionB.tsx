@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Box, Typography } from '@mui/material';
+import { Avatar, Box, Button, Typography } from '@mui/material';
 
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
@@ -14,8 +14,7 @@ function SectionB() {
           fontSize: { xs: 36, md: 50, lineHeight: 1.32, marginBottom: '3rem' },
         }}
       >
-        {/* 드링크뎁스는 어떤 팀 인가요? */}
-        우리의 핵심 가치
+        왜 우리 서비스를 이용 해야 하나요?
       </Typography>
 
       <Box
@@ -37,16 +36,27 @@ function SectionB() {
           h6: {
             marginBottom: '1rem',
           },
-          '.MuiAvatar-root': {
-            width: 80,
-            height: 80,
-            marginTop: '3rem',
-            marginLeft: 'auto',
+
+          '.span__padding-20': {
+            padding: '1.25rem',
+          },
+
+          '.box-item': {
+            position: 'relative',
+
+            '.MuiButton-root': {
+              position: 'absolute',
+              right: '48px',
+              bottom: '40px',
+              fontWeight: '700',
+              padding: '12px 33px',
+              borderRadius: '12px',
+            },
           },
         }}
       >
-        <Box /* div */>
-          <Typography variant="h4">오늘 뭐 마시지?</Typography>
+        <Box className="box-item">
+          <Typography variant="h4">카페 매니아</Typography>
 
           <Typography
             // sx={{ display: 'inline' }}
@@ -54,25 +64,34 @@ function SectionB() {
             variant="h6"
             color="text.secondary"
           >
-            혹시 ＇오늘 뭐 마시지?＇라는 고민 해보신적 없으신가요? 우리가
-            살아가는데 있어서 수분은 필수적입니다. 인간의 신체는 50% 이상
-            수분으로 이루어져 매일 수분을 필요로 하고 있죠.
+            카페를 갔는데 실망했던적 있으신가요? 별점만 보고 갔는데 너무
+            아쉬운적은요? 누군가에겐 최고일수 있지만 누구에겐 좋지않은
+            경험일수도 있습니다.
           </Typography>
 
           <Typography variant="h6" color="text.secondary">
-            하지만 매일 물만 마시면 질리기 마련입니다. 우리는 더욱 특별한 마실
-            것을 원하죠. 인류는 오래 전부터 음료를 즐겨 마셨습니다. 하지만
-            음료를 선택을 하는데 있어서 모두 개개인의 가치가 다릅니다.
+            지금 당장 청량하고 상큼한 음료가 땡길때, 특정 원두의 커피를
+            좋아할때, 부모님과 함께 갈만한 멋진 장소의 카페, 오션뷰에 일하기
+            좋은 카페 등 좋아하는 메뉴를 기점으로 탐색하는데 블로그 뒤지고
+            지도를 뒤져도 여간 쉽지가 않습니다.
           </Typography>
-          <Avatar sx={{ backgroundColor: 'white' }}>
-            <QuestionMarkIcon fontSize="large" color="primary" />
-          </Avatar>
+          <Typography variant="h6" color="text.secondary">
+            일단 내 취향에 가장 좋아야죠! <br /> 기존에 검색하기 매우 까다로웠던
+            메뉴, 취향, 상황, 어떤것이든 입력하든 그에 맞는 적합한 결과를
+            제공하고자 합니다.
+          </Typography>
+
+          <div style={{ marginBottom: '3rem' }}></div>
+
+          <Button variant="contained" color="primary" size="large">
+            카페 추천받기
+          </Button>
         </Box>
 
-        <Box component="span" padding="1.25rem" />
+        <span className="span__padding-20"></span>
 
-        <Box sx={{}}>
-          <Typography variant="h4">마시는 경험의 깊이!</Typography>
+        <Box className="box-item">
+          <Typography variant="h4">카페 사장님</Typography>
 
           <Typography
             // sx={{ display: 'inline' }}
@@ -80,21 +99,28 @@ function SectionB() {
             variant="h6"
             color="text.secondary"
           >
-            건강 때문에? 맛 때문에? 향 때문에? 분위기 때문에? 여러분들은 어떠한
-            이유로 어떤 음료를 선택하시나요? 드링크뎁스는 ‘이왕이면 다홍치마’
-            라는 말을 좋아합니다.
+            더이상 마케팅 비용에 투자하지 마세요. 경쟁력에만 투자하세요. 우리가
+            잠재고객들을 연결 하겠습니다. 여러분들의 차별화된 가치를 우리에게
+            디테일하게 공유해주세요. 우리가 가치를 찾는 이용자들을 연결해
+            드릴께요.
           </Typography>
 
           <Typography variant="h6" color="text.secondary">
-            ‘마시다’ 라는 영역에서 보다 더 나은 경험을 제공하고자 합니다. 그에
-            따라 우리의 일상에 있어서 마시는 즐거움과 경험의 깊이를 제공하고자
-            합니다. 그런 경험의 깊이를 제공하는데 있어서 장벽을 하나 둘씩
-            없애가고자 하는 것이 드링크뎁스의 궁극적 목표입니다.
+            우리는 생존을 위해 다양한 전략과 가치제안을 사용하며 유저들에게
+            다가가는 카페 사장님들에 대해 깊이 공감하고 응원하고 있습니다.
           </Typography>
 
-          <Avatar sx={{ bgcolor: 'primary.main' }}>
-            <PriorityHighIcon fontSize="large" />
-          </Avatar>
+          <Typography variant="h6" color="text.secondary">
+            우리가 하는 일은 불필요한 비용 부담을 줄여주며 제안하시는 가치
+            전달을 유저들이 최대한 놓치지 않게 환경을 구성하여 잠재 고객들을
+            연결하는것이 우리팀의 미션입니다.
+          </Typography>
+
+          <div style={{ marginBottom: '3rem' }}></div>
+
+          <Button variant="contained" color="primary" size="large">
+            카페 등록하기
+          </Button>
         </Box>
       </Box>
     </Box>
