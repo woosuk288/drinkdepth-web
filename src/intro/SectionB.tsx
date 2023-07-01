@@ -7,7 +7,7 @@ function SectionB() {
         // variant="h1"
         fontWeight={700}
         sx={{
-          fontSize: { xs: 36, md: 50, lineHeight: 1.32, marginBottom: '3rem' },
+          fontSize: { xs: 36, lineHeight: 1.5, marginBottom: '3rem' },
         }}
       >
         왜 우리 서비스를 이용 해야 하나요?
@@ -40,7 +40,7 @@ function SectionB() {
             제공하고자 합니다.
           </Typography>
 
-          <div style={{ marginBottom: '3rem' }}></div>
+          <Box marginBottom={{ xs: '6rem', sm: '4rem' }}></Box>
 
           <Button variant="contained" color="primary" size="large">
             추천받기
@@ -75,7 +75,7 @@ function SectionB() {
             연결하는 것이 우리 팀의 미션입니다.
           </Typography>
 
-          <div style={{ marginBottom: '3rem' }}></div>
+          <Box marginBottom={{ xs: '6rem', sm: '4rem' }}></Box>
 
           <Button variant="contained" color="primary" size="large">
             등록하기
@@ -94,13 +94,12 @@ const sxContent = {
   '> div': {
     flex: 1,
     borderRadius: '40px',
-    padding: { xs: '1rem', sm: '3rem' },
-    paddingTop: { xs: '2rem' },
+    padding: { xs: '2rem', sm: '3rem' },
     bgcolor: 'rgba(2, 32, 71, 0.05)',
   },
   h4: {
     fontWeight: 600,
-    fontSize: '30px',
+    fontSize: '1.75rem',
     marginBottom: '1.25rem',
   },
   h6: {
@@ -118,7 +117,8 @@ const sxContent = {
       position: 'absolute',
       right: '48px',
       bottom: '40px',
-      fontWeight: '700',
+      fontSize: '16px',
+      fontWeight: '600',
       padding: '12px 33px',
       borderRadius: '12px',
     },

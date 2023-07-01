@@ -19,40 +19,25 @@ import Image from 'next/image';
 import { OATUH_LOGIN_PATH } from '../utils/routes';
 import { logoutKakao } from 'src/firebase/services';
 import { useUser } from 'reactfire';
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-} from '@mui/material';
 
 const pages = [
   {
-    name: '카페 추천',
+    name: '서비스 소개',
     link: '/',
   },
   {
-    name: '카페 등록',
-    link: '/',
-    // link: '/o2o',
+    name: '인생 커피맵',
+    link: '/o2o',
   },
   {
-    name: '개발 소식',
-    link: '/',
-    // link: 'https://landing.drinkdepth.com',
+    name: '어떤 카페',
+    link: 'https://landing.drinkdepth.com',
   },
 ];
 
 const Header = () => {
   const router = useRouter();
   const { status, data: user } = useUser();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -110,13 +95,19 @@ const Header = () => {
                   sx={{
                     px: '1rem',
                     fontSize: 16,
-                    fontWeight: 600,
+                    fontWeight:
+                      router.pathname === page.link
+                        ? 700
+                        : page.link !== '/' &&
+                          router.pathname.includes(page.link)
+                        ? 700
+                        : 'inherit',
                   }}
                 >
                   {page.name}
                 </Button>
               ))}
-              {/*
+
               <Box
                 sx={{
                   ml: '1.5rem',
@@ -135,13 +126,11 @@ const Header = () => {
                     </IconButton>
                   </>
                 ) : (
-                  // onClick={goLoginPage}
-                  <Button variant="contained" >
+                  <Button variant="contained" /* onClick={goLoginPage} */>
                     로그인
                   </Button>
                 )}
               </Box>
-               */}
             </Box>
 
             {/* mobile */}
@@ -151,64 +140,73 @@ const Header = () => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleDrawerToggle}
+                onClick={handleOpenNavMenu}
                 color="inherit"
               >
                 <MenuIcon />
               </IconButton>
-
-              <Drawer
-                anchor={'left'}
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
               >
-                {/* {list(anchor)} */}
-                <Box width={250}>
-                  <Toolbar />
-                  <List>
-                    {pages.map((page) => (
-                      <ListItem key={page.name} disablePadding>
-                        <ListItemButton>
-                          <ListItemText
-                            primary={page.name}
-                            sx={{ '.MuiTypography-root': { fontWeight: 600 } }}
-                          />
-                        </ListItemButton>
-                      </ListItem>
-                    ))}
-                  </List>
+                {pages.map((page) => (
+                  <MenuItem
+                    key={page.name}
+                    onClick={() => router.push(`${page.link}`)}
+                  >
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                ))}
 
-                  {/* <List>
-                    <ListItemButton>
-                      {status === 'loading' ? (
-                        <div>loading</div>
-                      ) : user ? (
-                        <ListItemButton>
-                          <Button
-                            fullWidth
-                            color="error"
-                            // variant="outlined"
-
-                            onClick={logoutKakao}
-                          >
-                            로그아웃
-                          </Button>
-                        </ListItemButton>
-                      ) : (
-                        <ListItemButton>
-                          <Button
-                            variant="contained"
-                            fullWidth
-                            onClick={goLoginPage}
-                          >
-                            로그인
-                          </Button>
-                        </ListItemButton>
-                      )}
-                    </ListItemButton>
-                  </List> */}
+                <Box>
+                  {status === 'loading' ? (
+                    <Button disabled>loading</Button>
+                  ) : user ? (
+                    <>
+                      <div css={{ textAlign: 'center' }}>
+                        <IconButton
+                          color="primary"
+                          // onClick={() => router.push(OATUH_LOGIN_PATH)}
+                        >
+                          <AccountCircleIcon fontSize="large" />
+                        </IconButton>
+                      </div>
+                      <Button
+                        fullWidth
+                        // variant="outlined"
+                        color="inherit"
+                        onClick={logoutKakao}
+                      >
+                        로그아웃
+                      </Button>
+                    </>
+                  ) : (
+                    <MenuItem>
+                      <Button
+                        variant="contained"
+                        fullWidth
+                        onClick={goLoginPage}
+                      >
+                        로그인
+                      </Button>
+                    </MenuItem>
+                  )}
                 </Box>
-              </Drawer>
+              </Menu>
             </Box>
 
             <Box

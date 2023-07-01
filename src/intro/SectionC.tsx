@@ -19,7 +19,7 @@ function SectionC() {
         // variant="h1"
         fontWeight={700}
         sx={{
-          fontSize: { xs: 36, md: 50, lineHeight: 1.32, marginBottom: '3rem' },
+          fontSize: { xs: 36, lineHeight: 1.5, marginBottom: '3rem' },
         }}
       >
         진행상태 및 소식
@@ -81,7 +81,7 @@ function SectionC() {
                 component="dt"
                 marginBottom="2.5rem"
                 fontWeight={600}
-                fontSize={30}
+                fontSize={'1.75rem'}
               >
                 {p.dt2}
               </Typography>
@@ -112,7 +112,8 @@ const progress = [
     id: 'drinkdepth_o2o_section',
     imageURL: '/images/main-guy-filtering-EEA941.svg',
     path: '',
-    dt1: '매번 원하는 카페를 찾는 시간이 아깝다면?',
+    // dt1: '매번 원하는 카페를 찾는 시간이 아깝다면?',
+    dt1: '카페 레터',
     dt2: '당신만을 위한 카페 추천',
     dd1: '지역, 분위기, 와이파이 사용, 음료 등 찾는 카페의 우선순위를 입력하고 언제든지 수정할 수 있어요. 여러분의 취향에 맞는 카페를 매주 2회 알려드립니다.',
     dd2: '50명이 342개의 카페 추천을 받았어요.',
@@ -120,7 +121,8 @@ const progress = [
   {
     imageURL: '/images/main-girl-with-laptop-F0F0F4.svg',
     path: '',
-    dt1: '카페 마케팅과 고객 유치가 어렵다면?',
+    // dt1: '카페 마케팅과 고객 유치가 어렵다면?',
+    dt1: '카페 등록',
     dt2: '카페 사장님을 위한 가치 제안',
     dd1: '우리 카페만의 차별화된 가치를 공유해 주세요. 시그니처 메뉴, 스페셜티, 디저트 맛집, 분위기, 전망, 인테리어, 애견동반, 모각코 등 어떤 가치라도 유저들이 놓치지 않게 해드려요.',
     dd2: '219개의 카페가 등록되었어요.',
