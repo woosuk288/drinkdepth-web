@@ -11,7 +11,7 @@ import ChannelTalk from 'src/common/ChannelTalk';
 const metaData = {
   title: '드링크뎁스',
   description:
-    '오늘도 뭘 마실지 고민될 땐? 드링크뎁스는 ‘마시다’라는 영역에서 보다 더 나은 경험을 만들기 위해 끊임없이 노력합니다.',
+    '카페 갔는데 실망했던 적 없으신가요? 별점 기반이 아닌 개인 취향에 맞는 당신만의 카페를 찾아드립니다.',
   image: '/images/logo_name_og.png',
   canonical: '',
 };

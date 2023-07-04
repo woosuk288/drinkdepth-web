@@ -1,6 +1,20 @@
 import { Box, Button, Typography } from '@mui/material';
 
 function SectionB() {
+  const handleRecommandClick = () => {
+    const link = 'https://tally.so/r/3jbGK9';
+
+    const anchor = document.createElement('a');
+    anchor.href = link;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
+    anchor.click();
+  };
+
+  const handleRegisterClick = () => {
+    alert('준비 중입니다.');
+  };
+
   return (
     <Box mt="160px">
       <Typography
@@ -42,7 +56,12 @@ function SectionB() {
 
           <Box marginBottom={{ xs: '6rem', sm: '4rem' }}></Box>
 
-          <Button variant="contained" color="primary" size="large">
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={handleRecommandClick}
+          >
             추천받기
           </Button>
         </Box>
@@ -77,7 +96,12 @@ function SectionB() {
 
           <Box marginBottom={{ xs: '6rem', sm: '4rem' }}></Box>
 
-          <Button variant="contained" color="primary" size="large">
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={handleRegisterClick}
+          >
             등록하기
           </Button>
         </Box>

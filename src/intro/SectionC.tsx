@@ -6,10 +6,21 @@ import LazyImage from '../common/LazyImage';
 function SectionC() {
   const router = useRouter();
 
-  const handleImageClick = (path: string) => {
+  const handleLinkClick = (link: string) => {
     // console.log('router.pathname : ', window.location.origin);
-    if (path) {
-      router.push(path);
+    if (link.startsWith('/yet')) {
+      alert('준비 중입니다.');
+      return;
+    }
+
+    if (link.startsWith('http')) {
+      const anchor = document.createElement('a');
+      anchor.href = link;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+      anchor.click();
+    } else {
+      router.push(`${link}`);
     }
   };
 
@@ -50,7 +61,7 @@ function SectionC() {
                 cursor: 'pointer',
                 ...sxCenter,
               }}
-              onClick={() => handleImageClick(p.path)}
+              onClick={() => handleLinkClick(p.path)}
             >
               {typeof p.imageURL === 'string' ? (
                 <LazyImage
@@ -73,6 +84,7 @@ function SectionC() {
                 color="text.secondary"
                 marginBottom="1rem"
                 fontWeight={600}
+                onClick={() => handleLinkClick(p.path)}
               >
                 {p.dt1}
               </Typography>
@@ -82,6 +94,7 @@ function SectionC() {
                 marginBottom="2.5rem"
                 fontWeight={600}
                 fontSize={'1.75rem'}
+                onClick={() => handleLinkClick(p.path)}
               >
                 {p.dt2}
               </Typography>
@@ -111,7 +124,7 @@ const progress = [
   {
     id: 'drinkdepth_o2o_section',
     imageURL: '/images/main-guy-filtering-EEA941.svg',
-    path: '',
+    path: 'https://tally.so/r/3jbGK9',
     // dt1: '매번 원하는 카페를 찾는 시간이 아깝다면?',
     dt1: '카페 레터',
     dt2: '당신만을 위한 카페 추천',
@@ -120,7 +133,7 @@ const progress = [
   },
   {
     imageURL: '/images/main-girl-with-laptop-F0F0F4.svg',
-    path: '',
+    path: '/yet',
     // dt1: '카페 마케팅과 고객 유치가 어렵다면?',
     dt1: '카페 등록',
     dt2: '카페 사장님을 위한 가치 제안',
@@ -129,7 +142,7 @@ const progress = [
   },
   {
     imageURL: '/images/main-guy-multitasking-F0F0F4.svg',
-    path: '',
+    path: '/yet',
     dt1: '개발 소식',
     dt2: 'AI 카페 추천 서비스',
     dd1: '여러분의 취향을 분석하여 실시간으로 최적의 카페 리스트를 찾아드리는 서비스를 개발 중이에요. 최신 업데이트된 개발 소식이 궁금하다면 확인하실 수 있어요.',

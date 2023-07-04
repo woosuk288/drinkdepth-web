@@ -30,16 +30,16 @@ import {
 const pages = [
   {
     name: '카페 추천',
-    link: '/',
+    link: 'https://tally.so/r/3jbGK9',
   },
   {
     name: '카페 등록',
-    link: '/',
+    link: '/yet',
     // link: '/o2o',
   },
   {
     name: '개발 소식',
-    link: '/',
+    link: '/yet',
     // link: 'https://landing.drinkdepth.com',
   },
 ];
@@ -73,6 +73,11 @@ const Header = () => {
   };
 
   const handleNavLinkClick = (link: string) => () => {
+    if (link.startsWith('/yet')) {
+      alert('준비 중입니다.');
+      return;
+    }
+
     if (link.startsWith('http')) {
       const anchor = document.createElement('a');
       anchor.href = link;
@@ -167,7 +172,11 @@ const Header = () => {
                   <Toolbar />
                   <List>
                     {pages.map((page) => (
-                      <ListItem key={page.name} disablePadding>
+                      <ListItem
+                        key={page.name}
+                        disablePadding
+                        onClick={handleNavLinkClick(page.link)}
+                      >
                         <ListItemButton>
                           <ListItemText
                             primary={page.name}
